@@ -1,0 +1,209 @@
+
+/* #NORMALIZE
+-------------------------------------------------- */
+
+// ## HTML5 display definitions
+//==================================================
+article,
+aside,
+details,
+footer,
+header,
+main,
+nav,
+section {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+
+// ## Hide tap highlights on mobile
+//==================================================
+a,
+button,
+input {
+  -webkit-tap-highlight-colo: rgba(0, 0, 0, 0);
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0);
+}
+
+
+// ## Text-level semantics
+//==================================================
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+small,
+sub,
+sup,
+b,
+i,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  border: 0;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+ul {
+  list-style: none;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+small {
+  font-size: 80%;
+}
+
+i {
+  font-style: italic;
+}
+
+blockquote {
+  margin: 0;
+}
+
+
+// ## Embedded content
+//==================================================
+svg:not(:root) {
+  overflow: hidden;
+}
+
+
+// ## Forms
+//==================================================
+select,
+input,
+textarea,
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+input {
+  line-height: normal;
+}
+
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  padding: 0;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type='search'] {
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+input[type='submit'] {
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+}
+
+// MS appearance
+input[type='text']::-ms-clear {
+  display: none;
+}
+
+// Input validation
+// Delete default behavior
+input:invalid {
+  outline: none;
+  box-shadow: none;
+}
+input:-moz-ui-invalid {
+  outline: none;
+  box-shadow: none;
+}
+
+
+// ## Tables
+//==================================================
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  border: 0;
+}

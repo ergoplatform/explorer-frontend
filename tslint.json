@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts"
+    ]
+  },
+  "rules": {
+    "space-before-function-paren": [
+      true,
+      "always"
+    ],
+    "typedef": [
+      true,
+      "member-variable-declaration",
+      "call-signature",
+      "parameter"
+    ],
+    "quotemark": ["single"],
+    "eofline": true,
+    "member-access": [true, "no-public"],
+    "semicolon": [true],
+    "newline-before-return": true,
+    "newline-per-chained-call": true
+  }
+}

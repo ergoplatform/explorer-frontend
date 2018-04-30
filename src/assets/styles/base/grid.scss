@@ -1,0 +1,52 @@
+
+/* #GRIDS
+------------------------------------------- */
+
+// # SCROLL GRID
+//===========================================
+.g-scroll-y {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+
+// # FLEX GRID
+//===========================================
+
+// [ Mode ] Row flex grid
+//------------------------------------------
+.g-flex {
+  display: flex;
+}
+
+.g-flex__item {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  width: 1%;
+}
+
+// Item with fixed width
+.g-flex__item-fixed {
+  flex-shrink: 0;
+}
+
+
+// [ Mode ] Column flex grid
+//------------------------------------------
+.g-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.g-flex-column__item {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  height: 1%;
+}
+
+// Item with fixed height
+.g-flex-column__item-fixed {
+  flex-shrink: 0;
+}
