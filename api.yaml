@@ -1,0 +1,131 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Blockchain explorer"
+tags:
+- name: "blocks"
+  description: "Everything about blocks"
+schemes:
+- "http"
+
+paths:
+  /blocks:
+    get:
+      tags:
+      - "blocks"
+      summary: "Get list of blocks"
+      description: "Get list of blocks sorted by height"
+      parameters: 
+        - name: offset
+          in: query
+          description: Offset
+          type: integer
+        - name: limit
+          in: query
+          description: Limit
+          type: integer
+      operationId: "listBlocks"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: '#/definitions/Block'
+              total: 
+                type: integer
+  /blocks/{id}:
+    parameters: 
+      - name: id
+        required: true
+        in: path
+        type: string
+    get:
+      summary: Get block by id
+      tags:
+        - "blocks"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            properties:
+              block:
+                $ref: '#/definitions/Block'
+              transactions:
+                type: array
+                items:
+                  $ref: '#/definitions/Transaction'
+              interlinks:
+                type: array
+                items:
+                  $ref: '#/definitions/Interlink'
+              references:
+                type: object
+                properties:
+                  nextId: 
+                    type: string
+                  previousId:
+                    type: string
+
+
+definitions:
+  Block:
+    properties:
+      id: 
+        type: string
+        description: Block hash
+      votes:
+        type: string
+      difficulty:
+        type: integer
+      timestamp:
+        type: integer
+      nonce:
+        type: integer
+      stateRoot: 
+        type: string
+      nBits:
+        type: integer
+      height:
+        type: integer
+      parentId:
+        type: string
+      transactionsRoot:
+        type: string
+      adProofsRoot:
+        type: string
+      equihashSolutions:
+        type: array
+        items: 
+          type: integer
+      transactionCount:
+        type: integer
+      transactionSum:
+        type: number
+  Interlink:
+    properties:
+      id: 
+        type: string
+      level:
+        type: integer
+  Transaction:
+    properties:
+      id: 
+        type: string
+      value:
+        type: number
+      type:
+        type: string
+        enum:
+          - input
+          - output
+      
+      
