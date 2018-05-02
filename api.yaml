@@ -35,7 +35,7 @@ paths:
                   items:
                     type: array
                     items:
-                      $ref: '#/components/schemas/FullBlock'
+                      $ref: '#/components/schemas/SearchBlock'
                   total:
                     type: integer
   '/blocks/{id}':
@@ -135,6 +135,52 @@ components:
           $ref: '#/components/schemas/BlockTransactions'
         adProofs:
           $ref: '#/components/schemas/BlockADProofs'
+
+    SearchBlock:
+      description: Block for search results
+      type: object
+      required:
+        - height
+        - timestamp
+        - transactionsCount
+        - miner
+        - size
+        - votes
+      properties:
+        height:
+          type: integer
+          format: int32
+          minimum: 0
+          example: 667
+        timestamp:
+          type: integer
+          format: int32
+          example: 1501505945003
+        transactionsCount:
+          type: integer
+          format: int32
+          minimum: 0
+          example: 667
+        miner:
+          $ref: '#/components/schemas/Miner'
+        size:
+          type: integer
+          format: int32
+          minimum: 0
+          example: 1030453
+        votes:
+          $ref: '#/components/schemas/Votes'
+
+    Miner:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          $ref: '#/components/schemas/ModifierId'
+        name:
+          type: string
+          example: 'BTC.com'
 
     BlockHeader:
       type: object
