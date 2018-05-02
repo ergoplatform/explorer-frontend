@@ -1,0 +1,44 @@
+@import '~styles/base/variables';
+
+// #Sidebar
+//-------------------------------------
+$sidebar-bg-color: #121212;
+$sidebar-logo-color: #ffffff;
+$sidebar-font: $theme-main-font;
+
+.bi-sidebar {
+  width: 300px;
+  background-color: $sidebar-bg-color;
+  font-family: $sidebar-font;
+  transition: width 300ms linear;
+
+  // [ Components ]
+  //---------------------------------
+  &__header {
+    padding: ($grid-offset-step * 7) ($grid-offset-step * 7);
+
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    color: $sidebar-logo-color;
+    font-size: 26px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  &__logo-highlight {
+    font-weight: 600;
+  }
+
+  &--collapsed {
+    width: 100px;
+  }
+
+  &--collapsed & {
+    &__logo {
+      display: none;
+    }
+  }
+}

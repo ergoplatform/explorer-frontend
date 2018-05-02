@@ -1,0 +1,22 @@
+@import '~styles/base/variables';
+
+// #Sidebar menu
+//-------------------------------------
+$sidebar-menu-item-color: #ffffff;
+
+.bi-sidebar-menu {
+  // [ Components ]
+  //-------------------------------------
+  &__item {
+    margin: $grid-offset-step  0;
+    padding: 0 ($grid-offset-step * 7);
+    color: $sidebar-menu-item-color;
+    font-size: 16px;
+    text-decoration: none;
+
+    // [ State ] visited
+    &:visited {
+      color: $sidebar-menu-item-color;
+    }
+  }
+}

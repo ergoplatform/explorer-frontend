@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { AppState } from '../../store/app.store';
 
-const messages = {
+export const messages = {
   en: require('../../locales/en.json'),
   ru: require('../../locales/ru.json')
 };

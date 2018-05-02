@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Nimbus Sans Novus';
+    src: url('NimbusSanNov-Med.woff2') format('woff2'),
+        url('NimbusSanNov-Med.woff') format('woff'),
+        url('NimbusSanNov-Med.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nimbus Sans Novus';
+    src: url('NimbusSanNov-Reg.woff2') format('woff2'),
+        url('NimbusSanNov-Reg.woff') format('woff'),
+        url('NimbusSanNov-Reg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nimbus Sans Novus';
+    src: url('NimbusSanNov-SemBol.woff2') format('woff2'),
+        url('NimbusSanNov-SemBol.woff') format('woff'),
+        url('NimbusSanNov-SemBol.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+

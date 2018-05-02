@@ -1,2 +1,8 @@
+@import '../fonts/nimbus/stylesheet.css';
+
 @import 'base/normalize';
 @import 'base/grid';
+
+#root {
+  height: 100%;
+}

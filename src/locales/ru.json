@@ -1,3 +1,5 @@
 {
-  "components.home.title": "Обозреватель блоков"
+  "components.home.title": "Обозреватель блоков",
+  "components.sidebar-menu.items.data": "Данные",
+  "components.sidebar-menu.items.api": "API"
 }

@@ -2,10 +2,13 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import * as settingsActions from '../../actions/settings.actions';
 
+import { messages } from '../../containers/connected-intl-provider/connected-intl-provider';
+
 class LanguageSwitcherComponent extends React.PureComponent {
-  locales: string[] = ['en', 'ru'];
+  locales: string[] = Object.keys(messages);
   props: any;
   
   constructor (props: any) {
@@ -20,14 +23,13 @@ class LanguageSwitcherComponent extends React.PureComponent {
   
   render (): JSX.Element {
     return (
-      <div>
-        { this.props.locale }
-        
-        <select onChange={ this.onLocaleChanged }>
-          { this.locales.map((localeId) => {
-            return (<option value={ localeId } key={ localeId }
-                            selected={ localeId === this.props.locale }>{ localeId }</option>);
-          }) }
+      <div className='bi-language-switcher'>
+        <select onChange={ this.onLocaleChanged } value={ this.props.locale }>
+          {
+            this.locales.map((localeId) => {
+              return (<option value={ localeId } key={ localeId }>{ localeId }</option>);
+            })
+          }
         </select>
       </div>
     );

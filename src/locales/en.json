@@ -1,3 +1,5 @@
 {
-  "components.home.title": "Blockchain explorer"
+  "components.home.title": "Blockchain explorer",
+  "components.sidebar-menu.items.data": "Data",
+  "components.sidebar-menu.items.api": "API"
 }

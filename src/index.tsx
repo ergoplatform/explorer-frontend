@@ -10,9 +10,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import registerServiceWorker from './utils/registerServiceWorker';
 
-import { AppComponent } from './containers/app/app.component';
 import { ConnectedIntlProvider } from './containers/connected-intl-provider/connected-intl-provider';
 import { AppStore } from './store/app.store';
+
+import AppComponent from './containers/app/app.component';
 
 import './assets/styles/main.scss';
 
@@ -22,7 +23,7 @@ ReactDOM.render(
   <Provider store={ AppStore }>
     <ConnectedIntlProvider>
       <BrowserRouter>
-        <Route path='/' component={ AppComponent }/>
+          <Route path='/' component={ AppComponent }/>
       </BrowserRouter>
     </ConnectedIntlProvider>
   </Provider>

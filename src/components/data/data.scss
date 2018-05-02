@@ -1,0 +1,12 @@
+@import '~styles/base/variables';
+
+// #Home
+//-------------------------------------
+$home-color:              $theme-primary-color;
+$home-bg-color:            #f8f8f8;
+
+.bi-home {
+  height: 100%;
+  color: $home-color;
+  background-color: $home-bg-color;
+}
