@@ -26,6 +26,7 @@
     "member-access": [true, "no-public"],
     "semicolon": [true],
     "newline-before-return": true,
-    "newline-per-chained-call": true
+    "newline-per-chained-call": true,
+    "interface-name": false
   }
 }

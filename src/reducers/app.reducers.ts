@@ -1,4 +1,8 @@
 import { combineReducers } from 'redux';
 
-export const reducer = combineReducers({
+import { AppState } from '../store/app.store';
+import { settingsReducer } from './settings.reducer';
+
+export const reducer = combineReducers<AppState>({
+  settings: settingsReducer
 });
