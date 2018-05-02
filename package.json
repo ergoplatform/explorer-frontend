@@ -51,7 +51,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "mock": "node scripts/mockserver.js"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
@@ -62,9 +63,13 @@
     "@types/react-router-dom": "^4.2.6",
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.6",
+    "api-spec-converter": "^2.7.2",
     "csscomb": "^4.2.0",
+    "express": "^4.16.3",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "swagger-express-middleware-with-chance": "^1.1.5",
+    "tmp": "^0.0.33",
     "typescript": "^2.8.3"
   },
   "jest": {
