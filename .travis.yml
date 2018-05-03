@@ -1,8 +1,8 @@
 language: node_js
 env:
-  - NODE_ENV=production
+  - NODE_ENV=production CI=true
 node_js:
   - "10"
 script:
-  - npm build
-  - npm test
+  - yarn build
+  - yarn test

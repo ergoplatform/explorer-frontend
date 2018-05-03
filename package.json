@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/classnames": "^2.2.3",
     "autoprefixer": "7.1.6",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",
@@ -20,6 +19,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "22.1.4",
+    "node-sass": "^4.9.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -36,6 +36,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "resolve": "1.6.0",
+    "sass-loader": "^7.0.1",
     "source-map-loader": "^0.2.1",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
@@ -59,6 +60,7 @@
     "mock": "node scripts/mockserver.js"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.3",
     "@types/jest": "^22.2.3",
     "@types/node": "9.6.7",
     "@types/react": "^16.3.13",
@@ -71,8 +73,6 @@
     "api-spec-converter": "^2.7.2",
     "csscomb": "^4.2.0",
     "express": "^4.16.3",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
     "swagger-express-middleware-with-chance": "^1.1.5",
     "tmp": "^0.0.33",
     "typescript": "^2.8.3"
@@ -117,7 +117,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "/Users/addmitriev/Projects/blockchaininsitute/blockchain-explorer/tsconfig.test.json"
+        "tsConfigFile": "tsconfig.test.json"
       }
     }
   },
