@@ -8,7 +8,7 @@ import SidebarMenuComponent from '../sidebar-menu/sidebar-menu.component';
 
 import './sidebar.scss';
 
-class SidebarComponent extends React.PureComponent {
+class SidebarComponent extends React.Component {
   props: InjectedIntlProps;
   
   state: {
@@ -42,11 +42,15 @@ class SidebarComponent extends React.PureComponent {
     return (
       <div className={ sidebarClassNames }>
         <div className='bi-sidebar__header g-flex g-flex-column__item-fixed'>
-          <Link className='bi-sidebar__logo g-flex__item-fixed' to='/'>
+          <Link className='bi-sidebar__logo g-flex__item-fixed'
+                to='/'>
             <span className='bi-sidebar__logo-highlight'>Ergo</span> Explorer
           </Link>
           
-          <button className='bi-sidebar__btn-toggle g-flex__item-fixed' onClick={ this.toggleCollapse }>+</button>
+          <button className='bi-sidebar__btn-toggle g-flex__item-fixed'
+                  onClick={ this.toggleCollapse }>
+            +
+          </button>
         </div>
         
         <div className='bi-sidebar__body g-flex-column__item'>

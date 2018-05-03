@@ -2,7 +2,8 @@
 
 // #Sidebar menu
 //-------------------------------------
-$sidebar-menu-item-color: #ffffff;
+$sidebar-menu-item-color:         #828795;
+$sidebar-menu-item-active-color:  #ffffff;
 
 .bi-sidebar-menu {
   // [ Components ]
@@ -14,9 +15,9 @@ $sidebar-menu-item-color: #ffffff;
     font-size: 16px;
     text-decoration: none;
 
-    // [ State ] visited
-    &:visited {
-      color: $sidebar-menu-item-color;
+    // [ Mode ] Active
+    &--active {
+      color: $sidebar-menu-item-active-color;
     }
   }
 }

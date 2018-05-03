@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './sidebar-menu.scss';
 
@@ -21,16 +21,20 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   }
 ];
 
-class SidebarMenuComponent extends React.PureComponent {
+class SidebarMenuComponent extends React.Component {
   props: InjectedIntlProps;
   
   render (): JSX.Element {
     return <div className='bi-sidebar-menu g-flex-column'>
       { SIDEBAR_MENU_ITEMS.map((item, index) => {
         return (
-          <Link className='bi-sidebar-menu__item g-flex-column__item' to={ item.url } key={ index }>
+          <NavLink className='bi-sidebar-menu__item g-flex-column__item'
+                   activeClassName='bi-sidebar-menu__item--active'
+                   to={ item.url }
+                   exact={ true }
+                   key={ index }>
             { this.props.intl.formatMessage({ id: item.title }) }
-          </Link>
+          </NavLink>
         );
       }) }
     </div>;
