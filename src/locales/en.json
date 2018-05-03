@@ -1,5 +1,8 @@
 {
   "components.home.title": "Blockchain explorer",
   "components.sidebar-menu.items.data": "Data",
-  "components.sidebar-menu.items.api": "API"
+  "components.sidebar-menu.items.api": "API",
+
+  "common.stats.circulatingSupply": "Circulating Supply",
+  "common.stats.softwareVersion": "Software Version"
 }

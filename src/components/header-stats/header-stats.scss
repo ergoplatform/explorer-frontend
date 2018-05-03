@@ -1,0 +1,22 @@
+@import '~styles/base/variables';
+
+// #HEADER STATS
+//-------------------------------------
+$header-stats-item-border-color: #e5e6e9;
+
+.bi-header-stats {
+  height: 100%;
+
+  align-items: center;
+
+  // [ Components ]
+  //-----------------------------
+  .bi-stats-item {
+    padding: 0 ($grid-offset-step * 7);
+    border-right: 1px solid $header-stats-item-border-color;
+
+    &:last-child, &:only-child {
+      border-right: 0;
+    }
+  }
+}

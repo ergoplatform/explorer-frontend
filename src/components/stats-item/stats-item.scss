@@ -1,0 +1,22 @@
+@import '~styles/base/variables';
+
+// #STATS ITEM
+//-------------------------------------
+$stats-item-title-color: #828795;
+$stats-item-value-color: #121212;
+
+.bi-stats-item {
+  font-family: $theme-main-font;
+
+  &__title {
+    color: $stats-item-title-color;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__value {
+    color: $stats-item-value-color;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
