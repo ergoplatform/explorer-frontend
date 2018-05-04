@@ -113,10 +113,11 @@ paths:
   '/address/{id}':
     parameters:
       - name: id
+        description: Address ID
         required: true
         in: path
         schema:
-          $ref: '#/components/schemas/ModifierId'
+          $ref: '#/components/schemas/AddressId'
     get:
       summary: Get address by id
       tags:
@@ -128,8 +129,42 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/FullAddress'
+  '/address/{id}/transactions':
+    parameters:
+      - name: id
+        description: Address ID
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/AddressId'
+    get:
+      summary: Get transactions related to address
+      tags:
+        - addresses
+      parameters:
+        - name: offset
+          in: query
+          description: Offset
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                description: Anyone can spend transaction objects
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnyoneCanSpendTransaction'
 
-  '/info':
+
+  /info:
     get:
       summary: Get blockchain info
       tags:
@@ -141,7 +176,7 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/BlockchainInfo'
-  '/stats':
+  /stats:
     get:
       summary: Get blockchain stats
       tags:
@@ -413,12 +448,7 @@ components:
           type: object
           properties:
             id:
-              $ref: '#/components/schemas/ModifierId'
-        transactions:
-          description: Anyone can spend transaction objects
-          type: array
-          items:
-            $ref: '#/components/schemas/AnyoneCanSpendTransaction'
+              $ref: '#/components/schemas/AddressId'
 
     BlockchainInfo:
       type: object
@@ -487,6 +517,11 @@ components:
           $ref: '#/components/schemas/Digest32'
 
     TransactionId:
+      description: Base16-encoded transaction id bytes
+      type: string
+      example: 141cef0ed1e1cbd3bdf2da2d39fb9a0e697b8777012b169609eb76313506ef66
+
+    AddressId:
       description: Base16-encoded transaction id bytes
       type: string
       example: 141cef0ed1e1cbd3bdf2da2d39fb9a0e697b8777012b169609eb76313506ef66
