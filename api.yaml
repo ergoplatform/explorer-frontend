@@ -1,10 +1,17 @@
 openapi: 3.0.0
+
 info:
   version: 1.0.0
   title: Blockchain explorer
+
 tags:
   - name: blocks
     description: Everything about blocks
+  - name: transactions
+    description: Everyting about transactions
+  - name: addresses
+    description: Everything about addresses
+
 paths:
   /blocks:
     get:
@@ -82,7 +89,7 @@ paths:
                         type: string
                       previousId:
                         type: string
-  '/transction/{id}':
+  '/transaction/{id}':
     parameters:
       - name: id
         required: true
@@ -92,14 +99,34 @@ paths:
     get:
       summary: Get transction by id
       tags:
-        - blocks
+        - transactions
       responses:
         '200':
           description: Ok
           content:
             'application/json':
               schema:
-                $ref: '#/components/schemas/FullTransction'
+                $ref: '#/components/schemas/FullTransaction'
+
+  '/address/{id}':
+    parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/ModifierId'
+    get:
+      summary: Get address by id
+      tags:
+        - addresses
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/FullAddress'
+
 
 components:
   schemas:
@@ -293,7 +320,7 @@ components:
           items:
             $ref: '#/components/schemas/AnyoneCanSpendTransaction'
 
-    FullTransction:
+    FullTransaction:
       type: object
       required:
         - summary
@@ -314,6 +341,12 @@ components:
 
     TransactionSummary:
       type: object
+      required:
+        - id
+        - timestamp
+        - size
+        - confirmationCount
+        - blocks
       properties:
         id:
           $ref: '#/components/schemas/TransactionId'
@@ -342,6 +375,22 @@ components:
                 format: int32
                 minimum: 0
                 example: 667
+
+    FullAddress:
+      type: object
+      properties:
+        summary:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/ModifierId'
+        transactions:
+          description: Anyone can spend transaction objects
+          type: array
+          items:
+            $ref: '#/components/schemas/AnyoneCanSpendTransaction'
+
+
 
     BlockADProofs:
       type: object
