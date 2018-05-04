@@ -10,12 +10,12 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import registerServiceWorker from './utils/registerServiceWorker';
 
+import './assets/styles/main.scss';
+
 import { ConnectedIntlProvider } from './containers/connected-intl-provider/connected-intl-provider';
 import { AppStore } from './store/app.store';
 
 import AppComponent from './containers/app/app.component';
-
-import './assets/styles/main.scss';
 
 addLocaleData([...en, ...ru]);
 

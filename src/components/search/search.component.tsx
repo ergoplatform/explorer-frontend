@@ -36,7 +36,10 @@ class SearchComponent extends React.PureComponent {
     
     return (
       <div className={ searchClassNames }>
-        <SearchIcon className='bi-search__icon g-flex__item-fixed' onClick={ this.focusInput }/>
+        <button className='bi-btn bi-btn--flat g-flex__item-fixed'
+                onClick={ this.focusInput }>
+          <SearchIcon className='bi-search__icon'/>
+        </button>
         
         <input className='bi-search__input g-flex__item'
                ref={ (input: HTMLInputElement) => {

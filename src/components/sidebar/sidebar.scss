@@ -2,9 +2,10 @@
 
 // #Sidebar
 //-------------------------------------
-$sidebar-bg-color:      #121212;
-$sidebar-logo-color:    #ffffff;
-$sidebar-font:          $theme-main-font;
+$sidebar-bg-color: #121212;
+$sidebar-logo-color: #ffffff;
+$sidebar-font: $theme-main-font;
+$sidebar-btn-toggle-border-color: #ffffff;
 
 .bi-sidebar {
   width: 300px;
@@ -15,6 +16,7 @@ $sidebar-font:          $theme-main-font;
   // [ Components ]
   //---------------------------------
   &__header {
+    position: relative;
     padding: ($grid-offset-step * 7) ($grid-offset-step * 7);
 
     align-items: center;
@@ -26,6 +28,7 @@ $sidebar-font:          $theme-main-font;
     font-size: 26px;
     white-space: nowrap;
     text-decoration: none;
+    transition: opacity 250ms ease-in-out;
   }
 
   &__logo-highlight {
@@ -38,7 +41,33 @@ $sidebar-font:          $theme-main-font;
 
   &--collapsed & {
     &__logo {
-      display: none;
+      position: absolute;
+      left: ($grid-offset-step * 7);
+      opacity: 0;
     }
+
+    &__header {
+      justify-content: flex-end;
+    }
+
+    &__btn-toggle-icon {
+      transform: rotate(0);
+    }
+  }
+
+  &__btn-toggle {
+    z-index: 1;
+    padding: $grid-offset-step * 2;
+    border: 1px solid $sidebar-btn-toggle-border-color;
+    border-radius: 100%;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn-toggle-icon {
+    width: 15px;
+    height: 15px;
+    transform: rotate(180deg);
   }
 }

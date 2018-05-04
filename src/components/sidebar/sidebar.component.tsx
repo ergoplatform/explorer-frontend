@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import LanguageSwitcherComponent from '../language-switcher/language-switcher.component';
 import SidebarMenuComponent from '../sidebar-menu/sidebar-menu.component';
 
+import { ArrowIcon } from '../icons/common.icons';
+
 import './sidebar.scss';
 
 class SidebarComponent extends React.Component {
@@ -47,9 +49,9 @@ class SidebarComponent extends React.Component {
             <span className='bi-sidebar__logo-highlight'>Ergo</span> Explorer
           </Link>
           
-          <button className='bi-sidebar__btn-toggle g-flex__item-fixed'
+          <button className='bi-sidebar__btn-toggle bi-btn bi-btn--flat g-flex__item-fixed g-flex'
                   onClick={ this.toggleCollapse }>
-            +
+            <ArrowIcon className='bi-sidebar__btn-toggle-icon'/>
           </button>
         </div>
         
