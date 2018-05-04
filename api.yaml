@@ -23,6 +23,22 @@ paths:
           description: Limit
           schema:
             type: integer
+        - name: sortBy
+          in: query
+          description: Sorted column
+          schema:
+            type: string
+        - name: sortDirection
+          in: query
+          description: Sort direction
+          schema:
+            type: string
+            enum: [asc, desc]
+        - name: query
+          in: query
+          description: Search query
+          schema:
+            type: string
       operationId: listBlocks
       responses:
         '200':
@@ -44,7 +60,7 @@ paths:
         required: true
         in: path
         schema:
-          type: string
+          $ref: '#/components/schemas/ModifierId'
     get:
       summary: Get block by id
       tags:
@@ -66,6 +82,25 @@ paths:
                         type: string
                       previousId:
                         type: string
+  '/transction/{id}':
+    parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/ModifierId'
+    get:
+      summary: Get transction by id
+      tags:
+        - blocks
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/FullTransction'
+
 components:
   schemas:
     AnyoneCanSpendTransactionInput:
@@ -257,6 +292,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AnyoneCanSpendTransaction'
+
+    FullTransction:
+      type: object
+      required:
+        - summary
+        - io
+      properties:
+        summary:
+          $ref: '#/components/schemas/TransactionSummary'
+        inputs:
+          description: Many transaction inputs
+          type: array
+          items:
+            $ref: '#/components/schemas/AnyoneCanSpendTransactionInput'
+        outputs:
+          description: Many transaction outputs
+          type: array
+          items:
+            $ref: '#/components/schemas/AnyoneCanSpendTransactionOutput'
+
+    TransactionSummary:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TransactionId'
+        timestamp:
+          type: integer
+          format: int32
+          example: 1501505945003
+        size:
+          description: Size of transcaction in KB
+          type: number
+          format: float
+          example: 4390.12
+        confirmationCount:
+          type: integer
+          format: int32
+          example: 142
+        blocks:
+          type: array
+          items:
+            type: object
+            properties:
+              headerId:
+                $ref: '#/components/schemas/ModifierId'
+              height:
+                type: integer
+                format: int32
+                minimum: 0
+                example: 667
 
     BlockADProofs:
       type: object
