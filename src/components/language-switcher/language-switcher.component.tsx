@@ -3,13 +3,14 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as settingsActions from '../../actions/settings.actions';
+import { SettingsActions } from '../../actions/settings.actions';
+import { SettingsState } from '../../reducers/settings.reducer';
 
 import { messages } from '../../containers/connected-intl-provider/connected-intl-provider';
 
 class LanguageSwitcherComponent extends React.PureComponent {
   locales: string[] = Object.keys(messages);
-  props: any;
+  props: SettingsState & SettingsActions;
   
   constructor (props: any) {
     super(props);
@@ -41,7 +42,7 @@ function mapStateToProps (state: any): any {
 }
 
 function mapDispatchToProps (dispatch: any): any {
-  return bindActionCreators(settingsActions, dispatch);
+  return bindActionCreators(SettingsActions, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LanguageSwitcherComponent);

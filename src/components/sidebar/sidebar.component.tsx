@@ -1,7 +1,14 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+
+import { AppState } from '../../store/app.store';
+
+import { SettingsActions } from '../../actions/settings.actions';
+import { SettingsState } from '../../reducers/settings.reducer';
 
 import LanguageSwitcherComponent from '../language-switcher/language-switcher.component';
 import SidebarMenuComponent from '../sidebar-menu/sidebar-menu.component';
@@ -11,32 +18,22 @@ import { ArrowIcon } from '../icons/common.icons';
 import './sidebar.scss';
 
 class SidebarComponent extends React.Component {
-  props: InjectedIntlProps;
-  
-  state: {
-    isCollapsed: boolean,
-  };
+  props: InjectedIntlProps & SettingsActions & SettingsState;
   
   constructor (props: any) {
     super(props);
     
     this.toggleCollapse = this.toggleCollapse.bind(this);
-    
-    this.state = {
-      isCollapsed: false
-    };
   }
   
   toggleCollapse (): void {
-    this.setState({
-      isCollapsed: !this.state.isCollapsed
-    });
+    this.props.setSidebarCollapsedStatus(!this.props.isSidebarCollapsed);
   }
   
   render (): JSX.Element {
     const sidebarClassNames = classNames({
       'bi-sidebar': true,
-      'bi-sidebar--collapsed': this.state.isCollapsed,
+      'bi-sidebar--collapsed': this.props.isSidebarCollapsed,
       'g-flex-column': true,
       'g-flex__item-fixed': true
     });
@@ -67,4 +64,12 @@ class SidebarComponent extends React.Component {
   }
 }
 
-export default injectIntl(SidebarComponent);
+function mapStateToProps (state: AppState): any {
+  return state.settings;
+}
+
+function mapDispatchToProps (dispatch: any): any {
+  return bindActionCreators(SettingsActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SidebarComponent));
