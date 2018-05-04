@@ -11,6 +11,8 @@ tags:
     description: Everyting about transactions
   - name: addresses
     description: Everything about addresses
+  - name: statistics
+    description: Blockchain status information
 
 paths:
   /blocks:
@@ -126,6 +128,31 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/FullAddress'
+
+  '/info':
+    get:
+      summary: Get blockchain info
+      tags:
+        - statistics
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/BlockchainInfo'
+  '/stats':
+    get:
+      summary: Get blockchain stats
+      tags:
+        - statistics
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/BlockchainStats'
 
 
 components:
@@ -378,6 +405,9 @@ components:
 
     FullAddress:
       type: object
+      required:
+        - summary
+        - transactions
       properties:
         summary:
           type: object
@@ -390,6 +420,56 @@ components:
           items:
             $ref: '#/components/schemas/AnyoneCanSpendTransaction'
 
+    BlockchainInfo:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Software version
+          example: '1.0.2'
+        supply:
+          type: integer
+          description: Circulating supply
+          example: 1000003
+        marketCup:
+          type: integer
+          description: Market Cup
+          example: 10003243
+        transactionAverage:
+          type: integer
+          description: Transaction per day
+          example: 100302
+        hashRate:
+          type: number
+          format: float
+          description: Hashrate
+          example: 1000.45
+
+    BlockchainStats:
+      type: object
+      properties:
+        blockSummary:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Number of mined blocks
+              example: 12030
+            averageMiningTime:
+              type: integer
+              format: int32
+              example: 43201
+              description: Time between blocks in ms
+            totalCoins:
+              type: number
+              format: float
+              example: 1023.4
+        transactionSummary:
+          type: object
+          properties:
+            total:
+              type: integer
+              description: Number of transactions
 
 
     BlockADProofs:
