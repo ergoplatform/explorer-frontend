@@ -16,6 +16,7 @@ import { ConnectedIntlProvider } from './containers/connected-intl-provider/conn
 import { AppStore } from './store/app.store';
 
 import AppComponent from './containers/app/app.component';
+import { enableTabMode } from './utils/enableTabMode';
 
 addLocaleData([...en, ...ru]);
 
@@ -23,7 +24,7 @@ ReactDOM.render(
   <Provider store={ AppStore }>
     <ConnectedIntlProvider>
       <BrowserRouter>
-          <Route path='/' component={ AppComponent }/>
+        <Route path='/' component={ AppComponent }/>
       </BrowserRouter>
     </ConnectedIntlProvider>
   </Provider>
@@ -31,4 +32,5 @@ ReactDOM.render(
   document.getElementById('root') as HTMLElement
 );
 
+enableTabMode();
 registerServiceWorker();

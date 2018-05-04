@@ -110,15 +110,6 @@ svg:not(:root) {
 
 // ## Forms
 //==================================================
-select,
-input,
-textarea,
-button {
-  &:focus {
-    outline: none;
-  }
-}
-
 textarea {
   overflow: auto;
   resize: vertical;

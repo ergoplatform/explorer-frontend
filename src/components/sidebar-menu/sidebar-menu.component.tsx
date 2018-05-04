@@ -26,17 +26,19 @@ class SidebarMenuComponent extends React.Component {
   
   render (): JSX.Element {
     return <div className='bi-sidebar-menu g-flex-column'>
-      { SIDEBAR_MENU_ITEMS.map((item, index) => {
-        return (
-          <NavLink className='bi-sidebar-menu__item g-flex-column__item'
-                   activeClassName='bi-sidebar-menu__item--active'
-                   to={ item.url }
-                   exact={ true }
-                   key={ index }>
-            { this.props.intl.formatMessage({ id: item.title }) }
-          </NavLink>
-        );
-      }) }
+      {
+        SIDEBAR_MENU_ITEMS.map((item, index) => {
+          return (
+            <NavLink className='bi-sidebar-menu__item g-flex-column__item'
+                     activeClassName='bi-sidebar-menu__item--active'
+                     to={ item.url }
+                     exact={ true }
+                     key={ index }>
+              { this.props.intl.formatMessage({ id: item.title }) }
+            </NavLink>
+          );
+        })
+      }
     </div>;
   }
 }

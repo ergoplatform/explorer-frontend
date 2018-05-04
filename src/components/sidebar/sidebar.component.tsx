@@ -42,7 +42,8 @@ class SidebarComponent extends React.Component {
       <div className={ sidebarClassNames }>
         <div className='bi-sidebar__header g-flex g-flex-column__item-fixed'>
           <Link className='bi-sidebar__logo g-flex__item-fixed'
-                to='/'>
+                to='/'
+                tabIndex={ this.props.isSidebarCollapsed ? -1 : 0 }>
             <span className='bi-sidebar__logo-highlight'>Ergo</span> Explorer
           </Link>
           
@@ -72,4 +73,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators(SettingsActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SidebarComponent));
+export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(injectIntl(SidebarComponent));
