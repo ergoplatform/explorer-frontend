@@ -1,0 +1,50 @@
+@import '~styles/base/variables';
+
+// #SEARCH
+//------------------------------
+$search-bg-color:   #ffffff;
+$search-icon-color: #828795;
+
+
+.bi-search {
+  padding: 0 ($grid-offset-step * 5);
+  background-color: $search-bg-color;
+  font-family: $theme-main-font;
+
+  align-items: center;
+
+
+  // [ Components ]
+  //-------------------------------
+  &__input {
+    display: none;
+    height: 100%;
+    border: none;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 100%;
+    text-overflow: ellipsis;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    padding: 0 ($grid-offset-step * 3);
+
+    fill: $search-icon-color;
+  }
+
+  &--focused {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &--focused & {
+    &__input {
+      display: block;
+    }
+  }
+}
