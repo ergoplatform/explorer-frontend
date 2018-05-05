@@ -37,6 +37,19 @@ $sidebar-btn-toggle-border-color: #ffffff;
 
   &--collapsed {
     width: 100px;
+
+    .bi-sidebar-menu__item {
+      margin: 20px 0;
+    }
+
+    .bi-sidebar-menu__item-icon {
+      padding: ((24px - 15px)/2);
+      transform: scale3d((24/15), (24/15), 1);
+    }
+
+    .bi-sidebar-menu__item-icon + .bi-sidebar-menu__item-title {
+      display: none;
+    }
   }
 
   &--collapsed & {

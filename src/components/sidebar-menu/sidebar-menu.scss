@@ -2,22 +2,41 @@
 
 // #Sidebar menu
 //-------------------------------------
-$sidebar-menu-item-color:         #828795;
-$sidebar-menu-item-active-color:  #ffffff;
+$sidebar-menu-item-color: #828795;
+$sidebar-menu-item-active-color: #ffffff;
 
 .bi-sidebar-menu {
   // [ Components ]
   //-------------------------------------
   &__item {
-    margin: $grid-offset-step  0;
+    margin: ($grid-offset-step * 2) 0;
     padding: 0 ($grid-offset-step * 7);
     color: $sidebar-menu-item-color;
     font-size: 16px;
     text-decoration: none;
 
+    align-items: center;
+
     // [ Mode ] Active
     &--active {
       color: $sidebar-menu-item-active-color;
+
+      .bi-sidebar-menu__item-icon {
+        fill: $sidebar-menu-item-active-color;
+      }
     }
+  }
+
+  &__item-title {
+    line-height: 1;
+  }
+
+  &__item-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: ($grid-offset-step * 2);
+    transition: transform 150ms linear;
+
+    fill: $sidebar-menu-item-color;
   }
 }
