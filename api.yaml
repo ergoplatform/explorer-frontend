@@ -13,6 +13,8 @@ tags:
     description: Everything about addresses
   - name: statistics
     description: Blockchain status information
+  - name: charts
+    description: Get data for charts
 
 paths:
   /blocks:
@@ -191,6 +193,92 @@ paths:
               schema:
                 $ref: '#/components/schemas/BlockchainStats'
 
+  '/charts/total':
+    get:
+      summary: Get total coins per date
+      tags:
+        - charts
+      parameters:
+        - name: timespan
+          in: query
+          description: Timespan
+          schema:
+            $ref: '#/components/schemas/Timespan'
+
+      responses:
+        200:
+          description: 'Ok'
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      $ref: '#/components/schemas/Timestamp'
+                    value:
+                      description: Number of coins
+                      type: integer
+                      format: int32
+
+  '/charts/market-price':
+    get:
+      summary: Get market price per date
+      tags:
+        - charts
+      parameters:
+        - name: timespan
+          in: query
+          description: Timespan
+          schema:
+            $ref: '#/components/schemas/Timespan'
+      responses:
+        200:
+          description: 'Ok'
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      $ref: '#/components/schemas/Timestamp'
+                    value:
+                      description: Price
+                      type: integer
+                      format: float
+                      example: 3001.34
+
+  '/charts/block-size':
+    get:
+      summary: Get average block size per date
+      tags:
+        - charts
+      parameters:
+        - name: timespan
+          in: query
+          description: Timespan
+          schema:
+            $ref: '#/components/schemas/Timespan'
+
+      responses:
+        200:
+          description: 'Ok'
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      $ref: '#/components/schemas/Timestamp'
+                    value:
+                      description: Average block size in bytes
+                      type: integer
+                      format: int32
 
 components:
   schemas:
@@ -557,3 +645,14 @@ components:
       description: Base58-encoded votes array
       type: string
       example: AcRpicD
+
+    Timestamp:
+      description: Date in seconds
+      type: integer
+      format: int32
+      example: 1525686982094
+
+    Timespan:
+      description: Timespan for charts
+      type: string
+      enum: ['all', '7days', '30days', '60days', '180days', '1year', '2years']
