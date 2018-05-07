@@ -3,6 +3,7 @@ import { environmentProd } from './environment.prod';
 
 export interface IEnvironment {
   apiUrl?: string;
+  blockchain?: any;
   defaultLocale?: string;
 }
 
@@ -16,7 +17,6 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   environment = {
     ...environmentDefault,
-    apiUrl: 'http://localhost:8080'
   };
 }
 

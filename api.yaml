@@ -59,6 +59,9 @@ paths:
             application/json:
               schema:
                 type: object
+                required:
+                  - items
+                  - total
                 properties:
                   items:
                     type: array
@@ -546,28 +549,34 @@ components:
 
     BlockchainInfo:
       type: object
+      required:
+        - version
+        - supply
+        - marketCap
+        - transactionAverage
+        - hashRate
       properties:
         version:
           type: string
           description: Software version
-          example: '1.0.2'
+          example: '1.0.0'
         supply:
           type: integer
           description: Circulating supply
           example: 1000003
-        marketCup:
+        marketCap:
           type: integer
-          description: Market Cup
+          description: Market Capitalization
           example: 10003243
         transactionAverage:
           type: integer
           description: Transaction per day
           example: 100302
         hashRate:
-          type: number
+          type: integer
           format: int32
           description: Hashrate
-          example: 1000123902323145
+          example: 415434144
 
     BlockchainStats:
       type: object

@@ -7,6 +7,9 @@
   "components.sidebar-menu.items.charts": "Charts",
   "components.sidebar-menu.items.stats": "Stats",
 
-  "common.stats.circulatingSupply": "Circulating Supply",
-  "common.stats.softwareVersion": "Software Version"
+  "common.stats.supply": "Circulating Supply",
+  "common.stats.version": "Software Version",
+  "common.stats.marketCap": "Market Cap",
+  "common.stats.transactionAverage": "Transactions Average",
+  "common.stats.hashRate": "Hash Rate"
 }

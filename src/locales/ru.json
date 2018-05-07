@@ -7,6 +7,9 @@
   "components.sidebar-menu.items.charts": "Графики",
   "components.sidebar-menu.items.stats": "Статистика",
 
-  "common.stats.circulatingSupply": "Оборотное Снабжение",
-  "common.stats.softwareVersion": "Версия"
+  "common.stats.supply": "Оборотное Снабжение",
+  "common.stats.version": "Версия",
+  "common.stats.marketCap": "Капитализация",
+  "common.stats.transactionAverage": "Сделок в день",
+  "common.stats.hashRate": "Вычислительная мощность"
 }

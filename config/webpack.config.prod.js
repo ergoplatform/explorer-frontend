@@ -58,7 +58,11 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the polyfills and the app code.
-  entry: [require.resolve('./polyfills'), paths.appIndexJs],
+  entry: [
+    'whatwg-fetch',
+    require.resolve('./polyfills'),
+    paths.appIndexJs
+  ],
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -107,7 +111,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'styles': paths.appStyles,
+      'styles': paths.appStyles
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

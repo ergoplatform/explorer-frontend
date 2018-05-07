@@ -17,7 +17,7 @@ class StatsItemComponent extends React.PureComponent {
     return (
       <div className='bi-stats-item'>
         <div className='bi-stats-item__title'>
-          { this.props.intl.formatMessage({ id: title }) }
+          { this.props.intl.formatMessage({ id: `common.stats.${title}` }) }
         </div>
         
         <div className='bi-stats-item__value'>

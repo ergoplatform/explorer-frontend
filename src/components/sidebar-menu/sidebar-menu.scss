@@ -9,8 +9,8 @@ $sidebar-menu-item-active-color: #ffffff;
   // [ Components ]
   //-------------------------------------
   &__item {
-    margin: ($grid-offset-step * 2) 0;
-    padding: 0 ($grid-offset-step * 7);
+    margin: $grid-offset-step 0;
+    padding: $grid-offset-step ($grid-offset-step * 7);
     color: $sidebar-menu-item-color;
     font-size: 16px;
     text-decoration: none;
