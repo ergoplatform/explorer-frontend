@@ -2,12 +2,11 @@
 
 // #SEARCH
 //------------------------------
-$search-bg-color:   #ffffff;
+$search-bg-color: #ffffff;
 $search-icon-color: #828795;
 
 
 .bi-search {
-  padding: 0 ($grid-offset-step * 5);
   background-color: $search-bg-color;
   font-family: $theme-main-font;
 
@@ -40,6 +39,7 @@ $search-icon-color: #828795;
     right: 0;
     bottom: 0;
     left: 0;
+    padding: 0 ($grid-offset-step * 15);
   }
 
   &--focused & {

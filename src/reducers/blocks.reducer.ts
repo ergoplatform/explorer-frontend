@@ -2,12 +2,14 @@ import { GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
 
 export interface BlocksState {
   fetching: boolean;
+  total: number;
   blocks: any[];
 }
 
 const initialState: BlocksState = {
   blocks: [],
-  fetching: false
+  fetching: false,
+  total: 0
 };
 
 export function blocksReducer (state: BlocksState = initialState, action: any): BlocksState {
@@ -23,8 +25,9 @@ export function blocksReducer (state: BlocksState = initialState, action: any): 
     case GET_BLOCKS_SUCCESS: {
       return {
         ...state,
-        blocks: action.payload.data,
-        fetching: false
+        blocks: action.payload.data.items,
+        fetching: false,
+        total: action.payload.data.total
       };
     }
     

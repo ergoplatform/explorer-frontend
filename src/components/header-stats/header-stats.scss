@@ -15,8 +15,13 @@ $header-stats-item-border-color: #e5e6e9;
     padding: 0 ($grid-offset-step * 7);
     border-right: 1px solid $header-stats-item-border-color;
 
+    &:first-child {
+      padding-left: 0;
+    }
+
     &:last-child, &:only-child {
       border-right: 0;
+      padding-right: 0;
     }
   }
 }

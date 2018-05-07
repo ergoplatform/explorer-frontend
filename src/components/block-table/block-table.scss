@@ -1,0 +1,59 @@
+@import '~styles/base/variables';
+
+// #BLOCK TABLE
+//-------------------------------------
+$block-table-table-bg-color: #ffffff;
+$block-table-table-row-hover-bg-color: #f8f8f8;
+$block-table-table-border-color: #eeeeee;
+$block-table-title-color: $theme-primary-color;
+$block-table-cell-color: $theme-primary-color;
+
+.bi-block-table {
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //----------------------------------
+  &__table {
+    display: table;
+    width: 100%;
+    border: 1px solid $block-table-table-border-color;
+    border-collapse: collapse;
+    background-color: $block-table-table-bg-color;
+  }
+
+  &__title {
+    margin: ($grid-offset-step * 4) 0;
+    color: $block-table-title-color;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  &__row {
+    display: table-row;
+    border-bottom: 1px solid $block-table-table-border-color;
+
+    &--header {
+      background-color: $block-table-table-row-hover-bg-color;
+    }
+
+    &:hover {
+      background-color: $block-table-table-row-hover-bg-color;
+    }
+  }
+
+  &__row--header &__cell {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__cell {
+    display: table-cell;
+    padding: 0 ($grid-offset-step * 6);
+    padding: $grid-offset-step * 4;
+    border: 1px solid $block-table-table-border-color;
+    border-right: 0;
+    border-left: 0;
+    color: $block-table-cell-color;
+    font-size: 15px;
+  }
+}

@@ -1,3 +1,4 @@
+@import '~styles/base/variables';
 
 // #HEADER
 //-------------------------------------
@@ -6,6 +7,7 @@ $header-bg-color: #ffffff;
 .bi-header {
   position: relative;
   height: 100px;
+  padding: 0 ($grid-offset-step * 15);
   background-color: $header-bg-color;
   box-shadow: 0 2px 6px 0 rgba(0,0,0,0.02);
 

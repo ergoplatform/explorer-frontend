@@ -3,20 +3,5 @@
 @import 'base/normalize';
 @import 'base/grid';
 
+@import 'components/default';
 @import 'components/buttons';
-
-#root {
-  height: 100%;
-}
-
-body:not(.bi-tab-mode) {
-  a,
-  select,
-  input,
-  textarea,
-  button {
-    &:focus {
-      outline: none;
-    }
-  }
-}

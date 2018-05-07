@@ -1,0 +1,23 @@
+$link-color: #0078FF;
+
+#root {
+  height: 100%;
+}
+
+body:not(.bi-tab-mode) {
+  a,
+  select,
+  input,
+  textarea,
+  button {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+
+a {
+  text-decoration: none;
+  color: $link-color;
+}

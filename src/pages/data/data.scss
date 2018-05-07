@@ -2,11 +2,12 @@
 
 // #Home
 //-------------------------------------
-$home-color:              $theme-primary-color;
-$home-bg-color:           #f8f8f8;
+$home-color: $theme-primary-color;
+$home-bg-color: #f8f8f8;
 
 .bi-home {
   height: 100%;
+  padding: 0 ($grid-offset-step * 15);
   color: $home-color;
   background-color: $home-bg-color;
 }
