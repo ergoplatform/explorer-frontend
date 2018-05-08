@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import './block-table.scss';
@@ -10,12 +11,14 @@ import BlockTableHeaderComponent from './block-table-header/block-table-header.c
 class BlockTableComponent extends React.Component {
   props: {
     blocks: any[],
-  };
+  } & InjectedIntlProps;
   
   render (): JSX.Element {
     return (
       <div className='bi-block-table'>
-        <div className='bi-block-table__title'>Latest blocks</div>
+        <div className='bi-block-table__title'>
+          { this.props.intl.formatMessage({ id: 'components.block-table.title' }) }
+        </div>
         
         <div className='bi-block-table__table'>
           <BlockTableHeaderComponent/>
@@ -48,4 +51,4 @@ class BlockTableComponent extends React.Component {
   }
 }
 
-export default BlockTableComponent;
+export default injectIntl(BlockTableComponent);

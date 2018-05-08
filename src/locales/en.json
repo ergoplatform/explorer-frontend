@@ -18,5 +18,7 @@
   "common.block.age": "Age",
   "common.block.minedBy": "Mined by",
   "common.block.size": "Size",
-  "common.block.votes": "Votes"
+  "common.block.votes": "Votes",
+
+  "component.block-table.title": "Latest blocks"
 }

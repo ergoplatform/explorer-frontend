@@ -18,5 +18,7 @@
   "common.block.age": "Возраст",
   "common.block.minedBy": "Майнер",
   "common.block.size": "Размер",
-  "common.block.votes": "Голоса"
+  "common.block.votes": "Голоса",
+
+  "component.block-table.title": "Последние блоки"
 }
