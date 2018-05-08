@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactPaginate from 'react-paginate';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -20,8 +21,31 @@ class DataComponent extends React.PureComponent {
   // TODO: add preloader
   render (): JSX.Element {
     return (
-      <div className="bi-home">
-        { this.props.fetching ? null : <BlockTableComponent blocks={ this.props.blocks }/> }
+      <div className='bi-home'>
+        { this.props.fetching ? null : this.renderBlockTable() }
+      </div>
+    );
+  }
+  
+  private renderBlockTable (): JSX.Element {
+    return (
+      <div className='bi-home__wrapper g-flex-column'>
+        <div className='bi-home__body g-flex-column__item'>
+          <BlockTableComponent blocks={ this.props.blocks }/>
+        </div>
+        
+        <div className='bi-home__footer g-flex-column__item-fixed g-flex'>
+          <ReactPaginate containerClassName='bi-paginate g-flex'
+                         pageClassName='bi-paginate__item g-flex g-flex__item-fixed'
+                         pageLinkClassName='bi-paginate__item-link g-flex__item-fixed'
+                         breakClassName='bi-paginate__break'
+                         previousClassName='bi-paginate__prev'
+                         nextClassName='bi-paginate__next'
+                         activeClassName='bi-paginate__item--selected'
+                         pageCount={ Math.ceil(this.props.total / this.props.limit) }
+                         pageRangeDisplayed={ 5 }
+                         marginPagesDisplayed={ 1 }/>
+        </div>
       </div>
     );
   }

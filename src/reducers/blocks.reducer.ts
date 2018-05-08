@@ -4,12 +4,16 @@ export interface BlocksState {
   fetching: boolean;
   total: number;
   blocks: any[];
+  limit: number;
+  currentPage: number;
 }
 
 const initialState: BlocksState = {
   blocks: [],
+  currentPage: 0,
   fetching: false,
-  total: 0
+  limit: 30,
+  total: 0,
 };
 
 export function blocksReducer (state: BlocksState = initialState, action: any): BlocksState {

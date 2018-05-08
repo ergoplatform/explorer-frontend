@@ -70,6 +70,7 @@ paths:
                   total:
                     description: Total number of blocks
                     type: integer
+                    example: 13949294
   '/blocks/{id}':
     parameters:
       - name: id
