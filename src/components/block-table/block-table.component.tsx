@@ -8,10 +8,12 @@ import { formatNumberMetricPrefix } from '../../utils/formatNumberMetricPrefix';
 
 import BlockTableHeaderComponent from './block-table-header/block-table-header.component';
 
+interface IBlockTableProps {
+  blocks: any[];
+}
+
 class BlockTableComponent extends React.Component {
-  props: {
-    blocks: any[],
-  } & InjectedIntlProps;
+  props: InjectedIntlProps & IBlockTableProps;
   
   render (): JSX.Element {
     return (
@@ -51,4 +53,4 @@ class BlockTableComponent extends React.Component {
   }
 }
 
-export default injectIntl(BlockTableComponent);
+export default injectIntl<IBlockTableProps>(BlockTableComponent);
