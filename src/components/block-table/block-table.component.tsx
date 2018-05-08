@@ -5,44 +5,34 @@ import './block-table.scss';
 
 import { formatNumberMetricPrefix } from '../../utils/formatNumberMetricPrefix';
 
-class BlockTableComponent extends React.PureComponent {
+import BlockTableHeaderComponent from './block-table-header/block-table-header.component';
+
+class BlockTableComponent extends React.Component {
   props: {
     blocks: any[],
   };
   
-  
-  // TODO: Move block header to separate component, add i18n
   render (): JSX.Element {
     return (
       <div className='bi-block-table'>
         <div className='bi-block-table__title'>Latest blocks</div>
         
         <div className='bi-block-table__table'>
-          
-          <div className='bi-block-table__row bi-block-table__row--header'>
-            <div className='bi-block-table__cell'>
-              Height
-            </div>
-            <div className='bi-block-table__cell'>Age</div>
-            <div className='bi-block-table__cell'>Transactions</div>
-            <div className='bi-block-table__cell'>Mined by</div>
-            <div className='bi-block-table__cell'>Size</div>
-            <div className='bi-block-table__cell'>Votes</div>
-          </div>
+          <BlockTableHeaderComponent/>
           
           {
             this.props.blocks.map((block) => {
               return (
                 <div className='bi-block-table__row' key={ block.height }>
                   <div className='bi-block-table__cell'>
-                    <Link to={ `/blocks/${block.height}` }>
+                    <Link to={ `/blocks/${block.id}` }>
                       { block.height }
                     </Link>
                   </div>
                   <div className='bi-block-table__cell'>{ block.timestamp }</div>
                   <div className='bi-block-table__cell'>{ block.transactionsCount }</div>
                   <div className='bi-block-table__cell'>
-                    <Link to={ `/address/${block.miner.id}` }>
+                    <Link to={ `/addresses/${block.miner.id}` }>
                       { block.miner.name || block.miner.id }
                     </Link>
                   </div>

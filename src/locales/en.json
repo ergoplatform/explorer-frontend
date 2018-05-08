@@ -11,5 +11,12 @@
   "common.stats.version": "Software Version",
   "common.stats.marketCap": "Market Cap",
   "common.stats.transactionAverage": "Transactions Average",
-  "common.stats.hashRate": "Hash Rate"
+  "common.stats.hashRate": "Hash Rate",
+
+  "common.block.height": "Height",
+  "common.block.transactions": "Transactions",
+  "common.block.age": "Age",
+  "common.block.minedBy": "Mined by",
+  "common.block.size": "Size",
+  "common.block.votes": "Votes"
 }

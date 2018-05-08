@@ -32,18 +32,9 @@ $block-table-cell-color: $theme-primary-color;
     display: table-row;
     border-bottom: 1px solid $block-table-table-border-color;
 
-    &--header {
-      background-color: $block-table-table-row-hover-bg-color;
-    }
-
     &:hover {
       background-color: $block-table-table-row-hover-bg-color;
     }
-  }
-
-  &__row--header &__cell {
-    font-size: 14px;
-    font-weight: 600;
   }
 
   &__cell {

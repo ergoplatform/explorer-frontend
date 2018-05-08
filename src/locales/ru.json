@@ -11,5 +11,12 @@
   "common.stats.version": "Версия",
   "common.stats.marketCap": "Капитализация",
   "common.stats.transactionAverage": "Сделок в день",
-  "common.stats.hashRate": "Вычислительная мощность"
+  "common.stats.hashRate": "Вычислительная мощность",
+
+  "common.block.height": "Высота",
+  "common.block.transactions": "Сделки",
+  "common.block.age": "Возраст",
+  "common.block.minedBy": "Майнер",
+  "common.block.size": "Размер",
+  "common.block.votes": "Голоса"
 }
