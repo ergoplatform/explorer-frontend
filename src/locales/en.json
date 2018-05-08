@@ -20,5 +20,5 @@
   "common.block.size": "Size",
   "common.block.votes": "Votes",
 
-  "component.block-table.title": "Latest blocks"
+  "components.block-table.title": "Latest blocks"
 }

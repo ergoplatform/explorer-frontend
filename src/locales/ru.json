@@ -20,5 +20,5 @@
   "common.block.size": "Размер",
   "common.block.votes": "Голоса",
 
-  "component.block-table.title": "Последние блоки"
+  "components.block-table.title": "Последние блоки"
 }
