@@ -364,6 +364,8 @@ components:
         - size
         - votes
       properties:
+        id:
+          $ref: '#/components/schemas/ModifierId'
         height:
           type: integer
           format: int32
