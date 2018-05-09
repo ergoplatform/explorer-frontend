@@ -3,10 +3,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { SettingsActions } from '../../actions/settings.actions';
-import { SettingsState } from '../../reducers/settings.reducer';
+import { SettingsActions } from '../../../actions/settings.actions';
+import { SettingsState } from '../../../reducers/settings.reducer';
 
-import { messages } from '../../containers/connected-intl-provider/connected-intl-provider';
+import { messages } from '../../../containers/connected-intl-provider/connected-intl-provider';
 
 class LanguageSwitcherComponent extends React.PureComponent {
   locales: string[] = Object.keys(messages);
