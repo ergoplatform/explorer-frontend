@@ -14,6 +14,8 @@
   "common.stats.hashRate": "Вычислительная мощность",
 
   "common.block.height": "Высота",
+  "common.block.hash": "Хэш",
+  "common.block.block": "Блок",
   "common.block.transactions": "Сделки",
   "common.block.age": "Возраст",
   "common.block.minedBy": "Майнер",

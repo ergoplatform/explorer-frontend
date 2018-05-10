@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 interface IBlockHeaderProps {
@@ -11,13 +12,13 @@ import { ArrowIcon } from '../../common/icons/common.icons';
 import './block-header.scss';
 
 class BlockHeaderComponent extends React.PureComponent {
-  props: IBlockHeaderProps;
+  props: IBlockHeaderProps & InjectedIntlProps;
   
   render (): JSX.Element {
     return (
       <div className='bi-block-header g-flex'>
         <div className='bi-block-header__title g-flex__item-fixed'>
-          Block #{ this.props.block.header.height }
+          { this.props.intl.formatMessage({ id: 'common.block.block' }) } #{ this.props.block.header.height }
         </div>
         
         <div className='bi-block-header__navigation g-flex__item-fixed'>
@@ -28,7 +29,7 @@ class BlockHeaderComponent extends React.PureComponent {
                 <ArrowIcon className='bi-block-header__navigation-btn-icon'/>
               </Link> : null
           }
-  
+          
           {
             this.props.references.nextId ?
               <Link className='bi-block-header__navigation-btn bi-block-header__navigation-btn--next'
@@ -42,4 +43,4 @@ class BlockHeaderComponent extends React.PureComponent {
   }
 }
 
-export default BlockHeaderComponent;
+export default injectIntl<IBlockHeaderProps>(BlockHeaderComponent);

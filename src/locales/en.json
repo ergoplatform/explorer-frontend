@@ -14,6 +14,8 @@
   "common.stats.hashRate": "Hash Rate",
 
   "common.block.height": "Height",
+  "common.block.hash": "Hash",
+  "common.block.block": "Block",
   "common.block.transactions": "Transactions",
   "common.block.age": "Age",
   "common.block.minedBy": "Mined by",
