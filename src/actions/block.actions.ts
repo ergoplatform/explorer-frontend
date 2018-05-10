@@ -3,7 +3,7 @@ import { Action, ActionCreator, ActionCreatorsMapObject, Dispatch } from 'redux'
 
 import environment from '../config/environment';
 
-import { GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
+import { GET_BLOCK, GET_BLOCK_SUCCESS, GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
 
 interface IGetBlocksParams {
   limit?: number;
@@ -17,12 +17,9 @@ const getBlocks = ({ limit, offset }: IGetBlocksParams = {}) => {
     });
     
     axios.get(`${environment.apiUrl}/blocks`, {
-      headers: {
-        Accept: 'application/json'
-      },
       params: {
         limit,
-        offset,
+        offset
       }
     })
       .then((response: AxiosResponse) => {
@@ -30,7 +27,7 @@ const getBlocks = ({ limit, offset }: IGetBlocksParams = {}) => {
           payload: {
             data: response.data,
             limit,
-            offset,
+            offset
           },
           type: GET_BLOCKS_SUCCESS
         });
@@ -38,10 +35,30 @@ const getBlocks = ({ limit, offset }: IGetBlocksParams = {}) => {
   };
 };
 
+const getBlock = ({ id }: { id: string }) => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: GET_BLOCK
+    });
+    
+    axios.get(`${environment.apiUrl}/blocks/${id}`)
+      .then((response: AxiosResponse) => {
+        dispatch({
+          payload: {
+            data: response.data
+          },
+          type: GET_BLOCK_SUCCESS
+        });
+      });
+  };
+};
+
 export interface BlockActions extends ActionCreatorsMapObject {
   getBlocks: ActionCreator<any>;
+  getBlock: ActionCreator<any>;
 }
 
 export const BlockActions: BlockActions = {
+  getBlock,
   getBlocks
 };

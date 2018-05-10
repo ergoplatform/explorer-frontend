@@ -13,7 +13,7 @@ $block-table-cell-color: $theme-primary-color;
 
   // [ Components ]
   //----------------------------------
-  &__table {
+  &__body {
     display: table;
     width: 100%;
     border: 1px solid $block-table-table-border-color;
@@ -21,7 +21,7 @@ $block-table-cell-color: $theme-primary-color;
     background-color: $block-table-table-bg-color;
   }
 
-  &__title {
+  &__header {
     margin: ($grid-offset-step * 4) 0;
     color: $block-table-title-color;
     font-size: 22px;

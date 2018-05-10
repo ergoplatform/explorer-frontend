@@ -5,6 +5,7 @@ import HeaderComponent from '../../components/header/header.component';
 import SidebarComponent from '../../components/sidebar/sidebar.component';
 
 import ApiComponent from '../../pages/api/api.component';
+import BlockComponent from '../../pages/block/block.component';
 import DataComponent from '../../pages/data/data.component';
 import NotFoundComponent from '../../pages/not-found/not-found.component';
 
@@ -22,6 +23,7 @@ export default class AppComponent extends React.PureComponent {
           <Switch>
             <Route exact={ true } path='/' component={ DataComponent }/>
             <Route exact={ true } path='/api' component={ ApiComponent }/>
+            <Route exact={ true } path='/blocks/:id' component={ BlockComponent }/>
             
             <Route component={ NotFoundComponent }/>
           </Switch>

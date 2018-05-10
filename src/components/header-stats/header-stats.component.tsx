@@ -20,7 +20,7 @@ class HeaderStatsComponent extends React.Component {
   
   render (): JSX.Element {
     return (
-      <div className='bi-header-stats g-flex'>
+      <div className='bi-header-stats g-flex g-flex__item'>
         {
           this.props.info.map((item: IInfoItem) => {
             return <StatsItemComponent title={ item.title } value={ item.value } key={ item.title }/>;

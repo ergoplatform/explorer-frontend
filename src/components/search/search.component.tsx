@@ -31,7 +31,8 @@ class SearchComponent extends React.PureComponent {
     const searchClassNames = classNames({
       'bi-search': true,
       'bi-search--focused': this.state.isInputFocused,
-      'g-flex': true
+      'g-flex': true,
+      'g-flex__item-fixed': true
     });
     
     return (

@@ -1,18 +1,18 @@
 @import '~styles/base/variables';
 
-// #Home
+// #Data
 //-------------------------------------
 $home-color: $theme-primary-color;
-$home-bg-color: #f8f8f8;
 
-.bi-home {
+.bi-data {
   height: 100%;
   padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
   color: $home-color;
-  background-color: $home-bg-color;
+
   justify-content: space-between;
 
-
+  // [ Components ]
+  //----------------------------------
   &__footer {
     justify-content: flex-end;
   }

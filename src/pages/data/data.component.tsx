@@ -30,13 +30,13 @@ class DataComponent extends React.PureComponent {
   // TODO: add preloader
   render (): JSX.Element {
     return (
-      <div className='bi-home g-flex-column'>
-        <div className='bi-home__body g-flex-column__item'>
-          { this.props.fetching ? null : <BlockTableComponent blocks={ this.props.blocks }/> }
+      <div className='bi-data g-flex-column'>
+        <div className='bi-data__body g-flex-column__item'>
+          <BlockTableComponent blocks={ this.props.blocks } isFetching={ this.props.fetching }/>
         </div>
         
         
-        <div className='bi-home__footer g-flex-column__item-fixed g-flex'>
+        <div className='bi-data__footer g-flex-column__item-fixed g-flex'>
           <PaginateComponent limit={ this.props.limit }
                              total={ this.props.total }
                              onPageChange={ this.onPageChange }/>
