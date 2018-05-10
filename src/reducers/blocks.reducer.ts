@@ -5,14 +5,14 @@ export interface BlocksState {
   total: number;
   blocks: any[];
   limit: number;
-  currentPage: number;
+  offset: number;
 }
 
 const initialState: BlocksState = {
   blocks: [],
-  currentPage: 0,
   fetching: false,
   limit: 30,
+  offset: 0,
   total: 0,
 };
 
@@ -31,7 +31,9 @@ export function blocksReducer (state: BlocksState = initialState, action: any): 
         ...state,
         blocks: action.payload.data.items,
         fetching: false,
-        total: action.payload.data.total
+        limit: action.payload.limit,
+        offset: action.payload.offset,
+        total: action.payload.data.total,
       };
     }
     

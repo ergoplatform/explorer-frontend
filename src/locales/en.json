@@ -20,5 +20,8 @@
   "common.block.size": "Size",
   "common.block.votes": "Votes",
 
-  "components.block-table.title": "Latest blocks"
+  "components.block-table.title": "Latest blocks",
+
+  "components.paginate.prev": "Previous",
+  "components.paginate.next": "Next"
 }

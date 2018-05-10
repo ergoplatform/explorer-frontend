@@ -14,31 +14,43 @@ import PaginateComponent from '../../components/common/paginate/paginate.compone
 class DataComponent extends React.PureComponent {
   props: BlocksState & BlockActions;
   
+  constructor (props: any) {
+    super(props);
+    
+    this.onPageChange = this.onPageChange.bind(this);
+  }
+  
   componentDidMount (): void {
-    this.props.getBlocks();
+    this.props.getBlocks({
+      limit: this.props.limit,
+      offset: 0
+    });
   }
   
   // TODO: add preloader
   render (): JSX.Element {
     return (
-      <div className='bi-home'>
-        { this.props.fetching ? null : this.renderBlockTable() }
+      <div className='bi-home g-flex-column'>
+        <div className='bi-home__body g-flex-column__item'>
+          { this.props.fetching ? null : <BlockTableComponent blocks={ this.props.blocks }/> }
+        </div>
+        
+        
+        <div className='bi-home__footer g-flex-column__item-fixed g-flex'>
+          <PaginateComponent limit={ this.props.limit }
+                             total={ this.props.total }
+                             onPageChange={ this.onPageChange }/>
+        </div>
       </div>
     );
   }
   
-  private renderBlockTable (): JSX.Element {
-    return (
-      <div className='bi-home__wrapper g-flex-column'>
-        <div className='bi-home__body g-flex-column__item'>
-          <BlockTableComponent blocks={ this.props.blocks }/>
-        </div>
-        
-        <div className='bi-home__footer g-flex-column__item-fixed g-flex'>
-          <PaginateComponent limit={ this.props.limit } total={ this.props.total }/>
-        </div>
-      </div>
-    );
+  
+  private onPageChange (page: number): void {
+    this.props.getBlocks({
+      limit: this.props.limit,
+      offset: this.props.limit * page
+    });
   }
 }
 

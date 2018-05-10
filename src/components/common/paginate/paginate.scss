@@ -41,7 +41,7 @@ $paginate-selected-bg-color: #eeeeee;
     line-height: 35px;
   }
 
-  &__next.disabled, &__prev.disabled {
+  &__prev.disabled {
     display: none;
   }
 }

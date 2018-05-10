@@ -1,3 +1,4 @@
+import axios, { AxiosResponse } from 'axios';
 import { Action, ActionCreator, ActionCreatorsMapObject, Dispatch } from 'redux';
 
 import environment from '../config/environment';
@@ -10,14 +11,11 @@ const getStatsInfo = () => {
       type: GET_STATS_INFO
     });
     
-    fetch(environment.apiUrl + '/info')
-      .then((response: Response) => {
-        return response.json();
-      })
-      .then((data) => {
+    axios.get(`${environment.apiUrl}/info`)
+      .then((response: AxiosResponse) => {
         dispatch({
           payload: {
-            data,
+            data: response.data
           },
           type: GET_STATS_INFO_SUCCESS
         });
@@ -30,5 +28,5 @@ export interface StatsActions extends ActionCreatorsMapObject {
 }
 
 export const StatsActions: StatsActions = {
-  getStatsInfo,
+  getStatsInfo
 };

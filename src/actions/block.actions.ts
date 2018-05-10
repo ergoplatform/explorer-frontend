@@ -1,23 +1,36 @@
+import axios, { AxiosResponse } from 'axios';
 import { Action, ActionCreator, ActionCreatorsMapObject, Dispatch } from 'redux';
 
 import environment from '../config/environment';
 
 import { GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
 
-const getBlocks = () => {
+interface IGetBlocksParams {
+  limit?: number;
+  offset?: number;
+}
+
+const getBlocks = ({ limit, offset }: IGetBlocksParams = {}) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
       type: GET_BLOCKS
     });
     
-    fetch(environment.apiUrl + '/blocks')
-      .then((response: Response) => {
-        return response.json();
-      })
-      .then((data) => {
+    axios.get(`${environment.apiUrl}/blocks`, {
+      headers: {
+        Accept: 'application/json'
+      },
+      params: {
+        limit,
+        offset,
+      }
+    })
+      .then((response: AxiosResponse) => {
         dispatch({
           payload: {
-            data
+            data: response.data,
+            limit,
+            offset,
           },
           type: GET_BLOCKS_SUCCESS
         });

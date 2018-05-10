@@ -12,6 +12,8 @@ import registerServiceWorker from './utils/registerServiceWorker';
 
 import './assets/styles/main.scss';
 
+import './config/axios.config';
+
 import { ConnectedIntlProvider } from './containers/connected-intl-provider/connected-intl-provider';
 import { AppStore } from './store/app.store';
 
