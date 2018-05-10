@@ -7,6 +7,7 @@ import { ApiIcon, ChartIcon, DataIcon, StatsIcon, WalletIcon } from '../common/i
 import './sidebar-menu.scss';
 
 interface ISidebarMenuItem {
+  props?: any;
   icon?: JSX.Element;
   title: string;
   url: string;
@@ -15,6 +16,12 @@ interface ISidebarMenuItem {
 const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   {
     icon: <DataIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
+    props: {
+      isActive: (match: any, path: any) => {
+        return (match || path.pathname.match(/^(\/blocks\/|\/page\/)/)
+        );
+      }
+    },
     title: 'components.sidebar-menu.items.data',
     url: '/'
   },
@@ -26,18 +33,18 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   {
     icon: <WalletIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
     title: 'components.sidebar-menu.items.wallet',
-    url: '/wallet',
+    url: '/wallet'
   },
   {
     icon: <ChartIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
     title: 'components.sidebar-menu.items.charts',
-    url: '/charts',
+    url: '/charts'
   },
   {
     icon: <StatsIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
     title: 'components.sidebar-menu.items.stats',
-    url: '/stats',
-  },
+    url: '/stats'
+  }
 ];
 
 class SidebarMenuComponent extends React.Component {
@@ -52,7 +59,8 @@ class SidebarMenuComponent extends React.Component {
                      activeClassName='bi-sidebar-menu__item--active'
                      to={ item.url }
                      exact={ true }
-                     key={ index }>
+                     key={ index }
+                     { ...item.props }>
               { item.icon }
               
               <span className='bi-sidebar-menu__item-title g-flex__item'>

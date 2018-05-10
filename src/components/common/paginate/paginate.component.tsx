@@ -5,7 +5,7 @@ import * as ReactPaginate from 'react-paginate';
 interface IPaginateProps {
   total: number;
   limit: number;
-  initialPage?: number;
+  forcePage?: number;
   onPageChange: (selected: number) => void;
 }
 
@@ -35,7 +35,7 @@ class PaginateComponent extends React.PureComponent {
                      nextLabel={ this.props.intl.formatMessage({ id: 'components.paginate.next' }) }
                      onPageChange={ this.onPageChange }
                      pageCount={ pageCount }
-                     initialPage={ this.props.initialPage || 0 }
+                     forcePage={ this.props.forcePage || 0 }
                      disableInitialCallback={ true }
                      pageRangeDisplayed={ 5 }
                      marginPagesDisplayed={ 1 }/>

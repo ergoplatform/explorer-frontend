@@ -22,6 +22,8 @@ export default class AppComponent extends React.PureComponent {
           
           <Switch>
             <Route exact={ true } path='/' component={ DataComponent }/>
+            <Route exact={ true } path='/page/:pageNumber(\d+)' component={ DataComponent }/>
+            
             <Route exact={ true } path='/api' component={ ApiComponent }/>
             <Route exact={ true } path='/blocks/:id' component={ BlockComponent }/>
             

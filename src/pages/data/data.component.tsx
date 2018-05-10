@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import './data.scss';
@@ -11,8 +12,12 @@ import { AppState } from '../../store/app.store';
 import BlocksTableComponent from '../../components/blocks-table/blocks-table.component';
 import PaginateComponent from '../../components/common/paginate/paginate.component';
 
+type IDataProps = BlocksState & BlockActions & RouteComponentProps<{
+  pageNumber: number,
+}>;
+
 class DataComponent extends React.PureComponent {
-  props: BlocksState & BlockActions;
+  props: IDataProps;
   
   constructor (props: any) {
     super(props);
@@ -21,10 +26,16 @@ class DataComponent extends React.PureComponent {
   }
   
   componentDidMount (): void {
-    this.props.getBlocks({
-      limit: this.props.limit,
-      offset: 0
-    });
+    const pageNumber = this.props.match.params.pageNumber ? (this.props.match.params.pageNumber - 1) : 0;
+    
+    this.reloadBlocks(pageNumber);
+  }
+  
+  componentWillReceiveProps (props: IDataProps): void {
+    if (props.match.params.pageNumber === undefined &&
+      (this.props.match.params.pageNumber !== props.match.params.pageNumber)) {
+      this.reloadBlocks();
+    }
   }
   
   // TODO: add preloader
@@ -39,6 +50,7 @@ class DataComponent extends React.PureComponent {
         <div className='bi-data__footer g-flex-column__item-fixed g-flex'>
           <PaginateComponent limit={ this.props.limit }
                              total={ this.props.total }
+                             forcePage={ this.props.offset / this.props.limit }
                              onPageChange={ this.onPageChange }/>
         </div>
       </div>
@@ -47,6 +59,12 @@ class DataComponent extends React.PureComponent {
   
   
   private onPageChange (page: number): void {
+    this.props.history.push(`/page/${page + 1}`);
+    
+    this.reloadBlocks(page);
+  }
+  
+  private reloadBlocks (page: number = 0): void {
     this.props.getBlocks({
       limit: this.props.limit,
       offset: this.props.limit * page
