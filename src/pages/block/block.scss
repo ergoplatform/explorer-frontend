@@ -1,0 +1,10 @@
+@import '~styles/base/variables';
+
+// #Block
+//-------------------------------------
+
+.bi-block {
+  height: 100%;
+  font-family: $theme-main-font;
+  padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+}

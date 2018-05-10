@@ -1,6 +1,6 @@
 @import '~styles/base/variables';
 
-// #BLOCK TABLE
+// #BLOCKS TABLE
 //-------------------------------------
 $block-table-table-bg-color: #ffffff;
 $block-table-table-row-hover-bg-color: #f8f8f8;
@@ -8,7 +8,7 @@ $block-table-table-border-color: #eeeeee;
 $block-table-title-color: $theme-primary-color;
 $block-table-cell-color: $theme-primary-color;
 
-.bi-block-table {
+.bi-blocks-table {
   font-family: $theme-main-font;
 
   // [ Components ]
@@ -39,7 +39,6 @@ $block-table-cell-color: $theme-primary-color;
 
   &__cell {
     display: table-cell;
-    padding: 0 ($grid-offset-step * 6);
     padding: $grid-offset-step * 4;
     border: 1px solid $block-table-table-border-color;
     border-right: 0;

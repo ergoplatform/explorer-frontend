@@ -1,15 +1,15 @@
 @import '~styles/base/variables';
 
-// #BLOCK TABLE HEADER
+// #BLOCKS TABLE HEADER
 //-------------------------------------
 $block-table-table-header-bg-color: #f8f8f8;
 
-.bi-block-table-header {
+.bi-blocks-table-header {
   background-color: $block-table-table-header-bg-color;
 
   // [ Components ]
   //----------------------------------
-  .bi-block-table__cell {
+  .bi-blocks-table__cell {
     font-size: 14px;
     font-weight: 600;
   }

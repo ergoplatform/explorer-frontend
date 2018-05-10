@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import './search.scss';
 
-import { SearchIcon } from '../icons/common.icons';
+import { SearchIcon } from '../common/icons/common.icons';
 
 class SearchComponent extends React.PureComponent {
   state: {

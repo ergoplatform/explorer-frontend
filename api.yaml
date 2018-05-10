@@ -96,9 +96,9 @@ paths:
                     type: object
                     properties:
                       nextId:
-                        type: string
+                        $ref: '#/components/schemas/ModifierId'
                       previousId:
-                        type: string
+                        $ref: '#/components/schemas/ModifierId'
   '/transaction/{id}':
     parameters:
       - name: id

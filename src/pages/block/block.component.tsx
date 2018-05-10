@@ -8,6 +8,11 @@ import { AppState } from '../../store/app.store';
 import { BlockActions } from '../../actions/block.actions';
 import { BlockState } from '../../reducers/block.reducer';
 
+import BlockHeaderComponent from '../../components/block/block-header/block-header.component';
+import BlockInfoComponent from '../../components/block/block-info/block-info.component';
+
+import './block.scss';
+
 class BlockComponent extends React.Component {
   props: RouteComponentProps<{ id: string }> & BlockState & BlockActions;
   
@@ -17,7 +22,24 @@ class BlockComponent extends React.Component {
   
   render (): JSX.Element {
     return (
-      <div>{ this.props.fetching ? null : this.props.block.header.id }</div>
+      <div className='bi-block'>
+        { this.props.fetching ? null : this.renderBlockPage() }
+      </div>
+    );
+  }
+  
+  private renderBlockPage (): JSX.Element {
+    return (
+      <div className='bi-block__wrapper'>
+        <div className='bi-block__header'>
+          <BlockHeaderComponent block={ this.props.block }
+                                references={ this.props.references }/>
+        </div>
+        
+        <div className='bi-block__body'>
+          <BlockInfoComponent block={ this.props.block }/>
+        </div>
+      </div>
     );
   }
 }

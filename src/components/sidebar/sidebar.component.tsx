@@ -13,7 +13,7 @@ import { SettingsState } from '../../reducers/settings.reducer';
 import LanguageSwitcherComponent from '../common/language-switcher/language-switcher.component';
 import SidebarMenuComponent from '../sidebar-menu/sidebar-menu.component';
 
-import { ArrowIcon } from '../icons/common.icons';
+import { ArrowIcon } from '../common/icons/common.icons';
 
 import './sidebar.scss';
 

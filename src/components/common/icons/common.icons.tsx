@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import apiIcon from '../../assets/images/icons/api.icon.svg';
-import arrowIcon from '../../assets/images/icons/arrow.icon.svg';
-import chartIcon from '../../assets/images/icons/chart.icon.svg';
-import dataIcon from '../../assets/images/icons/data.icon.svg';
-import searchIcon from '../../assets/images/icons/search.icon.svg';
-import statsIcon from '../../assets/images/icons/stats.icon.svg';
-import walletIcon from '../../assets/images/icons/wallet.icon.svg';
+import apiIcon from '../../../assets/images/icons/api.icon.svg';
+import arrowIcon from '../../../assets/images/icons/arrow.icon.svg';
+import chartIcon from '../../../assets/images/icons/chart.icon.svg';
+import dataIcon from '../../../assets/images/icons/data.icon.svg';
+import searchIcon from '../../../assets/images/icons/search.icon.svg';
+import statsIcon from '../../../assets/images/icons/stats.icon.svg';
+import walletIcon from '../../../assets/images/icons/wallet.icon.svg';
 
 interface IIconProps {
   className?: string;

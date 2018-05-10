@@ -8,7 +8,7 @@ import { BlockActions } from '../../actions/block.actions';
 import { BlocksState } from '../../reducers/blocks.reducer';
 import { AppState } from '../../store/app.store';
 
-import BlockTableComponent from '../../components/block-table/block-table.component';
+import BlocksTableComponent from '../../components/blocks-table/blocks-table.component';
 import PaginateComponent from '../../components/common/paginate/paginate.component';
 
 class DataComponent extends React.PureComponent {
@@ -32,7 +32,7 @@ class DataComponent extends React.PureComponent {
     return (
       <div className='bi-data g-flex-column'>
         <div className='bi-data__body g-flex-column__item'>
-          <BlockTableComponent blocks={ this.props.blocks } isFetching={ this.props.fetching }/>
+          <BlocksTableComponent blocks={ this.props.blocks } isFetching={ this.props.fetching }/>
         </div>
         
         

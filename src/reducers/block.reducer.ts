@@ -3,11 +3,12 @@ import { GET_BLOCK, GET_BLOCK_SUCCESS } from '../constants/block.types';
 export interface BlockState {
   fetching: boolean;
   block: any;
+  references?: any;
 }
 
 const initialState: BlockState = {
   block: {},
-  fetching: true,
+  fetching: true
 };
 
 export function blockReducer (state: BlockState = initialState, action: any): BlockState {
@@ -24,7 +25,8 @@ export function blockReducer (state: BlockState = initialState, action: any): Bl
       return {
         ...state,
         block: action.payload.data.block,
-        fetching: false
+        fetching: false,
+        references: action.payload.data.references
       };
     }
     

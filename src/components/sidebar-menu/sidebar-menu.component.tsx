@@ -2,7 +2,7 @@ import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
-import { ApiIcon, ChartIcon, DataIcon, StatsIcon, WalletIcon } from '../icons/common.icons';
+import { ApiIcon, ChartIcon, DataIcon, StatsIcon, WalletIcon } from '../common/icons/common.icons';
 
 import './sidebar-menu.scss';
 

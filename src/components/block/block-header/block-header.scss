@@ -1,0 +1,49 @@
+@import '~styles/base/variables';
+
+// #BLOCK HEADER
+//-------------------------------------
+$block-header-title-color: $theme-primary-color;
+$block-header-nav-btn-bg-color: #e8e8e8;
+
+.bi-block-header {
+  margin-bottom: $grid-offset-step * 5;
+  font-family: $theme-main-font;
+
+  align-items: center;
+
+  // [ Components ]
+  //-------------------------------
+  &__title {
+    color: $block-header-title-color;
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+  &__navigation {
+    margin: 0 $grid-offset-step * 2;
+  }
+
+  &__navigation-btn {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin: 0 ($grid-offset-step / 2);
+    border-radius: 50%;
+    background-color: $block-header-nav-btn-bg-color;
+    line-height: 22px;
+    text-align: center;
+  }
+
+  &__navigation-btn--prev & {
+    &__navigation-btn-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__navigation-btn-icon {
+    width: 10px;
+    height: 10px;
+
+    fill: #000000;
+  }
+}

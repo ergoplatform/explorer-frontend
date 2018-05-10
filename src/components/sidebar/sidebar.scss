@@ -6,6 +6,7 @@ $sidebar-bg-color: #121212;
 $sidebar-logo-color: #ffffff;
 $sidebar-font: $theme-main-font;
 $sidebar-btn-toggle-border-color: #ffffff;
+$sidebar-btn-toggle-icon-color: #ffffff;
 
 .bi-sidebar {
   width: 300px;
@@ -82,5 +83,7 @@ $sidebar-btn-toggle-border-color: #ffffff;
     width: 15px;
     height: 15px;
     transform: rotate(180deg);
+
+    fill: $sidebar-btn-toggle-icon-color;
   }
 }
