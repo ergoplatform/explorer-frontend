@@ -5,8 +5,6 @@ env:
 
 node_js:
   - "10"
-install:
-  - yarn global add codecov
 
 script:
   - yarn build
