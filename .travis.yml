@@ -1,18 +1,23 @@
 language: node_js
+
 env:
   - NODE_ENV=production CI=true
+
 node_js:
   - "10"
 install:
-  - npm install -g codecov
+  - yarn global add codecov
+
 script:
   - yarn build
   - yarn test
   - yarn test:coverage
+
 deploy:
   skip_cleanup: true
   provider: surge
   project: ./build/
   domain: ergo-explorer.surge.sh
+
 after_success:
   - codecov
