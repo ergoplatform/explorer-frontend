@@ -1,9 +1,19 @@
+import { ShallowWrapper } from 'enzyme';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 
-// TODO: replace with real test
-it('App Renders without crashing', () => {
-  const div = document.createElement('div');
+import { shallowWithIntl } from '../../utils/test-utils';
+
+import AppComponent from './app.component';
+
+describe('App', () => {
+  let wrapper: ShallowWrapper;
   
-  ReactDOM.render(<div/>, div);
+  beforeEach(() => {
+    wrapper = shallowWithIntl(<AppComponent/>);
+  });
+  
+  it('renders without crashing', () => {
+    expect(wrapper.length)
+      .toEqual(1);
+  });
 });
