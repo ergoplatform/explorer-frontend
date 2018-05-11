@@ -23,6 +23,7 @@
   "common.block.votes": "Голоса",
 
   "components.data.title": "Последние блоки",
+  "components.data.show": "Показать",
 
   "components.paginate.prev": "Назад",
   "components.paginate.next": "Дальше"

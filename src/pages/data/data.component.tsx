@@ -52,7 +52,7 @@ class DataComponent extends React.PureComponent {
           <div className='bi-data__actions g-flex__item-fixed'>
             <LimitSelectorComponent items={ [30, 60, 120] }
                                     selected={ this.props.settings.blocksLimit }
-                                    label={ 'Show' }
+                                    label={ this.props.intl.formatMessage({ id: 'components.data.show' }) }
                                     onLimitSelect={ this.onLimitSelect }/>
           </div>
         </div>

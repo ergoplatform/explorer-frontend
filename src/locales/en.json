@@ -23,6 +23,7 @@
   "common.block.votes": "Votes",
 
   "components.data.title": "Latest blocks",
+  "components.data.show": "Show",
 
   "components.paginate.prev": "Previous",
   "components.paginate.next": "Next"
