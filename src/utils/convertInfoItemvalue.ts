@@ -1,5 +1,7 @@
 import formatNumber from 'format-number';
+
 import environment from '../config/environment';
+
 import { formatNumberMetricPrefix } from './formatNumberMetricPrefix';
 
 export const convertInfoItemValue = (key: string, value: any): any => {

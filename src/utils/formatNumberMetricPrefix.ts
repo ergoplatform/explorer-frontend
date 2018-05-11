@@ -10,8 +10,7 @@ const ranges = [
 export function formatNumberMetricPrefix (originalNumber: number): string {
   for (const range of ranges) {
     if (originalNumber >= range.divider) {
-      return (originalNumber / range.divider).toFixed(2)
-        .toString() + range.suffix;
+      return (originalNumber / range.divider).toFixed(0) + range.suffix;
     }
   }
   
