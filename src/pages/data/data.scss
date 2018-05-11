@@ -2,18 +2,31 @@
 
 // #Data
 //-------------------------------------
-$home-color: $theme-primary-color;
+$data-color: $theme-primary-color;
+$data-title-color: $theme-primary-color;
+
 
 .bi-data {
   height: 100%;
   padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
-  color: $home-color;
+  color: $data-color;
+  font-family: $theme-main-font;
 
   justify-content: space-between;
 
   // [ Components ]
   //----------------------------------
+  &__header {
+    margin: ($grid-offset-step * 4) 0;
+  }
+
   &__footer {
     justify-content: flex-end;
+  }
+
+  &__title {
+    color: $data-title-color;
+    font-size: 22px;
+    font-weight: 600;
   }
 }

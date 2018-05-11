@@ -4,16 +4,14 @@ export interface BlocksState {
   fetching: boolean;
   total: number;
   blocks: any[];
-  limit: number;
   offset: number;
 }
 
 const initialState: BlocksState = {
   blocks: [],
   fetching: false,
-  limit: 30,
   offset: 0,
-  total: 0,
+  total: 0
 };
 
 export function blocksReducer (state: BlocksState = initialState, action: any): BlocksState {
@@ -31,9 +29,8 @@ export function blocksReducer (state: BlocksState = initialState, action: any): 
         ...state,
         blocks: action.payload.data.items,
         fetching: false,
-        limit: action.payload.limit,
         offset: action.payload.offset,
-        total: action.payload.data.total,
+        total: action.payload.data.total
       };
     }
     

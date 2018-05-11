@@ -22,7 +22,7 @@
   "common.block.size": "Размер",
   "common.block.votes": "Голоса",
 
-  "components.blocks-table.title": "Последние блоки",
+  "components.data.title": "Последние блоки",
 
   "components.paginate.prev": "Назад",
   "components.paginate.next": "Дальше"

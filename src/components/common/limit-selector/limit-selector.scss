@@ -1,0 +1,35 @@
+@import '~styles/base/variables';
+
+// #LIMIT SELECTOR
+//-------------------------------------
+$limit-selector-item-color: $theme-color-blue;
+$limit-selector-item-selected-color: $theme-primary-color;
+$limit-selector-item-selected-bg-color: #e8e8e8;
+
+.bi-limit-selector {
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //--------------------------------------
+  &__label {
+    margin-right: $grid-offset-step * 2;
+  }
+
+  &__item {
+    min-width: 30px;
+    height: 30px;
+    margin-right: $grid-offset-step;
+    border-radius: 30px;
+    color: $limit-selector-item-color;
+    font-size: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__item--selected {
+    color: $limit-selector-item-selected-color;
+    background-color: $limit-selector-item-selected-bg-color;
+  }
+}

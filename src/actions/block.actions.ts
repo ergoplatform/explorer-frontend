@@ -4,6 +4,7 @@ import { Action, ActionCreator, ActionCreatorsMapObject, Dispatch } from 'redux'
 import environment from '../config/environment';
 
 import { GET_BLOCK, GET_BLOCK_SUCCESS, GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
+import { SET_BLOCKS_LIMIT } from '../constants/settings.types';
 
 interface IGetBlocksParams {
   limit?: number;
@@ -14,6 +15,13 @@ const getBlocks = ({ limit, offset }: IGetBlocksParams = {}) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
       type: GET_BLOCKS
+    });
+    
+    dispatch({
+      payload: {
+        blocksLimit: limit
+      },
+      type: SET_BLOCKS_LIMIT
     });
     
     axios.get(`${environment.apiUrl}/blocks`, {

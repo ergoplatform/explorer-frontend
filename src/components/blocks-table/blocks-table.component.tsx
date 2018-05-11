@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import './blocks-table.scss';
@@ -13,16 +12,12 @@ interface IBlockTableProps {
   isFetching: boolean;
 }
 
-class BlocksTableComponent extends React.PureComponent {
-  props: InjectedIntlProps & IBlockTableProps;
+class BlocksTableComponent extends React.Component {
+  props: IBlockTableProps;
   
   render (): JSX.Element {
     return (
       <div className='bi-blocks-table'>
-        <div className='bi-blocks-table__header'>
-          { this.props.intl.formatMessage({ id: 'components.blocks-table.title' }) }
-        </div>
-        
         { this.props.isFetching ? null : this.renderTable() }
       </div>
     );
@@ -60,4 +55,4 @@ class BlocksTableComponent extends React.PureComponent {
   }
 }
 
-export default injectIntl<IBlockTableProps>(BlocksTableComponent);
+export default BlocksTableComponent;

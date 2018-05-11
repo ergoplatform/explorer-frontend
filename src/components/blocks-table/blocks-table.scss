@@ -5,7 +5,6 @@
 $block-table-table-bg-color: #ffffff;
 $block-table-table-row-hover-bg-color: #f8f8f8;
 $block-table-table-border-color: #eeeeee;
-$block-table-title-color: $theme-primary-color;
 $block-table-cell-color: $theme-primary-color;
 
 .bi-blocks-table {
@@ -19,13 +18,6 @@ $block-table-cell-color: $theme-primary-color;
     border: 1px solid $block-table-table-border-color;
     border-collapse: collapse;
     background-color: $block-table-table-bg-color;
-  }
-
-  &__header {
-    margin: ($grid-offset-step * 4) 0;
-    color: $block-table-title-color;
-    font-size: 22px;
-    font-weight: 600;
   }
 
   &__row {

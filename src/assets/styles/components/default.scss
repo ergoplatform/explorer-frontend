@@ -1,4 +1,4 @@
-$link-color: #0078ff;
+@import '~styles/base/variables';
 $root-bg-color: #f8f8f8;
 
 #root {
@@ -16,6 +16,6 @@ body:not(.bi-tab-mode) {
 
 
 a {
-  color: $link-color;
+  color: $theme-color-blue;
   text-decoration: none;
 }
