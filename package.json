@@ -73,7 +73,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "test:coverage": "node scripts/test.js --env=jsdom --coverage"
   },
   "devDependencies": {
     "csscomb": "^4.2.0",
@@ -82,7 +83,9 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}"
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.{d.ts}",
+      "!src/utils/test-utils.ts"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
