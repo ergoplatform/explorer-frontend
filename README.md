@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/blockchaininstituteadmin/ergo-explorer.svg?branch=master)](https://travis-ci.org/blockchaininstituteadmin/ergo-explorer)
+[![Codecov](https://img.shields.io/codecov/c/github/blockchaininstituteadmin/ergo-explorer.svg)](https://codecov.io/gh/blockchaininstituteadmin/ergo-explorer)
 
 This repository contains browser for viewing activity on the underlying blockchain network.
 
