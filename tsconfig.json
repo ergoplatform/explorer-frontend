@@ -21,10 +21,11 @@
   "exclude": [
     "node_modules",
     "build",
+    "coverage",
+    "src/models/generated",
     "scripts",
     "acceptance-tests",
     "webpack",
-    "jest",
-    "src/setupTests.ts"
+    "jest"
   ]
 }

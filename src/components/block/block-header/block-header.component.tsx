@@ -2,9 +2,12 @@ import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 
+import { FullBlock } from '../../../models/generated/fullBlock';
+import { InlineResponse2001References } from '../../../models/generated/inlineResponse2001References';
+
 interface IBlockHeaderProps {
-  block: any;
-  references: any;
+  block: FullBlock;
+  references: InlineResponse2001References;
 }
 
 import { ArrowIcon } from '../../common/icons/common.icons';

@@ -1,10 +1,15 @@
 @import '~styles/base/variables';
 
-// #BLOCK
+// #ADDRESS
 //-------------------------------------
 
-.bi-block {
+.bi-address {
   height: 100%;
   padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
   font-family: $theme-main-font;
+
+  &__title {
+    font-size: 26px;
+    font-weight: 600;
+  }
 }

@@ -17,7 +17,7 @@ $data-title-color: $theme-primary-color;
   // [ Components ]
   //----------------------------------
   &__header {
-    margin: ($grid-offset-step * 4) 0;
+    margin-bottom: ($grid-offset-step * 4);
   }
 
   &__footer {
