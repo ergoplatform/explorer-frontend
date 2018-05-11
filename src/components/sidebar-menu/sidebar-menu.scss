@@ -16,6 +16,7 @@ $sidebar-menu-item-active-color: #ffffff;
     text-decoration: none;
 
     align-items: center;
+    justify-content: center;
 
     // [ Mode ] Active
     &--active {
@@ -29,6 +30,7 @@ $sidebar-menu-item-active-color: #ffffff;
 
   &__item-title {
     line-height: 1;
+    transition: opacity 300ms ease-in-out;
   }
 
   &__item-icon {
