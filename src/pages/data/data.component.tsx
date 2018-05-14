@@ -43,7 +43,7 @@ class DataComponent extends React.PureComponent {
   // TODO: add preloader
   render (): JSX.Element {
     return (
-      <div className='bi-data g-flex-column'>
+      <div className='bi-data g-flex-column g-flex-column__item'>
         <div className='bi-data__header g-flex'>
           <div className='bi-data__title g-flex__item'>
             { this.props.intl.formatMessage({ id: 'components.data.title' }) }

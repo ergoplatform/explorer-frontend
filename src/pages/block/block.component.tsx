@@ -30,7 +30,7 @@ class BlockComponent extends React.Component {
   
   render (): JSX.Element {
     return (
-      <div className='bi-block'>
+      <div className='bi-block g-flex-column__item'>
         { this.props.fetching ? null : this.renderBlockPage() }
       </div>
     );
@@ -38,13 +38,13 @@ class BlockComponent extends React.Component {
   
   private renderBlockPage (): JSX.Element {
     return (
-      <div className='bi-block__wrapper'>
-        <div className='bi-block__header'>
+      <div className='bi-block__wrapper g-flex-column'>
+        <div className='bi-block__header g-flex-column__item-fixed'>
           <BlockHeaderComponent block={ this.props.block }
                                 references={ this.props.references }/>
         </div>
         
-        <div className='bi-block__body'>
+        <div className='bi-block__body g-flex-column__item g-scroll-y'>
           <Switch>
             <Route path={ `/blocks/:id` }
                    exact={ true }

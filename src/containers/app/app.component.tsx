@@ -18,21 +18,23 @@ export default class AppComponent extends React.PureComponent {
       <div className='bi-app g-flex'>
         <SidebarComponent/>
         
-        <div className='bi-app__body g-flex__item g-flex-column'>
+        <div className='bi-app__wrapper g-flex__item g-flex-column'>
           <HeaderComponent/>
           
-          <Switch>
-            <Route exact={ true } path='/' component={ DataComponent }/>
-            <Route exact={ true } path='/page/:pageNumber(\d+)' component={ DataComponent }/>
-            
-            <Route exact={ true } path='/api' component={ ApiComponent }/>
-            
-            <Route path='/blocks/:id' component={ BlockComponent }/>
-            
-            <Route exact={ true } path='/addresses/:id' component={ AddressComponent }/>
-            
-            <Route component={ NotFoundComponent }/>
-          </Switch>
+          <div className='bi-app__body g-flex-column__item g-flex-column g-scroll-y'>
+            <Switch>
+              <Route exact={ true } path='/' component={ DataComponent }/>
+              <Route exact={ true } path='/page/:pageNumber(\d+)' component={ DataComponent }/>
+    
+              <Route exact={ true } path='/api' component={ ApiComponent }/>
+    
+              <Route path='/blocks/:id' component={ BlockComponent }/>
+    
+              <Route exact={ true } path='/addresses/:id' component={ AddressComponent }/>
+    
+              <Route component={ NotFoundComponent }/>
+            </Switch>
+          </div>
         </div>
       </div>
     );

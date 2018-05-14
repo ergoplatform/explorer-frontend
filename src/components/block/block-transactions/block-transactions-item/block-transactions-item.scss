@@ -1,0 +1,48 @@
+@import '~styles/base/variables';
+
+// #BLOCK TRANSACTIONS ITEM
+//-------------------------------------
+$block-transactions-item-bg-color: #ffffff;
+$block-transactions-item-border-color: #eeeeee;
+$block-transactions-item-value-color: #828795;
+$block-transactions-item-total-value-color: $theme-color-blue;
+
+.bi-block-transactions-item {
+  border: 1px solid $block-transactions-item-border-color;
+  background-color: $block-transactions-item-bg-color;
+  font-size: 14px;
+
+  // [ Components ]
+  //---------------------------------------
+  &__header {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
+    border-bottom: 1px solid $block-transactions-item-border-color;
+  }
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__inputs {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
+    border-right: 1px solid $block-transactions-item-border-color;
+  }
+
+  &__outputs {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
+  }
+
+  &__value {
+    color: $block-transactions-item-value-color;
+  }
+
+  &__total-value {
+    margin-top: $grid-offset-step * 4;
+    margin-left: auto;
+    padding: ($grid-offset-step * 2) ($grid-offset-step * 3);
+    border: 1px solid $block-transactions-item-total-value-color;
+    border-radius: 94px;
+    color: $block-transactions-item-total-value-color;
+    font-weight: bold;
+  }
+}
