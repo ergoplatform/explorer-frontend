@@ -30,7 +30,7 @@ class BlockTransactionsItemComponent extends React.PureComponent {
               this.props.transaction.inputs.map((address) => {
                 return (
                   <div className='bi-block-transactions-item__input' key={ address.id }>
-                    <Link to={ `/address/${address.id}` }>
+                    <Link to={ `/addresses/${address.id}` }>
                       { address.id }
                     </Link>
                   </div>
