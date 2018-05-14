@@ -9,6 +9,7 @@ import { BlockState } from '../reducers/block.reducer';
 import { BlocksState } from '../reducers/blocks.reducer';
 import { SettingsState } from '../reducers/settings.reducer';
 import { StatsState } from '../reducers/stats.reducer';
+import { TransactionState } from '../reducers/transaction.reducer';
 
 export interface AppState {
   address: AddressState;
@@ -16,6 +17,7 @@ export interface AppState {
   settings: SettingsState;
   stats: StatsState;
   blocks: BlocksState;
+  transaction: TransactionState;
 }
 
 const logger = createLogger();

@@ -11,7 +11,7 @@ const getAddress = (id: string) => {
       type: GET_ADDRESS
     });
     
-    axios.get(`${environment.apiUrl}/address/${id}`)
+    axios.get(`${environment.apiUrl}/addresses/${id}`)
       .then((response: AxiosResponse) => {
         dispatch({
           payload: {

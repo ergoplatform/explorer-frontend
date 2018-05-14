@@ -6,11 +6,13 @@ import { blockReducer } from './block.reducer';
 import { blocksReducer } from './blocks.reducer';
 import { settingsReducer } from './settings.reducer';
 import { statsReducer } from './stats.reducer';
+import { transactionReducer } from './transaction.reducer';
 
 export const reducer = combineReducers<AppState>({
   address: addressReducer,
   block: blockReducer,
   blocks: blocksReducer,
   settings: settingsReducer,
-  stats: statsReducer
+  stats: statsReducer,
+  transaction: transactionReducer
 });

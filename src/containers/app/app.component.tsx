@@ -9,6 +9,7 @@ import ApiComponent from '../../pages/api/api.component';
 import BlockComponent from '../../pages/block/block.component';
 import DataComponent from '../../pages/data/data.component';
 import NotFoundComponent from '../../pages/not-found/not-found.component';
+import TransactionComponent from '../../pages/transaction/transaction.component';
 
 import './app.scss';
 
@@ -31,6 +32,8 @@ export default class AppComponent extends React.PureComponent {
               <Route path='/blocks/:id' component={ BlockComponent }/>
     
               <Route exact={ true } path='/addresses/:id' component={ AddressComponent }/>
+              
+              <Route exact={ true } path='/transactions/:id' component={ TransactionComponent }/>
     
               <Route component={ NotFoundComponent }/>
             </Switch>

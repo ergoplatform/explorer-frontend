@@ -1,0 +1,9 @@
+@import '~styles/base/variables';
+
+// #TRANSACTION
+//-------------------------------------
+
+.bi-transaction {
+  padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+  font-family: $theme-main-font;
+}
