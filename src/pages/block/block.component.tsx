@@ -16,7 +16,9 @@ import BlockTransactionsComponent from '../../components/block/block-transaction
 import './block.scss';
 
 class BlockComponent extends React.Component {
-  props: RouteComponentProps<{ id: string }> & BlockState & BlockActions;
+  props: {
+    page: number;
+  } & RouteComponentProps<{ id: string }> & BlockState & BlockActions;
   
   constructor (props: any) {
     super(props);
@@ -47,6 +49,7 @@ class BlockComponent extends React.Component {
       <div className='bi-block__wrapper g-flex-column'>
         <div className='bi-block__header g-flex-column__item-fixed'>
           <BlockHeaderComponent block={ this.props.block }
+                                previousPage={ this.props.page }
                                 references={ this.props.references }/>
         </div>
         
@@ -67,7 +70,7 @@ class BlockComponent extends React.Component {
             <Route path={ `/blocks/:id/adproofs` }
                    exact={ true }
                    component={
-                     this.renderComponent(<BlockAdproofsComponent  block={ this.props.block }/>)
+                     this.renderComponent(<BlockAdproofsComponent block={ this.props.block }/>)
                    }/>
           </Switch>
         </div>
@@ -80,8 +83,13 @@ class BlockComponent extends React.Component {
   }
 }
 
-function mapStateToProps (state: AppState): BlockState {
-  return state.block;
+function mapStateToProps (state: AppState): BlockState & {
+  page: number;
+} {
+  return {
+    ...state.block,
+    page: state.blocks.offset / state.settings.blocksLimit
+  };
 }
 
 function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {

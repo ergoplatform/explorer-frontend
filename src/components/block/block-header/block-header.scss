@@ -5,6 +5,7 @@
 $block-header-title-color: $theme-primary-color;
 $block-header-nav-btn-bg-color: #e8e8e8;
 $block-header-tab-border-color: #0078ff;
+$block-header-back-btn-color: #0078ff;
 $block-header-tab-active-color: $theme-primary-color;
 $block-header-nav-icon-color: $theme-primary-color;
 
@@ -12,10 +13,14 @@ $block-header-nav-icon-color: $theme-primary-color;
   margin-bottom: $grid-offset-step * 5;
   font-family: $theme-main-font;
 
-  align-items: center;
 
   // [ Components ]
   //-------------------------------
+  &__line {
+    align-items: center;
+    width: 100%;
+  }
+
   &__title {
     color: $block-header-title-color;
     font-size: 26px;
@@ -72,5 +77,22 @@ $block-header-nav-icon-color: $theme-primary-color;
     border-bottom: 0;
     color: $block-header-tab-active-color;
     font-weight: bold;
+  }
+
+  &__btn-back {
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: $grid-offset-step * 8;
+  }
+
+  &__btn-back-icon {
+    width: 10px;
+    height: 10px;
+
+    fill: $block-header-back-btn-color;
+
+    transform: rotate(180deg);
+
+    margin-right: $grid-offset-step;
   }
 }
