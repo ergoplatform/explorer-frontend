@@ -1,13 +1,14 @@
 import { GET_BLOCK, GET_BLOCK_SUCCESS } from '../constants/block.types';
 
+import { FullBlock } from '../models/generated/fullBlock';
+
 export interface BlockState {
   fetching: boolean;
-  block: any;
+  block?: FullBlock;
   references?: any;
 }
 
 const initialState: BlockState = {
-  block: {},
   fetching: true
 };
 

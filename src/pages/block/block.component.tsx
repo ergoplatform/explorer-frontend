@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Route, RouteComponentProps, Switch } from 'react-router';
+import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 
 import { AppState } from '../../store/app.store';
@@ -37,6 +37,12 @@ class BlockComponent extends React.Component {
   }
   
   private renderBlockPage (): JSX.Element {
+    if (!this.props.block) {
+      return (
+        <Redirect to='/'/>
+      );
+    }
+    
     return (
       <div className='bi-block__wrapper g-flex-column'>
         <div className='bi-block__header g-flex-column__item-fixed'>
@@ -61,7 +67,7 @@ class BlockComponent extends React.Component {
             <Route path={ `/blocks/:id/adproofs` }
                    exact={ true }
                    component={
-                     this.renderComponent(<BlockAdproofsComponent/>)
+                     this.renderComponent(<BlockAdproofsComponent  block={ this.props.block }/>)
                    }/>
           </Switch>
         </div>
