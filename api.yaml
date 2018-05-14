@@ -308,9 +308,12 @@ components:
     AnyoneCanSpendTransactionOutput:
       type: object
       required:
+        - id
         - value
         - script
       properties:
+        id:
+          $ref: '#/components/schemas/TransactionId'
         value:
           description: Amount of Ergo token
           type: number

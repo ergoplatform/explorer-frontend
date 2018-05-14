@@ -14,5 +14,4 @@
 /**
  * Base16-encoded transaction id bytes
  */
-export interface TransactionId {
-}
+export type TransactionId = string;

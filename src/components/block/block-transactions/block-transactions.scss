@@ -1,0 +1,26 @@
+@import '~styles/base/variables';
+
+// #BLOCK TRANSACTIONS
+//-------------------------------------
+$block-transactions-bg-color: #ffffff;
+$block-transactions-border-color: #eeeeee;
+
+.bi-block-transactions {
+
+  // [ Components ]
+  //---------------------------------------
+  &__item {
+    font-size: 14px;
+    border: 1px solid $block-transactions-border-color;
+    background-color: $block-transactions-bg-color;
+  }
+
+  &__item-header {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
+    border-bottom: 1px solid $block-transactions-border-color;
+  }
+
+  &__item-body {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
+  }
+}

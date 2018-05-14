@@ -22,9 +22,9 @@ export interface AnyoneCanSpendTransaction {
     /**
      * Many transaction inputs
      */
-    inputs: Array<AnyoneCanSpendTransactionInput>;
+    inputs: AnyoneCanSpendTransactionInput[];
     /**
      * Many transaction outputs
      */
-    outputs: Array<AnyoneCanSpendTransactionOutput>;
+    outputs: AnyoneCanSpendTransactionOutput[];
 }

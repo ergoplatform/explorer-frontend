@@ -18,5 +18,5 @@ export interface BlockTransactions {
     /**
      * Anyone can spend transaction objects
      */
-    transactions: Array<AnyoneCanSpendTransaction>;
+    transactions: AnyoneCanSpendTransaction[];
 }
