@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { FullBlock } from '../../../models/generated/fullBlock';
 import { InlineResponse2001References } from '../../../models/generated/inlineResponse2001References';
@@ -14,7 +14,7 @@ import { ArrowIcon } from '../../common/icons/common.icons';
 
 import './block-header.scss';
 
-class BlockHeaderComponent extends React.PureComponent {
+class BlockHeaderComponent extends React.Component {
   props: IBlockHeaderProps & InjectedIntlProps;
   
   render (): JSX.Element {
@@ -40,6 +40,29 @@ class BlockHeaderComponent extends React.PureComponent {
                 <ArrowIcon className='bi-block-header__navigation-btn-icon'/>
               </Link> : null
           }
+        </div>
+        
+        <div className='bi-block-header__tabs g-flex__item-fixed'>
+          <NavLink className='bi-block-header__tab'
+                   activeClassName='bi-block-header__tab--active'
+                   exact={ true }
+                   to={ `/blocks/${this.props.block.header.id}` }>
+            Block Information
+          </NavLink>
+          
+          <NavLink className='bi-block-header__tab'
+                   activeClassName='bi-block-header__tab--active'
+                   exact={ true }
+                   to={ `/blocks/${this.props.block.header.id}/transactions` }>
+            Transactions
+          </NavLink>
+          
+          <NavLink className='bi-block-header__tab'
+                   activeClassName='bi-block-header__tab--active'
+                   exact={ true }
+                   to={ `/blocks/${this.props.block.header.id}/adproofs` }>
+            ADProofs
+          </NavLink>
         </div>
       </div>
     );

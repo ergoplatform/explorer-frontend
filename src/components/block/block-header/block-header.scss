@@ -4,6 +4,9 @@
 //-------------------------------------
 $block-header-title-color: $theme-primary-color;
 $block-header-nav-btn-bg-color: #e8e8e8;
+$block-header-tab-border-color: #0078ff;
+$block-header-tab-active-color: $theme-primary-color;
+$block-header-nav-icon-color: $theme-primary-color;
 
 .bi-block-header {
   margin-bottom: $grid-offset-step * 5;
@@ -21,6 +24,10 @@ $block-header-nav-btn-bg-color: #e8e8e8;
 
   &__navigation {
     margin: 0 $grid-offset-step * 2;
+  }
+
+  &__tabs {
+    margin-left: auto;
   }
 
   &__navigation-btn {
@@ -44,6 +51,22 @@ $block-header-nav-btn-bg-color: #e8e8e8;
     width: 10px;
     height: 10px;
 
-    fill: #000000;
+    fill: $block-header-nav-icon-color;
+  }
+
+  &__tab {
+    margin: 0 ($grid-offset-step * 4);
+    border-bottom: 1px dotted $block-header-tab-border-color;
+    font-size: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__tab--active {
+    border-bottom: 0;
+    color: $block-header-tab-active-color;
+    font-weight: bold;
   }
 }
