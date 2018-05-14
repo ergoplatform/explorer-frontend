@@ -7,6 +7,10 @@
   "components.sidebar-menu.items.charts": "Charts",
   "components.sidebar-menu.items.stats": "Stats",
 
+  "components.block-header.information": "Information",
+  "components.block-header.transactions": "Transactions",
+  "components.block-header.adproofs": "AD Proofs",
+
   "common.stats.supply": "Circulating Supply",
   "common.stats.version": "Software Version",
   "common.stats.marketCap": "Market Cap",
@@ -21,6 +25,7 @@
   "common.block.minedBy": "Mined by",
   "common.block.size": "Size",
   "common.block.votes": "Votes",
+  "common.block.nonce": "Nonce",
 
   "components.data.title": "Latest blocks",
   "components.data.show": "Show",

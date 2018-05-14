@@ -7,6 +7,7 @@ $block-info-row-hover-bg-color: #f8f8f8;
 $block-info-border-color: #eeeeee;
 $block-table-title-color: $theme-primary-color;
 $block-table-cell-color: $theme-primary-color;
+$block-table-cell-border-color: $theme-color-blue;
 
 .bi-block-info {
   font-family: $theme-main-font;
@@ -23,21 +24,40 @@ $block-table-cell-color: $theme-primary-color;
 
   &__row {
     display: table-row;
-
     border-bottom: 1px solid $block-info-border-color;
 
     &:hover {
       background-color: $block-info-row-hover-bg-color;
+
+      .bi-block-info__cell:first-child:after {
+        transform: scale(1);
+      }
     }
   }
 
   &__cell {
     display: table-cell;
+    position: relative;
     padding: $grid-offset-step * 4;
     border: 1px solid $block-info-border-color;
     border-right: 0;
     border-left: 0;
     color: $block-table-cell-color;
     font-size: 15px;
+
+    &:first-child:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background-color: $block-table-cell-border-color;
+      content: '';
+      transform: scale(0);
+    }
+  }
+
+  &__cell--header {
+    font-weight: 600;
   }
 }

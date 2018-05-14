@@ -7,6 +7,10 @@
   "components.sidebar-menu.items.charts": "Графики",
   "components.sidebar-menu.items.stats": "Статистика",
 
+  "components.block-header.information": "Информация",
+  "components.block-header.transactions": "Сделки",
+  "components.block-header.adproofs": "AD Доказательства",
+
   "common.stats.supply": "Оборотное Снабжение",
   "common.stats.version": "Версия",
   "common.stats.marketCap": "Капитализация",
@@ -21,6 +25,7 @@
   "common.block.minedBy": "Майнер",
   "common.block.size": "Размер",
   "common.block.votes": "Голоса",
+  "common.block.nonce": "Одноразовый код",
 
   "components.data.title": "Последние блоки",
   "components.data.show": "Показать",

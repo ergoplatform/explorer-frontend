@@ -39,6 +39,10 @@ $block-header-nav-icon-color: $theme-primary-color;
     background-color: $block-header-nav-btn-bg-color;
     line-height: 22px;
     text-align: center;
+
+    &:hover {
+      background-color: darken($block-header-nav-btn-bg-color, 3);
+    }
   }
 
   &__navigation-btn--prev & {

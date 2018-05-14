@@ -47,21 +47,21 @@ class BlockHeaderComponent extends React.Component {
                    activeClassName='bi-block-header__tab--active'
                    exact={ true }
                    to={ `/blocks/${this.props.block.header.id}` }>
-            Block Information
+            { this.props.intl.formatMessage({ id: 'components.block-header.information' }) }
           </NavLink>
           
           <NavLink className='bi-block-header__tab'
                    activeClassName='bi-block-header__tab--active'
                    exact={ true }
                    to={ `/blocks/${this.props.block.header.id}/transactions` }>
-            Transactions
+            { this.props.intl.formatMessage({ id: 'components.block-header.transactions' }) }
           </NavLink>
           
           <NavLink className='bi-block-header__tab'
                    activeClassName='bi-block-header__tab--active'
                    exact={ true }
                    to={ `/blocks/${this.props.block.header.id}/adproofs` }>
-            ADProofs
+            { this.props.intl.formatMessage({ id: 'components.block-header.adproofs' }) }
           </NavLink>
         </div>
       </div>
