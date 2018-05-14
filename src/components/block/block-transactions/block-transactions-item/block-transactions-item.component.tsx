@@ -47,7 +47,7 @@ class BlockTransactionsItemComponent extends React.PureComponent {
                 return (
                   <div className='bi-block-transactions-item__output g-flex' key={ address.id }>
                     <Link className='g-flex__item'
-                          to={ `/address/${address.id}` }>
+                          to={ `/addresses/${address.id}` }>
                       { address.id }
                     </Link>
                     
