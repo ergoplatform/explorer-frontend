@@ -12,4 +12,16 @@
     font-size: 26px;
     font-weight: 600;
   }
+
+  &__table {
+    margin-top: $grid-offset-step * 10;
+  }
+
+  &__table {
+    margin-right: $grid-offset-step * 5;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

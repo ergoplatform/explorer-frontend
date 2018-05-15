@@ -1,0 +1,46 @@
+@import '~styles/base/variables';
+
+// #ADDRESS TRANSACTIONS
+//-------------------------------------
+$address-transactions-header-color: $theme-primary-color;
+$address-transactions-header-bg-color: #f8f8f8;
+$address-transactions-header-border-color: #eeeeee;
+
+.bi-address-transactions {
+  // [ Components ]
+  //-----------------------------------
+  &__header {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
+    border: 1px solid $address-transactions-header-border-color;
+    color: $address-transactions-header-color;
+    background-color: $address-transactions-header-bg-color;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 0;
+  }
+
+  &__body {
+    display: table;
+    font-size: 14px;
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    border: 1px solid $address-transactions-header-border-color;
+  }
+
+  &__row {
+    display: table-row;
+    border: 1px solid $address-transactions-header-border-color;
+  }
+
+  &__cell {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
+    display: table-cell;
+
+    &--header {
+      font-weight: 600;
+    }
+  }
+}

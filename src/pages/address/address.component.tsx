@@ -11,6 +11,7 @@ import { AppState } from '../../store/app.store';
 import { AddressActions } from '../../actions/address.actions';
 
 import AddressSummaryComponent from '../../components/address/address-summary/address-summary.component';
+import AddressTransactionsComponent from '../../components/address/address-transactions/address-transactions.component';
 
 class AddressComponent extends React.PureComponent {
   props: RouteComponentProps<{ id: string }> & AddressState & AddressActions;
@@ -28,8 +29,26 @@ class AddressComponent extends React.PureComponent {
           </div>
         </div>
         
-        <div className='bi-address__body'>
-          { !this.props.address ? null : (<AddressSummaryComponent summary={ this.props.address.summary }/>) }
+        { this.renderBody() }
+      </div>
+    );
+  }
+  
+  private renderBody (): JSX.Element | null {
+    if (!this.props.address) {
+      return null;
+    }
+    
+    return (
+      <div className='bi-address__body'>
+        <div className='bi-address__tables g-flex'>
+          <div className='bi-address__table g-flex__item'>
+            <AddressSummaryComponent summary={ this.props.address.summary }/>
+          </div>
+          
+          <div className='bi-address__table g-flex__item'>
+            <AddressTransactionsComponent/>
+          </div>
         </div>
       </div>
     );
