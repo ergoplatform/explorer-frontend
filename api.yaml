@@ -549,10 +549,29 @@ components:
       properties:
         summary:
           type: object
+          required:
+            - id
           properties:
             id:
               $ref: '#/components/schemas/AddressId'
-
+        transactions:
+          type: object
+          required:
+            - total
+          properties:
+            total:
+              type: integer
+              format: int32
+              description: Total number of transactions
+              example: 2341
+            totalReceived:
+              type: number
+              description: Total recieved coins
+              example: 10455323.23
+            balance:
+              type: number
+              description: Final balance
+              example: 1123.42
     BlockchainInfo:
       type: object
       required:
