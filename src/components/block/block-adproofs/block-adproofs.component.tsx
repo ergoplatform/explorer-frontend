@@ -8,7 +8,7 @@ interface IBlockAdproofsProps {
   block: FullBlock;
 }
 
-class BlockAdproofsComponent extends React.PureComponent {
+class BlockAdproofs extends React.PureComponent {
   props: IBlockAdproofsProps;
   
   render (): JSX.Element {
@@ -26,4 +26,4 @@ class BlockAdproofsComponent extends React.PureComponent {
   }
 }
 
-export default BlockAdproofsComponent;
+export const BlockAdproofsComponent = BlockAdproofs;

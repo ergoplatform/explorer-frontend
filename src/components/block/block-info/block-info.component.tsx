@@ -9,7 +9,7 @@ interface IBlockInfoProps {
 
 import './block-info.scss';
 
-class BlockInfoComponent extends React.PureComponent {
+class BlockInfo extends React.PureComponent {
   props: IBlockInfoProps & InjectedIntlProps;
   
   render (): JSX.Element {
@@ -33,7 +33,7 @@ class BlockInfoComponent extends React.PureComponent {
             
             <div className='bi-block-info__cell'>
               { this.props.block.header.timestamp }
-              </div>
+            </div>
           </div>
           
           <div className='bi-block-info__row'>
@@ -43,14 +43,14 @@ class BlockInfoComponent extends React.PureComponent {
             
             <div className='bi-block-info__cell'>
               { this.props.block.header.id }
-              </div>
+            </div>
           </div>
-  
+          
           <div className='bi-block-info__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header'>
               { this.props.intl.formatMessage({ id: 'common.block.nonce' }) }
             </div>
-    
+            
             <div className='bi-block-info__cell'>
               { this.props.block.header.nonce }
             </div>
@@ -61,4 +61,4 @@ class BlockInfoComponent extends React.PureComponent {
   }
 }
 
-export default injectIntl<IBlockInfoProps>(BlockInfoComponent);
+export const BlockInfoComponent = injectIntl<IBlockInfoProps>(BlockInfo);

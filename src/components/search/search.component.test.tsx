@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { shallowWithIntl } from '../../utils/test-utils';
 
-import SearchComponent from './search.component';
+import { SearchComponent } from './search.component';
 
 describe('Components | Search', () => {
   it('renders without crashing', () => {

@@ -10,7 +10,7 @@ interface ILimitSelectorProps {
 
 import './limit-selector.scss';
 
-class LimitSelectorComponent extends React.PureComponent {
+class LimitSelector extends React.PureComponent {
   props: ILimitSelectorProps;
   
   render (): JSX.Element {
@@ -49,4 +49,4 @@ class LimitSelectorComponent extends React.PureComponent {
   }
 }
 
-export default LimitSelectorComponent;
+export const LimitSelectorComponent = LimitSelector;

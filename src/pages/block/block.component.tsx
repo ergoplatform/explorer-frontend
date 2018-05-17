@@ -8,14 +8,14 @@ import { AppState } from '../../store/app.store';
 import { BlockActions } from '../../actions/block.actions';
 import { BlockState } from '../../reducers/block.reducer';
 
-import BlockAdproofsComponent from '../../components/block/block-adproofs/block-adproofs.component';
-import BlockHeaderComponent from '../../components/block/block-header/block-header.component';
-import BlockInfoComponent from '../../components/block/block-info/block-info.component';
-import BlockTransactionsComponent from '../../components/block/block-transactions/block-transactions.component';
+import { BlockAdproofsComponent } from '../../components/block/block-adproofs/block-adproofs.component';
+import { BlockHeaderComponent } from '../../components/block/block-header/block-header.component';
+import { BlockInfoComponent } from '../../components/block/block-info/block-info.component';
+import { BlockTransactionsComponent } from '../../components/block/block-transactions/block-transactions.component';
 
 import './block.scss';
 
-class BlockComponent extends React.Component {
+class Block extends React.Component {
   props: {
     page: number;
   } & RouteComponentProps<{ id: string }> & BlockState & BlockActions;
@@ -96,4 +96,4 @@ function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
   return bindActionCreators(BlockActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlockComponent);
+export const BlockComponent = connect(mapStateToProps, mapDispatchToProps)(Block);

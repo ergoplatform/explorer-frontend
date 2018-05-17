@@ -8,7 +8,7 @@ import { SettingsState } from '../../../reducers/settings.reducer';
 
 import { messages } from '../../../containers/connected-intl-provider/connected-intl-provider';
 
-class LanguageSwitcherComponent extends React.PureComponent {
+class LanguageSwitcher extends React.PureComponent {
   locales: string[] = Object.keys(messages);
   props: SettingsState & SettingsActions;
   
@@ -45,4 +45,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators(SettingsActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageSwitcherComponent);
+export const LanguageSwitcherComponent = connect(mapStateToProps, mapDispatchToProps)(LanguageSwitcher);

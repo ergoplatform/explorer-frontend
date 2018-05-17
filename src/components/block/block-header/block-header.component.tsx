@@ -5,17 +5,18 @@ import { Link, NavLink } from 'react-router-dom';
 import { FullBlock } from '../../../models/generated/fullBlock';
 import { InlineResponse2001References } from '../../../models/generated/inlineResponse2001References';
 
+import { ArrowIcon } from '../../common/icons/common.icons';
+
+import './block-header.scss';
+
 interface IBlockHeaderProps {
   block: FullBlock;
   previousPage: number;
   references: InlineResponse2001References;
 }
 
-import { ArrowIcon } from '../../common/icons/common.icons';
 
-import './block-header.scss';
-
-class BlockHeaderComponent extends React.Component {
+class BlockHeader extends React.Component {
   props: IBlockHeaderProps & InjectedIntlProps;
   
   render (): JSX.Element {
@@ -83,4 +84,4 @@ class BlockHeaderComponent extends React.Component {
   }
 }
 
-export default injectIntl<IBlockHeaderProps>(BlockHeaderComponent);
+export const BlockHeaderComponent =  injectIntl<IBlockHeaderProps>(BlockHeader);

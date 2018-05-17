@@ -10,7 +10,7 @@ import { TransactionState } from '../../reducers/transaction.reducer';
 
 import './transaction.scss';
 
-class TransactionComponent extends React.PureComponent {
+class Transaction extends React.PureComponent {
   props: RouteComponentProps<{
     id: string;
   }> & TransactionState & TransactionActions;
@@ -36,5 +36,4 @@ function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
   return bindActionCreators(TransactionActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TransactionComponent);
-
+export const TransactionComponent =  connect(mapStateToProps, mapDispatchToProps)(Transaction);

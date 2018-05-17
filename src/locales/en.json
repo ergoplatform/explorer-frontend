@@ -16,6 +16,9 @@
   "components.address-transactions.totalReceived": "Total received",
   "components.address-transactions.balance": "Final balance",
 
+  "components.address-summary.title": "Summary",
+  "components.address-summary.hash": "Hash",
+
   "common.stats.supply": "Circulating Supply",
   "common.stats.version": "Software Version",
   "common.stats.marketCap": "Market Cap",

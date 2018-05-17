@@ -10,10 +10,10 @@ import { AppState } from '../../store/app.store';
 
 import { AddressActions } from '../../actions/address.actions';
 
-import AddressSummaryComponent from '../../components/address/address-summary/address-summary.component';
-import AddressTransactionsComponent from '../../components/address/address-transactions/address-transactions.component';
+import { AddressSummaryComponent } from '../../components/address/address-summary/address-summary.component';
+import { AddressTransactionsComponent } from '../../components/address/address-transactions/address-transactions.component';
 
-class AddressComponent extends React.PureComponent {
+class Address extends React.PureComponent {
   props: RouteComponentProps<{ id: string }> & AddressState & AddressActions;
   
   componentDidMount (): void {
@@ -63,4 +63,4 @@ function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
   return bindActionCreators(AddressActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddressComponent);
+export const AddressComponent = connect(mapStateToProps, mapDispatchToProps)(Address);

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { InjectedIntlProps, injectIntl } from 'react-intl';
-import { NavLink } from 'react-router-dom';
+import { NavLink, NavLinkProps } from 'react-router-dom';
 
 import { ApiIcon, ChartIcon, DataIcon, StatsIcon, WalletIcon } from '../common/icons/common.icons';
 
 import './sidebar-menu.scss';
 
 interface ISidebarMenuItem {
-  props?: any;
+  props?: NavLinkProps | any;
   icon?: JSX.Element;
   title: string;
   url: string;
@@ -47,7 +47,7 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   }
 ];
 
-class SidebarMenuComponent extends React.Component {
+class SidebarMenu extends React.Component {
   props: InjectedIntlProps;
   
   render (): JSX.Element {
@@ -74,4 +74,4 @@ class SidebarMenuComponent extends React.Component {
   }
 }
 
-export default injectIntl(SidebarMenuComponent);
+export const SidebarMenuComponent = injectIntl(SidebarMenu);

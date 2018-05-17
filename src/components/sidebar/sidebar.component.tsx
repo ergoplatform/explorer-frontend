@@ -10,14 +10,14 @@ import { AppState } from '../../store/app.store';
 import { SettingsActions } from '../../actions/settings.actions';
 import { SettingsState } from '../../reducers/settings.reducer';
 
-import LanguageSwitcherComponent from '../common/language-switcher/language-switcher.component';
-import SidebarMenuComponent from '../sidebar-menu/sidebar-menu.component';
+import { LanguageSwitcherComponent } from '../common/language-switcher/language-switcher.component';
+import { SidebarMenuComponent } from '../sidebar-menu/sidebar-menu.component';
 
 import { ArrowIcon } from '../common/icons/common.icons';
 
 import './sidebar.scss';
 
-class SidebarComponent extends React.Component {
+class Sidebar extends React.Component {
   props: InjectedIntlProps & SettingsActions & SettingsState;
   
   constructor (props: any) {
@@ -73,4 +73,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators(SettingsActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(injectIntl(SidebarComponent));
+export const SidebarComponent = connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(injectIntl(Sidebar));

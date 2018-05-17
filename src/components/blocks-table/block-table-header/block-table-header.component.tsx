@@ -3,7 +3,7 @@ import { InjectedIntlProps, injectIntl } from 'react-intl';
 
 import './blocks-table-header.scss';
 
-class BlockTableHeaderComponent extends React.Component {
+class BlockTableHeader extends React.Component {
   props: InjectedIntlProps;
   
   render (): JSX.Element {
@@ -32,4 +32,4 @@ class BlockTableHeaderComponent extends React.Component {
   }
 }
 
-export default injectIntl(BlockTableHeaderComponent);
+export const BlockTableHeaderComponent = injectIntl(BlockTableHeader);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import BlockTransactionsItemComponent from './block-transactions-item/block-transactions-item.component';
+import { BlockTransactionsItemComponent } from './block-transactions-item/block-transactions-item.component';
 
 import { FullBlock } from '../../../models/generated/fullBlock';
 
@@ -10,7 +10,7 @@ interface IBlockTransactionProps {
   block: FullBlock;
 }
 
-class BlockTransactionsComponent extends React.PureComponent {
+class BlockTransactions extends React.PureComponent {
   props: IBlockTransactionProps;
   
   render (): JSX.Element {
@@ -26,4 +26,4 @@ class BlockTransactionsComponent extends React.PureComponent {
   }
 }
 
-export default BlockTransactionsComponent;
+export const BlockTransactionsComponent = BlockTransactions;

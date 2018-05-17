@@ -7,11 +7,11 @@ import { AppState } from '../../store/app.store';
 
 import { StatsActions } from '../../actions/stats.actions';
 
-import StatsItemComponent from '../stats-item/stats-item.component';
+import { StatsItemComponent } from '../stats-item/stats-item.component';
 
 import './header-stats.scss';
 
-class HeaderStatsComponent extends React.Component {
+class HeaderStats extends React.Component {
   props: StatsActions & StatsState;
   
   componentDidMount (): void {
@@ -39,4 +39,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators<StatsActions>(StatsActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(HeaderStatsComponent);
+export const HeaderStatsComponent = connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(HeaderStats);

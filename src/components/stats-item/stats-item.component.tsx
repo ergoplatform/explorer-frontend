@@ -8,7 +8,7 @@ interface IStatsItemProps {
   value: any;
 }
 
-class StatsItemComponent extends React.PureComponent {
+class StatsItem extends React.PureComponent {
   props: IStatsItemProps & InjectedIntlProps;
   
   render (): JSX.Element {
@@ -28,4 +28,4 @@ class StatsItemComponent extends React.PureComponent {
   }
 }
 
-export default injectIntl<IStatsItemProps>(StatsItemComponent);
+export const StatsItemComponent = injectIntl<IStatsItemProps>(StatsItem);

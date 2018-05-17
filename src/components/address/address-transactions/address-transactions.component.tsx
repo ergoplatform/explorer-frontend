@@ -9,7 +9,7 @@ interface IAddressTransactionsProps {
   summary: FullAddressTransactionSummary;
 }
 
-class AddressTransactionsComponent extends React.PureComponent {
+class AddressTransactions extends React.PureComponent {
   props: IAddressTransactionsProps & InjectedIntlProps;
   
   render (): JSX.Element {
@@ -63,4 +63,4 @@ class AddressTransactionsComponent extends React.PureComponent {
   }
 }
 
-export default injectIntl<IAddressTransactionsProps>(AddressTransactionsComponent);
+export const AddressTransactionsComponent = injectIntl<IAddressTransactionsProps>(AddressTransactions);

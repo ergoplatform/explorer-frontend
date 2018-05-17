@@ -17,7 +17,7 @@ import './config/axios.config';
 import { ConnectedIntlProvider } from './containers/connected-intl-provider/connected-intl-provider';
 import { AppStore } from './store/app.store';
 
-import AppComponent from './containers/app/app.component';
+import { AppComponent } from './containers/app/app.component';
 import { enableTabMode } from './utils/enableTabMode';
 
 addLocaleData([...en, ...ru]);

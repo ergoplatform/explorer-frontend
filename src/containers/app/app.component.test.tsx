@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { shallowWithIntl } from '../../utils/test-utils';
 
-import AppComponent from './app.component';
+import { AppComponent } from './app.component';
 
 describe('App', () => {
   let wrapper: ShallowWrapper;

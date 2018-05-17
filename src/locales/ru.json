@@ -12,9 +12,12 @@
   "components.block-header.adproofs": "AD Доказательства",
 
   "components.address-transactions.title": "Сделки",
-  "components.address-transactions.total": "Кол-во сделок",
+  "components.address-transactions.total": "Количество сделок",
   "components.address-transactions.totalReceived": "Получено монет",
   "components.address-transactions.balance": "Конечный баланс",
+
+  "components.address-summary.title": "Сводка",
+  "components.address-summary.hash": "Хэш",
 
   "common.stats.supply": "Оборотное Снабжение",
   "common.stats.version": "Версия",

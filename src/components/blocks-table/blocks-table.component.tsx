@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import './blocks-table.scss';
-
 import { formatNumberMetricPrefix } from '../../utils/formatNumberMetricPrefix';
 
-import BlockTableHeaderComponent from './block-table-header/block-table-header.component';
+import { BlockTableHeaderComponent } from './block-table-header/block-table-header.component';
+
+import './blocks-table.scss';
 
 interface IBlockTableProps {
   blocks: any[];
   isFetching: boolean;
 }
 
-class BlocksTableComponent extends React.Component {
+class BlockTable extends React.Component {
   props: IBlockTableProps;
   
   render (): JSX.Element {
@@ -55,4 +55,4 @@ class BlocksTableComponent extends React.Component {
   }
 }
 
-export default BlocksTableComponent;
+export const BlocksTableComponent = BlockTable;

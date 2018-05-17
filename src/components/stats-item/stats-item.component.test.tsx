@@ -3,13 +3,13 @@ import * as React from 'react';
 
 import { getMessageByKey, mountWithIntl } from '../../utils/test-utils';
 
-import StatsItem from './stats-item.component';
+import { StatsItemComponent } from './stats-item.component';
 
 describe('Stats item', () => {
   let wrapper: ShallowWrapper;
   
   beforeEach(() => {
-    wrapper = mountWithIntl(<StatsItem title='marketCap' value='100'/>);
+    wrapper = mountWithIntl(<StatsItemComponent title='marketCap' value='100'/>);
   });
   
   it('renders without crashing', () => {

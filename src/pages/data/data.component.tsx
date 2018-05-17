@@ -9,15 +9,15 @@ import './data.scss';
 import { BlockActions } from '../../actions/block.actions';
 import { AppState } from '../../store/app.store';
 
-import BlocksTableComponent from '../../components/blocks-table/blocks-table.component';
-import LimitSelectorComponent from '../../components/common/limit-selector/limit-selector.component';
-import PaginateComponent from '../../components/common/paginate/paginate.component';
+import { BlocksTableComponent } from '../../components/blocks-table/blocks-table.component';
+import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
+import { PaginateComponent } from '../../components/common/paginate/paginate.component';
 
 type IDataProps = AppState & BlockActions & RouteComponentProps<{
   pageNumber: number,
 }>;
 
-class DataComponent extends React.PureComponent {
+class Data extends React.PureComponent {
   props: IDataProps & InjectedIntlProps;
   
   constructor (props: any) {
@@ -110,4 +110,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators(BlockActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl<IDataProps>(DataComponent));
+export const DataComponent = connect(mapStateToProps, mapDispatchToProps)(injectIntl<IDataProps>(Data));

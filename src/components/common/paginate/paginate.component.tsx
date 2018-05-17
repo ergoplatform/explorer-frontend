@@ -11,7 +11,7 @@ interface IPaginateProps {
 
 import './paginate.scss';
 
-class PaginateComponent extends React.PureComponent {
+class Paginate extends React.PureComponent {
   props: InjectedIntlProps & IPaginateProps;
   
   constructor (props: any) {
@@ -47,4 +47,4 @@ class PaginateComponent extends React.PureComponent {
   }
 }
 
-export default injectIntl<IPaginateProps>(PaginateComponent);
+export const PaginateComponent = injectIntl<IPaginateProps>(Paginate);

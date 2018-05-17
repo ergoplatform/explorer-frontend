@@ -5,7 +5,7 @@ import './search.scss';
 
 import { SearchIcon } from '../common/icons/common.icons';
 
-class SearchComponent extends React.PureComponent {
+class Search extends React.PureComponent {
   state: {
     isInputFocused: boolean,
   } = {
@@ -69,4 +69,4 @@ class SearchComponent extends React.PureComponent {
   }
 }
 
-export default SearchComponent;
+export const SearchComponent = Search;
