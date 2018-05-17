@@ -11,6 +11,11 @@
   "components.block-header.transactions": "Сделки",
   "components.block-header.adproofs": "AD Доказательства",
 
+  "components.address-transactions.title": "Сделки",
+  "components.address-transactions.total": "Кол-во сделок",
+  "components.address-transactions.totalReceived": "Получено монет",
+  "components.address-transactions.balance": "Конечный баланс",
+
   "common.stats.supply": "Оборотное Снабжение",
   "common.stats.version": "Версия",
   "common.stats.marketCap": "Капитализация",

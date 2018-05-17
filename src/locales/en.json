@@ -11,6 +11,11 @@
   "components.block-header.transactions": "Transactions",
   "components.block-header.adproofs": "AD Proofs",
 
+  "components.address-transactions.title": "Transactions",
+  "components.address-transactions.total": "No. transactions",
+  "components.address-transactions.totalReceived": "Total received",
+  "components.address-transactions.balance": "Final balance",
+
   "common.stats.supply": "Circulating Supply",
   "common.stats.version": "Software Version",
   "common.stats.marketCap": "Market Cap",
