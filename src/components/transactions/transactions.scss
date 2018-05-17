@@ -1,9 +1,9 @@
 @import '~styles/base/variables';
 
-// #BLOCK TRANSACTIONS
+// #TRANSACTIONS
 //-------------------------------------
-.bi-block-transactions {
-  .bi-block-transactions-item {
+.bi-transactions {
+  .bi-transactions-item {
     margin-bottom: $grid-offset-step * 4;
 
     &:last-child {

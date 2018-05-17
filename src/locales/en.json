@@ -10,6 +10,7 @@
   "components.block-header.information": "Information",
   "components.block-header.transactions": "Transactions",
   "components.block-header.adproofs": "AD Proofs",
+  "components.block-header.back": "Back to all blocks",
 
   "components.address-transactions.title": "Transactions",
   "components.address-transactions.total": "No. transactions",

@@ -12,12 +12,14 @@ import { AddressActions } from '../../actions/address.actions';
 
 import { AddressSummaryComponent } from '../../components/address/address-summary/address-summary.component';
 import { AddressTransactionsComponent } from '../../components/address/address-transactions/address-transactions.component';
+import { TransactionsComponent } from '../../components/transactions/transactions.component';
 
 class Address extends React.PureComponent {
   props: RouteComponentProps<{ id: string }> & AddressState & AddressActions;
   
   componentDidMount (): void {
     this.props.getAddress(this.props.match.params.id);
+    this.props.getAddressTransactions(this.props.match.params.id);
   }
   
   render (): JSX.Element {
@@ -35,7 +37,7 @@ class Address extends React.PureComponent {
   }
   
   private renderBody (): JSX.Element | null {
-    if (!this.props.address) {
+    if (!this.props.address || !this.props.transactions) {
       return null;
     }
     
@@ -49,6 +51,10 @@ class Address extends React.PureComponent {
           <div className='bi-address__table g-flex__item'>
             <AddressTransactionsComponent summary={ this.props.address.transactions }/>
           </div>
+        </div>
+      
+        <div className='bi-address__transactions'>
+          <TransactionsComponent transactions={ this.props.transactions }/>
         </div>
       </div>
     );

@@ -1,10 +1,12 @@
-import { GET_ADDRESS, GET_ADDRESS_SUCCESS } from '../constants/address.types';
+import { GET_ADDRESS, GET_ADDRESS_SUCCESS, GET_ADDRESS_TRANSACTIONS_SUCCESS } from '../constants/address.types';
 
+import { AnyoneCanSpendTransaction } from '../models/generated/anyoneCanSpendTransaction';
 import { FullAddress } from '../models/generated/fullAddress';
 
 export interface AddressState {
   fetching: boolean;
   address?: FullAddress;
+  transactions?: AnyoneCanSpendTransaction[];
 }
 
 const initialState: AddressState = {
@@ -26,6 +28,13 @@ export function addressReducer (state: AddressState = initialState, action: any)
         ...state,
         address: action.payload.data,
         fetching: false
+      };
+    }
+    
+    case GET_ADDRESS_TRANSACTIONS_SUCCESS: {
+      return {
+        ...state,
+        transactions: action.payload.data,
       };
     }
     

@@ -28,7 +28,7 @@ class BlockHeader extends React.Component {
             <ArrowIcon className='bi-block-header__btn-back-icon'/>
             
             <span className='bi-block-header__btn-back-title'>
-                      Back to all blocks
+              { this.props.intl.formatMessage({ id: 'components.block-header.back' }) }
           </span>
           </Link>
         </div>
@@ -84,4 +84,4 @@ class BlockHeader extends React.Component {
   }
 }
 
-export const BlockHeaderComponent =  injectIntl<IBlockHeaderProps>(BlockHeader);
+export const BlockHeaderComponent = injectIntl<IBlockHeaderProps>(BlockHeader);

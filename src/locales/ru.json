@@ -10,6 +10,7 @@
   "components.block-header.information": "Информация",
   "components.block-header.transactions": "Сделки",
   "components.block-header.adproofs": "AD Доказательства",
+  "components.block-header.back": "Назад ко всем блокам",
 
   "components.address-transactions.title": "Сделки",
   "components.address-transactions.total": "Количество сделок",
