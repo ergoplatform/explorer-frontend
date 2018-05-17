@@ -47,7 +47,7 @@ class AddressComponent extends React.PureComponent {
           </div>
           
           <div className='bi-address__table g-flex__item'>
-            <AddressTransactionsComponent/>
+            <AddressTransactionsComponent summary={ this.props.address.transactions }/>
           </div>
         </div>
       </div>

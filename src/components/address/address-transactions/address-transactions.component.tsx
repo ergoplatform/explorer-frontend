@@ -1,8 +1,14 @@
 import * as React from 'react';
 
+import { FullAddressTransactionSummary } from '../../../models/generated/fullAddress';
+
 import './address-transactions.scss';
 
 class AddressTransactionsComponent extends React.PureComponent {
+  props: {
+    summary: FullAddressTransactionSummary;
+  };
+  
   render (): JSX.Element {
     return (
       <div className='bi-address-transactions'>
@@ -17,7 +23,27 @@ class AddressTransactionsComponent extends React.PureComponent {
             </div>
             
             <div className='bi-address-transactions__cell'>
-              12305
+              { this.props.summary.total }
+            </div>
+          </div>
+  
+          <div className='bi-address-transactions__row'>
+            <div className='bi-address-transactions__cell'>
+              Total Received
+            </div>
+    
+            <div className='bi-address-transactions__cell'>
+              { this.props.summary.totalReceived }
+            </div>
+          </div>
+  
+          <div className='bi-address-transactions__row'>
+            <div className='bi-address-transactions__cell'>
+              Final Balance
+            </div>
+    
+            <div className='bi-address-transactions__cell'>
+              { this.props.summary.balance }
             </div>
           </div>
         </div>

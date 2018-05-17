@@ -11,7 +11,13 @@
  */
 import { FullAddressSummary } from './fullAddressSummary';
 
+export interface FullAddressTransactionSummary {
+  total: number;
+  totalReceived: number;
+  balance: number;
+}
 
 export interface FullAddress {
     summary: FullAddressSummary;
+    transactions: FullAddressTransactionSummary;
 }
