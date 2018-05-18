@@ -12,9 +12,7 @@ interface IBlockTableProps {
   isFetching: boolean;
 }
 
-class BlockTable extends React.Component {
-  props: IBlockTableProps;
-  
+export class BlocksTableComponent extends React.Component<IBlockTableProps> {
   render (): JSX.Element {
     return (
       <div className='bi-blocks-table'>
@@ -54,5 +52,3 @@ class BlockTable extends React.Component {
     );
   }
 }
-
-export const BlocksTableComponent = BlockTable;

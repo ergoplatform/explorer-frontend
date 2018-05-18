@@ -1,6 +1,5 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -17,9 +16,7 @@ import { ArrowIcon } from '../common/icons/common.icons';
 
 import './sidebar.scss';
 
-class Sidebar extends React.Component {
-  props: InjectedIntlProps & SettingsActions & SettingsState;
-  
+class Sidebar extends React.Component<SettingsActions & SettingsState> {
   constructor (props: any) {
     super(props);
     
@@ -73,4 +70,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators(SettingsActions, dispatch);
 }
 
-export const SidebarComponent = connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(injectIntl(Sidebar));
+export const SidebarComponent = connect(mapStateToProps, mapDispatchToProps)(Sidebar);

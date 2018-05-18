@@ -5,7 +5,7 @@ import { SearchComponent } from '../search/search.component';
 
 import './header.scss';
 
-class Header extends React.Component {
+export class HeaderComponent extends React.Component {
   render (): JSX.Element {
     return (
       <div className='bi-header g-flex g-flex-column__item-fixed'>
@@ -16,5 +16,3 @@ class Header extends React.Component {
     );
   }
 }
-
-export const HeaderComponent = Header;

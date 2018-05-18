@@ -9,9 +9,7 @@ interface IBlockTransactionsItemProps {
   transaction: AnyoneCanSpendTransaction;
 }
 
-class TransactionsItem extends React.PureComponent {
-  props: IBlockTransactionsItemProps;
-  
+export class TransactionsItemComponent extends React.PureComponent<IBlockTransactionsItemProps> {
   render (): JSX.Element {
     let totalOutput = 0;
     
@@ -68,5 +66,3 @@ class TransactionsItem extends React.PureComponent {
     );
   }
 }
-
-export const TransactionsItemComponent = TransactionsItem;

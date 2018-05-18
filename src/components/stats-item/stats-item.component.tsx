@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import './stats-item.scss';
 
@@ -8,16 +8,14 @@ interface IStatsItemProps {
   value: any;
 }
 
-class StatsItem extends React.PureComponent {
-  props: IStatsItemProps & InjectedIntlProps;
-  
+export class StatsItemComponent extends React.Component<IStatsItemProps> {
   render (): JSX.Element {
     const { title, value } = this.props;
     
     return (
       <div className='bi-stats-item'>
         <div className='bi-stats-item__title'>
-          { this.props.intl.formatMessage({ id: `common.stats.${title}` }) }
+          <FormattedMessage id={`common.stats.${title}`}/>
         </div>
         
         <div className='bi-stats-item__value'>
@@ -27,5 +25,3 @@ class StatsItem extends React.PureComponent {
     );
   }
 }
-
-export const StatsItemComponent = injectIntl<IStatsItemProps>(StatsItem);

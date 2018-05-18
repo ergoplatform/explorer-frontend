@@ -8,9 +8,8 @@ import { SettingsState } from '../../../reducers/settings.reducer';
 
 import { messages } from '../../../containers/connected-intl-provider/connected-intl-provider';
 
-class LanguageSwitcher extends React.PureComponent {
+class LanguageSwitcher extends React.PureComponent<SettingsState & SettingsActions> {
   locales: string[] = Object.keys(messages);
-  props: SettingsState & SettingsActions;
   
   constructor (props: any) {
     super(props);

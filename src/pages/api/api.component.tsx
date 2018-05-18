@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class Api extends React.PureComponent {
+export class ApiComponent extends React.PureComponent {
   render (): JSX.Element {
     return (
       <div className="bi-api">
@@ -9,5 +9,3 @@ class Api extends React.PureComponent {
     );
   }
 }
-
-export const ApiComponent = Api;

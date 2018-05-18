@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Link, NavLink } from 'react-router-dom';
 
 import { FullBlock } from '../../../models/generated/fullBlock';
@@ -16,9 +16,7 @@ interface IBlockHeaderProps {
 }
 
 
-class BlockHeader extends React.Component {
-  props: IBlockHeaderProps & InjectedIntlProps;
-  
+export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
   render (): JSX.Element {
     return (
       <div className='bi-block-header g-flex-column'>
@@ -28,14 +26,15 @@ class BlockHeader extends React.Component {
             <ArrowIcon className='bi-block-header__btn-back-icon'/>
             
             <span className='bi-block-header__btn-back-title'>
-              { this.props.intl.formatMessage({ id: 'components.block-header.back' }) }
+              <FormattedMessage id='components.block-header.back'/>
           </span>
           </Link>
         </div>
         
         <div className='bi-block-header__line g-flex-column__item g-flex'>
           <div className='bi-block-header__title g-flex__item-fixed'>
-            { this.props.intl.formatMessage({ id: 'common.block.block' }) } #{ this.props.block.header.height }
+            <FormattedMessage id='common.block.block'/>
+            #{ this.props.block.header.height }
           </div>
           
           <div className='bi-block-header__navigation g-flex__item-fixed'>
@@ -61,21 +60,21 @@ class BlockHeader extends React.Component {
                      activeClassName='bi-block-header__tab--active'
                      exact={ true }
                      to={ `/blocks/${this.props.block.header.id}` }>
-              { this.props.intl.formatMessage({ id: 'components.block-header.information' }) }
+              <FormattedMessage id='components.block-header.information'/>
             </NavLink>
             
             <NavLink className='bi-block-header__tab'
                      activeClassName='bi-block-header__tab--active'
                      exact={ true }
                      to={ `/blocks/${this.props.block.header.id}/transactions` }>
-              { this.props.intl.formatMessage({ id: 'components.block-header.transactions' }) }
+              <FormattedMessage id='components.block-header.transactions'/>
             </NavLink>
             
             <NavLink className='bi-block-header__tab'
                      activeClassName='bi-block-header__tab--active'
                      exact={ true }
                      to={ `/blocks/${this.props.block.header.id}/adproofs` }>
-              { this.props.intl.formatMessage({ id: 'components.block-header.adproofs' }) }
+              <FormattedMessage id='components.block-header.adproofs'/>
             </NavLink>
           </div>
         </div>
@@ -83,5 +82,3 @@ class BlockHeader extends React.Component {
     );
   }
 }
-
-export const BlockHeaderComponent = injectIntl<IBlockHeaderProps>(BlockHeader);

@@ -1,11 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import './search.scss';
-
 import { SearchIcon } from '../common/icons/common.icons';
 
-class Search extends React.PureComponent {
+import './search.scss';
+
+export class SearchComponent extends React.PureComponent {
   state: {
     isInputFocused: boolean,
   } = {
@@ -68,5 +68,3 @@ class Search extends React.PureComponent {
     });
   }
 }
-
-export const SearchComponent = Search;

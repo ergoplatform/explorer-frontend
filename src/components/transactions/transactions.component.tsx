@@ -10,9 +10,7 @@ interface IBlockTransactionProps {
   transactions: AnyoneCanSpendTransaction[];
 }
 
-class Transactions extends React.PureComponent {
-  props: IBlockTransactionProps;
-  
+export class TransactionsComponent extends React.PureComponent<IBlockTransactionProps> {
   render (): JSX.Element {
     return (
       <div className='bi-transactions'>
@@ -25,5 +23,3 @@ class Transactions extends React.PureComponent {
     );
   }
 }
-
-export const TransactionsComponent = Transactions;

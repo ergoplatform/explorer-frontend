@@ -11,9 +11,7 @@ import { StatsItemComponent } from '../stats-item/stats-item.component';
 
 import './header-stats.scss';
 
-class HeaderStats extends React.Component {
-  props: StatsActions & StatsState;
-  
+class HeaderStats extends React.Component<StatsActions & StatsState> {
   componentDidMount (): void {
     this.props.getStatsInfo();
   }

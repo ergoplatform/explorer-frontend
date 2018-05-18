@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 
 import { ApiIcon, ChartIcon, DataIcon, StatsIcon, WalletIcon } from '../common/icons/common.icons';
@@ -47,9 +47,7 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   }
 ];
 
-class SidebarMenu extends React.Component {
-  props: InjectedIntlProps;
-  
+export class SidebarMenuComponent extends React.Component {
   render (): JSX.Element {
     return <div className='bi-sidebar-menu g-flex-column'>
       {
@@ -64,7 +62,7 @@ class SidebarMenu extends React.Component {
               { item.icon }
               
               <span className='bi-sidebar-menu__item-title g-flex__item'>
-                { this.props.intl.formatMessage({ id: item.title }) }
+                <FormattedMessage id={ item.title }/>
               </span>
             </NavLink>
           );
@@ -73,5 +71,3 @@ class SidebarMenu extends React.Component {
     </div>;
   }
 }
-
-export const SidebarMenuComponent = injectIntl(SidebarMenu);

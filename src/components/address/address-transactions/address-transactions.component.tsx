@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import { FullAddressTransactionSummary } from '../../../models/generated/fullAddress';
 
@@ -9,24 +9,18 @@ interface IAddressTransactionsProps {
   summary: FullAddressTransactionSummary;
 }
 
-class AddressTransactions extends React.PureComponent {
-  props: IAddressTransactionsProps & InjectedIntlProps;
-  
+export class AddressTransactionsComponent extends React.Component<IAddressTransactionsProps> {
   render (): JSX.Element {
     return (
       <div className='bi-address-transactions'>
         <div className='bi-address-transactions__header'>
-          {
-            this.props.intl.formatMessage({ id: 'components.address-transactions.title' })
-          }
+          <FormattedMessage id='components.address-transactions.title'/>
         </div>
         
         <div className='bi-address-transactions__body bi-table'>
           <div className='bi-address-transactions__row bi-table__row'>
             <div className='bi-address-transactions__cell bi-address-transactions__cell--header bi-table__cell'>
-              {
-                this.props.intl.formatMessage({ id: 'components.address-transactions.total' })
-              }
+              <FormattedMessage id='components.address-transactions.total'/>
             </div>
             
             <div className='bi-address-transactions__cell bi-table__cell'>
@@ -36,9 +30,7 @@ class AddressTransactions extends React.PureComponent {
           
           <div className='bi-address-transactions__row bi-table__row'>
             <div className='bi-address-transactions__cell bi-address-transactions__cell--header bi-table__cell'>
-              {
-                this.props.intl.formatMessage({ id: 'components.address-transactions.totalReceived' })
-              }
+              <FormattedMessage id='components.address-transactions.totalReceived'/>
             </div>
             
             <div className='bi-address-transactions__cell bi-table__cell'>
@@ -48,9 +40,7 @@ class AddressTransactions extends React.PureComponent {
           
           <div className='bi-address-transactions__row bi-table__row'>
             <div className='bi-address-transactions__cell bi-address-transactions__cell--header bi-table__cell'>
-              {
-                this.props.intl.formatMessage({ id: 'components.address-transactions.balance' })
-              }
+              <FormattedMessage id='components.address-transactions.balance'/>
             </div>
             
             <div className='bi-address-transactions__cell bi-table__cell'>
@@ -62,5 +52,3 @@ class AddressTransactions extends React.PureComponent {
     );
   }
 }
-
-export const AddressTransactionsComponent = injectIntl<IAddressTransactionsProps>(AddressTransactions);

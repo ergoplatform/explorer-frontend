@@ -10,9 +10,7 @@ interface ILimitSelectorProps {
 
 import './limit-selector.scss';
 
-class LimitSelector extends React.PureComponent {
-  props: ILimitSelectorProps;
-  
+export class LimitSelectorComponent extends React.PureComponent<ILimitSelectorProps> {
   render (): JSX.Element {
     return (
       <div className='bi-limit-selector'>
@@ -48,5 +46,3 @@ class LimitSelector extends React.PureComponent {
     this.props.onLimitSelect(limit);
   }
 }
-
-export const LimitSelectorComponent = LimitSelector;

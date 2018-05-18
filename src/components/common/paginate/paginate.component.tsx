@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import * as ReactPaginate from 'react-paginate';
 
 interface IPaginateProps {
@@ -11,9 +11,7 @@ interface IPaginateProps {
 
 import './paginate.scss';
 
-class Paginate extends React.PureComponent {
-  props: InjectedIntlProps & IPaginateProps;
-  
+export class PaginateComponent extends React.PureComponent<IPaginateProps> {
   constructor (props: any) {
     super(props);
     
@@ -31,8 +29,8 @@ class Paginate extends React.PureComponent {
                      previousClassName='bi-paginate__prev'
                      nextClassName='bi-paginate__next'
                      activeClassName='bi-paginate__item--selected'
-                     previousLabel={ this.props.intl.formatMessage({ id: 'components.paginate.prev' }) }
-                     nextLabel={ this.props.intl.formatMessage({ id: 'components.paginate.next' }) }
+                     previousLabel={ <FormattedMessage id='components.paginate.prev'/> }
+                     nextLabel={  <FormattedMessage id='components.paginate.next'/> }
                      onPageChange={ this.onPageChange }
                      pageCount={ pageCount }
                      forcePage={ this.props.forcePage || 0 }
@@ -46,5 +44,3 @@ class Paginate extends React.PureComponent {
     this.props.onPageChange(selected);
   }
 }
-
-export const PaginateComponent = injectIntl<IPaginateProps>(Paginate);
