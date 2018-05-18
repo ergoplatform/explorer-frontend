@@ -21,23 +21,19 @@ $address-transactions-header-border-color: #eeeeee;
   }
 
   &__body {
-    display: table;
     font-size: 14px;
     background-color: #fff;
     width: 100%;
-    border-collapse: collapse;
-    box-sizing: border-box;
+
     border: 1px solid $address-transactions-header-border-color;
   }
 
   &__row {
-    display: table-row;
     border: 1px solid $address-transactions-header-border-color;
   }
 
   &__cell {
     padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
-    display: table-cell;
 
     &--header {
       font-weight: 600;

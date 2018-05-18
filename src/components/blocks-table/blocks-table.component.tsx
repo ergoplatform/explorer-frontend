@@ -25,27 +25,27 @@ class BlockTable extends React.Component {
   
   private renderTable (): JSX.Element {
     return (
-      <div className='bi-blocks-table__body'>
+      <div className='bi-blocks-table__body bi-table'>
         <BlockTableHeaderComponent/>
         
         {
           this.props.blocks.map((block) => {
             return (
-              <div className='bi-blocks-table__row' key={ block.height }>
-                <div className='bi-blocks-table__cell'>
+              <div className='bi-blocks-table__row bi-table__row' key={ block.height }>
+                <div className='bi-blocks-table__cell bi-table__cell'>
                   <Link to={ `/blocks/${block.id}` }>
                     { block.height }
                   </Link>
                 </div>
-                <div className='bi-blocks-table__cell'>{ block.timestamp }</div>
-                <div className='bi-blocks-table__cell'>{ block.transactionsCount }</div>
-                <div className='bi-blocks-table__cell'>
+                <div className='bi-blocks-table__cell bi-table__cell'>{ block.timestamp }</div>
+                <div className='bi-blocks-table__cell bi-table__cell'>{ block.transactionsCount }</div>
+                <div className='bi-blocks-table__cell bi-table__cell'>
                   <Link to={ `/addresses/${block.miner.id}` }>
                     { block.miner.name || block.miner.id }
                   </Link>
                 </div>
-                <div className='bi-blocks-table__cell'>{ formatNumberMetricPrefix(block.size) }B</div>
-                <div className='bi-blocks-table__cell'>{ block.votes }</div>
+                <div className='bi-blocks-table__cell bi-table__cell'>{ formatNumberMetricPrefix(block.size) }B</div>
+                <div className='bi-blocks-table__cell bi-table__cell'>{ block.votes }</div>
               </div>
             );
           })

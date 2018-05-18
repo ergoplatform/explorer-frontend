@@ -89,3 +89,10 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     fill: $sidebar-btn-toggle-icon-color;
   }
 }
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-sidebar {
+    position: absolute;
+    left: -100%;
+  }
+}

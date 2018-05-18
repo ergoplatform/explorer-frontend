@@ -11,6 +11,8 @@ $block-transactions-item-total-value-color: $theme-color-blue;
   border: 1px solid $block-transactions-item-border-color;
   background-color: $block-transactions-item-bg-color;
   font-size: 14px;
+  min-width: 300px;
+
 
   // [ Components ]
   //---------------------------------------
@@ -44,5 +46,9 @@ $block-transactions-item-total-value-color: $theme-color-blue;
     border-radius: 94px;
     color: $block-transactions-item-total-value-color;
     font-weight: bold;
+  }
+
+  &__output {
+    flex-flow: wrap;
   }
 }

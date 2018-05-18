@@ -18,7 +18,7 @@ class TransactionsItem extends React.PureComponent {
     return (
       <div className='bi-transactions-item'>
         <div className='bi-transactions-item__header'>
-          <Link className='bi-transactions-item__title'
+          <Link className='bi-transactions-item__title u-word-wrap'
                 to={ `/transactions/${this.props.transaction.id}` }>
             { this.props.transaction.id }
           </Link>
@@ -29,7 +29,7 @@ class TransactionsItem extends React.PureComponent {
             {
               this.props.transaction.inputs.map((address) => {
                 return (
-                  <div className='bi-transactions-item__input' key={ address.id }>
+                  <div className='bi-transactions-item__input u-word-wrap' key={ address.id }>
                     <Link to={ `/addresses/${address.id}` }>
                       { address.id }
                     </Link>
@@ -46,7 +46,7 @@ class TransactionsItem extends React.PureComponent {
                 
                 return (
                   <div className='bi-transactions-item__output g-flex' key={ address.id }>
-                    <Link className='g-flex__item'
+                    <Link className='g-flex__item u-word-wrap'
                           to={ `/addresses/${address.id}` }>
                       { address.id }
                     </Link>

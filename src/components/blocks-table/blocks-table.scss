@@ -13,15 +13,12 @@ $block-table-cell-color: $theme-primary-color;
   // [ Components ]
   //----------------------------------
   &__body {
-    display: table;
     width: 100%;
     border: 1px solid $block-table-table-border-color;
-    border-collapse: collapse;
     background-color: $block-table-table-bg-color;
   }
 
   &__row {
-    display: table-row;
     border-bottom: 1px solid $block-table-table-border-color;
 
     &:hover {
@@ -30,7 +27,6 @@ $block-table-cell-color: $theme-primary-color;
   }
 
   &__cell {
-    display: table-cell;
     padding: $grid-offset-step * 4;
     border: 1px solid $block-table-table-border-color;
     border-right: 0;

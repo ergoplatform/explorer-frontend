@@ -14,18 +14,26 @@
   }
 
   &__transactions {
-    margin-top: $grid-offset-step * 10;
+    margin-top: $grid-offset-step * 8;
+  }
+
+  &__tables {
+    margin: $grid-offset-step * 10  (-($grid-offset-step * 5)) 0;
+
+    flex-wrap: wrap;
   }
 
   &__table {
-    margin-top: $grid-offset-step * 10;
+    min-width: 300px;
   }
 
   &__table {
-    margin-right: $grid-offset-step * 5;
+    margin: ($grid-offset-step * 2) ($grid-offset-step * 5);
+  }
+}
 
-    &:last-child {
-      margin-right: 0;
-    }
+@media screen and (max-width: $mobile-device-width) {
+  .bi-address {
+    padding: ($grid-offset-step * 2) ($grid-offset-step * 3);
   }
 }

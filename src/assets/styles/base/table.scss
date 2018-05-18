@@ -1,0 +1,32 @@
+@import '~styles/base/variables';
+
+.bi-table {
+  display: table;
+  box-sizing: border-box;
+  width: 100%;
+  border-collapse: collapse;
+
+  &__row {
+    display: table-row;
+    box-sizing: border-box;
+  }
+
+  &__cell {
+    display: table-cell;
+  }
+}
+
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-table {
+    display: block;
+
+    &__row {
+      display: block;
+    }
+
+    &__cell {
+      display: block;
+    }
+  }
+}

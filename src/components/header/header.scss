@@ -7,9 +7,22 @@ $header-bg-color: #ffffff;
 .bi-header {
   position: relative;
   height: 100px;
-  padding: 0 ($grid-offset-step * 15);
   background-color: $header-bg-color;
   box-shadow: 0 2px 6px 0 rgba(0,0,0,0.02);
 
   justify-content: space-between;
+
+  .bi-search {
+    padding-right: $grid-offset-step * 15;
+  }
+
+  .bi-header-stats {
+    padding-left: $grid-offset-step * 15;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-header {
+    display: none;
+  }
 }

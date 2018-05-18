@@ -21,33 +21,20 @@ $address-summary-header-border-color: #eeeeee;
   }
 
   &__body {
-    display: table;
     font-size: 14px;
     background-color: #fff;
-    width: 100%;
-    border-collapse: collapse;
-    box-sizing: border-box;
     border: 1px solid $address-summary-header-border-color;
   }
 
   &__row {
-    display: table-row;
-    box-sizing: border-box;
     border: 1px solid $address-summary-header-border-color;
   }
 
   &__cell {
     padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
-    display: table-cell;
-    text-overflow: ellipsis;
-    overflow: hidden;
 
     &--header {
       font-weight: 600;
-    }
-
-    &--value {
-      word-break: break-all;
     }
   }
 }
