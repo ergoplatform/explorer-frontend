@@ -70,4 +70,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators(SettingsActions, dispatch);
 }
 
-export const SidebarComponent = connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export const SidebarComponent = connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(Sidebar);
