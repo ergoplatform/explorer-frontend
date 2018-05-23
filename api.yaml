@@ -46,11 +46,6 @@ paths:
           schema:
             type: string
             enum: [asc, desc]
-        - name: query
-          in: query
-          description: Search query
-          schema:
-            type: string
       operationId: listBlocks
       responses:
         '200':
@@ -166,10 +161,10 @@ paths:
           content:
             'application/json':
               schema:
-                description: Anyone can spend transaction objects
+                description: Transaction objects
                 type: array
                 items:
-                  $ref: '#/components/schemas/AnyoneCanSpendTransaction'
+                  $ref: '#/components/schemas/Transaction'
 
 
   '/info':
@@ -286,7 +281,7 @@ paths:
 
 components:
   schemas:
-    AnyoneCanSpendTransactionInput:
+    TransactionInput:
       type: object
       required:
         - id
@@ -305,12 +300,13 @@ components:
           description: The parameter that should be successfully executed the script of the output of the transaction
           type: string
 
-    AnyoneCanSpendTransactionOutput:
+    TransactionOutput:
       type: object
       required:
         - id
         - value
         - script
+        - spent
       properties:
         id:
           $ref: '#/components/schemas/TransactionId'
@@ -322,7 +318,10 @@ components:
         script:
           description: The script which should be successfully executed for the waste of this output
           type: string
-    AnyoneCanSpendTransaction:
+        spent:
+          description: Transaction spent status
+          type: boolean
+    Transaction:
       type: object
       description: Transaction without any lockers and unlockers
       required:
@@ -336,12 +335,12 @@ components:
           description: Many transaction inputs
           type: array
           items:
-            $ref: '#/components/schemas/AnyoneCanSpendTransactionInput'
+            $ref: '#/components/schemas/TransactionInput'
         outputs:
           description: Many transaction outputs
           type: array
           items:
-            $ref: '#/components/schemas/AnyoneCanSpendTransactionOutput'
+            $ref: '#/components/schemas/TransactionOutput'
     FullBlock:
       description: Block with header and transactions
       type: object
@@ -411,7 +410,7 @@ components:
       required:
         - id
         - timestamp
-        - reference
+        - parentId
         - version
         - interlinks
         - adProofsRoot
@@ -419,9 +418,10 @@ components:
         - transactionsRoot
         - nBits
         - votes
-        - nonce
+        - extensionHash
         - equihashSolutions
         - height
+        - blockSize
       properties:
         id:
           $ref: '#/components/schemas/ModifierId'
@@ -429,7 +429,7 @@ components:
           type: integer
           format: int32
           example: 1501505945003
-        reference:
+        parentId:
           $ref: '#/components/schemas/ModifierId'
         version:
            type: integer
@@ -454,19 +454,26 @@ components:
           example: 19857408
         votes:
           $ref: '#/components/schemas/Votes'
-        nonce:
-          type: integer
-          format: int32
-          example: 324573
+        extensionHash:
+          description: Base58-encoded nonce hash
+          type: string
+          example: FjX5cPuwMc2ocDLPWzt6jq29BXjvU6d5w5XURDJ6dmoM
         equihashSolutions:
           description: Base58-encoded equihash solutions
           type: string
           example: 11M1yYZ6GLUJJXWmBSsSiZ412y8SLWEh68WwynR77ykcoEr1QxnEWYPdTSbi7qLbHrZhGkQsQgyW3PqrZVAXtBXEZvravSZwm5rWZZorGotNXA8ZKXgwnbDAh24ZjZCcwk8SQ2zdPn7vCiL7AvQppeuqaM2NQPjsE92bCtpgqnbkh
         height:
+          description: Block height
           type: integer
           format: int32
           minimum: 0
           example: 667
+        blockSize:
+          description: Block size in bytes
+          type: integer
+          format: int32
+          minimum: 0
+          example: 9103958
 
     BlockTransactions:
       type: object
@@ -477,10 +484,10 @@ components:
         headerId:
           $ref: '#/components/schemas/ModifierId'
         transactions:
-          description: Anyone can spend transaction objects
+          description: Transaction objects
           type: array
           items:
-            $ref: '#/components/schemas/AnyoneCanSpendTransaction'
+            $ref: '#/components/schemas/Transaction'
 
     FullTransaction:
       type: object
@@ -494,12 +501,12 @@ components:
           description: Many transaction inputs
           type: array
           items:
-            $ref: '#/components/schemas/AnyoneCanSpendTransactionInput'
+            $ref: '#/components/schemas/TransactionInput'
         outputs:
           description: Many transaction outputs
           type: array
           items:
-            $ref: '#/components/schemas/AnyoneCanSpendTransactionOutput'
+            $ref: '#/components/schemas/TransactionOutput'
 
     TransactionSummary:
       type: object
@@ -518,10 +525,10 @@ components:
           format: int32
           example: 1501505945003
         size:
-          description: Size of transcaction in KB
+          description: Size of transcaction in bytes
           type: number
-          format: float
-          example: 4390.12
+          format: int32
+          example: 43904312
         confirmationsCount:
           description: Number of confimations in transaction
           type: integer
@@ -646,14 +653,14 @@ components:
           $ref: '#/components/schemas/Digest32'
 
     TransactionId:
-      description: Base16-encoded transaction id bytes
+      description: Base58-encoded transaction id bytes
       type: string
-      example: 141cef0ed1e1cbd3bdf2da2d39fb9a0e697b8777012b169609eb76313506ef66
+      example: D2bXMwWN8P9nWJ9qqwZJLauAdcZHX9n6s91QQ9vK6Zu4
 
     AddressId:
-      description: Base16-encoded address id bytes
+      description: Base58-encoded address id bytes
       type: string
-      example: 141cef0ed1e1cbd3bdf2da2d39fb9a0e697b8777012b169609eb76313506ef66
+      example: D2bXMwWN8P9nWJ9qqwZJLauAdcZHX9n6s91QQ9vK6Zu4
 
     ModifierId:
       description: Base58-encoded 32 byte modifier id
