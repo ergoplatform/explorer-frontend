@@ -11,6 +11,7 @@ $address-actions-btn-bg-color: $theme-primary-color;
   // [ Components ]
   //-----------------------------------
   &__btn {
+    display: flex;
     padding: ($grid-offset-step * 2) ($grid-offset-step * 4);
     border: 0;
     border-radius: 20px;
@@ -18,12 +19,15 @@ $address-actions-btn-bg-color: $theme-primary-color;
     background-color: $address-actions-btn-bg-color;
     font-family: $theme-main-font;
     font-size: 14px;
+
+    align-items: center;
   }
 
   &__btn-icon {
-    fill: $address-actions-btn-icon-color;
     width: 15px;
     height: 15px;
     margin-left: $grid-offset-step * 2;
+
+    fill: $address-actions-btn-icon-color;
   }
 }
