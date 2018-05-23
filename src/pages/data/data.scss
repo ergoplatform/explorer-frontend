@@ -21,7 +21,8 @@ $data-title-color: $theme-primary-color;
   }
 
   &__footer {
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__title {

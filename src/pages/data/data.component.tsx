@@ -48,13 +48,6 @@ class Data extends React.PureComponent {
           <div className='bi-data__title g-flex__item'>
             { this.props.intl.formatMessage({ id: 'components.data.title' }) }
           </div>
-          
-          <div className='bi-data__actions g-flex__item-fixed'>
-            <LimitSelectorComponent items={ [30, 60, 120] }
-                                    selected={ this.props.settings.blocksLimit }
-                                    label={ this.props.intl.formatMessage({ id: 'components.data.show' }) }
-                                    onLimitSelect={ this.onLimitSelect }/>
-          </div>
         </div>
         
         <div className='bi-data__body g-flex-column__item'>
@@ -63,10 +56,19 @@ class Data extends React.PureComponent {
         
         
         <div className='bi-data__footer g-flex-column__item-fixed g-flex'>
-          <PaginateComponent limit={ this.props.settings.blocksLimit }
-                             total={ this.props.blocks.total }
-                             forcePage={ this.props.blocks.offset / this.props.settings.blocksLimit }
-                             onPageChange={ this.onPageChange }/>
+          <div className='g-flex__item-fixed'>
+            <LimitSelectorComponent items={ [30, 60, 120] }
+                                    selected={ this.props.settings.blocksLimit }
+                                    label={ this.props.intl.formatMessage({ id: 'components.data.show' }) }
+                                    onLimitSelect={ this.onLimitSelect }/>
+          </div>
+          
+          <div className='g-flex__item-fixed'>
+            <PaginateComponent limit={ this.props.settings.blocksLimit }
+                               total={ this.props.blocks.total }
+                               forcePage={ this.props.blocks.offset / this.props.settings.blocksLimit }
+                               onPageChange={ this.onPageChange }/>
+          </div>
         </div>
       </div>
     );
