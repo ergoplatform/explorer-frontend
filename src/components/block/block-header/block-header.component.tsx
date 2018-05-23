@@ -11,7 +11,7 @@ import './block-header.scss';
 
 interface IBlockHeaderProps {
   block: FullBlock;
-  previousPage: number;
+  previousOffset: number;
   references: InlineResponse2001References;
 }
 
@@ -22,7 +22,7 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
       <div className='bi-block-header g-flex-column'>
         <div className='bi-block-header__line g-flex-column__item-fixed'>
           <Link className='bi-block-header__btn-back'
-                to={ `/page/${this.props.previousPage + 1}` }>
+                to={ `/?offset=${this.props.previousOffset}` }>
             <ArrowIcon className='bi-block-header__btn-back-icon'/>
             
             <span className='bi-block-header__btn-back-title'>

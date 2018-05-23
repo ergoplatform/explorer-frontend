@@ -17,7 +17,7 @@ import './block.scss';
 
 class Block extends React.Component {
   props: {
-    page: number;
+    offset: number;
   } & RouteComponentProps<{ id: string }> & BlockState & BlockActions;
   
   constructor (props: any) {
@@ -49,7 +49,7 @@ class Block extends React.Component {
       <div className='bi-block__wrapper g-flex-column'>
         <div className='bi-block__header g-flex-column__item-fixed'>
           <BlockHeaderComponent block={ this.props.block }
-                                previousPage={ this.props.page }
+                                previousOffset={ this.props.offset }
                                 references={ this.props.references }/>
         </div>
         
@@ -84,11 +84,11 @@ class Block extends React.Component {
 }
 
 function mapStateToProps (state: AppState): BlockState & {
-  page: number;
+  offset: number;
 } {
   return {
     ...state.block,
-    page: state.blocks.offset / state.settings.blocksLimit
+    offset: state.blocks.offset
   };
 }
 
