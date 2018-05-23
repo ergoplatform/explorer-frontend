@@ -10,6 +10,7 @@ import { AppState } from '../../store/app.store';
 
 import { AddressActions } from '../../actions/address.actions';
 
+import { AddressActionsComponent } from '../../components/address/address-actions/address-actions.component';
 import { AddressSummaryComponent } from '../../components/address/address-summary/address-summary.component';
 import { AddressTransactionsComponent } from '../../components/address/address-transactions/address-transactions.component';
 import { TransactionsComponent } from '../../components/transactions/transactions.component';
@@ -52,7 +53,11 @@ class Address extends React.PureComponent {
             <AddressTransactionsComponent summary={ this.props.address.transactions }/>
           </div>
         </div>
-      
+        
+        <div className='bi-address__actions'>
+          <AddressActionsComponent address={ this.props.address }/>
+        </div>
+        
         <div className='bi-address__transactions'>
           <TransactionsComponent transactions={ this.props.transactions }/>
         </div>

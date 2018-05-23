@@ -100,7 +100,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'styles': paths.appStyles,
+      'styles': paths.appStyles
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -214,7 +214,22 @@ module.exports = {
 
           {
             test: /\.svg$/,
-            loader: 'svg-sprite-loader'
+            use: [
+              {
+                loader: 'svg-sprite-loader'
+              },
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    { removeTitle: true },
+                    { mergePaths: true },
+                    { removeDesc: true },
+                    { convertPathData: false }
+                  ]
+                }
+              }
+            ]
           },
 
           // "file" loader makes sure those assets get served by WebpackDevServer.

@@ -260,7 +260,22 @@ module.exports = {
           },
           {
             test: /\.svg$/,
-            loader: 'svg-sprite-loader'
+            use: [
+              {
+                loader: 'svg-sprite-loader'
+              },
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    { removeTitle: true },
+                    { mergePaths: true },
+                    { removeDesc: true },
+                    { convertPathData: false }
+                  ]
+                }
+              }
+            ]
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { addLocaleData } from 'react-intl';
+import * as ReactModal from 'react-modal';
 
 import * as en from 'react-intl/locale-data/en';
 import * as ru from 'react-intl/locale-data/ru';
@@ -22,6 +23,10 @@ import { enableTabMode } from './utils/enableTabMode';
 
 addLocaleData([...en, ...ru]);
 
+const rootElement = document.getElementById('root') as HTMLElement;
+
+ReactModal.setAppElement(rootElement);
+
 ReactDOM.render(
   <Provider store={ AppStore }>
     <ConnectedIntlProvider>
@@ -29,9 +34,7 @@ ReactDOM.render(
         <Route path='/' component={ AppComponent }/>
       </BrowserRouter>
     </ConnectedIntlProvider>
-  </Provider>
-  ,
-  document.getElementById('root') as HTMLElement
+  </Provider>, rootElement
 );
 
 enableTabMode();

@@ -1,0 +1,63 @@
+@import '~styles/base/variables';
+@import '~styles/components/buttons';
+
+// #MODAL
+//----------------------------------
+$modal-overlay-bg-before: rgba(0,0,0,0);
+$modal-overlay-bg: rgba(0,0,0,0.3);
+
+.bi-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__btn-close {
+    @extend .bi-btn;
+    @extend .bi-btn--flat;
+    position: absolute;
+    right: $grid-offset-step * 4;
+    top: $grid-offset-step  * 4;
+  }
+
+  &__btn-close-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.bi-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: $modal-overlay-bg-before;
+}
+
+.ReactModal__Overlay {
+  transition: background-color 150ms ease-in-out;
+
+  &--after-open {
+    background-color: $modal-overlay-bg;
+  }
+
+  &--before-close {
+    background-color: $modal-overlay-bg-before;
+  }
+}
+
+.bi-modal--scale {
+  transform: translate(-50%, -50%)  scale(0);
+  transition: transform 150ms ease-in-out;
+}
+
+.bi-modal--scale.ReactModal__Content {
+  &--after-open {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &--before-close {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
