@@ -326,11 +326,14 @@ components:
       description: Transaction without any lockers and unlockers
       required:
         - id
+        - timestamp
         - inputs
         - outputs
       properties:
         id:
           $ref: '#/components/schemas/TransactionId'
+        timestamp:
+          $ref: '#/components/schemas/Timestamp'
         inputs:
           description: Many transaction inputs
           type: array
@@ -493,7 +496,8 @@ components:
       type: object
       required:
         - summary
-        - io
+        - inputs
+        - outputs
       properties:
         summary:
           $ref: '#/components/schemas/TransactionSummary'

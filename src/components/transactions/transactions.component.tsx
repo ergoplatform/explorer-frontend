@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { AnyoneCanSpendTransaction } from '../../models/generated/anyoneCanSpendTransaction';
+import { Transaction } from '../../models/generated/transaction';
 
 import { TransactionsItemComponent } from './transactions-item/transactions-item.component';
 
 import './transactions.scss';
 
 interface IBlockTransactionProps {
-  transactions: AnyoneCanSpendTransaction[];
+  transactions: Transaction[];
 }
 
 export class TransactionsComponent extends React.PureComponent<IBlockTransactionProps> {

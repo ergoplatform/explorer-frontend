@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AnyoneCanSpendTransaction } from './anyoneCanSpendTransaction';
+import { Transaction } from './transaction';
 import { ModifierId } from './modifierId';
 
 
@@ -18,5 +18,5 @@ export interface BlockTransactions {
     /**
      * Anyone can spend transaction objects
      */
-    transactions: AnyoneCanSpendTransaction[];
+    transactions: Transaction[];
 }

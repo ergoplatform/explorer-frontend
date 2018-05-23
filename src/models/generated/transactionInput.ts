@@ -9,22 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AnyoneCanSpendTransactionInput } from './anyoneCanSpendTransactionInput';
-import { AnyoneCanSpendTransactionOutput } from './anyoneCanSpendTransactionOutput';
 import { TransactionId } from './transactionId';
 
 
-/**
- * Transaction without any lockers and unlockers
- */
-export interface AnyoneCanSpendTransaction {
+export interface TransactionInput {
     id: TransactionId;
     /**
-     * Many transaction inputs
+     * Index of a output in transaction
      */
-    inputs: AnyoneCanSpendTransactionInput[];
+    nonce: number;
     /**
-     * Many transaction outputs
+     * The parameter that should be successfully executed the script of the output of the transaction
      */
-    outputs: AnyoneCanSpendTransactionOutput[];
+    signature: string;
 }

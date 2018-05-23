@@ -40,5 +40,7 @@
   "components.data.show": "Show",
 
   "components.paginate.prev": "Previous",
-  "components.paginate.next": "Next"
+  "components.paginate.next": "Next",
+
+  "components.transaction.title": "Transactions"
 }

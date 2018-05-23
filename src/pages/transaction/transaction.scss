@@ -6,4 +6,13 @@
 .bi-transaction {
   padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
   font-family: $theme-main-font;
+
+  &__title {
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  &__body {
+    margin-top: $grid-offset-step * 10;
+  }
 }

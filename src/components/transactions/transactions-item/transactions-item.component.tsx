@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { AnyoneCanSpendTransaction } from '../../../models/generated/anyoneCanSpendTransaction';
+import { Transaction } from '../../../models/generated/transaction';
 
 import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
-  transaction: AnyoneCanSpendTransaction;
+  transaction: Transaction;
 }
 
 export class TransactionsItemComponent extends React.PureComponent<IBlockTransactionsItemProps> {

@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AnyoneCanSpendTransactionInput } from './anyoneCanSpendTransactionInput';
-import { AnyoneCanSpendTransactionOutput } from './anyoneCanSpendTransactionOutput';
+import { TransactionInput } from './transactionInput';
+import { TransactionOutput } from './transactionOutput';
 import { TransactionSummary } from './transactionSummary';
 
 
@@ -19,9 +19,9 @@ export interface FullTransaction {
     /**
      * Many transaction inputs
      */
-    inputs?: Array<AnyoneCanSpendTransactionInput>;
+    inputs: TransactionInput[];
     /**
      * Many transaction outputs
      */
-    outputs?: Array<AnyoneCanSpendTransactionOutput>;
+    outputs: TransactionOutput[];
 }

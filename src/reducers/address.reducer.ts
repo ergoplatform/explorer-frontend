@@ -1,12 +1,12 @@
 import { GET_ADDRESS, GET_ADDRESS_SUCCESS, GET_ADDRESS_TRANSACTIONS_SUCCESS } from '../constants/address.types';
 
-import { AnyoneCanSpendTransaction } from '../models/generated/anyoneCanSpendTransaction';
 import { FullAddress } from '../models/generated/fullAddress';
+import { Transaction } from '../models/generated/transaction';
 
 export interface AddressState {
   fetching: boolean;
   address?: FullAddress;
-  transactions?: AnyoneCanSpendTransaction[];
+  transactions?: Transaction[];
 }
 
 const initialState: AddressState = {
