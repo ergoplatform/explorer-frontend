@@ -25,7 +25,6 @@ class App extends React.PureComponent {
           <div className='bi-app__body g-flex-column__item g-flex-column g-scroll-y'>
             <Switch>
               <Route exact={ true } path='/' component={ DataComponent }/>
-              <Route exact={ true } path='/page/:pageNumber(\d+)' component={ DataComponent }/>
     
               <Route exact={ true } path='/api' component={ ApiComponent }/>
     

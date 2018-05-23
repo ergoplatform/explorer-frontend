@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 interface ILimitSelectorProps {
-  label: string;
+  label: string | JSX.Element;
   items: number[];
   selected: number;
   onLimitSelect: (limit: number) => void;

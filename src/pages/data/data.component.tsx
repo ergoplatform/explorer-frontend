@@ -1,5 +1,6 @@
+import * as queryString from 'query-string';
 import * as React from 'react';
-import { InjectedIntlProps, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -13,12 +14,11 @@ import { BlocksTableComponent } from '../../components/blocks-table/blocks-table
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
 import { PaginateComponent } from '../../components/common/paginate/paginate.component';
 
-type IDataProps = AppState & BlockActions & RouteComponentProps<{
-  pageNumber: number,
-}>;
+type IDataProps = AppState & BlockActions & RouteComponentProps<{}>;
 
 class Data extends React.PureComponent {
-  props: IDataProps & InjectedIntlProps;
+  props: IDataProps;
+  offset: number;
   
   constructor (props: any) {
     super(props);
@@ -28,15 +28,18 @@ class Data extends React.PureComponent {
   }
   
   componentDidMount (): void {
-    const pageNumber = this.props.match.params.pageNumber ? (this.props.match.params.pageNumber - 1) : 0;
+    this.offset = this.getOffset();
     
-    this.reloadBlocks(pageNumber);
+    this.reloadBlocks(this.offset);
   }
   
   componentWillReceiveProps (props: IDataProps): void {
-    if (props.match.params.pageNumber === undefined &&
-      (this.props.match.params.pageNumber !== props.match.params.pageNumber)) {
-      this.reloadBlocks();
+    const offset = this.getOffset();
+    
+    if (offset === undefined && (this.offset !== offset)) {
+      this.offset = this.getOffset();
+      
+      this.reloadBlocks(this.offset);
     }
   }
   
@@ -46,7 +49,7 @@ class Data extends React.PureComponent {
       <div className='bi-data g-flex-column g-flex-column__item'>
         <div className='bi-data__header g-flex'>
           <div className='bi-data__title g-flex__item'>
-            { this.props.intl.formatMessage({ id: 'components.data.title' }) }
+            <FormattedMessage id='components.data.title'/>
           </div>
         </div>
         
@@ -59,14 +62,14 @@ class Data extends React.PureComponent {
           <div className='g-flex__item-fixed'>
             <LimitSelectorComponent items={ [30, 60, 120] }
                                     selected={ this.props.settings.blocksLimit }
-                                    label={ this.props.intl.formatMessage({ id: 'components.data.show' }) }
+                                    label={ <FormattedMessage id='components.data.title'/> }
                                     onLimitSelect={ this.onLimitSelect }/>
           </div>
           
           <div className='g-flex__item-fixed'>
             <PaginateComponent limit={ this.props.settings.blocksLimit }
                                total={ this.props.blocks.total }
-                               forcePage={ this.props.blocks.offset / this.props.settings.blocksLimit }
+                               forcePage={ Math.floor(this.props.blocks.offset / this.props.settings.blocksLimit) }
                                onPageChange={ this.onPageChange }/>
           </div>
         </div>
@@ -76,31 +79,38 @@ class Data extends React.PureComponent {
   
   
   private onPageChange (page: number): void {
-    this.reloadBlocks(page);
+    this.reloadBlocks(page * this.props.settings.blocksLimit);
   }
   
-  private reloadBlocks (page: number = 0, blocksLimit?: number, blocksOffset?: number): void {
-    const limit  = blocksLimit || this.props.settings.blocksLimit;
-    const offset = blocksOffset || (limit * page);
+  private reloadBlocks (blocksOffset: number = 0, blocksLimit?: number): void {
+    const limit = blocksLimit || this.props.settings.blocksLimit;
     
     this.props.getBlocks({
       limit,
-      offset
+      offset: blocksOffset
     });
     
-    const newPage = Math.ceil(offset / limit);
-    
-    if (newPage === 0) {
+    if (blocksOffset === 0) {
       this.props.history.push(`/`);
     } else {
-      this.props.history.push(`/page/${newPage + 1}`);
+      this.props.history.push(`/?offset=${blocksOffset}`);
     }
   }
   
   private onLimitSelect (limit: number): void {
-    const pageNumber = this.props.match.params.pageNumber ? (this.props.match.params.pageNumber - 1) : 0;
+    this.reloadBlocks(this.props.blocks.offset, limit);
+  }
+  
+  private getOffset (): number {
+    let { offset } = queryString.parse(this.props.history.location.search);
     
-    this.reloadBlocks(pageNumber, limit, this.props.blocks.offset);
+    offset = parseInt(offset, 10);
+    
+    if (!offset) {
+      return 0;
+    } else {
+      return offset;
+    }
   }
 }
 
@@ -112,4 +122,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators(BlockActions, dispatch);
 }
 
-export const DataComponent = connect(mapStateToProps, mapDispatchToProps)(injectIntl<IDataProps>(Data));
+export const DataComponent = connect(mapStateToProps, mapDispatchToProps)(Data);
