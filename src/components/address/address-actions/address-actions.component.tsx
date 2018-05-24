@@ -62,7 +62,8 @@ export class AddressActionsComponent extends React.Component<IAddressActionsProp
                                      address={ this.props.address.summary.id }/>
         
         <PaymentRequestModalComponent isOpen={ this.state[PAYMENT_REQUEST_MODAL_STATE_KEY] }
-                                      onClose={ this.closeModal(PAYMENT_REQUEST_MODAL_STATE_KEY) }/>
+                                      onClose={ this.closeModal(PAYMENT_REQUEST_MODAL_STATE_KEY) }
+                                      address={ this.props.address.summary.id }/>
       </div>
     );
   }

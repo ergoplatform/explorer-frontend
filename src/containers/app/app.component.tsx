@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { hot } from 'react-hot-loader';
 import { Route, Switch } from 'react-router';
 
 import { HeaderComponent } from '../../components/header/header.component';
@@ -25,15 +26,15 @@ class App extends React.PureComponent {
           <div className='bi-app__body g-flex-column__item g-flex-column g-scroll-y'>
             <Switch>
               <Route exact={ true } path='/' component={ DataComponent }/>
-    
+              
               <Route exact={ true } path='/api' component={ ApiComponent }/>
-    
+              
               <Route path='/blocks/:id' component={ BlockComponent }/>
-    
+              
               <Route exact={ true } path='/addresses/:id' component={ AddressComponent }/>
               
               <Route exact={ true } path='/transactions/:id' component={ TransactionComponent }/>
-    
+              
               <Route component={ NotFoundComponent }/>
             </Switch>
           </div>
@@ -43,4 +44,4 @@ class App extends React.PureComponent {
   }
 }
 
-export const AppComponent = App;
+export const AppComponent = hot(module)(App);

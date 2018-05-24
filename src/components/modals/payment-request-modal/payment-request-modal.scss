@@ -2,32 +2,114 @@
 
 // #ADDRESS QRCODE MODAL
 //-------------------------------------
-$address-qrcode-modal-bg: #ffffff;
-$address-qrcode-modal-title-color: $theme-main-font;
-$address-qrcode-modal-subtitle-color: #828795;
+$payment-request-modal-bg: #ffffff;
+$payment-request-modal-title-color: $theme-main-font;
+$payment-request-modal-subtitle-color: #828795;
+$payment-request-modal-link-bg: #dbdbdb;
+$payment-request-modal-btn-copy-color-hover: $theme-color-blue;
+$payment-request-modal-input-border-color: #eeeeee;
 
 .bi-payment-request-modal {
-  padding: ($grid-offset-step * 12) ($grid-offset-step * 22);
+  padding: ($grid-offset-step * 12) ($grid-offset-step * 15);
   border-radius: 4px;
   outline: none;
-  background-color: $address-qrcode-modal-bg;
+  background-color: $payment-request-modal-bg;
   font-family: $theme-main-font;
 
   // [ Components ]
   //-----------------------------------
   &__title {
     margin-bottom: $grid-offset-step * 8;
-    color: $address-qrcode-modal-title-color;
+    color: $payment-request-modal-title-color;
     font-size: 26px;
     font-weight: 600;
-    text-align: center;
     line-height: 1;
+    text-align: center;
   }
 
   &__subtitle {
     margin-top: $grid-offset-step * 2;
-    color: $address-qrcode-modal-subtitle-color;
+    color: $payment-request-modal-subtitle-color;
     font-size: 15px;
     font-weight: 400;
+  }
+
+
+  &__form-item {
+    margin-bottom: $grid-offset-step * 6;
+
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__label {
+    margin-right: $grid-offset-step * 2;
+    font-weight: 600;
+
+    &--line {
+      width: 100%;
+      margin-bottom: $grid-offset-step;
+    }
+  }
+
+  &__input-wrapper {
+    position: relative;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: $grid-offset-step ($grid-offset-step * 10) $grid-offset-step $grid-offset-step;
+    border: 1px solid $payment-request-modal-input-border-color;
+    font-size: 18px;
+    line-height: 1;
+    resize: none;
+
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &--textarea {
+      height: 60px;
+      font-size: 13px;
+    }
+  }
+
+  &__input-currency {
+    position: absolute;
+    top: 50%;
+    right: $grid-offset-step * 2;
+    font-size: 12px;
+    transform: translateY(-50%);
+  }
+
+  &__link {
+    width: 200px;
+    margin-left: $grid-offset-step * 4;
+    font-size: 12px;
+  }
+
+  &__link-header {
+    margin-bottom: $grid-offset-step * 2;
+  }
+
+  &__link-footer {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn-copy {
+    padding: ($grid-offset-step * 2) ($grid-offset-step * 4);
+    font-size: 14px;
+
+    &:hover {
+      color: $payment-request-modal-btn-copy-color-hover;
+    }
+  }
+
+  &__link-body {
+    height: 65px;
+    padding: $grid-offset-step * 2 $grid-offset-step * 3;
+    background-color: $payment-request-modal-link-bg;
   }
 }
