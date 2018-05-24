@@ -1,60 +1,85 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { FullAddress } from '../../../models/generated/fullAddress';
 
 import { QRCodeIcon } from '../../common/icons/common.icons';
+
 import { AddressQrcodeModalComponent } from '../../modals/address-qrcode-modal/address-qrcode-modal.component';
+import { PaymentRequestModalComponent } from '../../modals/payment-request-modal/payment-request-modal.component';
 
 import './address-actions.scss';
 
 interface IAddressActionsState {
-  isQrCodeModalOpened: boolean;
+  [key: string]: boolean;
 }
 
 interface IAddressActionsProps {
   address: FullAddress;
 }
 
-export class AddressActionsComponent extends React.PureComponent<IAddressActionsProps, IAddressActionsState> {
+const QRCODE_MODAL_STATE_KEY          = 'isQrCodeModalOpened';
+const PAYMENT_REQUEST_MODAL_STATE_KEY = 'isPaymentRequestModalOpened';
+
+export class AddressActionsComponent extends React.Component<IAddressActionsProps, IAddressActionsState> {
   state: IAddressActionsState = {
-    isQrCodeModalOpened: false
+    [PAYMENT_REQUEST_MODAL_STATE_KEY]: false,
+    [QRCODE_MODAL_STATE_KEY]: false
   };
   
   constructor (props: IAddressActionsProps) {
     super(props);
     
-    this.openQRCodeModal = this.openQRCodeModal.bind(this);
-    this.closeQRCodeModal = this.closeQRCodeModal.bind(this);
+    this.openModal  = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
   
   render (): JSX.Element {
     return (
-      <div className='bi-address-actions'>
-        <div className='bi-address-actions__item'>
+      <div className='bi-address-actions g-flex'>
+        <div className='bi-address-actions__item g-flex__item-fixed'>
           <button className='bi-address-actions__btn bi-btn'
-                  onClick={ this.openQRCodeModal }>
-            QR Code
+                  onClick={ this.openModal(QRCODE_MODAL_STATE_KEY) }>
+            <FormattedMessage id='components.address-actions.qrcode'/>
             
             <QRCodeIcon className='bi-address-actions__btn-icon'/>
           </button>
         </div>
         
-        <AddressQrcodeModalComponent isOpen={ this.state.isQrCodeModalOpened }
-                                     onClose={ this.closeQRCodeModal }
+        <div className='bi-address-actions__item g-flex__item-fixed'>
+          <button className='bi-address-actions__btn'
+                  onClick={ this.openModal(PAYMENT_REQUEST_MODAL_STATE_KEY) }>
+            <FormattedMessage id='components.address-actions.request-payment'/>
+          </button>
+          
+          <button className='bi-address-actions__btn'>
+            <FormattedMessage id='components.address-actions.donation-button'/>
+          </button>
+        </div>
+        
+        <AddressQrcodeModalComponent isOpen={ this.state[QRCODE_MODAL_STATE_KEY] }
+                                     onClose={ this.closeModal(QRCODE_MODAL_STATE_KEY) }
                                      address={ this.props.address.summary.id }/>
+        
+        <PaymentRequestModalComponent isOpen={ this.state[PAYMENT_REQUEST_MODAL_STATE_KEY] }
+                                      onClose={ this.closeModal(PAYMENT_REQUEST_MODAL_STATE_KEY) }/>
       </div>
     );
   }
   
-  private openQRCodeModal (): void {
-    this.setState({
-      isQrCodeModalOpened: true
-    });
+  private openModal (stateKey: string): () => void {
+    return () => {
+      this.setState({
+        [stateKey]: true
+      });
+    };
   }
   
-  private closeQRCodeModal (): void {
-    this.setState({
-      isQrCodeModalOpened: false
-    });
+  private closeModal (stateKey: string): () => void {
+    return () => {
+      this.setState({
+        [stateKey]: false
+      });
+    };
   }
 }

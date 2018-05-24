@@ -42,5 +42,9 @@
   "components.paginate.prev": "Previous",
   "components.paginate.next": "Next",
 
-  "components.transaction.title": "Transactions"
+  "components.transaction.title": "Transactions",
+
+  "components.address-actions.qrcode": "QR Code",
+  "components.address-actions.request-payment": "Request Payment",
+  "components.address-actions.donation-button": "Donation Button"
 }

@@ -40,5 +40,11 @@
   "components.data.show": "Показать",
 
   "components.paginate.prev": "Назад",
-  "components.paginate.next": "Дальше"
+  "components.paginate.next": "Дальше",
+
+  "components.transaction.title": "Сделки",
+
+  "components.address-actions.qrcode": "QR Код",
+  "components.address-actions.request-payment": "Запросить Платеж",
+  "components.address-actions.donation-button": "Собрать Пожертвование"
 }
