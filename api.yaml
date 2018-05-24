@@ -378,9 +378,7 @@ components:
           minimum: 0
           example: 667
         timestamp:
-          type: integer
-          format: int32
-          example: 1501505945003
+          $ref: '#/components/schemas/Timestamp'
         transactionsCount:
           type: integer
           format: int32
@@ -524,10 +522,7 @@ components:
         id:
           $ref: '#/components/schemas/TransactionId'
         timestamp:
-          description: Transction time in seconds
-          type: integer
-          format: int32
-          example: 1501505945003
+          $ref: '#/components/schemas/Timestamp'
         size:
           description: Size of transcaction in bytes
           type: number
@@ -692,10 +687,10 @@ components:
       example: AcRpicD
 
     Timestamp:
-      description: Date in seconds
+      description: Date in milliseconds
       type: integer
       format: int32
-      example: 1525686982094
+      example: 1527172305
 
     Timespan:
       description: Timespan for charts

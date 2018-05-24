@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 
+import environment from '../../config/environment';
+
 import './address.scss';
 
 import { AddressState } from '../../reducers/address.reducer';
@@ -28,7 +30,7 @@ class Address extends React.PureComponent {
       <div className='bi-address'>
         <div className='bi-address__header'>
           <div className='bi-address__title'>
-            ERGO Address
+            { environment.blockchain.coinName.toUpperCase() } Address
           </div>
         </div>
         

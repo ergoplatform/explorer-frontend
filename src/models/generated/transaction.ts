@@ -9,9 +9,10 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Timestamp } from './timestamp';
+import { TransactionId } from './transactionId';
 import { TransactionInput } from './transactionInput';
 import { TransactionOutput } from './transactionOutput';
-import { TransactionId } from './transactionId';
 
 
 /**
@@ -27,4 +28,6 @@ export interface Transaction {
      * Many transaction outputs
      */
     outputs: TransactionOutput[];
+    
+    timestamp: Timestamp;
 }

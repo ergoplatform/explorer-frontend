@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
+import { SearchBlock } from '../../models/generated/searchBlock';
+
 import { formatNumberMetricPrefix } from '../../utils/formatNumberMetricPrefix';
 
+import { TimestampComponent } from '../common/timestamp/timestamp.component';
 import { BlockTableHeaderComponent } from './block-table-header/block-table-header.component';
 
 import './blocks-table.scss';
 
 interface IBlockTableProps {
-  blocks: any[];
+  blocks: SearchBlock[];
   isFetching: boolean;
 }
 
@@ -35,7 +38,9 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                     { block.height }
                   </Link>
                 </div>
-                <div className='bi-blocks-table__cell bi-table__cell'>{ block.timestamp }</div>
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <TimestampComponent timestamp={ block.timestamp }/>
+                </div>
                 <div className='bi-blocks-table__cell bi-table__cell'>{ block.transactionsCount }</div>
                 <div className='bi-blocks-table__cell bi-table__cell'>
                   <Link to={ `/addresses/${block.miner.id}` }>

@@ -46,6 +46,7 @@ class Transaction extends React.PureComponent {
       id: this.props.transaction.summary.id,
       inputs: this.props.transaction.inputs,
       outputs: this.props.transaction.outputs,
+      timestamp: this.props.transaction.summary.timestamp,
     };
     
     return (

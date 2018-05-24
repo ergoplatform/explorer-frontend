@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
+import environment from '../../../config/environment';
+
 import { Transaction } from '../../../models/generated/transaction';
+
+import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 
 import './transactions-item.scss';
 
@@ -15,11 +19,15 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
     
     return (
       <div className='bi-transactions-item'>
-        <div className='bi-transactions-item__header'>
-          <Link className='bi-transactions-item__title u-word-wrap'
+        <div className='bi-transactions-item__header g-flex'>
+          <Link className='bi-transactions-item__title u-word-wrap g-flex__item-fixed'
                 to={ `/transactions/${this.props.transaction.id}` }>
             { this.props.transaction.id }
           </Link>
+          
+          <div className='bi-transactions-item__timestamp g-flex__item-fixed'>
+            <TimestampComponent timestamp={ this.props.transaction.timestamp }/>
+          </div>
         </div>
         
         <div className='bi-transactions-item__body g-flex'>
@@ -50,7 +58,7 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
                     </Link>
                     
                     <div className='bi-transactions-item__value g-flex__item-fixed'>
-                      { address.value } ERGO
+                      { address.value } { environment.blockchain.coinName.toUpperCase() }
                     </div>
                   </div>
                 );
@@ -58,7 +66,7 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
             }
             
             <div className='bi-transactions-item__total-value g-flex-column__item-fixed'>
-              { totalOutput } ERGO
+              { totalOutput } { environment.blockchain.coinName.toUpperCase() }
             </div>
           </div>
         </div>

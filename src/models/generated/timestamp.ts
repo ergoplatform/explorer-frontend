@@ -14,5 +14,4 @@
 /**
  * Date in seconds
  */
-export interface Timestamp {
-}
+export type Timestamp = number;

@@ -3,6 +3,8 @@ import * as queryString from 'query-string';
 import * as React from 'react';
 import * as ReactModal from 'react-modal';
 
+import environment from '../../../config/environment';
+
 import { AddressId } from '../../../models/generated/addressId';
 
 import { CrossIcon } from '../../common/icons/common.icons';
@@ -67,7 +69,8 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
                      onChange={ this.setAmount }
                      min={ 0 }/>
               
-              <span className='bi-payment-request-modal__input-currency'>ERGO</span>
+              <span
+                className='bi-payment-request-modal__input-currency'>{ environment.blockchain.coinName.toUpperCase() }</span>
             </div>
           </label>
           
