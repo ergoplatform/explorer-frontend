@@ -46,5 +46,11 @@
 
   "components.address-actions.qrcode": "QR Код",
   "components.address-actions.request-payment": "Запросить Платеж",
-  "components.address-actions.donation-button": "Собрать Пожертвование"
+  "components.address-actions.donation-button": "Собрать Пожертвование",
+
+  "components.transaction-io-summary.title": "Входы и Выходы",
+  "components.transaction-summary.title": "Сводка",
+  "components.transaction-summary.size": "Размер",
+  "components.transaction-summary.blocks": "Включена в Блоки",
+  "components.transaction-summary.timestamp": "Время"
 }

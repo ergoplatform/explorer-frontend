@@ -12,7 +12,7 @@ import { AppState } from '../../store/app.store';
 
 import { BlocksTableComponent } from '../../components/blocks-table/blocks-table.component';
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
-import { PaginateComponent } from '../../components/common/paginate/paginate.component';
+import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 
 type IDataProps = AppState & BlockActions & RouteComponentProps<{}>;
 
@@ -67,10 +67,10 @@ class Data extends React.PureComponent {
           </div>
           
           <div className='g-flex__item-fixed'>
-            <PaginateComponent limit={ this.props.settings.blocksLimit }
-                               total={ this.props.blocks.total }
-                               forcePage={ Math.floor(this.props.blocks.offset / this.props.settings.blocksLimit) }
-                               onPageChange={ this.onPageChange }/>
+            <PaginateSimpleComponent total={ this.props.blocks.total }
+                                     limit={ this.props.settings.blocksLimit }
+                                     forcePage={ Math.floor(this.props.blocks.offset / this.props.settings.blocksLimit) }
+                                     onPageChange={ this.onPageChange }/>
           </div>
         </div>
       </div>
