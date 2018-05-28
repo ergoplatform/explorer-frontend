@@ -46,5 +46,11 @@
 
   "components.address-actions.qrcode": "QR Code",
   "components.address-actions.request-payment": "Request Payment",
-  "components.address-actions.donation-button": "Donation Button"
+  "components.address-actions.donation-button": "Donation Button",
+
+  "components.transaction-io-summary.title": "Inputs and Outputs",
+  "components.transaction-summary.title": "Summary",
+  "components.transaction-summary.size": "Size",
+  "components.transaction-summary.blocks": "Included in Blocks",
+  "components.transaction-summary.timestamp": "Received Time"
 }

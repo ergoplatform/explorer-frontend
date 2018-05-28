@@ -12,6 +12,17 @@
     font-weight: 600;
   }
 
+  &__tables {
+    margin: $grid-offset-step * 10  (-($grid-offset-step * 5)) 0;
+
+    flex-wrap: wrap;
+  }
+
+  &__table {
+    min-width: 300px;
+    margin: ($grid-offset-step * 2) ($grid-offset-step * 5);
+  }
+
   &__body {
     margin-top: $grid-offset-step * 10;
   }

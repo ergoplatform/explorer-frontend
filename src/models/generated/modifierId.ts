@@ -14,5 +14,4 @@
 /**
  * Base58-encoded 32 byte modifier id
  */
-export interface ModifierId {
-}
+export type ModifierId = string;

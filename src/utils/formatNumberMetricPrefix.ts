@@ -7,10 +7,20 @@ const ranges = [
   { divider: 1e3, suffix: 'k' }
 ];
 
-export function formatNumberMetricPrefix (originalNumber: number): string {
+export function formatNumberMetricPrefix (originalNumber: number, desiredFormat?: string): string {
+  if (desiredFormat) {
+    const selectedRange = ranges.find((range) => range.suffix === desiredFormat);
+    
+    if (!selectedRange) {
+      return originalNumber.toString();
+    }
+    
+    return (originalNumber / selectedRange.divider).toFixed(2) + ' ' + selectedRange.suffix;
+  }
+  
   for (const range of ranges) {
     if (originalNumber >= range.divider) {
-      return (originalNumber / range.divider).toFixed(0) + range.suffix;
+      return (originalNumber / range.divider).toFixed(2) + ' ' + range.suffix;
     }
   }
   

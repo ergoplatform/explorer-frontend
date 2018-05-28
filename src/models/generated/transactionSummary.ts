@@ -16,16 +16,16 @@ import { TransactionSummaryBlocks } from './transactionSummaryBlocks';
 export interface TransactionSummary {
     id: TransactionId;
     /**
-     * Transction time in seconds
+     * Transaction time in seconds
      */
     timestamp: number;
     /**
-     * Size of transcaction in KB
+     * Size of transcaction in bytes
      */
     size: number;
     /**
-     * Number of confimations in transaction
+     * Number of confirmations in transaction
      */
     confirmationsCount?: number;
-    blocks: Array<TransactionSummaryBlocks>;
+    blocks: TransactionSummaryBlocks[];
 }

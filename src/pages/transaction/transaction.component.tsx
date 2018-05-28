@@ -11,6 +11,8 @@ import { AppState } from '../../store/app.store';
 
 import { TransactionState } from '../../reducers/transaction.reducer';
 
+import { TransactionIoSummaryComponent } from '../../components/transaction/transaction-io-summary/transaction-io-summary.component';
+import { TransactionSummaryComponent } from '../../components/transaction/transaction-summary/transaction-summary.component';
 import { TransactionsItemComponent } from '../../components/transactions/transactions-item/transactions-item.component';
 
 import './transaction.scss';
@@ -46,12 +48,22 @@ class Transaction extends React.PureComponent {
       id: this.props.transaction.summary.id,
       inputs: this.props.transaction.inputs,
       outputs: this.props.transaction.outputs,
-      timestamp: this.props.transaction.summary.timestamp,
+      timestamp: this.props.transaction.summary.timestamp
     };
     
     return (
       <div className='bi-transaction__body'>
         <TransactionsItemComponent transaction={ transaction }/>
+  
+        <div className='bi-transaction__tables g-flex'>
+          <div className='bi-transaction__table g-flex__item'>
+            <TransactionSummaryComponent summary={ this.props.transaction.summary }/>
+          </div>
+  
+          <div className='bi-transaction__table g-flex__item'>
+            <TransactionIoSummaryComponent summary={ this.props.transaction.summary }/>
+          </div>
+        </div>
       </div>
     );
   }

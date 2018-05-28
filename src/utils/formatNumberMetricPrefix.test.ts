@@ -8,31 +8,31 @@ describe('Utils | formatNumberMetricPrefix', () => {
   
   it('Formats number between 1000 and 999 999 as k', () => {
     expect(formatNumberMetricPrefix(999999))
-      .toEqual('1000k');
+      .toEqual('1000 k');
   });
   
   it('Formats number between 1 000 000 and 999 999 999 as M', () => {
     expect(formatNumberMetricPrefix(999999999))
-      .toEqual('1000M');
+      .toEqual('1000 M');
   });
   
   it('Formats number between 1 000 000 000 and 999 999 999 999 as G', () => {
     expect(formatNumberMetricPrefix(999999999999))
-      .toEqual('1000G');
+      .toEqual('1000 G');
   });
   
   it('Formats number between 1 000 000 000 000 and 999 999 999 999 999 as T', () => {
     expect(formatNumberMetricPrefix(999999999999999))
-      .toEqual('1000T');
+      .toEqual('1000 T');
   });
   
   it('Formats number between 1 000 000 000 000 000 and 900 000 000 000 000 000 as P', () => {
     expect(formatNumberMetricPrefix(900000000000000000))
-      .toEqual('900P');
+      .toEqual('900 P');
   });
   
   it('Formats number between 1 000 000 000 000 000 000 and more as E', () => {
     expect(formatNumberMetricPrefix(999999999999999999999))
-      .toEqual('1000E');
+      .toEqual('1000 E');
   });
 });

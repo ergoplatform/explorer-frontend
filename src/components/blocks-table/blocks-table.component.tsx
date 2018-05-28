@@ -47,7 +47,7 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                     { block.miner.name || block.miner.id }
                   </Link>
                 </div>
-                <div className='bi-blocks-table__cell bi-table__cell'>{ formatNumberMetricPrefix(block.size) }B</div>
+                <div className='bi-blocks-table__cell bi-table__cell'>{ formatNumberMetricPrefix(block.size, 'k') }B</div>
                 <div className='bi-blocks-table__cell bi-table__cell'>{ block.votes }</div>
               </div>
             );
