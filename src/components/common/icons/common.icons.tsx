@@ -5,6 +5,7 @@ import arrowIcon from '../../../assets/images/icons/arrow.icon.svg';
 import chartIcon from '../../../assets/images/icons/chart.icon.svg';
 import crossIcon from '../../../assets/images/icons/cross.icon.svg';
 import dataIcon from '../../../assets/images/icons/data.icon.svg';
+import doubleArrowIcon from '../../../assets/images/icons/double-arrow.icon.svg';
 import qrCodeIcon from '../../../assets/images/icons/qrcode.icon.svg';
 import searchIcon from '../../../assets/images/icons/search.icon.svg';
 import statsIcon from '../../../assets/images/icons/stats.icon.svg';
@@ -91,6 +92,15 @@ export const CrossIcon = ({ className }: IIconProps) => {
     <svg className={ className }
          focusable='false'>
       <use xlinkHref={ `#${crossIcon.id}` }/>
+    </svg>
+  );
+};
+
+export const DoubleArrowIcon = ({ className }: IIconProps) => {
+  return (
+    <svg className={ className }
+         focusable='false'>
+      <use xlinkHref={ `#${doubleArrowIcon.id}` }/>
     </svg>
   );
 };
