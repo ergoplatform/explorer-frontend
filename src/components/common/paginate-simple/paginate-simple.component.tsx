@@ -13,7 +13,7 @@ interface IPaginateSimpleProps {
   onPageChange: (selected: number) => void;
 }
 
-export class PaginateSimpleComponent extends React.PureComponent<IPaginateSimpleProps> {
+export class PaginateSimpleComponent extends React.Component<IPaginateSimpleProps> {
   constructor (props: IPaginateSimpleProps) {
     super(props);
     
