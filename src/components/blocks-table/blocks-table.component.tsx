@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import { SearchBlock } from '../../models/generated/searchBlock';
@@ -27,37 +28,61 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
   private renderTable (): JSX.Element {
     return (
       <div className='bi-blocks-table__body bi-table'>
-        <div className='bi-table__header'>
-          <BlockTableHeaderComponent/>
-        </div>
+        <BlockTableHeaderComponent/>
         
-        <div className='bi-table__body'>
-          {
-            this.props.blocks.map((block) => {
-              return (
-                <div className='bi-blocks-table__row bi-table__row' key={ block.height }>
-                  <div className='bi-blocks-table__cell bi-table__cell'>
-                    <Link to={ `/blocks/${block.id}` }>
-                      { block.height }
-                    </Link>
+        {
+          this.props.blocks.map((block) => {
+            return (
+              <div className='bi-blocks-table__row bi-table__row' key={ block.height }>
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.height'/>
                   </div>
-                  <div className='bi-blocks-table__cell bi-table__cell'>
-                    <TimestampComponent timestamp={ block.timestamp }/>
-                  </div>
-                  <div className='bi-blocks-table__cell bi-table__cell'>{ block.transactionsCount }</div>
-                  <div className='bi-blocks-table__cell bi-table__cell'>
-                    <Link to={ `/addresses/${block.miner.id}` }>
-                      { block.miner.name || block.miner.id }
-                    </Link>
-                  </div>
-                  <div className='bi-blocks-table__cell bi-table__cell'>{ formatNumberMetricPrefix(block.size, 'k') }B
-                  </div>
-                  <div className='bi-blocks-table__cell bi-table__cell'>{ block.votes }</div>
+                  
+                  <Link to={ `/blocks/${block.id}` }>
+                    { block.height }
+                  </Link>
                 </div>
-              );
-            })
-          }
-        </div>
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.age'/>
+                  </div>
+                  
+                  <TimestampComponent timestamp={ block.timestamp }/>
+                </div>
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.transactions'/>
+                  </div>
+                  
+                  { block.transactionsCount }
+                </div>
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.minedBy'/>
+                  </div>
+                  
+                  <Link to={ `/addresses/${block.miner.id}` }>
+                    { block.miner.name || block.miner.id }
+                  </Link>
+                </div>
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.size'/>
+                  </div>
+                  
+                  { formatNumberMetricPrefix(block.size, 'k') }B
+                </div>
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.votes'/>
+                  </div>
+                  { block.votes }
+                </div>
+              </div>
+            );
+          })
+        }
       </div>
     );
   }

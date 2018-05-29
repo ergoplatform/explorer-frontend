@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import './paginate-simple.scss';
 
@@ -42,7 +42,13 @@ export class PaginateSimpleComponent extends React.Component<IPaginateSimpleProp
         </button>
         
         <span className='bi-paginate-simple__status'>
-          <FormattedMessage id='components.paginate-simple.page-of' values={{current: this.props.forcePage + 1, total: pageCount }}/>
+          <FormattedMessage id='components.paginate-simple.page-of'
+                            values={ { current: this.props.forcePage + 1, total: pageCount } }/>
+        </span>
+        
+        <span className='bi-paginate-simple__status bi-paginate-simple__status--mobile'>
+          <FormattedMessage id='components.paginate-simple.page'
+                            values={ { current: this.props.forcePage + 1 } }/>
         </span>
         
         <button className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn--flat'
@@ -52,6 +58,7 @@ export class PaginateSimpleComponent extends React.Component<IPaginateSimpleProp
         </button>
         
         <button className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn--flat'
+        
                 disabled={ this.props.forcePage === pageCount - 1 }
                 onClick={ this.setPage(pageCount - 1) }>
           <DoubleArrowIcon className='bi-paginate-simple__btn-icon'/>

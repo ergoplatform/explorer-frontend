@@ -15,10 +15,10 @@ $block-table-cell-color: $theme-primary-color;
   &__body {
     width: 100%;
     border: 1px solid $block-table-table-border-color;
-    background-color: $block-table-table-bg-color;
   }
 
   &__row {
+    background-color: $block-table-table-bg-color;
     border-bottom: 1px solid $block-table-table-border-color;
 
     &:hover {
@@ -33,5 +33,31 @@ $block-table-cell-color: $theme-primary-color;
     border-left: 0;
     color: $block-table-cell-color;
     font-size: 15px;
+  }
+
+  &__cell-name {
+    display: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-blocks-table {
+    &__body {
+      border: 0;
+    }
+
+    &__row {
+      margin-bottom: $grid-offset-step * 2;
+
+      &:hover {
+        background-color: $block-table-table-bg-color;
+      }
+    }
+
+    &__cell-name {
+      display: block;
+    }
   }
 }

@@ -19,6 +19,10 @@ $paginate-simple-status-color: $theme-primary-color;
     font-size: 14px;
   }
 
+  &__status--mobile {
+    display: none;
+  }
+
   &__btn {
     display: inline-flex;
     width: 30px;
@@ -56,5 +60,17 @@ $paginate-simple-status-color: $theme-primary-color;
     height: 12px;
 
     fill: $paginate-simple-btn-icon-fill;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-paginate-simple {
+    &__status {
+      display: none;
+    }
+
+    &__status--mobile {
+      display: inline;
+    }
   }
 }

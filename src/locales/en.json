@@ -70,6 +70,7 @@
   "components.transaction-summary.timestamp": "Received Time",
 
   "components.paginate-simple.page-of": "Page {current} of {total}",
+  "components.paginate-simple.page": "Page {current}",
 
   "components.language-switcher.en": "English",
   "components.language-switcher.ru": "Русский"

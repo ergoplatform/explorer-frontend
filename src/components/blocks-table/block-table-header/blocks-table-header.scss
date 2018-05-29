@@ -48,8 +48,8 @@ $block-table-table-header-bg-color: #f8f8f8;
 
   &__sort--asc & {
     &__sort-icon {
-       display: none;
-     }
+      display: none;
+    }
 
     &__sort-icon--asc {
       display: inline;
@@ -66,10 +66,15 @@ $block-table-table-header-bg-color: #f8f8f8;
     }
   }
 
-
   &__sort-icon {
     width: 8px;
     height: 8px;
     margin-left: $grid-offset-step;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-blocks-table-header {
+    display: none;
   }
 }
