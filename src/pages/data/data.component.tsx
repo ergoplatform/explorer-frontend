@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 
 import './data.scss';
 
-import { BlockActions } from '../../actions/block.actions';
+import { BlockActions, IGetBlocksParams } from '../../actions/block.actions';
 import { AppState } from '../../store/app.store';
 
 import { BlocksTableComponent } from '../../components/blocks-table/blocks-table.component';
@@ -18,7 +18,7 @@ type IDataProps = AppState & BlockActions & RouteComponentProps<{}>;
 
 class Data extends React.PureComponent {
   props: IDataProps;
-  offset: number;
+  params: IGetBlocksParams;
   
   constructor (props: any) {
     super(props);
@@ -28,18 +28,18 @@ class Data extends React.PureComponent {
   }
   
   componentDidMount (): void {
-    this.offset = this.getOffset();
+    this.params = this.getParams();
     
-    this.reloadBlocks(this.offset);
+    this.reloadBlocks(this.params);
   }
   
   componentWillReceiveProps (props: IDataProps): void {
-    const offset = this.getOffset();
+    const params = this.getParams();
     
-    if (offset === undefined && (this.offset !== offset)) {
-      this.offset = this.getOffset();
+    if (JSON.stringify(params) !== JSON.stringify(this.params)) {
+      this.params = params;
       
-      this.reloadBlocks(this.offset);
+      this.reloadBlocks(this.params);
     }
   }
   
@@ -79,38 +79,54 @@ class Data extends React.PureComponent {
   
   
   private onPageChange (page: number): void {
-    this.reloadBlocks(page * this.props.settings.blocksLimit);
+    this.params.offset = page * this.props.settings.blocksLimit;
+    
+    this.reloadBlocks({ offset: page * this.props.settings.blocksLimit });
   }
   
-  private reloadBlocks (blocksOffset: number = 0, blocksLimit?: number): void {
-    const limit = blocksLimit || this.props.settings.blocksLimit;
+  private reloadBlocks (params: IGetBlocksParams): void {
+    params = {
+      ...this.params,
+      ...params,
+      limit: params.limit || this.props.settings.blocksLimit,
+      offset: params.offset || 0
+    };
     
-    this.props.getBlocks({
-      limit,
-      offset: blocksOffset
-    });
+    Object.keys(params)
+      .forEach((key) => {
+        if (params[key] === null) {
+          delete params[key];
+        }
+      });
     
-    if (blocksOffset === 0) {
-      this.props.history.push(`/`);
-    } else {
-      this.props.history.push(`/?offset=${blocksOffset}`);
+    this.props.getBlocks(params);
+    
+    
+    if (params.offset === 0) {
+      delete params.offset;
     }
+    
+    delete params.limit;
+    
+    this.props.history.push(`/?${queryString.stringify(params)}`);
   }
   
   private onLimitSelect (limit: number): void {
-    this.reloadBlocks(this.props.blocks.offset, limit);
+    this.reloadBlocks({ offset: this.props.blocks.offset, limit });
   }
   
-  private getOffset (): number {
-    let { offset } = queryString.parse(this.props.history.location.search);
+  private getParams (): any {
+    let { offset, sortBy, sortDirection } = queryString.parse(this.props.history.location.search);
     
-    offset = parseInt(offset, 10);
+    offset        = parseInt(offset, 10);
+    sortDirection = ['asc', 'desc'].includes(sortDirection) ? sortDirection : null;
+    sortBy        = ['height', 'ts', 'minedBy', 'transactions', 'size', 'votes'].includes(sortBy) ? sortBy : null;
     
-    if (!offset) {
-      return 0;
-    } else {
-      return offset;
-    }
+    return {
+      offset: offset || 0,
+      sortBy,
+      sortDirection
+    };
   }
 }
 

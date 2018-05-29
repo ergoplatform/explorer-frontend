@@ -6,9 +6,11 @@ import environment from '../config/environment';
 import { GET_BLOCK, GET_BLOCK_SUCCESS, GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
 import { SET_BLOCKS_LIMIT } from '../constants/settings.types';
 
-interface IGetBlocksParams {
+export interface IGetBlocksParams {
   limit?: number;
   offset?: number;
+  sortBy?: string;
+  sortDirection?: string;
 }
 
 export interface BlockActions extends ActionCreatorsMapObject {
@@ -17,7 +19,7 @@ export interface BlockActions extends ActionCreatorsMapObject {
 }
 
 export const BlockActions: BlockActions = {
-  getBlocks ({ limit, offset }: IGetBlocksParams = {}): any {
+  getBlocks ({ limit, offset, sortBy, sortDirection }: IGetBlocksParams = {}): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
         type: GET_BLOCKS
@@ -34,8 +36,8 @@ export const BlockActions: BlockActions = {
         params: {
           limit,
           offset,
-          sortBy: 'height',
-          sortDirection: 'desc'
+          sortBy: sortBy || 'height',
+          sortDirection:  sortDirection || 'desc'
         }
       })
         .then((response: AxiosResponse) => {

@@ -8,6 +8,9 @@ import dataIcon from '../../../assets/images/icons/data.icon.svg';
 import doubleArrowIcon from '../../../assets/images/icons/double-arrow.icon.svg';
 import qrCodeIcon from '../../../assets/images/icons/qrcode.icon.svg';
 import searchIcon from '../../../assets/images/icons/search.icon.svg';
+import sortDirectionAscIcon from '../../../assets/images/icons/sort-direction-asc.icon.svg';
+import sortDirectionDescIcon from '../../../assets/images/icons/sort-direction-desc.icon.svg';
+import sortDirectionIcon from '../../../assets/images/icons/sort-direction.icon.svg';
 import statsIcon from '../../../assets/images/icons/stats.icon.svg';
 import walletIcon from '../../../assets/images/icons/wallet.icon.svg';
 
@@ -101,6 +104,33 @@ export const DoubleArrowIcon = ({ className }: IIconProps) => {
     <svg className={ className }
          focusable='false'>
       <use xlinkHref={ `#${doubleArrowIcon.id}` }/>
+    </svg>
+  );
+};
+
+export const SortDirectionIcon = ({ className }: IIconProps) => {
+  return (
+    <svg className={ className }
+         focusable='false'>
+      <use xlinkHref={ `#${sortDirectionIcon.id}` }/>
+    </svg>
+  );
+};
+
+export const SortDirectionAscIcon = ({ className }: IIconProps) => {
+  return (
+    <svg className={ className }
+         focusable='false'>
+      <use xlinkHref={ `#${sortDirectionAscIcon.id}` }/>
+    </svg>
+  );
+};
+
+export const SortDirectionDescIcon = ({ className }: IIconProps) => {
+  return (
+    <svg className={ className }
+         focusable='false'>
+      <use xlinkHref={ `#${sortDirectionDescIcon.id}` }/>
     </svg>
   );
 };
