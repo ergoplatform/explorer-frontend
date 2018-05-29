@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { formatNumberMetricPrefix } from '../../../utils/formatNumberMetricPrefix';
-
-import { TimestampComponent } from '../../common/timestamp/timestamp.component';
+import { IoSummary } from '../../../models/generated/ioSummary';
 
 import './transaction-io-summary.scss';
 
 interface ITransactionIoSummaryProps {
-  summary: any;
+  summary: IoSummary;
 }
 
 export class TransactionIoSummaryComponent extends React.Component<ITransactionIoSummaryProps> {
@@ -22,26 +20,53 @@ export class TransactionIoSummaryComponent extends React.Component<ITransactionI
         <div className='bi-transaction-summary__body bi-table'>
           <div className='bi-transaction-summary__row bi-table__row'>
             <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
-              <FormattedMessage id='components.transaction-summary.size'/>
+              <FormattedMessage id='components.transaction-io-summary.totalInput'/>
             </div>
             
-            <div
-              className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
-              { formatNumberMetricPrefix(this.props.summary.size, 'k') }B
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
+              { this.props.summary.totalInput }
             </div>
           </div>
           
           <div className='bi-transaction-summary__row bi-table__row'>
             <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
-              <FormattedMessage id='components.transaction-summary.timestamp'/>
+              <FormattedMessage id='components.transaction-io-summary.totalOutput'/>
             </div>
             
-            <div
-              className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
-              <TimestampComponent timestamp={ this.props.summary.timestamp }/>
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
+              { this.props.summary.totalOutput }
             </div>
           </div>
           
+          <div className='bi-transaction-summary__row bi-table__row'>
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
+              <FormattedMessage id='components.transaction-io-summary.totalFee'/>
+            </div>
+    
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
+              { this.props.summary.totalFee }
+            </div>
+          </div>
+  
+          <div className='bi-transaction-summary__row bi-table__row'>
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
+              <FormattedMessage id='components.transaction-io-summary.feePerByte'/>
+            </div>
+    
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
+              { this.props.summary.feePerByte }
+            </div>
+          </div>
+  
+          <div className='bi-transaction-summary__row bi-table__row'>
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
+              <FormattedMessage id='components.transaction-io-summary.feePerWeight'/>
+            </div>
+    
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
+              { this.props.summary.feePerWeight }
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -61,7 +61,7 @@ class Transaction extends React.PureComponent {
           </div>
   
           <div className='bi-transaction__table g-flex__item'>
-            <TransactionIoSummaryComponent summary={ this.props.transaction.summary }/>
+            <TransactionIoSummaryComponent summary={ this.props.transaction.ioSummary }/>
           </div>
         </div>
       </div>

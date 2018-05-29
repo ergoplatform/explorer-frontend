@@ -57,6 +57,12 @@
   "components.address-actions.donation-button": "Собрать Пожертвование",
 
   "components.transaction-io-summary.title": "Входы и Выходы",
+  "components.transaction-io-summary.totalInput": "Общий Вход",
+  "components.transaction-io-summary.totalOutput": "Общий Выход",
+  "components.transaction-io-summary.totalFee": "Комиссии",
+  "components.transaction-io-summary.feePerByte": "Комиссия за байт",
+  "components.transaction-io-summary.feePerWeight": "Комиссия за весовую единицу",
+
   "components.transaction-summary.title": "Сводка",
   "components.transaction-summary.size": "Размер",
   "components.transaction-summary.blocks": "Включена в Блоки",

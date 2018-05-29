@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { IoSummary } from './ioSummary';
 import { TransactionInput } from './transactionInput';
 import { TransactionOutput } from './transactionOutput';
 import { TransactionSummary } from './transactionSummary';
@@ -16,6 +17,7 @@ import { TransactionSummary } from './transactionSummary';
 
 export interface FullTransaction {
     summary: TransactionSummary;
+    ioSummary: IoSummary;
     /**
      * Many transaction inputs
      */
