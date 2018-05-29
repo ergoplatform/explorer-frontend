@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { addLocaleData } from 'react-intl';
 import * as ReactModal from 'react-modal';
+import { LastLocationProvider } from 'react-router-last-location';
 
 import * as en from 'react-intl/locale-data/en';
 import * as ru from 'react-intl/locale-data/ru';
@@ -31,7 +32,9 @@ ReactDOM.render(
   <Provider store={ AppStore }>
     <ConnectedIntlProvider>
       <BrowserRouter>
-        <Route path='/' component={ AppComponent }/>
+        <LastLocationProvider>
+          <Route path='/' component={ AppComponent }/>
+        </LastLocationProvider>
       </BrowserRouter>
     </ConnectedIntlProvider>
   </Provider>, rootElement

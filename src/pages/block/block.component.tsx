@@ -1,6 +1,8 @@
+import { Location } from 'history';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
+import { withLastLocation } from 'react-router-last-location';
 import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 
 import { AppState } from '../../store/app.store';
@@ -16,8 +18,10 @@ import { TransactionsComponent } from '../../components/transactions/transaction
 import './block.scss';
 
 class Block extends React.Component {
+  prevLink: string = '';
+  
   props: {
-    offset: number;
+    lastLocation: Location;
   } & RouteComponentProps<{ id: string }> & BlockState & BlockActions;
   
   constructor (props: any) {
@@ -45,11 +49,15 @@ class Block extends React.Component {
       );
     }
     
+    if (this.props.lastLocation && this.props.lastLocation.pathname === '/' ) {
+      this.prevLink = this.props.lastLocation.search;
+    }
+    
     return (
       <div className='bi-block__wrapper g-flex-column'>
         <div className='bi-block__header g-flex-column__item-fixed'>
           <BlockHeaderComponent block={ this.props.block }
-                                previousOffset={ this.props.offset }
+                                prevLink={ this.prevLink }
                                 references={ this.props.references }/>
         </div>
         
@@ -83,12 +91,9 @@ class Block extends React.Component {
   }
 }
 
-function mapStateToProps (state: AppState): BlockState & {
-  offset: number;
-} {
+function mapStateToProps (state: AppState): BlockState {
   return {
     ...state.block,
-    offset: state.blocks.offset
   };
 }
 
@@ -96,4 +101,4 @@ function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
   return bindActionCreators(BlockActions, dispatch);
 }
 
-export const BlockComponent = connect(mapStateToProps, mapDispatchToProps)(Block);
+export const BlockComponent = connect(mapStateToProps, mapDispatchToProps)(withLastLocation(Block));

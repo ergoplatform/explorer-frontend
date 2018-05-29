@@ -6494,6 +6494,10 @@ react-router-dom@^4.2.2:
     react-router "^4.2.0"
     warning "^3.0.0"
 
+react-router-last-location@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-router-last-location/-/react-router-last-location-1.1.0.tgz#cfa1958d7b1fbb22ace38f35b1d12b8ac5ef0326"
+
 react-router@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.2.0.tgz#61f7b3e3770daeb24062dae3eedef1b054155986"
