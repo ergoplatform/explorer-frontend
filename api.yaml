@@ -494,11 +494,14 @@ components:
       type: object
       required:
         - summary
+        - ioSummary
         - inputs
         - outputs
       properties:
         summary:
           $ref: '#/components/schemas/TransactionSummary'
+        ioSummary:
+          $ref: '#/components/schemas/IOSummary'
         inputs:
           description: Many transaction inputs
           type: array
@@ -525,7 +528,7 @@ components:
           $ref: '#/components/schemas/Timestamp'
         size:
           description: Size of transcaction in bytes
-          type: number
+          type: integer
           format: int32
           example: 43904312
         confirmationsCount:
@@ -546,6 +549,35 @@ components:
                 format: int32
                 minimum: 0
                 example: 667
+    IOSummary:
+      type: object
+      required:
+        - totalInput
+        - totalOutput
+        - totalFee
+        - feePerByte
+        - feePerWeight
+      properties:
+        totalInput:
+          description: Total Input
+          type: number
+          example: 1042.23
+        totalOutput:
+          description: Total Output
+          type: number
+          example: 5943.45
+        totalFee:
+          description: Total fee
+          type: number
+          example: 15.43
+        feePerByte:
+          description: Fee per Byte
+          type: number
+          example: 4.21
+        feePerWeight:
+          description: Fee per Weight Unit
+          type: number
+          example: 85.31
 
     FullAddress:
       type: object
