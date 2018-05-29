@@ -6,4 +6,8 @@
 .bi-block {
   padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
   font-family: $theme-main-font;
+
+  &__body {
+    margin-bottom: $grid-offset-step * 4;
+  }
 }
