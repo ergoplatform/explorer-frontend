@@ -25,4 +25,51 @@ $block-table-table-header-bg-color: #f8f8f8;
       background-color: #eee;
     }
   }
+
+  &__sort {
+    color: $theme-primary-color;
+  }
+
+  &__sort--asc,
+  &__sort--desc {
+    color: $theme-color-blue;
+  }
+
+  &__sort--asc &,
+  &__sort--desc & {
+    &__sort-icon {
+      fill: $theme-color-blue;
+    }
+  }
+
+  &__sort-icon--asc, &__sort-icon--desc {
+    display: none;
+  }
+
+  &__sort--asc & {
+    &__sort-icon {
+       display: none;
+     }
+
+    &__sort-icon--asc {
+      display: inline;
+    }
+  }
+
+  &__sort--desc & {
+    &__sort-icon {
+      display: none;
+    }
+
+    &__sort-icon--desc {
+      display: inline;
+    }
+  }
+
+
+  &__sort-icon {
+    width: 8px;
+    height: 8px;
+    margin-left: $grid-offset-step;
+  }
 }
