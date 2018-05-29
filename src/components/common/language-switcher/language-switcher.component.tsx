@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -27,7 +27,11 @@ class LanguageSwitcher extends React.PureComponent<SettingsState & SettingsActio
         <select onChange={ this.onLocaleChanged } value={ this.props.locale }>
           {
             this.locales.map((localeId) => {
-              return (<option value={ localeId } key={ localeId }>{ localeId }</option>);
+              return (
+                <option value={ localeId } key={ localeId }>
+                  <FormattedMessage id={ `components.language-switcher.${localeId}` }/>
+                </option>
+              );
             })
           }
         </select>

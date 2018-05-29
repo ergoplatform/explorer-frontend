@@ -69,5 +69,8 @@
   "components.transaction-summary.blocks": "Included in Blocks",
   "components.transaction-summary.timestamp": "Received Time",
 
-  "components.paginate-simple.page-of": "Page {current} of {total}"
+  "components.paginate-simple.page-of": "Page {current} of {total}",
+
+  "components.language-switcher.en": "English",
+  "components.language-switcher.ru": "Русский"
 }

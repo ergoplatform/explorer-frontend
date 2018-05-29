@@ -68,5 +68,8 @@
   "components.transaction-summary.blocks": "Включена в Блоки",
   "components.transaction-summary.timestamp": "Время",
 
-  "components.paginate-simple.page-of": "Страница {current} из {total}"
+  "components.paginate-simple.page-of": "Страница {current} из {total}",
+
+  "components.language-switcher.en": "English",
+  "components.language-switcher.ru": "Русский"
 }

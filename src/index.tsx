@@ -28,9 +28,13 @@ const rootElement = document.getElementById('root') as HTMLElement;
 
 ReactModal.setAppElement(rootElement);
 
+const TextComponent = (props: any) => {
+  return props.children;
+};
+
 ReactDOM.render(
   <Provider store={ AppStore }>
-    <ConnectedIntlProvider>
+    <ConnectedIntlProvider textComponent={TextComponent}>
       <BrowserRouter>
         <LastLocationProvider>
           <Route path='/' component={ AppComponent }/>
