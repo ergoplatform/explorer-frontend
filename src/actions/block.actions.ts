@@ -33,7 +33,9 @@ export const BlockActions: BlockActions = {
       axios.get(`${environment.apiUrl}/blocks`, {
         params: {
           limit,
-          offset
+          offset,
+          sortBy: 'height',
+          sortDirection: 'desc'
         }
       })
         .then((response: AxiosResponse) => {

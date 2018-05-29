@@ -53,7 +53,7 @@ class Data extends React.PureComponent {
           </div>
         </div>
         
-        <div className='bi-data__body g-flex-column__item'>
+        <div className='bi-data__body g-flex-column__item g-scroll-y'>
           <BlocksTableComponent blocks={ this.props.blocks.blocks } isFetching={ this.props.blocks.fetching }/>
         </div>
         

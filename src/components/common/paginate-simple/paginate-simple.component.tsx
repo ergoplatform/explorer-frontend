@@ -1,8 +1,10 @@
 import * as React from 'react';
+import {FormattedMessage} from 'react-intl';
 
 import './paginate-simple.scss';
 
 import { ArrowIcon, DoubleArrowIcon } from '../icons/common.icons';
+
 
 interface IPaginateSimpleProps {
   total: number;
@@ -40,7 +42,7 @@ export class PaginateSimpleComponent extends React.PureComponent<IPaginateSimple
         </button>
         
         <span className='bi-paginate-simple__status'>
-          Page { this.props.forcePage + 1 } of { pageCount }
+          <FormattedMessage id='components.paginate-simple.page-of' values={{current: this.props.forcePage + 1, total: pageCount }}/>
         </span>
         
         <button className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn--flat'

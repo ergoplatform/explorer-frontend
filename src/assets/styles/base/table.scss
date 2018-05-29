@@ -5,6 +5,16 @@
   box-sizing: border-box;
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
+
+  &__header {
+    display: table-header-group;
+    table-layout: fixed;
+  }
+
+  &__body {
+    display: table-row-group;
+  }
 
   &__row {
     display: table-row;
@@ -15,7 +25,6 @@
     display: table-cell;
   }
 }
-
 
 @media screen and (max-width: $mobile-device-width) {
   .bi-table {

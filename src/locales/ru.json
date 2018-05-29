@@ -30,7 +30,7 @@
   "common.block.hash": "Хэш",
   "common.block.block": "Блок",
   "common.block.transactions": "Сделки",
-  "common.block.age": "Возраст",
+  "common.block.age": "Время",
   "common.block.minedBy": "Майнер",
   "common.block.size": "Размер",
   "common.block.votes": "Голоса",
@@ -52,5 +52,7 @@
   "components.transaction-summary.title": "Сводка",
   "components.transaction-summary.size": "Размер",
   "components.transaction-summary.blocks": "Включена в Блоки",
-  "components.transaction-summary.timestamp": "Время"
+  "components.transaction-summary.timestamp": "Время",
+
+  "components.paginate-simple.page-of": "Страница {current} из {total}"
 }

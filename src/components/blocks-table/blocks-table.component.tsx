@@ -27,32 +27,37 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
   private renderTable (): JSX.Element {
     return (
       <div className='bi-blocks-table__body bi-table'>
-        <BlockTableHeaderComponent/>
+        <div className='bi-table__header'>
+          <BlockTableHeaderComponent/>
+        </div>
         
-        {
-          this.props.blocks.map((block) => {
-            return (
-              <div className='bi-blocks-table__row bi-table__row' key={ block.height }>
-                <div className='bi-blocks-table__cell bi-table__cell'>
-                  <Link to={ `/blocks/${block.id}` }>
-                    { block.height }
-                  </Link>
+        <div className='bi-table__body'>
+          {
+            this.props.blocks.map((block) => {
+              return (
+                <div className='bi-blocks-table__row bi-table__row' key={ block.height }>
+                  <div className='bi-blocks-table__cell bi-table__cell'>
+                    <Link to={ `/blocks/${block.id}` }>
+                      { block.height }
+                    </Link>
+                  </div>
+                  <div className='bi-blocks-table__cell bi-table__cell'>
+                    <TimestampComponent timestamp={ block.timestamp }/>
+                  </div>
+                  <div className='bi-blocks-table__cell bi-table__cell'>{ block.transactionsCount }</div>
+                  <div className='bi-blocks-table__cell bi-table__cell'>
+                    <Link to={ `/addresses/${block.miner.id}` }>
+                      { block.miner.name || block.miner.id }
+                    </Link>
+                  </div>
+                  <div className='bi-blocks-table__cell bi-table__cell'>{ formatNumberMetricPrefix(block.size, 'k') }B
+                  </div>
+                  <div className='bi-blocks-table__cell bi-table__cell'>{ block.votes }</div>
                 </div>
-                <div className='bi-blocks-table__cell bi-table__cell'>
-                  <TimestampComponent timestamp={ block.timestamp }/>
-                </div>
-                <div className='bi-blocks-table__cell bi-table__cell'>{ block.transactionsCount }</div>
-                <div className='bi-blocks-table__cell bi-table__cell'>
-                  <Link to={ `/addresses/${block.miner.id}` }>
-                    { block.miner.name || block.miner.id }
-                  </Link>
-                </div>
-                <div className='bi-blocks-table__cell bi-table__cell'>{ formatNumberMetricPrefix(block.size, 'k') }B</div>
-                <div className='bi-blocks-table__cell bi-table__cell'>{ block.votes }</div>
-              </div>
-            );
-          })
-        }
+              );
+            })
+          }
+        </div>
       </div>
     );
   }

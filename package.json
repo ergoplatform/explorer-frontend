@@ -144,6 +144,14 @@
       "react-app"
     ]
   },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:8080",
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   }
