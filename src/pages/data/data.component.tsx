@@ -62,7 +62,7 @@ class Data extends React.PureComponent {
           <div className='g-flex__item-fixed'>
             <LimitSelectorComponent items={ [30, 60, 120] }
                                     selected={ this.props.settings.blocksLimit }
-                                    label={ <FormattedMessage id='components.data.title'/> }
+                                    label={ <FormattedMessage id='components.data.show'/> }
                                     onLimitSelect={ this.onLimitSelect }/>
           </div>
           
