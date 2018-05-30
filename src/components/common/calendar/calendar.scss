@@ -3,7 +3,21 @@
 // #CALENDAR
 //-------------------------------------
 .bi-calendar {
+  position: relative;
+
+  // [ Components ]
+  //--------------------------------------
   &__calendar {
     display: none;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    width: 350px;
+    max-width: initial;
+  }
+
+  &__calendar--open {
+    display: block;
   }
 }
