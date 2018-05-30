@@ -3,7 +3,10 @@
 // #SEARCH
 //------------------------------
 $search-bg-color: #ffffff;
+$search-mobile-bg-color: #121212;
 $search-icon-color: #828795;
+$search-icon-mobile-color: #ffffff;
+$search-input-mobile-color: #ffffff;
 
 
 .bi-search {
@@ -19,6 +22,7 @@ $search-icon-color: #828795;
     display: none;
     height: 100%;
     border: none;
+    background-color: transparent;
     font-size: 28px;
     font-weight: normal;
     line-height: 100%;
@@ -45,6 +49,27 @@ $search-icon-color: #828795;
   &--focused & {
     &__input {
       display: block;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-search {
+    background-color: $search-mobile-bg-color;
+
+    &__icon {
+      padding-left: 0;
+
+      fill: $search-icon-mobile-color;
+    }
+
+    &__input {
+      color: $search-input-mobile-color;
+      font-size: 14px;
+    }
+
+    &--focused {
+      padding: 0 ($grid-offset-step * 3);
     }
   }
 }

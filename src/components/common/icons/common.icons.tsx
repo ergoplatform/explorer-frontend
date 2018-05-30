@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import apiIcon from '../../../assets/images/icons/api.icon.svg';
 import arrowIcon from '../../../assets/images/icons/arrow.icon.svg';
+import burgerIcon from '../../../assets/images/icons/burger.icon.svg';
 import chartIcon from '../../../assets/images/icons/chart.icon.svg';
 import crossIcon from '../../../assets/images/icons/cross.icon.svg';
 import dataIcon from '../../../assets/images/icons/data.icon.svg';
@@ -131,6 +132,16 @@ export const SortDirectionDescIcon = ({ className }: IIconProps) => {
     <svg className={ className }
          focusable='false'>
       <use xlinkHref={ `#${sortDirectionDescIcon.id}` }/>
+    </svg>
+  );
+};
+
+
+export const BurgerIcon = ({ className }: IIconProps) => {
+  return (
+    <svg className={ className }
+         focusable='false'>
+      <use xlinkHref={ `#${burgerIcon.id}` }/>
     </svg>
   );
 };

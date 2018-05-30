@@ -56,6 +56,15 @@ $block-table-cell-color: $theme-primary-color;
       }
     }
 
+    &__cell {
+      padding: ($grid-offset-step * 2) ($grid-offset-step * 2);
+      border-bottom: 0;
+      border-left: 1px solid $block-table-table-border-color;
+      border-right: 1px solid $block-table-table-border-color;
+      display: flex;
+      justify-content: space-between;
+    }
+
     &__cell-name {
       display: block;
     }

@@ -18,7 +18,7 @@ class HeaderStats extends React.Component<StatsActions & StatsState> {
   
   render (): JSX.Element {
     return (
-      <div className='bi-header-stats g-flex g-flex__item'>
+      <div className='bi-header-stats g-flex'>
         {
           this.props.info.map((item: IInfoItem) => {
             return <StatsItemComponent title={ item.title } value={ item.value } key={ item.title }/>;
