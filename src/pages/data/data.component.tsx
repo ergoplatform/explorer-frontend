@@ -109,7 +109,7 @@ class Data extends React.PureComponent {
     
     Object.keys(params)
       .forEach((key) => {
-        if (params[key] === null) {
+        if (params[key] === null || isNaN(params[key])) {
           delete params[key];
         }
       });
