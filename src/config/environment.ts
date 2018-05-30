@@ -5,6 +5,7 @@ export interface IEnvironment {
   apiUrl?: string;
   blockchain?: any;
   defaultLocale?: string;
+  isLoggerEnabled: boolean;
 }
 
 let environment: IEnvironment;

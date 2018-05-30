@@ -2,6 +2,8 @@ import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
+import environment from '../config/environment';
+
 import { reducer } from '../reducers/app.reducers';
 
 import { AddressState } from '../reducers/address.reducer';
@@ -20,6 +22,8 @@ export interface AppState {
   transaction: TransactionState;
 }
 
-const logger = createLogger();
+const logger = createLogger({
+  predicate: () => environment.isLoggerEnabled
+});
 
 export const AppStore = createStore<AppState>(reducer, applyMiddleware(thunk, logger));

@@ -5,5 +5,6 @@ export const environmentDefault: IEnvironment = {
   blockchain: {
     coinName: 'Ergo'
   },
-  defaultLocale: 'en'
+  defaultLocale: 'en',
+  isLoggerEnabled: true,
 };
