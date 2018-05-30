@@ -48,6 +48,10 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
 ];
 
 export class SidebarMenuComponent extends React.Component {
+  props: {
+    onClick: any;
+  };
+  
   render (): JSX.Element {
     return <div className='bi-sidebar-menu g-flex-column'>
       {
@@ -57,6 +61,7 @@ export class SidebarMenuComponent extends React.Component {
                      activeClassName='bi-sidebar-menu__item--active'
                      to={ item.url }
                      exact={ true }
+                     onClick={ this.props.onClick }
                      key={ index }
                      { ...item.props }>
               { item.icon }

@@ -11,3 +11,9 @@
     margin-bottom: $grid-offset-step * 4;
   }
 }
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-block {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 3);
+  }
+}

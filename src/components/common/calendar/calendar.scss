@@ -21,3 +21,16 @@
     display: block;
   }
 }
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-calendar {
+    position: initial;
+
+
+    &__calendar {
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

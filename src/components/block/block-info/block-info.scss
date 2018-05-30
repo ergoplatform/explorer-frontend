@@ -15,15 +15,12 @@ $block-table-cell-border-color: $theme-color-blue;
   // [ Components ]
   //--------------------------------------------------
   &__table {
-    display: table;
     width: 100%;
     border: 1px solid $block-info-border-color;
-    border-collapse: collapse;
     background-color: $block-info-bg-color;
   }
 
   &__row {
-    display: table-row;
     border-bottom: 1px solid $block-info-border-color;
 
     &:hover {
@@ -36,7 +33,6 @@ $block-table-cell-border-color: $theme-color-blue;
   }
 
   &__cell {
-    display: table-cell;
     position: relative;
     padding: $grid-offset-step * 4;
     border: 1px solid $block-info-border-color;
@@ -60,5 +56,19 @@ $block-table-cell-border-color: $theme-color-blue;
   &__cell--header {
     font-weight: 600;
     width: 200px;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-block-info {
+
+    &__cell {
+      border-bottom: 0;
+      padding: ($grid-offset-step * 2) ($grid-offset-step * 2);
+    }
+
+    &__cell--header + &__cell {
+      border-top: 0;
+    }
   }
 }

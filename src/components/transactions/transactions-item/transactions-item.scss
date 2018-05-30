@@ -21,6 +21,8 @@ $block-transactions-item-total-value-color: $theme-color-blue;
     border-bottom: 1px solid $block-transactions-item-border-color;
 
     justify-content: space-between;
+
+    flex-wrap: wrap;
   }
 
   &__title {

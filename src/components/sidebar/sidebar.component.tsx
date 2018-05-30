@@ -21,16 +21,26 @@ class Sidebar extends React.Component<SettingsActions & SettingsState> {
     super(props);
     
     this.toggleCollapse = this.toggleCollapse.bind(this);
+    this.hideSidebar    = this.hideSidebar.bind(this);
   }
   
   toggleCollapse (): void {
+    if (this.props.isSidebarDisplayed) {
+      return this.hideSidebar();
+    }
+    
     this.props.setSidebarCollapsedStatus(!this.props.isSidebarCollapsed);
+  }
+  
+  hideSidebar (): void {
+    this.props.setSidebarDisplayStatus(false);
   }
   
   render (): JSX.Element {
     const sidebarClassNames = classNames({
       'bi-sidebar': true,
       'bi-sidebar--collapsed': this.props.isSidebarCollapsed,
+      'bi-sidebar--open': this.props.isSidebarDisplayed,
       'g-flex-column': true,
       'g-flex__item-fixed': true
     });
@@ -39,6 +49,7 @@ class Sidebar extends React.Component<SettingsActions & SettingsState> {
       <div className={ sidebarClassNames }>
         <div className='bi-sidebar__header g-flex g-flex-column__item-fixed'>
           <Link className='bi-sidebar__logo g-flex__item-fixed'
+                onClick={ this.hideSidebar }
                 to='/'
                 tabIndex={ this.props.isSidebarCollapsed ? -1 : 0 }>
             <span className='bi-sidebar__logo-highlight'>Ergo</span> Explorer
@@ -51,7 +62,7 @@ class Sidebar extends React.Component<SettingsActions & SettingsState> {
         </div>
         
         <div className='bi-sidebar__body g-flex-column__item'>
-          <SidebarMenuComponent/>
+          <SidebarMenuComponent onClick={ this.hideSidebar }/>
         </div>
         
         <div className='bi-sidebar__footer g-flex-column__item-fixed'>

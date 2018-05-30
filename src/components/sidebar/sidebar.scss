@@ -94,5 +94,13 @@ $sidebar-btn-toggle-icon-color: #ffffff;
   .bi-sidebar {
     position: absolute;
     left: -100%;
+    transition: left 250ms ease-in-out;
+    bottom: 0;
+    top: 0;
+    z-index: 1000;
+
+    &--open {
+      left: 0;
+    }
   }
 }

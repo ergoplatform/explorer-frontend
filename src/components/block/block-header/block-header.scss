@@ -96,3 +96,28 @@ $block-header-nav-icon-color: $theme-primary-color;
     margin-right: $grid-offset-step;
   }
 }
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-block-header {
+    flex-wrap: wrap;
+
+    &__btn-back {
+      margin-bottom: $grid-offset-step * 2;
+    }
+
+    &__tabs {
+      margin-left: 0;
+      margin-top: $grid-offset-step * 2;
+    }
+
+    &__tab {
+      margin-left: 0;
+      margin-right: $grid-offset-step * 2;
+    }
+
+    &__line {
+      flex-wrap: wrap;
+    }
+  }
+}
+

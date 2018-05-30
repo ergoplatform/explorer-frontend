@@ -1,10 +1,16 @@
 import environment from '../config/environment';
 
-import { SET_BLOCKS_LIMIT, SET_LOCALE, SET_SIDEBAR_IS_COLLAPSED } from '../constants/settings.types';
+import {
+  SET_BLOCKS_LIMIT,
+  SET_LOCALE,
+  SET_SIDEBAR_IS_COLLAPSED, SET_SIDEBAR_IS_HIDDEN,
+  SET_SIDEBAR_IS_SHOWN
+} from '../constants/settings.types';
 
 export interface SettingsState {
   locale: string;
   isSidebarCollapsed: boolean;
+  isSidebarDisplayed: boolean;
   blocksLimit: number;
 }
 
@@ -12,9 +18,10 @@ const settings = JSON.parse(localStorage.getItem('settings') as string) || {};
 
 const initialState = {
   blocksLimit: 30,
-  isSidebarCollapsed: false,
   locale: environment.defaultLocale,
-  ...settings
+  ...settings,
+  isSidebarCollapsed: false,
+  isSidebarDisplayed: false,
 };
 
 export function settingsReducer (state: SettingsState = initialState, action: any): SettingsState {
@@ -53,6 +60,14 @@ export function settingsReducer (state: SettingsState = initialState, action: an
       localStorage.setItem('settings', JSON.stringify(newState));
       
       return newState;
+    }
+    
+    case SET_SIDEBAR_IS_SHOWN: {
+      return { ...state, isSidebarDisplayed: true };
+    }
+    
+    case SET_SIDEBAR_IS_HIDDEN: {
+      return { ...state, isSidebarDisplayed: false };
     }
     
     default:

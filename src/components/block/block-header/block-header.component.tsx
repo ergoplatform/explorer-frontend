@@ -54,22 +54,22 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
             }
           </div>
           
-          <div className='bi-block-header__tabs g-flex__item-fixed'>
-            <NavLink className='bi-block-header__tab'
+          <div className='bi-block-header__tabs g-flex__item-fixed g-flex'>
+            <NavLink className='bi-block-header__tab g-flex__item-fixed'
                      activeClassName='bi-block-header__tab--active'
                      exact={ true }
                      to={ `/blocks/${this.props.block.header.id}` }>
               <FormattedMessage id='components.block-header.information'/>
             </NavLink>
             
-            <NavLink className='bi-block-header__tab'
+            <NavLink className='bi-block-header__tab g-flex__item-fixed'
                      activeClassName='bi-block-header__tab--active'
                      exact={ true }
                      to={ `/blocks/${this.props.block.header.id}/transactions` }>
               <FormattedMessage id='components.block-header.transactions'/>
             </NavLink>
             
-            <NavLink className='bi-block-header__tab'
+            <NavLink className='bi-block-header__tab g-flex__item-fixed'
                      activeClassName='bi-block-header__tab--active'
                      exact={ true }
                      to={ `/blocks/${this.props.block.header.id}/adproofs` }>
