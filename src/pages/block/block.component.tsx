@@ -17,12 +17,14 @@ import { TransactionsComponent } from '../../components/transactions/transaction
 
 import './block.scss';
 
+interface IBlockProps {
+  lastLocation: Location;
+}
+
 class Block extends React.Component {
   prevLink: string = '';
   
-  props: {
-    lastLocation: Location;
-  } & RouteComponentProps<{ id: string }> & BlockState & BlockActions;
+  props: IBlockProps & RouteComponentProps<{ id: string }> & BlockState & BlockActions;
   
   constructor (props: any) {
     super(props);
@@ -32,6 +34,12 @@ class Block extends React.Component {
   
   componentDidMount (): void {
     this.props.getBlock({ id: this.props.match.params.id });
+  }
+  
+  componentWillReceiveProps (nextProps: RouteComponentProps<{ id: string }>): void {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      this.props.getBlock({ id: nextProps.match.params.id });
+    }
   }
   
   render (): JSX.Element {
@@ -49,7 +57,7 @@ class Block extends React.Component {
       );
     }
     
-    if (this.props.lastLocation && this.props.lastLocation.pathname === '/' ) {
+    if (this.props.lastLocation && this.props.lastLocation.pathname === '/') {
       this.prevLink = this.props.lastLocation.search;
     }
     
@@ -72,7 +80,8 @@ class Block extends React.Component {
             <Route path={ `/blocks/:id/transactions` }
                    exact={ true }
                    component={
-                     this.renderComponent(<TransactionsComponent transactions={ this.props.block.blockTransactions.transactions }/>)
+                     this.renderComponent(<TransactionsComponent
+                       transactions={ this.props.block.blockTransactions.transactions }/>)
                    }/>
             
             <Route path={ `/blocks/:id/adproofs` }
@@ -93,7 +102,7 @@ class Block extends React.Component {
 
 function mapStateToProps (state: AppState): BlockState {
   return {
-    ...state.block,
+    ...state.block
   };
 }
 

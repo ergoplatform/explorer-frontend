@@ -26,6 +26,12 @@ class Transaction extends React.PureComponent {
     this.props.getTransaction(this.props.match.params.id);
   }
   
+  componentWillReceiveProps (nextProps: any): void {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      this.props.getTransaction(nextProps.match.params.id);
+    }
+  }
+  
   render (): JSX.Element {
     return (
       <div className='bi-transaction'>

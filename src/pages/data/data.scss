@@ -18,6 +18,8 @@ $data-title-color: $theme-primary-color;
   //----------------------------------
   &__header {
     margin-bottom: ($grid-offset-step * 4);
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__footer {
@@ -37,12 +39,6 @@ $data-title-color: $theme-primary-color;
 @media screen and (max-width: $mobile-device-width) {
   .bi-data {
     padding: ($grid-offset-step * 5) ($grid-offset-step * 3);
-
-    &__header {
-    }
-
-    &__body {
-    }
 
     &__footer .bi-limit-selector {
       display: none;

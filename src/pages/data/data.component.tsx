@@ -11,6 +11,7 @@ import { BlockActions, IGetBlocksParams } from '../../actions/block.actions';
 import { AppState } from '../../store/app.store';
 
 import { BlocksTableComponent } from '../../components/blocks-table/blocks-table.component';
+import { CalendarComponent } from '../../components/common/calendar/calendar.component';
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 
@@ -50,6 +51,10 @@ class Data extends React.PureComponent {
         <div className='bi-data__header g-flex'>
           <div className='bi-data__title g-flex__item'>
             <FormattedMessage id='components.data.title'/>
+          </div>
+          
+          <div className='bi-data__filters g-flex__item-fixed'>
+            <CalendarComponent/>
           </div>
         </div>
         

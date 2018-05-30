@@ -25,6 +25,13 @@ class Address extends React.PureComponent {
     this.props.getAddressTransactions(this.props.match.params.id);
   }
   
+  componentWillReceiveProps (nextProps: any): void {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      this.props.getAddress(nextProps.match.params.id);
+      this.props.getAddressTransactions(nextProps.match.params.id);
+    }
+  }
+  
   render (): JSX.Element {
     return (
       <div className='bi-address'>
