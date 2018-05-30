@@ -11,7 +11,7 @@
  */
 import { BlockADProofs } from './blockADProofs';
 import { BlockHeader } from './blockHeader';
-import { BlockTransactions } from './blockTransactions';
+import { Transaction } from './transaction';
 
 
 /**
@@ -19,6 +19,6 @@ import { BlockTransactions } from './blockTransactions';
  */
 export interface FullBlock {
     header: BlockHeader;
-    blockTransactions: BlockTransactions;
+    blockTransactions: Transaction[];
     adProofs: BlockADProofs;
 }

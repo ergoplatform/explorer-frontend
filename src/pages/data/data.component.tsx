@@ -109,7 +109,7 @@ class Data extends React.PureComponent {
     
     Object.keys(params)
       .forEach((key) => {
-        if (params[key] === null || isNaN(params[key])) {
+        if (params[key] === null) {
           delete params[key];
         }
       });
@@ -134,8 +134,8 @@ class Data extends React.PureComponent {
     let { offset, sortBy, sortDirection, startDate, endDate } = queryString.parse(this.props.history.location.search);
     
     offset        = parseInt(offset, 10);
-    startDate     = parseInt(startDate, 10);
-    endDate       = parseInt(endDate, 10);
+    startDate     = parseInt(startDate, 10) || null;
+    endDate       = parseInt(endDate, 10) || null;
     sortDirection = ['asc', 'desc'].includes(sortDirection) ? sortDirection : null;
     sortBy        = ['height', 'ts', 'minedBy', 'transactionsCount', 'size', 'votes'].includes(sortBy) ? sortBy : null;
     

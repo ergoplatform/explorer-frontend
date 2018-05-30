@@ -6,6 +6,8 @@ import { formatNumberMetricPrefix } from '../../../utils/formatNumberMetricPrefi
 
 import { FullBlock } from '../../../models/generated/fullBlock';
 
+import { TimestampComponent } from '../../common/timestamp/timestamp.component';
+
 interface IBlockInfoProps {
   block: FullBlock;
 }
@@ -33,7 +35,7 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
             </div>
             
             <div className='bi-block-info__cell'>
-              { this.props.block.header.timestamp }
+              <TimestampComponent timestamp={ this.props.block.header.timestamp }/>
             </div>
           </div>
           

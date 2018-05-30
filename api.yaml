@@ -365,7 +365,10 @@ components:
         header:
           $ref: '#/components/schemas/BlockHeader'
         blockTransactions:
-          $ref: '#/components/schemas/BlockTransactions'
+          description: Transaction objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
         adProofs:
           $ref: '#/components/schemas/BlockADProofs'
 

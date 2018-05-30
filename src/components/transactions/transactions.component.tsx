@@ -16,7 +16,7 @@ export class TransactionsComponent extends React.PureComponent<IBlockTransaction
       <div className='bi-transactions'>
         {
           this.props.transactions.map((transaction) => {
-            return (<TransactionsItemComponent transaction={ transaction } key={ transaction.id }/>);
+            return (<TransactionsItemComponent  key={ transaction.id } transaction={ transaction }/>);
           })
         }
       </div>

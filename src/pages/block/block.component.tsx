@@ -81,7 +81,7 @@ class Block extends React.Component {
                    exact={ true }
                    component={
                      this.renderComponent(<TransactionsComponent
-                       transactions={ this.props.block.blockTransactions.transactions }/>)
+                       transactions={ this.props.block.blockTransactions }/>)
                    }/>
             
             <Route path={ `/blocks/:id/adproofs` }
