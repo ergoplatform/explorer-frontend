@@ -12,10 +12,17 @@ script:
   - yarn test:coverage
 
 deploy:
-  skip_cleanup: true
-  provider: surge
-  project: ./build/
-  domain: ergo-explorer.surge.sh
+  - provider: surge
+    skip_cleanup: true
+    project: ./build/
+    domain: ergo-explorer.surge.sh
+
+  - provider: surge
+    skip_cleanup: true
+    env:
+      - NODE_ENV=production ERGO_EXPLORER_MOCK=true
+    project: ./build/
+    domain: ergo-explorer-mock.surge.sh
 
 after_success:
   - codecov

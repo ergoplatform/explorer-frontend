@@ -15,6 +15,10 @@ if (process.env.NODE_ENV === 'production') {
     ...environmentDefault,
     ...environmentProd
   };
+  
+  if (process.env.ERGO_EXPLORER_MOCK) {
+    environment.apiUrl = environmentDefault.apiUrl;
+  }
 } else {
   environment = {
     ...environmentDefault,
