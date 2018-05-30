@@ -25,12 +25,13 @@ class Data extends React.PureComponent {
     super(props);
     
     this.onPageChange  = this.onPageChange.bind(this);
+    this.onDateChange  = this.onDateChange.bind(this);
     this.onLimitSelect = this.onLimitSelect.bind(this);
+    
+    this.params = this.getParams();
   }
   
   componentDidMount (): void {
-    this.params = this.getParams();
-    
     this.reloadBlocks(this.params);
   }
   
@@ -54,7 +55,9 @@ class Data extends React.PureComponent {
           </div>
           
           <div className='bi-data__filters g-flex__item-fixed'>
-            <CalendarComponent/>
+            <CalendarComponent onChange={ this.onDateChange }
+                               startDate={ this.params.startDate }
+                               endDate={ this.params.endDate }/>
           </div>
         </div>
         
@@ -80,6 +83,13 @@ class Data extends React.PureComponent {
         </div>
       </div>
     );
+  }
+  
+  private onDateChange (dateStart: number, dateEnd: number): void {
+    this.reloadBlocks({
+      endDate: dateEnd,
+      startDate: dateStart
+    });
   }
   
   
@@ -121,16 +131,20 @@ class Data extends React.PureComponent {
   }
   
   private getParams (): any {
-    let { offset, sortBy, sortDirection } = queryString.parse(this.props.history.location.search);
+    let { offset, sortBy, sortDirection, startDate, endDate } = queryString.parse(this.props.history.location.search);
     
     offset        = parseInt(offset, 10);
+    startDate     = parseInt(startDate, 10);
+    endDate       = parseInt(endDate, 10);
     sortDirection = ['asc', 'desc'].includes(sortDirection) ? sortDirection : null;
-    sortBy        = ['height', 'ts', 'minedBy', 'transactions', 'size', 'votes'].includes(sortBy) ? sortBy : null;
+    sortBy        = ['height', 'ts', 'minedBy', 'transactionsCount', 'size', 'votes'].includes(sortBy) ? sortBy : null;
     
     return {
+      endDate,
       offset: offset || 0,
       sortBy,
-      sortDirection
+      sortDirection,
+      startDate
     };
   }
 }

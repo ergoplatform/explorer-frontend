@@ -9,6 +9,8 @@ import { SET_BLOCKS_LIMIT } from '../constants/settings.types';
 export interface IGetBlocksParams {
   limit?: number;
   offset?: number;
+  startDate?: number;
+  endDate?: number;
   sortBy?: string;
   sortDirection?: string;
 }
@@ -19,7 +21,7 @@ export interface BlockActions extends ActionCreatorsMapObject {
 }
 
 export const BlockActions: BlockActions = {
-  getBlocks ({ limit, offset, sortBy, sortDirection }: IGetBlocksParams = {}): any {
+  getBlocks ({ limit, offset, sortBy, sortDirection, startDate, endDate }: IGetBlocksParams = {}): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
         type: GET_BLOCKS
@@ -34,10 +36,12 @@ export const BlockActions: BlockActions = {
       
       axios.get(`${environment.apiUrl}/blocks`, {
         params: {
+          endDate,
           limit,
           offset,
           sortBy: sortBy || 'height',
-          sortDirection:  sortDirection || 'desc'
+          sortDirection:  sortDirection || 'desc',
+          startDate
         }
       })
         .then((response: AxiosResponse) => {

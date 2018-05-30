@@ -30,6 +30,7 @@
     "newline-per-chained-call": true,
     "interface-name": false,
     "no-console": [true, "log", "error"],
-    "no-debugger": false
+    "no-debugger": false,
+    "prefer-const":  [true, {"destructuring": "all"}]
   }
 }

@@ -46,6 +46,16 @@ paths:
           schema:
             type: string
             enum: [asc, desc]
+        - name: startDate
+          in: query
+          description: Start Date
+          schema:
+            $ref: '#/components/schemas/Timestamp'
+        - name: endDate
+          in: query
+          description: End Date
+          schema:
+            $ref: '#/components/schemas/Timestamp'
       operationId: listBlocks
       responses:
         '200':

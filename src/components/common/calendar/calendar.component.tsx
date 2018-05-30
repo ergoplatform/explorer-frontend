@@ -7,11 +7,15 @@ import './calendar.scss';
 
 interface ICalendarState {
   isCalendarShown: boolean;
+}
+
+interface ICalendarProps {
+  onChange: (dateStart: number, dateEnd: number) => void;
   startDate?: number;
   endDate?: number;
 }
 
-export class CalendarComponent extends React.PureComponent<{}, ICalendarState> {
+export class CalendarComponent extends React.PureComponent<ICalendarProps, ICalendarState> {
   element: HTMLDivElement;
   
   state: ICalendarState = {
@@ -35,11 +39,17 @@ export class CalendarComponent extends React.PureComponent<{}, ICalendarState> {
     
     let buttonLabel: string = 'All time';
     
-    if (this.state.startDate && this.state.endDate) {
-      buttonLabel = dayjs(this.state.startDate)
-        .format('DD.MM.YYYY') + '-' + dayjs(this.state.endDate)
-        .format('DD.MM.YYYY');
+    const props: any = {};
+    
+    if (this.props.startDate && this.props.endDate) {
+      buttonLabel = dayjs(this.props.startDate)
+          .format('DD.MM.YYYY') + '-' +
+        dayjs(this.props.endDate)
+          .format('DD.MM.YYYY');
+      
+      props.value = [new Date(this.props.startDate), new Date(this.props.endDate)];
     }
+    
     
     return (
       <div className='bi-calendar' ref={ (ref: HTMLDivElement) => {
@@ -49,7 +59,8 @@ export class CalendarComponent extends React.PureComponent<{}, ICalendarState> {
           { buttonLabel }
         </button>
         
-        <Calendar className={ calendarClassNames }
+        <Calendar { ...props }
+                  className={ calendarClassNames }
                   selectRange={ true }
                   onChange={ this.setCalendar as any }/>
       </div>
@@ -57,10 +68,7 @@ export class CalendarComponent extends React.PureComponent<{}, ICalendarState> {
   }
   
   private setCalendar ([startDate, endDate]: [Date, Date]): void {
-    this.setState({
-      endDate: endDate.getTime(),
-      startDate: startDate.getTime()
-    });
+    this.props.onChange(startDate.getTime(), endDate.getTime());
     
     this.hideCalendar();
   }
@@ -77,7 +85,7 @@ export class CalendarComponent extends React.PureComponent<{}, ICalendarState> {
     this.setState({
       isCalendarShown: false
     });
-  
+    
     document.removeEventListener('click', this.hideOnOutsideClick);
   }
   
