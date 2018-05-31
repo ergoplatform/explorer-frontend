@@ -1,0 +1,10 @@
+version: '3.6'
+
+services:
+  ergo-explorer:
+    container_name: ergo-explorer
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
