@@ -8,6 +8,7 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { AddressComponent } from '../../pages/address/address.component';
 import { ApiComponent } from '../../pages/api/api.component';
 import { BlockComponent } from '../../pages/block/block.component';
+import { ChartComponent } from '../../pages/chart/chart.component';
 import { ChartsComponent } from '../../pages/charts/charts.component';
 import { DataComponent } from '../../pages/data/data.component';
 import { NotFoundComponent } from '../../pages/not-found/not-found.component';
@@ -40,6 +41,7 @@ class App extends React.PureComponent {
               <Route exact={ true } path='/stats' component={ StatsComponent }/>
               
               <Route exact={ true } path='/charts' component={ ChartsComponent }/>
+              <Route exact={ true } path='/charts/:chartType' component={ ChartComponent }/>
               
               <Route component={ NotFoundComponent }/>
             </Switch>

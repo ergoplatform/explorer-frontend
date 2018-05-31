@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { StatsState } from '../../reducers/stats.reducer';
@@ -18,28 +19,34 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
   
   render (): JSX.Element {
     return (
-      <div className='bi-charts'>
-        <div className='bi-charts__header'>
+      <div className='bi-charts g-flex-column'>
+        <div className='bi-charts__header g-flex-column__item-fixed'>
           <div className='bi-charts__title'>
             Charts
           </div>
         </div>
         
-        <div className='bi-charts__body'>
           { this.props.info ? this.renderBody() : null }
-        </div>
       </div>
     );
   }
   
   private renderBody (): JSX.Element {
     return (
-      <div className='bi-charts__line'>
-        {
-          this.props.info.map((stats, index) => {
-            return <StatsItemComponent key={ index } title={ stats.title } value={ stats.value }/>;
-          })
-        }
+      <div className='bi-charts__body g-flex-column g-flex-column__item'>
+        <div className='bi-charts__stats g-flex-column__item-fixed'>
+          {
+            this.props.info.map((stats, index) => {
+              return <StatsItemComponent key={ index } title={ stats.title } value={ stats.value }/>;
+            })
+          }
+        </div>
+        
+        <div className='bi-charts__charts g-flex-column__item'>
+          <Link to={'/charts/total'} className='bi-charts__chart'>
+            Total coins per date
+          </Link>
+        </div>
       </div>
     );
   }

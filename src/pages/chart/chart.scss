@@ -1,0 +1,21 @@
+@import '~styles/base/variables';
+
+// #CHART
+//-------------------------------------
+
+.bi-chart {
+  padding: ($grid-offset-step * 10) 0;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------
+  &__header,
+  &__body {
+    padding: 0 ($grid-offset-step * 15);
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 600;
+  }
+}

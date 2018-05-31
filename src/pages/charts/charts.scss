@@ -2,16 +2,17 @@
 
 // #CHARTS
 //-------------------------------------
+$charts-charts-bg-color: #fff;
 
 .bi-charts {
-  padding: ($grid-offset-step * 10) 0;
   font-family: $theme-main-font;
+  min-height: 100%;
+
 
   // [ Components ]
   //-----------------------------------
-  &__header,
-  &__body {
-    padding: 0 ($grid-offset-step * 15);
+  &__header {
+    padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
   }
 
   &__title {
@@ -19,7 +20,12 @@
     font-weight: 600;
   }
 
-  &__line {
-    margin-top: ($grid-offset-step * 10);
+  &__stats {
+    padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+  }
+
+  &__charts {
+    padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+    background-color: $charts-charts-bg-color;
   }
 }

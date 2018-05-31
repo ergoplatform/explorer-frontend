@@ -16,6 +16,7 @@
     "@types/react-paginate": "^4.3.2",
     "@types/react-redux": "^5.0.19",
     "@types/react-router-dom": "^4.2.6",
+    "@types/recharts": "^1.0.20",
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.6",
     "autoprefixer": "7.1.6",
