@@ -10,6 +10,7 @@ import { ApiComponent } from '../../pages/api/api.component';
 import { BlockComponent } from '../../pages/block/block.component';
 import { DataComponent } from '../../pages/data/data.component';
 import { NotFoundComponent } from '../../pages/not-found/not-found.component';
+import { StatsComponent } from '../../pages/stats/stats.component';
 import { TransactionComponent } from '../../pages/transaction/transaction.component';
 
 import './app.scss';
@@ -34,6 +35,8 @@ class App extends React.PureComponent {
               <Route exact={ true } path='/addresses/:id' component={ AddressComponent }/>
               
               <Route exact={ true } path='/transactions/:id' component={ TransactionComponent }/>
+              
+              <Route exact={ true } path='/stats' component={ StatsComponent }/>
               
               <Route component={ NotFoundComponent }/>
             </Switch>

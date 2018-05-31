@@ -1,4 +1,4 @@
-import { GET_STATS_INFO, GET_STATS_INFO_SUCCESS } from '../constants/stats.types';
+import { GET_STATS_INFO, GET_STATS_INFO_SUCCESS, GET_STATS_SUCCESS } from '../constants/stats.types';
 import { convertInfoItemValue } from '../utils/convertInfoItemvalue';
 
 export interface IInfoItem {
@@ -9,6 +9,7 @@ export interface IInfoItem {
 export interface StatsState {
   fetching: boolean;
   info: IInfoItem[];
+  stats?: any;
 }
 
 const initialState: StatsState = {
@@ -31,7 +32,7 @@ export function statsReducer (state: StatsState = initialState, action: any): St
         .map((key: string) => {
           return {
             title: key,
-            value: convertInfoItemValue(key, action.payload.data[key]),
+            value: convertInfoItemValue(key, action.payload.data[key])
           };
         });
       
@@ -39,6 +40,13 @@ export function statsReducer (state: StatsState = initialState, action: any): St
         ...state,
         fetching: false,
         info
+      };
+    }
+    
+    case GET_STATS_SUCCESS: {
+      return {
+        ...state,
+        stats: action.payload.data
       };
     }
     
