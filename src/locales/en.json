@@ -73,5 +73,9 @@
   "components.paginate-simple.page": "Page {current}",
 
   "components.language-switcher.en": "English",
-  "components.language-switcher.ru": "Русский"
+  "components.language-switcher.ru": "Русский",
+
+  "components.block-summary.title": "Block Summary",
+  "components.block-summary.total": "Blocks Mined",
+  "components.block-summary.averageMiningTime": "Average mining time"
 }
