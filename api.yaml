@@ -435,7 +435,7 @@ components:
         - extensionHash
         - equihashSolutions
         - height
-        - blockSize
+        - size
       properties:
         id:
           $ref: '#/components/schemas/ModifierId'
@@ -482,7 +482,7 @@ components:
           format: int32
           minimum: 0
           example: 667
-        blockSize:
+        size:
           description: Block size in bytes
           type: integer
           format: int32

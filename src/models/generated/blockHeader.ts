@@ -34,5 +34,5 @@ export interface BlockHeader {
    */
   equihashSolutions: string;
   height: number;
-  blockSize: number;
+  size: number;
 }

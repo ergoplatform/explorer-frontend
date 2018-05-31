@@ -45,8 +45,8 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
         </div>
   
         <div className='bi-blocks-table__cell bi-table__cell'>
-          <Link className={ this.getSortDirectionClassName('minedBy') }
-                to={ `?${this.getSortLink('minedBy')}` }>
+          <Link className={ this.getSortDirectionClassName('miner') }
+                to={ `?${this.getSortLink('miner')}` }>
             <FormattedMessage id='common.block.minedBy'/>
       
             <SortDirectionIcon className='bi-blocks-table-header__sort-icon'/>

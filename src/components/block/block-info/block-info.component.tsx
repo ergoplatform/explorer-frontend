@@ -160,7 +160,7 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
             </div>
             
             <div className='bi-block-info__cell bi-table__cell'>
-              { formatNumberMetricPrefix(this.props.block.header.blockSize, 'k') }B
+              { formatNumberMetricPrefix(this.props.block.header.size, 'k') }B
             </div>
           </div>
         </div>
