@@ -10,11 +10,19 @@
 
   // [ Components ]
   //-----------------------------------
-  &__header,
-  &__body {
+  &__header {
     padding: 0 ($grid-offset-step * 15);
   }
 
+  &__body {
+    padding: 0 ($grid-offset-step * 3);
+  }
+
+  &__chart {
+    height: 100%;
+    max-height: 512px;
+    margin: $grid-offset-step * 10 0;
+  }
 
   &__title {
     font-size: 26px;
@@ -22,7 +30,7 @@
   }
 }
 
-.bi-chart--iframe  {
+.bi-chart--iframe {
   position: fixed;
   height: 100%;
   top: 0;

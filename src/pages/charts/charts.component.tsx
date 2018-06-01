@@ -26,7 +26,7 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
           </div>
         </div>
         
-          { this.props.info ? this.renderBody() : null }
+        { this.props.info ? this.renderBody() : null }
       </div>
     );
   }
@@ -48,16 +48,16 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
           </div>
           
           <div className='bi-charts__charts g-flex'>
-            <Link to={'/charts/total'} className='bi-charts__chart g-flex__item-fixed'>
+            <Link to={ '/charts/total' } className='bi-charts__chart g-flex__item-fixed'>
               Total coins per date
               
-              <iframe src='/charts/total?iframe=true' className='bi-charts__iframe'/>
+              <iframe src='/charts/total?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no'/>
             </Link>
-  
-            <Link to={'/charts/block-size'} className='bi-charts__chart g-flex__item-fixed'>
+            
+            <Link to={ '/charts/block-size' } className='bi-charts__chart g-flex__item-fixed'>
               Average block size
-  
-              <iframe src='/charts/block-size?iframe=true' className='bi-charts__iframe'/>
+              
+              <iframe src='/charts/block-size?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no'/>
             </Link>
           </div>
         </div>

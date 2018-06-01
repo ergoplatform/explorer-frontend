@@ -89,7 +89,8 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
             
             <div className='bi-block-info__cell bi-table__cell'>
               { this.props.block.header.interlinks.map((interlink: string) => {
-                return (<Link key={interlink} to={ `/blocks/${interlink}` } className='u-word-wrap'>{ interlink }</Link>);
+                return (
+                  <Link key={ interlink } to={ `/blocks/${interlink}` } className='u-word-wrap'>{ interlink }</Link>);
               }) }
             </div>
           </div>
@@ -160,7 +161,7 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
             </div>
             
             <div className='bi-block-info__cell bi-table__cell'>
-              { formatNumberMetricPrefix(this.props.block.header.size, 'k') }B
+              { formatNumberMetricPrefix(this.props.block.header.size, { desiredFormat: 'k' }) }B
             </div>
           </div>
         </div>

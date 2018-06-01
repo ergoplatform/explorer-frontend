@@ -14,10 +14,12 @@ import { ChartActions } from '../../actions/chart.actions';
 
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
+import { convertInfoItemValue } from '../../utils/convertInfoItemvalue';
 import { formatNumberMetricPrefix } from '../../utils/formatNumberMetricPrefix';
 
 import './chart.scss';
 
+// TODO: move chart to separate component
 class Chart extends React.PureComponent {
   props: RouteComponentProps<{
     chartType: string
@@ -26,8 +28,9 @@ class Chart extends React.PureComponent {
   constructor (props: any) {
     super(props);
     
-    this.formatLabel  = this.formatLabel.bind(this);
-    this.formatXLabel = this.formatXLabel.bind(this);
+    this.formatLabel   = this.formatLabel.bind(this);
+    this.formatXLabel  = this.formatXLabel.bind(this);
+    this.formatTooltip = this.formatTooltip.bind(this);
   }
   
   componentDidMount (): void {
@@ -59,52 +62,71 @@ class Chart extends React.PureComponent {
   private renderBody (): JSX.Element {
     const { iframe } = queryString.parse(this.props.location.search);
     
+    const max = Math.max.apply(null, this.props.data.map((item: any) => item.value));
+    
+    const maxDomain = (Math.ceil(max / Math.pow(10, (max.toString().length - 1))) + 2) * Math.pow(10, ((max).toString().length - 1));
+    
     return (
       <div className='bi-chart__body g-flex-column__item'>
-        <ResponsiveContainer width={ '100%' } height={ '100%' }>
-          <AreaChart
-            data={ this.props.data }
-          >
-            
-            <defs>
-              <linearGradient id='colorUv' x1='0' y1='0' x2='1' y2='1'>
-                <stop offset='5%' stopColor='#0078FF' stopOpacity={ 0.4 }/>
-                <stop offset='95%' stopColor='#0078FF' stopOpacity={ 0 }/>
-              </linearGradient>
-            </defs>
-            
-            { iframe ? null : <CartesianGrid stroke='#eee' vertical={ false } strokeDasharray='2 2' fill='#fff'/> }
-            
-            <XAxis dataKey='timestamp'
-                   tickCount={ 100 }
-                   tickFormatter={ this.formatXLabel }
-                   minTickGap={ 30 }
-                   hide={ !!iframe }/>
-            
-            <YAxis dataKey='value' tickFormatter={ this.formatLabel } hide={ !!iframe }/>
-            
-            <Tooltip/>
-            
-            <Area type='monotone'
-                  dataKey='value'
-                  stroke='#0078FF'
-                  yAxisId={ 0 }
-                  fillOpacity={ 1 }
-                  fill={ 'url(#colorUv)' }
-                  isAnimationActive={ !iframe }/>
-          </AreaChart>
-        </ResponsiveContainer>
+        <div className='bi-chart__chart'>
+          <ResponsiveContainer width={ '100%' } height={ '100%' }>
+            <AreaChart
+              data={ this.props.data }
+            >
+              
+              <defs>
+                <linearGradient id='colorUv' x1='0' y1='0' x2='1' y2='1'>
+                  <stop offset='5%' stopColor='#0078FF' stopOpacity={ 0.4 }/>
+                  <stop offset='95%' stopColor='#0078FF' stopOpacity={ 0 }/>
+                </linearGradient>
+              </defs>
+              
+              { iframe ? null : <CartesianGrid stroke='#eee' vertical={ false } strokeDasharray='2 2' fill='#fff'/> }
+              
+              <XAxis dataKey='timestamp'
+                     tick={ { fill: '#828795', fontSize: 14 } }
+                     tickCount={ 100 }
+                     tickMargin={ 10 }
+                     tickFormatter={ this.formatXLabel }
+                     minTickGap={ 30 }
+                     hide={ !!iframe }/>
+              
+              <YAxis dataKey='value'
+                     domain={ [0, maxDomain] }
+                     tickMargin={ 10 }
+                     tickCount={ 5 }
+                     minTickGap={ 30 }
+                     tick={ { fill: '#828795', fontSize: 14 } }
+                     tickFormatter={ this.formatLabel }
+                     hide={ !!iframe }/>
+              
+              <Tooltip formatter={ this.formatTooltip }/>
+              
+              <Area type='monotone'
+                    dataKey='value'
+                    stroke='#0078FF'
+                    yAxisId={ 0 }
+                    fillOpacity={ 1 }
+                    fill={ 'url(#colorUv)' }
+                    isAnimationActive={ !iframe }/>
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     );
   }
   
   private formatLabel (value: number): string {
-    return formatNumberMetricPrefix(value);
+    return formatNumberMetricPrefix(value, { fractionDigits: 0 });
   }
   
   private formatXLabel (value: number): string {
     return dayjs(value)
       .format('DD MMM YYYY');
+  }
+  
+  private formatTooltip (value: any): string {
+    return convertInfoItemValue('chart', value);
   }
 }
 

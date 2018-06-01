@@ -71,7 +71,7 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                     <FormattedMessage id='common.block.size'/>
                   </div>
                   
-                  { formatNumberMetricPrefix(block.size, 'k') }B
+                  { formatNumberMetricPrefix(block.size, { desiredFormat: 'k' }) }B
                 </div>
                 <div className='bi-blocks-table__cell bi-table__cell'>
                   <div className='bi-blocks-table__cell-name'>

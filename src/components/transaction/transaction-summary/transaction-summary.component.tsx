@@ -30,7 +30,7 @@ export class TransactionSummaryComponent extends React.Component<ITransactionSum
             
             <div
               className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
-              { formatNumberMetricPrefix(this.props.summary.size, 'k') }B
+              { formatNumberMetricPrefix(this.props.summary.size, { desiredFormat: 'k' }) }B
             </div>
           </div>
           
@@ -48,7 +48,7 @@ export class TransactionSummaryComponent extends React.Component<ITransactionSum
             <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
               <FormattedMessage id='components.transaction-summary.blocks'/>
             </div>
-    
+            
             <div
               className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
               {
@@ -62,7 +62,7 @@ export class TransactionSummaryComponent extends React.Component<ITransactionSum
               }
             </div>
           </div>
-      
+        
         </div>
       </div>
     );

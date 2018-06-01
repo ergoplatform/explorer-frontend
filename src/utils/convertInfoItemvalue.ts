@@ -12,6 +12,11 @@ export const convertInfoItemValue = (key: string, value: any): any => {
       })(value);
     }
     
+    
+    case 'chart': {
+      return formatNumber({ integerSeparator: ' ' })(value);
+    }
+    
     case 'marketCap': {
       return formatNumber({
         prefix: `$`
