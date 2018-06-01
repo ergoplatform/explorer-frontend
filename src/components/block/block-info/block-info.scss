@@ -40,6 +40,7 @@ $block-table-cell-border-color: $theme-color-blue;
     border-left: 0;
     color: $block-table-cell-color;
     font-size: 15px;
+    counter-reset: section;
 
     &:first-child:after {
       position: absolute;
@@ -51,6 +52,10 @@ $block-table-cell-border-color: $theme-color-blue;
       content: '';
       transform: scale(0);
     }
+  }
+
+  &__interlink {
+    display: block;
   }
 
   &__cell--header {

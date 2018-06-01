@@ -88,10 +88,17 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
             </div>
             
             <div className='bi-block-info__cell bi-table__cell'>
-              { this.props.block.header.interlinks.map((interlink: string) => {
-                return (
-                  <Link key={ interlink } to={ `/blocks/${interlink}` } className='u-word-wrap'>{ interlink }</Link>);
-              }) }
+              {
+                this.props.block.header.interlinks.map((interlink: string, index: number) => {
+                  return (
+                    <Link key={ interlink }
+                          to={ `/blocks/${interlink}` }
+                          className='u-word-wrap bi-block-info__interlink'>
+                      { interlink }
+                    </Link>
+                  );
+                })
+              }
             </div>
           </div>
           
