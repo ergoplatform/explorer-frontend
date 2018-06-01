@@ -89,6 +89,7 @@ class Chart extends React.PureComponent {
                   dataKey='value'
                   stroke='#0078FF'
                   yAxisId={ 0 }
+                  fillOpacity={ 1 }
                   fill={ 'url(#colorUv)' }
                   isAnimationActive={ !iframe }/>
           </AreaChart>
