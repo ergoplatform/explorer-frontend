@@ -1,5 +1,3 @@
-import * as dayjs from 'dayjs';
-
 import { GET_CHART, GET_CHART_SUCCESS } from '../constants/chart.types';
 
 export interface ChartState {
@@ -22,16 +20,9 @@ export function chartReducer (state: ChartState = initialState, action: any): Ch
     }
     
     case GET_CHART_SUCCESS: {
-      const data = action.payload.data.map((item: any) => {
-        item.timestamp = dayjs(item.timestamp)
-          .format('DD.MM.YYYY');
-        
-        return item;
-      });
-      
       return {
         ...state,
-        data,
+        data: action.payload.data,
         fetching: false
       };
     }

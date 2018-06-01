@@ -79,5 +79,6 @@
   "components.block-summary.total": "Blocks Mined",
   "components.block-summary.averageMiningTime": "Average mining time",
 
-  "components.chart.title.total": "Total coins"
+  "components.chart.title.total": "Total coins",
+  "components.chart.title.block-size": "Average block size"
 }

@@ -37,6 +37,9 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   },
   {
     icon: <ChartIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
+    props: {
+      exact: false,
+    },
     title: 'components.sidebar-menu.items.charts',
     url: '/charts'
   },

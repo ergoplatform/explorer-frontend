@@ -46,6 +46,10 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
           <Link to={'/charts/total'} className='bi-charts__chart'>
             Total coins per date
           </Link>
+  
+          <Link to={'/charts/block-size'} className='bi-charts__chart'>
+            Average block size
+          </Link>
         </div>
       </div>
     );
