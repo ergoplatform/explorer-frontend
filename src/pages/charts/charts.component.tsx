@@ -51,13 +51,13 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
             <Link to={ '/charts/total' } className='bi-charts__chart g-flex__item-fixed'>
               Total coins per date
               
-              <iframe src='/charts/total?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no'/>
+              <iframe src='/charts/total?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no' tabIndex={-1}/>
             </Link>
             
             <Link to={ '/charts/block-size' } className='bi-charts__chart g-flex__item-fixed'>
               Average block size
               
-              <iframe src='/charts/block-size?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no'/>
+              <iframe src='/charts/block-size?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no' tabIndex={-1}/>
             </Link>
           </div>
         </div>
