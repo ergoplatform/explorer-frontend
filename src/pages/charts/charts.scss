@@ -2,30 +2,69 @@
 
 // #CHARTS
 //-------------------------------------
-$charts-charts-bg-color: #fff;
+$charts-charts-bg-color: #ffffff;
+$chart-chart-title-color: $theme-primary-color;
+$chart-chart-border-color: #ECF1F5;
 
 .bi-charts {
-  font-family: $theme-main-font;
   min-height: 100%;
+  font-family: $theme-main-font;
 
 
   // [ Components ]
   //-----------------------------------
+  .bi-stats-item {
+    min-width: 300px;
+    margin-bottom: $grid-offset-step * 10;
+    font-family: $theme-main-font;
+
+    flex-grow: 1;
+
+    &__title {
+      font-size: 16px;
+    }
+
+    &__value {
+      font-size: 26px;
+    }
+  }
+
   &__header {
-    padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+    padding: 0 ($grid-offset-step * 15);
   }
 
   &__title {
+    padding: ($grid-offset-step * 10) 0;
     font-size: 26px;
     font-weight: 600;
   }
 
   &__stats {
-    padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+    padding: 0 ($grid-offset-step * 15);
+
+    flex-wrap: wrap;
   }
 
-  &__charts {
+  &__charts-wrapper {
     padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+    padding-top: 0;
     background-color: $charts-charts-bg-color;
+  }
+
+  &__chart {
+    margin-right: ($grid-offset-step * 10);
+    width: 300px;
+    text-align: center;
+    color: $chart-chart-title-color;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid $chart-chart-border-color;
+    padding: ($grid-offset-step * 4) $grid-offset-step;
+  }
+
+  &__iframe {
+    border: 0;
+    margin-top: $grid-offset-step * 4;
+    pointer-events: none;
   }
 }

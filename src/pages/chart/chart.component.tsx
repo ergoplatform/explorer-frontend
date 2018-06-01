@@ -1,4 +1,6 @@
+import * as classnames from 'classnames';
 import * as dayjs from 'dayjs';
+import * as queryString from 'query-string';
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -24,7 +26,7 @@ class Chart extends React.PureComponent {
   constructor (props: any) {
     super(props);
     
-    this.formatLabel = this.formatLabel.bind(this);
+    this.formatLabel  = this.formatLabel.bind(this);
     this.formatXLabel = this.formatXLabel.bind(this);
   }
   
@@ -33,45 +35,62 @@ class Chart extends React.PureComponent {
   }
   
   render (): JSX.Element {
+    const { iframe } = queryString.parse(this.props.location.search);
+    
+    const chartClassNames = classnames({
+      'bi-chart': true,
+      'bi-chart--iframe': iframe,
+      'g-flex-column': true
+    });
+    
     return (
-      <div className='bi-chart'>
-        <div className='bi-chart__header'>
+      <div className={ chartClassNames }>
+        <div className='bi-chart__header g-flex-column__item-fixed'>
           <div className='bi-chart__title'>
             <FormattedMessage id={ `components.chart.title.${this.props.match.params.chartType}` }/>
           </div>
         </div>
         
-        { this.props.data ? this.renderBody() : null }
+        { (this.props.data && !this.props.fetching) ? this.renderBody() : null }
       </div>
     );
   }
   
   private renderBody (): JSX.Element {
+    const { iframe } = queryString.parse(this.props.location.search);
+    
     return (
-      <div className='bi-chart__body'>
-        <ResponsiveContainer width={ '100%' } height={ 400 }>
+      <div className='bi-chart__body g-flex-column__item'>
+        <ResponsiveContainer width={ '100%' } height={ '100%' }>
           <AreaChart
-            height={ 400 }
             data={ this.props.data }
-            margin={ { top: 20, right: 20, left: 10, bottom: 5 } }
           >
             
             <defs>
-              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#0078FF" stopOpacity={0.7}/>
-                <stop offset="95%" stopColor="#0078FF" stopOpacity={0}/>
+              <linearGradient id='colorUv' x1='0' y1='0' x2='1' y2='1'>
+                <stop offset='5%' stopColor='#0078FF' stopOpacity={ 0.4 }/>
+                <stop offset='95%' stopColor='#0078FF' stopOpacity={ 0 }/>
               </linearGradient>
             </defs>
-  
-            <CartesianGrid stroke='#eee' vertical={false}  strokeDasharray="2 2" fill='#fff'/>
-  
-            <XAxis dataKey='timestamp' tickCount={ 100 } tickFormatter={this.formatXLabel } minTickGap={30}/>
             
-            <YAxis dataKey='value' tickFormatter={ this.formatLabel }/>
+            { iframe ? null : <CartesianGrid stroke='#eee' vertical={ false } strokeDasharray='2 2' fill='#fff'/> }
+            
+            <XAxis dataKey='timestamp'
+                   tickCount={ 100 }
+                   tickFormatter={ this.formatXLabel }
+                   minTickGap={ 30 }
+                   hide={ !!iframe }/>
+            
+            <YAxis dataKey='value' tickFormatter={ this.formatLabel } hide={ !!iframe }/>
             
             <Tooltip/>
             
-            <Area type='monotone' dataKey='value' stroke='#0078FF' yAxisId={ 0 } fill={'url(#colorUv)'}/>
+            <Area type='monotone'
+                  dataKey='value'
+                  stroke='#0078FF'
+                  yAxisId={ 0 }
+                  fill={ 'url(#colorUv)' }
+                  isAnimationActive={ !iframe }/>
           </AreaChart>
         </ResponsiveContainer>
       </div>

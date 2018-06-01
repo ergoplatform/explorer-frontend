@@ -34,7 +34,7 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
   private renderBody (): JSX.Element {
     return (
       <div className='bi-charts__body g-flex-column g-flex-column__item'>
-        <div className='bi-charts__stats g-flex-column__item-fixed'>
+        <div className='bi-charts__stats g-flex-column__item-fixed g-flex'>
           {
             this.props.info.map((stats, index) => {
               return <StatsItemComponent key={ index } title={ stats.title } value={ stats.value }/>;
@@ -42,14 +42,24 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
           }
         </div>
         
-        <div className='bi-charts__charts g-flex-column__item'>
-          <Link to={'/charts/total'} className='bi-charts__chart'>
-            Total coins per date
-          </Link>
+        <div className='bi-charts__charts-wrapper g-flex-column__item'>
+          <div className='bi-charts__title'>
+            Statistics
+          </div>
+          
+          <div className='bi-charts__charts g-flex'>
+            <Link to={'/charts/total'} className='bi-charts__chart g-flex__item-fixed'>
+              Total coins per date
+              
+              <iframe src='/charts/total?iframe=true' className='bi-charts__iframe'/>
+            </Link>
   
-          <Link to={'/charts/block-size'} className='bi-charts__chart'>
-            Average block size
-          </Link>
+            <Link to={'/charts/block-size'} className='bi-charts__chart g-flex__item-fixed'>
+              Average block size
+  
+              <iframe src='/charts/block-size?iframe=true' className='bi-charts__iframe'/>
+            </Link>
+          </div>
         </div>
       </div>
     );

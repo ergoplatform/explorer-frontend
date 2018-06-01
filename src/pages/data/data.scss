@@ -7,7 +7,6 @@ $data-title-color: $theme-primary-color;
 
 
 .bi-data {
-  height: 100%;
   padding: ($grid-offset-step * 10) 0;
   color: $data-color;
   font-family: $theme-main-font;
@@ -56,4 +55,11 @@ $data-title-color: $theme-primary-color;
       display: none;
     }
   }
+}
+
+svg {
+  color-interpolation: sRGB;
+  color-interpolation-filters: sRGB;
+  color-rendering: optimizeQuality;
+  color-profile: sRGB;
 }

@@ -6,6 +6,7 @@
 .bi-chart {
   padding: ($grid-offset-step * 10) 0;
   font-family: $theme-main-font;
+  height: 100%;
 
   // [ Components ]
   //-----------------------------------
@@ -14,8 +15,28 @@
     padding: 0 ($grid-offset-step * 15);
   }
 
+
   &__title {
     font-size: 26px;
     font-weight: 600;
+  }
+}
+
+.bi-chart--iframe  {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  padding: 0;
+
+  .bi-chart__body {
+    padding: 0;
+  }
+
+  .bi-chart__header {
+    display: none;
   }
 }
