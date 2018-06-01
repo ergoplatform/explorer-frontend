@@ -5,6 +5,8 @@ import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YA
 import { convertInfoItemValue } from '../../../utils/convertInfoItemvalue';
 import { formatNumberMetricPrefix } from '../../../utils/formatNumberMetricPrefix';
 
+import { ChartTooltipComponent } from '../chart-tooltip/chart-tooltip.component';
+
 interface IAreaChartProps {
   data: any;
   compact?: boolean;
@@ -21,25 +23,26 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
   
   render (): JSX.Element {
     const max = Math.max.apply(null, this.props.data.map((item: any) => item.value));
-  
+    
     const maxDomain = (Math.ceil(max / Math.pow(10, (max.toString().length - 1))) + 2) * Math.pow(10, ((max).toString().length - 1));
-  
-  
+    
+    
     return (
       <ResponsiveContainer width={ '100%' } height={ '100%' }>
         <AreaChart
           data={ this.props.data }
         >
-      
+          
           <defs>
             <linearGradient id='colorUv' x1='0' y1='0' x2='1' y2='1'>
               <stop offset='5%' stopColor='#0078FF' stopOpacity={ 0.4 }/>
               <stop offset='95%' stopColor='#0078FF' stopOpacity={ 0 }/>
             </linearGradient>
           </defs>
-      
-          { this.props.compact ? null : <CartesianGrid stroke='#eee' vertical={ false } strokeDasharray='2 2' fill='#fff'/> }
-      
+          
+          { this.props.compact ? null :
+            <CartesianGrid stroke='#eee' vertical={ false } strokeDasharray='2 2' fill='#fff'/> }
+          
           <XAxis dataKey='timestamp'
                  tick={ { fill: '#828795', fontSize: 14 } }
                  tickCount={ 100 }
@@ -47,7 +50,7 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
                  tickFormatter={ this.formatXLabel }
                  minTickGap={ 30 }
                  hide={ this.props.compact }/>
-      
+          
           <YAxis dataKey='value'
                  domain={ [0, maxDomain] }
                  tickMargin={ 10 }
@@ -56,9 +59,9 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
                  tick={ { fill: '#828795', fontSize: 14 } }
                  tickFormatter={ this.formatLabel }
                  hide={ this.props.compact }/>
-      
-          <Tooltip formatter={ this.formatTooltip }/>
-      
+          
+          <Tooltip content={ this.renderTooltip }/>
+          
           <Area type='monotone'
                 dataKey='value'
                 stroke='#0078FF'
@@ -69,6 +72,10 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
         </AreaChart>
       </ResponsiveContainer>
     );
+  }
+  
+  private renderTooltip (props: any): JSX.Element {
+    return <ChartTooltipComponent { ...props }/>;
   }
   
   private formatLabel (value: number): string {
