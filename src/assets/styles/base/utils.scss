@@ -4,6 +4,14 @@
   word-break: break-all;
 }
 
+.u-word-wrap--ellipsis {
+  display: block;
+  overflow: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 @media screen and (max-width: $mobile-device-width) {
   .u-word-wrap {
     display: block;
