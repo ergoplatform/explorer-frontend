@@ -1,7 +1,7 @@
 import * as classnames from 'classnames';
 import * as dayjs from 'dayjs';
 import * as React from 'react';
-import Calendar from 'react-calendar';
+import Calendar from 'react-calendar/dist/entry.nostyle';
 
 import './calendar.scss';
 

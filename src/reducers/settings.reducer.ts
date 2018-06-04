@@ -1,3 +1,4 @@
+import * as storage from 'universal-localstorage';
 import environment from '../config/environment';
 
 import {
@@ -14,7 +15,7 @@ export interface SettingsState {
   blocksLimit: number;
 }
 
-const settings = JSON.parse(localStorage.getItem('settings') as string) || {};
+const settings = JSON.parse(storage.getItem('settings') as string) || {};
 
 const initialState = {
   blocksLimit: 30,
@@ -33,7 +34,7 @@ export function settingsReducer (state: SettingsState = initialState, action: an
       };
       
       // TODO: move to service
-      localStorage.setItem('settings', JSON.stringify(newState));
+      storage.setItem('settings', JSON.stringify(newState));
       
       return newState;
     }
@@ -45,7 +46,7 @@ export function settingsReducer (state: SettingsState = initialState, action: an
       };
       
       // TODO: move to service
-      localStorage.setItem('settings', JSON.stringify(newState));
+      storage.setItem('settings', JSON.stringify(newState));
       
       return newState;
     }
@@ -57,7 +58,7 @@ export function settingsReducer (state: SettingsState = initialState, action: an
       };
       
       // TODO: move to service
-      localStorage.setItem('settings', JSON.stringify(newState));
+      storage.setItem('settings', JSON.stringify(newState));
       
       return newState;
     }
