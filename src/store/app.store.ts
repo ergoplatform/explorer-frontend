@@ -28,4 +28,7 @@ const logger = createLogger({
   predicate: () => environment.isLoggerEnabled
 });
 
-export const AppStore = createStore<AppState>(reducer, applyMiddleware(thunk, logger));
+
+export const configureStore = (preloadedState: any = {}) => {
+  return createStore<AppState>(reducer, preloadedState, applyMiddleware(thunk, logger));
+};

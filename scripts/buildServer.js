@@ -18,7 +18,7 @@ const path = require('path');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const webpack = require('webpack');
-const config = require('../config/webpack.config.prod');
+const config = require('../config/webpack.config.server');
 const paths = require('../config/paths');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
@@ -41,13 +41,13 @@ if (!checkRequiredFiles([paths.appIndexJs])) {
 
 // First, read the current file sizes in build directory.
 // This lets us display how much they changed later.
-measureFileSizesBeforeBuild(paths.appBuild)
+measureFileSizesBeforeBuild(paths.serverBuild)
     .then(previousFileSizes => {
         // Remove all content but keep the directory so that
         // if you're in it, you don't end up in Trash
-        fs.emptyDirSync(paths.appBuild);
+        // fs.emptyDirSync(paths.appBuild);
         // Merge with the public folder
-        copyPublicFolder();
+        // copyPublicFolder();
         // Start the webpack build
         return build(previousFileSizes);
     })
@@ -74,7 +74,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
             printFileSizesAfterBuild(
                 stats,
                 previousFileSizes,
-                paths.appBuild,
+                paths.serverBuild,
                 WARN_AFTER_BUNDLE_GZIP_SIZE,
                 WARN_AFTER_CHUNK_GZIP_SIZE
             );
@@ -83,7 +83,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
             const appPackage = require(paths.appPackageJson);
             const publicUrl = paths.publicUrl;
             const publicPath = config.output.publicPath;
-            const buildFolder = path.relative(process.cwd(), paths.appBuild);
+            const buildFolder = path.relative(process.cwd(), paths.serverBuild);
             printHostingInstructions(
                 appPackage,
                 publicUrl,
@@ -138,12 +138,5 @@ function build(previousFileSizes) {
                 warnings: messages.warnings,
             });
         });
-    });
-}
-
-function copyPublicFolder() {
-    fs.copySync(paths.appPublic, paths.appBuild, {
-        dereference: true,
-        filter: file => file !== paths.appHtml,
     });
 }

@@ -5,6 +5,7 @@ import environment from '../config/environment';
 
 import { GET_BLOCK, GET_BLOCK_SUCCESS, GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
 import { SET_BLOCKS_LIMIT } from '../constants/settings.types';
+import { BlockApiService } from '../services/block.api.service';
 
 export interface IGetBlocksParams {
   limit?: number;
@@ -34,16 +35,7 @@ export const BlockActions: BlockActions = {
         type: SET_BLOCKS_LIMIT
       });
       
-      axios.get(`${environment.apiUrl}/blocks`, {
-        params: {
-          endDate,
-          limit,
-          offset,
-          sortBy: sortBy || 'height',
-          sortDirection:  sortDirection || 'desc',
-          startDate
-        }
-      })
+      return BlockApiService.getBlocks({ limit, offset, sortBy, sortDirection, startDate, endDate })
         .then((response: AxiosResponse) => {
           dispatch({
             payload: {

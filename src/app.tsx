@@ -9,11 +9,13 @@ import * as ru from "react-intl/locale-data/ru";
 
 import { AppComponent } from './containers/app/app.component';
 import { ConnectedIntlProvider } from './containers/connected-intl-provider/connected-intl-provider';
-import { AppStore } from './store/app.store';
+import { configureStore } from './store/app.store';
 
 const TextComponent = (props: any) => {
   return props.children;
 };
+
+const AppStore = configureStore();
 
 addLocaleData([...en, ...ru]);
 

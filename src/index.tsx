@@ -14,7 +14,7 @@ const rootElement = document.getElementById('root') as HTMLElement;
 
 ReactModal.setAppElement(rootElement);
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <App/>, rootElement
 );
 

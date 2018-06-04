@@ -9,8 +9,7 @@ import * as ru from 'react-intl/locale-data/ru';
 
 import { AppComponent } from '../containers/app/app.component';
 import { ConnectedIntlProvider } from '../containers/connected-intl-provider/connected-intl-provider';
-import { AppStore } from '../store/app.store';
-
+import { configureStore } from '../store/app.store';
 
 const TextComponent = (props: any) => {
   return props.children;
@@ -18,8 +17,8 @@ const TextComponent = (props: any) => {
 
 addLocaleData([...en, ...ru]);
 
-export const App = (location: any, context: any) => {
-  
+export const App = ({ location, context, preloadedState }: any) => {
+  const AppStore = configureStore(preloadedState);
   
   return (<Provider store={ AppStore }>
     <ConnectedIntlProvider textComponent={ TextComponent }>
