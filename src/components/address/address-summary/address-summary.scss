@@ -12,18 +12,18 @@ $address-summary-header-border-color: #eeeeee;
   &__header {
     padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
     border: 1px solid $address-summary-header-border-color;
+    border-bottom: 0;
     color: $address-summary-header-color;
     background-color: $address-summary-header-bg-color;
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
-    border-bottom: 0;
   }
 
   &__body {
-    font-size: 14px;
-    background-color: #fff;
     border: 1px solid $address-summary-header-border-color;
+    background-color: #ffffff;
+    font-size: 14px;
   }
 
   &__row {

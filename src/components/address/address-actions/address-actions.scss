@@ -8,8 +8,9 @@ $address-actions-btn-bg-color: $theme-primary-color;
 
 
 .bi-address-actions {
-  justify-content: space-between;
   margin-top: $grid-offset-step * 3;
+
+  justify-content: space-between;
 
   // [ Components ]
   //-----------------------------------

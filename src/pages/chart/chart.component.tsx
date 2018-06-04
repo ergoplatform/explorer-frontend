@@ -6,22 +6,41 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
 
+import { TIMESPAN } from '../../constants/timespan.constant';
+
 import { ChartState } from '../../reducers/chart.reducer';
 import { AppState } from '../../store/app.store';
 
 import { ChartActions } from '../../actions/chart.actions';
 
 import { AreaChartComponent } from '../../components/charts/area-chart/area-chart.component';
+import { TimespanComponent } from '../../components/charts/timespan/timespan.component';
 
 import './chart.scss';
+
+interface IChartState {
+  selectedTimespan: TIMESPAN;
+}
 
 class Chart extends React.PureComponent {
   props: RouteComponentProps<{
     chartType: string
   }> & ChartState & ChartActions;
   
+  state: IChartState = {
+    selectedTimespan: TIMESPAN.DAYS_30
+  };
+  
+  constructor (props: any) {
+    super(props);
+    
+    this.onTimespanChanged = this.onTimespanChanged.bind(this);
+  }
+  
   componentDidMount (): void {
-    this.props.getChart(this.props.match.params.chartType);
+    this.props.getChart(this.props.match.params.chartType, {
+      timespan: this.state.selectedTimespan
+    });
   }
   
   render (): JSX.Element {
@@ -54,8 +73,23 @@ class Chart extends React.PureComponent {
         <div className='bi-chart__chart'>
           <AreaChartComponent data={ this.props.data } compact={ !!iframe }/>
         </div>
+        
+        <div className='bi-chart__controls'>
+          <TimespanComponent selected={ this.state.selectedTimespan }
+                             onChange={ this.onTimespanChanged }/>
+        </div>
       </div>
     );
+  }
+  
+  private onTimespanChanged (span: TIMESPAN): void {
+    this.setState({
+      selectedTimespan: span
+    });
+    
+    this.props.getChart(this.props.match.params.chartType, {
+      timespan: span
+    });
   }
 }
 

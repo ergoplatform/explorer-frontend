@@ -18,8 +18,8 @@ $block-table-cell-color: $theme-primary-color;
   }
 
   &__row {
-    background-color: $block-table-table-bg-color;
     border-bottom: 1px solid $block-table-table-border-color;
+    background-color: $block-table-table-bg-color;
 
     &:hover {
       background-color: $block-table-table-row-hover-bg-color;
@@ -57,11 +57,12 @@ $block-table-cell-color: $theme-primary-color;
     }
 
     &__cell {
+      display: flex;
       padding: ($grid-offset-step * 2) ($grid-offset-step * 2);
+      border-right: 1px solid $block-table-table-border-color;
       border-bottom: 0;
       border-left: 1px solid $block-table-table-border-color;
-      border-right: 1px solid $block-table-table-border-color;
-      display: flex;
+
       justify-content: space-between;
     }
 

@@ -4,13 +4,18 @@ import { Action, ActionCreatorsMapObject, Dispatch } from 'redux';
 import environment from '../config/environment';
 
 import { GET_CHART, GET_CHART_SUCCESS } from '../constants/chart.types';
+import { TIMESPAN } from '../constants/timespan.constant';
 
 export interface ChartActions extends ActionCreatorsMapObject {
-  getChart: (chartType: string) => any;
+  getChart: (chartType: string, options?: IChartParams) => any;
+}
+
+export interface IChartParams {
+  timespan?: TIMESPAN;
 }
 
 export const ChartActions: ChartActions = {
-  getChart (chartType: string): any {
+  getChart (chartType: string, options: IChartParams = {}): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
         type: GET_CHART
@@ -18,7 +23,7 @@ export const ChartActions: ChartActions = {
       
       axios.get(`${environment.apiUrl}/charts/${chartType}`, {
         params: {
-          timespan: '180days'
+          timespan: options.timespan || TIMESPAN.DAYS_30
         }
       })
         .then((response: AxiosResponse) => {
@@ -30,5 +35,5 @@ export const ChartActions: ChartActions = {
           });
         });
     };
-  },
+  }
 };

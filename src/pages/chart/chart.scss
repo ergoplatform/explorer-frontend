@@ -4,9 +4,9 @@
 //-------------------------------------
 
 .bi-chart {
+  height: 100%;
   padding: ($grid-offset-step * 10) 0;
   font-family: $theme-main-font;
-  height: 100%;
 
   // [ Components ]
   //-----------------------------------
@@ -14,14 +14,15 @@
     padding: 0 ($grid-offset-step * 15);
   }
 
-  &__body {
-    padding: 0 ($grid-offset-step * 3);
-  }
-
   &__chart {
     height: 100%;
     max-height: 512px;
     margin: $grid-offset-step * 10 0;
+    padding: 0 ($grid-offset-step * 3);
+  }
+
+  &__controls {
+    padding: 0 ($grid-offset-step * 15);
   }
 
   &__title {
@@ -32,13 +33,13 @@
 
 .bi-chart--iframe {
   position: fixed;
-  height: 100%;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  background-color: #fff;
+  left: 0;
+  height: 100%;
   padding: 0;
+  background-color: #ffffff;
 
   .bi-chart__chart {
     max-height: 100%;

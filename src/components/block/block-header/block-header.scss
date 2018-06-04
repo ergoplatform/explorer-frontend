@@ -17,8 +17,9 @@ $block-header-nav-icon-color: $theme-primary-color;
   // [ Components ]
   //-------------------------------
   &__line {
-    align-items: center;
     width: 100%;
+
+    align-items: center;
   }
 
   &__title {
@@ -81,19 +82,17 @@ $block-header-nav-icon-color: $theme-primary-color;
 
   &__btn-back {
     display: inline-block;
-    font-size: 15px;
     margin-bottom: $grid-offset-step * 8;
+    font-size: 15px;
   }
 
   &__btn-back-icon {
     width: 10px;
     height: 10px;
-
-    fill: $block-header-back-btn-color;
-
+    margin-right: $grid-offset-step;
     transform: rotate(180deg);
 
-    margin-right: $grid-offset-step;
+    fill: $block-header-back-btn-color;
   }
 }
 
@@ -106,13 +105,13 @@ $block-header-nav-icon-color: $theme-primary-color;
     }
 
     &__tabs {
-      margin-left: 0;
       margin-top: $grid-offset-step * 2;
+      margin-left: 0;
     }
 
     &__tab {
-      margin-left: 0;
       margin-right: $grid-offset-step * 2;
+      margin-left: 0;
     }
 
     &__line {
@@ -120,4 +119,3 @@ $block-header-nav-icon-color: $theme-primary-color;
     }
   }
 }
-

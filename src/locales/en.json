@@ -80,5 +80,12 @@
   "components.block-summary.averageMiningTime": "Average mining time",
 
   "components.chart.title.total": "Total coins",
-  "components.chart.title.block-size": "Average block size"
+  "components.chart.title.block-size": "Average block size",
+
+  "components.timespan.span.30days": "30 Days",
+  "components.timespan.span.60days": "60 Days",
+  "components.timespan.span.180days": "180 Days",
+  "components.timespan.span.1year": "1 Year",
+  "components.timespan.span.2years": "2 Years",
+  "components.timespan.span.alltime": "All Time"
 }

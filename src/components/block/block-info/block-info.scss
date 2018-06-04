@@ -58,17 +58,16 @@ $block-table-cell-border-color: $theme-color-blue;
   }
 
   &__cell--header {
-    font-weight: 600;
     width: 200px;
+    font-weight: 600;
   }
 }
 
 @media screen and (max-width: $mobile-device-width) {
   .bi-block-info {
-
     &__cell {
-      border-bottom: 0;
       padding: ($grid-offset-step * 2) ($grid-offset-step * 2);
+      border-bottom: 0;
     }
 
     &__cell--header + &__cell {

@@ -5,6 +5,7 @@
 $address-summary-header-color: $theme-primary-color;
 $address-summary-header-bg-color: #f8f8f8;
 $address-summary-header-border-color: #eeeeee;
+$address-summary-body-bg-color: #ffffff;
 
 .bi-transaction-summary {
   // [ Components ]
@@ -12,18 +13,18 @@ $address-summary-header-border-color: #eeeeee;
   &__header {
     padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
     border: 1px solid $address-summary-header-border-color;
+    border-bottom: 0;
     color: $address-summary-header-color;
     background-color: $address-summary-header-bg-color;
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
-    border-bottom: 0;
   }
 
   &__body {
-    font-size: 14px;
-    background-color: #fff;
     border: 1px solid $address-summary-header-border-color;
+    background-color: $address-summary-body-bg-color;
+    font-size: 14px;
   }
 
   &__row {

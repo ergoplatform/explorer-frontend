@@ -20,9 +20,8 @@ $block-transactions-item-total-value-color: $theme-color-blue;
     padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
     border-bottom: 1px solid $block-transactions-item-border-color;
 
-    justify-content: space-between;
-
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   &__title {
