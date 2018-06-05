@@ -22,8 +22,9 @@
   "exclude": [
     "node_modules",
     "build",
+    "dist",
     "coverage",
-    "src/models/generated",
+    "client/src/models/generated",
     "scripts",
     "acceptance-tests",
     "webpack",

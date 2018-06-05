@@ -1,10 +1,20 @@
 version: '3.6'
 
 services:
-  ergo-explorer:
-    container_name: ergo-explorer
+  ergo-explorer-node:
+      container_name: ergo-explorer-node
+      build:
+        context: .
+        dockerfile: ./config/docker/app/Dockerfile
+
+  ergo-explorer-nginx:
+    container_name: ergo-explorer-nginx
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./config/docker/nginx/Dockerfile
+    depends_on:
+      - ergo-explorer-node
+    links:
+      - ergo-explorer-node:ergo-explorer-node
     ports:
       - '80:80'

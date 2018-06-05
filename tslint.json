@@ -8,7 +8,7 @@
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
-      "src/models/generated/**/*.ts"
+      "client/src/models/generated/**/*.ts"
     ]
   },
   "rules": {
