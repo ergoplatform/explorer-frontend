@@ -1,13 +1,12 @@
 const nodeExternals = require('webpack-node-externals');
 const paths = require('./paths');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: {
-    server: paths.appSrc + '/server/server.tsx'
-  },
+  entry: paths.server.root,
   output: {
-    path: paths.serverBuild,
-    filename: '[name].js'
+    filename: 'bundle.js',
+    path: paths.server.build
   },
 
   // Currently we need to add '.ts' to the resolve.extensions array.
@@ -29,7 +28,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'styles': paths.appStyles
+      'styles': paths.client.styles,
     }
   },
 
@@ -80,6 +79,25 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    // Minify the code.
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        // Disabled because of an issue with Uglify breaking seemingly valid code:
+        comparisons: false,
+      },
+      mangle: {
+        safari10: true,
+      },
+      output: {
+        comments: false,
+        // Turned on because emoji and regex is not minified properly using default
+        ascii_only: true,
+      },
+      sourceMap: false,
+    })
+  ],
   target: 'node',
   externals: [nodeExternals()]
 };

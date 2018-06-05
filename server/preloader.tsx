@@ -1,9 +1,9 @@
 import * as express from 'express';
 
-import { initialState, statsReducer } from '../reducers/stats.reducer';
+import { initialState, statsReducer } from '../client/src/reducers/stats.reducer';
 
-import { GET_STATS_INFO_SUCCESS } from '../constants/stats.types';
-import { StatsApiService } from '../services/stats.api.service';
+import { GET_STATS_INFO_SUCCESS } from '../client/src/constants/stats.types';
+import { StatsApiService } from '../client/src/services/stats.api.service';
 
 export const Preloader = express.Router();
 

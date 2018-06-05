@@ -5,7 +5,6 @@ export * from './transactionInput';
 export * from './transactionOutput';
 export * from './blockADProofs';
 export * from './blockHeader';
-export * from './blockTransactions';
 export * from './blockchainInfo';
 export * from './blockchainStats';
 export * from './blockchainStatsBlockSummary';

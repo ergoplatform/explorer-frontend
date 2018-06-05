@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-import { BlockApiService } from '../../services/block.api.service';
+import { BlockApiService } from '../../client/src/services/block.api.service';
 
 export const DataPage = express.Router();
 

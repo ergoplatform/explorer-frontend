@@ -1,8 +1,8 @@
 import * as express from 'express';
-import { StatsApiService } from '../../services/stats.api.service';
+import { StatsApiService } from '../../client/src/services/stats.api.service';
 
-import { GET_STATS_SUCCESS } from '../../constants/stats.types';
-import { initialState, statsReducer } from '../../reducers/stats.reducer';
+import { GET_STATS_SUCCESS } from '../../client/src/constants/stats.types';
+import { initialState, statsReducer } from '../../client/src/reducers/stats.reducer';
 
 export const StatsPage = express.Router();
 
