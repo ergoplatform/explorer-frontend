@@ -170,7 +170,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:8080",
+      "target": "http://188.166.109.25:8080",
       "pathRewrite": {
         "^/api": ""
       }
