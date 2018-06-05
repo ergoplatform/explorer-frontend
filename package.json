@@ -113,17 +113,22 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.{d.ts}",
-      "!src/utils/test-utils.ts"
+      "client/src/**/*.{js,jsx,ts,tsx}",
+      "!client/src/**/*.{d.ts}",
+      "!client/src/utils/test-utils.ts",
+      "server/src/**/*.{js,jsx,ts,tsx}",
+      "!server/src/**/*.{d.ts}",
+      "!server/src/utils/test-utils.ts"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
       "<rootDir>/config/enzyme.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
-      "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+      "<rootDir>/client/src/**/__tests__/**/*.(j|t)s?(x)",
+      "<rootDir>/client/src/**/?(*.)(spec|test).(j|t)s?(x)",
+      "<rootDir>/server/src/**/__tests__/**/*.(j|t)s?(x)",
+      "<rootDir>/server/src/**/?(*.)(spec|test).(j|t)s?(x)"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",

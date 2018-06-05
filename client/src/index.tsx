@@ -12,9 +12,17 @@ import { App } from './app';
 
 const rootElement = document.getElementById('root') as HTMLElement;
 
+let renderMethod = ReactDOM.render;
+
+if (document.body.classList.contains('ssr')) {
+  renderMethod = ReactDOM.hydrate;
+  
+  document.body.classList.remove('ssr');
+}
+
 ReactModal.setAppElement(rootElement);
 
-ReactDOM.hydrate(
+renderMethod(
   <App/>, rootElement
 );
 

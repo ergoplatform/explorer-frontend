@@ -11,7 +11,7 @@ export const serverHtml = ({ body, assets, spriteContent, preloadedState }: { bo
       
       <title>Blockchain Explorer</title>
     </head>
-    <body>
+    <body class='ssr'>
      ${ spriteContent }
 
     <div id='root'>${ body }</div>
