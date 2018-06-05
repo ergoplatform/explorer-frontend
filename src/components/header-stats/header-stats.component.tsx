@@ -5,14 +5,19 @@ import { bindActionCreators } from 'redux';
 import { IInfoItem, StatsState } from '../../reducers/stats.reducer';
 import { AppState } from '../../store/app.store';
 
+import { AppActions } from '../../actions/app.actions';
 import { StatsActions } from '../../actions/stats.actions';
 
 import { StatsItemComponent } from '../stats-item/stats-item.component';
 
 import './header-stats.scss';
 
-class HeaderStats extends React.Component<StatsActions & StatsState> {
+class HeaderStats extends React.Component<StatsActions & AppActions & StatsState> {
   componentDidMount (): void {
+    if (this.props.preloaded) {
+      return this.props.clearPreloadedState();
+    }
+    
     this.props.getStatsInfo();
   }
   
@@ -29,12 +34,13 @@ class HeaderStats extends React.Component<StatsActions & StatsState> {
   }
 }
 
+
 function mapStateToProps (state: AppState): any {
   return state.stats;
 }
 
 function mapDispatchToProps (dispatch: any): any {
-  return bindActionCreators<StatsActions>(StatsActions, dispatch);
+  return bindActionCreators({ ...StatsActions, ...AppActions }, dispatch);
 }
 
 export const HeaderStatsComponent = connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(HeaderStats);

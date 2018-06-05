@@ -15,7 +15,11 @@ const TextComponent = (props: any) => {
   return props.children;
 };
 
-const AppStore = configureStore();
+const preloadedState = window.__PRELOADED_STATE__;
+
+delete window.__PRELOADED_STATE__;
+
+const AppStore = configureStore(preloadedState);
 
 addLocaleData([...en, ...ru]);
 

@@ -10,3 +10,9 @@ declare module 'universal-localstorage' {
   
   const storage: Storage;
 }
+
+interface Window {
+  __PRELOADED_STATE__: any;
+}
+
+declare var window: Window;

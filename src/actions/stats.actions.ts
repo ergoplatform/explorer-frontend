@@ -1,9 +1,7 @@
-import axios, { AxiosResponse } from 'axios';
 import { Action, ActionCreatorsMapObject, Dispatch } from 'redux';
 
-import environment from '../config/environment';
-
 import { GET_STATS, GET_STATS_INFO, GET_STATS_INFO_SUCCESS, GET_STATS_SUCCESS } from '../constants/stats.types';
+import { StatsApiService } from '../services/stats.api.service';
 
 export interface StatsActions extends ActionCreatorsMapObject {
   getStatsInfo: () => any;
@@ -17,11 +15,11 @@ export const StatsActions: StatsActions = {
         type: GET_STATS_INFO
       });
       
-      axios.get(`${environment.apiUrl}/info`)
-        .then((response: AxiosResponse) => {
+      StatsApiService.getStatsInfo()
+        .then((data: any) => {
           dispatch({
             payload: {
-              data: response.data
+              data
             },
             type: GET_STATS_INFO_SUCCESS
           });
@@ -32,14 +30,14 @@ export const StatsActions: StatsActions = {
   getStats (): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
-        type: GET_STATS,
+        type: GET_STATS
       });
-  
-      axios.get(`${environment.apiUrl}/stats`)
-        .then((response: AxiosResponse) => {
+      
+      StatsApiService.getStats()
+        .then((data: any) => {
           dispatch({
             payload: {
-              data: response.data
+              data
             },
             type: GET_STATS_SUCCESS
           });

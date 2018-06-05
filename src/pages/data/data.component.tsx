@@ -7,15 +7,18 @@ import { bindActionCreators } from 'redux';
 
 import './data.scss';
 
-import { BlockActions, IGetBlocksParams } from '../../actions/block.actions';
+import { AppActions } from '../../actions/app.actions';
+import { BlockActions } from '../../actions/block.actions';
 import { AppState } from '../../store/app.store';
+
+import { IGetBlocksParams } from '../../services/block.api.service';
 
 import { BlocksTableComponent } from '../../components/blocks-table/blocks-table.component';
 import { CalendarComponent } from '../../components/common/calendar/calendar.component';
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 
-type IDataProps = AppState & BlockActions & RouteComponentProps<{}>;
+type IDataProps = AppState & BlockActions & RouteComponentProps<{}> & AppActions;
 
 class Data extends React.PureComponent {
   props: IDataProps;
@@ -32,6 +35,12 @@ class Data extends React.PureComponent {
   }
   
   componentDidMount (): void {
+    if (this.props.blocks.preloaded) {
+      this.props.clearPreloadedState();
+      
+      return;
+    }
+    
     this.reloadBlocks(this.params);
   }
   
@@ -154,7 +163,7 @@ function mapStateToProps (state: AppState): AppState {
 }
 
 function mapDispatchToProps (dispatch: any): any {
-  return bindActionCreators(BlockActions, dispatch);
+  return bindActionCreators({...BlockActions, ...AppActions}, dispatch);
 }
 
 export const DataComponent = connect(mapStateToProps, mapDispatchToProps)(Data);

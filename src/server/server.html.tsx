@@ -1,4 +1,4 @@
-export const html = ({ body, assets, spriteContent }: { body: string, assets: any, spriteContent: any }) => `
+export const serverHtml = ({ body, assets, spriteContent, preloadedState }: { body: string, assets: any, spriteContent: any, preloadedState: any }) => `
     <html>
     <head>
       <meta charSet='utf-8'/>
@@ -15,6 +15,13 @@ export const html = ({ body, assets, spriteContent }: { body: string, assets: an
      ${ spriteContent }
 
     <div id='root'>${ body }</div>
+      
+      <script>
+          window.__PRELOADED_STATE__ = ${
+  JSON.stringify(preloadedState)
+    .replace(/</g, '\\\u003c')
+  }
+      </script>
     
     <script src='/${assets['main.js']}'></script>
     </body>

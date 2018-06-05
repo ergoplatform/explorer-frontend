@@ -1,20 +1,8 @@
-import axios, { AxiosResponse } from 'axios';
 import { Action, ActionCreatorsMapObject, Dispatch } from 'redux';
-
-import environment from '../config/environment';
 
 import { GET_BLOCK, GET_BLOCK_SUCCESS, GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
 import { SET_BLOCKS_LIMIT } from '../constants/settings.types';
-import { BlockApiService } from '../services/block.api.service';
-
-export interface IGetBlocksParams {
-  limit?: number;
-  offset?: number;
-  startDate?: number;
-  endDate?: number;
-  sortBy?: string;
-  sortDirection?: string;
-}
+import { BlockApiService, IGetBlocksParams } from '../services/block.api.service';
 
 export interface BlockActions extends ActionCreatorsMapObject {
   getBlocks: (args: IGetBlocksParams) => any;
@@ -36,10 +24,10 @@ export const BlockActions: BlockActions = {
       });
       
       return BlockApiService.getBlocks({ limit, offset, sortBy, sortDirection, startDate, endDate })
-        .then((response: AxiosResponse) => {
+        .then((data: any) => {
           dispatch({
             payload: {
-              data: response.data,
+              data,
               limit,
               offset
             },
@@ -55,16 +43,15 @@ export const BlockActions: BlockActions = {
         type: GET_BLOCK
       });
       
-      axios.get(`${environment.apiUrl}/blocks/${id}`)
-        .then((response: AxiosResponse) => {
+      return BlockApiService.getBlock(id)
+        .then((data: any) => {
           dispatch({
             payload: {
-              data: response.data
+              data
             },
             type: GET_BLOCK_SUCCESS
           });
         });
     };
-  }
+  },
 };
-

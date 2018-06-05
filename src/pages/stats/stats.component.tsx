@@ -7,14 +7,21 @@ import environment from '../../config/environment';
 import { StatsState } from '../../reducers/stats.reducer';
 import { AppState } from '../../store/app.store';
 
+import { AppActions } from '../../actions/app.actions';
 import { StatsActions } from '../../actions/stats.actions';
 
 import './stats.scss';
 
 import { BlockSummaryComponent } from '../../components/stats/block-summary/block-summary.component';
 
-class Stats extends React.PureComponent<StatsActions & StatsState> {
+class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> {
   componentDidMount (): void {
+    if (this.props.preloaded) {
+      this.props.clearPreloadedState();
+      
+      return;
+    }
+    
     this.props.getStats();
   }
   
@@ -50,7 +57,7 @@ function mapStateToProps (state: AppState): StatsState {
 }
 
 function mapDispatchToProps (dispatch: any): any {
-  return bindActionCreators(StatsActions, dispatch);
+  return bindActionCreators({...StatsActions, ...AppActions}, dispatch);
 }
 
 export const StatsComponent = connect(mapStateToProps, mapDispatchToProps)(Stats);
