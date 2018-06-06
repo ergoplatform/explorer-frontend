@@ -6,7 +6,6 @@ services:
       container_name: ergo-explorer-node
       build:
         context: .
-        dockerfile: ./config/docker/app/Dockerfile
 
   ergo-explorer-nginx:
     image: nginx:stable-alpine
