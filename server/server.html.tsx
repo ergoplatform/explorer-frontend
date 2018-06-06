@@ -1,5 +1,4 @@
-export const serverHtml = ({ body, assets, spriteContent, preloadedState }: { body: string, assets: any, spriteContent: any, preloadedState: any }) => `
-    <html>
+export const serverHtml = ({ body, assets, spriteContent, preloadedState }: { body: string, assets: any, spriteContent: any, preloadedState: any }) => `<!DOCTYPE html><html>
     <head>
       <meta charSet='utf-8'/>
       <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no'/>
