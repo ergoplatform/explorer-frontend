@@ -1,6 +1,7 @@
 version: '3.6'
 
 services:
+
   ergo-explorer-node:
       container_name: ergo-explorer-node
       build:
@@ -8,13 +9,11 @@ services:
         dockerfile: ./config/docker/app/Dockerfile
 
   ergo-explorer-nginx:
+    image: nginx:stable-alpine
     container_name: ergo-explorer-nginx
-    build:
-      context: .
-      dockerfile: ./config/docker/nginx/Dockerfile
     depends_on:
       - ergo-explorer-node
-    links:
-      - ergo-explorer-node:ergo-explorer-node
     ports:
       - '80:80'
+    volumes:
+      - ./config/docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
