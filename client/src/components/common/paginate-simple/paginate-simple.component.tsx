@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 import './paginate-simple.scss';
 
 import { ArrowIcon, DoubleArrowIcon } from '../icons/common.icons';
-import { Link } from 'react-router-dom';
 
 interface IPaginateSimpleProps {
   total: number;
