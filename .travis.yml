@@ -13,10 +13,6 @@ script:
   - docker-compose build
 
 deploy:
-
-
-
-deploy:
   - provider: surge
     skip_cleanup: true
     project: ./build/client
