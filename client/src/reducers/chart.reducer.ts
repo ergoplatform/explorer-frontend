@@ -5,7 +5,7 @@ export interface ChartState {
   data?: any;
 }
 
-const initialState: ChartState = {
+export const initialState: ChartState = {
   fetching: false
 };
 

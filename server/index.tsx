@@ -14,6 +14,7 @@ import '../client/src/config/axios.config';
 import { DataPage } from './pages/data.page';
 import { StatsPage } from './pages/stats.page';
 import { Preloader } from './preloader';
+import { ChartPage } from './pages/charts.page';
 
 const port = process.env.PORT || 5000;
 
@@ -55,6 +56,7 @@ server.use('*', Preloader);
 
 server.use('/', DataPage);
 server.use('/stats', StatsPage);
+server.use('/charts', ChartPage);
 
 server.get('*', (req: any, res) => {
   const context: any = {};
