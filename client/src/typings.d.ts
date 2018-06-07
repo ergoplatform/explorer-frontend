@@ -18,4 +18,13 @@ interface Window {
   };
 }
 
+
+declare namespace NodeJS  {
+  interface Global {
+    __APP_CONFIG__: {
+      apiUrl?: string;
+    };
+  }
+}
+
 declare var window: Window;
