@@ -12,7 +12,6 @@
 import { ADDigest } from './aDDigest';
 import { Digest32 } from './digest32';
 import { ModifierId } from './modifierId';
-import { Votes } from './votes';
 
 export interface BlockHeader {
   id: ModifierId;
@@ -27,7 +26,6 @@ export interface BlockHeader {
   stateRoot: ADDigest;
   transactionsRoot: Digest32;
   nBits: number;
-  votes: Votes;
   extensionHash: string;
   /**
    * Base58-encoded equihash solutions

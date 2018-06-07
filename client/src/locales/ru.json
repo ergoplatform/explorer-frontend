@@ -33,7 +33,6 @@
   "common.block.age": "Время",
   "common.block.minedBy": "Майнер",
   "common.block.size": "Размер",
-  "common.block.votes": "Голоса",
   "common.block.nonce": "Одноразовый код",
   "common.block.parent": "Родитель",
   "common.block.version": "Версия",

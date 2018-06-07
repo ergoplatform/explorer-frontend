@@ -65,17 +65,6 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
             <SortDirectionDescIcon className='bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc'/>
           </Link>
         </div>
-  
-        <div className='bi-blocks-table__cell bi-table__cell'>
-          <Link className={ this.getSortDirectionClassName('votes') }
-                to={ `?${this.getSortLink('votes')}` }>
-            <FormattedMessage id='common.block.votes'/>
-      
-            <SortDirectionIcon className='bi-blocks-table-header__sort-icon'/>
-            <SortDirectionAscIcon className='bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc'/>
-            <SortDirectionDescIcon className='bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc'/>
-          </Link>
-        </div>
       </div>
     );
   }

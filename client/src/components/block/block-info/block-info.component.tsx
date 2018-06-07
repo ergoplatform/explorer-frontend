@@ -144,16 +144,6 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
           
           <div className='bi-block-info__row bi-table__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
-              <FormattedMessage id='common.block.votes'/>
-            </div>
-            
-            <div className='bi-block-info__cell bi-table__cell'>
-              { this.props.block.header.votes }
-            </div>
-          </div>
-          
-          <div className='bi-block-info__row bi-table__row'>
-            <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
               <FormattedMessage id='common.block.equihashSolutions'/>
             </div>
             

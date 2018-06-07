@@ -29,4 +29,3 @@ export * from './timestamp';
 export * from './transactionId';
 export * from './transactionSummary';
 export * from './transactionSummaryBlocks';
-export * from './votes';

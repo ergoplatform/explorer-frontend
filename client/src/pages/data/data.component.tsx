@@ -146,7 +146,7 @@ class Data extends React.PureComponent {
     startDate     = parseInt(startDate, 10) || null;
     endDate       = parseInt(endDate, 10) || null;
     sortDirection = ['asc', 'desc'].includes(sortDirection) ? sortDirection : null;
-    sortBy        = ['height', 'timestamp', 'miner', 'transactionsCount', 'size', 'votes'].includes(sortBy) ? sortBy : null;
+    sortBy        = ['height', 'timestamp', 'miner', 'transactionsCount', 'size'].includes(sortBy) ? sortBy : null;
     
     return {
       endDate,

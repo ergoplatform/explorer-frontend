@@ -33,7 +33,6 @@
   "common.block.age": "Timestamp",
   "common.block.minedBy": "Mined by",
   "common.block.size": "Size",
-  "common.block.votes": "Votes",
   "common.block.nonce": "Nonce",
   "common.block.parent": "Parent",
   "common.block.version": "Version",

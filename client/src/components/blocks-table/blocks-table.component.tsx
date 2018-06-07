@@ -73,12 +73,6 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                   
                   { formatNumberMetricPrefix(block.size, { desiredFormat: 'k' }) }B
                 </div>
-                <div className='bi-blocks-table__cell bi-table__cell'>
-                  <div className='bi-blocks-table__cell-name'>
-                    <FormattedMessage id='common.block.votes'/>
-                  </div>
-                  { block.votes }
-                </div>
               </div>
             );
           })

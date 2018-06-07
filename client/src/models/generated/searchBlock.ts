@@ -11,8 +11,6 @@
  */
 import { Miner } from './miner';
 import { ModifierId } from './modifierId';
-import { Votes } from './votes';
-
 
 /**
  * Block for search results
@@ -27,5 +25,4 @@ export interface SearchBlock {
      * Size of block in bytes
      */
     size: number;
-    votes: Votes;
 }
