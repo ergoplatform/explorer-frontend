@@ -7,6 +7,8 @@ import { LastLocationProvider } from 'react-router-last-location';
 import * as en from 'react-intl/locale-data/en';
 import * as ru from 'react-intl/locale-data/ru';
 
+import '../client/src/assets/styles/main.scss';
+
 import { AppComponent } from '../client/src/containers/app/app.component';
 import { ConnectedIntlProvider } from '../client/src/containers/connected-intl-provider/connected-intl-provider';
 import { configureStore } from '../client/src/store/app.store';

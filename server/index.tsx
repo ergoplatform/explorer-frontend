@@ -26,18 +26,20 @@ let manifest = {
   }
 };
 
+const appPath = fs.realpathSync(process.cwd());
+
 if (process.env.NODE_ENV === 'production') {
   manifest = {
     assets: require(`../build/client/asset-manifest.json`)
   };
-  
-  const appPath = fs.realpathSync(process.cwd());
   
   server.use('/static', express.static(appPath + '/build/client/static'));
   server.use('/favicon.png', express.static(appPath + '/build/client/favicon.png'));
   server.use('/app.config.js', express.static(appPath + '/build/client/app.config.js'));
   server.use('/manifest.json', express.static(appPath + '/build/client/manifest.json'));
 } else {
+  server.use('/static/css', express.static(appPath + '/build/server/static/css'));
+  server.use('/static/media', express.static(appPath + '/build/server/static/media'));
   server.use(['/*\.(js|json|png)(\.map)?', '/static'], proxy({ target: 'http://localhost:3000' }));
 }
 

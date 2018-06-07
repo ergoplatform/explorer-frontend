@@ -1,7 +1,7 @@
 import { IEnvironment } from './environment';
 
 export const environmentDefault: IEnvironment = {
-  apiUrl: 'https://virtserver.swaggerhub.com/BlockchainInstitute/blockchain-explorer/1.0.0',
+  apiUrl: 'https://api.testnet.ergoplatform.com',
   blockchain: {
     coinName: 'Ergo'
   },

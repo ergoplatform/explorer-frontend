@@ -4,20 +4,18 @@ import { FormattedMessage } from 'react-intl';
 import './paginate-simple.scss';
 
 import { ArrowIcon, DoubleArrowIcon } from '../icons/common.icons';
-
+import { Link } from 'react-router-dom';
 
 interface IPaginateSimpleProps {
   total: number;
   limit: number;
   forcePage: number;
-  onPageChange: (selected: number) => void;
+  getPageUrl: (page: number) => string;
 }
 
 export class PaginateSimpleComponent extends React.Component<IPaginateSimpleProps> {
   constructor (props: IPaginateSimpleProps) {
     super(props);
-    
-    this.setPage = this.setPage.bind(this);
   }
   
   render (): JSX.Element | null {
@@ -29,17 +27,27 @@ export class PaginateSimpleComponent extends React.Component<IPaginateSimpleProp
     
     return (
       <div className='bi-paginate-simple'>
-        <button className='bi-paginate-simple__btn bi-paginate-simple__btn--prev  bi-btn bi-btn--flat'
-                disabled={ this.props.forcePage === 0 }
-                onClick={ this.setPage(0) }>
-          <DoubleArrowIcon className='bi-paginate-simple__btn-icon'/>
-        </button>
+        { this.props.forcePage === 0 ?
+          <button className='bi-paginate-simple__btn bi-paginate-simple__btn--prev bi-btn bi-btn--flat'
+                  disabled={ true }>
+            <DoubleArrowIcon className='bi-paginate-simple__btn-icon'/>
+          </button> :
+          <Link className='bi-paginate-simple__btn bi-paginate-simple__btn--prev bi-btn bi-btn--flat'
+                to={ this.props.getPageUrl(0) }>
+            <DoubleArrowIcon className='bi-paginate-simple__btn-icon'/>
+          </Link>
+        }
         
-        <button className='bi-paginate-simple__btn bi-paginate-simple__btn--prev bi-btn--flat'
-                disabled={ this.props.forcePage === 0 }
-                onClick={ this.setPage(this.props.forcePage - 1) }>
-          <ArrowIcon className='bi-paginate-simple__btn-icon'/>
-        </button>
+        { this.props.forcePage === 0 ?
+          <button className='bi-paginate-simple__btn bi-paginate-simple__btn--prev bi-btn bi-btn--flat'
+                  disabled={ true }>
+            <ArrowIcon className='bi-paginate-simple__btn-icon'/>
+          </button> :
+          <Link className='bi-paginate-simple__btn bi-paginate-simple__btn--prev bi-btn--flat'
+                to={ this.props.getPageUrl(this.props.forcePage - 1) }>
+            <ArrowIcon className='bi-paginate-simple__btn-icon'/>
+          </Link>
+        }
         
         <span className='bi-paginate-simple__status'>
           <FormattedMessage id='components.paginate-simple.page-of'
@@ -51,26 +59,30 @@ export class PaginateSimpleComponent extends React.Component<IPaginateSimpleProp
                             values={ { current: this.props.forcePage + 1 } }/>
         </span>
         
-        <button className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn--flat'
-                disabled={ this.props.forcePage === pageCount - 1 }
-                onClick={ this.setPage(this.props.forcePage + 1) }>
-          <ArrowIcon className='bi-paginate-simple__btn-icon'/>
-        </button>
+        { this.props.forcePage === pageCount - 1 ?
+          <button className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn bi-btn--flat'
+                  disabled={ true }>
+            <ArrowIcon className='bi-paginate-simple__btn-icon'/>
+          </button> :
+          <Link className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn--flat'
+                to={ this.props.getPageUrl(this.props.forcePage + 1) }>
+            <ArrowIcon className='bi-paginate-simple__btn-icon'/>
+          </Link>
+        }
         
-        <button className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn--flat'
         
-                disabled={ this.props.forcePage === pageCount - 1 }
-                onClick={ this.setPage(pageCount - 1) }>
-          <DoubleArrowIcon className='bi-paginate-simple__btn-icon'/>
-        </button>
+        { this.props.forcePage === pageCount - 1 ?
+          <button className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn bi-btn--flat'
+                  disabled={ true }>
+            <DoubleArrowIcon className='bi-paginate-simple__btn-icon'/>
+          </button> :
+          <Link className='bi-paginate-simple__btn bi-paginate-simple__btn--next bi-btn--flat'
+                to={ this.props.getPageUrl(pageCount - 1) }>
+            <DoubleArrowIcon className='bi-paginate-simple__btn-icon'/>
+          </Link>
+        }
       </div>
     );
-  }
-  
-  private setPage (page: number): () => void {
-    return () => {
-      this.props.onPageChange(page);
-    };
   }
 }
 

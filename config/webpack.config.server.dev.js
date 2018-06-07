@@ -1,10 +1,15 @@
 const nodeExternals = require('webpack-node-externals');
 const paths = require('./paths');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const cssFilename = 'static/css/[name].css';
+
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
 module.exports = {
   entry: paths.server.root,
   output: {
     filename: 'bundle.js',
+    publicPath: '/',
     path: paths.server.build
   },
 
@@ -70,14 +75,96 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'css-loader/locals'
+        loader: ExtractTextPlugin.extract(
+          Object.assign(
+            {
+              fallback: {
+                loader: require.resolve('style-loader'),
+                options: {
+                  hmr: false
+                }
+              },
+              use: [
+                {
+                  loader: require.resolve('css-loader'),
+                  options: {
+                    importLoaders: 1,
+                    minimize: true,
+                    sourceMap: shouldUseSourceMap
+                  }
+                },
+                {
+                  loader: require.resolve('postcss-loader'),
+                  options: {
+                    // Necessary for external CSS imports to work
+                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                    ident: 'postcss',
+                    plugins: () => [
+                      require('postcss-flexbugs-fixes'),
+                      autoprefixer({
+                        browsers: [
+                          '>1%',
+                          'last 4 versions',
+                          'Firefox ESR',
+                          'not ie < 9' // React doesn't support IE8 anyway
+                        ],
+                        flexbox: 'no-2009'
+                      })
+                    ]
+                  }
+                }
+              ]
+            },
+          )
+        )
+        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       {
         test: /\.scss$/,
-        loader: 'css-loader/locals'
+        loader: ExtractTextPlugin.extract(
+          Object.assign(
+            {
+              fallback: {
+                loader: require.resolve('style-loader'),
+                options: {
+                  hmr: false
+                }
+              },
+              use: [
+                {
+                  loader: require.resolve('css-loader'),
+                  options: {
+                    importLoaders: 1,
+                    minimize: true,
+                    sourceMap: shouldUseSourceMap
+                  }
+                },
+                require.resolve('sass-loader')
+              ]
+            },
+          )
+        )
+        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
+      {
+        // Exclude `js` files to keep "css" loader working as it injects
+        // its runtime that would otherwise processed through "file" loader.
+        // Also exclude `html` and `json` extensions so they get processed
+        // by webpacks internal loaders.
+        exclude: [/\.(ts|tsx|js|jsx|mjs|scss|svg)$/, /\.html$/, /\.json$/],
+        test: /\.(ttf|woff|woff2)/,
+        loader: require.resolve('file-loader'),
+        options: {
+          name: 'static/media/[name].[ext]'
+        }
+      }
     ]
   },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: cssFilename
+    }),
+  ],
   target: 'node',
   externals: [nodeExternals()]
 };

@@ -27,9 +27,9 @@ class Data extends React.PureComponent {
   constructor (props: any) {
     super(props);
     
-    this.onPageChange  = this.onPageChange.bind(this);
     this.onDateChange  = this.onDateChange.bind(this);
     this.onLimitSelect = this.onLimitSelect.bind(this);
+    this.getPageUrl    = this.getPageUrl.bind(this);
     
     this.params = this.getParams();
   }
@@ -86,8 +86,8 @@ class Data extends React.PureComponent {
           <div className='g-flex__item-fixed'>
             <PaginateSimpleComponent total={ this.props.blocks.total }
                                      limit={ this.props.settings.blocksLimit }
-                                     forcePage={ Math.floor(this.props.blocks.offset / this.props.settings.blocksLimit) }
-                                     onPageChange={ this.onPageChange }/>
+                                     getPageUrl={ this.getPageUrl }
+                                     forcePage={ Math.floor(this.props.blocks.offset / this.props.settings.blocksLimit) }/>
           </div>
         </div>
       </div>
@@ -101,11 +101,12 @@ class Data extends React.PureComponent {
     });
   }
   
-  
-  private onPageChange (page: number): void {
-    this.params.offset = page * this.props.settings.blocksLimit;
+  private getPageUrl (page: number): string {
+    const params = queryString.parse(this.props.history.location.search);
     
-    this.reloadBlocks({ offset: page * this.props.settings.blocksLimit });
+    params.offset = page * this.props.settings.blocksLimit;
+    
+    return `/?${queryString.stringify(params)}`;
   }
   
   private reloadBlocks (params: IGetBlocksParams): void {
@@ -163,7 +164,7 @@ function mapStateToProps (state: AppState): AppState {
 }
 
 function mapDispatchToProps (dispatch: any): any {
-  return bindActionCreators({...BlockActions, ...AppActions}, dispatch);
+  return bindActionCreators({ ...BlockActions, ...AppActions }, dispatch);
 }
 
 export const DataComponent = connect(mapStateToProps, mapDispatchToProps)(Data);
