@@ -35,9 +35,10 @@ if (process.env.NODE_ENV === 'production') {
   
   server.use('/static', express.static(appPath + '/build/client/static'));
   server.use('/favicon.png', express.static(appPath + '/build/client/favicon.png'));
+  server.use('/app.config.js', express.static(appPath + '/build/client/app.config.js'));
   server.use('/manifest.json', express.static(appPath + '/build/client/manifest.json'));
 } else {
-  server.use('/static', proxy({ target: 'http://localhost:3000' }));
+  server.use(['/*\.(js|json|png)(\.map)?', '/static'], proxy({ target: 'http://localhost:3000' }));
 }
 
 server.use((req: any, res, next) => {

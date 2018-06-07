@@ -13,6 +13,18 @@ declare module 'universal-localstorage' {
 
 interface Window {
   __PRELOADED_STATE__: any;
+  __APP_CONFIG__: {
+    apiUrl?: string;
+  };
+}
+
+
+declare namespace NodeJS  {
+  interface Global {
+    __APP_CONFIG__: {
+      apiUrl?: string;
+    };
+  }
 }
 
 declare var window: Window;

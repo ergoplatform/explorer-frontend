@@ -28,7 +28,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'styles': paths.client.styles,
+      'styles': paths.client.styles
     }
   },
 
@@ -85,17 +85,17 @@ module.exports = {
       compress: {
         warnings: false,
         // Disabled because of an issue with Uglify breaking seemingly valid code:
-        comparisons: false,
+        comparisons: false
       },
       mangle: {
-        safari10: true,
+        safari10: true
       },
       output: {
         comments: false,
         // Turned on because emoji and regex is not minified properly using default
-        ascii_only: true,
+        ascii_only: true
       },
-      sourceMap: false,
+      sourceMap: false
     })
   ],
   target: 'node',

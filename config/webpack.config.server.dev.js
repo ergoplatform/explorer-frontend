@@ -75,7 +75,7 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'css-loader/locals'
-      }
+      },
     ]
   },
   target: 'node',

@@ -6,6 +6,8 @@ services:
       container_name: ergo-explorer-node
       build:
         context: .
+      volumes:
+        - ${REACT_APP_APP_CONFIG}:/usr/src/app/build/client/app.config.js
 
   ergo-explorer-nginx:
     image: nginx:stable-alpine
