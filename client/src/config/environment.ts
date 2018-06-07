@@ -26,11 +26,15 @@ if (process.env.NODE_ENV === 'production') {
 environment = {
   ...environment,
   get apiUrl (): string | undefined {
-    let appConfig = process.env.IS_BROWSER ? window.__APP_CONFIG__ : global.__APP_CONFIG__;
+    let appConfig = {
+      apiUrl: environment.apiUrl
+    };
     
-    if (!process.env.IS_BROWSER) {
+    if (process.env.IS_BROWSER) {
+      appConfig = window.__APP_CONFIG__;
+    } else {
       const appPath = fs.realpathSync(process.cwd());
-  
+      
       if (process.env.NODE_ENV === 'production') {
         eval(fs.readFileSync(appPath + '/build/client/app.config.js', 'utf-8'));
         
