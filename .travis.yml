@@ -8,15 +8,18 @@ node_js:
 
 script:
   - yarn build
-  - yarn test
   - yarn test:coverage
   - cp ./build/client/index.html ./build/client/200.html
+  - docker-compose build
 
 deploy:
   - provider: surge
     skip_cleanup: true
     project: ./build/client
     domain: ergo-explorer.surge.sh
+
+  - provider: script
+    script: bash .travis/heroku_docker
 
 after_success:
   - codecov
