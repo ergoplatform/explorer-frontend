@@ -18,8 +18,13 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   environment = {
     ...environmentDefault,
-    apiUrl: '/api',
   };
+}
+
+const appConfig = process.env.IS_BROWSER ? window.__APP_CONFIG__ : require('../../../build/client/app.config.js');
+
+if (appConfig && appConfig.apiUrl) {
+  environment.apiUrl = appConfig.apiUrl;
 }
 
 export default environment;

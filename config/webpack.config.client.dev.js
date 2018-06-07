@@ -21,7 +21,7 @@ const publicPath = '/';
 // Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
 const publicUrl = '';
 // Get environment variables to inject into our app.
-const env = getClientEnvironment(publicUrl);
+const env = getClientEnvironment(publicUrl, true);
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -101,7 +101,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'styles': paths.client.styles,
+      'styles': paths.client.styles
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

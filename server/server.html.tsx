@@ -9,6 +9,7 @@ export const serverHtml = ({ body, assets, spriteContent, preloadedState }: { bo
       <link rel='stylesheet' href='/${assets['main.css']}'/>
       
       <title>Blockchain Explorer</title>
+      <script src='/app.config.js'></script>
     </head>
     <body class='ssr'>
      ${ spriteContent }
