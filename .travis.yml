@@ -15,7 +15,6 @@ before_script:
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
 
 script:
-   - echo "Skip build"
   - yarn build
   - yarn test:coverage
   - cp ./build/client/index.html ./build/client/200.html
