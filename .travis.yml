@@ -30,6 +30,8 @@ deploy:
 
   - provider: script
     script: bash scripts/heroku-deploy.sh
+    on:
+      branch: develop
 
 after_success:
   - codecov
