@@ -29,7 +29,7 @@ deploy:
   - provider: script
     on:
       all_branches: true
-    script: bash .travis/heroku_docker
+    script: bash scripts/heroku-deploy.sh
 
 after_success:
   - codecov
