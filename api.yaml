@@ -294,18 +294,21 @@ components:
     TransactionInput:
       type: object
       required:
-        - id
-        - nonce
+        - address
+        - value
+        - transactionId
         - signature
       properties:
-        id:
-          $ref: '#/components/schemas/TransactionId'
-        nonce:
-          description: Index of a output in transaction
+        address:
+          $ref: '#/components/schemas/AddressId'
+        value:
+          description: Number of coins caputred in input
           type: integer
           format: int32
           minimum: 0
-          example: 667
+          example: 1230044
+        transactionId:
+          $ref: '#/components/schemas/TransactionId'
         signature:
           description: The parameter that should be successfully executed the script of the output of the transaction
           type: string
@@ -313,13 +316,13 @@ components:
     TransactionOutput:
       type: object
       required:
-        - id
+        - address
         - value
         - script
-        - spent
+        - spentTransactionId
       properties:
-        id:
-          $ref: '#/components/schemas/TransactionId'
+        address:
+          $ref: '#/components/schemas/AddressId'
         value:
           description: Amount of Ergo token
           type: number
@@ -329,8 +332,8 @@ components:
           description: The script which should be successfully executed for the waste of this output
           type: string
         spent:
-          description: Transaction spent status
-          type: boolean
+          # Spent Transaction Id
+          $ref: '#/components/schemas/TransactionId'
     Transaction:
       type: object
       description: Transaction without any lockers and unlockers
@@ -408,9 +411,10 @@ components:
     Miner:
       type: object
       required:
-        - id
+        - address
+        - name
       properties:
-        id:
+        address:
           $ref: '#/components/schemas/AddressId'
         name:
           type: string
@@ -428,6 +432,7 @@ components:
         - stateRoot
         - transactionsRoot
         - nBits
+        - difficulty
         - extensionHash
         - equihashSolutions
         - height
@@ -462,6 +467,10 @@ components:
           type: integer
           format: int64
           example: 19857408
+        difficulty:
+          description: Proof-of-Work difficulty
+          type: integer
+          example: 1829302
         extensionHash:
           description: Base16-encoded nonce hash
           type: string
@@ -482,20 +491,6 @@ components:
           format: int32
           minimum: 0
           example: 9103958
-
-    BlockTransactions:
-      type: object
-      required:
-        - headerId
-        - transactions
-      properties:
-        headerId:
-          $ref: '#/components/schemas/ModifierId'
-        transactions:
-          description: Transaction objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
 
     FullTransaction:
       type: object
@@ -559,20 +554,14 @@ components:
     IOSummary:
       type: object
       required:
-        - totalInput
-        - totalOutput
+        - totalСoinsTransferred
         - totalFee
         - feePerByte
-        - feePerWeight
       properties:
-        totalInput:
-          description: Total Input
+        totalСoinsTransferred:
+          description: Total Coins Transferred
           type: number
           example: 1042.23
-        totalOutput:
-          description: Total Output
-          type: number
-          example: 5943.45
         totalFee:
           description: Total fee
           type: number
@@ -581,10 +570,6 @@ components:
           description: Fee per Byte
           type: number
           example: 4.21
-        feePerWeight:
-          description: Fee per Weight Unit
-          type: number
-          example: 85.31
 
     FullAddress:
       type: object
