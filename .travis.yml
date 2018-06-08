@@ -16,9 +16,9 @@ before_script:
 
 script:
    - echo "Skip build"
-#  - yarn build
-#  - yarn test:coverage
-#  - cp ./build/client/index.html ./build/client/200.html
+  - yarn build
+  - yarn test:coverage
+  - cp ./build/client/index.html ./build/client/200.html
 
 deploy:
   - provider: surge
@@ -27,8 +27,6 @@ deploy:
     domain: ergo-explorer.surge.sh
 
   - provider: script
-    on:
-      all_branches: true
     script: bash scripts/heroku-deploy.sh
 
 after_success:
