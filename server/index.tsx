@@ -1,3 +1,4 @@
+import * as compression from 'compression';
 import * as express from 'express';
 import * as fs from 'fs';
 import * as proxy from 'http-proxy-middleware';
@@ -11,14 +12,16 @@ import { App } from './app.server';
 
 import '../client/src/config/axios.config';
 
+import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
 import { StatsPage } from './pages/stats.page';
 import { Preloader } from './preloader';
-import { ChartPage } from './pages/charts.page';
 
 const port = process.env.PORT || 5000;
 
 const server = express();
+
+server.use(compression());
 
 let manifest = {
   assets: {
