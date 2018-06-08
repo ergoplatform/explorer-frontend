@@ -7,7 +7,7 @@ node_js:
   - "10"
 
 script:
-   - echo Skip build
+   - echo "Skip build"
 #  - yarn build
 #  - yarn test:coverage
 #  - cp ./build/client/index.html ./build/client/200.html
