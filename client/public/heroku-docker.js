@@ -1,1 +1,1 @@
-heroku-docker
+console.debug('heroku-docker hello world');
