@@ -1,16 +1,23 @@
 language: node_js
 
+sudo: true
+
 env:
   - NODE_ENV=production CI=true
 
 node_js:
   - "10"
 
+services:
+  - docker
+
+before_script:
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+
 script:
   - yarn build
   - yarn test:coverage
   - cp ./build/client/index.html ./build/client/200.html
-  - docker-compose build
 
 deploy:
   - provider: surge
@@ -19,7 +26,7 @@ deploy:
     domain: ergo-explorer.surge.sh
 
   - provider: script
-    script: bash .travis/heroku_docker
+    script: bash scripts/heroku-deploy.sh
 
 after_success:
   - codecov
