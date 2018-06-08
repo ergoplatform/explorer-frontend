@@ -6,6 +6,9 @@ env:
 node_js:
   - "10"
 
+services:
+  - docker
+
 script:
    - echo "Skip build"
 #  - yarn build
