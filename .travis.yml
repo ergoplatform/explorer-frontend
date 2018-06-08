@@ -7,9 +7,10 @@ node_js:
   - "10"
 
 script:
-  - yarn build
-  - yarn test:coverage
-  - cp ./build/client/index.html ./build/client/200.html
+   - echo Skip build
+#  - yarn build
+#  - yarn test:coverage
+#  - cp ./build/client/index.html ./build/client/200.html
 
 deploy:
   - provider: surge
@@ -18,7 +19,8 @@ deploy:
     domain: ergo-explorer.surge.sh
 
   - provider: script
-    all_branches: true
+    on:
+      all_branches: true
     script: bash .travis/heroku_docker
 
 after_success:
