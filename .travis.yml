@@ -1,5 +1,7 @@
 language: node_js
 
+sudo: true
+
 env:
   - NODE_ENV=production CI=true
 
@@ -8,6 +10,9 @@ node_js:
 
 services:
   - docker
+
+before_script:
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
 
 script:
    - echo "Skip build"
