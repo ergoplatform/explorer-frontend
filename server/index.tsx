@@ -12,6 +12,7 @@ import { App } from './app.server';
 
 import '../client/src/config/axios.config';
 
+import { BlockPage } from './pages/block.page';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
 import { StatsPage } from './pages/stats.page';
@@ -60,6 +61,7 @@ server.use('*', Preloader);
 server.use('/', DataPage);
 server.use('/stats', StatsPage);
 server.use('/charts', ChartPage);
+server.use('/blocks', BlockPage);
 
 server.get('*', (req: any, res) => {
   const context: any = {};
