@@ -8,7 +8,7 @@ export interface BlockState {
   references?: any;
 }
 
-const initialState: BlockState = {
+export const initialState: BlockState = {
   fetching: true
 };
 
