@@ -348,6 +348,7 @@ components:
       required:
         - id
         - timestamp
+        - confirmationCount
         - inputs
         - outputs
       properties:
@@ -355,6 +356,11 @@ components:
           $ref: '#/components/schemas/TransactionId'
         timestamp:
           $ref: '#/components/schemas/Timestamp'
+        confirmationsCount:
+          description: Number of confimations in transaction
+          type: integer
+          format: int32
+          example: 142
         inputs:
           description: Many transaction inputs
           type: array
@@ -530,7 +536,7 @@ components:
         - timestamp
         - size
         - confirmationCount
-        - blocks
+        - block
       properties:
         id:
           $ref: '#/components/schemas/TransactionId'
@@ -546,19 +552,19 @@ components:
           type: integer
           format: int32
           example: 142
-        blocks:
-          type: array
-          items:
-            type: object
-            properties:
-              headerId:
-                $ref: '#/components/schemas/ModifierId'
-              height:
-                description: Block height
-                type: integer
-                format: int32
-                minimum: 0
-                example: 667
+        block:
+          type: object
+          properties:
+            timestamp:
+              $ref: '#/components/schemas/Timestamp'
+            headerId:
+              $ref: '#/components/schemas/ModifierId'
+            height:
+              description: Block height
+              type: integer
+              format: int32
+              minimum: 0
+              example: 667
     IOSummary:
       type: object
       required:
