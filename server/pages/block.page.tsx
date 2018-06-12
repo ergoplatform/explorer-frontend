@@ -13,14 +13,17 @@ const render = (req: any, res: any, next: any) => {
     .then((data: any) => {
       const preloadedState = blockReducer(initialState, {
         payload: {
-          data,
+          data
         },
-        type: GET_BLOCK_SUCCESS,
+        type: GET_BLOCK_SUCCESS
       });
       
       req.explorer.preloadedState = {
         ...req.explorer.preloadedState,
-        block: preloadedState,
+        block: {
+          ...preloadedState,
+          preloaded: true
+        }
       };
       
       next();

@@ -7,6 +7,7 @@ import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 
 import { AppState } from '../../store/app.store';
 
+import { AppActions } from '../../actions/app.actions';
 import { BlockActions } from '../../actions/block.actions';
 import { BlockState } from '../../reducers/block.reducer';
 
@@ -24,7 +25,7 @@ interface IBlockProps {
 class Block extends React.Component {
   prevLink: string = '';
   
-  props: IBlockProps & RouteComponentProps<{ id: string }> & BlockState & BlockActions;
+  props: IBlockProps & RouteComponentProps<{ id: string }> & BlockState & BlockActions & AppActions;
   
   constructor (props: any) {
     super(props);
@@ -33,6 +34,12 @@ class Block extends React.Component {
   }
   
   componentDidMount (): void {
+    if (this.props.preloaded) {
+      this.props.clearPreloadedState();
+      
+      return;
+    }
+    
     this.props.getBlock({ id: this.props.match.params.id });
   }
   
@@ -107,7 +114,7 @@ function mapStateToProps (state: AppState): BlockState {
 }
 
 function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
-  return bindActionCreators(BlockActions, dispatch);
+  return bindActionCreators({...BlockActions, ...AppActions}, dispatch);
 }
 
 export const BlockComponent = connect(mapStateToProps, mapDispatchToProps)(withLastLocation(Block));
