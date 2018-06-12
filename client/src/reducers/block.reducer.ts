@@ -26,6 +26,8 @@ export function blockReducer (state: BlockState = initialState, action: any): Bl
     }
     
     case GET_BLOCK_SUCCESS: {
+      console.debug(action.payload.data.block);
+      
       return {
         ...state,
         block: action.payload.data.block,
@@ -33,7 +35,7 @@ export function blockReducer (state: BlockState = initialState, action: any): Bl
         references: action.payload.data.references
       };
     }
-  
+    
     case CLEAR_APP_PRELOADED_STATE: {
       return {
         ...state,

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import environment from '../../../config/environment';
-
 import { Transaction } from '../../../models/generated/transaction';
 
+import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 
 import './transactions-item.scss';
@@ -58,7 +57,7 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
                     </Link>
                     
                     <div className='bi-transactions-item__value g-flex__item-fixed'>
-                      { address.value } { environment.blockchain.coinName.toUpperCase() }
+                      <CoinValueComponent value={ address.value }/>
                     </div>
                   </div>
                 );
@@ -66,7 +65,7 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
             }
             
             <div className='bi-transactions-item__total-value g-flex-column__item-fixed'>
-              { totalOutput } { environment.blockchain.coinName.toUpperCase() }
+              <CoinValueComponent value={ totalOutput }/>
             </div>
           </div>
         </div>
