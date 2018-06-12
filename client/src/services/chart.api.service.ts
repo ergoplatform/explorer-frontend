@@ -7,9 +7,11 @@ import { TIMESPAN } from '../constants/timespan.constant';
 
 export class ChartApiService {
   static getChart (chartType: string, options: IChartParams = {}): any {
+    const timespan = options.timespan === 'alltime' ? '' : options.timespan;
+    
     return axios.get(`${environment.apiUrl}/charts/${chartType}`, {
       params: {
-        timespan: options.timespan || TIMESPAN.DAYS_30
+        timespan: timespan || TIMESPAN.DAYS_30
       }
     })
       .then((response: AxiosResponse) => {

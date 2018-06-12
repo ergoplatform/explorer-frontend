@@ -18,29 +18,35 @@ import { TimespanComponent } from '../../components/charts/timespan/timespan.com
 
 import './chart.scss';
 
-interface IChartState {
-  selectedTimespan: TIMESPAN;
-}
-
 class Chart extends React.PureComponent {
   props: RouteComponentProps<{
     chartType: string
   }> & ChartState & ChartActions;
   
-  state: IChartState = {
-    selectedTimespan: TIMESPAN.DAYS_30
-  };
+  params: any = {};
   
   constructor (props: any) {
     super(props);
     
-    this.onTimespanChanged = this.onTimespanChanged.bind(this);
+    this.getTimespanUrl = this.getTimespanUrl.bind(this);
   }
   
   componentDidMount (): void {
-    this.props.getChart(this.props.match.params.chartType, {
-      timespan: this.state.selectedTimespan
-    });
+    this.params = this.getParams();
+    
+    console.debug(this.params);
+    
+    this.props.getChart(this.props.match.params.chartType, this.params);
+  }
+  
+  componentWillReceiveProps (props: any): void {
+    const params = this.getParams();
+    
+    if (JSON.stringify(params) !== JSON.stringify(this.params)) {
+      this.params = params;
+      
+      this.props.getChart(this.props.match.params.chartType, this.params);
+    }
   }
   
   render (): JSX.Element {
@@ -60,7 +66,7 @@ class Chart extends React.PureComponent {
           </div>
         </div>
         
-        { (this.props.data && !this.props.fetching) ? this.renderBody() : null }
+        { this.renderBody() }
       </div>
     );
   }
@@ -71,25 +77,36 @@ class Chart extends React.PureComponent {
     return (
       <div className='bi-chart__body g-flex-column__item'>
         <div className='bi-chart__chart'>
-          <AreaChartComponent data={ this.props.data } compact={ !!iframe }/>
+          { this.props.data && <AreaChartComponent data={ this.props.data } compact={ !!iframe }/> }
         </div>
         
         <div className='bi-chart__controls'>
-          <TimespanComponent selected={ this.state.selectedTimespan }
-                             onChange={ this.onTimespanChanged }/>
+          <TimespanComponent selected={ this.params.timespan }
+                             getTimespanUrl={ this.getTimespanUrl }/>
         </div>
       </div>
     );
   }
   
-  private onTimespanChanged (span: TIMESPAN): void {
-    this.setState({
-      selectedTimespan: span
-    });
+  private getParams (): any {
+    const params = queryString.parse(this.props.history.location.search);
     
-    this.props.getChart(this.props.match.params.chartType, {
-      timespan: span
-    });
+    const validTimespan = Object.keys(TIMESPAN)
+      .find((key: string) => {
+        return TIMESPAN[key] === params.timespan;
+      });
+    
+    return {
+      timespan: validTimespan ? TIMESPAN[validTimespan] : TIMESPAN.DAYS_30
+    };
+  }
+  
+  private getTimespanUrl (span: TIMESPAN): string {
+    const params = queryString.parse(this.props.history.location.search);
+    
+    params.timespan = span;
+    
+    return `${this.props.location.pathname}?${queryString.stringify(params)}`;
   }
 }
 

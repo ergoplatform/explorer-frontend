@@ -4,5 +4,5 @@ export enum TIMESPAN {
   DAYS_180 = '180days',
   YEAR_1   = '1year',
   YEAR_2   = '2years',
-  ALLTIME  = '',
+  ALLTIME  = 'alltime',
 }

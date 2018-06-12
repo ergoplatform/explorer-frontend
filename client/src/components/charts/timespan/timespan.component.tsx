@@ -1,21 +1,20 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 import { TIMESPAN } from '../../../constants/timespan.constant';
 
 import './timespan.scss';
 
 interface ITimespanProps {
-  onChange: (selectedSpan: TIMESPAN) => void;
+  getTimespanUrl: (selectedSpan: TIMESPAN) => string;
   selected: TIMESPAN;
 }
 
 export class TimespanComponent extends React.PureComponent<ITimespanProps> {
   constructor (props: ITimespanProps) {
     super(props);
-    
-    this.onSpanClick = this.onSpanClick.bind(this);
   }
   
   render (): JSX.Element {
@@ -32,21 +31,15 @@ export class TimespanComponent extends React.PureComponent<ITimespanProps> {
               });
               
               return (
-                <button className={ btnClassNames }
-                        key={ span }
-                        onClick={ this.onSpanClick(TIMESPAN[span]) }>
-                  <FormattedMessage id={ `components.timespan.span.${ TIMESPAN[span] || 'alltime' }` }/>
-                </button>
+                <Link className={ btnClassNames }
+                      key={ span }
+                      to={ this.props.getTimespanUrl(TIMESPAN[span]) }>
+                  <FormattedMessage id={ `components.timespan.span.${ TIMESPAN[span] }` }/>
+                </Link>
               );
             })
         }
       </div>
     );
-  }
-  
-  private onSpanClick (span: TIMESPAN): () => void {
-    return () => {
-      this.props.onChange(span);
-    };
   }
 }
