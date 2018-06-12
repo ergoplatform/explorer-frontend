@@ -297,7 +297,7 @@ components:
         - address
         - value
         - transactionId
-        - signature
+        - spendingProof
       properties:
         address:
           $ref: '#/components/schemas/AddressId'
@@ -309,16 +309,25 @@ components:
           example: 1230044
         transactionId:
           $ref: '#/components/schemas/TransactionId'
-        signature:
-          description: The parameter that should be successfully executed the script of the output of the transaction
-          type: string
+        spendingProof:
+          description: Spending proof for transaction input
+          type: object
+          required:
+          - proofBytes
+          - extension
+          properties:
+            proofBytes:
+              $ref: '#/components/schemas/SerializedAdProof'
+            extension:
+              type: object
+              description: Variables to be put into context
 
     TransactionOutput:
       type: object
       required:
         - address
         - value
-        - script
+        - proposition
         - spentTransactionId
       properties:
         address:
@@ -328,10 +337,9 @@ components:
           type: number
           minimum: 0
           example: 14.7
-        script:
-          description: The script which should be successfully executed for the waste of this output
-          type: string
-        spent:
+        proposition:
+          $ref: '#/components/schemas/Proposition'
+        spentTransactionId:
           # Spent Transaction Id
           $ref: '#/components/schemas/TransactionId'
     Transaction:
@@ -373,7 +381,7 @@ components:
           items:
             $ref: '#/components/schemas/Transaction'
         adProofs:
-          $ref: '#/components/schemas/BlockADProofs'
+          $ref: '#/components/schemas/SerializedAdProof'
 
     SearchBlock:
       description: Block for search results
@@ -660,21 +668,6 @@ components:
               type: integer
               description: Number of transactions
 
-
-    BlockADProofs:
-      type: object
-      required:
-        - headerId
-        - proofBytes
-        - digest
-      properties:
-        headerId:
-          $ref: '#/components/schemas/ModifierId'
-        proofBytes:
-          $ref: '#/components/schemas/SerializedAdProof'
-        digest:
-          $ref: '#/components/schemas/Digest32'
-
     TransactionId:
       description: Base16-encoded transaction id bytes
       type: string
@@ -715,3 +708,8 @@ components:
       description: Timespan for charts
       type: string
       enum: ['all', '7days', '30days', '60days', '180days', '1year', '2years']
+
+    Proposition:
+      description: Base16-encoded proposition bytes
+      type: string
+      example: 7c
