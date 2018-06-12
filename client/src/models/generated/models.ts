@@ -3,7 +3,6 @@ export * from './addressId';
 export * from './transaction';
 export * from './transactionInput';
 export * from './transactionOutput';
-export * from './blockADProofs';
 export * from './blockHeader';
 export * from './blockchainInfo';
 export * from './blockchainStats';

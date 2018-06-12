@@ -9,10 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { BlockADProofs } from './blockADProofs';
 import { BlockHeader } from './blockHeader';
+import { SerializedAdProof } from './serializedAdProof';
 import { Transaction } from './transaction';
-
 
 /**
  * Block with header and transactions
@@ -20,5 +19,5 @@ import { Transaction } from './transaction';
 export interface FullBlock {
     header: BlockHeader;
     blockTransactions: Transaction[];
-    adProofs: BlockADProofs;
+    adProofs: SerializedAdProof;
 }
