@@ -673,6 +673,45 @@ components:
             total:
               type: integer
               description: Number of transactions
+            totalFee:
+              type: number
+              description: Total Transaction Fees
+              example: 4334312000000
+            totalOutput:
+              type: integer
+              description: Total Output Volume
+              example: 430123324234
+            estimatedTransactionVolume:
+              type: number
+              description: Estimated Transaction Volume
+              example:  4301223423
+        miningCost:
+          type: object
+          properties:
+            totalMinersRevenue:
+              type: number
+              description: Total Miners Revenue
+              example: 439023010423
+            percentEarnedTransactionsFees:
+              type: number
+              description: '% Earned From Transaction Fees'
+              example: 24.54
+            percentTransactionVolume:
+              type: number
+              description: '% Of Transaction Volume'
+              example: 2.34
+            costPerTransaction:
+              type: number
+              description: Cost per Transaction
+              example: 4323000
+            difficulty:
+              type: number
+              description: Difficulty
+              example: 32340990000
+            hashRate:
+              type: number
+              description: Hash Rate
+              example: 290349095
 
     TransactionId:
       description: Base16-encoded transaction id bytes
