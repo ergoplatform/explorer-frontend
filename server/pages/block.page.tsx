@@ -7,8 +7,6 @@ import { BlockApiService } from '../../client/src/services/block.api.service';
 export const BlockPage = express.Router();
 
 const render = (req: any, res: any, next: any) => {
-  console.debug(req.params.id);
-  
   BlockApiService.getBlock(req.params.id)
     .then((data: any) => {
       const preloadedState = blockReducer(initialState, {

@@ -1,11 +1,12 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 interface ILimitSelectorProps {
   label: string | JSX.Element;
   items: number[];
   selected: number;
-  onLimitSelect: (limit: number) => void;
+  getLimitLink: (limit: number) => string;
 }
 
 import './limit-selector.scss';
@@ -20,8 +21,6 @@ export class LimitSelectorComponent extends React.PureComponent<ILimitSelectorPr
         
         {
           this.props.items.map((item, index) => {
-            const selectLimit = () => this.onLimitSelect(item);
-            
             const selectorItemClassNames = classNames({
               'bi-btn': true,
               'bi-btn--flat': true,
@@ -30,19 +29,15 @@ export class LimitSelectorComponent extends React.PureComponent<ILimitSelectorPr
             });
             
             return (
-              <button className={ selectorItemClassNames }
-                      key={ index }
-                      onClick={ selectLimit }>
+              <Link className={ selectorItemClassNames }
+                    key={ index }
+                    to={ this.props.getLimitLink(item) }>
                 { item }
-              </button>
+              </Link>
             );
           })
         }
       </div>
     );
-  }
-  
-  private onLimitSelect (limit: number): void {
-    this.props.onLimitSelect(limit);
   }
 }

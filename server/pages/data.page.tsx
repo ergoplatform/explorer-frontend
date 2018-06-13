@@ -5,11 +5,12 @@ import { BlockApiService } from '../../client/src/services/block.api.service';
 export const DataPage = express.Router();
 
 DataPage.get('/', (req: any, res, next) => {
-  let { offset, sortBy, sortDirection, startDate, endDate } = req.query;
+  let { offset, sortBy, sortDirection, startDate, endDate, limit } = req.query;
   
   offset = parseInt(offset, 10) || 0;
+  limit = parseInt(limit, 10) || 30;
   
-  BlockApiService.getBlocks({ limit: 30, offset, sortBy, sortDirection, startDate, endDate })
+  BlockApiService.getBlocks({ limit, offset, sortBy, sortDirection, startDate, endDate })
     .then((data: any) => {
       const preloadedState = {
         blocks: {

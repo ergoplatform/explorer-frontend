@@ -16,12 +16,16 @@ $limit-selector-item-selected-bg-color: #e8e8e8;
   }
 
   &__item {
+    display: inline-block;
     min-width: 30px;
     height: 30px;
     margin-right: $grid-offset-step;
     border-radius: 30px;
     color: $limit-selector-item-color;
     font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
 
     &:last-child {
       margin-right: 0;

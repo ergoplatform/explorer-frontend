@@ -2,7 +2,6 @@ import * as storage from 'universal-localstorage';
 import environment from '../config/environment';
 
 import {
-  SET_BLOCKS_LIMIT,
   SET_LOCALE,
   SET_SIDEBAR_IS_COLLAPSED, SET_SIDEBAR_IS_HIDDEN,
   SET_SIDEBAR_IS_SHOWN
@@ -18,7 +17,6 @@ export interface SettingsState {
 const settings = JSON.parse(storage.getItem('settings') as string) || {};
 
 const initialState = {
-  blocksLimit: 30,
   isSidebarCollapsed: false,
   locale: environment.defaultLocale,
   ...settings,
@@ -43,18 +41,6 @@ export function settingsReducer (state: SettingsState = initialState, action: an
       const newState = {
         ...state,
         isSidebarCollapsed: action.payload.isSidebarCollapsed
-      };
-      
-      // TODO: move to service
-      storage.setItem('settings', JSON.stringify(newState));
-      
-      return newState;
-    }
-    
-    case SET_BLOCKS_LIMIT: {
-      const newState = {
-        ...state,
-        blocksLimit: action.payload.blocksLimit
       };
       
       // TODO: move to service

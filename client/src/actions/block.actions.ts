@@ -1,7 +1,6 @@
 import { Action, ActionCreatorsMapObject, Dispatch } from 'redux';
 
 import { GET_BLOCK, GET_BLOCK_SUCCESS, GET_BLOCKS, GET_BLOCKS_SUCCESS } from '../constants/block.types';
-import { SET_BLOCKS_LIMIT } from '../constants/settings.types';
 import { BlockApiService, IGetBlocksParams } from '../services/block.api.service';
 
 export interface BlockActions extends ActionCreatorsMapObject {
@@ -16,12 +15,6 @@ export const BlockActions: BlockActions = {
         type: GET_BLOCKS
       });
       
-      dispatch({
-        payload: {
-          blocksLimit: limit
-        },
-        type: SET_BLOCKS_LIMIT
-      });
       
       return BlockApiService.getBlocks({ limit, offset, sortBy, sortDirection, startDate, endDate })
         .then((data: any) => {

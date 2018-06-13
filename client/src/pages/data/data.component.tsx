@@ -22,14 +22,14 @@ type IDataProps = AppState & BlockActions & RouteComponentProps<{}> & AppActions
 
 class Data extends React.PureComponent {
   props: IDataProps;
-  params: IGetBlocksParams;
+  params: any;
   
   constructor (props: any) {
     super(props);
     
-    this.onDateChange  = this.onDateChange.bind(this);
-    this.onLimitSelect = this.onLimitSelect.bind(this);
-    this.getPageUrl    = this.getPageUrl.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+    this.getPageUrl   = this.getPageUrl.bind(this);
+    this.getLimitLink = this.getLimitLink.bind(this);
     
     this.params = this.getParams();
   }
@@ -78,16 +78,16 @@ class Data extends React.PureComponent {
         <div className='bi-data__footer g-flex-column__item-fixed g-flex'>
           <div className='g-flex__item-fixed'>
             <LimitSelectorComponent items={ [30, 60, 120] }
-                                    selected={ this.props.settings.blocksLimit }
+                                    selected={ this.params.limit }
                                     label={ <FormattedMessage id='components.data.show'/> }
-                                    onLimitSelect={ this.onLimitSelect }/>
+                                    getLimitLink={ this.getLimitLink }/>
           </div>
           
           <div className='g-flex__item-fixed'>
             <PaginateSimpleComponent total={ this.props.blocks.total }
-                                     limit={ this.props.settings.blocksLimit }
+                                     limit={ this.params.limit }
                                      getPageUrl={ this.getPageUrl }
-                                     forcePage={ Math.floor(this.props.blocks.offset / this.props.settings.blocksLimit) }/>
+                                     forcePage={ Math.floor(this.props.blocks.offset / this.params.limit) }/>
           </div>
         </div>
       </div>
@@ -104,7 +104,15 @@ class Data extends React.PureComponent {
   private getPageUrl (page: number): string {
     const params = queryString.parse(this.props.history.location.search);
     
-    params.offset = page * this.props.settings.blocksLimit;
+    params.offset = page * this.params.limit;
+    
+    return `/?${queryString.stringify(params)}`;
+  }
+  
+  private getLimitLink (limit: number): string {
+    const params = queryString.parse(this.props.history.location.search);
+    
+    params.limit = limit;
     
     return `/?${queryString.stringify(params)}`;
   }
@@ -113,7 +121,7 @@ class Data extends React.PureComponent {
     params = {
       ...this.params,
       ...params,
-      limit: params.limit || this.props.settings.blocksLimit,
+      limit: params.limit || 30,
       offset: params.offset || 0
     };
     
@@ -131,19 +139,18 @@ class Data extends React.PureComponent {
       delete params.offset;
     }
     
-    delete params.limit;
+    if (params.limit === 30) {
+      delete params.limit;
+    }
     
     this.props.history.push(`/?${queryString.stringify(params)}`);
   }
   
-  private onLimitSelect (limit: number): void {
-    this.reloadBlocks({ offset: this.props.blocks.offset, limit });
-  }
-  
   private getParams (): any {
-    let { offset, sortBy, sortDirection, startDate, endDate } = queryString.parse(this.props.history.location.search);
+    let { offset, sortBy, sortDirection, startDate, endDate, limit } = queryString.parse(this.props.history.location.search);
     
     offset        = parseInt(offset, 10);
+    limit         = parseInt(limit, 10) || 30;
     startDate     = parseInt(startDate, 10) || null;
     endDate       = parseInt(endDate, 10) || null;
     sortDirection = ['asc', 'desc'].includes(sortDirection) ? sortDirection : null;
@@ -151,6 +158,7 @@ class Data extends React.PureComponent {
     
     return {
       endDate,
+      limit,
       offset: offset || 0,
       sortBy,
       sortDirection,
