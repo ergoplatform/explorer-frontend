@@ -9,8 +9,6 @@ $block-table-table-sort-active-color: $theme-color-blue;
   // [ Components ]
   //----------------------------------
   .bi-blocks-table__cell {
-    position: sticky;
-    top: 0;
     background-color: $block-table-table-header-bg-color;
     font-size: 14px;
     font-weight: 600;

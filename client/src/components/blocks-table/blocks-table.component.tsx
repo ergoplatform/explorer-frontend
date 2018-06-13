@@ -20,7 +20,7 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
   render (): JSX.Element {
     return (
       <div className='bi-blocks-table'>
-        { this.props.isFetching ? null : this.renderTable() }
+        { !this.props.blocks ? null : this.renderTable() }
       </div>
     );
   }

@@ -57,8 +57,8 @@ class Data extends React.PureComponent {
   // TODO: add preloader
   render (): JSX.Element {
     return (
-      <div className='bi-data g-flex-column g-flex-column__item'>
-        <div className='bi-data__header g-flex'>
+      <div className='bi-data g-flex-column g-flex-column__item-fixed'>
+        <div className='bi-data__header g-flex-column__item-fixed g-flex'>
           <div className='bi-data__title g-flex__item'>
             <FormattedMessage id='components.data.title'/>
           </div>
@@ -70,7 +70,7 @@ class Data extends React.PureComponent {
           </div>
         </div>
         
-        <div className='bi-data__body g-flex-column__item g-scroll-y'>
+        <div className='bi-data__body g-flex-column__item-fixed'>
           <BlocksTableComponent blocks={ this.props.blocks.blocks } isFetching={ this.props.blocks.fetching }/>
         </div>
         

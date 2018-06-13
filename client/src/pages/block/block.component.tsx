@@ -51,7 +51,7 @@ class Block extends React.Component {
   
   render (): JSX.Element {
     return (
-      <div className='bi-block g-flex-column__item'>
+      <div className='bi-block g-flex-column__item-fixed'>
         { this.props.fetching ? null : this.renderBlockPage() }
       </div>
     );
