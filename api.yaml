@@ -633,13 +633,9 @@ components:
           type: integer
           description: Circulating supply
           example: 1000003
-        marketCap:
-          type: integer
-          description: Market Capitalization
-          example: 10003243
         transactionAverage:
           type: integer
-          description: Transaction per day
+          description: Average number of transactions in block
           example: 100302
         hashRate:
           type: integer
@@ -694,15 +690,15 @@ components:
               example: 439023010423
             percentEarnedTransactionsFees:
               type: number
-              description: '% Earned From Transaction Fees'
+              description: Miners revenue as percentage of the transaction fees
               example: 24.54
             percentTransactionVolume:
               type: number
-              description: '% Of Transaction Volume'
+              description: Miners revenue as percentage of the transaction volume
               example: 2.34
             costPerTransaction:
               type: number
-              description: Cost per Transaction
+              description: Miners revenue divided by the number of transactions
               example: 4323000
             difficulty:
               type: number
