@@ -1,0 +1,103 @@
+import * as classnames from 'classnames';
+import * as React from 'react';
+
+import { ArrowDownIcon } from '../icons/common.icons';
+
+import './dropdown.scss';
+
+interface IDropdownProps {
+  options: any[];
+  selected: any;
+  onChange: (value: string) => void;
+}
+
+interface IDropdownState {
+  isDropdownShown: boolean;
+}
+
+export class DropdownComponent extends React.PureComponent<IDropdownProps, IDropdownState> {
+  state: IDropdownState = {
+    isDropdownShown: false
+  };
+  
+  private element: HTMLDivElement;
+  
+  constructor (props: IDropdownProps) {
+    super(props);
+    
+    this.onOptionChange     = this.onOptionChange.bind(this);
+    this.toggleDropdown     = this.toggleDropdown.bind(this);
+    this.hideDropdown       = this.hideDropdown.bind(this);
+    this.hideOnOutsideClick = this.hideOnOutsideClick.bind(this);
+  }
+  
+  render (): JSX.Element {
+    const { options, selected } = this.props;
+    
+    const dropdownClassNames = classnames({
+      'bi-dropdown': true,
+      'bi-dropdown--open': this.state.isDropdownShown
+    });
+    
+    return (
+      <div className={ dropdownClassNames }
+           ref={ (ref: HTMLDivElement) => {
+             this.element = ref;
+           } }>
+        <button className='bi-dropdown__button g-flex bi-btn bi-btn--flat'
+                onClick={ this.toggleDropdown }>
+          <span className='bi-dropdown__button-label'>{ selected.label }</span>
+          
+          <ArrowDownIcon className='bi-dropdown__button-icon'/>
+        </button>
+        
+        <div className='bi-dropdown__dropdown'>
+          {
+            options.map((option: any) => {
+              return (
+                <button className='bi-dropdown__option bi-btn bi-btn--flat'
+                        key={ option.value }
+                        onClick={ this.onOptionChange(option.value) }>
+                  { option.label }
+                </button>
+              );
+            })
+          }
+        </div>
+      </div>
+    );
+  }
+  
+  private toggleDropdown (): void {
+    if (this.state.isDropdownShown) {
+      return this.hideDropdown();
+    }
+    
+    this.setState({
+      isDropdownShown: true,
+    });
+    
+    document.addEventListener('click', this.hideOnOutsideClick);
+  }
+  
+  private hideDropdown (): void {
+    this.setState({
+      isDropdownShown: false
+    });
+    
+    document.removeEventListener('click', this.hideOnOutsideClick);
+  }
+  
+  private onOptionChange (value: string): () => void {
+    return () => {
+      this.props.onChange(value);
+      this.hideDropdown();
+    };
+  }
+  
+  private hideOnOutsideClick (event: MouseEvent): void {
+    if (event.target !== this.element && document.contains(event.target as Node) && !this.element.contains(event.target as Node)) {
+      this.hideDropdown();
+    }
+  }
+}

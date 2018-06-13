@@ -8,33 +8,41 @@ import { SettingsState } from '../../../reducers/settings.reducer';
 
 import { messages } from '../../../containers/connected-intl-provider/connected-intl-provider';
 
+import { DropdownComponent } from '../dropdown/dropdown.component';
+
 class LanguageSwitcher extends React.PureComponent<SettingsState & SettingsActions> {
-  locales: string[] = Object.keys(messages);
+  locales: any;
   
   constructor (props: any) {
     super(props);
     
+    
+    this.locales = Object.keys(messages)
+      .map((locale) => {
+        return {
+          label: <FormattedMessage id={ `components.language-switcher.${locale}` }/>,
+          value: locale
+        };
+      });
+    
     this.onLocaleChanged = this.onLocaleChanged.bind(this);
   }
   
-  onLocaleChanged (event: any): void {
-    this.props.setLocale(event.target.value);
+  onLocaleChanged (value: any): void {
+    this.props.setLocale(value);
   }
   
   render (): JSX.Element {
+    const selectedLocale = {
+      label: <FormattedMessage id={ `components.language-switcher.${this.props.locale}` }/>,
+      value: this.props.locale
+    };
+    
     return (
       <div className='bi-language-switcher'>
-        <select onChange={ this.onLocaleChanged } value={ this.props.locale }>
-          {
-            this.locales.map((localeId) => {
-              return (
-                <option value={ localeId } key={ localeId }>
-                  <FormattedMessage id={ `components.language-switcher.${localeId}` }/>
-                </option>
-              );
-            })
-          }
-        </select>
+        <DropdownComponent options={ this.locales }
+                           selected={ selectedLocale }
+                           onChange={ this.onLocaleChanged }/>
       </div>
     );
   }

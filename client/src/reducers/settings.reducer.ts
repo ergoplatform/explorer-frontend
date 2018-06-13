@@ -19,9 +19,9 @@ const settings = JSON.parse(storage.getItem('settings') as string) || {};
 
 const initialState = {
   blocksLimit: 30,
+  isSidebarCollapsed: false,
   locale: environment.defaultLocale,
   ...settings,
-  isSidebarCollapsed: false,
   isSidebarDisplayed: false,
 };
 

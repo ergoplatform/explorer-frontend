@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
+import environment from '../../config/environment';
+
 import { AppState } from '../../store/app.store';
 
 import { SettingsActions } from '../../actions/settings.actions';
@@ -65,8 +67,17 @@ class Sidebar extends React.Component<SettingsActions & SettingsState> {
           <SidebarMenuComponent onClick={ this.hideSidebar }/>
         </div>
         
-        <div className='bi-sidebar__footer g-flex-column__item-fixed'>
-          <LanguageSwitcherComponent/>
+        <div className='bi-sidebar__footer g-flex-column__item-fixed g-flex'>
+          <div className='bi-sidebar__footer-lin g-flex__item-fixed'>
+            <LanguageSwitcherComponent/>
+
+          </div>
+  
+          <div className='bi-sidebar__footer-line g-flex__item-fixed'>
+            <div className='bi-sidebar__copyright'>
+              © { environment.blockchain.coinName.toUpperCase() } { (new Date()).getFullYear() }
+            </div>
+          </div>
         </div>
       </div>
     );
