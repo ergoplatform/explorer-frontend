@@ -34,7 +34,7 @@ export function addressReducer (state: AddressState = initialState, action: any)
     case GET_ADDRESS_TRANSACTIONS_SUCCESS: {
       return {
         ...state,
-        transactions: action.payload.data,
+        transactions: action.payload.data.items,
       };
     }
     
