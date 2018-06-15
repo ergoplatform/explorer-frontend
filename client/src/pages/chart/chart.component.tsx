@@ -34,8 +34,6 @@ class Chart extends React.PureComponent {
   componentDidMount (): void {
     this.params = this.getParams();
     
-    console.debug(this.params);
-    
     this.props.getChart(this.props.match.params.chartType, this.params);
   }
   
