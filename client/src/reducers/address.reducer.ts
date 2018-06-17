@@ -1,4 +1,9 @@
-import { GET_ADDRESS, GET_ADDRESS_SUCCESS, GET_ADDRESS_TRANSACTIONS_SUCCESS } from '../constants/address.types';
+import {
+  GET_ADDRESS,
+  GET_ADDRESS_SUCCESS,
+  GET_ADDRESS_TRANSACTIONS,
+  GET_ADDRESS_TRANSACTIONS_SUCCESS
+} from '../constants/address.types';
 
 import { FullAddress } from '../models/generated/fullAddress';
 import { Transaction } from '../models/generated/transaction';
@@ -6,11 +11,16 @@ import { Transaction } from '../models/generated/transaction';
 export interface AddressState {
   fetching: boolean;
   address?: FullAddress;
-  transactions?: Transaction[];
+  transactions?: {
+    items: Transaction[],
+    total: number,
+  };
+  transactionFetching: boolean;
 }
 
 const initialState: AddressState = {
-  fetching: false
+  fetching: false,
+  transactionFetching: false
 };
 
 export function addressReducer (state: AddressState = initialState, action: any): AddressState {
@@ -31,10 +41,18 @@ export function addressReducer (state: AddressState = initialState, action: any)
       };
     }
     
+    case GET_ADDRESS_TRANSACTIONS: {
+      return {
+        ...state,
+        transactionFetching: true
+      };
+    }
+    
     case GET_ADDRESS_TRANSACTIONS_SUCCESS: {
       return {
         ...state,
-        transactions: action.payload.data.items,
+        transactionFetching: false,
+        transactions: action.payload.data
       };
     }
     

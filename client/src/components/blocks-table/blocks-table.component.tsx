@@ -43,6 +43,7 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                     { block.height }
                   </Link>
                 </div>
+                
                 <div className='bi-blocks-table__cell bi-table__cell'>
                   <div className='bi-blocks-table__cell-name'>
                     <FormattedMessage id='common.block.age'/>
@@ -50,6 +51,7 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                   
                   <TimestampComponent timestamp={ block.timestamp }/>
                 </div>
+                
                 <div className='bi-blocks-table__cell bi-table__cell'>
                   <div className='bi-blocks-table__cell-name'>
                     <FormattedMessage id='common.block.transactions'/>
@@ -57,15 +59,18 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                   
                   { block.transactionsCount }
                 </div>
+                
                 <div className='bi-blocks-table__cell bi-table__cell'>
                   <div className='bi-blocks-table__cell-name'>
                     <FormattedMessage id='common.block.minedBy'/>
                   </div>
                   
-                  <Link to={ `/addresses/${block.miner.id}` } className='u-word-wrap u-word-wrap--ellipsis'>
+                  <Link to={ `/addresses/${block.miner.id || block.miner.name}` }
+                        className='u-word-wrap u-word-wrap--ellipsis'>
                     { block.miner.name || block.miner.id }
                   </Link>
                 </div>
+                
                 <div className='bi-blocks-table__cell bi-table__cell'>
                   <div className='bi-blocks-table__cell-name'>
                     <FormattedMessage id='common.block.size'/>

@@ -5,6 +5,8 @@ import { FullAddressTransactionSummary } from '../../../models/generated/fullAdd
 
 import './address-transactions.scss';
 
+import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
+
 interface IAddressTransactionsProps {
   summary: FullAddressTransactionSummary;
 }
@@ -34,7 +36,7 @@ export class AddressTransactionsComponent extends React.Component<IAddressTransa
             </div>
             
             <div className='bi-address-transactions__cell bi-table__cell'>
-              { this.props.summary.totalReceived }
+              <CoinValueComponent value={ this.props.summary.totalReceived }/>
             </div>
           </div>
           
@@ -44,7 +46,7 @@ export class AddressTransactionsComponent extends React.Component<IAddressTransa
             </div>
             
             <div className='bi-address-transactions__cell bi-table__cell'>
-              { this.props.summary.balance }
+              <CoinValueComponent value={ this.props.summary.balance }/>
             </div>
           </div>
         </div>

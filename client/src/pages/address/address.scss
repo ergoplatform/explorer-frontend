@@ -4,7 +4,6 @@
 //-------------------------------------
 
 .bi-address {
-  height: 100%;
   padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
   font-family: $theme-main-font;
 
@@ -15,6 +14,12 @@
 
   &__transactions {
     margin-top: $grid-offset-step * 8;
+  }
+
+  &__transactions-footer {
+    margin-top: ($grid-offset-step * 4);
+
+    justify-content: flex-end;
   }
 
   &__tables {

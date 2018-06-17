@@ -32,8 +32,7 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
         
         <div className='bi-block-header__line g-flex-column__item g-flex'>
           <div className='bi-block-header__title g-flex__item-fixed'>
-            <FormattedMessage id='common.block.block'/>
-            #{ this.props.block.header.height }
+            <FormattedMessage id='common.block.block'/> <span>#{ this.props.block.header.height }</span>
           </div>
           
           <div className='bi-block-header__navigation g-flex__item-fixed'>

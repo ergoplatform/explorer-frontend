@@ -12,7 +12,7 @@ import {
 
 export interface AddressActions extends ActionCreatorsMapObject {
   getAddress: (id: string) => any;
-  getAddressTransactions: (id: string) => any;
+  getAddressTransactions: (id: string, params: any) => any;
 }
 
 export const AddressActions: AddressActions = {
@@ -34,13 +34,15 @@ export const AddressActions: AddressActions = {
     };
   },
   
-  getAddressTransactions (id: string): any {
+  getAddressTransactions (id: string, params: any): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
         type: GET_ADDRESS_TRANSACTIONS,
       });
   
-      axios.get(`${environment.apiUrl}/addresses/${id}/transactions`)
+      axios.get(`${environment.apiUrl}/addresses/${id}/transactions`, {
+        params,
+      })
         .then((response: AxiosResponse) => {
           dispatch({
             payload: {
