@@ -17,6 +17,13 @@ export const convertInfoItemValue = (key: string, value: any): any => {
       return formatNumber({ integerSeparator: ' ' })(value);
     }
     
+    case 'coin': {
+      return formatNumber({
+        integerSeparator: ' ',
+        suffix: ` ${ environment.blockchain.coinName.toUpperCase() }`
+      })(value);
+    }
+    
     case 'marketCap': {
       return formatNumber({
         prefix: `$`

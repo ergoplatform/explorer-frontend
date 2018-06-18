@@ -19,7 +19,7 @@ export class ChartTooltipComponent extends React.PureComponent {
     return (
       <div className='bi-chart-tooltip'>
         <div className='bi-chart-tooltip__label'>{ date }</div>
-        { this.props.payload[0] ? convertInfoItemValue('chart', this.props.payload[0].value) : null }
+        { this.props.payload[0] ? convertInfoItemValue( this.props.payload[0].payload.type || 'chart', this.props.payload[0].value) : null }
       </div>
     );
   }

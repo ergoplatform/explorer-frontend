@@ -86,7 +86,7 @@ class Chart extends React.PureComponent {
     return (
       <div className='bi-chart__body g-flex-column__item'>
         <div className='bi-chart__chart'>
-          { this.props.data && <AreaChartComponent data={ this.props.data } compact={ !!iframe }/> }
+          { this.props.data && <AreaChartComponent data={ this.formatData() } compact={ !!iframe }/> }
         </div>
         
         <div className='bi-chart__controls'>
@@ -95,6 +95,24 @@ class Chart extends React.PureComponent {
         </div>
       </div>
     );
+  }
+  
+  private formatData (): any {
+    switch (this.props.match.params.chartType) {
+      case 'total': {
+        return this.props.data.map((item: any) => {
+          return {
+            timestamp: item.timestamp,
+            type: 'coin',
+            value: item.value / 1e8,
+          };
+        });
+      }
+      
+      default: {
+        return this.props.data;
+      }
+    }
   }
   
   private getParams (): any {
