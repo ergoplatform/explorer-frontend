@@ -37,7 +37,7 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
           
           <div className='bi-block-header__navigation g-flex__item-fixed'>
             {
-              this.props.references.previousId ?
+              (this.props.references.previousId && this.props.block.header.height !== 0) ?
                 <Link className='bi-block-header__navigation-btn bi-block-header__navigation-btn--prev'
                       to={ `/blocks/${this.props.references.previousId}` }>
                   <ArrowIcon className='bi-block-header__navigation-btn-icon'/>
