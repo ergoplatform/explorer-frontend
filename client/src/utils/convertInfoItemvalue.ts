@@ -8,8 +8,9 @@ export const convertInfoItemValue = (key: string, value: any): any => {
   switch (key) {
     case 'supply': {
       return formatNumber({
+        integerSeparator: ' ',
         suffix: ` ${environment.blockchain.coinName}`
-      })(value);
+      })(value / 1e8);
     }
     
     
