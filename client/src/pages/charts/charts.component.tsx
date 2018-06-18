@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Helmet from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -20,6 +22,16 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
   render (): JSX.Element {
     return (
       <div className='bi-charts g-flex-column'>
+        <FormattedMessage id='common.pages.charts.title'>
+          {
+            title => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            )
+          }
+        </FormattedMessage>
+        
         <div className='bi-charts__header g-flex-column__item-fixed'>
           <div className='bi-charts__title'>
             Charts

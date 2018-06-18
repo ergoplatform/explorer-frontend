@@ -33,7 +33,6 @@
   "common.block.age": "Время",
   "common.block.minedBy": "Майнер",
   "common.block.size": "Размер",
-  "common.block.extensionHash": "",
   "common.block.parent": "Родитель",
   "common.block.version": "Версия",
   "common.block.interlinks": "Взаимосвязи",
@@ -42,6 +41,12 @@
   "common.block.stateRoot": "Корень Состояния",
   "common.block.nBits": "Целевой Порог (nBits)",
   "common.block.equihashSolutions": "Equihash Решения",
+
+  "common.pages.address.title": "Ergo Explorer | Адрес {id}",
+  "common.pages.data.title": "Ergo Explorer | Данные",
+  "common.pages.api.title": "Ergo Explorer | API",
+  "common.pages.block.title": "Ergo Explorer | Блок {id}",
+  "common.pages.chart.title": "Ergo Explorer | График {name}",
 
   "components.data.title": "Последние блоки",
   "components.data.show": "Показать",

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Helmet from 'react-helmet';
 import { hot } from 'react-hot-loader';
 import { Route, Switch } from 'react-router';
 
@@ -21,6 +22,10 @@ class App extends React.PureComponent {
   render (): JSX.Element {
     return (
       <div className='bi-app g-flex'>
+        <Helmet>
+          <title>Ergo Explorer</title>
+        </Helmet>
+        
         <SidebarComponent/>
         
         <div className='bi-app__wrapper g-flex__item g-flex-column'>

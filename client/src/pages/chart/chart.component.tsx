@@ -1,6 +1,7 @@
 import * as classnames from 'classnames';
 import * as queryString from 'query-string';
 import * as React from 'react';
+import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -58,6 +59,16 @@ class Chart extends React.PureComponent {
     
     return (
       <div className={ chartClassNames }>
+        <FormattedMessage id={ `common.pages.chart.title.${this.props.match.params.chartType}` }>
+          {
+            title => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            )
+          }
+        </FormattedMessage>
+        
         <div className='bi-chart__header g-flex-column__item-fixed'>
           <div className='bi-chart__title'>
             <FormattedMessage id={ `components.chart.title.${this.props.match.params.chartType}` }/>

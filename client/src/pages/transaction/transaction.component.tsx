@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -59,13 +60,23 @@ class Transaction extends React.PureComponent {
     
     return (
       <div className='bi-transaction__body'>
+        <FormattedMessage id='common.pages.transaction.title' values={ { id: this.props.transaction.summary.id } }>
+          {
+            title => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            )
+          }
+        </FormattedMessage>
+        
         <TransactionsItemComponent transaction={ transaction }/>
-  
+        
         <div className='bi-transaction__tables g-flex'>
           <div className='bi-transaction__table g-flex__item'>
             <TransactionSummaryComponent summary={ this.props.transaction.summary }/>
           </div>
-  
+          
           <div className='bi-transaction__table g-flex__item'>
             <TransactionIoSummaryComponent summary={ this.props.transaction.ioSummary }/>
           </div>
