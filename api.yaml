@@ -176,6 +176,37 @@ paths:
                 items:
                   $ref: '#/components/schemas/Transaction'
 
+  '/search':
+    get:
+      summary: Search block, transactions, adresses
+      tags:
+        - utilities
+      responses:
+        200:
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                type: object
+                required:
+                  - blocks
+                  - transactions
+                  - addresses
+                properties:
+                  blocks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SearchBlock'
+                  transactions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TransactionId'
+                  adresses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AddressId'
+
+
 
   '/info':
     get:
