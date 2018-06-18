@@ -231,9 +231,9 @@ paths:
                       type: integer
                       format: int32
 
-  '/charts/market-price':
+  '/charts/blockchain-size':
     get:
-      summary: Get market price per date
+      summary: The total size of all block headers and transactions per day.
       tags:
         - charts
       parameters:
@@ -246,19 +246,168 @@ paths:
         200:
           description: 'Ok'
           content:
-            'application/json':
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    timestamp:
-                      $ref: '#/components/schemas/Timestamp'
-                    value:
-                      description: Price
-                      type: integer
-                      format: float
-                      example: 3001.34
+              'application/json':
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      timestamp:
+                        $ref: '#/components/schemas/Timestamp'
+                      value:
+                        type: integer
+                        format: int32
+                        description: Size in bytes
+                        minimum: 0
+                        example: 1030453
+
+  '/charts/average-block-size':
+    get:
+      summary: The average block size per day.
+      tags:
+        - charts
+      parameters:
+        - name: timespan
+          in: query
+          description: Timespan
+          schema:
+            $ref: '#/components/schemas/Timespan'
+      responses:
+        200:
+          description: 'Ok'
+          content:
+              'application/json':
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      timestamp:
+                        $ref: '#/components/schemas/Timestamp'
+                      value:
+                        type: integer
+                        format: int32
+                        description: Size in bytes
+                        minimum: 0
+                        example: 1030453
+
+  '/charts/transactions-per-block':
+    get:
+      summary: Transactions per block per day.
+      tags:
+        - charts
+      parameters:
+        - name: timespan
+          in: query
+          description: Timespan
+          schema:
+            $ref: '#/components/schemas/Timespan'
+      responses:
+        200:
+          description: 'Ok'
+          content:
+              'application/json':
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      timestamp:
+                        $ref: '#/components/schemas/Timestamp'
+                      value:
+                        type: integer
+                        format: int32
+                        description: Number of transactions
+                        minimum: 0
+                        example: 1030453
+  '/charts/hash-rate':
+    get:
+      summary: Hash Rate per day.
+      tags:
+        - charts
+      parameters:
+        - name: timespan
+          in: query
+          description: Timespan
+          schema:
+            $ref: '#/components/schemas/Timespan'
+      responses:
+        200:
+          description: 'Ok'
+          content:
+              'application/json':
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      timestamp:
+                        $ref: '#/components/schemas/Timestamp'
+                      value:
+                        type: integer
+                        format: int32
+                        description: Hash Rate
+                        minimum: 0
+                        example: 1030453
+
+  '/charts/difficulty':
+    get:
+      summary: Difficulty per day.
+      tags:
+        - charts
+      parameters:
+        - name: timespan
+          in: query
+          description: Timespan
+          schema:
+            $ref: '#/components/schemas/Timespan'
+      responses:
+        200:
+          description: 'Ok'
+          content:
+              'application/json':
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      timestamp:
+                        $ref: '#/components/schemas/Timestamp'
+                      value:
+                        type: integer
+                        format: int32
+                        description: Difficulty
+                        minimum: 0
+                        example: 1030453
+  '/charts/miners-revenue':
+    get:
+      summary: Total value of coinbase block rewards and transaction fees paid to miners per day.
+      tags:
+        - charts
+      parameters:
+        - name: timespan
+          in: query
+          description: Timespan
+          schema:
+            $ref: '#/components/schemas/Timespan'
+      responses:
+        200:
+          description: 'Ok'
+          content:
+              'application/json':
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      timestamp:
+                        $ref: '#/components/schemas/Timestamp'
+                      value:
+                        type: integer
+                        format: int32
+                        description: Reward
+                        minimum: 0
+                        example: 1030453
 
   '/charts/block-size':
     get:
