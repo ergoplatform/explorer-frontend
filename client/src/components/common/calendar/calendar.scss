@@ -18,7 +18,7 @@ $calendar-bt-reset-bg: #e8e8e8;
     z-index: 1000;
     top: 0;
     right: 0;
-    width: 350px;
+    width: 386px;
     max-width: initial;
   }
 
@@ -53,10 +53,30 @@ $calendar-bt-reset-bg: #e8e8e8;
   }
 }
 
+.bi-calendar__calendar {
+  padding: $grid-offset-step * 7;
+  border: 1px solid #EEEEEE;
+  font-family: $theme-main-font;
+
+  .react-calendar__tile {
+    color: $theme-primary-color;
+    font-size: 15px;
+    padding: $grid-offset-step * 3;
+  }
+
+  .react-calendar__tile--active {
+    color: #fff;
+  }
+
+
+  .react-calendar__month-view__days__day--neighboringMonth {
+    color: #828795;
+  }
+}
+
 @media screen and (max-width: $mobile-device-width) {
   .bi-calendar {
     position: initial;
-
 
     &__calendar {
       top: 50%;

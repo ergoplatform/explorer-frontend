@@ -61,6 +61,9 @@ export class CalendarComponent extends React.PureComponent<ICalendarProps, ICale
       'bi-calendar--date-set': isDateSet
     });
     
+    const formatShortWeekday = (value: any) => dayjs(value)
+      .format('dddd')[0];
+    
     return (
       <div className={ rootClassNames } ref={ (ref: HTMLDivElement) => {
         this.element = ref;
@@ -75,6 +78,7 @@ export class CalendarComponent extends React.PureComponent<ICalendarProps, ICale
         
         <Calendar { ...props }
                   className={ calendarClassNames }
+                  formatShortWeekday={ formatShortWeekday }
                   selectRange={ true }
                   onChange={ this.setCalendar as any }/>
       </div>
