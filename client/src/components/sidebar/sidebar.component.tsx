@@ -11,6 +11,7 @@ import { AppState } from '../../store/app.store';
 import { SettingsActions } from '../../actions/settings.actions';
 import { SettingsState } from '../../reducers/settings.reducer';
 
+import { EnvironmentSwitcherComponent } from '../common/environment-switcher/environment-switcher.component';
 import { LanguageSwitcherComponent } from '../common/language-switcher/language-switcher.component';
 import { SidebarMenuComponent } from '../sidebar-menu/sidebar-menu.component';
 
@@ -68,9 +69,10 @@ class Sidebar extends React.Component<SettingsActions & SettingsState> {
         </div>
         
         <div className='bi-sidebar__footer g-flex-column__item-fixed g-flex'>
-          <div className='bi-sidebar__footer-lin g-flex__item-fixed'>
+          <div className='bi-sidebar__footer-line g-flex__item-fixed g-flex'>
+            <EnvironmentSwitcherComponent/>
+  
             <LanguageSwitcherComponent/>
-
           </div>
   
           <div className='bi-sidebar__footer-line g-flex__item-fixed'>

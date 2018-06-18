@@ -45,6 +45,7 @@ $dropdown-option-hover-bg: #f8f8f8;
     bottom: calc(100% + 5px);
     background-color: $dropdown-dropdown-bg;
     box-shadow: 0 2px 3px 0 rgba(0,0,0,0.06);
+    overflow: hidden;
   }
 
   &__option {

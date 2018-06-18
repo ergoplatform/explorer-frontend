@@ -81,6 +81,16 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     &__copyright {
       position: absolute;
       opacity: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    &__footer-line {
+      justify-content: center;
+
+      .bi-environment-switcher {
+        margin-bottom: $grid-offset-step * 2;
+      }
     }
   }
 
@@ -110,6 +120,7 @@ $sidebar-btn-toggle-icon-color: #ffffff;
 
   &__footer-line {
     width: 100%;
+    flex-wrap: wrap;
   }
 
   &__copyright {
@@ -119,6 +130,10 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     font-size: 14px;
     white-space: nowrap;
     transition: opacity 300ms ease-in-out;
+  }
+
+  .bi-environment-switcher {
+    margin-right: $grid-offset-step * 2;
   }
 }
 

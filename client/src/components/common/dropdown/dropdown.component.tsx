@@ -8,7 +8,8 @@ import './dropdown.scss';
 interface IDropdownProps {
   options: any[];
   selected: any;
-  onChange: (value: string) => void;
+  component?: any;
+  onChange?: (value: string) => void;
 }
 
 interface IDropdownState {
@@ -32,7 +33,9 @@ export class DropdownComponent extends React.PureComponent<IDropdownProps, IDrop
   }
   
   render (): JSX.Element {
-    const { options, selected } = this.props;
+    const { options, selected, component } = this.props;
+    
+    const ButtonComponent = component || 'button';
     
     const dropdownClassNames = classnames({
       'bi-dropdown': true,
@@ -48,18 +51,22 @@ export class DropdownComponent extends React.PureComponent<IDropdownProps, IDrop
                 onClick={ this.toggleDropdown }>
           <span className='bi-dropdown__button-label'>{ selected.label }</span>
           
+          { this.props.options.length > 1 &&
           <ArrowDownIcon className='bi-dropdown__button-icon'/>
+          }
         </button>
         
         <div className='bi-dropdown__dropdown'>
           {
             options.map((option: any) => {
               return (
-                <button className='bi-dropdown__option bi-btn bi-btn--flat'
-                        key={ option.value }
-                        onClick={ this.onOptionChange(option.value) }>
+                <ButtonComponent className='bi-dropdown__option bi-btn bi-btn--flat'
+                                 key={ option.value }
+                                 to={ option.value }
+                                 href={ option.value }
+                                 onClick={ this.onOptionChange(option.value) }>
                   { option.label }
-                </button>
+                </ButtonComponent>
               );
             })
           }
@@ -69,12 +76,16 @@ export class DropdownComponent extends React.PureComponent<IDropdownProps, IDrop
   }
   
   private toggleDropdown (): void {
+    if (this.props.options.length <= 1) {
+      return;
+    }
+    
     if (this.state.isDropdownShown) {
       return this.hideDropdown();
     }
     
     this.setState({
-      isDropdownShown: true,
+      isDropdownShown: true
     });
     
     document.addEventListener('click', this.hideOnOutsideClick);
@@ -90,7 +101,10 @@ export class DropdownComponent extends React.PureComponent<IDropdownProps, IDrop
   
   private onOptionChange (value: string): () => void {
     return () => {
-      this.props.onChange(value);
+      if (this.props.onChange) {
+        this.props.onChange(value);
+      }
+      
       this.hideDropdown();
     };
   }
