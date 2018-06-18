@@ -50,10 +50,10 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
                 totalOutput += address.value;
                 
                 return (
-                  <div className='bi-transactions-item__output g-flex' key={ address.id }>
+                  <div className='bi-transactions-item__output g-flex' key={ address.address }>
                     <Link className='g-flex__item u-word-wrap'
-                          to={ `/addresses/${address.id}` }>
-                      { address.id }
+                          to={ `/addresses/${address.address}` }>
+                      { address.address }
                     </Link>
                     
                     <div className='bi-transactions-item__value g-flex__item-fixed'>

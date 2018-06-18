@@ -34,21 +34,26 @@ class Address extends React.PureComponent {
   componentDidMount (): void {
     this.params = this.getParams();
     
-    this.props.getAddress(this.params.id);
-    this.props.getAddressTransactions(this.params.id, this.params);
+    this.props.getAddress(this.props.match.params.id);
+    this.props.getAddressTransactions(this.props.match.params.id, this.params);
   }
   
   componentWillReceiveProps (nextProps: any): void {
     const params = this.getParams();
     
-    if (JSON.stringify(params) !== JSON.stringify(this.params)) {
-      if (params.id !== this.params.id) {
-        this.props.getAddress(params.id);
-      }
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      this.params = params;
+  
+      this.props.getAddress(nextProps.match.params.id);
+      this.props.getAddressTransactions(nextProps.match.params.id, this.params);
       
+      return;
+    }
+    
+    if (JSON.stringify(params) !== JSON.stringify(this.params)) {
       this.params = params;
       
-      this.props.getAddressTransactions(this.params.id, this.params);
+      this.props.getAddressTransactions(this.props.match.params.id, this.params);
     }
   }
   
@@ -67,7 +72,7 @@ class Address extends React.PureComponent {
   }
   
   private renderBody (): JSX.Element | null {
-    if (!this.props.address || this.props.fetching) {
+    if (!this.props.address || this.props.fetching || !this.params) {
       return null;
     }
     
@@ -128,13 +133,11 @@ class Address extends React.PureComponent {
   
   private getParams (): any {
     let { offset, limit } = queryString.parse(this.props.history.location.search);
-    const id              = this.props.match.params.id;
     
     offset = parseInt(offset, 10);
     limit  = parseInt(limit, 10) || 30;
     
     return {
-      id,
       limit,
       offset: offset || 0
     };

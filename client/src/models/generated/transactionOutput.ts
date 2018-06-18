@@ -9,11 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { AddressId } from './addressId';
 import { TransactionId } from './transactionId';
 
 
 export interface TransactionOutput {
     id: TransactionId;
+    address: AddressId;
     /**
      * Amount of Ergo token
      */

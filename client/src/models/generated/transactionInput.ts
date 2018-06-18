@@ -9,17 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { AddressId } from './addressId';
 import { TransactionId } from './transactionId';
 
 
 export interface TransactionInput {
-    id: TransactionId;
-    /**
-     * Index of a output in transaction
-     */
-    nonce: number;
-    /**
-     * The parameter that should be successfully executed the script of the output of the transaction
-     */
+    outputId: TransactionId;
+    id: AddressId;
     signature: string;
 }
