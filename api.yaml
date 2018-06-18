@@ -181,6 +181,12 @@ paths:
       summary: Search block, transactions, adresses
       tags:
         - utilities
+      parameters:
+        - name: query
+          in: query
+          description: Search query
+          schema:
+            type: string
       responses:
         200:
           description: Ok
