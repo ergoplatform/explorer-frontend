@@ -10,9 +10,10 @@ import * as ru from 'react-intl/locale-data/ru';
 import '../client/src/assets/styles/main.scss';
 
 import { AppComponent } from '../client/src/containers/app/app.component';
+import { ServerErrorComponent } from '../client/src/pages/server-error/server-error.component';
+
 import { ConnectedIntlProvider } from '../client/src/containers/connected-intl-provider/connected-intl-provider';
 import { configureStore } from '../client/src/store/app.store';
-import { ServerErrorComponent } from '../client/src/pages/server-error/server-error.component';
 
 const TextComponent = (props: any) => {
   return props.children;
