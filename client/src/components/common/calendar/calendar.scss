@@ -51,25 +51,47 @@ $calendar-bt-reset-bg: #e8e8e8;
       display: inline-block;
     }
   }
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+
+    fill: $theme-color-blue;
+  }
+
+  &__icon--prev {
+    transform: rotate(180deg);
+  }
 }
 
 .bi-calendar__calendar {
   padding: $grid-offset-step * 7;
-  border: 1px solid #EEEEEE;
+  padding-bottom: $grid-offset-step * 4;
+  border: 1px solid #eeeeee;
   font-family: $theme-main-font;
 
   .react-calendar__tile {
+    padding: $grid-offset-step * 3;
     color: $theme-primary-color;
     font-size: 15px;
-    padding: $grid-offset-step * 3;
+    line-height: 10px;
   }
 
   .react-calendar__tile--active {
-    color: #fff;
+    color: #ffffff;
   }
 
+  .react-calendar__navigation__arrow {
+    min-height: auto;
+    padding: $grid-offset-step * 3;
+    line-height: 0;
+  }
 
-  .react-calendar__month-view__days__day--neighboringMonth {
+  .react-calendar__month-view__weekdays {
+    font-size: 15px;
+  }
+
+  .react-calendar__month-view__days__day--neighboringMonth:not(.react-calendar__tile--active) {
     color: #828795;
   }
 }

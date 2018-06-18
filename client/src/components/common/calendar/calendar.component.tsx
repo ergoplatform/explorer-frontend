@@ -3,7 +3,7 @@ import * as dayjs from 'dayjs';
 import * as React from 'react';
 import Calendar from 'react-calendar/dist/entry.nostyle';
 
-import { CrossIcon } from '../icons/common.icons';
+import { ArrowIcon, CrossIcon, DoubleArrowIcon } from '../icons/common.icons';
 
 import './calendar.scss';
 
@@ -78,6 +78,10 @@ export class CalendarComponent extends React.PureComponent<ICalendarProps, ICale
         
         <Calendar { ...props }
                   className={ calendarClassNames }
+                  prevLabel={<ArrowIcon className='bi-calendar__icon bi-calendar__icon--prev'/>}
+                  nextLabel={<ArrowIcon className='bi-calendar__icon bi-calendar__icon--next'/>}
+                  prev2Label={<DoubleArrowIcon className='bi-calendar__icon bi-calendar__icon--prev'/>}
+                  next2Label={<DoubleArrowIcon className='bi-calendar__icon bi-calendar__icon--next'/>}
                   formatShortWeekday={ formatShortWeekday }
                   selectRange={ true }
                   onChange={ this.setCalendar as any }/>
