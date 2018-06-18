@@ -3,6 +3,8 @@ import * as dayjs from 'dayjs';
 import * as React from 'react';
 import Calendar from 'react-calendar/dist/entry.nostyle';
 
+import { CrossIcon } from '../icons/common.icons';
+
 import './calendar.scss';
 
 interface ICalendarState {
@@ -10,7 +12,7 @@ interface ICalendarState {
 }
 
 interface ICalendarProps {
-  onChange: (dateStart: number, dateEnd: number) => void;
+  onChange: (dateStart: number | null, dateEnd: number | null) => void;
   startDate?: number;
   endDate?: number;
 }
@@ -28,6 +30,7 @@ export class CalendarComponent extends React.PureComponent<ICalendarProps, ICale
     this.showCalendar       = this.showCalendar.bind(this);
     this.hideCalendar       = this.hideCalendar.bind(this);
     this.setCalendar        = this.setCalendar.bind(this);
+    this.resetCalendar      = this.resetCalendar.bind(this);
     this.hideOnOutsideClick = this.hideOnOutsideClick.bind(this);
   }
   
@@ -38,10 +41,13 @@ export class CalendarComponent extends React.PureComponent<ICalendarProps, ICale
     });
     
     let buttonLabel: string = 'All time';
+    let isDateSet: boolean  = false;
     
     const props: any = {};
     
     if (this.props.startDate && this.props.endDate) {
+      isDateSet = true;
+      
       buttonLabel = dayjs(this.props.startDate)
           .format('DD.MM.YYYY') + '-' +
         dayjs(this.props.endDate)
@@ -50,13 +56,21 @@ export class CalendarComponent extends React.PureComponent<ICalendarProps, ICale
       props.value = [new Date(this.props.startDate), new Date(this.props.endDate)];
     }
     
+    const rootClassNames = classnames({
+      'bi-calendar': true,
+      'bi-calendar--date-set': isDateSet
+    });
     
     return (
-      <div className='bi-calendar' ref={ (ref: HTMLDivElement) => {
+      <div className={ rootClassNames } ref={ (ref: HTMLDivElement) => {
         this.element = ref;
       } }>
         <button className='bi-calendar__btn bi-btn bi-btn--flat' onClick={ this.showCalendar }>
           { buttonLabel }
+        </button>
+        
+        <button className='bi-calendar__btn-reset bi-btn bi-btn--flat' onClick={ this.resetCalendar }>
+          <CrossIcon className='bi-calendar__btn-reset-icon'/>
         </button>
         
         <Calendar { ...props }
@@ -65,6 +79,10 @@ export class CalendarComponent extends React.PureComponent<ICalendarProps, ICale
                   onChange={ this.setCalendar as any }/>
       </div>
     );
+  }
+  
+  private resetCalendar (): void {
+    this.props.onChange(null, null);
   }
   
   private setCalendar ([startDate, endDate]: [Date, Date]): void {

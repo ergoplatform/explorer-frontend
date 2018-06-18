@@ -3,6 +3,10 @@
 
 // #CALENDAR
 //-------------------------------------
+$calendar-btn-color: $theme-color-blue;
+$calendar-bt-reset-color: $theme-primary-color;
+$calendar-bt-reset-bg: #e8e8e8;
+
 .bi-calendar {
   position: relative;
 
@@ -18,8 +22,34 @@
     max-width: initial;
   }
 
+  &__btn {
+    color: $calendar-btn-color;
+  }
+
   &__calendar--open {
     display: block;
+  }
+
+  &__btn-reset {
+    display: none;
+    margin-left: $grid-offset-step;
+    padding: $grid-offset-step;
+    border-radius: 100%;
+    background-color: $calendar-bt-reset-bg;
+    line-height: 0;
+  }
+
+  &__btn-reset-icon {
+    width: 7px;
+    height: 7px;
+
+    fill: $calendar-bt-reset-color;
+  }
+
+  &--date-set & {
+    &__btn-reset {
+      display: inline-block;
+    }
   }
 }
 
