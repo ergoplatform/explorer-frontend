@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as compression from 'compression';
 import * as express from 'express';
 import * as fs from 'fs';
@@ -9,7 +10,7 @@ import sprite from 'svg-sprite-loader/runtime/sprite.build';
 
 import { serverHtml } from './server.html';
 
-import { App } from './app.server';
+import { App, Error } from './app.server';
 
 import '../client/src/config/axios.config';
 
@@ -54,7 +55,44 @@ server.use((req: any, res, next) => {
     preloadedState: {}
   };
   
+  axios.interceptors.response.use(response => response, () => {
+    return res.redirect('/server-error');
+  });
+  
   next();
+});
+
+server.use('/server-error', (req: any, res) => {
+  const context: any = {};
+  
+  const body = renderToString(
+    (
+      <Error location={ req.url }
+             context={ context }
+             preloadedState={ req.explorer.preloadedState }/>
+    )
+  );
+  
+  const helmet = Helmet.renderStatic();
+  
+  const htmlToRender = serverHtml({
+    assets: manifest.assets,
+    body,
+    helmet,
+    preloadedState: req.explorer.preloadedState,
+    spriteContent: sprite.stringify()
+  });
+  
+  if (context.url) {
+    res.writeHead(302, {
+      Location: context.url
+    });
+    
+    res.end();
+  } else {
+    res.write(htmlToRender);
+    res.end();
+  }
 });
 
 server.use('*', Preloader);
@@ -63,6 +101,7 @@ server.use('/', DataPage);
 server.use('/stats', StatsPage);
 server.use('/charts', ChartPage);
 server.use('/blocks', BlockPage);
+
 
 server.get('*', (req: any, res) => {
   const context: any = {};

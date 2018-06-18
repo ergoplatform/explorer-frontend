@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { addLocaleData } from "react-intl";
+import { addLocaleData } from 'react-intl';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 
-import * as en from "react-intl/locale-data/en";
-import * as ru from "react-intl/locale-data/ru";
+import * as en from 'react-intl/locale-data/en';
+import * as ru from 'react-intl/locale-data/ru';
 
 import { AppComponent } from './containers/app/app.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
+
 import { ConnectedIntlProvider } from './containers/connected-intl-provider/connected-intl-provider';
 import { configureStore } from './store/app.store';
 
@@ -25,10 +27,13 @@ addLocaleData([...en, ...ru]);
 
 export const App = () => {
   return (<Provider store={ AppStore }>
-    <ConnectedIntlProvider textComponent={TextComponent}>
+    <ConnectedIntlProvider textComponent={ TextComponent }>
       <BrowserRouter>
         <LastLocationProvider>
-          <Route path='/' component={ AppComponent }/>
+          <Switch>
+            <Route path='/server-error' exact={ true } component={ ServerErrorComponent }/>
+            <Route path='/' component={ AppComponent }/>
+          </Switch>
         </LastLocationProvider>
       </BrowserRouter>
     </ConnectedIntlProvider>
