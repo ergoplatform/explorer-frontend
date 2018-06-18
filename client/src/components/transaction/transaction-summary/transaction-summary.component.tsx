@@ -49,17 +49,10 @@ export class TransactionSummaryComponent extends React.Component<ITransactionSum
               <FormattedMessage id='components.transaction-summary.blocks'/>
             </div>
             
-            <div
-              className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
-              {
-                this.props.summary.blocks.map((block) => {
-                  return (
-                    <Link to={ `/blocks/${block.headerId}` } key={ block.headerId }>
-                      { block.height }
-                    </Link>
-                  );
-                })
-              }
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
+              <Link to={ `/blocks/${this.props.summary.block.id}` }>
+                { this.props.summary.block.height }
+              </Link>
             </div>
           </div>
         

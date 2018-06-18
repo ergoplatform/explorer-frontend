@@ -13,7 +13,7 @@ import { ModifierId } from './modifierId';
 
 
 export interface TransactionSummaryBlocks {
-    headerId: ModifierId;
+    id: ModifierId;
     /**
      * Block height
      */

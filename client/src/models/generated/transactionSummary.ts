@@ -27,5 +27,5 @@ export interface TransactionSummary {
      * Number of confirmations in transaction
      */
     confirmationsCount?: number;
-    blocks: TransactionSummaryBlocks[];
+    block: TransactionSummaryBlocks;
 }
