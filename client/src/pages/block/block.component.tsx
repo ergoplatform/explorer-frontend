@@ -1,5 +1,7 @@
 import { Location } from 'history';
 import * as React from 'react';
+import Helmet from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 import { withLastLocation } from 'react-router-last-location';
@@ -70,6 +72,16 @@ class Block extends React.Component {
     
     return (
       <div className='bi-block__wrapper g-flex-column'>
+        <FormattedMessage id='common.pages.block.title' values={ { id: this.props.block.header.id } }>
+          {
+            title => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            )
+          }
+        </FormattedMessage>
+        
         <div className='bi-block__header g-flex-column__item-fixed'>
           <BlockHeaderComponent block={ this.props.block }
                                 prevLink={ this.prevLink }
@@ -114,7 +126,7 @@ function mapStateToProps (state: AppState): BlockState {
 }
 
 function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
-  return bindActionCreators({...BlockActions, ...AppActions}, dispatch);
+  return bindActionCreators({ ...BlockActions, ...AppActions }, dispatch);
 }
 
 export const BlockComponent = connect(mapStateToProps, mapDispatchToProps)(withLastLocation(Block));

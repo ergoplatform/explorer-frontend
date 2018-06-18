@@ -1,4 +1,4 @@
-export const serverHtml = ({ body, assets, spriteContent, preloadedState }: { body: string, assets: any, spriteContent: any, preloadedState: any }) => `<!DOCTYPE html><html>
+export const serverHtml = ({ body, assets, helmet, spriteContent, preloadedState }: { body: string, assets: any, helmet: any, spriteContent: any, preloadedState: any }) => `<!DOCTYPE html><html>
     <head>
       <meta charSet='utf-8'/>
       <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no'/>
@@ -8,7 +8,7 @@ export const serverHtml = ({ body, assets, spriteContent, preloadedState }: { bo
       
       <link rel='stylesheet' href='/${assets['main.css']}'/>
       
-      <title>Blockchain Explorer</title>
+      ${ helmet.title.toString() }
       <script src='/app.config.js'></script>
     </head>
     <body class='ssr'>

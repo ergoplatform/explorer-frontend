@@ -43,6 +43,17 @@
   "common.block.nBits": "Target Threshold (nBits)",
   "common.block.equihashSolutions": "Equihash Solutions",
 
+  "common.pages.address.title": "Ergo Explorer | Address {id}",
+  "common.pages.data.title": "Ergo Explorer | Data",
+  "common.pages.api.title": "Ergo Explorer | API",
+  "common.pages.block.title": "Ergo Explorer | Block {id}",
+  "common.pages.charts.title": "Ergo Explorer | Charts",
+  "common.pages.stats.title": "Ergo Explorer | Stats",
+  "common.pages.not-found.title": "Ergo Explorer | Not found",
+  "common.pages.transaction.title": "Ergo Explorer | Transaction {id}",
+  "common.pages.chart.title.total": "Ergo Explorer | Chart Total Coins",
+  "common.pages.chart.title.block-size": "Ergo Explorer | Chart Average Block Size",
+
   "components.data.title": "Latest blocks",
   "components.data.show": "Show",
 

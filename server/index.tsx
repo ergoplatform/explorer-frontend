@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as proxy from 'http-proxy-middleware';
 import * as React from 'react';
 import { renderToString } from 'react-dom/server';
+import Helmet from 'react-helmet';
 import sprite from 'svg-sprite-loader/runtime/sprite.build';
 
 import { serverHtml } from './server.html';
@@ -74,9 +75,12 @@ server.get('*', (req: any, res) => {
     )
   );
   
+  const helmet = Helmet.renderStatic();
+  
   const htmlToRender = serverHtml({
     assets: manifest.assets,
     body,
+    helmet,
     preloadedState: req.explorer.preloadedState,
     spriteContent: sprite.stringify()
   });

@@ -1,5 +1,7 @@
 import * as queryString from 'query-string';
 import * as React from 'react';
+import Helmet from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
@@ -71,6 +73,17 @@ class Address extends React.PureComponent {
     
     return (
       <div className='bi-address__body'>
+        
+        <FormattedMessage id='common.pages.address.title' values={ { id: this.props.address.summary.id } }>
+          {
+            title => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            )
+          }
+        </FormattedMessage>
+        
         <div className='bi-address__tables g-flex'>
           <div className='bi-address__table g-flex__item'>
             <AddressSummaryComponent summary={ this.props.address.summary }/>

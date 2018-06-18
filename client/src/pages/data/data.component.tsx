@@ -1,5 +1,6 @@
 import * as queryString from 'query-string';
 import * as React from 'react';
+import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -58,6 +59,16 @@ class Data extends React.PureComponent {
   render (): JSX.Element {
     return (
       <div className='bi-data g-flex-column g-flex-column__item-fixed'>
+        <FormattedMessage id='common.pages.data.title'>
+          {
+            title => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            )
+          }
+        </FormattedMessage>
+        
         <div className='bi-data__header g-flex-column__item-fixed g-flex'>
           <div className='bi-data__title g-flex__item'>
             <FormattedMessage id='components.data.title'/>

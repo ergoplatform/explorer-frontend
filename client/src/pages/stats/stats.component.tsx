@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Helmet from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -28,6 +30,16 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
   render (): JSX.Element {
     return (
       <div className='bi-stats'>
+        <FormattedMessage id='common.pages.stats.title'>
+          {
+            title => (
+              <Helmet>
+                <title>{ title }</title>
+              </Helmet>
+            )
+          }
+        </FormattedMessage>
+        
         <div className='bi-stats__header'>
           <div className='bi-stats__title'>
             { environment.blockchain.coinName } Stats
