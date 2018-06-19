@@ -298,36 +298,6 @@ paths:
                         minimum: 0
                         example: 1030453
 
-  '/charts/average-block-size':
-    get:
-      summary: The average block size per day.
-      tags:
-        - charts
-      parameters:
-        - name: timespan
-          in: query
-          description: Timespan
-          schema:
-            $ref: '#/components/schemas/Timespan'
-      responses:
-        200:
-          description: 'Ok'
-          content:
-              'application/json':
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      timestamp:
-                        $ref: '#/components/schemas/Timestamp'
-                      value:
-                        type: integer
-                        format: int32
-                        description: Size in bytes
-                        minimum: 0
-                        example: 1030453
-
   '/charts/transactions-per-block':
     get:
       summary: Transactions per block per day.

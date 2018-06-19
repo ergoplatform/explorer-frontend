@@ -17,6 +17,8 @@ import { SidebarMenuComponent } from '../sidebar-menu/sidebar-menu.component';
 
 import { ArrowIcon } from '../common/icons/common.icons';
 
+import logoImage from '../../assets/images/logo.svg';
+
 import './sidebar.scss';
 
 class Sidebar extends React.Component<SettingsActions & SettingsState> {
@@ -55,7 +57,10 @@ class Sidebar extends React.Component<SettingsActions & SettingsState> {
                 onClick={ this.hideSidebar }
                 to='/'
                 tabIndex={ this.props.isSidebarCollapsed ? -1 : 0 }>
-            <span className='bi-sidebar__logo-highlight'>Ergo</span> Explorer
+            <svg className='bi-sidebar__logo-icon'>
+              focusable='false'>
+              <use xlinkHref={ `#${logoImage.id}` }/>
+            </svg>
           </Link>
           
           <button className='bi-sidebar__btn-toggle bi-btn bi-btn--flat g-flex__item-fixed g-flex'
@@ -67,6 +72,12 @@ class Sidebar extends React.Component<SettingsActions & SettingsState> {
         <div className='bi-sidebar__body g-flex-column__item'>
           <SidebarMenuComponent onClick={ this.hideSidebar }/>
         </div>
+  
+  
+        <svg className='bi-sidebar__side-logo'>
+             focusable='false'>
+          <use xlinkHref={ `#${logoImage.id}` }/>
+        </svg>
         
         <div className='bi-sidebar__footer g-flex-column__item-fixed g-flex'>
           <div className='bi-sidebar__footer-line g-flex__item-fixed g-flex'>
