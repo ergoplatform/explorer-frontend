@@ -152,7 +152,7 @@ module.exports = {
         // Also exclude `html` and `json` extensions so they get processed
         // by webpacks internal loaders.
         exclude: [/\.(ts|tsx|js|jsx|mjs|scss|svg)$/, /\.html$/, /\.json$/],
-        test: /\.(ttf|woff|woff2)/,
+        test: /\.(ttf|woff|woff2|eot)/,
         loader: require.resolve('file-loader'),
         options: {
           name: 'static/media/[name].[ext]'

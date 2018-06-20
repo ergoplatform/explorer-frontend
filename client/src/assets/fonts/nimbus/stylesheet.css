@@ -33,6 +33,7 @@
     src: url('36E833_0_0.eot');
     src: url('36E833_0_0.eot?#iefix') format('embedded-opentype'), url('36E833_0_0.woff2') format('woff2'), url('36E833_0_0.woff') format('woff'), url('36E833_0_0.ttf') format('truetype');
     font-weight: 600;
+    font-display: fallback;
 }
 
 @font-face {
@@ -40,6 +41,7 @@
     src: url('36E833_1_0.eot');
     src: url('36E833_1_0.eot?#iefix') format('embedded-opentype'), url('36E833_1_0.woff2') format('woff2'), url('36E833_1_0.woff') format('woff'), url('36E833_1_0.ttf') format('truetype');
     font-weight: 400;
+    font-display: fallback;
 }
 
 @font-face {
@@ -47,6 +49,7 @@
     src: url('36E833_2_0.eot');
     src: url('36E833_2_0.eot?#iefix') format('embedded-opentype'), url('36E833_2_0.woff2') format('woff2'), url('36E833_2_0.woff') format('woff'), url('36E833_2_0.ttf') format('truetype');
     font-weight: 500;
+    font-display: fallback;
 }
 
 @font-face {
@@ -54,4 +57,5 @@
     src: url('36E833_3_0.eot');
     src: url('36E833_3_0.eot?#iefix') format('embedded-opentype'), url('36E833_3_0.woff2') format('woff2'), url('36E833_3_0.woff') format('woff'), url('36E833_3_0.ttf') format('truetype');
     font-weight: 700;
+    font-display: fallback;
 }
