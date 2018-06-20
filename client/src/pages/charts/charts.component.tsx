@@ -59,17 +59,29 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
             Statistics
           </div>
           
-          <div className='bi-charts__charts g-flex'>
-            <Link to={ '/charts/total' } className='bi-charts__chart g-flex__item-fixed'>
+          <div className='bi-charts__charts'>
+            <Link to={ '/charts/total' } className='bi-charts__chart'>
               Total coins per date
               
-              <iframe src='/charts/total?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no' tabIndex={-1}/>
+              <iframe src='/charts/total?iframe=true'
+                      className='bi-charts__iframe'
+                      frameBorder='0'
+                      scrolling='no'
+                      tabIndex={ -1 }/>
             </Link>
             
-            <Link to={ '/charts/block-size' } className='bi-charts__chart g-flex__item-fixed'>
+            <Link to={ '/charts/block-size' } className='bi-charts__chart'>
               Average block size
               
-              <iframe src='/charts/block-size?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no' tabIndex={-1}/>
+              <iframe src='/charts/block-size?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no'
+                      tabIndex={ -1 }/>
+            </Link>
+            
+            <Link to={ '/charts/blockchain-size' } className='bi-charts__chart'>
+              Blockchain size
+              
+              <iframe src='/charts/blockchain-size?iframe=true' className='bi-charts__iframe' frameBorder='0'
+                      scrolling='no' tabIndex={ -1 }/>
             </Link>
           </div>
         </div>

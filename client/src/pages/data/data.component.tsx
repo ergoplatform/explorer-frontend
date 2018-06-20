@@ -81,11 +81,14 @@ class Data extends React.PureComponent {
           </div>
         </div>
         
+        { this.props.blocks.total > 0 &&
         <div className='bi-data__body g-flex-column__item-fixed'>
           <BlocksTableComponent blocks={ this.props.blocks.blocks } isFetching={ this.props.blocks.fetching }/>
         </div>
+        }
         
         
+        { this.props.blocks.total > 0 &&
         <div className='bi-data__footer g-flex-column__item-fixed g-flex'>
           <div className='g-flex__item-fixed'>
             <LimitSelectorComponent items={ [30, 60, 120] }
@@ -101,6 +104,7 @@ class Data extends React.PureComponent {
                                      forcePage={ Math.floor(this.props.blocks.offset / this.params.limit) }/>
           </div>
         </div>
+        }
       </div>
     );
   }
