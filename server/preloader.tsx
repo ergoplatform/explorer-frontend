@@ -1,6 +1,6 @@
 import * as express from 'express';
-import * as SwaggerParser from 'swagger-parser';
 import * as fs from 'fs';
+import * as SwaggerParser from 'swagger-parser';
 
 import { apiReducer, initialState as apiInitialState } from '../client/src/reducers/api.reducer';
 import { initialState, statsReducer } from '../client/src/reducers/stats.reducer';

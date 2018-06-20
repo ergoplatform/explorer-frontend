@@ -148,7 +148,8 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
     ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web"
+      "^react-native$": "react-native-web",
+      "^apiSpec$": "<rootDir>/api.yaml"
     },
     "moduleFileExtensions": [
       "web.ts",
