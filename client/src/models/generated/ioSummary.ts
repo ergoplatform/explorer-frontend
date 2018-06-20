@@ -1,7 +1,5 @@
 export interface IoSummary {
-  totalInput: number;
-  totalOutput: number;
+  totalCoinsTransferred: number;
   totalFee: number;
   feePerByte: number;
-  feePerWeight: number;
 }

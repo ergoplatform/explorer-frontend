@@ -55,7 +55,16 @@ export class TransactionSummaryComponent extends React.Component<ITransactionSum
               </Link>
             </div>
           </div>
-        
+          
+          <div className='bi-transaction-summary__row bi-table__row'>
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
+              <FormattedMessage id='components.transaction-summary.confirmationsCount'/>
+            </div>
+            
+            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
+              { this.props.summary.confirmationsCount }
+            </div>
+          </div>
         </div>
       </div>
     );

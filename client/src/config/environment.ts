@@ -51,8 +51,6 @@ environment = {
   },
   
   get apiUrl (): string | undefined {
-    console.debug(getAppConfig());
-    
     return getAppConfig().apiUrl;
   }
 };

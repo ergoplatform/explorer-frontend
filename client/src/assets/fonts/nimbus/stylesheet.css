@@ -1,27 +1,57 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3598387, 2018-06-19T08:01:19-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: NimbusSanNov-SemBol by URW
+ * URL: https://www.myfonts.com/fonts/urw/nimbus-sans-novus/t-semi-bold/
+ * 
+ * Webfont: NimbusSanNov-Reg by URW
+ * URL: https://www.myfonts.com/font/nimbus-sans-novus/t-regular/
+ * 
+ * Webfont: NimbusSanNov-Med by URW
+ * URL: https://www.myfonts.com/fonts/urw/nimbus-sans-novus/t-medium/
+ * 
+ * Webfont: NimbusSanNov-Bol by URW
+ * URL: https://www.myfonts.com/fonts/urw/nimbus-sans-novus/t-bold/
+ * 
+ * 
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3598387
+ * Licensed pageviews: 10,000
+ * Webfonts copyright: Copyright 2010 URW++ Design &amp; Development Hamburg
+ * 
+ * © 2018 MyFonts Inc
+*/
+
 @font-face {
-    font-family: 'Nimbus Sans Novus';
-    src: url('NimbusSanNov-Med.woff2') format('woff2'),
-        url('NimbusSanNov-Med.woff') format('woff'),
-        url('NimbusSanNov-Med.ttf') format('truetype');
+    font-family: 'NimbusSansNovus';
+    src: url('36E833_0_0.eot');
+    src: url('36E833_0_0.eot?#iefix') format('embedded-opentype'), url('36E833_0_0.woff2') format('woff2'), url('36E833_0_0.woff') format('woff'), url('36E833_0_0.ttf') format('truetype');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'NimbusSansNovus';
+    src: url('36E833_1_0.eot');
+    src: url('36E833_1_0.eot?#iefix') format('embedded-opentype'), url('36E833_1_0.woff2') format('woff2'), url('36E833_1_0.woff') format('woff'), url('36E833_1_0.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'NimbusSansNovus';
+    src: url('36E833_2_0.eot');
+    src: url('36E833_2_0.eot?#iefix') format('embedded-opentype'), url('36E833_2_0.woff2') format('woff2'), url('36E833_2_0.woff') format('woff'), url('36E833_2_0.ttf') format('truetype');
     font-weight: 500;
-    font-style: normal;
 }
 
 @font-face {
-    font-family: 'Nimbus Sans Novus';
-    src: url('NimbusSanNov-Reg.woff2') format('woff2'),
-        url('NimbusSanNov-Reg.woff') format('woff'),
-        url('NimbusSanNov-Reg.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'NimbusSansNovus';
+    src: url('36E833_3_0.eot');
+    src: url('36E833_3_0.eot?#iefix') format('embedded-opentype'), url('36E833_3_0.woff2') format('woff2'), url('36E833_3_0.woff') format('woff'), url('36E833_3_0.ttf') format('truetype');
+    font-weight: 700;
 }
-
-@font-face {
-    font-family: 'Nimbus Sans Novus';
-    src: url('NimbusSanNov-SemBol.woff2') format('woff2'),
-        url('NimbusSanNov-SemBol.woff') format('woff'),
-        url('NimbusSanNov-SemBol.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-

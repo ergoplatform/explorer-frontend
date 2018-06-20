@@ -2,7 +2,7 @@
 
 // #STATS ITEM
 //-------------------------------------
-$stats-item-title-color: #828795;
+$stats-item-title-color: lighten(#808590, 10%);
 $stats-item-value-color: #121212;
 
 .bi-stats-item {
@@ -15,6 +15,7 @@ $stats-item-value-color: #121212;
   }
 
   &__value {
+    margin-top: $grid-offset-step;
     color: $stats-item-value-color;
     font-size: 18px;
     font-weight: 500;

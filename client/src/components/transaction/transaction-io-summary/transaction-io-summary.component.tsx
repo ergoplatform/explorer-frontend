@@ -20,21 +20,11 @@ export class TransactionIoSummaryComponent extends React.Component<ITransactionI
         <div className='bi-transaction-summary__body bi-table'>
           <div className='bi-transaction-summary__row bi-table__row'>
             <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
-              <FormattedMessage id='components.transaction-io-summary.totalInput'/>
+              <FormattedMessage id='components.transaction-io-summary.totalCoinsTransferred'/>
             </div>
             
             <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
-              { this.props.summary.totalInput }
-            </div>
-          </div>
-          
-          <div className='bi-transaction-summary__row bi-table__row'>
-            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
-              <FormattedMessage id='components.transaction-io-summary.totalOutput'/>
-            </div>
-            
-            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
-              { this.props.summary.totalOutput }
+              { this.props.summary.totalCoinsTransferred }
             </div>
           </div>
           
@@ -55,16 +45,6 @@ export class TransactionIoSummaryComponent extends React.Component<ITransactionI
     
             <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
               { this.props.summary.feePerByte }
-            </div>
-          </div>
-  
-          <div className='bi-transaction-summary__row bi-table__row'>
-            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell'>
-              <FormattedMessage id='components.transaction-io-summary.feePerWeight'/>
-            </div>
-    
-            <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
-              { this.props.summary.feePerWeight }
             </div>
           </div>
         </div>

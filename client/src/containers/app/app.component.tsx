@@ -15,6 +15,7 @@ import { DataComponent } from '../../pages/data/data.component';
 import { NotFoundComponent } from '../../pages/not-found/not-found.component';
 import { StatsComponent } from '../../pages/stats/stats.component';
 import { TransactionComponent } from '../../pages/transaction/transaction.component';
+import { WalletComponent } from '../../pages/wallet/wallet.component';
 
 import './app.scss';
 
@@ -47,6 +48,8 @@ class App extends React.PureComponent {
               
               <Route exact={ true } path='/charts' component={ ChartsComponent }/>
               <Route exact={ true } path='/charts/:chartType' component={ ChartComponent }/>
+              
+              <Route exact={ true } path='/wallet' component={ WalletComponent }/>
               
               <Route component={ NotFoundComponent }/>
             </Switch>

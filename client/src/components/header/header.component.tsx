@@ -51,4 +51,4 @@ function mapDispatchToProps (dispatch: any): any {
   return bindActionCreators(SettingsActions, dispatch);
 }
 
-export const HeaderComponent = connect(null, mapDispatchToProps)(Header);
+export const HeaderComponent = connect(null, mapDispatchToProps, null, { pure: false })(Header);

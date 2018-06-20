@@ -48,7 +48,11 @@ $block-transactions-item-total-value-color: $theme-color-blue;
     border: 1px solid $block-transactions-item-total-value-color;
     border-radius: 94px;
     color: $block-transactions-item-total-value-color;
-    font-weight: bold;
+    font-weight: 600;
+  }
+
+  &__timestamp {
+    font-weight: 500;
   }
 
   &__output {

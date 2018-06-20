@@ -60,24 +60,23 @@
   "components.paginate.prev": "Previous",
   "components.paginate.next": "Next",
 
-  "components.transaction.title": "Transactions",
+  "components.transaction.title": "Transaction",
 
   "components.address-actions.qrcode": "QR Code",
   "components.address-actions.request-payment": "Request Payment",
   "components.address-actions.donation-button": "Donation Button",
 
   "components.transaction-io-summary.title": "Inputs and Outputs",
-  "components.transaction-io-summary.totalInput": "Total Input",
-  "components.transaction-io-summary.totalOutput": "Total Output",
+  "components.transaction-io-summary.totalCoinsTransferred": "Total Coins Transferred",
   "components.transaction-io-summary.totalFee": "Fees",
   "components.transaction-io-summary.feePerByte": "Fee per Byte",
-  "components.transaction-io-summary.feePerWeight": "Fee per Weight Unit",
 
 
   "components.transaction-summary.title": "Summary",
   "components.transaction-summary.size": "Size",
   "components.transaction-summary.blocks": "Included in Blocks",
   "components.transaction-summary.timestamp": "Received Time",
+  "components.transaction-summary.confirmationsCount": "Confirmations",
 
   "components.paginate-simple.page-of": "Page {current} of {total}",
   "components.paginate-simple.page": "Page {current}",

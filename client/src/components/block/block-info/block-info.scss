@@ -27,7 +27,7 @@ $block-table-cell-border-color: $theme-color-blue;
       background-color: $block-info-row-hover-bg-color;
 
       .bi-block-info__cell:first-child:after {
-        transform: scale(1);
+        visibility: visible;
       }
     }
   }
@@ -49,7 +49,7 @@ $block-table-cell-border-color: $theme-color-blue;
       width: 2px;
       background-color: $block-table-cell-border-color;
       content: '';
-      transform: scale(0);
+      visibility: hidden;
     }
   }
 
@@ -60,6 +60,7 @@ $block-table-cell-border-color: $theme-color-blue;
   &__cell--header {
     width: 200px;
     font-weight: 600;
+    font-size: 14px;
   }
 }
 
