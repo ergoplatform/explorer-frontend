@@ -17,5 +17,6 @@ WORKDIR /usr/src/app
 ENV NODE_ENV production
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 COPY --from=builder /usr/src/app/build ./build
+COPY --from=builder /usr/src/app/api.yaml ./api.yaml
 EXPOSE 5000
 CMD node build/server/bundle.js
