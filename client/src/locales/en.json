@@ -88,6 +88,20 @@
   "components.block-summary.title": "Block Summary",
   "components.block-summary.total": "Blocks Mined",
   "components.block-summary.averageMiningTime": "Average mining time",
+  "components.block-summary.totalCoins": "Total coins",
+
+  "components.transactions-summary.title": "Transactions Summary",
+  "components.transactions-summary.total": "Number of Transactions",
+  "components.transactions-summary.totalFee": "Total Transaction Fees",
+  "components.transactions-summary.totalOutput": "Total Output Volume",
+
+  "components.mining-cost.title": "Mining Cost",
+  "components.mining-cost.totalMinersRevenue": "Total Miners Revenue",
+  "components.mining-cost.percentEarnedTransactionsFees": "% Earned From Transaction Fees",
+  "components.mining-cost.percentTransactionVolume": "% Of Transaction Volume",
+  "components.mining-cost.costPerTransaction": "Cost per Transaction",
+  "components.mining-cost.difficulty": "Difficulty",
+  "components.mining-cost.hashRate": "Hash Rate",
 
   "components.chart.title.total": "Total coins",
   "components.chart.title.block-size": "Average block size",

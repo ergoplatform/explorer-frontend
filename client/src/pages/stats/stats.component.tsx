@@ -15,6 +15,8 @@ import { StatsActions } from '../../actions/stats.actions';
 import './stats.scss';
 
 import { BlockSummaryComponent } from '../../components/stats/block-summary/block-summary.component';
+import { MiningCostComponent } from '../../components/stats/mining-cost/mining-cost.component';
+import { TransactionsSummaryComponent } from '../../components/stats/transactions-summary/transactions-summary.component';
 
 class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> {
   componentDidMount (): void {
@@ -46,18 +48,30 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
           </div>
         </div>
         
-        <div className='bi-stats__body'>
-          { this.props.stats ? this.renderBody() : null }
-        </div>
+        { this.props.stats ? this.renderBody() : null }
       </div>
     );
   }
   
   private renderBody (): JSX.Element {
     return (
-      <div className='bi-stats__line'>
-        <div className='bi-stats__block-summary'>
-          <BlockSummaryComponent summary={ this.props.stats.blockSummary }/>
+      <div className='bi-stats__body'>
+        <div className='bi-stats__line'>
+          <div className='bi-stats__block-summary'>
+            <BlockSummaryComponent summary={ this.props.stats.blockSummary }/>
+          </div>
+        </div>
+  
+        <div className='bi-stats__line'>
+          <div className='bi-stats__block-summary'>
+            <TransactionsSummaryComponent summary={ this.props.stats.transactionsSummary }/>
+          </div>
+        </div>
+        
+        <div className='bi-stats__line'>
+          <div className='bi-stats__block-summary'>
+            <MiningCostComponent summary={ this.props.stats.miningCost }/>
+          </div>
         </div>
       </div>
     );
@@ -69,7 +83,7 @@ function mapStateToProps (state: AppState): StatsState {
 }
 
 function mapDispatchToProps (dispatch: any): any {
-  return bindActionCreators({...StatsActions, ...AppActions}, dispatch);
+  return bindActionCreators({ ...StatsActions, ...AppActions }, dispatch);
 }
 
 export const StatsComponent = connect(mapStateToProps, mapDispatchToProps)(Stats);
