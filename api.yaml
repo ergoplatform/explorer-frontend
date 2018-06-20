@@ -15,6 +15,8 @@ tags:
     description: Blockchain status information
   - name: charts
     description: Get data for charts
+  - name: utilities
+    description: Utilites
 
 paths:
   /blocks:
@@ -458,7 +460,7 @@ components:
         address:
           $ref: '#/components/schemas/AddressId'
         value:
-          description: Number of coins caputred in input
+          description: Number of coins captured in input
           type: integer
           format: int32
           minimum: 0

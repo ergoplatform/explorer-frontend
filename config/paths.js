@@ -38,6 +38,7 @@ function getServedPath(packageJson) {
 
 module.exports = {
   appTsConfig: resolvePath('tsconfig.json'),
+  apiSpec: resolvePath('api.yaml'),
   appTsLint: resolvePath('tslint.json'),
   dotenv: resolvePath('.env'),
   nodeModules: resolvePath('node_modules'),

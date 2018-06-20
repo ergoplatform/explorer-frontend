@@ -44,17 +44,25 @@ $sidebar-btn-toggle-icon-color: #ffffff;
 
     .bi-sidebar-menu__item {
       margin: 20px 0;
-      padding: $grid-offset-step * 2;
+    }
+
+    .bi-sidebar-menu__item-wrapper {
+      justify-content: center;
     }
 
     .bi-sidebar-menu__item-icon {
       transform: scale3d((24/15), (24/15), 1);
+      margin-right: 0;
     }
 
     .bi-sidebar-menu__item-icon + .bi-sidebar-menu__item-title {
       visibility: hidden;
       position: absolute;
       opacity: 0;
+    }
+
+    .bi-sidebar-menu__item-children {
+      display: none;
     }
   }
 

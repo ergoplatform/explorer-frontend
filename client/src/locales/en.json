@@ -3,6 +3,12 @@
 
   "components.sidebar-menu.items.data": "Data",
   "components.sidebar-menu.items.api": "API",
+  "components.sidebar-menu.items.api-blocks": "Blocks",
+  "components.sidebar-menu.items.api-transactions": "Transactions",
+  "components.sidebar-menu.items.api-addresses": "Addresses",
+  "components.sidebar-menu.items.api-charts": "Charts",
+  "components.sidebar-menu.items.api-statistics": "Statistics",
+  "components.sidebar-menu.items.api-utilities": "Utilities",
   "components.sidebar-menu.items.wallet": "Wallet",
   "components.sidebar-menu.items.charts": "Charts",
   "components.sidebar-menu.items.stats": "Stats",

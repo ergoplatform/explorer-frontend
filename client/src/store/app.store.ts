@@ -7,6 +7,7 @@ import environment from '../config/environment';
 import { reducer } from '../reducers/app.reducers';
 
 import { AddressState } from '../reducers/address.reducer';
+import { ApiState } from '../reducers/api.reducer';
 import { BlockState } from '../reducers/block.reducer';
 import { BlocksState } from '../reducers/blocks.reducer';
 import { ChartState } from '../reducers/chart.reducer';
@@ -16,6 +17,7 @@ import { TransactionState } from '../reducers/transaction.reducer';
 
 export interface AppState {
   address: AddressState;
+  api: ApiState;
   block: BlockState;
   chart: ChartState;
   settings: SettingsState;

@@ -5,6 +5,7 @@ declare module '*.jpg';
 declare module 'react-router-last-location';
 declare module 'svg-sprite-loader/runtime/sprite.build';
 declare module 'react-head';
+declare module 'apiSpec';
 
 declare module 'universal-localstorage' {
   export = storage;

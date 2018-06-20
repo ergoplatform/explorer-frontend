@@ -33,6 +33,7 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
       'styles': paths.client.styles,
+      'apiSpec': paths.apiSpec,
     }
   },
 
@@ -152,12 +153,12 @@ module.exports = {
         // Also exclude `html` and `json` extensions so they get processed
         // by webpacks internal loaders.
         exclude: [/\.(ts|tsx|js|jsx|mjs|scss|svg)$/, /\.html$/, /\.json$/],
-        test: /\.(ttf|woff|woff2|eot)/,
+        test: /\.(ttf|woff|woff2|eot|yaml)/,
         loader: require.resolve('file-loader'),
         options: {
           name: 'static/media/[name].[ext]'
         }
-      }
+      },
     ]
   },
   plugins: [
