@@ -53,34 +53,78 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
             })
           }
         </div>
-        
         <div className='bi-charts__charts-wrapper g-flex-column__item'>
           <div className='bi-charts__title'>
-            Statistics
+            Currency Statistics
           </div>
-          
+    
           <div className='bi-charts__charts'>
             <Link to={ '/charts/total' } className='bi-charts__chart'>
               Total coins per date
-              
+        
               <iframe src='/charts/total?iframe=true'
                       className='bi-charts__iframe'
                       frameBorder='0'
                       scrolling='no'
                       tabIndex={ -1 }/>
             </Link>
-            
+          </div>
+        </div>
+        <div className='bi-charts__charts-wrapper g-flex-column__item'>
+          <div className='bi-charts__title'>
+            Block Details
+          </div>
+    
+          <div className='bi-charts__charts'>
             <Link to={ '/charts/block-size' } className='bi-charts__chart'>
               Average block size
-              
+        
               <iframe src='/charts/block-size?iframe=true' className='bi-charts__iframe' frameBorder='0' scrolling='no'
                       tabIndex={ -1 }/>
             </Link>
-            
+      
             <Link to={ '/charts/blockchain-size' } className='bi-charts__chart'>
               Blockchain size
-              
+        
               <iframe src='/charts/blockchain-size?iframe=true' className='bi-charts__iframe' frameBorder='0'
+                      scrolling='no' tabIndex={ -1 }/>
+            </Link>
+      
+            <Link to={ '/charts/transactions-per-block' } className='bi-charts__chart'>
+              Transactions per Block
+        
+              <iframe src='/charts/transactions-per-block?iframe=true' className='bi-charts__iframe' frameBorder='0'
+                      scrolling='no' tabIndex={ -1 }/>
+            </Link>
+    
+          </div>
+        </div>
+        
+        <div className='bi-charts__charts-wrapper g-flex-column__item'>
+          <div className='bi-charts__title'>
+            Mining Infromation
+          </div>
+          
+          <div className='bi-charts__charts'>
+            <Link to={ '/charts/transactions-per-block' } className='bi-charts__chart'>
+              Hash Rate
+    
+              <iframe src='/charts/hash-rate?iframe=true' className='bi-charts__iframe' frameBorder='0'
+                      scrolling='no' tabIndex={ -1 }/>
+            </Link>
+  
+  
+            <Link to={ '/charts/transactions-per-block' } className='bi-charts__chart'>
+              Difficulty
+    
+              <iframe src='/charts/difficulty?iframe=true' className='bi-charts__iframe' frameBorder='0'
+                      scrolling='no' tabIndex={ -1 }/>
+            </Link>
+            
+            <Link to={ '/charts/miners-revenue' } className='bi-charts__chart'>
+              Miners Revenue
+    
+              <iframe src='/charts/miners-revenue?iframe=true' className='bi-charts__iframe' frameBorder='0'
                       scrolling='no' tabIndex={ -1 }/>
             </Link>
           </div>
