@@ -60,6 +60,8 @@
   "components.address-actions.request-payment": "Запросить Платеж",
   "components.address-actions.donation-button": "Собрать Пожертвование",
 
+  "components.transaction-item.null-address": "Невозможно декодировать адрес",
+
   "components.transaction-io-summary.title": "Входы и Выходы",
   "components.transaction-io-summary.totalCoinsTransferred": "Общее количество монет",
   "components.transaction-io-summary.totalFee": "Комиссии",

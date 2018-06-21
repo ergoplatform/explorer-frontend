@@ -23,6 +23,8 @@
   "components.address-transactions.totalReceived": "Total received",
   "components.address-transactions.balance": "Final balance",
 
+  "components.transaction-item.null-address": "Unable to decode address",
+
   "components.address-summary.title": "Summary",
   "components.address-summary.hash": "Hash",
 
@@ -110,6 +112,7 @@
 
   "components.chart.title.total": "Total coins",
   "components.chart.title.block-size": "Average block size",
+  "components.chart.title.blockchain-size": "Blockchain Size",
 
   "components.timespan.span.30days": "30 Days",
   "components.timespan.span.60days": "60 Days",

@@ -51,11 +51,16 @@ $block-transactions-item-total-value-color: $theme-color-blue;
     font-weight: 600;
   }
 
+  &__address {
+    max-width: 70%;
+  }
+
   &__timestamp {
     font-weight: 500;
   }
 
   &__output {
     flex-flow: wrap;
+    justify-content: space-between;
   }
 }

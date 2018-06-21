@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import { Transaction } from '../../../models/generated/transaction';
@@ -35,9 +36,14 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
               this.props.transaction.inputs.map((address) => {
                 return (
                   <div className='bi-transactions-item__input u-word-wrap' key={ address.id }>
-                    <Link to={ `/addresses/${address.id}` }>
-                      { address.id }
-                    </Link>
+                    <div className='bi-transactions-item__address'>
+                      { address.id ? <Link className='u-word-wrap u-word-wrap--ellipsis'
+                                           to={ `/addresses/${address.id}` }>
+                          { address.id }
+                        </Link>
+                        : <FormattedMessage id='components.transaction-item.null-address'/>
+                      }
+                    </div>
                   </div>
                 );
               })
@@ -51,10 +57,17 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
                 
                 return (
                   <div className='bi-transactions-item__output g-flex' key={ address.address }>
-                    <Link className='g-flex__item u-word-wrap'
-                          to={ `/addresses/${address.address}` }>
-                      { address.address }
-                    </Link>
+                    <div className='bi-transactions-item__address g-flex__item'>
+                      { address.address ?
+                        <Link className='u-word-wrap u-word-wrap--ellipsis'
+                              to={ `/addresses/${address.address}` }>
+                          { address.address }
+                        </Link>
+                        : <span className='u-word-wrap u-word-wrap--ellipsis'>
+                          <FormattedMessage id='components.transaction-item.null-address'/>
+                        </span>
+                      }
+                    </div>
                     
                     <div className='bi-transactions-item__value g-flex__item-fixed'>
                       <CoinValueComponent value={ address.value }/>
