@@ -59,6 +59,7 @@ export class ApiTagComponent extends React.Component<IApiTagProps> {
     return (
       <div className='bi-api-tag__body'>
         <div className='bi-api-tag__title'>
+          <a id={ this.tag.name }/>
           { this.tag.name }
           
           <div className='bi-api-tag__subtitle'>

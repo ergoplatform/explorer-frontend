@@ -6,8 +6,14 @@ $api-tag-title-color: $theme-primary-color;
 $api-tag-subtitle-color: lighten($theme-primary-color, 20%);
 
 .bi-api-tag {
+  position: relative;
   // [ Components ]
   //---------------------------------
+  a[id] {
+    position: absolute;
+    top: -30px;
+  }
+
   .bi-api-path {
     margin-bottom: $grid-offset-step * 5;
 

@@ -8,6 +8,7 @@ export interface ISidebarMenuItem {
   children?: ISidebarMenuItem[];
   title: string;
   url: string;
+  component?: any;
 }
 
 import './sidebar-menu.scss';
@@ -26,9 +27,11 @@ export class SidebarMenuComponent extends React.Component {
   
   private mapLinks (items: ISidebarMenuItem[]): any {
     return items.map((item, index) => {
+      const Component = item.component || NavLink;
+      
       return (
         <div className='bi-sidebar-menu__item g-flex-column__item' key={ index }>
-          <NavLink className='bi-sidebar-menu__item-wrapper g-flex'
+          <Component className='bi-sidebar-menu__item-wrapper g-flex'
                    activeClassName='bi-sidebar-menu__item-wrapper--active'
                    to={ item.url }
                    exact={ true }
@@ -39,7 +42,7 @@ export class SidebarMenuComponent extends React.Component {
             <span className='bi-sidebar-menu__item-title g-flex__item'>
               <FormattedMessage id={ item.title }/>
             </span>
-          </NavLink>
+          </Component>
           
           { item.children && (
             <div className='bi-sidebar-menu__item-children g-flex-column'>

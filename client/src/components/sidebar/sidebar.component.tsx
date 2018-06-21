@@ -2,6 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 import { bindActionCreators } from 'redux';
 
 import environment from '../../config/environment';
@@ -74,7 +75,9 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
   }
   
   componentDidMount (): void {
-    this.props.getApi();
+    if (!this.props.api.data) {
+      this.props.getApi();
+    }
   }
   
   toggleCollapse (): void {
@@ -105,8 +108,14 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
       
       items[apiIndex].children = this.props.api.data.tags.map((tag: any): ISidebarMenuItem => {
         return {
+          component: NavHashLink,
+          props: {
+            isActive: (match: any, location: any): boolean => {
+              return location.pathname === '/api' && location.hash === `#${tag.name}`;
+            }
+          },
           title: `components.sidebar-menu.items.api-${tag.name}`,
-          url: `/api/${tag.name}`
+          url: `/api#${tag.name}`
         };
       });
     }

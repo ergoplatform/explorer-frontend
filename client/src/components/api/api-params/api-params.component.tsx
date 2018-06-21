@@ -10,8 +10,6 @@ import './api-params.scss';
 
 export class ApiParamsComponent extends React.PureComponent<IApiParamsProps> {
   render (): JSX.Element {
-    console.debug(this.props.params);
-    
     return (
       <div className='bi-api-params'>
         <div className='bi-api-params__header'>

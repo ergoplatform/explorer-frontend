@@ -38,7 +38,8 @@ Preloader.get('*', (req: any, res, next) => {
       req.explorer.preloadedState = {
         ...req.explorer.preloadedState,
         api: {
-          ...apiPreloadedState
+          ...apiPreloadedState,
+          preloaded: true,
         },
         stats: {
           ...preloadedState,

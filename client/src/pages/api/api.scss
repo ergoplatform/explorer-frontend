@@ -9,6 +9,10 @@
 
   // [ Components ]
   //----------------------------------
+  .bi-api-tag {
+    margin-bottom: $grid-offset-step * 10;
+  }
+
   &__header {
     padding: 0 ($grid-offset-step * 15);
     margin-bottom: $grid-offset-step * 5;

@@ -2,7 +2,6 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import environment from '../../config/environment';
@@ -15,9 +14,11 @@ import { ApiTagComponent } from '../../components/api/api-tag/api-tag.component'
 
 import './api.scss';
 
-class Api extends React.PureComponent<ApiState & ApiActions & RouteComponentProps<{ apiTag: string }>> {
+class Api extends React.PureComponent<ApiState & ApiActions> {
   componentDidMount (): void {
-    this.props.getApi();
+    if (!this.props.data) {
+      this.props.getApi();
+    }
   }
   
   render (): JSX.Element {
@@ -33,25 +34,30 @@ class Api extends React.PureComponent<ApiState & ApiActions & RouteComponentProp
           }
         </FormattedMessage>
         
-        { this.props.data && (
-          <div className='bi-api__header'>
-            <div className='bi-api__title'>
-              { environment.blockchain.coinName } Explorer { this.props.data && this.props.data.info.version }
+        {
+          this.props.data && (
+            <div className='bi-api__header'>
+              <div className='bi-api__title'>
+                { environment.blockchain.coinName } Explorer { this.props.data && this.props.data.info.version }
+              </div>
+              
+              { environment.apiUrl }
             </div>
-            
-            { environment.apiUrl }
-          </div>
-        ) }
+          )
+        }
         
         
-        { this.props.data && (
-          <div className='bi-api__body'>
-            { this.props.match.params.apiTag &&
-            <ApiTagComponent tagName={ this.props.match.params.apiTag } openapi={ this.props.data }/> }
-          </div>
-        ) }
-      
-      
+        {
+          this.props.data && (
+            <div className='bi-api__body'>
+              {
+                this.props.data.tags.map((tag: any) => {
+                  return <ApiTagComponent key={ tag.name } tagName={ tag.name } openapi={ this.props.data }/>;
+                })
+              }
+            </div>
+          )
+        }
       </div>
     );
   }
