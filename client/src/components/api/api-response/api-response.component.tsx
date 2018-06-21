@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactJson from 'react-json-view';
+import ObjectInspector from 'react-object-inspector';
 
 interface IApiResponseProps {
   code: string;
@@ -18,13 +18,8 @@ export class ApiResponseComponent extends React.PureComponent<IApiResponseProps>
         <div className='bi-api-response__body'>
           { Object.keys(this.props.response.content)
             .map((key) => {
-              return <ReactJson key={ key }
-                                collapsed={ true }
-                                src={ this.props.response.content[key] }
-                                displayObjectSize={ false }
-                                enableClipboard={ false }
-                                displayDataTypes={ false }
-                                name={ false }/>;
+              return <ObjectInspector key={ key }
+                                      data={ this.props.response.content[key] }/>;
             }) }
         </div>
       </div>
