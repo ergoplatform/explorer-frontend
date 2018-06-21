@@ -17,9 +17,16 @@ const TextComponent = (props: any) => {
   return props.children;
 };
 
-const preloadedState = window.__PRELOADED_STATE__;
+const preloadedState = window.__PRELOADED_STATE__ || {};
 
 delete window.__PRELOADED_STATE__;
+
+const settings = JSON.parse(localStorage.getItem('settings') as string) || {};
+
+preloadedState.settings = {
+  ...(preloadedState.settings || {}),
+  ...settings,
+};
 
 const AppStore = configureStore(preloadedState);
 

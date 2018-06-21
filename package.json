@@ -34,8 +34,7 @@
     "redux-thunk": "^2.2.0",
     "resolve": "1.6.0",
     "svg-sprite-loader": "^3.8.0",
-    "swagger-parser": "^5.0.0",
-    "universal-localstorage": "^1.0.2"
+    "swagger-parser": "^5.0.0"
   },
   "scripts": {
     "start": "node scripts/client.start.js",

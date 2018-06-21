@@ -32,11 +32,11 @@ export class SidebarMenuComponent extends React.Component {
       return (
         <div className='bi-sidebar-menu__item g-flex-column__item' key={ index }>
           <Component className='bi-sidebar-menu__item-wrapper g-flex'
-                   activeClassName='bi-sidebar-menu__item-wrapper--active'
-                   to={ item.url }
-                   exact={ true }
-                   onClick={ this.props.onClick }
-                   { ...item.props }>
+                     activeClassName='bi-sidebar-menu__item-wrapper--active'
+                     to={ item.url }
+                     exact={ true }
+                     onClick={ this.props.onClick }
+                     { ...item.props }>
             { item.icon }
             
             <span className='bi-sidebar-menu__item-title g-flex__item'>

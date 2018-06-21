@@ -1,4 +1,3 @@
-import * as storage from 'universal-localstorage';
 import environment from '../config/environment';
 
 import {
@@ -8,19 +7,15 @@ import {
 } from '../constants/settings.types';
 
 export interface SettingsState {
-  locale: string;
+  locale?: string;
   isSidebarCollapsed: boolean;
   isSidebarDisplayed: boolean;
-  blocksLimit: number;
 }
-
-const settings = JSON.parse(storage.getItem('settings') as string) || {};
 
 const initialState = {
   isSidebarCollapsed: false,
-  locale: environment.defaultLocale,
-  ...settings,
   isSidebarDisplayed: false,
+  locale: environment.defaultLocale,
 };
 
 export function settingsReducer (state: SettingsState = initialState, action: any): SettingsState {
@@ -32,7 +27,7 @@ export function settingsReducer (state: SettingsState = initialState, action: an
       };
       
       // TODO: move to service
-      storage.setItem('settings', JSON.stringify(newState));
+      localStorage.setItem('settings', JSON.stringify(newState));
       
       return newState;
     }
@@ -44,7 +39,7 @@ export function settingsReducer (state: SettingsState = initialState, action: an
       };
       
       // TODO: move to service
-      storage.setItem('settings', JSON.stringify(newState));
+      localStorage.setItem('settings', JSON.stringify(newState));
       
       return newState;
     }

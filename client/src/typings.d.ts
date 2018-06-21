@@ -9,12 +9,6 @@ declare module 'react-object-inspector';
 declare module 'react-router-hash-link';
 declare module 'apiSpec';
 
-declare module 'universal-localstorage' {
-  export = storage;
-  
-  const storage: Storage;
-}
-
 interface Window {
   __PRELOADED_STATE__: any;
   __APP_CONFIG__: {

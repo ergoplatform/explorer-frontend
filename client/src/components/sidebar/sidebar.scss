@@ -109,6 +109,10 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     }
   }
 
+  &--no-animation {
+    transition: none;
+  }
+
   &__btn-toggle {
     z-index: 1;
     padding: $grid-offset-step * 2;

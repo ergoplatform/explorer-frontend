@@ -13,7 +13,7 @@ function mapStateToProps (state: AppState): any {
   
   return {
     locale,
-    messages: { ...messages.en, ...messages[locale] }
+    messages: { ...messages.en, ...messages[locale || 'en'] }
   };
 }
 

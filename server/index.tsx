@@ -52,7 +52,8 @@ if (process.env.NODE_ENV === 'production') {
 
 server.use((req: any, res, next) => {
   req.explorer = {
-    preloadedState: {}
+    preloadedState: {
+    }
   };
   
   axios.interceptors.response.use(response => response, () => {
