@@ -37,6 +37,7 @@ class App extends React.PureComponent {
               <Route exact={ true } path='/' component={ DataComponent }/>
               
               <Route exact={ true } path='/api' component={ ApiComponent }/>
+              <Route exact={ true } path='/api/:apiTag' component={ ApiComponent }/>
               
               <Route path='/blocks/:id' component={ BlockComponent }/>
               

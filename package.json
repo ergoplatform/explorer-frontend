@@ -20,6 +20,7 @@
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^4.2.0",
     "react-intl": "^2.4.0",
+    "react-json-view": "^1.17.1",
     "react-modal": "^3.4.4",
     "react-paginate": "^5.2.3",
     "react-redux": "^5.0.7",

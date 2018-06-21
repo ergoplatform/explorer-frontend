@@ -45,7 +45,7 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   {
     icon: <ChartIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
     props: {
-      exact: false,
+      exact: false
     },
     title: 'components.sidebar-menu.items.charts',
     url: '/charts'
@@ -58,11 +58,11 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   {
     icon: <ApiIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
     props: {
-      exact: false,
+      exact: false
     },
     title: 'components.sidebar-menu.items.api',
-    url: '/api',
-  },
+    url: '/api'
+  }
 ];
 
 class Sidebar extends React.Component<SettingsActions & ApiActions & { settings: SettingsState, api: ApiState }> {
@@ -106,7 +106,7 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
       items[apiIndex].children = this.props.api.data.tags.map((tag: any): ISidebarMenuItem => {
         return {
           title: `components.sidebar-menu.items.api-${tag.name}`,
-          url: `/api/${tag.name}`,
+          url: `/api/${tag.name}`
         };
       });
     }
@@ -131,12 +131,12 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
         </div>
         
         <div className='bi-sidebar__body g-flex-column__item'>
-          <SidebarMenuComponent onClick={ this.hideSidebar } items={items}/>
+          <SidebarMenuComponent onClick={ this.hideSidebar } items={ items }/>
         </div>
         
         
-        <svg className='bi-sidebar__side-logo'>
-          focusable='false'>
+        <svg className='bi-sidebar__side-logo'
+             focusable='false'>
           <use xlinkHref={ `#${logoImage.id}` }/>
         </svg>
         
@@ -163,7 +163,7 @@ function mapStateToProps (state: AppState): any {
 }
 
 function mapDispatchToProps (dispatch: any): any {
-  return bindActionCreators({...SettingsActions, ...ApiActions} as any, dispatch);
+  return bindActionCreators({ ...SettingsActions, ...ApiActions } as any, dispatch);
 }
 
 export const SidebarComponent = connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(Sidebar);

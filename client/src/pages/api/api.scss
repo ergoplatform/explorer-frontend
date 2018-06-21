@@ -1,0 +1,25 @@
+@import '~styles/base/variables';
+
+// #API
+//-------------------------------------
+
+.bi-api {
+  padding: ($grid-offset-step * 10) 0;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //----------------------------------
+  &__header {
+    padding: 0 ($grid-offset-step * 15);
+    margin-bottom: $grid-offset-step * 5;
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__body {
+    padding: 0 ($grid-offset-step * 15);
+  }
+}

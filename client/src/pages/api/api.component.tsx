@@ -2,14 +2,20 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
+
+import environment from '../../config/environment';
 
 import { ApiState } from '../../reducers/api.reducer';
 import { AppState } from '../../store/app.store';
 
 import { ApiActions } from '../../actions/api.actions';
+import { ApiTagComponent } from '../../components/api/api-tag/api-tag.component';
 
-class Api extends React.PureComponent<ApiState & ApiActions> {
+import './api.scss';
+
+class Api extends React.PureComponent<ApiState & ApiActions & RouteComponentProps<{ apiTag: string }>> {
   componentDidMount (): void {
     this.props.getApi();
   }
@@ -27,7 +33,25 @@ class Api extends React.PureComponent<ApiState & ApiActions> {
           }
         </FormattedMessage>
         
-        {this.props.data && this.props.data.openapi}
+        { this.props.data && (
+          <div className='bi-api__header'>
+            <div className='bi-api__title'>
+              { environment.blockchain.coinName } Explorer { this.props.data && this.props.data.info.version }
+            </div>
+            
+            { environment.apiUrl }
+          </div>
+        ) }
+        
+        
+        { this.props.data && (
+          <div className='bi-api__body'>
+            { this.props.match.params.apiTag &&
+            <ApiTagComponent tagName={ this.props.match.params.apiTag } openapi={ this.props.data }/> }
+          </div>
+        ) }
+      
+      
       </div>
     );
   }
