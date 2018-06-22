@@ -14,6 +14,8 @@ interface IAreaChartProps {
   isScale: boolean;
 }
 
+const VERY_SMALL_NUMBER = 0.0001;
+
 export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
   constructor (props: any) {
     super(props);
@@ -21,6 +23,7 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
     this.formatLabel   = this.formatLabel.bind(this);
     this.formatXLabel  = this.formatXLabel.bind(this);
     this.formatTooltip = this.formatTooltip.bind(this);
+    this.renderTooltip = this.renderTooltip.bind(this);
   }
   
   render (): JSX.Element {
@@ -28,11 +31,25 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
     
     const maxDomain = (Math.ceil(max / Math.pow(10, (max.toString().length - 1))) + 2) * Math.pow(10, ((max).toString().length - 1));
     
+    let data = this.props.data;
+    
+    
+    // Logarithmic scale doesn't support values under 0 or equal to 0
+    if (this.props.isScale) {
+      data = this.props.data.map((item: any) => {
+        return {
+          ...item,
+          originalValue: item.value,
+          value: (item.value <= 0) ? VERY_SMALL_NUMBER : item.value
+        };
+      });
+    }
+    
     
     return (
       <ResponsiveContainer width={ '100%' } height={ '100%' }>
         <AreaChart
-          data={ this.props.data }>
+          data={ data }>
           
           <defs>
             <linearGradient id='colorUv' x1='0' y1='1' x2='1' y2='0'>
@@ -45,7 +62,6 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
             <CartesianGrid stroke='#e8e8e8' vertical={ false } strokeDasharray='6 4' fill='#fff'/> }
           
           <XAxis dataKey='timestamp'
-                 scale={ this.props.isScale ? 'log' : 'auto' }
                  tick={ { fill: '#828795', fontSize: 14 } }
                  tickLine={ false }
                  tickCount={ 100 }
@@ -55,7 +71,8 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
                  hide={ this.props.compact }/>
           
           <YAxis dataKey='value'
-                 domain={ [0, maxDomain] }
+                 domain={ [this.props.isScale ? VERY_SMALL_NUMBER : 0, maxDomain] }
+                 scale={ this.props.isScale ? 'log' : 'auto' }
                  tickMargin={ 10 }
                  tickLine={ false }
                  tickCount={ 5 }
@@ -80,7 +97,7 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
   }
   
   private renderTooltip (props: any): JSX.Element {
-    return <ChartTooltipComponent { ...props }/>;
+    return <ChartTooltipComponent { ...props } isScale={ this.props.isScale }/>;
   }
   
   private formatLabel (value: number): string {

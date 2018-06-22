@@ -108,6 +108,7 @@ class Chart extends React.PureComponent {
   
   private formatData (): any {
     switch (this.props.match.params.chartType) {
+      case 'miners-revenue':
       case 'total': {
         return this.props.data.map((item: any) => {
           return {
