@@ -106,7 +106,7 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
           </div>
           
           <div className='bi-charts__charts'>
-            <Link to={ '/charts/transactions-per-block' } className='bi-charts__chart'>
+            <Link to={ '/charts/hash-rate' } className='bi-charts__chart'>
               Hash Rate
     
               <iframe src='/charts/hash-rate?iframe=true' className='bi-charts__iframe' frameBorder='0'
@@ -114,7 +114,7 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
             </Link>
   
   
-            <Link to={ '/charts/transactions-per-block' } className='bi-charts__chart'>
+            <Link to={ '/charts/difficulty' } className='bi-charts__chart'>
               Difficulty
     
               <iframe src='/charts/difficulty?iframe=true' className='bi-charts__iframe' frameBorder='0'

@@ -25,6 +25,10 @@ export const convertInfoItemValue = (key: string, value: any): any => {
       })(value);
     }
     
+    case 'bytes': {
+      return formatNumberMetricPrefix(value, {desiredFormat: 'k'}) + 'B';
+    }
+    
     case 'marketCap': {
       return formatNumber({
         prefix: `$`

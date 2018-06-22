@@ -1,0 +1,35 @@
+@import '~styles/base/variables';
+
+// #CHART-ACTiONS
+//-----------------------------
+$chart-actions-bg-color: #ffffff;
+$chart-actions-border-color: #dbdbdb;
+$chart-actions-span-color: $theme-primary-color;
+$chart-actions-span-active-bg: #eeeeee;
+
+.bi-chart-actions {
+  display: inline-flex;
+  border: 1px solid $chart-actions-border-color;
+  border-radius: 4px;
+  background-color: $chart-actions-bg-color;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------
+  &__action {
+    padding: 0 ($grid-offset-step * 3);
+    border-right: 1px solid $chart-actions-border-color;
+    color: $chart-actions-span-color;
+    font-size: 12px;
+    line-height: 30px;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    // [ State ] Active
+    &--active {
+      background-color: $chart-actions-span-active-bg;
+    }
+  }
+}

@@ -30,21 +30,21 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
     return (
       <ResponsiveContainer width={ '100%' } height={ '100%' }>
         <AreaChart
-          data={ this.props.data }
-        >
+          data={ this.props.data }>
           
           <defs>
-            <linearGradient id='colorUv' x1='0' y1='0' x2='1' y2='1'>
-              <stop offset='5%' stopColor='#0078FF' stopOpacity={ 0.4 }/>
-              <stop offset='95%' stopColor='#0078FF' stopOpacity={ 0 }/>
+            <linearGradient id='colorUv' x1='0' y1='1' x2='1' y2='0'>
+              <stop offset='20%' stopColor='#0078FF' stopOpacity={ 0 }/>
+              <stop offset='80%' stopColor='#0078FF' stopOpacity={ 0.2 }/>
             </linearGradient>
           </defs>
           
           { this.props.compact ? null :
-            <CartesianGrid stroke='#eee' vertical={ false } strokeDasharray='2 2' fill='#fff'/> }
+            <CartesianGrid stroke='#e8e8e8' vertical={ false } strokeDasharray='6 4' fill='#fff'/> }
           
           <XAxis dataKey='timestamp'
                  tick={ { fill: '#828795', fontSize: 14 } }
+                 tickLine={ false }
                  tickCount={ 100 }
                  tickMargin={ 10 }
                  tickFormatter={ this.formatXLabel }
@@ -54,6 +54,7 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
           <YAxis dataKey='value'
                  domain={ [0, maxDomain] }
                  tickMargin={ 10 }
+                 tickLine={ false }
                  tickCount={ 5 }
                  minTickGap={ 30 }
                  tick={ { fill: '#828795', fontSize: 14 } }
@@ -62,12 +63,13 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
           
           <Tooltip content={ this.renderTooltip }/>
           
-          <Area type='monotone'
+          <Area type='linear'
                 dataKey='value'
                 stroke='#0078FF'
                 yAxisId={ 0 }
                 fillOpacity={ 1 }
                 fill={ 'url(#colorUv)' }
+                animationDuration={ 300 }
                 isAnimationActive={ !this.props.compact }/>
         </AreaChart>
       </ResponsiveContainer>

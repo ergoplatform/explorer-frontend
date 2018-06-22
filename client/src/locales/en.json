@@ -113,6 +113,9 @@
   "components.chart.title.total": "Total coins",
   "components.chart.title.block-size": "Average block size",
   "components.chart.title.blockchain-size": "Blockchain Size",
+  "components.chart.title.hash-rate": "Hash Rate",
+  "components.chart.title.transactions-per-block": "Transactions per Block",
+  "components.chart.title.difficulty": "Difficulty",
 
   "components.timespan.span.30days": "30 Days",
   "components.timespan.span.60days": "60 Days",
