@@ -14,6 +14,18 @@
     stroke: #e8e8e8;
   }
 
+
+  &--scale {
+    .recharts-layer .recharts-layer,
+    .recharts-active-dot{
+      transform: translateX(-11px);
+    }
+
+    .recharts-cartesian-axis-ticks {
+      transform: translateX(11px);
+    }
+  }
+
   &__header {
     padding: 0 ($grid-offset-step * 15);
   }

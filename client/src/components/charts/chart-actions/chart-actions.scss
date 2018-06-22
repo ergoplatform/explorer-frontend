@@ -12,7 +12,6 @@ $chart-actions-span-active-bg: #eeeeee;
   border: 1px solid $chart-actions-border-color;
   border-radius: 4px;
   background-color: $chart-actions-bg-color;
-  font-family: $theme-main-font;
 
   // [ Components ]
   //-----------------------------
@@ -22,6 +21,7 @@ $chart-actions-span-active-bg: #eeeeee;
     color: $chart-actions-span-color;
     font-size: 12px;
     line-height: 30px;
+    font-family: $theme-main-font;
 
     &:last-child {
       border-right: 0;

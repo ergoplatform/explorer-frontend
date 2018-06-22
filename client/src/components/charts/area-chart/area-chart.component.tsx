@@ -1,5 +1,6 @@
 import * as dayjs from 'dayjs';
 import * as React from 'react';
+
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 import { convertInfoItemValue } from '../../../utils/convertInfoItemvalue';
@@ -10,6 +11,7 @@ import { ChartTooltipComponent } from '../chart-tooltip/chart-tooltip.component'
 interface IAreaChartProps {
   data: any;
   compact?: boolean;
+  isScale: boolean;
 }
 
 export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
@@ -43,6 +45,7 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
             <CartesianGrid stroke='#e8e8e8' vertical={ false } strokeDasharray='6 4' fill='#fff'/> }
           
           <XAxis dataKey='timestamp'
+                 scale={ this.props.isScale ? 'log' : 'auto' }
                  tick={ { fill: '#828795', fontSize: 14 } }
                  tickLine={ false }
                  tickCount={ 100 }
