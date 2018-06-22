@@ -51,11 +51,12 @@ class Chart extends React.PureComponent {
   }
   
   render (): JSX.Element {
-    const { iframe } = queryString.parse(this.props.location.search);
+    const { iframe, scale } = queryString.parse(this.props.location.search);
     
     const chartClassNames = classnames({
       'bi-chart': true,
       'bi-chart--iframe': iframe,
+      'bi-chart--scale': scale === '1',
       'g-flex-column': true
     });
     
@@ -88,7 +89,9 @@ class Chart extends React.PureComponent {
     return (
       <div className='bi-chart__body g-flex-column__item'>
         <div className='bi-chart__chart'>
-          { this.props.data && <AreaChartComponent data={ this.formatData() } compact={ !!iframe }/> }
+          { this.props.data &&
+          <AreaChartComponent data={ this.formatData() } compact={ !!iframe } isScale={ this.params.scale }/>
+          }
         </div>
         
         <div className='bi-chart__controls g-flex'>
@@ -96,7 +99,8 @@ class Chart extends React.PureComponent {
                              getTimespanUrl={ this.getTimespanUrl }/>
           
           <ChartActionsComponent
-            getChartActionUrl={this.getChartActionUrl}/>
+            isScale={ this.params.scale }
+            getChartActionUrl={ this.getChartActionUrl }/>
         </div>
       </div>
     );
@@ -140,6 +144,7 @@ class Chart extends React.PureComponent {
       });
     
     return {
+      scale: params.scale === '1',
       timespan: validTimespan ? TIMESPAN[validTimespan] : TIMESPAN.DAYS_30
     };
   }
@@ -153,10 +158,14 @@ class Chart extends React.PureComponent {
   }
   
   
-  private getChartActionUrl (param: string, value: string | number): string {
+  private getChartActionUrl (param: string, value: string | number | null): string {
     const params = queryString.parse(this.props.history.location.search);
     
     params[param] = value;
+    
+    if (value === null) {
+      delete params[param];
+    }
     
     return `${this.props.location.pathname}?${queryString.stringify(params)}`;
   }
