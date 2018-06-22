@@ -2,6 +2,8 @@
 // #BUTTONS
 //----------------------------------
 .bi-btn {
+  cursor: pointer;
+
   &--flat {
     padding: 0;
     border: none;

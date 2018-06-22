@@ -100,6 +100,7 @@ class Chart extends React.PureComponent {
           
           <ChartActionsComponent
             isScale={ this.params.scale }
+            data={ this.props.data }
             getChartActionUrl={ this.getChartActionUrl }/>
         </div>
       </div>
