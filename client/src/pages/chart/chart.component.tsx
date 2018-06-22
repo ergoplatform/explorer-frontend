@@ -15,6 +15,7 @@ import { AppState } from '../../store/app.store';
 import { ChartActions } from '../../actions/chart.actions';
 
 import { AreaChartComponent } from '../../components/charts/area-chart/area-chart.component';
+import { ChartActionsComponent } from '../../components/charts/chart-actions/chart-actions.component';
 import { TimespanComponent } from '../../components/charts/timespan/timespan.component';
 
 import './chart.scss';
@@ -29,7 +30,8 @@ class Chart extends React.PureComponent {
   constructor (props: any) {
     super(props);
     
-    this.getTimespanUrl = this.getTimespanUrl.bind(this);
+    this.getTimespanUrl    = this.getTimespanUrl.bind(this);
+    this.getChartActionUrl = this.getChartActionUrl.bind(this);
   }
   
   componentDidMount (): void {
@@ -89,9 +91,12 @@ class Chart extends React.PureComponent {
           { this.props.data && <AreaChartComponent data={ this.formatData() } compact={ !!iframe }/> }
         </div>
         
-        <div className='bi-chart__controls'>
+        <div className='bi-chart__controls g-flex'>
           <TimespanComponent selected={ this.params.timespan }
                              getTimespanUrl={ this.getTimespanUrl }/>
+          
+          <ChartActionsComponent
+            getChartActionUrl={this.getChartActionUrl}/>
         </div>
       </div>
     );
@@ -104,7 +109,18 @@ class Chart extends React.PureComponent {
           return {
             timestamp: item.timestamp,
             type: 'coin',
-            value: item.value / 1e8,
+            value: item.value / 1e8
+          };
+        });
+      }
+      
+      case 'blockchain-size':
+      case 'block-size': {
+        return this.props.data.map((item: any) => {
+          return {
+            timestamp: item.timestamp,
+            type: 'bytes',
+            value: item.value
           };
         });
       }
@@ -132,6 +148,15 @@ class Chart extends React.PureComponent {
     const params = queryString.parse(this.props.history.location.search);
     
     params.timespan = span;
+    
+    return `${this.props.location.pathname}?${queryString.stringify(params)}`;
+  }
+  
+  
+  private getChartActionUrl (param: string, value: string | number): string {
+    const params = queryString.parse(this.props.history.location.search);
+    
+    params[param] = value;
     
     return `${this.props.location.pathname}?${queryString.stringify(params)}`;
   }
