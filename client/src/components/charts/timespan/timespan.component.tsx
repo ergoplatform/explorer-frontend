@@ -12,7 +12,7 @@ interface ITimespanProps {
   selected: TIMESPAN;
 }
 
-export class TimespanComponent extends React.PureComponent<ITimespanProps> {
+export class TimespanComponent extends React.Component<ITimespanProps> {
   constructor (props: ITimespanProps) {
     super(props);
   }
