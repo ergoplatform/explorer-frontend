@@ -8,6 +8,7 @@ declare module 'react-head';
 declare module 'react-object-inspector';
 declare module 'react-router-hash-link';
 declare module 'apiSpec';
+declare module '@axetroy/react-download';
 
 interface Window {
   __PRELOADED_STATE__: any;
