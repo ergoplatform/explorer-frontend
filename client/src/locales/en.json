@@ -122,5 +122,21 @@
   "components.timespan.span.180days": "180 Days",
   "components.timespan.span.1year": "1 Year",
   "components.timespan.span.2years": "2 Years",
-  "components.timespan.span.alltime": "All Time"
+  "components.timespan.span.alltime": "All Time",
+
+  "components.chart-actions.linear-scale": "Linear Scale",
+  "components.chart-actions.logarithmic-scale": "Logarithmic Scale",
+  "components.chart-actions.json": "JSON",
+  "components.chart-actions.csv": "CSV",
+
+  "components.address-qr-code-modal.title": "QR Code",
+  "components.address-qr-code-modal.subtitle": "Scan for Address",
+
+  "components.payment-request-modal.title": "Create Payment Request",
+  "components.payment-request-modal.subtitle": "Use this form to customize an address for payment request",
+  "components.payment-request-modal.amount": "Amount",
+  "components.payment-request-modal.link": "Payment Request Link",
+  "components.payment-request-modal.copy": "Copy",
+  "components.payment-request-modal.copied": "Copied",
+  "components.payment-request-modal.description": "Description"
 }

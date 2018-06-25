@@ -1,5 +1,6 @@
 import * as QRCode from 'qrcode.react';
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 import * as ReactModal from 'react-modal';
 
 import { AddressId } from '../../../models/generated/addressId';
@@ -28,10 +29,10 @@ export class AddressQrcodeModalComponent extends React.PureComponent<IAddressQrc
         </button>
         
         <div className='bi-address-qrcode-modal__title'>
-          QR Code
+          <FormattedMessage id='components.address-qr-code-modal.title'/>
           
           <div className='bi-address-qrcode-modal__subtitle'>
-            Scan for Address
+            <FormattedMessage id='components.address-qr-code-modal.subtitle'/>
           </div>
         </div>
         

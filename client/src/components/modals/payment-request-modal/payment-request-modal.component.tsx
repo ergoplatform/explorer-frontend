@@ -1,6 +1,7 @@
 import * as QRCode from 'qrcode.react';
 import * as queryString from 'query-string';
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 import * as ReactModal from 'react-modal';
 
 import environment from '../../../config/environment';
@@ -50,17 +51,17 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
         </button>
         
         <div className='bi-payment-request-modal__title'>
-          Create Payment Request
+          <FormattedMessage id='components.payment-request-modal.title'/>
           
           <div className='bi-payment-request-modal__subtitle'>
-            Use this form to customize an address for payment request
+            <FormattedMessage id='components.payment-request-modal.subtitle'/>
           </div>
         </div>
         
         <div className='bi-payment-request-modal__form'>
           <label className='bi-payment-request-modal__form-item g-flex'>
             <span className='bi-payment-request-modal__label g-flex__item-fixed'>
-              Amount
+              <FormattedMessage id='components.payment-request-modal.amount'/>
             </span>
             
             <div className='bi-payment-request-modal__input-wrapper g-flex__item'>
@@ -76,7 +77,7 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
           
           <label className='bi-payment-request-modal__form-item g-flex'>
             <span className='bi-payment-request-modal__label bi-payment-request-modal__label--line'>
-              Description
+              <FormattedMessage id='components.payment-request-modal.description'/>
             </span>
             
             <div className='bi-payment-request-modal__input-wrapper g-flex__item'>
@@ -94,7 +95,7 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
           
           <div className='g-flex__item-fixed bi-payment-request-modal__link g-flex-column'>
             <div className='bi-payment-request-modal__link-header g-flex-column__item-fixed'>
-              Payment Request Link:
+              <FormattedMessage id='components.payment-request-modal.link'/>:
             </div>
             
             <div className='bi-payment-request-modal__link-body u-word-wrap g-scroll-y g-flex-column__item-fixed'
@@ -106,7 +107,11 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
             <div className='bi-payment-request-modal__link-footer g-flex-column__item g-flex'>
               <button className='bi-payment-request-modal__btn-copy bi-btn bi-btn--flat'
                       onClick={ this.copyLinkToClipboard }>
-                { this.state.copied ? 'Copied!' : 'Copy Link' }
+                {
+                  this.state.copied ?
+                    <FormattedMessage id='components.payment-request-modal.copied'/> :
+                    <FormattedMessage id='components.payment-request-modal.copy'/>
+                }
               </button>
             </div>
           </div>

@@ -51,10 +51,6 @@ export class AddressActionsComponent extends React.Component<IAddressActionsProp
                   onClick={ this.openModal(PAYMENT_REQUEST_MODAL_STATE_KEY) }>
             <FormattedMessage id='components.address-actions.request-payment'/>
           </button>
-          
-          <button className='bi-address-actions__btn'>
-            <FormattedMessage id='components.address-actions.donation-button'/>
-          </button>
         </div>
         
         <AddressQrcodeModalComponent isOpen={ this.state[QRCODE_MODAL_STATE_KEY] }

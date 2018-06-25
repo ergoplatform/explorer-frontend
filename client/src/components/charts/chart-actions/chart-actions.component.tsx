@@ -1,5 +1,6 @@
 import Download from '@axetroy/react-download';
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import './chart-actions.scss';
@@ -17,24 +18,24 @@ export class ChartActionsComponent extends React.Component<IChartActionsProps> {
         { !this.props.isScale ?
           <Link className='bi-chart-actions__action bi-btn bi-btn--flat'
                 to={ this.props.getChartActionUrl('scale', '1') }>
-            Logarithmic Scale
+            <FormattedMessage id='components.chart-actions.logarithmic-scale'/>
           </Link>
           :
           <Link className='bi-chart-actions__action bi-btn bi-btn--flat'
                 to={ this.props.getChartActionUrl('scale', null) }>
-            Linear Scale
+            <FormattedMessage id='components.chart-actions.linear-scale'/>
           </Link>
         }
         <Download file='data.csv'
                   content={ this.getCSVData() }
                   className='bi-chart-actions__action bi-btn bi-btn--flat'>
-          CSV
+          <FormattedMessage id='components.chart-actions.csv'/>
         </Download>
         
         <Download file='data.json'
                   content={ JSON.stringify(this.props.data) }
                   className='bi-chart-actions__action bi-btn bi-btn--flat'>
-          JSON
+          <FormattedMessage id='components.chart-actions.json'/>
         </Download>
       </div>
     );
