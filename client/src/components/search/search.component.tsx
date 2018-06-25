@@ -1,5 +1,5 @@
 import * as classNames from 'classnames';
-import { debounce } from 'lodash-es';
+import debounce from 'lodash/debounce';
 import * as queryString from 'query-string';
 import * as React from 'react';
 import { SyntheticEvent } from 'react';
