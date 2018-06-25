@@ -90,7 +90,7 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
         <div className='g-flex'>
           <div className='g-flex__item-fixed'>
             <QRCode value={ link }
-                    size={ 148 }/>
+                    size={ 156 }/>
           </div>
           
           <div className='g-flex__item-fixed bi-payment-request-modal__link g-flex-column'>
@@ -98,24 +98,26 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
               <FormattedMessage id='components.payment-request-modal.link'/>:
             </div>
             
-            <div className='bi-payment-request-modal__link-body u-word-wrap g-scroll-y g-flex-column__item-fixed'
+            <div className='bi-payment-request-modal__link-body u-word-wrap g-scroll-y g-flex-column__item'
                  onClick={ this.selectLink }
                  ref={ (ref: HTMLDivElement) => this.link = ref }>
               { link }
             </div>
-            
-            <div className='bi-payment-request-modal__link-footer g-flex-column__item g-flex'>
-              <button className='bi-payment-request-modal__btn-copy bi-btn bi-btn--flat'
-                      onClick={ this.copyLinkToClipboard }>
-                {
-                  this.state.copied ?
-                    <FormattedMessage id='components.payment-request-modal.copied'/> :
-                    <FormattedMessage id='components.payment-request-modal.copy'/>
-                }
-              </button>
-            </div>
           </div>
         </div>
+  
+  
+        <div className='bi-payment-request-modal__footer g-flex-column__item g-flex'>
+          <button className='bi-payment-request-modal__btn-copy bi-btn bi-btn--flat'
+                  onClick={ this.copyLinkToClipboard }>
+            {
+              this.state.copied ?
+                <FormattedMessage id='components.payment-request-modal.copied'/> :
+                <FormattedMessage id='components.payment-request-modal.copy'/>
+            }
+          </button>
+        </div>
+        
       </ReactModal>
     );
   }

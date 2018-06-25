@@ -5,9 +5,12 @@
 $payment-request-modal-bg: #ffffff;
 $payment-request-modal-title-color: $theme-main-font;
 $payment-request-modal-subtitle-color: #828795;
-$payment-request-modal-link-bg: #dbdbdb;
-$payment-request-modal-btn-copy-color-hover: $theme-color-blue;
+$payment-request-modal-link-bg: #f8f8f8;
+$payment-request-modal-btn-copy-color: #ffffff;
+$payment-request-modal-btn-copy-bg: $theme-color-blue;
 $payment-request-modal-input-border-color: #eeeeee;
+$payment-request-modal-link-color: #828795;
+$payment-request-modal-link-border-color: #e5e5e5;
 
 .bi-payment-request-modal {
   padding: ($grid-offset-step * 12) ($grid-offset-step * 15);
@@ -34,7 +37,6 @@ $payment-request-modal-input-border-color: #eeeeee;
     font-weight: 400;
   }
 
-
   &__form-item {
     margin-bottom: $grid-offset-step * 6;
 
@@ -44,8 +46,8 @@ $payment-request-modal-input-border-color: #eeeeee;
 
   &__label {
     margin-right: $grid-offset-step * 2;
-    font-weight: 600;
     font-size: 15px;
+    font-weight: 600;
 
     &--line {
       width: 100%;
@@ -86,31 +88,36 @@ $payment-request-modal-input-border-color: #eeeeee;
 
   &__link {
     width: 200px;
+    height: 156px;
     margin-left: $grid-offset-step * 4;
     font-size: 12px;
   }
 
   &__link-header {
     margin-bottom: $grid-offset-step * 2;
+    font-size: 15px;
   }
 
-  &__link-footer {
+  &__footer {
+    margin-top: $grid-offset-step * 6;
+
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   &__btn-copy {
-    padding: ($grid-offset-step * 2) ($grid-offset-step * 4);
-    font-size: 14px;
-
-    &:hover {
-      color: $payment-request-modal-btn-copy-color-hover;
-    }
+    padding: ($grid-offset-step * 2) ($grid-offset-step * 6);
+    border-radius: 84px;
+    color: $payment-request-modal-btn-copy-color;
+    background-color: $payment-request-modal-btn-copy-bg;
+    font-size: 16px;
   }
 
   &__link-body {
-    height: 65px;
     padding: $grid-offset-step * 2 $grid-offset-step * 3;
+    border: 1px solid $payment-request-modal-link-border-color;
+    color: $payment-request-modal-link-color;
     background-color: $payment-request-modal-link-bg;
+    font-size: 15px;
   }
 }
