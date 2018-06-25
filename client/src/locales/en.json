@@ -116,6 +116,7 @@
   "components.chart.title.hash-rate": "Hash Rate",
   "components.chart.title.transactions-per-block": "Transactions per Block",
   "components.chart.title.difficulty": "Difficulty",
+  "components.chart.title.miners-revenue": "Miners Revenue",
 
   "components.timespan.span.30days": "30 Days",
   "components.timespan.span.60days": "60 Days",

@@ -1,11 +1,15 @@
 import * as classNames from 'classnames';
+import { debounce } from 'lodash-es';
+import * as queryString from 'query-string';
 import * as React from 'react';
+import { SyntheticEvent } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 import { SearchIcon } from '../common/icons/common.icons';
 
 import './search.scss';
 
-export class SearchComponent extends React.PureComponent {
+class Search extends React.PureComponent<RouteComponentProps<{}>> {
   state: {
     isInputFocused: boolean,
   } = {
@@ -14,11 +18,17 @@ export class SearchComponent extends React.PureComponent {
   
   inputElement: HTMLInputElement;
   
+  onInputChangedDebounced: () => void;
+  
   constructor (props: any) {
     super(props);
     
-    this.focusInput  = this.focusInput.bind(this);
-    this.onInputBlur = this.onInputBlur.bind(this);
+    this.focusInput     = this.focusInput.bind(this);
+    this.onInputBlur    = this.onInputBlur.bind(this);
+    this.onInputChanged = this.onInputChanged.bind(this);
+    this.onSubmit       = this.onSubmit.bind(this);
+    
+    this.onInputChangedDebounced = debounce(this.onInputChanged, 500);
   }
   
   componentDidUpdate (): void {
@@ -28,9 +38,11 @@ export class SearchComponent extends React.PureComponent {
   }
   
   render (): JSX.Element {
+    const { query } = queryString.parse(this.props.location.search);
+    
     const searchClassNames = classNames({
       'bi-search': true,
-      'bi-search--focused': this.state.isInputFocused,
+      'bi-search--focused': this.state.isInputFocused || query,
       'g-flex': true,
       'g-flex__item-fixed': true
     });
@@ -43,23 +55,44 @@ export class SearchComponent extends React.PureComponent {
           <SearchIcon className='bi-search__icon'/>
         </button>
         
-        <input className='bi-search__input g-flex__item'
-               ref={ (input: HTMLInputElement) => {
-                 this.inputElement = input;
-               } }
-               type='text'
-               placeholder='Block, Hash, Transaction, Etc…'
-               onBlur={ this.onInputBlur }/>
+        <form action='/search' className='g-flex__item' onSubmit={ this.onSubmit }>
+          <input className='bi-search__input'
+                 ref={ (input: HTMLInputElement) => {
+                   this.inputElement = input;
+                 } }
+                 defaultValue={ query }
+                 onChange={ this.onInputChangedDebounced }
+                 name='query'
+                 type='text'
+                 placeholder='Block, Hash, Transaction, Etc…'
+                 onBlur={ this.onInputBlur }/>
+        </form>
       </div>
     );
   }
   
+  private onSubmit (event: SyntheticEvent<HTMLFormElement>): void {
+    event.preventDefault();
+    
+    this.onInputChanged();
+  }
+  
   private onInputBlur (): void {
-    if (this.inputElement.value.length === 0) {
-      this.setState({
-        isInputFocused: false
-      });
+    this.setState({
+      isInputFocused: false
+    });
+  }
+  
+  private onInputChanged (): void {
+    const params = {
+      query: this.inputElement.value
+    };
+    
+    if (!params.query) {
+      delete params.query;
     }
+    
+    this.props.history.push(`/search?${queryString.stringify(params)}`);
   }
   
   private focusInput (): void {
@@ -68,3 +101,5 @@ export class SearchComponent extends React.PureComponent {
     });
   }
 }
+
+export const SearchComponent = withRouter(Search);
