@@ -139,5 +139,8 @@
   "components.payment-request-modal.link": "Payment Request Link",
   "components.payment-request-modal.copy": "Copy",
   "components.payment-request-modal.copied": "Copied",
-  "components.payment-request-modal.description": "Description"
+  "components.payment-request-modal.description": "Description",
+
+  "components.search-results.wrong-query": "Unrecognized search pattern. Search query should be at least 5 characters long",
+  "components.search-results.no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash. Or select from the general topics."
 }

@@ -11,6 +11,7 @@ import { ApiState } from '../reducers/api.reducer';
 import { BlockState } from '../reducers/block.reducer';
 import { BlocksState } from '../reducers/blocks.reducer';
 import { ChartState } from '../reducers/chart.reducer';
+import { SearchState } from '../reducers/search.reducer';
 import { SettingsState } from '../reducers/settings.reducer';
 import { StatsState } from '../reducers/stats.reducer';
 import { TransactionState } from '../reducers/transaction.reducer';
@@ -24,6 +25,7 @@ export interface AppState {
   stats: StatsState;
   blocks: BlocksState;
   transaction: TransactionState;
+  search: SearchState;
 }
 
 const logger = createLogger({
