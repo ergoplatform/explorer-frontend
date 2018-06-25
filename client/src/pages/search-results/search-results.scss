@@ -15,6 +15,14 @@ $data-title-color: $theme-primary-color;
 
   // [ Components ]
   //----------------------------------
+  .bi-blocks-table-header__sort-icon {
+    display: none;
+  }
+
+  .bi-blocks-table-header {
+    pointer-events: none;
+  }
+
   &__header {
     margin-bottom: ($grid-offset-step * 4);
     padding: 0 ($grid-offset-step * 15);
