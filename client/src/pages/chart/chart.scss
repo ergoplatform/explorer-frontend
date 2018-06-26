@@ -2,6 +2,9 @@
 
 // #CHART
 //-------------------------------------
+$chart-back-btn-color: $theme-color-blue;
+$chart-axis-line-color: #e8e8e8;
+$chart-iframe-bg: #ffffff;
 
 .bi-chart {
   height: 100%;
@@ -11,7 +14,7 @@
   // [ Components ]
   //-----------------------------------
   .recharts-cartesian-axis-line {
-    stroke: #e8e8e8;
+    stroke: $chart-axis-line-color;
   }
 
   &__header {
@@ -22,12 +25,13 @@
     height: 100%;
     max-height: 512px;
     margin: $grid-offset-step * 10 0;
-    padding-left: ($grid-offset-step * 3);
     padding-right: $grid-offset-step * 15;
+    padding-left: ($grid-offset-step * 3);
   }
 
   &__controls {
     padding: 0 ($grid-offset-step * 15);
+
     justify-content: space-between;
   }
 
@@ -35,18 +39,33 @@
     font-size: 26px;
     font-weight: 700;
   }
+
+  &__btn-back {
+    display: inline-block;
+    margin-bottom: $grid-offset-step * 8;
+    font-size: 15px;
+  }
+
+  &__btn-back-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: $grid-offset-step;
+    transform: rotate(180deg);
+
+    fill: $chart-back-btn-color;
+  }
 }
 
 .bi-chart--iframe {
   position: fixed;
+  z-index: 10001;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   height: 100%;
   padding: 0;
-  z-index: 10001;
-  background-color: #ffffff;
+  background-color: $chart-iframe-bg;
 
   .bi-chart__chart {
     max-height: 100%;
