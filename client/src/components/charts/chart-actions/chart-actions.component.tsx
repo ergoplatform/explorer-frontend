@@ -26,17 +26,22 @@ export class ChartActionsComponent extends React.Component<IChartActionsProps> {
             <FormattedMessage id='components.chart-actions.linear-scale'/>
           </Link>
         }
+        
+        { this.props.data &&
         <Download file='data.csv'
                   content={ this.getCSVData() }
                   className='bi-chart-actions__action bi-btn bi-btn--flat'>
           <FormattedMessage id='components.chart-actions.csv'/>
         </Download>
+        }
         
+        { this.props.data &&
         <Download file='data.json'
                   content={ JSON.stringify(this.props.data) }
                   className='bi-chart-actions__action bi-btn bi-btn--flat'>
           <FormattedMessage id='components.chart-actions.json'/>
         </Download>
+        }
       </div>
     );
   }
