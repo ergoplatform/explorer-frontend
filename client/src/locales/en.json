@@ -61,6 +61,11 @@
   "common.pages.transaction.title": "Ergo Explorer | Transaction {id}",
   "common.pages.chart.title.total": "Ergo Explorer | Chart Total Coins",
   "common.pages.chart.title.block-size": "Ergo Explorer | Chart Average Block Size",
+  "common.pages.chart.title.miners-revenue": "Ergo Explorer | Miners Revenue",
+  "common.pages.chart.title.difficulty": "Ergo Explorer | Difficulty",
+  "common.pages.chart.title.hash-rate": "Ergo Explorer | Hash Rate",
+  "common.pages.chart.title.blockchain-size": "Ergo Explorer | Blockchain Size",
+  "common.pages.chart.title.transactions-per-block": "Ergo Explorer | Transactions per Block",
 
   "components.data.title": "Latest blocks",
   "components.data.show": "Show",
@@ -109,6 +114,8 @@
   "components.mining-cost.costPerTransaction": "Cost per Transaction",
   "components.mining-cost.difficulty": "Difficulty",
   "components.mining-cost.hashRate": "Hash Rate",
+
+  "components.chart.back": "Back to charts",
 
   "components.chart.title.total": "Total coins",
   "components.chart.title.block-size": "Average block size",

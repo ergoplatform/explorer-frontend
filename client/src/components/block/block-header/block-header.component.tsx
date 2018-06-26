@@ -26,7 +26,7 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
             
             <span className='bi-block-header__btn-back-title'>
               <FormattedMessage id='components.block-header.back'/>
-          </span>
+            </span>
           </Link>
         </div>
         

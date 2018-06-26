@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { TIMESPAN } from '../../constants/timespan.constant';
@@ -17,6 +18,8 @@ import { ChartActions } from '../../actions/chart.actions';
 import { AreaChartComponent } from '../../components/charts/area-chart/area-chart.component';
 import { ChartActionsComponent } from '../../components/charts/chart-actions/chart-actions.component';
 import { TimespanComponent } from '../../components/charts/timespan/timespan.component';
+
+import { ArrowIcon } from '../../components/common/icons/common.icons';
 
 import './chart.scss';
 
@@ -73,6 +76,17 @@ class Chart extends React.PureComponent {
         </FormattedMessage>
         
         <div className='bi-chart__header g-flex-column__item-fixed'>
+          <div className='bi-chart__line'>
+            <Link className='bi-chart__btn-back'
+                  to='/charts'>
+              <ArrowIcon className='bi-chart__btn-back-icon'/>
+    
+              <span className='bi-chart__btn-back-title'>
+                <FormattedMessage id='components.chart.back'/>
+              </span>
+            </Link>
+          </div>
+          
           <div className='bi-chart__title'>
             <FormattedMessage id={ `components.chart.title.${this.props.match.params.chartType}` }/>
           </div>
