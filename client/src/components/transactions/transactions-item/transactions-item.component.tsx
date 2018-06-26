@@ -33,9 +33,9 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
         <div className='bi-transactions-item__body g-flex'>
           <div className='bi-transactions-item__inputs g-flex__item'>
             {
-              this.props.transaction.inputs.map((address) => {
+              this.props.transaction.inputs.map((address, index) => {
                 return (
-                  <div className='bi-transactions-item__input u-word-wrap' key={ address.id }>
+                  <div className='bi-transactions-item__input u-word-wrap' key={ address.id || index}>
                     <div className='bi-transactions-item__address'>
                       { address.id ? <Link className='u-word-wrap u-word-wrap--ellipsis'
                                            to={ `/addresses/${address.id}` }>
@@ -52,11 +52,11 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
           
           <div className='bi-transactions-item__outputs g-flex__item g-flex-column'>
             {
-              this.props.transaction.outputs.map((address) => {
+              this.props.transaction.outputs.map((address, index) => {
                 totalOutput += address.value;
                 
                 return (
-                  <div className='bi-transactions-item__output g-flex' key={ address.address }>
+                  <div className='bi-transactions-item__output g-flex' key={ address.address || index }>
                     <div className='bi-transactions-item__address g-flex__item'>
                       { address.address ?
                         <Link className='u-word-wrap u-word-wrap--ellipsis'

@@ -1,0 +1,83 @@
+@import '~styles/base/variables';
+
+// #PAYMENT REQUEST
+//-------------------------------------
+$payment-request-title-color: $theme-primary-color;
+$payment-request-subtitle-color: #828795;
+$payment-request-info-bg: #fff;
+$payment-request-info-border-color: #e5e5e5;
+$payment-request-input-border-color: #e5e5e5;
+$payment-request-input-bg: #fff;
+$payment-request-copy-btn-bg: $theme-color-blue;
+$payment-request-copy-btn-color: #fff;
+
+
+.bi-payment-request {
+  padding: ($grid-offset-step * 10) 0;
+  font-family: $theme-main-font;
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+
+  // [ Components ]
+  //-----------------------------------
+  &__header {
+    margin-bottom: ($grid-offset-step * 4);
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    color: $payment-request-subtitle-color;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  &__info {
+    padding: $grid-offset-step * 4;
+
+    background-color: $payment-request-info-bg;
+    border: 1px solid $payment-request-info-border-color;
+
+    display: block;
+    margin-bottom: $grid-offset-step * 4;
+    text-align: center;
+  }
+
+  &__amount {
+    font-weight: 600;
+    font-size: 26px;
+  }
+
+  &__address {
+    margin-top: $grid-offset-step * 4;
+    border: 1px solid $payment-request-input-border-color;
+    background-color: $payment-request-input-bg;
+    margin-right: $grid-offset-step * 4;
+  }
+
+  &__input {
+    height: 40px;
+    font-size: 15px;
+    border: 0;
+    padding-left: $grid-offset-step * 4;
+    text-overflow: ellipsis;
+    line-height: 40px;
+    overflow: hidden;
+  }
+
+  &__btn-copy {
+    background-color: $payment-request-copy-btn-bg;
+    color: $payment-request-copy-btn-color;
+    border: 0;
+    width: 100px;
+    border-radius: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    transform: translateX($grid-offset-step * 4);
+  }
+}

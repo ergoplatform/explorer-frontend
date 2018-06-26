@@ -141,6 +141,12 @@
   "components.payment-request-modal.copied": "Copied",
   "components.payment-request-modal.description": "Description",
 
+  "components.payment-request.title": "Payment Request",
+  "components.payment-request.subtitle": "You can send {coinName} to the following address.",
+  "components.payment-request.for": "For",
+  "components.payment-request.copy": "Copy",
+  "components.payment-request.copied": "Copied",
+
   "components.search-results.wrong-query": "Unrecognized search pattern. Search query should be at least 5 characters long",
   "components.search-results.no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash. Or select from the general topics."
 }

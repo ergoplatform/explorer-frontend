@@ -2,13 +2,13 @@
 
 // #SEARCH RESULTS
 //-------------------------------------
-$data-color: $theme-primary-color;
-$data-title-color: $theme-primary-color;
+$search-results-color: $theme-primary-color;
+$search-results-title-color: $theme-primary-color;
 
 
 .bi-search-results {
   padding: ($grid-offset-step * 10) 0;
-  color: $data-color;
+  color: $search-results-color;
   font-family: $theme-main-font;
 
   justify-content: space-between;
@@ -41,7 +41,7 @@ $data-title-color: $theme-primary-color;
   }
 
   &__title {
-    color: $data-title-color;
+    color: $search-results-title-color;
     font-size: 22px;
     font-weight: 600;
   }

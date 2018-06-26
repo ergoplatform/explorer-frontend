@@ -13,6 +13,7 @@ import { ChartComponent } from '../../pages/chart/chart.component';
 import { ChartsComponent } from '../../pages/charts/charts.component';
 import { DataComponent } from '../../pages/data/data.component';
 import { NotFoundComponent } from '../../pages/not-found/not-found.component';
+import { PaymentRequestComponent } from '../../pages/payment-request/payment-request.component';
 import { SearchResultsComponent } from '../../pages/search-results/search-results.component';
 import { StatsComponent } from '../../pages/stats/stats.component';
 import { TransactionComponent } from '../../pages/transaction/transaction.component';
@@ -52,7 +53,9 @@ class App extends React.PureComponent {
               
               <Route exact={ true } path='/wallet' component={ WalletComponent }/>
               
-              <Route exact={ true } path={ '/search' } component={ SearchResultsComponent }/>
+              <Route exact={ true } path='/search' component={ SearchResultsComponent }/>
+              
+              <Route exact={ true } path='/payment-request' component={ PaymentRequestComponent }/>
               
               <Route component={ NotFoundComponent }/>
             </Switch>
