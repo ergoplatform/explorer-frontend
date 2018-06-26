@@ -13,6 +13,7 @@ import { AppState } from '../../store/app.store';
 import { TransactionState } from '../../reducers/transaction.reducer';
 
 import { TransactionIoSummaryComponent } from '../../components/transaction/transaction-io-summary/transaction-io-summary.component';
+import { TransactionRawScriptsComponent } from '../../components/transaction/transaction-raw-scripts/transaction-raw-scripts.component';
 import { TransactionSummaryComponent } from '../../components/transaction/transaction-summary/transaction-summary.component';
 import { TransactionsItemComponent } from '../../components/transactions/transactions-item/transactions-item.component';
 
@@ -80,6 +81,22 @@ class Transaction extends React.PureComponent {
           <div className='bi-transaction__table g-flex__item'>
             <TransactionIoSummaryComponent summary={ this.props.transaction.ioSummary }/>
           </div>
+        </div>
+        
+        <div className='bi-transaction__scripts'>
+          <div className='bi-transaction__title'>
+            <FormattedMessage id='components.transaction.scripts.input'/>
+          </div>
+  
+          <TransactionRawScriptsComponent items={ this.props.transaction.inputs }/>
+        </div>
+  
+        <div className='bi-transaction__scripts'>
+          <div className='bi-transaction__title'>
+            <FormattedMessage id='components.transaction.scripts.output'/>
+          </div>
+  
+          <TransactionRawScriptsComponent items={ this.props.transaction.outputs }/>
         </div>
       </div>
     );

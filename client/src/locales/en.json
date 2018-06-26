@@ -74,6 +74,8 @@
   "components.paginate.next": "Next",
 
   "components.transaction.title": "Transaction",
+  "components.transaction.scripts.input": "Input Scripts",
+  "components.transaction.scripts.output": "Output Scripts",
 
   "components.address-actions.qrcode": "QR Code",
   "components.address-actions.request-payment": "Request Payment",

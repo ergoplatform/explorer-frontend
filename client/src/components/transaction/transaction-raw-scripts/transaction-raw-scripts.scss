@@ -1,0 +1,25 @@
+@import '~styles/base/variables';
+
+// #TRANSACTION RAW SCRIPTS
+//-------------------------------------
+$transaction-raw-scripts-bg: #ffffff;
+$transaction-raw-scripts-color: $theme-primary-color;
+$transaction-raw-scripts-item-border-color: #eeeeee;
+
+.bi-transaction-raw-scripts {
+  margin-top: $grid-offset-step * 2;
+  color: $transaction-raw-scripts-color;
+  background-color: $transaction-raw-scripts-bg;
+  font-size: 13px;
+  word-break: break-all;
+
+  // [ Components ]
+  //--------------------------------------
+  &__item {
+    padding: ($grid-offset-step * 4) ($grid-offset-step * 6);
+
+    &:nth-child(even) {
+      border-top: 1px solid $transaction-raw-scripts-item-border-color;
+    }
+  }
+}
