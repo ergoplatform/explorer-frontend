@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
+
 import { IoSummary } from '../../../models/generated/ioSummary';
 
 import './transaction-io-summary.scss';
@@ -26,7 +28,7 @@ export class TransactionIoSummaryComponent extends React.Component<ITransactionI
             </div>
             
             <div className='bi-transaction-io-summary__cell bi-transaction-io-summary__cell--value bi-table__cell'>
-              { this.props.summary.totalCoinsTransferred }
+              <CoinValueComponent value={ this.props.summary.totalCoinsTransferred }/>
             </div>
           </div>
           

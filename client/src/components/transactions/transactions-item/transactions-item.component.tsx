@@ -111,7 +111,7 @@ class TransactionsItem extends React.PureComponent {
             }
             
             <div className='bi-transactions-item__footer g-flex-column__item-fixed g-flex'>
-              { this.props.confirmations && (
+              { this.props.confirmations > 0 && (
                 <div className='bi-transactions-item__confirmations g-flex__item-fixed'>
                   { this.props.confirmations } <FormattedPlural value={ this.props.confirmations }
                                                                 one={ <FormattedMessage
@@ -120,6 +120,12 @@ class TransactionsItem extends React.PureComponent {
                                                                   id='components.transaction-item.confirmation.other'/> }/>
                 </div>
               ) }
+              
+              { this.props.confirmations === 0 && (
+                <div className='bi-transactions-item__confirmations g-flex__item-fixed item__confirmations--unconfirmed'>
+                  <FormattedMessage id='components.transaction-item.unconfirmed'/>
+                </div>
+              )}
               
               <div className='bi-transactions-item__total-value g-flex__item-fixed'>
                 <CoinValueComponent value={ totalOutput }/>
