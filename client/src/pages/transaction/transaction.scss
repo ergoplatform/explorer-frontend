@@ -2,6 +2,7 @@
 
 // #TRANSACTION
 //-------------------------------------
+$transactions-subtitle-color: #828795;
 
 .bi-transaction {
   padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
@@ -29,5 +30,11 @@
 
   &__scripts {
     margin-top: $grid-offset-step * 12;
+  }
+
+  &__subtitle {
+    color: $transactions-subtitle-color;
+    font-size: 15px;
+    font-weight: 500;
   }
 }

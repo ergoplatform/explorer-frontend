@@ -48,6 +48,9 @@ class Transaction extends React.PureComponent {
           <div className='bi-transaction__title'>
             <FormattedMessage id='components.transaction.title'/>
           </div>
+          <div className='bi-transaction__subtitle'>
+            <FormattedMessage id='components.transaction.subtitle'/>
+          </div>
         </div>
         { this.renderBody() }
       </div>

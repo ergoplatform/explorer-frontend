@@ -5,6 +5,7 @@
 $chart-back-btn-color: $theme-color-blue;
 $chart-axis-line-color: #e8e8e8;
 $chart-iframe-bg: #ffffff;
+$chart-subtitle-color: #828795;
 
 .bi-chart {
   height: 100%;
@@ -53,6 +54,12 @@ $chart-iframe-bg: #ffffff;
     transform: rotate(180deg);
 
     fill: $chart-back-btn-color;
+  }
+
+  &__subtitle {
+    color: $chart-subtitle-color;
+    font-size: 15px;
+    font-weight: 500;
   }
 }
 

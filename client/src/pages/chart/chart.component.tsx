@@ -90,6 +90,9 @@ class Chart extends React.PureComponent {
           <div className='bi-chart__title'>
             <FormattedMessage id={ `components.chart.title.${this.props.match.params.chartType}` }/>
           </div>
+          <div className='bi-chart__subtitle'>
+            <FormattedMessage id={ `components.chart.subtitle.${this.props.match.params.chartType}` }/>
+          </div>
         </div>
         
         { this.renderBody() }
