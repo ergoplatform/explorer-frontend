@@ -34,6 +34,10 @@
   "common.stats.transactionAverage": "Transactions Average",
   "common.stats.hashRate": "Hash Rate",
 
+  "components.stats.title": "{coinName} Stats",
+  "components.wallet.title": "Wallet is not available yet",
+  "components.not-found.title": "Not found",
+
   "common.block.height": "Height",
   "common.block.id": "ID",
   "common.block.block": "Block",
@@ -55,6 +59,7 @@
   "common.pages.data.title": "Ergo Explorer | Data",
   "common.pages.api.title": "Ergo Explorer | API",
   "common.pages.block.title": "Ergo Explorer | Block {id}",
+  "common.pages.wallet.title": "Ergo Explorer | Wallet",
   "common.pages.charts.title": "Ergo Explorer | Charts",
   "common.pages.stats.title": "Ergo Explorer | Stats",
   "common.pages.not-found.title": "Ergo Explorer | Not found",
@@ -104,6 +109,7 @@
   "components.block-summary.total": "Blocks Mined",
   "components.block-summary.averageMiningTime": "Average mining time",
   "components.block-summary.totalCoins": "Total coins",
+  "components.block-summary.minutes": "min",
 
   "components.transactions-summary.title": "Transactions Summary",
   "components.transactions-summary.total": "Number of Transactions",

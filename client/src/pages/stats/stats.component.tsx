@@ -44,7 +44,9 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
         
         <div className='bi-stats__header'>
           <div className='bi-stats__title'>
-            { environment.blockchain.coinName } Stats
+            <FormattedMessage id='components.stats.title' values={ {
+              coinName: environment.blockchain.coinName.toUpperCase()
+            } }/>
           </div>
         </div>
         
@@ -61,7 +63,7 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
             <BlockSummaryComponent summary={ this.props.stats.blockSummary }/>
           </div>
         </div>
-  
+        
         <div className='bi-stats__line'>
           <div className='bi-stats__block-summary'>
             <TransactionsSummaryComponent summary={ this.props.stats.transactionsSummary }/>

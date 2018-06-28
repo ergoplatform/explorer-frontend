@@ -45,7 +45,6 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
       });
     }
     
-    
     return (
       <ResponsiveContainer width={ '100%' } height={ '100%' }>
         <AreaChart

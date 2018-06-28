@@ -15,7 +15,8 @@ export class NotFoundComponent extends React.Component {
             )
           }
         </FormattedMessage>
-        Not found
+        
+       <FormattedMessage id='components.not-found.title'/>
       </div>
     );
   }

@@ -12,7 +12,6 @@ export class ServerErrorComponent extends React.PureComponent {
         </h2>
         
         <Link to={'/'}>Go back to home</Link>
-        <Link to={'/feedback'}>Contact Support</Link>
       </div>
     );
   }
