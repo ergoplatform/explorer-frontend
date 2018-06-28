@@ -9,11 +9,10 @@ import { mount, shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { IntlProvider, intlShape } from 'react-intl';
 
+import { messages } from '../containers/connected-intl-provider/connected-intl-provider';
 
 // You can pass your messages to the IntlProvider. Optional: remove if unneeded.
-const messages = {
-  en: require('../locales/en.json')
-};
+
 
 // Create the IntlProvider to retrieve context for wrapping around.
 const intlProvider = new IntlProvider({ locale: 'en', messages: messages.en }, {});
