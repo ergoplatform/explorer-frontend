@@ -160,6 +160,9 @@
   "components.transaction-io-summary.hideScripts": "Hide scripts & coinbase",
   "components.transaction-io-summary.scripts": "Scripts",
 
+  "components.transaction-item.confirmation.one": "confirmation",
+  "components.transaction-item.confirmation.other": "confirmations",
+
   "components.search-results.wrong-query": "Unrecognized search pattern. Search query should be at least 5 characters long",
   "components.search-results.no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash. Or select from the general topics."
 }

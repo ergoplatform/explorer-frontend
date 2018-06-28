@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, FormattedPlural } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import { Transaction } from '../../../models/generated/transaction';
@@ -11,6 +11,7 @@ import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
   transaction: Transaction;
+  confirmations?: any;
 }
 
 export class TransactionsItemComponent extends React.PureComponent<IBlockTransactionsItemProps> {
@@ -35,7 +36,7 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
             {
               this.props.transaction.inputs.map((address, index) => {
                 return (
-                  <div className='bi-transactions-item__input u-word-wrap' key={ address.id || index}>
+                  <div className='bi-transactions-item__input u-word-wrap' key={ address.id || index }>
                     <div className='bi-transactions-item__address'>
                       { address.id ? <Link className='u-word-wrap u-word-wrap--ellipsis'
                                            to={ `/addresses/${address.id}` }>
@@ -77,8 +78,18 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
               })
             }
             
-            <div className='bi-transactions-item__total-value g-flex-column__item-fixed'>
-              <CoinValueComponent value={ totalOutput }/>
+            <div className='bi-transactions-item__footer g-flex-column__item-fixed g-flex'>
+              { this.props.confirmations && (
+                <div className='bi-transactions-item__confirmations g-flex__item-fixed'>
+                  { this.props.confirmations } <FormattedPlural value={ this.props.confirmations }
+                                   one={ <FormattedMessage id='components.transaction-item.confirmation.one'/> }
+                                   other={ <FormattedMessage id='components.transaction-item.confirmation.other'/> }/>
+                </div>
+              ) }
+              
+              <div className='bi-transactions-item__total-value g-flex__item-fixed'>
+                <CoinValueComponent value={ totalOutput }/>
+              </div>
             </div>
           </div>
         </div>

@@ -78,7 +78,8 @@ class Transaction extends React.PureComponent {
           }
         </FormattedMessage>
         
-        <TransactionsItemComponent transaction={ transaction }/>
+        <TransactionsItemComponent transaction={ transaction }
+                                   confirmations={ this.props.transaction.summary.confirmationsCount }/>
         
         <div className='bi-transaction__tables g-flex'>
           <div className='bi-transaction__table g-flex__item'>
@@ -101,13 +102,13 @@ class Transaction extends React.PureComponent {
           <TransactionRawScriptsComponent items={ this.props.transaction.inputs }/>
         </div>
         }
-  
+        
         { this.props.isScriptsDisplayed &&
         <div className='bi-transaction__scripts'>
           <div className='bi-transaction__title'>
             <FormattedMessage id='components.transaction.scripts.output'/>
           </div>
-    
+          
           <TransactionRawScriptsComponent items={ this.props.transaction.outputs }/>
         </div>
         }
