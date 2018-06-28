@@ -2,7 +2,6 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { StatsState } from '../../reducers/stats.reducer';
@@ -10,6 +9,7 @@ import { AppState } from '../../store/app.store';
 
 import { StatsActions } from '../../actions/stats.actions';
 
+import { ChartsPreviewComponent } from '../../components/charts/charts-preview/charts-preview.component';
 import { StatsItemComponent } from '../../components/stats-item/stats-item.component';
 
 import './charts.scss';
@@ -59,15 +59,7 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
           </div>
     
           <div className='bi-charts__charts'>
-            <Link to={ '/charts/total' } className='bi-charts__chart'>
-              <FormattedMessage id='components.chart.title.total'/>
-  
-              <iframe src='/charts/total?iframe=true'
-                      className='bi-charts__iframe'
-                      frameBorder='0'
-                      scrolling='no'
-                      tabIndex={ -1 }/>
-            </Link>
+            <ChartsPreviewComponent chartType='total'/>
           </div>
         </div>
         <div className='bi-charts__charts-wrapper g-flex-column__item'>
@@ -76,33 +68,11 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
           </div>
     
           <div className='bi-charts__charts'>
-            <Link to={ '/charts/block-size' } className='bi-charts__chart'>
-              <FormattedMessage id='components.chart.title.block-size'/>
-  
-              <iframe src='/charts/block-size?iframe=true'
-                      className='bi-charts__iframe'
-                      frameBorder='0'
-                      scrolling='no'
-                      tabIndex={ -1 }/>
-            </Link>
-      
-            <Link to={ '/charts/blockchain-size' } className='bi-charts__chart'>
-              <FormattedMessage id='components.chart.title.blockchain-size'/>
-  
-              <iframe src='/charts/blockchain-size?iframe=true' className='bi-charts__iframe' frameBorder='0'
-                      scrolling='no' tabIndex={ -1 }/>
-            </Link>
-      
-            <Link to={ '/charts/transactions-per-block' } className='bi-charts__chart'>
-              <FormattedMessage id='components.chart.title.transactions-per-block'/>
-  
-              <iframe src='/charts/transactions-per-block?iframe=true'
-                      className='bi-charts__iframe'
-                      frameBorder='0'
-                      scrolling='no'
-                      tabIndex={ -1 }/>
-            </Link>
-    
+            <ChartsPreviewComponent chartType='blockchain-size'/>
+            
+            <ChartsPreviewComponent chartType='block-size'/>
+            
+            <ChartsPreviewComponent chartType='transactions-per-block'/>
           </div>
         </div>
         
@@ -112,36 +82,11 @@ class Charts extends React.PureComponent<StatsActions & StatsState> {
           </div>
           
           <div className='bi-charts__charts'>
-            <Link to={ '/charts/hash-rate' } className='bi-charts__chart'>
-              <FormattedMessage id='components.chart.title.hash-rate'/>
+            <ChartsPreviewComponent chartType='hash-rate'/>
   
-  
-              <iframe src='/charts/hash-rate?iframe=true'
-                      className='bi-charts__iframe'
-                      frameBorder='0'
-                      scrolling='no'
-                      tabIndex={ -1 }/>
-            </Link>
-  
-  
-            <Link to={ '/charts/difficulty' } className='bi-charts__chart'>
-              <FormattedMessage id='components.chart.title.difficulty'/>
-  
-              <iframe src='/charts/difficulty?iframe=true'
-                      className='bi-charts__iframe'
-                      frameBorder='0'
-                      scrolling='no'
-                      tabIndex={ -1 }/>
-            </Link>
+            <ChartsPreviewComponent chartType='difficulty'/>
             
-            <Link to={ '/charts/miners-revenue' } className='bi-charts__chart'>
-              <FormattedMessage id='components.chart.title.miners-revenue'/>
-  
-              <iframe src='/charts/miners-revenue?iframe=true'
-                      className='bi-charts__iframe'
-                      frameBorder='0'
-                      scrolling='no' tabIndex={ -1 }/>
-            </Link>
+            <ChartsPreviewComponent chartType='miners-revenue'/>
           </div>
         </div>
       </div>

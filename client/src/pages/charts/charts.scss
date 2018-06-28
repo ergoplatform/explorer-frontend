@@ -3,8 +3,6 @@
 // #CHARTS
 //-------------------------------------
 $charts-charts-bg-color: #ffffff;
-$chart-chart-title-color: $theme-primary-color;
-$chart-chart-border-color: #ECF1F5;
 
 .bi-charts {
   min-height: 100%;
@@ -54,27 +52,5 @@ $chart-chart-border-color: #ECF1F5;
   &__charts {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  &__chart {
-    margin-right: ($grid-offset-step * 5);
-    margin-bottom: ($grid-offset-step * 5);
-    width: 240px;
-    text-align: center;
-    color: $chart-chart-title-color;
-    font-size: 16px;
-    font-weight: 600;
-    border: 1px solid $chart-chart-border-color;
-    padding-top: ($grid-offset-step * 4);
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: auto;
-  }
-
-  &__iframe {
-    margin-top: $grid-offset-step * 4;
-    pointer-events: none;
-    display: block;
-    width: 100%;
   }
 }

@@ -1,0 +1,44 @@
+@import '~styles/base/variables';
+
+// #CHARTS PREVIEW
+//-----------------------------
+$chart-preview-title-color: $theme-primary-color;
+$chart-preview-border-color: #ecf1f5;
+$chart-preview-description-color: #828795;
+
+.bi-charts-preview {
+  width: 240px;
+  margin-right: ($grid-offset-step * 5);
+  margin-bottom: ($grid-offset-step * 5);
+  font-family: $theme-main-font;
+  text-align: center;
+
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  // [ Components ]
+  //--------------------------------------
+  &__link {
+    display: block;
+    padding-top: ($grid-offset-step * 4);
+    border: 1px solid $chart-preview-border-color;
+    color: $chart-preview-title-color;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__iframe {
+    display: block;
+    width: 100%;
+    margin-top: $grid-offset-step * 4;
+    pointer-events: none;
+  }
+
+  &__description {
+    color: $chart-preview-description-color;
+    font-size: 14px;
+    margin-top: $grid-offset-step * 2;
+    padding: 0 $grid-offset-step * 4;
+  }
+}
