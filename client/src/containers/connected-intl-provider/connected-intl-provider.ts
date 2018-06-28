@@ -9,11 +9,11 @@ export const messages = {
 };
 
 function mapStateToProps (state: AppState): any {
-  const { locale } = state.settings;
+  const locale  = state.settings.locale || 'en';
   
   return {
     locale,
-    messages: { ...messages.en, ...messages[locale || 'en'] }
+    messages: { ...messages.en, ...messages[locale] }
   };
 }
 
