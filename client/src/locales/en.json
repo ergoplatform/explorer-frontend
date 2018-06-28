@@ -156,6 +156,10 @@
   "components.payment-request.copy": "Copy",
   "components.payment-request.copied": "Copied",
 
+  "components.transaction-io-summary.showScripts": "Show scripts & coinbase",
+  "components.transaction-io-summary.hideScripts": "Hide scripts & coinbase",
+  "components.transaction-io-summary.scripts": "Scripts",
+
   "components.search-results.wrong-query": "Unrecognized search pattern. Search query should be at least 5 characters long",
   "components.search-results.no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash. Or select from the general topics."
 }

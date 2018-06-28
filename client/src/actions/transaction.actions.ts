@@ -1,9 +1,7 @@
-import axios, { AxiosResponse } from 'axios';
 import { Action, ActionCreatorsMapObject, Dispatch } from 'redux';
 
-import environment from '../config/environment';
-
 import { GET_TRANSACTION, GET_TRANSACTION_SUCCESS } from '../constants/transaction.types';
+import { TransactionApiService } from '../services/transaction.api.service';
 
 export interface TransactionActions extends ActionCreatorsMapObject {
   getTransaction: (id: string) => any;
@@ -16,11 +14,11 @@ export const TransactionActions: TransactionActions = {
         type: GET_TRANSACTION
       });
       
-      axios.get(`${environment.apiUrl}/transactions/${id}`)
-        .then((response: AxiosResponse) => {
+      TransactionApiService.getTransaction(id)
+        .then((data: any) => {
           dispatch({
             payload: {
-              data: response.data
+              data
             },
             type: GET_TRANSACTION_SUCCESS
           });
