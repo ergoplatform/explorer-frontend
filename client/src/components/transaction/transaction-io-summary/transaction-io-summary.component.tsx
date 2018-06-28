@@ -38,7 +38,7 @@ export class TransactionIoSummaryComponent extends React.Component<ITransactionI
             </div>
             
             <div className='bi-transaction-io-summary__cell bi-transaction-io-summary__cell--value bi-table__cell'>
-              { this.props.summary.totalFee }
+              <CoinValueComponent value={ this.props.summary.totalFee }/>
             </div>
           </div>
           
@@ -48,7 +48,7 @@ export class TransactionIoSummaryComponent extends React.Component<ITransactionI
             </div>
             
             <div className='bi-transaction-io-summary__cell bi-transaction-io-summary__cell--value bi-table__cell'>
-              { this.props.summary.feePerByte }
+              <CoinValueComponent value={ this.props.summary.feePerByte }/>
             </div>
           </div>
           
