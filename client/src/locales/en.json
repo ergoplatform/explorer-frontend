@@ -163,6 +163,8 @@
   "components.transaction-item.confirmation.one": "confirmation",
   "components.transaction-item.confirmation.other": "confirmations",
   "components.transaction-item.address-output": "Output",
+  "components.transaction-item.spent": "Spent",
+  "components.transaction-item.unspent": "Unspent",
 
   "components.search-results.wrong-query": "Unrecognized search pattern. Search query should be at least 5 characters long",
   "components.search-results.no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash. Or select from the general topics."

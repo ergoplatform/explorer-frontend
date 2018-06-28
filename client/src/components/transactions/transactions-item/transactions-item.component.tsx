@@ -73,7 +73,7 @@ class TransactionsItem extends React.PureComponent {
                 
                 return (
                   <div className='bi-transactions-item__output g-flex' key={ address.address || index }>
-                    <div className='bi-transactions-item__address g-flex__item'>
+                    <div className='bi-transactions-item__address g-flex__item-fixed'>
                       { address.address ?
                         <Link className='u-word-wrap u-word-wrap--ellipsis'
                               to={ `/addresses/${address.address}` }>
@@ -84,6 +84,23 @@ class TransactionsItem extends React.PureComponent {
                         </span>
                       }
                     </div>
+  
+  
+                    { this.props.isScriptsDisplayed && (
+                      <div className='bi-transactions-item__address-spent g-flex__item'>
+                        { address.spentTransactionId ?
+                          (<Link to={ `/transactions/${address.spentTransactionId}` }>
+                              <FormattedMessage id='components.transaction-item.spent'/>
+                            </Link>
+                          )
+                          : (
+                            (
+                              <FormattedMessage id='components.transaction-item.unspent'/>
+                            )
+                          )
+                        }
+                      </div>
+                    ) }
                     
                     <div className='bi-transactions-item__value g-flex__item-fixed'>
                       <CoinValueComponent value={ address.value }/>

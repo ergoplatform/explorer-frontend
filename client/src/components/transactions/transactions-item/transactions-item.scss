@@ -90,4 +90,14 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
       display: inline-block;
     }
   }
+
+  &__address-spent {
+    margin-left: $grid-offset-step;
+
+    color: red;
+
+    a {
+      color: green;
+    }
+  }
 }
