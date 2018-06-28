@@ -243,7 +243,7 @@ paths:
 
   '/charts/total':
     get:
-      summary: Get total coins per date
+      summary: Get total sum of coins mined per day
       tags:
         - charts
       parameters:
@@ -454,7 +454,7 @@ components:
       required:
         - address
         - value
-        - transactionId
+        - outputTransactionId
         - spendingProof
       properties:
         address:
@@ -465,7 +465,7 @@ components:
           format: int32
           minimum: 0
           example: 1230044
-        transactionId:
+        outputTransactionId:
           $ref: '#/components/schemas/TransactionId'
         spendingProof:
           description: Spending proof for transaction input

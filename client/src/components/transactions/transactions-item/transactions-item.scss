@@ -74,8 +74,20 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
     justify-content: space-between;
   }
 
+  &__input {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
   &__footer {
     margin-top: $grid-offset-step * 4;
     justify-content: flex-end;
+  }
+
+  &__address-output {
+    .bi-coin-value {
+      color: $block-transactions-item-value-color;
+      display: inline-block;
+    }
   }
 }
