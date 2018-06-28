@@ -34,8 +34,8 @@ class LanguageSwitcher extends React.PureComponent<SettingsState & SettingsActio
   
   render (): JSX.Element {
     const selectedLocale = {
-      label: <FormattedMessage id={ `components.language-switcher.${this.props.locale}` }/>,
-      value: this.props.locale
+      label: <FormattedMessage id={ `components.language-switcher.${this.props.locale || 'en'}` }/>,
+      value: this.props.locale || 'en'
     };
     
     return (
