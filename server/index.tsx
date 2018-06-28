@@ -18,6 +18,7 @@ import { BlockPage } from './pages/block.page';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
 import { StatsPage } from './pages/stats.page';
+import { TransactionPage } from './pages/transaction.page';
 import { Preloader } from './preloader';
 
 const port = process.env.PORT || 5000;
@@ -102,6 +103,7 @@ server.use('/', DataPage);
 server.use('/stats', StatsPage);
 server.use('/charts', ChartPage);
 server.use('/blocks', BlockPage);
+server.use('/transactions', TransactionPage);
 
 
 server.get('*', (req: any, res) => {

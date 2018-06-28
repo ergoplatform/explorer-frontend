@@ -7,12 +7,14 @@ import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 
 import { Transaction as TransactionModel } from '../../models/generated/transaction';
 
+import { SettingsActions } from '../../actions/settings.actions';
 import { TransactionActions } from '../../actions/transaction.actions';
+import { SettingsState } from '../../reducers/settings.reducer';
+import { TransactionState } from '../../reducers/transaction.reducer';
 import { AppState } from '../../store/app.store';
 
-import { TransactionState } from '../../reducers/transaction.reducer';
-
 import { TransactionIoSummaryComponent } from '../../components/transaction/transaction-io-summary/transaction-io-summary.component';
+import { TransactionRawScriptsComponent } from '../../components/transaction/transaction-raw-scripts/transaction-raw-scripts.component';
 import { TransactionSummaryComponent } from '../../components/transaction/transaction-summary/transaction-summary.component';
 import { TransactionsItemComponent } from '../../components/transactions/transactions-item/transactions-item.component';
 
@@ -21,7 +23,13 @@ import './transaction.scss';
 class Transaction extends React.PureComponent {
   props: RouteComponentProps<{
     id: string;
-  }> & TransactionState & TransactionActions;
+  }> & TransactionState & TransactionActions & SettingsActions & SettingsState;
+  
+  constructor (props: any) {
+    super(props);
+    
+    this.onScriptToggle = this.onScriptToggle.bind(this);
+  }
   
   componentDidMount (): void {
     this.props.getTransaction(this.props.match.params.id);
@@ -78,20 +86,46 @@ class Transaction extends React.PureComponent {
           </div>
           
           <div className='bi-transaction__table g-flex__item'>
-            <TransactionIoSummaryComponent summary={ this.props.transaction.ioSummary }/>
+            <TransactionIoSummaryComponent summary={ this.props.transaction.ioSummary }
+                                           isScriptShown={ this.props.isScriptsDisplayed }
+                                           onScriptToggle={ this.onScriptToggle }/>
           </div>
         </div>
+        
+        { this.props.isScriptsDisplayed &&
+        <div className='bi-transaction__scripts'>
+          <div className='bi-transaction__title'>
+            <FormattedMessage id='components.transaction.scripts.input'/>
+          </div>
+          
+          <TransactionRawScriptsComponent items={ this.props.transaction.inputs }/>
+        </div>
+        }
+  
+        { this.props.isScriptsDisplayed &&
+        <div className='bi-transaction__scripts'>
+          <div className='bi-transaction__title'>
+            <FormattedMessage id='components.transaction.scripts.output'/>
+          </div>
+    
+          <TransactionRawScriptsComponent items={ this.props.transaction.outputs }/>
+        </div>
+        }
       </div>
     );
   }
+  
+  private onScriptToggle (): void {
+    this.props.setTransactionScripts(!this.props.isScriptsDisplayed);
+  }
 }
 
-function mapStateToProps (state: AppState): TransactionState {
-  return state.transaction;
+function mapStateToProps (state: AppState): any {
+  return { ...state.transaction, ...state.settings };
 }
 
 function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
-  return bindActionCreators(TransactionActions, dispatch);
+  return bindActionCreators({ ...TransactionActions, ...SettingsActions }, dispatch);
 }
 
 export const TransactionComponent = connect(mapStateToProps, mapDispatchToProps)(Transaction);

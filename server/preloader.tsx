@@ -41,6 +41,10 @@ Preloader.get('*', (req: any, res, next) => {
           ...apiPreloadedState,
           preloaded: true,
         },
+        settings: {
+          isScriptsDisplayed: true,
+          locale: 'en'
+        },
         stats: {
           ...preloadedState,
           preloaded: true

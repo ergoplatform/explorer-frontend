@@ -7,7 +7,7 @@ export interface TransactionState {
   transaction?: FullTransaction;
 }
 
-const initialState: TransactionState = {
+export const initialState: TransactionState = {
   fetching: false
 };
 

@@ -1,4 +1,4 @@
-@import '../../../assets/styles/base/variables';
+@import '~styles/base/variables';
 
 // #TRANSACTION SUMMARY
 //-------------------------------------
@@ -7,7 +7,7 @@ $address-summary-header-bg-color: #f8f8f8;
 $address-summary-header-border-color: #eeeeee;
 $address-summary-body-bg-color: #ffffff;
 
-.bi-transaction-summary {
+.bi-transaction-io-summary {
   // [ Components ]
   //-----------------------------------
   &__header {
@@ -36,6 +36,10 @@ $address-summary-body-bg-color: #ffffff;
 
     &--header {
       font-weight: 600;
+    }
+
+    &--value, &--value * {
+      font-size: 15px;
     }
   }
 }
