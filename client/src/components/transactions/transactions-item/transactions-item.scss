@@ -6,6 +6,8 @@ $block-transactions-item-bg-color: #ffffff;
 $block-transactions-item-border-color: #eeeeee;
 $block-transactions-item-value-color: #828795;
 $block-transactions-item-total-value-color: $theme-color-blue;
+$block-transactions-item-confirmations-color: #fff;
+$block-transactions-item-confirmations-bg: $theme-primary-color;
 
 .bi-transactions-item {
   min-width: 300px;
@@ -42,13 +44,21 @@ $block-transactions-item-total-value-color: $theme-color-blue;
   }
 
   &__total-value {
-    margin-top: $grid-offset-step * 4;
-    margin-left: auto;
     padding: ($grid-offset-step * 2) ($grid-offset-step * 3);
     border: 1px solid $block-transactions-item-total-value-color;
     border-radius: 94px;
     color: $block-transactions-item-total-value-color;
     font-weight: 600;
+  }
+
+  &__confirmations {
+    padding: ($grid-offset-step * 2) ($grid-offset-step * 3);
+    background-color: $block-transactions-item-confirmations-bg;
+    border-radius: 94px;
+    color: $block-transactions-item-confirmations-color;
+    font-weight: 600;
+    margin-right: $grid-offset-step * 2;
+    text-transform: capitalize;
   }
 
   &__address {
@@ -62,5 +72,10 @@ $block-transactions-item-total-value-color: $theme-color-blue;
   &__output {
     flex-flow: wrap;
     justify-content: space-between;
+  }
+
+  &__footer {
+    margin-top: $grid-offset-step * 4;
+    justify-content: flex-end;
   }
 }
