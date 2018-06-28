@@ -27,8 +27,6 @@ export const messages = {
   ru: flatJSONKeys(require('../../locales/ru/translations.json'))
 };
 
-console.debug(messages);
-
 function mapStateToProps (state: AppState): any {
   const locale  = state.settings.locale || 'en';
   
