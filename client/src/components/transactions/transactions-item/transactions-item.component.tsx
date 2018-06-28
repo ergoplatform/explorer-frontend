@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { FormattedMessage, FormattedPlural } from 'react-intl';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Transaction } from '../../../models/generated/transaction';
+
+import { SettingsState } from '../../../reducers/settings.reducer';
+import { AppState } from '../../../store/app.store';
 
 import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 import { TimestampComponent } from '../../common/timestamp/timestamp.component';
@@ -14,7 +18,9 @@ interface IBlockTransactionsItemProps {
   confirmations?: any;
 }
 
-export class TransactionsItemComponent extends React.PureComponent<IBlockTransactionsItemProps> {
+class TransactionsItem extends React.PureComponent {
+  props: IBlockTransactionsItemProps & SettingsState;
+  
   render (): JSX.Element {
     let totalOutput = 0;
     
@@ -36,7 +42,7 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
             {
               this.props.transaction.inputs.map((address, index) => {
                 return (
-                  <div className='bi-transactions-item__input u-word-wrap' key={ address.id || index }>
+                  <div className='bi-transactions-item__input g-flex' key={ address.id || index }>
                     <div className='bi-transactions-item__address'>
                       { address.id ? <Link className='u-word-wrap u-word-wrap--ellipsis'
                                            to={ `/addresses/${address.id}` }>
@@ -45,6 +51,15 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
                         : <FormattedMessage id='components.transaction-item.null-address'/>
                       }
                     </div>
+                    { this.props.isScriptsDisplayed && address.transactionId && (
+                      <div className='bi-transactions-item__address-output g-flex__item-fixed'>
+                        (<CoinValueComponent value={ address.value }/> - <Link
+                        to={ `/transactions/${address.transactionId}` }>
+                        <FormattedMessage id='components.transaction-item.address-output'/>
+                      </Link>
+                        )
+                      </div>
+                    ) }
                   </div>
                 );
               })
@@ -58,7 +73,7 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
                 
                 return (
                   <div className='bi-transactions-item__output g-flex' key={ address.address || index }>
-                    <div className='bi-transactions-item__address g-flex__item'>
+                    <div className='bi-transactions-item__address g-flex__item-fixed'>
                       { address.address ?
                         <Link className='u-word-wrap u-word-wrap--ellipsis'
                               to={ `/addresses/${address.address}` }>
@@ -69,6 +84,23 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
                         </span>
                       }
                     </div>
+  
+  
+                    { this.props.isScriptsDisplayed && (
+                      <div className='bi-transactions-item__address-spent g-flex__item'>
+                        { address.spentTransactionId ?
+                          (<Link to={ `/transactions/${address.spentTransactionId}` }>
+                              <FormattedMessage id='components.transaction-item.spent'/>
+                            </Link>
+                          )
+                          : (
+                            (
+                              <FormattedMessage id='components.transaction-item.unspent'/>
+                            )
+                          )
+                        }
+                      </div>
+                    ) }
                     
                     <div className='bi-transactions-item__value g-flex__item-fixed'>
                       <CoinValueComponent value={ address.value }/>
@@ -82,8 +114,10 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
               { this.props.confirmations && (
                 <div className='bi-transactions-item__confirmations g-flex__item-fixed'>
                   { this.props.confirmations } <FormattedPlural value={ this.props.confirmations }
-                                   one={ <FormattedMessage id='components.transaction-item.confirmation.one'/> }
-                                   other={ <FormattedMessage id='components.transaction-item.confirmation.other'/> }/>
+                                                                one={ <FormattedMessage
+                                                                  id='components.transaction-item.confirmation.one'/> }
+                                                                other={ <FormattedMessage
+                                                                  id='components.transaction-item.confirmation.other'/> }/>
                 </div>
               ) }
               
@@ -97,3 +131,12 @@ export class TransactionsItemComponent extends React.PureComponent<IBlockTransac
     );
   }
 }
+
+function mapStateToProps (state: AppState, ownProps: IBlockTransactionsItemProps): any {
+  return {
+    ...state.settings,
+    ...ownProps
+  };
+}
+
+export const TransactionsItemComponent = connect(mapStateToProps)(TransactionsItem);

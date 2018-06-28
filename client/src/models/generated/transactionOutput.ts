@@ -14,14 +14,14 @@ import { TransactionId } from './transactionId';
 
 
 export interface TransactionOutput {
-    id: TransactionId;
-    address: AddressId;
-    /**
-     * Amount of Ergo token
-     */
-    value: number;
-    /**
-     * The script which should be successfully executed for the waste of this output
-     */
-    script: string;
+  spentTransactionId: TransactionId;
+  address: AddressId;
+  /**
+   * Amount of Ergo token
+   */
+  value: number;
+  /**
+   * The script which should be successfully executed for the waste of this output
+   */
+  script: string;
 }
