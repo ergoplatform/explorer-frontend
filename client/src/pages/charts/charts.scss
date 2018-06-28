@@ -48,6 +48,7 @@ $chart-chart-border-color: #ECF1F5;
     padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
     padding-top: 0;
     background-color: $charts-charts-bg-color;
+    border-top: 1px solid #e5e5e5;
   }
 
   &__charts {

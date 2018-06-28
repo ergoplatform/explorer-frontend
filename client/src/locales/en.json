@@ -167,6 +167,11 @@
   "components.transaction-item.unspent": "Unspent",
   "components.transaction-item.unconfirmed": "Unconfirmed",
 
+  "components.charts.title": "Charts",
+  "components.charts.currency-statistics": "Currency Statistics",
+  "components.charts.block-details": "Block Details",
+  "components.charts.mining-information": "Mining Information",
+
   "components.search-results.wrong-query": "Unrecognized search pattern. Search query should be at least 5 characters long",
   "components.search-results.no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash. Or select from the general topics."
 }
