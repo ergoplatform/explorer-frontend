@@ -149,7 +149,6 @@ module.exports = {
             include: paths.client.src,
             loader: require.resolve('babel-loader'),
             options: {
-
               compact: true
             }
           },

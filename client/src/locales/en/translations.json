@@ -1,0 +1,259 @@
+{
+  "common": {
+    "block": {
+      "adProofsRoot": "AD Proofs Root",
+      "age": "Timestamp",
+      "block": "Block",
+      "equihashSolutions": "Equihash Solutions",
+      "extensionHash": "Extension Hash",
+      "height": "Height",
+      "id": "ID",
+      "interlinks": "Interlinks",
+      "minedBy": "Mined by",
+      "nBits": "Target Threshold (nBits)",
+      "parent": "Parent",
+      "size": "Size",
+      "stateRoot": "State Root",
+      "transactions": "Transactions",
+      "transactionsRoot": "Transactions Root",
+      "version": "Version"
+    },
+    "pages": {
+      "address": {
+        "title": "Ergo Explorer | Address {id}"
+      },
+      "api": {
+        "title": "Ergo Explorer | API"
+      },
+      "block": {
+        "title": "Ergo Explorer | Block {id}"
+      },
+      "chart": {
+        "title": {
+          "block-size": "Ergo Explorer | Chart Average Block Size",
+          "blockchain-size": "Ergo Explorer | Blockchain Size",
+          "difficulty": "Ergo Explorer | Chart Difficulty",
+          "hash-rate": "Ergo Explorer | Hash Rate",
+          "miners-revenue": "Ergo Explorer | Miners Revenue",
+          "total": "Ergo Explorer | Chart Total Coins",
+          "transactions-per-block": "Ergo Explorer | Transactions per Block"
+        }
+      },
+      "charts": {
+        "title": "Ergo Explorer | Charts"
+      },
+      "data": {
+        "title": "Ergo Explorer | Data"
+      },
+      "not-found": {
+        "title": "Ergo Explorer | Not found"
+      },
+      "stats": {
+        "title": "Ergo Explorer | Stats"
+      },
+      "transaction": {
+        "title": "Ergo Explorer | Transaction {id}"
+      },
+      "wallet": {
+        "title": "Ergo Explorer | Wallet"
+      }
+    },
+    "stats": {
+      "hashRate": "Hash Rate",
+      "marketCap": "Market Cap",
+      "supply": "Circulating Supply",
+      "transactionAverage": "Transactions Average",
+      "version": "Software Version"
+    }
+  },
+  "components": {
+    "address-actions": {
+      "donation-button": "Donation Button",
+      "qrcode": "QR Code",
+      "request-payment": "Request Payment"
+    },
+    "address-qr-code-modal": {
+      "subtitle": "Scan for Address",
+      "title": "QR Code"
+    },
+    "address-summary": {
+      "hash": "Hash",
+      "title": "Summary"
+    },
+    "address-transactions": {
+      "balance": "Final balance",
+      "title": "Transactions",
+      "total": "No. transactions",
+      "totalReceived": "Total received"
+    },
+    "block-header": {
+      "adproofs": "AD Proofs",
+      "back": "Back to all blocks",
+      "information": "Information",
+      "transactions": "Transactions"
+    },
+    "block-summary": {
+      "averageMiningTime": "Average mining time",
+      "minutes": "min",
+      "title": "Block Summary",
+      "total": "Blocks Mined",
+      "totalCoins": "Total coins"
+    },
+    "chart-actions": {
+      "csv": "CSV",
+      "json": "JSON",
+      "linear-scale": "Linear Scale",
+      "logarithmic-scale": "Logarithmic Scale"
+    },
+    "chart": {
+      "back": "Back to charts",
+      "subtitle": {
+        "block-size": "The average block size",
+        "blockchain-size": "The total size of all block headers and transactions",
+        "difficulty": "A relative measure of how difficult it is to find a new block",
+        "hash-rate": "The estimated number of hashes per second the network is performing",
+        "miners-revenue": "Total value of coinbase block rewards and transaction fees paid to miners",
+        "total": "The total number of coins that have already been mined.",
+        "transactions-per-block": "The average number of transactions per block"
+      },
+      "title": {
+        "block-size": "Average block size",
+        "blockchain-size": "Blockchain Size",
+        "difficulty": "Difficulty",
+        "hash-rate": "Hash Rate",
+        "miners-revenue": "Miners Revenue",
+        "total": "Coins in circulation",
+        "transactions-per-block": "Transactions per Block"
+      }
+    },
+    "charts": {
+      "block-details": "Block Details",
+      "currency-statistics": "Currency Statistics",
+      "mining-information": "Mining Information",
+      "title": "Charts"
+    },
+    "data": {
+      "show": "Show",
+      "title": "Latest blocks"
+    },
+    "home": {
+      "title": "Blockchain explorer"
+    },
+    "language-switcher": {
+      "en": "English",
+      "ru": "Русский"
+    },
+    "mining-cost": {
+      "costPerTransaction": "Cost per Transaction",
+      "difficulty": "Difficulty",
+      "hashRate": "Hash Rate",
+      "percentEarnedTransactionsFees": "% Earned From Transaction Fees",
+      "percentTransactionVolume": "% Of Transaction Volume",
+      "title": "Mining Cost",
+      "totalMinersRevenue": "Total Miners Revenue"
+    },
+    "not-found": {
+      "title": "Not found"
+    },
+    "paginate-simple": {
+      "page": "Page {current}",
+      "page-of": "Page {current} of {total}"
+    },
+    "paginate": {
+      "next": "Next",
+      "prev": "Previous"
+    },
+    "payment-request-modal": {
+      "amount": "Amount",
+      "copied": "Copied",
+      "copy": "Copy",
+      "description": "Description",
+      "link": "Payment Request Link",
+      "subtitle": "Use this form to customize an address for payment request",
+      "title": "Create Payment Request"
+    },
+    "payment-request": {
+      "copied": "Copied",
+      "copy": "Copy",
+      "for": "For",
+      "subtitle": "You can send {coinName} to the following address.",
+      "title": "Payment Request"
+    },
+    "search-results": {
+      "no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash. Or select from the general topics.",
+      "wrong-query": "Unrecognized search pattern. Search query should be at least 5 characters long"
+    },
+    "sidebar-menu": {
+      "items": {
+        "api": "API",
+        "api-addresses": "Addresses",
+        "api-blocks": "Blocks",
+        "api-charts": "Charts",
+        "api-statistics": "Statistics",
+        "api-transactions": "Transactions",
+        "api-utilities": "Utilities",
+        "charts": "Charts",
+        "data": "Data",
+        "stats": "Stats",
+        "wallet": "Wallet"
+      }
+    },
+    "stats": {
+      "title": "{coinName} Stats"
+    },
+    "timespan": {
+      "span": {
+        "180days": "180 Days",
+        "1year": "1 Year",
+        "2years": "2 Years",
+        "30days": "30 Days",
+        "60days": "60 Days",
+        "alltime": "All Time"
+      }
+    },
+    "transaction-io-summary": {
+      "feePerByte": "Fee per Byte",
+      "hideScripts": "Hide scripts & coinbase",
+      "scripts": "Scripts",
+      "showScripts": "Show scripts & coinbase",
+      "title": "Inputs and Outputs",
+      "totalCoinsTransferred": "Total Coins Transferred",
+      "totalFee": "Fees"
+    },
+    "transaction-item": {
+      "address-output": "Output",
+      "confirmation": {
+        "one": "confirmation",
+        "other": "confirmations"
+      },
+      "null-address": "Unable to decode address",
+      "spent": "Spent",
+      "unconfirmed": "Unconfirmed",
+      "unspent": "Unspent"
+    },
+    "transaction-summary": {
+      "blocks": "Included in Blocks",
+      "confirmationsCount": "Confirmations",
+      "size": "Size",
+      "timestamp": "Received Time",
+      "title": "Summary"
+    },
+    "transaction": {
+      "scripts": {
+        "input": "Input Scripts",
+        "output": "Output Scripts"
+      },
+      "subtitle": "View information about a ERGO transaction",
+      "title": "Transaction"
+    },
+    "transactions-summary": {
+      "title": "Transactions Summary",
+      "total": "Number of Transactions",
+      "totalFee": "Total Transaction Fees",
+      "totalOutput": "Total Output Volume"
+    },
+    "wallet": {
+      "title": "Wallet is not available yet"
+    }
+  }
+}

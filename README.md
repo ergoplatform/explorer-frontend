@@ -52,3 +52,8 @@ if (typeof global !== 'undefined') {
   global.__APP_CONFIG__ = __APP_CONFIG__;
 }
 ```
+
+## Translations
+
+In order to translate project files use [i18n-editor](https://github.com/jcbvm/i18n-editor/releases).
+Download latest stable release and open Project located in `client/src/locales`

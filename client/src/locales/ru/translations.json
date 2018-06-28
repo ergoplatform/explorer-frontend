@@ -1,0 +1,122 @@
+{
+  "common": {
+    "block": {
+      "adProofsRoot": "Корень AD Доказательства",
+      "age": "Время",
+      "block": "Блок",
+      "equihashSolutions": "Equihash Решения",
+      "height": "Высота",
+      "id": "ID",
+      "interlinks": "Взаимосвязи",
+      "minedBy": "Майнер",
+      "nBits": "Целевой Порог (nBits)",
+      "parent": "Родитель",
+      "size": "Размер",
+      "stateRoot": "Корень Состояния",
+      "transactions": "Транзакции",
+      "transactionsRoot": "Корень Транзакции",
+      "version": "Версия"
+    },
+    "pages": {
+      "address": {
+        "title": "Ergo Explorer | Адрес {id}"
+      },
+      "api": {
+        "title": "Ergo Explorer | API"
+      },
+      "block": {
+        "title": "Ergo Explorer | Блок {id}"
+      },
+      "chart": {
+        "title": {
+          "block-size": "Ergo Explorer | График Средний размер блока",
+          "difficulty": "Ergo Explorer | График Сложность"
+        }
+      },
+      "charts": {
+        "title": "Ergo Explorer | Графики"
+      },
+      "data": {
+        "title": "Ergo Explorer | Данные"
+      },
+      "not-found": {
+        "title": "Ergo Explorer | Страница не найдена"
+      }
+    },
+    "stats": {
+      "hashRate": "Вычислительная мощность",
+      "marketCap": "Капитализация",
+      "supply": "Оборотное Снабжение",
+      "transactionAverage": "Транзакций в день",
+      "version": "Версия"
+    }
+  },
+  "components": {
+    "address-actions": {
+      "donation-button": "Собрать Пожертвование",
+      "qrcode": "QR Код",
+      "request-payment": "Запросить Платеж"
+    },
+    "address-summary": {
+      "hash": "Хэш",
+      "title": "Сводка"
+    },
+    "address-transactions": {
+      "balance": "Конечный баланс",
+      "title": "Транзакции",
+      "total": "Количество сделок",
+      "totalReceived": "Получено монет"
+    },
+    "block-header": {
+      "adproofs": "AD Доказательства",
+      "back": "Назад ко всем блокам",
+      "information": "Информация",
+      "transactions": "Транзакции"
+    },
+    "data": {
+      "show": "Показать",
+      "title": "Последние блоки"
+    },
+    "home": {
+      "title": "Обозреватель блоков"
+    },
+    "language-switcher": {
+      "en": "English",
+      "ru": "Русский"
+    },
+    "paginate-simple": {
+      "page-of": "Страница {current} из {total}"
+    },
+    "paginate": {
+      "next": "Дальше",
+      "prev": "Назад"
+    },
+    "sidebar-menu": {
+      "items": {
+        "api": "API",
+        "charts": "Графики",
+        "data": "Данные",
+        "stats": "Статистика",
+        "wallet": "Кошелек"
+      }
+    },
+    "transaction-io-summary": {
+      "feePerByte": "Комиссия за байт",
+      "title": "Входы и Выходы",
+      "totalCoinsTransferred": "Общее количество монет",
+      "totalFee": "Комиссии"
+    },
+    "transaction-item": {
+      "null-address": "Невозможно декодировать адрес"
+    },
+    "transaction-summary": {
+      "blocks": "Включена в Блоки",
+      "size": "Размер",
+      "timestamp": "Время",
+      "title": "Сводка"
+    },
+    "transaction": {
+      "title": "Транзакция"
+    }
+  }
+}

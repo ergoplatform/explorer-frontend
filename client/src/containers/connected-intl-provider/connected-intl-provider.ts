@@ -3,10 +3,31 @@ import { connect } from 'react-redux';
 
 import { AppState } from '../../store/app.store';
 
-export const messages = {
-  en: require('../../locales/en.json'),
-  ru: require('../../locales/ru.json')
+const flatJSONKeys = (msgs: any, finalMap = {}, finalKey='') => {
+  Object.keys(msgs)
+    .forEach((key: string) => {
+      let translationKey = key;
+      
+      if (finalKey) {
+        translationKey = [finalKey, key].join('.');
+      }
+      
+      if (typeof msgs[key] !== 'string') {
+        flatJSONKeys(msgs[key], finalMap, translationKey);
+      } else {
+        finalMap[translationKey] = msgs[key];
+      }
+    }, finalMap);
+  
+  return finalMap;
 };
+
+export const messages = {
+  en: flatJSONKeys(require('../../locales/en/translations.json')),
+  ru: flatJSONKeys(require('../../locales/ru/translations.json'))
+};
+
+console.debug(messages);
 
 function mapStateToProps (state: AppState): any {
   const locale  = state.settings.locale || 'en';
