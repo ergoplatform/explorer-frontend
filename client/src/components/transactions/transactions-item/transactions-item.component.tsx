@@ -42,11 +42,11 @@ class TransactionsItem extends React.PureComponent {
             {
               this.props.transaction.inputs.map((address, index) => {
                 return (
-                  <div className='bi-transactions-item__input g-flex' key={ address.id || index }>
+                  <div className='bi-transactions-item__input g-flex' key={ address.address || index }>
                     <div className='bi-transactions-item__address'>
-                      { address.id ? <Link className='u-word-wrap u-word-wrap--ellipsis'
-                                           to={ `/addresses/${address.id}` }>
-                          { address.id }
+                      { address.address ? <Link className='u-word-wrap u-word-wrap--ellipsis'
+                                           to={ `/addresses/${address.address}` }>
+                          { address.address }
                         </Link>
                         : <FormattedMessage id='components.transaction-item.null-address'/>
                       }

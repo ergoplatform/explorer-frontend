@@ -16,6 +16,7 @@ import { TransactionId } from './transactionId';
 export interface TransactionInput {
   transactionId: TransactionId;
   id: AddressId;
+  address: AddressId;
   value: number;
   signature: string;
 }
