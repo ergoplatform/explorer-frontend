@@ -95,7 +95,7 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
               {
                 this.props.block.header.interlinks.map((interlink: string, index: number) => {
                   return (
-                    <Link key={ interlink }
+                    <Link key={ index }
                           to={ `/blocks/${interlink}` }
                           className='u-word-wrap bi-block-info__interlink'>
                       { interlink }

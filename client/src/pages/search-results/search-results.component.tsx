@@ -2,7 +2,7 @@ import * as queryString from 'query-string';
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
+import { Redirect, RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import { SearchActions } from '../../actions/search.actions';
@@ -58,6 +58,24 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
   private renderBody (): JSX.Element | null {
     if (!this.props.data) {
       return null;
+    }
+    
+    const exactBlock = this.props.data.blocks.find((item: any) => item.id === this.query);
+    
+    if (exactBlock) {
+      return <Redirect to={ `/blocks/${this.query}` }/>;
+    }
+    
+    const exactAddress = this.props.data.addresses.includes(this.query);
+    
+    if (exactAddress) {
+      return <Redirect to={ `/blocks/${this.query}` }/>;
+    }
+  
+    const exactTransaction = this.props.data.transactions.includes(this.query);
+  
+    if (exactTransaction) {
+      return <Redirect to={ `/transactions/${this.query}` }/>;
     }
     
     return (
