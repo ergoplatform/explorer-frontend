@@ -11,15 +11,15 @@ import { AddressId } from '../../../models/generated/addressId';
 
 import { CrossIcon } from '../../common/icons/common.icons';
 
-interface IPaymentRequestModalProps {
+type IPaymentRequestModalProps = RouteComponentProps<any> & {
   isOpen: boolean;
   onClose: () => void;
   address: AddressId;
-}
+};
 
 import './payment-request-modal.scss';
 
-class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps & RouteComponentProps<any>> {
+class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps> {
   link: HTMLDivElement;
   
   state: any = {
@@ -171,4 +171,4 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps 
   }
 }
 
-export const PaymentRequestModalComponent = withRouter(PaymentRequestModal as any);
+export const PaymentRequestModalComponent = withRouter<IPaymentRequestModalProps>(PaymentRequestModal);
