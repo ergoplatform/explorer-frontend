@@ -11,14 +11,14 @@ export interface ISidebarMenuItem {
   component?: any;
 }
 
+export interface ISidebarMenuProps {
+  onClick: any;
+  items: ISidebarMenuItem[];
+}
+
 import './sidebar-menu.scss';
 
-export class SidebarMenuComponent extends React.Component {
-  props: {
-    onClick: any;
-    items: ISidebarMenuItem[];
-  };
-  
+export class SidebarMenuComponent extends React.Component<ISidebarMenuProps> {
   render (): JSX.Element {
     return <div className='bi-sidebar-menu g-flex-column'>
       { this.mapLinks(this.props.items) }
