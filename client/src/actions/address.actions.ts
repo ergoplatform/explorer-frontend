@@ -1,7 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
 import { Action, ActionCreatorsMapObject, Dispatch } from 'redux';
-
-import environment from '../config/environment';
 
 import {
   GET_ADDRESS,
@@ -9,6 +6,7 @@ import {
   GET_ADDRESS_TRANSACTIONS,
   GET_ADDRESS_TRANSACTIONS_SUCCESS
 } from '../constants/address.types';
+import { AddressApiService } from '../services/address.api.service';
 
 export interface AddressActions extends ActionCreatorsMapObject {
   getAddress: (id: string) => any;
@@ -22,11 +20,11 @@ export const AddressActions: AddressActions = {
         type: GET_ADDRESS
       });
       
-      axios.get(`${environment.apiUrl}/addresses/${id}`)
-        .then((response: AxiosResponse) => {
+      AddressApiService.getAddress(id)
+        .then((data: any) => {
           dispatch({
             payload: {
-              data: response.data
+              data
             },
             type: GET_ADDRESS_SUCCESS
           });
@@ -37,16 +35,14 @@ export const AddressActions: AddressActions = {
   getAddressTransactions (id: string, params: any): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
-        type: GET_ADDRESS_TRANSACTIONS,
+        type: GET_ADDRESS_TRANSACTIONS
       });
-  
-      axios.get(`${environment.apiUrl}/addresses/${id}/transactions`, {
-        params,
-      })
-        .then((response: AxiosResponse) => {
+      
+      AddressApiService.getAddressTransactions(id, params)
+        .then((data: any) => {
           dispatch({
             payload: {
-              data: response.data
+              data
             },
             type: GET_ADDRESS_TRANSACTIONS_SUCCESS
           });

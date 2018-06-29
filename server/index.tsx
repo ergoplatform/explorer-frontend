@@ -14,6 +14,7 @@ import { App, Error } from './app.server';
 
 import '../client/src/config/axios.config';
 
+import { AddressPage } from './pages/address.page';
 import { BlockPage } from './pages/block.page';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
@@ -104,6 +105,7 @@ server.use('/stats', StatsPage);
 server.use('/charts', ChartPage);
 server.use('/blocks', BlockPage);
 server.use('/transactions', TransactionPage);
+server.use('/addresses', AddressPage);
 
 
 server.get('*', (req: any, res) => {

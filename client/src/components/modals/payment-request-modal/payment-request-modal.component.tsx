@@ -3,6 +3,7 @@ import * as queryString from 'query-string';
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 import * as ReactModal from 'react-modal';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 import environment from '../../../config/environment';
 
@@ -18,7 +19,7 @@ interface IPaymentRequestModalProps {
 
 import './payment-request-modal.scss';
 
-export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRequestModalProps> {
+class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps & RouteComponentProps<any>> {
   link: HTMLDivElement;
   
   state: any = {
@@ -27,7 +28,7 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
     description: ''
   };
   
-  constructor (props: IPaymentRequestModalProps) {
+  constructor (props: any) {
     super(props);
     
     this.setAmount           = this.setAmount.bind(this);
@@ -105,8 +106,8 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
             </div>
           </div>
         </div>
-  
-  
+        
+        
         <div className='bi-payment-request-modal__footer g-flex-column__item g-flex'>
           <button className='bi-payment-request-modal__btn-copy bi-btn bi-btn--flat'
                   onClick={ this.copyLinkToClipboard }>
@@ -117,7 +118,7 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
             }
           </button>
         </div>
-        
+      
       </ReactModal>
     );
   }
@@ -129,7 +130,9 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
       description: this.state.description
     });
     
-    return `${location.origin}/payment-request?${params}`;
+    const host = environment.environments ? environment.environments[0].url : window.location.origin;
+  
+    return `${host}/payment-request?${params}`;
   }
   
   private setAmount (event: React.ChangeEvent<HTMLInputElement>): void {
@@ -168,3 +171,4 @@ export class PaymentRequestModalComponent extends React.PureComponent<IPaymentRe
   }
 }
 
+export const PaymentRequestModalComponent = withRouter(PaymentRequestModal as any);

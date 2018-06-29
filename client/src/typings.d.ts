@@ -23,6 +23,7 @@ declare namespace NodeJS  {
     __APP_CONFIG__: {
       apiUrl: string;
     };
+    req: any,
   }
 }
 

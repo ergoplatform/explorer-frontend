@@ -5,6 +5,8 @@ import {
   GET_ADDRESS_TRANSACTIONS_SUCCESS
 } from '../constants/address.types';
 
+import { CLEAR_APP_PRELOADED_STATE } from '../actions/app.actions';
+
 import { FullAddress } from '../models/generated/fullAddress';
 import { Transaction } from '../models/generated/transaction';
 
@@ -15,11 +17,13 @@ export interface AddressState {
     items: Transaction[],
     total: number,
   };
+  preloaded: boolean;
   transactionFetching: boolean;
 }
 
-const initialState: AddressState = {
+export const initialState: AddressState = {
   fetching: false,
+  preloaded: false,
   transactionFetching: false
 };
 
@@ -53,6 +57,13 @@ export function addressReducer (state: AddressState = initialState, action: any)
         ...state,
         transactionFetching: false,
         transactions: action.payload.data
+      };
+    }
+    
+    case CLEAR_APP_PRELOADED_STATE: {
+      return {
+        ...state,
+        preloaded: false,
       };
     }
     

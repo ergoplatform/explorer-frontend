@@ -42,7 +42,7 @@ Preloader.get('*', (req: any, res, next) => {
           preloaded: true,
         },
         settings: {
-          isScriptsDisplayed: true,
+          isScriptsDisplayed: false,
           locale: 'en'
         },
         stats: {

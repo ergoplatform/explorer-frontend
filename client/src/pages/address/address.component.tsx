@@ -10,6 +10,7 @@ import environment from '../../config/environment';
 
 import './address.scss';
 
+import { AppActions } from '../../actions/app.actions';
 import { AddressState } from '../../reducers/address.reducer';
 import { AppState } from '../../store/app.store';
 
@@ -22,17 +23,23 @@ import { PaginateSimpleComponent } from '../../components/common/paginate-simple
 import { TransactionsComponent } from '../../components/transactions/transactions.component';
 
 class Address extends React.PureComponent {
-  props: RouteComponentProps<{ id: string }> & AddressState & AddressActions;
+  props: RouteComponentProps<{ id: string }> & AddressState & AddressActions & AppActions;
   params: any;
   
   constructor (props: any) {
     super(props);
     
+    this.params = this.getParams();
+    
     this.getPageUrl = this.getPageUrl.bind(this);
   }
   
   componentDidMount (): void {
-    this.params = this.getParams();
+    if (this.props.preloaded) {
+      this.props.clearPreloadedState();
+      
+      return;
+    }
     
     this.props.getAddress(this.props.match.params.id);
     this.props.getAddressTransactions(this.props.match.params.id, this.params);
@@ -43,7 +50,7 @@ class Address extends React.PureComponent {
     
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.params = params;
-  
+      
       this.props.getAddress(nextProps.match.params.id);
       this.props.getAddressTransactions(nextProps.match.params.id, this.params);
       
@@ -72,7 +79,7 @@ class Address extends React.PureComponent {
   }
   
   private renderBody (): JSX.Element | null {
-    if (!this.props.address || this.props.fetching || !this.params) {
+    if (!this.props.address || this.props.fetching) {
       return null;
     }
     
@@ -150,7 +157,7 @@ function mapStateToProps (state: AppState): AddressState {
 }
 
 function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
-  return bindActionCreators(AddressActions, dispatch);
+  return bindActionCreators({ ...AddressActions, ...AppActions }, dispatch);
 }
 
 export const AddressComponent = connect(mapStateToProps, mapDispatchToProps)(Address);
