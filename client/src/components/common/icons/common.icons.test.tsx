@@ -1,0 +1,65 @@
+import * as React from 'react';
+import { shallowWithIntl } from '../../../utils/test-utils';
+
+import {
+  ApiIcon,
+  ArrowDownIcon,
+  ArrowIcon,
+  BurgerIcon,
+  ChartIcon,
+  CrossIcon,
+  DataIcon,
+  DoubleArrowIcon,
+  makeIcon,
+  QRCodeIcon,
+  SearchIcon,
+  SortDirectionAscIcon,
+  SortDirectionDescIcon,
+  SortDirectionIcon,
+  StatsIcon,
+  WalletIcon
+} from './common.icons';
+
+describe('Components | CommonIcons', () => {
+  it('should render without crashing', () => {
+    const icons = [
+      SearchIcon,
+      ArrowIcon,
+      DataIcon,
+      ApiIcon,
+      WalletIcon,
+      ChartIcon,
+      StatsIcon,
+      QRCodeIcon,
+      CrossIcon,
+      DoubleArrowIcon,
+      SortDirectionIcon,
+      SortDirectionAscIcon,
+      SortDirectionDescIcon,
+      BurgerIcon,
+      ArrowDownIcon
+    ];
+    
+    icons.forEach((Icon) => {
+      
+      const wrapper = shallowWithIntl(<Icon/>);
+      
+      expect(wrapper.length)
+        .toBe(1);
+    });
+  });
+  
+  it('should return correct svg icon', () => {
+    const Icon = makeIcon('foo', 'bar');
+    
+    const wrapper = shallowWithIntl(Icon);
+    
+    expect(wrapper.find('svg use')
+      .prop('xlinkHref'))
+      .toEqual('#foo');
+    
+    expect(wrapper.find('svg')
+      .hasClass('bar'))
+      .toBeTruthy();
+  });
+});

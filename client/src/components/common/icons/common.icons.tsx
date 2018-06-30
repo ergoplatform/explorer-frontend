@@ -20,138 +20,71 @@ interface IIconProps {
   className?: string;
 }
 
-export const SearchIcon = ({ className }: IIconProps) => {
+export const makeIcon = (iconId: string, className?: string): JSX.Element => {
   return (
     <svg className={ className }
          focusable='false'>
-      <use xlinkHref={ `#${searchIcon.id}` }/>
+      <use xlinkHref={ `#${iconId}` }/>
     </svg>
   );
+};
+
+export const SearchIcon = ({ className }: IIconProps) => {
+  return makeIcon(searchIcon.id, className);
 };
 
 export const ArrowIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${arrowIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(arrowIcon.id, className);
 };
 
 export const DataIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${dataIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(dataIcon.id, className);
 };
 
 export const ApiIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${apiIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(apiIcon.id, className);
 };
 
 export const WalletIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${walletIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(walletIcon.id, className);
 };
 
 export const ChartIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${chartIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(chartIcon.id, className);
 };
 
 export const StatsIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${statsIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(statsIcon.id, className);
 };
 
 export const QRCodeIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${qrCodeIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(qrCodeIcon.id, className);
 };
 
 export const CrossIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${crossIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(crossIcon.id, className);
 };
 
 export const DoubleArrowIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${doubleArrowIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(doubleArrowIcon.id, className);
 };
 
 export const SortDirectionIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${sortDirectionIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(sortDirectionIcon.id, className);
 };
 
 export const SortDirectionAscIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${sortDirectionAscIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(sortDirectionAscIcon.id, className);
 };
 
 export const SortDirectionDescIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${sortDirectionDescIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(sortDirectionDescIcon.id, className);
 };
 
-
 export const BurgerIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${burgerIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(burgerIcon.id, className);
 };
 
 export const ArrowDownIcon = ({ className }: IIconProps) => {
-  return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${arrowDownIcon.id}` }/>
-    </svg>
-  );
+  return makeIcon(arrowDownIcon.id, className);
 };

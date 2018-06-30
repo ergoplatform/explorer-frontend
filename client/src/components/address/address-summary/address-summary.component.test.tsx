@@ -14,7 +14,7 @@ describe('Component | Address Summary', () => {
     };
   });
   
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     const wrapper = shallowWithIntl(<AddressSummaryComponent summary={ summary }/>);
     
     expect(wrapper.length)
