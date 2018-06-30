@@ -31,7 +31,7 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     icon: <DataIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
     props: {
       isActive: (match: any, path: any) => {
-        return (match || path.pathname.match(/^(\/blocks\/|\/addresses\/)/)
+        return (match || path.pathname.match(/^(\/blocks\/|\/addresses\/|\/transactions\/)/)
         );
       }
     },
