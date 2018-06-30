@@ -4,7 +4,6 @@
 //-------------------------------------
 $block-adproofs-bg-color: #ffffff;
 $block-adproofs-border-color: #eeeeee;
-$block-adproofs-header-color: $theme-color-blue;
 
 .bi-block-adproofs {
   border: 1px solid $block-adproofs-border-color;
@@ -16,7 +15,6 @@ $block-adproofs-header-color: $theme-color-blue;
   &__header {
     padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
     border-bottom: 1px solid $block-adproofs-border-color;
-    color: $block-adproofs-header-color;
     font-weight: 600;
   }
 
