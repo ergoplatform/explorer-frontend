@@ -51,10 +51,10 @@ class TransactionsItem extends React.PureComponent {
                         : <FormattedMessage id='components.transaction-item.null-address'/>
                       }
                     </div>
-                    { this.props.isScriptsDisplayed && address.transactionId && (
+                    { this.props.isScriptsDisplayed && address.outputTransactionId && (
                       <div className='bi-transactions-item__address-output g-flex__item-fixed'>
                         (<CoinValueComponent value={ address.value }/> - <Link
-                        to={ `/transactions/${address.transactionId}` }>
+                        to={ `/transactions/${address.outputTransactionId}` }>
                         <FormattedMessage id='components.transaction-item.address-output'/>
                       </Link>
                         )

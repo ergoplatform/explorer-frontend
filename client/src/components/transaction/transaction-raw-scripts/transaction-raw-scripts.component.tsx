@@ -17,7 +17,7 @@ export class TransactionRawScriptsComponent extends React.PureComponent<ITransac
                 {
                   Object.keys(item)
                     .map((key) => {
-                      return item[key];
+                      return `${key}: ${item[key]}`;
                     })
                     .join(' ')
                 }

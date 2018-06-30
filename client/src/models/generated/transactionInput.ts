@@ -15,6 +15,7 @@ import { TransactionId } from './transactionId';
 
 export interface TransactionInput {
   transactionId: TransactionId;
+  outputTransactionId: TransactionId;
   id: AddressId;
   address: AddressId;
   value: number;
