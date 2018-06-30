@@ -26,6 +26,7 @@ const settings = JSON.parse(localStorage.getItem('settings') as string) || {};
 preloadedState.settings = {
   ...(preloadedState.settings || {}),
   ...settings,
+  isSidebarDisplayed: false,
 };
 
 const AppStore = configureStore(preloadedState);

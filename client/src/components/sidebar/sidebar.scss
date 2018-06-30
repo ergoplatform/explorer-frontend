@@ -51,8 +51,8 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     }
 
     .bi-sidebar-menu__item-icon {
-      transform: scale3d((24/15), (24/15), 1);
       margin-right: 0;
+      transform: scale3d((24/15), (24/15), 1);
     }
 
     .bi-sidebar-menu__item-icon + .bi-sidebar-menu__item-title {
@@ -88,7 +88,7 @@ $sidebar-btn-toggle-icon-color: #ffffff;
       justify-content: center;
     }
 
-    &__copyright {
+    &__copyright, &__made-by {
       position: absolute;
       z-index: -1;
       bottom: 0;
@@ -137,6 +137,7 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     width: 100%;
 
     flex-wrap: wrap;
+    align-items: center;
   }
 
   &__copyright {
@@ -160,6 +161,15 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     transform: rotate(270deg);
 
     fill: $sidebar-side-logo-color;
+  }
+
+  &__made-by {
+    font-size: 14px;
+    color: $sidebar-copyright-color;
+
+    a {
+      color: #6C717C;
+    }
   }
 
   .bi-environment-switcher {
