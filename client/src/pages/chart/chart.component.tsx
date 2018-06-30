@@ -60,7 +60,8 @@ class Chart extends React.PureComponent {
       'bi-chart': true,
       'bi-chart--iframe': iframe,
       'bi-chart--scale': scale === '1',
-      'g-flex-column': true
+      'g-flex-column': true,
+      'g-flex-column__item-fixed': true,
     });
     
     return (

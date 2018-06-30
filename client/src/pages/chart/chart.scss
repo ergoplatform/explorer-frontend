@@ -22,9 +22,9 @@ $chart-subtitle-color: #828795;
   }
 
   &__chart {
-    height: 100%;
+    height: 100vh;
     max-height: 512px;
-    margin-top: $grid-offset-step * 5;
+    margin-top: $grid-offset-step * 3;
     margin-bottom: $grid-offset-step * 5;
     padding-right: $grid-offset-step * 15;
     padding-left: ($grid-offset-step * 3);
@@ -34,8 +34,6 @@ $chart-subtitle-color: #828795;
     padding: 0 ($grid-offset-step * 15);
 
     justify-content: space-between;
-
-    margin-bottom: $grid-offset-step * 5;
   }
 
   &__title {
