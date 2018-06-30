@@ -1,6 +1,6 @@
+import dayjs from 'dayjs';
 import { ShallowWrapper } from 'enzyme';
 import * as React from 'react';
-import dayjs from 'dayjs';
 
 import { shallowWithIntl } from '../../../utils/test-utils';
 
