@@ -18,8 +18,8 @@ interface IAddressActionsProps {
   address: FullAddress;
 }
 
-const QRCODE_MODAL_STATE_KEY          = 'isQrCodeModalOpened';
-const PAYMENT_REQUEST_MODAL_STATE_KEY = 'isPaymentRequestModalOpened';
+export const QRCODE_MODAL_STATE_KEY          = 'isQrCodeModalOpened';
+export const PAYMENT_REQUEST_MODAL_STATE_KEY = 'isPaymentRequestModalOpened';
 
 export class AddressActionsComponent extends React.Component<IAddressActionsProps, IAddressActionsState> {
   state: IAddressActionsState = {
