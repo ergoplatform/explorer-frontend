@@ -8,7 +8,6 @@ $chart-iframe-bg: #ffffff;
 $chart-subtitle-color: #828795;
 
 .bi-chart {
-  height: 100%;
   padding: ($grid-offset-step * 10) 0;
   font-family: $theme-main-font;
 
@@ -25,7 +24,8 @@ $chart-subtitle-color: #828795;
   &__chart {
     height: 100%;
     max-height: 512px;
-    margin: $grid-offset-step * 10 0;
+    margin-top: $grid-offset-step * 5;
+    margin-bottom: $grid-offset-step * 5;
     padding-right: $grid-offset-step * 15;
     padding-left: ($grid-offset-step * 3);
   }
@@ -34,6 +34,8 @@ $chart-subtitle-color: #828795;
     padding: 0 ($grid-offset-step * 15);
 
     justify-content: space-between;
+
+    margin-bottom: $grid-offset-step * 5;
   }
 
   &__title {
