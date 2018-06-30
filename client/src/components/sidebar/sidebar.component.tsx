@@ -67,6 +67,10 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
 ];
 
 class Sidebar extends React.Component<SettingsActions & ApiActions & { settings: SettingsState, api: ApiState }> {
+  state: any = {
+    isClient: false,
+  };
+  
   constructor (props: any) {
     super(props);
     
@@ -78,6 +82,10 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
     if (!this.props.api.data) {
       this.props.getApi();
     }
+    
+    this.setState({
+      isClient: true,
+    });
   }
   
   toggleCollapse (): void {
@@ -92,10 +100,10 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
     this.props.setSidebarDisplayStatus(false);
   }
   
-  render (): JSX.Element {
+  render (): JSX.Element | null {
     const sidebarClassNames = classNames({
       'bi-sidebar': true,
-      'bi-sidebar--collapsed': this.props.settings.isSidebarCollapsed,
+      'bi-sidebar--collapsed': this.props.settings.isSidebarCollapsed && this.state.isClient,
       'bi-sidebar--open': this.props.settings.isSidebarDisplayed,
       'g-flex-column': true,
       'g-flex__item-fixed': true
