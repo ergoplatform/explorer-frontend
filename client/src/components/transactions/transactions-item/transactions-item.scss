@@ -15,7 +15,6 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
   background-color: $block-transactions-item-bg-color;
   font-size: 14px;
 
-
   // [ Components ]
   //---------------------------------------
   &__header {
@@ -98,6 +97,50 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
 
     a {
       color: green;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-transactions-item {
+    &__body,
+    &__output,
+    &__footer {
+      flex-direction: column;
+    }
+
+    &__inputs,
+    &__outputs {
+      width: auto;
+    }
+
+    &__inputs {
+      border-bottom: 1px solid $block-transactions-item-border-color;
+      border-right: 0;
+    }
+
+    &__confirmations {
+      margin-right: 0;
+      margin-bottom: $grid-offset-step;
+    }
+
+    &__confirmations,
+    &__total-value {
+      text-align: center;
+    }
+
+
+    &__input,
+    &__output {
+      margin-bottom: $grid-offset-step * 3;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__address-spent {
+      margin-left: 0;
     }
   }
 }

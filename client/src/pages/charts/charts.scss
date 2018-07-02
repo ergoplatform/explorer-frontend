@@ -54,3 +54,24 @@ $charts-charts-bg-color: #ffffff;
     flex-wrap: wrap;
   }
 }
+
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-charts {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
+
+    &__title {
+      padding: $grid-offset-step * 5 0;
+    }
+
+    &__charts {
+      justify-content: center;
+    }
+
+    &__footer,
+    &__charts-wrapper,
+    &__header{
+      padding: 0 ($grid-offset-step * 3);
+    }
+  }
+}

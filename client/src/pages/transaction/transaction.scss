@@ -38,3 +38,15 @@ $transactions-subtitle-color: #828795;
     font-weight: 500;
   }
 }
+
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-transaction {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
+
+    &__header,
+    &__body {
+      padding: 0 ($grid-offset-step * 3);
+    }
+  }
+}

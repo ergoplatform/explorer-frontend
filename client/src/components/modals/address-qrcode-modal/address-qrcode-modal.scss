@@ -31,3 +31,9 @@ $address-qrcode-modal-subtitle-color: #828795;
     font-weight: 400;
   }
 }
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-address-qrcode-modal {
+    padding: ($grid-offset-step * 12) ($grid-offset-step * 15);
+  }
+}

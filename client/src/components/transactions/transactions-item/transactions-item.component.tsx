@@ -85,20 +85,6 @@ class TransactionsItem extends React.Component {
                 
                 return (
                   <div className='bi-transactions-item__output g-flex' key={ address.address || index }>
-                    <div className='bi-transactions-item__value g-flex__item-fixed'>
-                      <CoinValueComponent value={ address.value }/>
-                    </div>
-                    
-                    <div className='bi-transactions-item__address-spent g-flex__item'
-                         style={ { display: this.props.isScriptsDisplayed || !this.state.isClient ? 'block' : 'none' }
-                         }>
-                      { address.spentTransactionId ?
-                        <Link to={ `/transactions/${address.spentTransactionId}` }>
-                          <FormattedMessage id='components.transaction-item.spent'/>
-                        </Link> : <FormattedMessage id='components.transaction-item.unspent'/>
-                      }
-                    </div>
-                    
                     <div className='bi-transactions-item__address g-flex__item-fixed'>
                       { address.address ?
                         <Link className='u-word-wrap u-word-wrap--ellipsis'
@@ -110,6 +96,21 @@ class TransactionsItem extends React.Component {
                         </span>
                       }
                     </div>
+                    
+                    <div className='bi-transactions-item__address-spent g-flex__item'
+                         style={ { display: this.props.isScriptsDisplayed || !this.state.isClient ? 'block' : 'none' }
+                         }>
+                      { address.spentTransactionId ?
+                        <Link to={ `/transactions/${address.spentTransactionId}` }>
+                          <FormattedMessage id='components.transaction-item.spent'/>
+                        </Link> : <FormattedMessage id='components.transaction-item.unspent'/>
+                      }
+                    </div>
+  
+                    <div className='bi-transactions-item__value g-flex__item-fixed'>
+                      <CoinValueComponent value={ address.value }/>
+                    </div>
+
                   </div>
                 );
               })

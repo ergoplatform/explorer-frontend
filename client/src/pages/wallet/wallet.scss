@@ -12,3 +12,9 @@
     font-weight: 700;
   }
 }
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-wallet {
+    padding: ($grid-offset-step * 2) ($grid-offset-step * 3);
+  }
+}

@@ -52,7 +52,7 @@ $search-results-title-color: $theme-primary-color;
 }
 
 @media screen and (max-width: $mobile-device-width) {
-  .bi-data {
+  .bi-search-results {
     padding: ($grid-offset-step * 5) 0;
 
     &__footer, &__header, &__body {

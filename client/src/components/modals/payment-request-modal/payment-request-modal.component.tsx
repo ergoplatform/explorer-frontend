@@ -41,7 +41,7 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps>
     const link = this.getLink();
     
     return (
-      <ReactModal className='bi-payment-request-modal bi-modal bi-modal--scale'
+      <ReactModal className='bi-payment-request-modal bi-modal bi-modal--scale g-scroll-y'
                   overlayClassName='bi-modal-overlay'
                   closeTimeoutMS={ 150 }
                   isOpen={ this.props.isOpen }
@@ -88,8 +88,8 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps>
           </label>
         </div>
         
-        <div className='g-flex'>
-          <div className='g-flex__item-fixed'>
+        <div className='bi-payment-request-modal__result g-flex'>
+          <div className='g-flex__item-fixed bi-payment-request-modal__qrcode'>
             <QRCode value={ link }
                     size={ 156 }/>
           </div>

@@ -42,3 +42,9 @@ $chart-preview-description-color: #828795;
     padding: 0 $grid-offset-step * 4;
   }
 }
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-charts-preview {
+    margin-right: 0;
+  }
+}
