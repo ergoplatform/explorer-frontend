@@ -89,7 +89,7 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
   }
   
   toggleCollapse (): void {
-    if (this.props.isSidebarDisplayed) {
+    if (this.props.settings.isSidebarDisplayed) {
       return this.hideSidebar();
     }
     
