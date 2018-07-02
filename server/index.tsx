@@ -18,6 +18,7 @@ import { AddressPage } from './pages/address.page';
 import { BlockPage } from './pages/block.page';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
+import { SearchPage } from './pages/search.page';
 import { StatsPage } from './pages/stats.page';
 import { TransactionPage } from './pages/transaction.page';
 import { Preloader } from './preloader';
@@ -52,13 +53,23 @@ if (process.env.NODE_ENV === 'production') {
   server.use(['/*\.(js|json|png)(\.map)?', '/static'], proxy({ target: 'http://localhost:3000' }));
 }
 
+
 server.use((req: any, res, next) => {
   req.explorer = {
-    preloadedState: {
-    }
+    preloadedState: {}
   };
   
+  next();
+});
+
+server.use('/search', SearchPage);
+
+server.use((req: any, res, next) => {
   axios.interceptors.response.use(response => response, () => {
+    if ( req.explorer.skipError ) {
+      return;
+    }
+    
     return res.redirect('/server-error');
   });
   

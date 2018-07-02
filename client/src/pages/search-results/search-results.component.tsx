@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Redirect, RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
 
+import { AppActions } from '../../actions/app.actions';
 import { SearchActions } from '../../actions/search.actions';
 import { SearchState } from '../../reducers/search.reducer';
 import { AppState } from '../../store/app.store';
@@ -13,7 +14,7 @@ import { BlocksTableComponent } from '../../components/blocks-table/blocks-table
 
 import './search-results.scss';
 
-type ISearchResultsProps = RouteComponentProps<{}> & SearchActions & SearchState;
+type ISearchResultsProps = RouteComponentProps<{}> & SearchActions & SearchState & AppActions;
 
 interface ISearchResultsState {
   canSearch: boolean;
@@ -27,6 +28,12 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
   private query: string;
   
   componentDidMount (): void {
+    if (this.props.preloaded) {
+      this.props.clearPreloadedState();
+      
+      return;
+    }
+    
     const { query } = queryString.parse(this.props.location.search);
     
     this.query = query || '';
@@ -71,9 +78,9 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     if (exactAddress) {
       return <Redirect to={ `/blocks/${this.query}` }/>;
     }
-  
+    
     const exactTransaction = this.props.data.transactions.includes(this.query);
-  
+    
     if (exactTransaction) {
       return <Redirect to={ `/transactions/${this.query}` }/>;
     }
@@ -106,7 +113,7 @@ function mapStateToProps (state: AppState): SearchState {
 }
 
 function mapDispatchToProps (dispatch: any): any {
-  return bindActionCreators(SearchActions, dispatch);
+  return bindActionCreators({ ...SearchActions, ...AppActions }, dispatch);
 }
 
 
