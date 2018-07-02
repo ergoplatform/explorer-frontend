@@ -13,6 +13,6 @@ import { AddressId } from './addressId';
 
 
 export interface Miner {
-    id: AddressId;
+    address: AddressId;
     name?: string;
 }

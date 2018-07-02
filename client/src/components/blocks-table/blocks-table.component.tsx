@@ -65,9 +65,9 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                     <FormattedMessage id='common.block.minedBy'/>
                   </div>
                   
-                  <Link to={ `/addresses/${block.miner.id || block.miner.name}` }
+                  <Link to={ `/addresses/${block.miner.address || block.miner.name}` }
                         className='u-word-wrap u-word-wrap--ellipsis'>
-                    { block.miner.name || block.miner.id }
+                    { block.miner.name || block.miner.address }
                   </Link>
                 </div>
                 
