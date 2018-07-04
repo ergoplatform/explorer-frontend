@@ -48,6 +48,10 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
               coinName: environment.blockchain.coinName.toUpperCase()
             } }/>
           </div>
+  
+          <div className='bi-stats__subtitle'>
+            <FormattedMessage id='components.stats.subtitle'/>
+          </div>
         </div>
         
         { this.props.stats ? this.renderBody() : null }

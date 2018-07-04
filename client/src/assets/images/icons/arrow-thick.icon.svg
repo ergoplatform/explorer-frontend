@@ -4,8 +4,8 @@
     <title>Page 1</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="one-block---transactions" transform="translate(-567.000000, -673.000000)" fill="#828795">
+    <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="one-block---transactions" transform="translate(-567.000000, -673.000000)">
             <polygon id="Page-1" transform="translate(577.500000, 679.078947) scale(-1, 1) translate(-577.500000, -679.078947) " points="574.184211 673 567 679.079224 574.184211 685.157895 574.184211 681.28975 587.999724 681.28975 587.999724 676.868421 574.184211 676.868421"></polygon>
         </g>
     </g>

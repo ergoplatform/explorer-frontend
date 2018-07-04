@@ -199,7 +199,8 @@
       }
     },
     "stats": {
-      "title": "{coinName} Stats"
+      "title": "{coinName} Stats",
+      "subtitle": "Summary of statistics for the previous 24 hour period"
     },
     "timespan": {
       "span": {

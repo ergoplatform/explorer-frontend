@@ -23,7 +23,7 @@ export class AddressSummaryComponent extends React.Component<IAddressSummaryProp
               <FormattedMessage id='components.address-summary.hash'/>
             </div>
             
-            <div className='bi-address-summary__cell bi-address-summary__cell--value bi-table__cell u-word-wrap'>
+            <div className='bi-address-summary__cell bi-address-summary__cell--value bi-table__cell u-word-wrap u-word-wrap--ellipsis'>
               { this.props.summary.id }
             </div>
           </div>

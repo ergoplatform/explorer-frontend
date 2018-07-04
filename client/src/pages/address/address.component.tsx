@@ -114,7 +114,8 @@ class Address extends React.PureComponent {
         (
           <div className='bi-address__transactions'>
             { !this.props.transactionFetching &&
-            <TransactionsComponent transactions={ this.props.transactions.items }/>
+            <TransactionsComponent transactions={ this.props.transactions.items }
+                                   address={ this.props.address.summary.id }/>
             }
             
             <div className='bi-address__transactions-footer g-flex'>

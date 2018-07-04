@@ -2,6 +2,7 @@
 
 // #STATS
 //-------------------------------------
+$stats-subtitle-color: #828795;
 
 .bi-stats {
   padding: ($grid-offset-step * 10) 0;
@@ -9,14 +10,19 @@
 
   // [ Components ]
   //-----------------------------------
-  &__header,
-  &__body {
+  &__header, &__body {
     padding: 0 ($grid-offset-step * 15);
   }
 
   &__title {
     font-size: 26px;
     font-weight: 700;
+  }
+
+  &__subtitle {
+    color: $stats-subtitle-color;
+    font-size: 15px;
+    font-weight: 500;
   }
 
   &__line {
@@ -28,9 +34,7 @@
   .bi-stats {
     padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
 
-    &__footer,
-    &__header,
-    &__body {
+    &__footer, &__header, &__body {
       padding: 0 ($grid-offset-step * 3);
     }
   }

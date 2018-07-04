@@ -3,6 +3,7 @@ import { FormattedMessage, FormattedPlural } from 'react-intl';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { AddressId } from '../../../models/generated/addressId';
 import { Transaction } from '../../../models/generated/transaction';
 
 import { SettingsState } from '../../../reducers/settings.reducer';
@@ -11,11 +12,14 @@ import { AppState } from '../../../store/app.store';
 import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 
+import { ArrowThickIcon } from '../../common/icons/common.icons';
+
 import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
   transaction: Transaction;
   confirmations?: any;
+  address?: AddressId;
 }
 
 class TransactionsItem extends React.Component {
@@ -31,7 +35,10 @@ class TransactionsItem extends React.Component {
   }
   
   render (): JSX.Element {
-    let totalOutput = 0;
+    let totalOutput        = 0;
+    let totalInputAddress  = 0;
+    let totalOutputAddress = 0;
+    let isOutput           = false;
     
     return (
       <div className='bi-transactions-item'>
@@ -50,6 +57,12 @@ class TransactionsItem extends React.Component {
           <div className='bi-transactions-item__inputs g-flex__item'>
             {
               this.props.transaction.inputs.map((address, index) => {
+                if (address.address === this.props.address) {
+                  totalInputAddress += address.value;
+                  
+                  isOutput = true;
+                }
+                
                 return (
                   <div className='bi-transactions-item__input g-flex' key={ address.address || index }>
                     <div className='bi-transactions-item__address'>
@@ -77,11 +90,27 @@ class TransactionsItem extends React.Component {
             }
           </div>
           
+          
+          { this.props.address ?
+            (<div className={ [
+              'bi-transactions-item__arrow',
+              isOutput ? 'bi-transactions-item__arrow--output' : 'bi-transactions-item__arrow--input'
+            ].join(' ') }>
+              <ArrowThickIcon className='bi-transactions-item__arrow-icon'/>
+            </div>) :
+            (<div className='bi-transactions-item__arrow'>
+              <ArrowThickIcon className='bi-transactions-item__arrow-icon'/>
+            </div>)
+          }
+          
           <div className='bi-transactions-item__outputs g-flex__item g-flex-column'>
             {
               this.props.transaction.outputs.map((address, index) => {
-                totalOutput += address.value;
+                if (address.address === this.props.address) {
+                  totalOutputAddress += address.value;
+                }
                 
+                totalOutput += address.value;
                 
                 return (
                   <div className='bi-transactions-item__output g-flex' key={ address.address || index }>
@@ -106,11 +135,11 @@ class TransactionsItem extends React.Component {
                         </Link> : <FormattedMessage id='components.transaction-item.unspent'/>
                       }
                     </div>
-  
+                    
                     <div className='bi-transactions-item__value g-flex__item-fixed'>
                       <CoinValueComponent value={ address.value }/>
                     </div>
-
+                  
                   </div>
                 );
               })
@@ -134,8 +163,12 @@ class TransactionsItem extends React.Component {
                 </div>
               ) }
               
-              <div className='bi-transactions-item__total-value g-flex__item-fixed'>
-                <CoinValueComponent value={ totalOutput }/>
+              <div className={
+                ['bi-transactions-item__total-value g-flex__item-fixed',
+                  this.props.address && (isOutput ? 'bi-transactions-item__total-value--output' : 'bi-transactions-item__total-value--input')
+                ].join(' ') }>
+                <CoinValueComponent
+                  value={ this.props.address ? Math.abs(totalOutputAddress - totalInputAddress) : totalOutput }/>
               </div>
             </div>
           </div>

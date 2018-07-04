@@ -5,6 +5,7 @@ import {
   ApiIcon,
   ArrowDownIcon,
   ArrowIcon,
+  ArrowThickIcon,
   BurgerIcon,
   ChartIcon,
   CrossIcon,
@@ -37,7 +38,8 @@ describe('Components | CommonIcons', () => {
       SortDirectionAscIcon,
       SortDirectionDescIcon,
       BurgerIcon,
-      ArrowDownIcon
+      ArrowDownIcon,
+      ArrowThickIcon,
     ];
     
     icons.forEach((Icon) => {
