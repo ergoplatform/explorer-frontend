@@ -15,6 +15,7 @@ export function chartReducer (state: ChartState = initialState, action: any): Ch
       
       return {
         ...state,
+        data: null,
         fetching: true
       };
     }
