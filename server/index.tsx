@@ -62,7 +62,7 @@ server.use((req: any, res, next) => {
   next();
 });
 
-server.use('/search', SearchPage);
+server.use('/:locale?/search', SearchPage);
 
 server.use((req: any, res, next) => {
   axios.interceptors.response.use(response => response, () => {
@@ -76,7 +76,7 @@ server.use((req: any, res, next) => {
   next();
 });
 
-server.use('/server-error', (req: any, res) => {
+server.use('/:locale?/server-error', (req: any, res) => {
   const context: any = {};
   
   const body = renderToString(
@@ -111,12 +111,12 @@ server.use('/server-error', (req: any, res) => {
 
 server.use('*', Preloader);
 
-server.use('/', DataPage);
-server.use('/stats', StatsPage);
-server.use('/charts', ChartPage);
-server.use('/blocks', BlockPage);
-server.use('/transactions', TransactionPage);
-server.use('/addresses', AddressPage);
+server.use('/:locale?', DataPage);
+server.use('/:locale?/stats', StatsPage);
+server.use('/:locale?/charts', ChartPage);
+server.use('/:locale?/blocks', BlockPage);
+server.use('/:locale?/transactions', TransactionPage);
+server.use('/:locale?/addresses', AddressPage);
 
 
 server.get('*', (req: any, res) => {
