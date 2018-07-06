@@ -3,7 +3,7 @@ import * as queryString from 'query-string';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 import { hot } from 'react-hot-loader';
-import { Route, RouteComponentProps, Switch } from 'react-router';
+import { Route, RouteComponentProps, Switch, withRouter } from 'react-router';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
@@ -23,7 +23,9 @@ import { WalletComponent } from '../../pages/wallet/wallet.component';
 
 import './app.scss';
 
-class App extends React.PureComponent<RouteComponentProps<any>> {
+class App extends React.PureComponent {
+  props: RouteComponentProps<any>;
+  
   render (): JSX.Element {
     const { iframe } = queryString.parse(this.props.location.search);
     
@@ -76,4 +78,4 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
   }
 }
 
-export const AppComponent = hot(module)(App);
+export const AppComponent = hot(module)(withRouter(App));
