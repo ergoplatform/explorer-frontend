@@ -29,8 +29,16 @@ class LanguageSwitcher extends React.PureComponent<SettingsState & SettingsActio
   }
   
   onLocaleChanged (value: any): any {
-    const pathname = window.location.href.replace(`${window.location.origin}/${this.props.locale || 'en'}`,
-      `${window.location.origin}/${value || 'en'}`);
+    const searchString = `${window.location.origin}/${this.props.locale || 'en'}`;
+    let pathname = '';
+    
+    if (window.location.href.indexOf(searchString) !== -1) {
+       pathname = window.location.href.replace(`${window.location.origin}/${this.props.locale || 'en'}`,
+        `${window.location.origin}/${value || 'en'}`);
+    } else {
+      pathname = window.location.href.replace(`${window.location.origin}`,
+        `${window.location.origin}/${value || 'en'}`);
+    }
   
     // this.props.setLocale(value);
     
