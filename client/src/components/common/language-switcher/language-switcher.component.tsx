@@ -28,8 +28,13 @@ class LanguageSwitcher extends React.PureComponent<SettingsState & SettingsActio
     this.onLocaleChanged = this.onLocaleChanged.bind(this);
   }
   
-  onLocaleChanged (value: any): void {
-    this.props.setLocale(value);
+  onLocaleChanged (value: any): any {
+    const pathname = window.location.href.replace(`${window.location.origin}/${this.props.locale || 'en'}`,
+      `${window.location.origin}/${value || 'en'}`);
+  
+    // this.props.setLocale(value);
+    
+    window.location.replace(pathname);
   }
   
   render (): JSX.Element {

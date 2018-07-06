@@ -23,10 +23,20 @@ delete window.__PRELOADED_STATE__;
 
 const settings = JSON.parse(localStorage.getItem('settings') as string) || {};
 
+const languages = ['en', 'ru'];
+let locale      = languages[0];
+
+const pathLanguage = window.location.pathname.split('/')[1];
+
+if (languages.includes(pathLanguage)) {
+  locale = pathLanguage;
+}
+
 preloadedState.settings = {
   ...(preloadedState.settings || {}),
   ...settings,
   isSidebarDisplayed: false,
+  locale
 };
 
 const AppStore = configureStore(preloadedState);
@@ -36,7 +46,7 @@ addLocaleData([...en, ...ru]);
 export const App = () => {
   return (<Provider store={ AppStore }>
     <ConnectedIntlProvider textComponent={ TextComponent }>
-      <BrowserRouter>
+      <BrowserRouter basename={`/${locale}`}>
         <LastLocationProvider>
           <Switch>
             <Route path='/server-error' exact={ true } component={ ServerErrorComponent }/>
