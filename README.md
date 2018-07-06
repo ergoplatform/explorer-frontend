@@ -45,7 +45,13 @@ REACT_APP_APP_CONFIG=/path/to/custom/app.config.js docker-compose up
 Where `app.config.js` is a JavaScript file containing next content:
 ```js
 var __APP_CONFIG__ = {
-  apiUrl: 'http://custom.apiserver'
+  apiUrl: 'http://custom.apiserver',
+  environments: [
+     {
+       name: 'Testnet',
+       url: 'http://custom.explorerUrl',
+     }
+   ],
 };
 
 if (typeof global !== 'undefined') {

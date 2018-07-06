@@ -10,10 +10,6 @@ export const environmentDefault: IEnvironment = {
     {
       name: 'Testnet',
       url: 'https://testnet.ergoplatform.com',
-    },
-    {
-      name: 'Mainnet',
-      url: 'https://mainnet.ergoplatform.com',
     }
   ],
   isLoggerEnabled: true,
