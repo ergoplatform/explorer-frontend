@@ -24,9 +24,20 @@ addLocaleData([...en, ...ru]);
 export const App = ({ location, context, preloadedState }: any) => {
   const AppStore = configureStore(preloadedState);
   
+  const languages = ['en', 'ru'];
+  let locale      = languages[0];
+  
+  preloadedState.settings.locale = locale;
+  
+  const pathLanguage = location.split('/')[1];
+  
+  if (languages.includes(pathLanguage)) {
+    locale = pathLanguage;
+  }
+  
   return (<Provider store={ AppStore }>
     <ConnectedIntlProvider textComponent={ TextComponent }>
-      <StaticRouter location={ location } context={ context }>
+      <StaticRouter location={ location } context={ context } basename={ `/${locale}` }>
         <LastLocationProvider>
           <AppComponent/>
         </LastLocationProvider>
