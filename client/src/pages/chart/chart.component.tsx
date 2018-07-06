@@ -119,7 +119,16 @@ class Chart extends React.PureComponent {
     
     switch (this.props.match.params.chartType) {
       case 'hash-rate-distribution': {
-        return <PieChartComponent data={ this.formatData() } labels={{name: 'Relayed By', value: 'Count'}}  compact={ !!iframe }/>;
+        return <PieChartComponent data={ this.formatData() }
+                                  compact={ !!iframe }
+                                  labels={
+                                    {
+                                      name: <FormattedMessage
+                                        id={ 'components.chart.hash-rate-distribution.labels.name' }/>,
+                                      value: <FormattedMessage
+                                        id={ 'components.chart.hash-rate-distribution.labels.value' }/>
+                                    }
+                                  }/>;
       }
       
       default: {

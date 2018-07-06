@@ -127,6 +127,12 @@
         "total": "Coins in circulation",
         "transactions-per-block": "Transactions per Block",
         "hash-rate-distribution": "Hash Rate Distribution"
+      },
+      "hash-rate-distribution": {
+        "labels": {
+          "name": "Relayed By",
+          "value": "Count"
+        }
       }
     },
     "charts": {
