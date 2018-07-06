@@ -88,3 +88,38 @@ $chart-subtitle-color: #828795;
     display: none;
   }
 }
+
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-chart {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
+
+
+    &__chart {
+      max-height: 200px;
+      padding-right: $grid-offset-step * 3;
+    }
+
+    &__controls {
+      flex-wrap: wrap;
+    }
+
+    &__controls .bi-timespan {
+      margin-bottom: $grid-offset-step * 2;
+    }
+
+    &__btn-back {
+      margin-bottom: $grid-offset-step * 2;
+    }
+
+    &__title {
+      padding: $grid-offset-step * 5 0;
+    }
+
+    &__footer,
+    &__controls,
+    &__header{
+      padding: 0 ($grid-offset-step * 3);
+    }
+  }
+}

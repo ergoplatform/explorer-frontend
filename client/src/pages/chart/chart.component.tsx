@@ -17,6 +17,7 @@ import { ChartActions } from '../../actions/chart.actions';
 
 import { AreaChartComponent } from '../../components/charts/area-chart/area-chart.component';
 import { ChartActionsComponent } from '../../components/charts/chart-actions/chart-actions.component';
+import { PieChartComponent } from '../../components/charts/pie-chart/pie-chart.component';
 import { TimespanComponent } from '../../components/charts/timespan/timespan.component';
 
 import { ArrowIcon } from '../../components/common/icons/common.icons';
@@ -61,7 +62,7 @@ class Chart extends React.PureComponent {
       'bi-chart--iframe': iframe,
       'bi-chart--scale': scale === '1',
       'g-flex-column': true,
-      'g-flex-column__item-fixed': true,
+      'g-flex-column__item-fixed': true
     });
     
     return (
@@ -81,7 +82,7 @@ class Chart extends React.PureComponent {
             <Link className='bi-chart__btn-back'
                   to='/charts'>
               <ArrowIcon className='bi-chart__btn-back-icon'/>
-    
+              
               <span className='bi-chart__btn-back-title'>
                 <FormattedMessage id='components.chart.back'/>
               </span>
@@ -102,17 +103,39 @@ class Chart extends React.PureComponent {
   }
   
   private renderBody (): JSX.Element {
-    const { iframe } = queryString.parse(this.props.location.search);
-    
     return (
       <div className='bi-chart__body g-flex-column__item'>
         <div className='bi-chart__chart'>
-          { this.props.data &&
-          <AreaChartComponent data={ this.formatData() } compact={ !!iframe } isScale={ this.params.scale }/>
-          }
+          { this.props.data && this.renderChart() }
         </div>
         
-        <div className='bi-chart__controls g-flex'>
+        { this.renderControls() }
+      </div>
+    );
+  }
+  
+  private renderChart (): JSX.Element {
+    const { iframe } = queryString.parse(this.props.location.search);
+    
+    switch (this.props.match.params.chartType) {
+      case 'hash-rate-distribution': {
+        return <PieChartComponent data={ this.formatData() } labels={{name: 'Relayed By', value: 'Count'}}  compact={ !!iframe }/>;
+      }
+      
+      default: {
+        return <AreaChartComponent data={ this.formatData() } compact={ !!iframe } isScale={ this.params.scale }/>;
+      }
+    }
+  }
+  
+  private renderControls (): JSX.Element | null {
+    switch (this.props.match.params.chartType) {
+      case 'hash-rate-distribution': {
+        return null;
+      }
+      
+      default: {
+        return <div className='bi-chart__controls g-flex'>
           <TimespanComponent selected={ this.params.timespan }
                              getTimespanUrl={ this.getTimespanUrl }/>
           
@@ -120,9 +143,9 @@ class Chart extends React.PureComponent {
             isScale={ this.params.scale }
             data={ this.props.data }
             getChartActionUrl={ this.getChartActionUrl }/>
-        </div>
-      </div>
-    );
+        </div>;
+      }
+    }
   }
   
   private formatData (): any {

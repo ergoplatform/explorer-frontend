@@ -9,6 +9,7 @@ declare module 'react-object-inspector';
 declare module 'react-router-hash-link';
 declare module 'apiSpec';
 declare module '@axetroy/react-download';
+declare module 'highcharts-react-official';
 
 interface Window {
   __PRELOADED_STATE__: any;

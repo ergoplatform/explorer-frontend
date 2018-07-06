@@ -65,6 +65,8 @@ export class ChartsComponent extends React.PureComponent {
           <div className='bi-charts__charts'>
             <ChartsPreviewComponent chartType='hash-rate'/>
             
+            <ChartsPreviewComponent chartType='hash-rate-distribution'/>
+            
             <ChartsPreviewComponent chartType='difficulty'/>
             
             <ChartsPreviewComponent chartType='miners-revenue'/>
