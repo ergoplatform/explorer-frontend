@@ -69,7 +69,8 @@ class Address extends React.PureComponent {
       <div className='bi-address g-flex-column__item-fixed'>
         <div className='bi-address__header'>
           <div className='bi-address__title'>
-            { environment.blockchain.coinName.toUpperCase() } Address
+            <FormattedMessage id='components.address.title'
+                              values={ { coinName: environment.blockchain.coinName.toUpperCase() } }/>
           </div>
         </div>
         

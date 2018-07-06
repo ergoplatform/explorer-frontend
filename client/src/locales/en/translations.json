@@ -88,6 +88,9 @@
       "total": "No. transactions",
       "totalReceived": "Total received"
     },
+    "address": {
+      "title": "{coinName} Address"
+    },
     "block-header": {
       "adproofs": "AD Proofs",
       "back": "Back to all blocks",

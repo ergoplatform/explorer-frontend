@@ -88,6 +88,9 @@
       "total": "Количество транзакций",
       "totalReceived": "Получено монет"
     },
+    "address": {
+      "title": "{coinName} Адрес"
+    },
     "block-header": {
       "adproofs": "AD Доказательства",
       "back": "Назад ко всем блокам",
