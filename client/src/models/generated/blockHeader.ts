@@ -26,6 +26,7 @@ export interface BlockHeader {
   stateRoot: ADDigest;
   transactionsRoot: Digest32;
   nBits: number;
+  difficulty: number;
   extensionHash: string;
   /**
    * Base58-encoded equihash solutions

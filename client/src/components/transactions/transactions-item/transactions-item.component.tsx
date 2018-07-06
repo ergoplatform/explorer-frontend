@@ -75,7 +75,7 @@ class TransactionsItem extends React.Component {
                     </div>
                     
                     { this.props.isScriptsDisplayed && address.outputTransactionId && (
-                      <div className='bi-transactions-item__address-output g-flex__item-fixed'>
+                      <div className='bi-transactions-item__address-output g-flex__item-fixed u-word-wrap u-word-wrap--ellipsis'>
                         (<CoinValueComponent value={ address.value }/> - <Link
                         to={ `/transactions/${address.outputTransactionId}` }>
                         <FormattedMessage id='components.transaction-item.address-output'/>
@@ -126,7 +126,7 @@ class TransactionsItem extends React.Component {
                       }
                     </div>
                     
-                    <div className='bi-transactions-item__address-spent g-flex__item'
+                    <div className='bi-transactions-item__address-spent g-flex__item u-word-wrap u-word-wrap--ellipsis'
                          style={ { display: this.props.isScriptsDisplayed || !this.state.isClient ? 'block' : 'none' }
                          }>
                       { address.spentTransactionId ?

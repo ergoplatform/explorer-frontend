@@ -4,14 +4,15 @@
       "adProofsRoot": "AD Proofs Root",
       "age": "Timestamp",
       "block": "Block",
-      "equihashSolutions": "Equihash Solutions",
+      "difficulty": "Difficulty",
+      "equihashSolutions": "Equihash Solution",
       "extensionHash": "Extension Hash",
       "height": "Height",
       "id": "ID",
       "interlinks": "Interlinks",
       "minedBy": "Mined by",
-      "nBits": "Target Threshold (nBits)",
-      "parent": "Parent",
+      "nBits": "Bits",
+      "parent": "Previoius Block",
       "size": "Size",
       "stateRoot": "State Root",
       "transactions": "Transactions",
@@ -30,14 +31,14 @@
       },
       "chart": {
         "title": {
-          "block-size": "Ergo Explorer | Chart Average Block Size",
+          "block-size": "Ergo Explorer | Average Block Size",
           "blockchain-size": "Ergo Explorer | Blockchain Size",
-          "difficulty": "Ergo Explorer | Chart Difficulty",
+          "difficulty": "Ergo Explorer | Difficulty",
           "hash-rate": "Ergo Explorer | Hash Rate",
+          "hash-rate-distribution": "Ergo Explorer | Hash Rate Distribution",
           "miners-revenue": "Ergo Explorer | Miners Revenue",
-          "total": "Ergo Explorer | Chart Total Coins",
-          "transactions-per-block": "Ergo Explorer | Transactions per Block",
-          "hash-rate-distribution": "Ergo Explorer | Hash Rate Distribution"
+          "total": "Ergo Explorer | Coins in Circulation",
+          "transactions-per-block": "Ergo Explorer | Transactions per Block"
         }
       },
       "charts": {
@@ -63,7 +64,7 @@
       "hashRate": "Hash Rate",
       "marketCap": "Market Cap",
       "supply": "Circulating Supply",
-      "transactionAverage": "Transactions Average",
+      "transactionAverage": "Transactions per Day",
       "version": "Software Version"
     }
   },
@@ -78,7 +79,7 @@
       "title": "QR Code"
     },
     "address-summary": {
-      "hash": "Hash",
+      "hash": "Address",
       "title": "Summary"
     },
     "address-transactions": {
@@ -98,7 +99,7 @@
       "minutes": "min",
       "title": "Block Summary",
       "total": "Blocks Mined",
-      "totalCoins": "Total coins"
+      "totalCoins": "Coins mined"
     },
     "chart-actions": {
       "csv": "CSV",
@@ -108,31 +109,31 @@
     },
     "chart": {
       "back": "Back to charts",
+      "hash-rate-distribution": {
+        "labels": {
+          "name": "Miner",
+          "value": "Blocks"
+        }
+      },
       "subtitle": {
         "block-size": "The average block size",
-        "blockchain-size": "The total size of all block headers and transactions",
+        "blockchain-size": "The total size of all blocks",
         "difficulty": "A relative measure of how difficult it is to find a new block",
         "hash-rate": "The estimated number of hashes per second the network is performing",
+        "hash-rate-distribution": "An estimation of hashrate distribution amongst the largest miners",
         "miners-revenue": "Total value of coinbase block rewards and transaction fees paid to miners",
         "total": "The total number of coins that have already been mined",
-        "transactions-per-block": "The average number of transactions per block",
-        "hash-rate-distribution": "An estimation of hashrate distribution amongst the largest mining pools"
+        "transactions-per-block": "The average number of transactions per block"
       },
       "title": {
         "block-size": "Average block size",
         "blockchain-size": "Blockchain Size",
         "difficulty": "Difficulty",
         "hash-rate": "Hash Rate",
+        "hash-rate-distribution": "Hash Rate Distribution",
         "miners-revenue": "Miners Revenue",
         "total": "Coins in circulation",
-        "transactions-per-block": "Transactions per Block",
-        "hash-rate-distribution": "Hash Rate Distribution"
-      },
-      "hash-rate-distribution": {
-        "labels": {
-          "name": "Relayed By",
-          "value": "Count"
-        }
+        "transactions-per-block": "Transactions per Block"
       }
     },
     "charts": {
@@ -185,11 +186,11 @@
       "copied": "Copied",
       "copy": "Copy",
       "for": "For",
-      "subtitle": "You can send {coinName} to the following address.",
+      "subtitle": "You can send {coinName} to the following address",
       "title": "Payment Request"
     },
     "search-results": {
-      "no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash. Or select from the general topics.",
+      "no-results": "Unrecognized search pattern. Please try searching by entering address, block hash or transaction hash",
       "wrong-query": "Unrecognized search pattern. Search query should be at least 5 characters long"
     },
     "sidebar-menu": {
@@ -208,8 +209,8 @@
       }
     },
     "stats": {
-      "title": "{coinName} Stats",
-      "subtitle": "Summary of statistics for the previous 24 hour period"
+      "subtitle": "Summary of statistics for the previous 24 hour period",
+      "title": "{coinName} Stats"
     },
     "timespan": {
       "span": {
