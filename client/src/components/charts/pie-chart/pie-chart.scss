@@ -97,4 +97,9 @@ $block-table-cell-border-color: $theme-color-blue;
       }
     }
   }
+
+  .bi-chart--iframe .bi-pie-chart {
+    margin-top: -150px;
+    transform: scale(0.7);
+  }
 }

@@ -46,5 +46,9 @@ $chart-preview-description-color: #828795;
 @media screen and (max-width: $mobile-device-width) {
   .bi-charts-preview {
     margin-right: 0;
+
+    &__iframe {
+      height: 150px;
+    }
   }
 }

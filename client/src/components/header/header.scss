@@ -70,3 +70,9 @@ $header-toggle-color: #ffffff;
     }
   }
 }
+
+.bi-app--iframe {
+  .bi-header {
+    display: none;
+  }
+}

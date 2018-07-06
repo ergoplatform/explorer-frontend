@@ -191,3 +191,9 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     }
   }
 }
+
+.bi-app--iframe {
+  .bi-sidebar {
+    display: none;
+  }
+}

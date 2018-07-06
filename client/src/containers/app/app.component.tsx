@@ -1,7 +1,9 @@
+import * as classNames from 'classnames';
+import * as queryString from 'query-string';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 import { hot } from 'react-hot-loader';
-import { Route, Switch } from 'react-router';
+import { Route, RouteComponentProps, Switch } from 'react-router';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
@@ -21,10 +23,18 @@ import { WalletComponent } from '../../pages/wallet/wallet.component';
 
 import './app.scss';
 
-class App extends React.PureComponent {
+class App extends React.PureComponent<RouteComponentProps<any>> {
   render (): JSX.Element {
+    const { iframe } = queryString.parse(this.props.location.search);
+    
+    const appClassNames = classNames({
+      'bi-app': true,
+      'bi-app--iframe': !!iframe,
+      'g-flex': true
+    });
+    
     return (
-      <div className='bi-app g-flex'>
+      <div className={ appClassNames }>
         <Helmet>
           <title>Ergo Explorer</title>
         </Helmet>
