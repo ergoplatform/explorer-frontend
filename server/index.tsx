@@ -16,6 +16,7 @@ import '../client/src/config/axios.config';
 
 import { AddressPage } from './pages/address.page';
 import { BlockPage } from './pages/block.page';
+import { ChartImage } from './pages/chart-image';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
 import { SearchPage } from './pages/search.page';
@@ -117,6 +118,7 @@ server.use('/:locale?/charts', ChartPage);
 server.use('/:locale?/blocks', BlockPage);
 server.use('/:locale?/transactions', TransactionPage);
 server.use('/:locale?/addresses', AddressPage);
+server.use('/charts/images', ChartImage);
 
 
 server.get('*', (req: any, res) => {

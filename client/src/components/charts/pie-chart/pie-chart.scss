@@ -66,8 +66,10 @@ $block-table-cell-border-color: $theme-color-blue;
 }
 
 .bi-chart--iframe .bi-pie-chart {
-  margin-top: -160px;
-  transform: scale(0.7);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media screen and (max-width: $mobile-device-width) {
@@ -96,10 +98,5 @@ $block-table-cell-border-color: $theme-color-blue;
         display: inline;
       }
     }
-  }
-
-  .bi-chart--iframe .bi-pie-chart {
-    margin-top: -150px;
-    transform: scale(0.7);
   }
 }

@@ -20,19 +20,18 @@ $chart-preview-description-color: #828795;
   // [ Components ]
   //--------------------------------------
   &__link {
-    display: block;
+    display: flex;
     padding-top: ($grid-offset-step * 4);
     border: 1px solid $chart-preview-border-color;
     color: $chart-preview-title-color;
     font-size: 16px;
     font-weight: 600;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  &__iframe {
-    display: block;
+  &__image {
     width: 100%;
-    margin-top: $grid-offset-step * 4;
-    pointer-events: none;
   }
 
   &__description {

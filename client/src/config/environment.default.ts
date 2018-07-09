@@ -8,8 +8,8 @@ export const environmentDefault: IEnvironment = {
   defaultLocale: 'en',
   environments: [
     {
-      name: 'Testnet',
-      url: 'https://testnet.ergoplatform.com',
+      name: 'Dev',
+      url: 'http://localhost:3000',
     }
   ],
   isLoggerEnabled: true,

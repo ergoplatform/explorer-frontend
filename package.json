@@ -16,6 +16,7 @@
     "lodash": "^4.17.10",
     "object-assign": "4.1.1",
     "promise": "8.0.1",
+    "puppeteer": "^1.5.0",
     "qrcode.react": "^0.8.0",
     "query-string": "^6.1.0",
     "react": "^16.3.2",
@@ -38,7 +39,8 @@
     "redux-thunk": "^2.2.0",
     "resolve": "1.6.0",
     "svg-sprite-loader": "^3.8.0",
-    "swagger-parser": "^5.0.0"
+    "swagger-parser": "^5.0.0",
+    "tmp": "^0.0.33"
   },
   "scripts": {
     "start": "node scripts/client.start.js",
@@ -64,6 +66,7 @@
     "@types/lodash": "^4.14.110",
     "@types/lodash-es": "^4.17.0",
     "@types/node": "9.6.7",
+    "@types/puppeteer": "^1.5.0",
     "@types/qrcode.react": "^0.6.3",
     "@types/query-string": "^5.1.0",
     "@types/react": "^16.3.13",
@@ -78,6 +81,7 @@
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.6",
     "@types/swagger-parser": "^4.0.2",
+    "@types/tmp": "^0.0.33",
     "autoprefixer": "7.1.6",
     "axios-mock-adapter": "^1.15.0",
     "babel-jest": "^22.1.0",
@@ -112,7 +116,6 @@
     "svgo": "^1.0.5",
     "svgo-loader": "^2.1.0",
     "sw-precache-webpack-plugin": "0.11.4",
-    "tmp": "^0.0.33",
     "ts-jest": "22.0.1",
     "ts-loader": "^2.3.7",
     "ts-sinon": "1.0.11",

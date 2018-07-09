@@ -15,11 +15,7 @@ export class ChartsPreviewComponent extends React.PureComponent<IChartsPreviewPr
         <Link to={ `/charts/${this.props.chartType}` } className='bi-charts-preview__link'>
           <FormattedMessage id={ `components.chart.title.${this.props.chartType}` }/>
           
-          <iframe src={ `/charts/${this.props.chartType}?iframe=true` }
-                  className='bi-charts-preview__iframe'
-                  frameBorder='0'
-                  scrolling='no'
-                  tabIndex={ -1 }/>
+          <img src={`/charts/images/${this.props.chartType}`} className='bi-charts-preview__image'/>
         </Link>
         
         <div className='bi-charts-preview__description'>
