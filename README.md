@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/ergoplatform/ergo-explorer.svg?branch=master)](https://travis-ci.org/ergoplatform/ergo-explorer)
 [![Codecov](https://img.shields.io/codecov/c/github/ergoplatform/ergo-explorer.svg)](https://codecov.io/gh/ergoplatform/ergo-explorer)
+[![Docker Hub](https://img.shields.io/docker/build/ergoplatform/ergo-explorer.svg)](https://hub.docker.com/r/ergoplatform/ergo-explorer/builds/)
 
 This repository contains browser for viewing activity on the underlying blockchain network.
 
