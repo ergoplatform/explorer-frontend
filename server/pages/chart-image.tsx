@@ -7,7 +7,10 @@ export const ChartImage = express.Router();
 
 ChartImage.get('/:chartType', async (req, res) => {
   if (environment.environments) {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--headless', '--disable-gpu'],
+      executablePath: process.env.CHROME_BIN || undefined
+    });
     
     const page = await browser.newPage();
     
