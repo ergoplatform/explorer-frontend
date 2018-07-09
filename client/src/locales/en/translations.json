@@ -17,7 +17,8 @@
       "stateRoot": "State Root",
       "transactions": "Transactions",
       "transactionsRoot": "Transactions Root",
-      "version": "Version"
+      "version": "Version",
+      "minerReward": "Miner Reward"
     },
     "pages": {
       "address": {

@@ -6,6 +6,7 @@ import { SearchBlock } from '../../models/generated/searchBlock';
 
 import { formatNumberMetricPrefix } from '../../utils/formatNumberMetricPrefix';
 
+import { CoinValueComponent } from '../common/coin-value/coin-value.component';
 import { TimestampComponent } from '../common/timestamp/timestamp.component';
 import { BlockTableHeaderComponent } from './block-table-header/block-table-header.component';
 
@@ -69,6 +70,22 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                         className='u-word-wrap u-word-wrap--ellipsis'>
                     { block.miner.name || block.miner.address }
                   </Link>
+                </div>
+                
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.minerReward'/>
+                  </div>
+                  
+                  <CoinValueComponent value={ block.minerReward }/>
+                </div>
+                
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.difficulty'/>
+                  </div>
+                  
+                  { block.difficulty }
                 </div>
                 
                 <div className='bi-blocks-table__cell bi-table__cell'>

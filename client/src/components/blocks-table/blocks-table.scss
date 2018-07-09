@@ -38,17 +38,13 @@ $block-table-cell-color: $theme-primary-color;
       width: 90px;
     }
 
-    &:nth-child(5) {
+    &:last-child {
       width: 90px;
       text-align: right;
     }
 
     &:nth-child(2) {
       width: 180px;
-    }
-
-    &:nth-child(3) {
-      width: 100px;
     }
   }
 
@@ -82,7 +78,7 @@ $block-table-cell-color: $theme-primary-color;
 
       justify-content: space-between;
 
-      &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(5) {
+      &:first-child, &:nth-child(2), &:nth-child(3), &:last-child {
         width: auto;
       }
 
