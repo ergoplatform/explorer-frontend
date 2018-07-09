@@ -97,10 +97,10 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
   &__address-spent {
     margin-left: $grid-offset-step;
 
-    color: red;
+    color: #1EC116;
 
     a {
-      color: #1EC116;
+      color: red;
     }
   }
 
