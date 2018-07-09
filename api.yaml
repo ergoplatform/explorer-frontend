@@ -41,7 +41,7 @@ paths:
           description: Sorted column
           schema:
             type: string
-            enum: [height, timestamp, transactionsCount, size, miner]
+            enum: [height, timestamp, transactionsCount, size, miner, difficulty, minerReward]
         - name: sortDirection
           in: query
           description: Sort direction
@@ -417,6 +417,28 @@ paths:
                         description: Reward
                         minimum: 0
                         example: 1030453
+  '/charts/hash-rate-distribution':
+    get:
+      summary: An estimation of hashrate distribution amongst the largest mining pools
+      tags:
+        - charts
+      responses:
+        200:
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      description: Miner name or address
+                      type: string
+                    value:
+                      description: Number of blocks mined by miner
+                      type: number
+                      example: 103
 
   '/charts/block-size':
     get:
@@ -465,7 +487,7 @@ components:
           format: int32
           minimum: 0
           example: 1230044
-        outputTransactionId:
+        transactionId:
           $ref: '#/components/schemas/TransactionId'
         spendingProof:
           description: Spending proof for transaction input
@@ -555,6 +577,7 @@ components:
         - timestamp
         - transactionsCount
         - miner
+        - minerReward
         - size
       properties:
         id:
@@ -573,6 +596,17 @@ components:
           example: 667
         miner:
           $ref: '#/components/schemas/Miner'
+        minerReward:
+          description: Miner Reward
+          type: integer
+          format: int32
+          minimum: 0
+          example: 12045
+        difficulty:
+          type: integer
+          format: int32
+          minimum: 0
+          example: 123
         size:
           type: integer
           format: int32
