@@ -18,7 +18,7 @@
       "transactions": "Transactions",
       "transactionsRoot": "Transactions Root",
       "version": "Version",
-      "minerReward": "Miner Reward"
+      "minerReward": "Reward"
     },
     "pages": {
       "address": {
