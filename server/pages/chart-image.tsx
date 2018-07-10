@@ -20,7 +20,7 @@ ChartImage.get('/:chartType', async (req, res) => {
     const stats = fs.statSync(filename);
     const mtime = new Date(util.inspect(stats.mtime)).getTime();
     
-    if ((new Date()).getTime() - mtime < 60 * 60 * 60 ) {
+    if ((new Date()).getTime() - mtime < 60 * 60 * 1000 ) {
       return res.sendFile(filename);
     }
   }
