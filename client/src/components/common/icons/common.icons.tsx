@@ -16,6 +16,9 @@ import sortDirectionDescIcon from '../../../assets/images/icons/sort-direction-d
 import sortDirectionIcon from '../../../assets/images/icons/sort-direction.icon.svg';
 import statsIcon from '../../../assets/images/icons/stats.icon.svg';
 import walletIcon from '../../../assets/images/icons/wallet.icon.svg';
+import logoImage from '../../../assets/images/logo-main.svg';
+import logoVerticalImage from '../../../assets/images/logo-vertical.svg';
+
 
 interface IIconProps {
   className?: string;
@@ -92,4 +95,12 @@ export const ArrowDownIcon = ({ className }: IIconProps) => {
 
 export const ArrowThickIcon = ({ className }: IIconProps) => {
   return makeIcon(arrowThickIcon.id, className);
+};
+
+export const LogoVerticalIcon = ({ className }: IIconProps) => {
+  return makeIcon(logoVerticalImage.id, className);
+};
+
+export const LogoIcon = ({ className }: IIconProps) => {
+  return makeIcon(logoImage.id, className);
 };

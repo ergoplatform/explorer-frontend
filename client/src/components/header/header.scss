@@ -34,10 +34,14 @@ $header-toggle-color: #ffffff;
     font-size: 14px;
     white-space: nowrap;
     text-decoration: none;
+    line-height: 0;
   }
 
-  &__logo-highlight {
-    font-weight: 600;
+  &__logo-icon {
+    width: 160px;
+    height: 26px;
+
+    fill: $header-logo-color;
   }
 
   &__toggle {

@@ -16,10 +16,7 @@ import { EnvironmentSwitcherComponent } from '../common/environment-switcher/env
 import { LanguageSwitcherComponent } from '../common/language-switcher/language-switcher.component';
 import { ISidebarMenuItem, SidebarMenuComponent } from '../sidebar-menu/sidebar-menu.component';
 
-import { ArrowIcon } from '../common/icons/common.icons';
-
-import logoMainImage from '../../assets/images/logo-main.svg';
-import logoVerticalImage from '../../assets/images/logo-vertical.svg';
+import { ArrowIcon, LogoIcon, LogoVerticalIcon } from '../common/icons/common.icons';
 
 import './sidebar.scss';
 
@@ -67,7 +64,7 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
 
 class Sidebar extends React.Component<SettingsActions & ApiActions & { settings: SettingsState, api: ApiState }> {
   state: any = {
-    isClient: false,
+    isClient: false
   };
   
   constructor (props: any) {
@@ -83,7 +80,7 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
     }
     
     this.setState({
-      isClient: true,
+      isClient: true
     });
   }
   
@@ -134,10 +131,7 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
                 onClick={ this.hideSidebar }
                 to='/'
                 tabIndex={ this.props.isSidebarCollapsed ? -1 : 0 }>
-            <svg className='bi-sidebar__logo-icon'>
-              focusable='false'>
-              <use xlinkHref={ `#${logoMainImage.id}` }/>
-            </svg>
+            <LogoIcon className='bi-sidebar__logo-icon'/>
           </Link>
           
           <button className='bi-sidebar__btn-toggle bi-btn bi-btn--flat g-flex__item-fixed g-flex'
@@ -148,15 +142,11 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
         
         <div className='bi-sidebar__body g-flex-column__item-fixed'>
           <SidebarMenuComponent onClick={ this.hideSidebar } items={ items }/>
-  
-          <svg className='bi-sidebar__side-logo'
-               focusable='false'>
-            <use xlinkHref={ `#${logoVerticalImage.id}` }/>
-          </svg>
+          
+          <LogoVerticalIcon className='bi-sidebar__side-logo'/>
         </div>
         
         
-     
         <div className='bi-sidebar__footer g-flex-column__item-fixed g-flex'>
           <div className='bi-sidebar__footer-line g-flex__item-fixed g-flex'>
             <EnvironmentSwitcherComponent/>

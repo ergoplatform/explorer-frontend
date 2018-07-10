@@ -10,7 +10,7 @@ import { SearchComponent } from '../search/search.component';
 
 import './header.scss';
 
-import { BurgerIcon } from '../common/icons/common.icons';
+import { BurgerIcon, LogoVerticalIcon } from '../common/icons/common.icons';
 
 class Header extends React.Component<SettingsActions> {
   constructor (props: any) {
@@ -29,8 +29,8 @@ class Header extends React.Component<SettingsActions> {
         
         <Link className='bi-header__logo'
               to={ '/' }>
-          <span className='bi-header__logo-highlight'>ERGO</span>
-          EXPLORER
+          
+          <LogoVerticalIcon className='bi-sidebar__logo-icon'/>
         </Link>
         
         <div className='bi-header__stats g-flex__item'>

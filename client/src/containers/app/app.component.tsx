@@ -43,10 +43,10 @@ class App extends React.PureComponent {
         
         <SidebarComponent/>
         
-        <div className='bi-app__wrapper g-flex__item g-flex-column'>
+        <div className='bi-app__wrapper g-flex__item g-flex-column g-scroll-y'>
           <HeaderComponent/>
           
-          <div className='bi-app__body g-flex-column__item g-flex-column g-scroll-y'>
+          <div className='bi-app__body g-flex-column__item g-flex-column'>
             <Switch>
               <Route exact={ true } path='/' component={ DataComponent }/>
               
