@@ -47,11 +47,11 @@ Where `app.config.js` is a JavaScript file containing next content:
 ```js
 var __APP_CONFIG__ = {
   apiUrl: 'http://custom.apiserver',
+  alternativeLogo: true, // true by default
   environments: [
      {
        name: 'Testnet',
        url: 'http://custom.explorerUrl',
-       alternativeLogo: true, // true by default
      }
    ],
 };
