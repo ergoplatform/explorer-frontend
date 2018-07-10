@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import environment from '../../../config/environment';
+
 import apiIcon from '../../../assets/images/icons/api.icon.svg';
 import arrowDownIcon from '../../../assets/images/icons/arrow-down.icon.svg';
 import arrowThickIcon from '../../../assets/images/icons/arrow-thick.icon.svg';
@@ -16,9 +18,10 @@ import sortDirectionDescIcon from '../../../assets/images/icons/sort-direction-d
 import sortDirectionIcon from '../../../assets/images/icons/sort-direction.icon.svg';
 import statsIcon from '../../../assets/images/icons/stats.icon.svg';
 import walletIcon from '../../../assets/images/icons/wallet.icon.svg';
+import logoAltImage from '../../../assets/images/logo-main-alt.svg';
 import logoImage from '../../../assets/images/logo-main.svg';
+import logoVerticalAltImage from '../../../assets/images/logo-vertical-alt.svg';
 import logoVerticalImage from '../../../assets/images/logo-vertical.svg';
-
 
 interface IIconProps {
   className?: string;
@@ -98,9 +101,17 @@ export const ArrowThickIcon = ({ className }: IIconProps) => {
 };
 
 export const LogoVerticalIcon = ({ className }: IIconProps) => {
+  if (environment.alternativeLogo) {
+    return makeIcon(logoVerticalAltImage.id, className);
+  }
+  
   return makeIcon(logoVerticalImage.id, className);
 };
 
 export const LogoIcon = ({ className }: IIconProps) => {
+  if (environment.alternativeLogo) {
+    return makeIcon(logoAltImage.id, className);
+  }
+  
   return makeIcon(logoImage.id, className);
 };

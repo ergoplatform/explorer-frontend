@@ -6,6 +6,7 @@ import { environmentProd } from './environment.prod';
 export interface IEnvironment {
   apiUrl?: string;
   blockchain?: any;
+  alternativeLogo?: boolean;
   environments?: any[];
   defaultLocale?: string;
   isLoggerEnabled: boolean;

@@ -51,6 +51,7 @@ var __APP_CONFIG__ = {
      {
        name: 'Testnet',
        url: 'http://custom.explorerUrl',
+       alternativeLogo: true, // true by default
      }
    ],
 };
