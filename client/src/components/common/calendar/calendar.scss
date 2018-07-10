@@ -9,6 +9,7 @@ $calendar-bt-reset-bg: #e8e8e8;
 
 .bi-calendar {
   position: relative;
+  font-family: $theme-main-font;
 
   // [ Components ]
   //--------------------------------------
@@ -24,6 +25,8 @@ $calendar-bt-reset-bg: #e8e8e8;
 
   &__btn {
     color: $calendar-btn-color;
+    font-family: $theme-main-font;
+    font-size: 14px;
   }
 
   &__calendar--open {
@@ -74,7 +77,8 @@ $calendar-bt-reset-bg: #e8e8e8;
     padding: $grid-offset-step * 3;
     color: $theme-primary-color;
     font-size: 15px;
-    line-height: 10px;
+    line-height: 15px;
+    font-family: $theme-main-font;
   }
 
   .react-calendar__tile--active {
@@ -85,6 +89,11 @@ $calendar-bt-reset-bg: #e8e8e8;
     min-height: auto;
     padding: $grid-offset-step * 3;
     line-height: 0;
+  }
+
+  .react-calendar__navigation__label {
+    font-family: $theme-main-font;
+    font-size: 15px;
   }
 
   .react-calendar__month-view__weekdays {

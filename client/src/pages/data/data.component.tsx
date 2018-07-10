@@ -81,6 +81,10 @@ class Data extends React.PureComponent {
           </div>
         </div>
         
+        {this.props.blocks.total === 0 && <div className='bi-data__body g-flex-column__item-fixed'>
+          <FormattedMessage id='components.data.wrong-query'/>
+        </div>}
+        
         { this.props.blocks.total > 0 &&
         <div className='bi-data__body g-flex-column__item-fixed'>
           <BlocksTableComponent blocks={ this.props.blocks.blocks } isFetching={ this.props.blocks.fetching }/>

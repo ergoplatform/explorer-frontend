@@ -1,14 +1,14 @@
 import { IEnvironment } from './environment';
 
 export const environmentDefault: IEnvironment = {
-  apiUrl: 'https://api.testnet.ergoplatform.com',
+  apiUrl: 'https://api-testnet.ergoplatform.com',
   blockchain: {
     coinName: 'Ergo'
   },
   defaultLocale: 'en',
   environments: [
     {
-      name: 'Dev',
+      name: 'Testnet',
       url: 'http://localhost:3000',
     }
   ],

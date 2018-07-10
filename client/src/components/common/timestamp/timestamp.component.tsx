@@ -14,7 +14,7 @@ export class TimestampComponent extends React.PureComponent<ITimestampProps> {
     const date = dayjs(this.props.timestamp);
     
     return (
-      <div className='bi-timestamp'>
+      <div className='bi-timestamp u-word-wrap u-word-wrap--ellipsis'>
         <span className='bi-timestamp__time'>{ date.format('HH:mm:ss') }</span>
         <span className='bi-timestamp__date'>{ date.format('DD.MM.YYYY') }</span>
       </div>

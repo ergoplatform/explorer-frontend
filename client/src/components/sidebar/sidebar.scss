@@ -15,7 +15,7 @@ $sidebar-btn-toggle-icon-color: #ffffff;
   width: 300px;
   background-color: $sidebar-bg-color;
   font-family: $sidebar-font;
-  transition: width 300ms linear;
+  transition: width 350ms linear;
 
   // [ Components ]
   //---------------------------------
@@ -27,14 +27,20 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     justify-content: space-between;
   }
 
+  &__body {
+    position: relative;
+  }
+
   &__logo {
     line-height: 0;
     transition: opacity 250ms ease-in-out;
   }
 
+
+
   &__logo-icon {
-    width: 160px;
-    height: 26px;
+    width: 120px;
+    height: 49px;
 
     fill: $sidebar-logo-color;
   }
@@ -61,6 +67,11 @@ $sidebar-btn-toggle-icon-color: #ffffff;
       opacity: 0;
     }
 
+    .bi-sidebar__footer-line {
+      display: block;
+      padding-left: $grid-offset-step * 8;
+    }
+
     .bi-sidebar-menu__item-children {
       display: none;
     }
@@ -74,7 +85,7 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     }
 
     &__header {
-      justify-content: flex-end;
+      justify-content: center;
     }
 
     &__btn-toggle-icon {
@@ -131,6 +142,7 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     padding: ($grid-offset-step * 3) ($grid-offset-step * 7);
 
     flex-wrap: wrap;
+    margin-top: auto;
   }
 
   &__footer-line {
@@ -138,21 +150,17 @@ $sidebar-btn-toggle-icon-color: #ffffff;
 
     flex-wrap: wrap;
     align-items: center;
-  }
+    margin-bottom: $grid-offset-step * 3;
 
-  &__copyright {
-    padding: ($grid-offset-step * 2) 0;
-    opacity: 1;
-    color: $sidebar-copyright-color;
-    font-size: 14px;
-    white-space: nowrap;
-    transition: opacity 250ms ease-in-out;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__side-logo {
     position: absolute;
     z-index: 0;
-    bottom: 25%;
+    bottom: -260px;
     left: -32px;
     width: 160px;
     height: 26px;
@@ -189,6 +197,12 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     &--open {
       left: 0;
     }
+  }
+}
+
+@media screen and (max-height: 850px) {
+  .bi-sidebar__side-logo {
+    visibility: hidden;
   }
 }
 

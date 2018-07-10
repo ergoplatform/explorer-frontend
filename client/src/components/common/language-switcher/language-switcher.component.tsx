@@ -10,6 +10,8 @@ import { messages } from '../../../containers/connected-intl-provider/connected-
 
 import { DropdownComponent } from '../dropdown/dropdown.component';
 
+import './language-switcher.scss';
+
 class LanguageSwitcher extends React.PureComponent<SettingsState & SettingsActions> {
   locales: any;
   

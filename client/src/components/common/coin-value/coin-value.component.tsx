@@ -10,7 +10,7 @@ export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
     const { value } = this.props;
     
     return (
-      <div className='bi-coin-value'>
+      <div className='bi-coin-value u-word-wrap u-word-wrap--ellipsis'>
         { value / 1e8 } { environment.blockchain.coinName.toUpperCase() }
       </div>
     );

@@ -93,7 +93,9 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                     <FormattedMessage id='common.block.size'/>
                   </div>
                   
+                  <span className='u-word-wrap u-word-wrap--ellipsis'>
                   { formatNumberMetricPrefix(block.size, { desiredFormat: 'k' }) }B
+                  </span>
                 </div>
               </div>
             );

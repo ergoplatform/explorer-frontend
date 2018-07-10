@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import { bindActionCreators } from 'redux';
 
-import environment from '../../config/environment';
-
 import { AppState } from '../../store/app.store';
 
 import { ApiActions } from '../../actions/api.actions';
@@ -20,7 +18,8 @@ import { ISidebarMenuItem, SidebarMenuComponent } from '../sidebar-menu/sidebar-
 
 import { ArrowIcon } from '../common/icons/common.icons';
 
-import logoImage from '../../assets/images/logo.svg';
+import logoMainImage from '../../assets/images/logo-main.svg';
+import logoVerticalImage from '../../assets/images/logo-vertical.svg';
 
 import './sidebar.scss';
 
@@ -137,7 +136,7 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
                 tabIndex={ this.props.isSidebarCollapsed ? -1 : 0 }>
             <svg className='bi-sidebar__logo-icon'>
               focusable='false'>
-              <use xlinkHref={ `#${logoImage.id}` }/>
+              <use xlinkHref={ `#${logoMainImage.id}` }/>
             </svg>
           </Link>
           
@@ -147,16 +146,17 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
           </button>
         </div>
         
-        <div className='bi-sidebar__body g-flex-column__item'>
+        <div className='bi-sidebar__body g-flex-column__item-fixed'>
           <SidebarMenuComponent onClick={ this.hideSidebar } items={ items }/>
+  
+          <svg className='bi-sidebar__side-logo'
+               focusable='false'>
+            <use xlinkHref={ `#${logoVerticalImage.id}` }/>
+          </svg>
         </div>
         
         
-        <svg className='bi-sidebar__side-logo'
-             focusable='false'>
-          <use xlinkHref={ `#${logoImage.id}` }/>
-        </svg>
-        
+     
         <div className='bi-sidebar__footer g-flex-column__item-fixed g-flex'>
           <div className='bi-sidebar__footer-line g-flex__item-fixed g-flex'>
             <EnvironmentSwitcherComponent/>
@@ -165,10 +165,6 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
           </div>
           
           <div className='bi-sidebar__footer-line g-flex__item-fixed g-flex g-space-between'>
-            <div className='bi-sidebar__copyright g-flex__item-fixed'>
-              © { environment.blockchain.coinName.toUpperCase() } { (new Date()).getFullYear() }
-            </div>
-            
             <div className='bi-sidebar__made-by g-flex__item-fixed'>
               by <a href='https://researchinstitute.io'>Research Institute</a>
             </div>

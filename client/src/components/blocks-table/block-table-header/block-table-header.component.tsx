@@ -93,7 +93,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
   
   private getSortDirectionClassName (sortedColumn: string): string {
     const { sortBy, sortDirection } = queryString.parse(this.props.history.location.search);
-    const classNames                = ['bi-blocks-table-header__sort'];
+    const classNames                = ['bi-blocks-table-header__sort', 'u-word-wrap u-word-wrap--ellipsis'];
     
     
     if (sortBy === sortedColumn && sortDirection) {

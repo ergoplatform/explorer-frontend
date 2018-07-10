@@ -16,6 +16,8 @@ $dropdown-option-hover-bg: #f8f8f8;
   //-----------------------------------------
   &__button {
     color: $dropdown-button-color;
+    font-family: inherit;
+
     font-size: 14px;
 
     align-items: center;
@@ -40,6 +42,8 @@ $dropdown-option-hover-bg: #f8f8f8;
   }
 
   &__dropdown {
+    font-family: inherit;
+
     display: none;
     position: absolute;
     bottom: calc(100% + 5px);
@@ -49,6 +53,8 @@ $dropdown-option-hover-bg: #f8f8f8;
   }
 
   &__option {
+    font-family: inherit;
+
     display: block;
     width: 100%;
     padding: $grid-offset-step * 1.5 $grid-offset-step * 4;

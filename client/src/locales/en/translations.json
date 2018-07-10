@@ -148,7 +148,8 @@
     },
     "data": {
       "show": "Show",
-      "title": "Latest blocks"
+      "title": "Latest blocks",
+      "wrong-query": "No blocks have been found. Try different dates"
     },
     "home": {
       "title": "Blockchain explorer"

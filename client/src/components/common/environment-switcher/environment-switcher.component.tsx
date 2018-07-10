@@ -4,6 +4,8 @@ import environment from '../../../config/environment';
 
 import { DropdownComponent } from '../dropdown/dropdown.component';
 
+import './environment-switcher.scss';
+
 export class EnvironmentSwitcherComponent extends React.PureComponent {
   render (): JSX.Element | null {
     if (!environment.environments) {

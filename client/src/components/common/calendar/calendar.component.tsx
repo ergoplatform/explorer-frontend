@@ -49,7 +49,7 @@ export class CalendarComponent extends React.PureComponent<ICalendarProps, ICale
       isDateSet = true;
       
       buttonLabel = dayjs(this.props.startDate)
-          .format('DD.MM.YYYY') + '-' +
+          .format('DD.MM.YYYY') + ' – ' +
         dayjs(this.props.endDate)
           .format('DD.MM.YYYY');
       

@@ -5,6 +5,7 @@
 $search-bg-color: #ffffff;
 $search-mobile-bg-color: #121212;
 $search-icon-color: #828795;
+$search-placeholder-color: #828795;
 $search-icon-mobile-color: #ffffff;
 $search-input-mobile-color: #ffffff;
 
@@ -14,7 +15,6 @@ $search-input-mobile-color: #ffffff;
   font-family: $theme-main-font;
 
   align-items: center;
-
 
   // [ Components ]
   //-------------------------------
@@ -28,6 +28,12 @@ $search-input-mobile-color: #ffffff;
     line-height: 100%;
     text-overflow: ellipsis;
     width: 100%;
+
+    &::placeholder {
+      font-weight: 400;
+      font-family: $theme-main-font;
+      color: $search-placeholder-color;
+    }
   }
 
   &__icon {
@@ -35,7 +41,8 @@ $search-input-mobile-color: #ffffff;
     height: 24px;
     padding: 0 ($grid-offset-step * 3);
 
-    fill: $search-icon-color;
+    fill: #1d1d1d;
+    stroke: #1d1d1d;
   }
 
   &--focused {
@@ -50,6 +57,11 @@ $search-input-mobile-color: #ffffff;
   &--focused & {
     &__input {
       display: block;
+    }
+
+    &__icon {
+      fill: $search-icon-color;
+      stroke: $search-icon-color;
     }
   }
 }
