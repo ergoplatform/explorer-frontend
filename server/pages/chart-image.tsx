@@ -47,7 +47,7 @@ ChartImage.get('/:chartType', async (req, res) => {
     
     await browser.close();
     
-    res.setHeader('Expires', new Date(Date.now() + 60 * 60 * 60).toUTCString());
+    res.setHeader('Expires', new Date(Date.now() + 60 * 60 * 1000).toUTCString());
     res.sendFile(filename, { headers: { 'Content-Type': 'image/jpeg' } });
   } else {
     res.sendFile('../../empty-photo.jpg', { headers: { 'Content-Type': 'image/jpeg' } });
