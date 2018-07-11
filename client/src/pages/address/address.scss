@@ -31,6 +31,10 @@
   &__table {
     min-width: 300px;
     margin: ($grid-offset-step * 2) ($grid-offset-step * 5);
+
+    &:last-child .bi-address-actions {
+      justify-content: flex-end;
+    }
   }
 }
 

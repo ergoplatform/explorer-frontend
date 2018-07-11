@@ -16,7 +16,8 @@ import { AppState } from '../../store/app.store';
 
 import { AddressActions } from '../../actions/address.actions';
 
-import { AddressActionsComponent } from '../../components/address/address-actions/address-actions.component';
+import { AddressQrcodeActionComponent } from '../../components/address/address-qrcode-action/address-qrcode-action.component';
+import { AddressRequetsPaymentActionComponent } from '../../components/address/address-request-payment-action/address-requets-payment-action.component';
 import { AddressSummaryComponent } from '../../components/address/address-summary/address-summary.component';
 import { AddressTransactionsComponent } from '../../components/address/address-transactions/address-transactions.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
@@ -100,15 +101,14 @@ class Address extends React.PureComponent {
         <div className='bi-address__tables g-flex'>
           <div className='bi-address__table g-flex__item'>
             <AddressSummaryComponent summary={ this.props.address.summary }/>
+            <AddressQrcodeActionComponent address={ this.props.address }/>
           </div>
           
           <div className='bi-address__table g-flex__item'>
             <AddressTransactionsComponent summary={ this.props.address.transactions }/>
+            
+            <AddressRequetsPaymentActionComponent address={ this.props.address }/>
           </div>
-        </div>
-        
-        <div className='bi-address__actions'>
-          <AddressActionsComponent address={ this.props.address }/>
         </div>
         
         { this.props.transactions &&
