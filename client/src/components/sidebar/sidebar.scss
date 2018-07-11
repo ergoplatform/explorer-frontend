@@ -173,10 +173,14 @@ $sidebar-btn-toggle-icon-color: #ffffff;
 
   &__made-by {
     font-size: 14px;
-    color: $sidebar-copyright-color;
+    color: #6C717C;
 
     a {
-      color: #6C717C;
+      color: $sidebar-copyright-color;
+
+      &:hover {
+        color: #fff;
+      }
     }
   }
 
