@@ -73,7 +73,7 @@ $payment-request-copy-btn-color: #fff;
     background-color: $payment-request-copy-btn-bg;
     color: $payment-request-copy-btn-color;
     border: 0;
-    width: 100px;
+    min-width: 100px;
     border-radius: 40px;
     line-height: 40px;
     font-size: 16px;
