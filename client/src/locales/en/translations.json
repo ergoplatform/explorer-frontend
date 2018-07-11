@@ -11,14 +11,14 @@
       "id": "ID",
       "interlinks": "Interlinks",
       "minedBy": "Mined by",
+      "minerReward": "Reward",
       "nBits": "Bits",
       "parent": "Previoius Block",
       "size": "Size",
       "stateRoot": "State Root",
       "transactions": "Transactions",
       "transactionsRoot": "Transactions Root",
-      "version": "Version",
-      "minerReward": "Reward"
+      "version": "Version"
     },
     "pages": {
       "address": {
