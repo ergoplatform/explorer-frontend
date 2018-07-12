@@ -7,18 +7,34 @@ interface ICoinValueProps {
 
 export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
   render (): JSX.Element {
-    const { value } = this.props;
-    
-    let formattedValue = value/1e8;
-    
-    if (formattedValue < 1) {
-      formattedValue = value;
-    }
-    
     return (
       <div className='bi-coin-value'>
-        { formattedValue } { environment.blockchain.coinName.toUpperCase() }
+        { this.getFormattedValue() } { environment.blockchain.coinName.toUpperCase() }
       </div>
     );
+  }
+  
+  private getFormattedValue (): string {
+    const { value } = this.props;
+    
+    const formattedValue = value / 1e8;
+    
+    if (formattedValue < 1) {
+      return formattedValue.toFixed(8)
+        .split('')
+        .reduceRight((arr: string[], i: string) => {
+          if (i === '0' && arr.length === 0) {
+            return arr;
+          }
+          
+          arr.push(i);
+          
+          return arr;
+        }, [])
+        .reverse()
+        .join('');
+    }
+    
+    return formattedValue.toString();
   }
 }
