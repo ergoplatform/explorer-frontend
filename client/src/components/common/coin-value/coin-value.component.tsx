@@ -9,9 +9,15 @@ export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
   render (): JSX.Element {
     const { value } = this.props;
     
+    let formattedValue = value/1e8;
+    
+    if (formattedValue < 1) {
+      formattedValue = value;
+    }
+    
     return (
       <div className='bi-coin-value'>
-        { value / 1e8 } { environment.blockchain.coinName.toUpperCase() }
+        { formattedValue } { environment.blockchain.coinName.toUpperCase() }
       </div>
     );
   }
