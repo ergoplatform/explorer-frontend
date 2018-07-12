@@ -34,7 +34,7 @@ export class TransactionsSummaryComponent extends React.PureComponent<ITransacti
             </div>
             
             <div className='bi-transactions-summary__cell bi-transactions-summary__cell--value bi-table__cell u-word-wrap'>
-              { this.props.summary.totalFee }
+              <CoinValueComponent value={ this.props.summary.totalFee }/>
             </div>
           </div>
           
