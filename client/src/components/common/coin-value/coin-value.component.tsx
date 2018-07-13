@@ -19,7 +19,7 @@ export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
     
     const formattedValue = value / 1e8;
     
-    if (formattedValue < 1) {
+    if (formattedValue < 1 && formattedValue !== 0) {
       return formattedValue.toFixed(8)
         .split('')
         .reduceRight((arr: string[], i: string) => {
