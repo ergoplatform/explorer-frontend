@@ -67,7 +67,7 @@ server.use('/:locale?/search', SearchPage);
 
 server.use((req: any, res, next) => {
   axios.interceptors.response.use(response => response, () => {
-    if ( req.explorer.skipError ) {
+    if (req.explorer.skipError) {
       return;
     }
     
@@ -154,4 +154,20 @@ server.get('*', (req: any, res) => {
   }
 });
 
-server.listen(port, () => console.debug(`App is listening on port ${port}!`));
+server.listen(port, (args: any) => {
+  console.debug(`App is listening on port ${port}!`);
+  
+  axios.get('http://0.0.0.0:' + port + '/charts/images/generate')
+    .then(() => {
+      console.debug('image generated');
+    });
+  
+
+  setInterval(() => {
+    axios.get('http://0.0.0.0:' + port + '/charts/images/generate')
+      .then(() => {
+        console.debug('image generated');
+      });
+  }, 1000 * 60 * 10);
+  
+});
