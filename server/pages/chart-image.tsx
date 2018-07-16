@@ -9,7 +9,6 @@ export const ChartImage = express.Router();
 const cacheRoot = fs.realpathSync(process.cwd()) + '/tmp/cache/';
 fs.ensureDirSync(cacheRoot);
 
-
 ChartImage.get('/generate', async (req, res) => {
   const chartTypes = [
     'total',
