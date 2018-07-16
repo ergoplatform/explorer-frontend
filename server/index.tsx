@@ -16,15 +16,13 @@ import '../client/src/config/axios.config';
 
 import { AddressPage } from './pages/address.page';
 import { BlockPage } from './pages/block.page';
-import { ChartImage } from './pages/chart-image';
+import { ChartImage, generateImages } from './pages/chart-image';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
 import { SearchPage } from './pages/search.page';
 import { StatsPage } from './pages/stats.page';
 import { TransactionPage } from './pages/transaction.page';
 import { Preloader } from './preloader';
-
-import environment from '../client/src/config/environment';
 
 const port = process.env.PORT || 5000;
 
@@ -156,26 +154,12 @@ server.get('*', (req: any, res) => {
   }
 });
 
-server.listen(port, (args: any) => {
+server.listen(port, () => {
   console.debug(`App is listening on port ${port}!`);
   
-  let url = 'http://0.0.0.0:' + port;
-  
-  if (process.env.NODE_ENV === 'production' && environment.environments) {
-    url = environment.environments[0].url;
-  }
-  
-  axios.get(url + '/charts/images/generate')
-    .then(() => {
-      console.debug('image generated');
-    });
-  
+  generateImages();
   
   setInterval(() => {
-    axios.get(url + '/charts/images/generate')
-      .then(() => {
-        console.debug('image generated');
-      });
+    generateImages();
   }, 1000 * 60 * 10);
-  
 });

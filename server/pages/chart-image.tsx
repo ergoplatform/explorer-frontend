@@ -1,15 +1,16 @@
 import * as express from 'express';
 import * as fs from 'fs-extra';
 import puppeteer from 'puppeteer';
-import * as url from 'url';
 import * as util from 'util';
+
+import environment from '../../client/src/config/environment';
 
 export const ChartImage = express.Router();
 
 const cacheRoot = fs.realpathSync(process.cwd()) + '/tmp/cache/';
 fs.ensureDirSync(cacheRoot);
 
-ChartImage.get('/generate', async (req, res) => {
+export const generateImages = () => {
   const chartTypes = [
     'total',
     'blockchain-size',
@@ -21,14 +22,15 @@ ChartImage.get('/generate', async (req, res) => {
     'miners-revenue'
   ];
   
-  const appUrl = url.format({
-    host: req.get('host'),
-    protocol: req.protocol
-  });
+  let appUrl = 'http://0.0.0.0:' + 5000;
+  
+  if (process.env.NODE_ENV === 'production' && environment.environments) {
+    appUrl = environment.environments[0].url;
+  }
   
   chartTypes.forEach(async (chartType) => {
     const filename = cacheRoot + chartType;
-  
+    
     const browser = await puppeteer.launch({
       args: ['--no-sandbox', '--headless', '--disable-gpu'],
       executablePath: process.env.CHROME_BIN || undefined
@@ -48,9 +50,8 @@ ChartImage.get('/generate', async (req, res) => {
     
     await browser.close();
   });
-  
-  res.send('Ok');
-});
+};
+
 
 ChartImage.get('/:chartType', (req, res) => {
   const filename = cacheRoot + req.params.chartType;
