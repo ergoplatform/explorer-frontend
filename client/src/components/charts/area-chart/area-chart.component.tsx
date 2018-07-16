@@ -27,7 +27,7 @@ export class AreaChartComponent extends React.PureComponent<IAreaChartProps> {
   }
   
   render (): JSX.Element {
-    const max = Math.max.apply(null, this.props.data.map((item: any) => item.value));
+    const max = Math.ceil(Math.max.apply(null, this.props.data.map((item: any) => item.value)));
     
     const maxDomain = (Math.ceil(max / Math.pow(10, (max.toString().length - 1))) + 2) * Math.pow(10, ((max).toString().length - 1));
     
