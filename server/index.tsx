@@ -24,6 +24,8 @@ import { StatsPage } from './pages/stats.page';
 import { TransactionPage } from './pages/transaction.page';
 import { Preloader } from './preloader';
 
+import environment from '../client/src/config/environment';
+
 const port = process.env.PORT || 5000;
 
 const server = express();
@@ -157,14 +159,20 @@ server.get('*', (req: any, res) => {
 server.listen(port, (args: any) => {
   console.debug(`App is listening on port ${port}!`);
   
-  axios.get('http://0.0.0.0:' + port + '/charts/images/generate')
+  let url = 'http://0.0.0.0:' + port;
+  
+  if (process.env.NODE_ENV === 'production' && environment.environments) {
+    url = environment.environments[0].url;
+  }
+  
+  axios.get(url + '/charts/images/generate')
     .then(() => {
       console.debug('image generated');
     });
   
-
+  
   setInterval(() => {
-    axios.get('http://0.0.0.0:' + port + '/charts/images/generate')
+    axios.get(url + '/charts/images/generate')
       .then(() => {
         console.debug('image generated');
       });
