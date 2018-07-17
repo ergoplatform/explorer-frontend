@@ -36,5 +36,15 @@ $address-summary-header-border-color: #eeeeee;
     &--header {
       font-weight: 600;
     }
+
+    &--actions {
+      text-align: right;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-transactions-summary__cell--actions {
+    text-align: left;
   }
 }

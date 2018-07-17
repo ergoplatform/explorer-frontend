@@ -181,6 +181,16 @@ class Chart extends React.PureComponent {
         });
       }
       
+      case 'hash-rate': {
+        return this.props.data.map((item: any) => {
+          return {
+            timestamp: item.timestamp,
+            type: 'hashRate',
+            value: item.value
+          };
+        });
+      }
+      
       default: {
         return this.props.data;
       }

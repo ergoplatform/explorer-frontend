@@ -67,6 +67,9 @@
       "supply": "Монеты в Обращении",
       "transactionAverage": "Транзакций в День",
       "version": "Версия"
+    },
+    "charts": {
+      "view": "График"
     }
   },
   "components": {

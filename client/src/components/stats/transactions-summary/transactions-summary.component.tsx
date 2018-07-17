@@ -26,6 +26,8 @@ export class TransactionsSummaryComponent extends React.PureComponent<ITransacti
             <div className='bi-transactions-summary__cell bi-transactions-summary__cell--value bi-table__cell u-word-wrap'>
               { this.props.summary.total }
             </div>
+  
+            <div className='bi-transactions-summary__cell bi-transactions-summary__cell--actions bi-table__cell'/>
           </div>
           
           <div className='bi-transactions-summary__row bi-table__row'>
@@ -46,6 +48,8 @@ export class TransactionsSummaryComponent extends React.PureComponent<ITransacti
             <div className='bi-transactions-summary__cell bi-transactions-summary__cell--value bi-table__cell u-word-wrap'>
               <CoinValueComponent value={ this.props.summary.totalOutput }/>
             </div>
+  
+            <div className='bi-transactions-summary__cell bi-transactions-summary__cell--actions bi-table__cell'/>
           </div>
         </div>
       </div>

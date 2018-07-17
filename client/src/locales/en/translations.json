@@ -67,6 +67,9 @@
       "supply": "Circulating Supply",
       "transactionAverage": "Transactions per Day",
       "version": "Software Version"
+    },
+    "charts": {
+      "view": "View Chart"
     }
   },
   "components": {
