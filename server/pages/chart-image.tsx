@@ -1,7 +1,6 @@
 import * as express from 'express';
 import * as fs from 'fs-extra';
 import puppeteer from 'puppeteer';
-import * as util from 'util';
 
 import environment from '../../client/src/config/environment';
 
@@ -52,20 +51,4 @@ export const generateImages = () => {
   });
 };
 
-
-ChartImage.get('/:chartType', (req, res) => {
-  const filename = cacheRoot + req.params.chartType;
-  
-  if (fs.existsSync(filename)) {
-    const stats = fs.statSync(filename);
-    const mtime = new Date(util.inspect(stats.mtime)).getTime();
-    
-    // Random caching for images, increase cache time randomly from 1 to 100 sec
-    if ((new Date()).getTime() - mtime < 60 * 60 * 1000 + Math.random() * 100 * 1000) {
-      return res.sendFile(filename);
-    }
-  }
-  
-  res.status(404)
-    .send('Not found');
-});
+ChartImage.use('/', express.static(cacheRoot));
