@@ -26,6 +26,14 @@ import './app.scss';
 class App extends React.PureComponent {
   props: RouteComponentProps<any>;
   
+  scrollBody: HTMLDivElement;
+  
+  componentDidUpdate (prevProps: any): void {
+    if (this.props.location !== prevProps.location) {
+      this.scrollBody.scrollTo(0, 0);
+    }
+  }
+  
   render (): JSX.Element {
     const { iframe } = queryString.parse(this.props.location.search);
     
@@ -43,7 +51,8 @@ class App extends React.PureComponent {
         
         <SidebarComponent/>
         
-        <div className='bi-app__wrapper g-flex__item g-flex-column g-scroll-y'>
+        <div className='bi-app__wrapper g-flex__item g-flex-column g-scroll-y'
+             ref={ (ref: HTMLDivElement) => this.scrollBody = ref }>
           <HeaderComponent/>
           
           <div className='bi-app__body g-flex-column__item g-flex-column'>
