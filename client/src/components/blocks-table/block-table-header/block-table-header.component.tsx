@@ -113,6 +113,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
     if (sortBy === sortedColumn && sortDirection === 'desc') {
       return queryString.stringify({
         ...params,
+        offset: null,
         sortBy: null,
         sortDirection: null
       });
@@ -124,6 +125,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
     
     return queryString.stringify({
       ...params,
+      offset: null,
       sortBy: sortedColumn,
       sortDirection: newSortDirection
     });
