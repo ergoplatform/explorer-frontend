@@ -157,15 +157,9 @@ server.get('*', (req: any, res) => {
 server.listen(port, () => {
   console.debug(`App is listening on port ${port}!`);
   
-  generateImages()
-    .catch((e) => {
-      console.debug(e);
-    });
+  generateImages();
   
   setInterval(() => {
-    generateImages()
-      .catch((e) => {
-        console.debug(e);
-      });
+    generateImages();
   }, 1000 * 60 * 10);
 });
