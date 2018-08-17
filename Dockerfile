@@ -27,11 +27,11 @@ FROM node:9-alpine
 WORKDIR /usr/src/app
 
 RUN apk update && apk upgrade && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
+    echo @3.8 http://nl.alpinelinux.org/alpine/v3.8/community >> /etc/apk/repositories && \
+    echo @3.8 http://nl.alpinelinux.org/alpine/v3.8/main >> /etc/apk/repositories && \
     apk add --no-cache \
-      chromium@edge \
-      nss@edge
+      chromium@3.8 \
+      nss@3.8
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV CHROME_BIN=/usr/bin/chromium-browser
