@@ -32,7 +32,7 @@ export const generateImages = async () => {
     executablePath: process.env.CHROME_BIN || undefined
   });
   
-  chartTypes.forEach(async (chartType) => {
+  for (const chartType of chartTypes) {
     const filename = cacheRoot + chartType;
     
     const page = await browser.newPage();
@@ -48,7 +48,7 @@ export const generateImages = async () => {
     await page.screenshot({ path: filename, type: 'jpeg' });
     
     await page.close();
-  });
+  }
   
   await browser.close();
 };
