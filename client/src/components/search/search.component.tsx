@@ -9,10 +9,13 @@ import { SearchIcon } from '../common/icons/common.icons';
 
 import './search.scss';
 
-class Search extends React.PureComponent<RouteComponentProps<{}>> {
-  state: {
-    isInputFocused: boolean,
-  } = {
+interface ISearchState {
+  isInputFocused: boolean;
+}
+
+class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> {
+  
+  state: ISearchState = {
     isInputFocused: false
   };
   
@@ -20,14 +23,8 @@ class Search extends React.PureComponent<RouteComponentProps<{}>> {
   
   onInputChangedDebounced: () => void;
   
-  constructor (props: any) {
-    super(props);
-    
-    this.focusInput     = this.focusInput.bind(this);
-    this.onInputBlur    = this.onInputBlur.bind(this);
-    this.onInputChanged = this.onInputChanged.bind(this);
-    this.onSubmit       = this.onSubmit.bind(this);
-    
+  constructor (props: RouteComponentProps<{}>) {
+    super(props);    
     this.onInputChangedDebounced = debounce(this.onInputChanged, 500);
   }
   
@@ -71,31 +68,24 @@ class Search extends React.PureComponent<RouteComponentProps<{}>> {
     );
   }
   
-  private onSubmit (event: SyntheticEvent<HTMLFormElement>): void {
+  private onSubmit = (event: SyntheticEvent<HTMLFormElement>): void  => {
     event.preventDefault();
-    
     this.onInputChanged();
   }
   
-  private onInputBlur (): void {
+  private onInputBlur = (): void => {
     this.setState({
       isInputFocused: false
     });
   }
   
-  private onInputChanged (): void {
-    const params = {
-      query: this.inputElement.value
-    };
-    
-    if (!params.query) {
-      delete params.query;
-    }
-    
+  private onInputChanged = (): void => {
+    const query = this.inputElement.value;
+    const params = query ? ({query}) : ({});
     this.props.history.push(`/search?${queryString.stringify(params)}`);
   }
   
-  private focusInput (): void {
+  private focusInput = (): void => {
     this.setState({
       isInputFocused: true
     });

@@ -11,31 +11,28 @@ import { AddressId } from '../../../models/generated/addressId';
 
 import { CrossIcon } from '../../common/icons/common.icons';
 
+import './payment-request-modal.scss';
+
 type IPaymentRequestModalProps = RouteComponentProps<any> & {
   isOpen: boolean;
   onClose: () => void;
   address: AddressId;
 };
 
-import './payment-request-modal.scss';
+interface IPaymentRequestState {
+  amount: number;
+  copied: boolean;
+  description: string;
+}
 
-class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps> {
+class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps, IPaymentRequestState> {
   link: HTMLDivElement;
   
-  state: any = {
+  state: IPaymentRequestState = {
     amount: 0,
     copied: false,
     description: ''
   };
-  
-  constructor (props: any) {
-    super(props);
-    
-    this.setAmount           = this.setAmount.bind(this);
-    this.setDescription      = this.setDescription.bind(this);
-    this.copyLinkToClipboard = this.copyLinkToClipboard.bind(this);
-    this.selectLink          = this.selectLink.bind(this);
-  }
   
   render (): JSX.Element {
     const link = this.getLink();
@@ -123,7 +120,7 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps>
     );
   }
   
-  private getLink (): string {
+  private getLink = (): string => {
     const params = queryString.stringify({
       address: this.props.address,
       amount: this.state.amount,
@@ -135,24 +132,24 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps>
     return `${host}/payment-request?${params}`;
   }
   
-  private setAmount (event: React.ChangeEvent<HTMLInputElement>): void {
+  private setAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({
-      amount: event.target.value
+      amount: parseInt(event.target.value, 10) // 10 stands for radix
     });
   }
   
-  private setDescription (event: React.ChangeEvent<HTMLTextAreaElement>): void {
+  private setDescription = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
     this.setState({
       description: event.target.value
     });
   }
   
-  private selectLink (): void {
+  private selectLink = (): void => {
     window.getSelection()
       .selectAllChildren(this.link);
   }
   
-  private copyLinkToClipboard (): void {
+  private copyLinkToClipboard = (): void => {
     this.selectLink();
     
     document.execCommand('copy');

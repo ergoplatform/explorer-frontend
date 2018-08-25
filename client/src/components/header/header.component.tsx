@@ -13,11 +13,6 @@ import './header.scss';
 import { BurgerIcon, LogoVerticalIcon } from '../common/icons/common.icons';
 
 class Header extends React.Component<SettingsActions> {
-  constructor (props: any) {
-    super(props);
-    
-    this.showSidebar = this.showSidebar.bind(this);
-  }
   
   render (): JSX.Element {
     return (
@@ -42,9 +37,8 @@ class Header extends React.Component<SettingsActions> {
     );
   }
   
-  private showSidebar (): void {
-    this.props.setSidebarDisplayStatus(true);
-  }
+  private showSidebar = (): void => 
+    this.props.setSidebarDisplayStatus(true)
 }
 
 function mapDispatchToProps (dispatch: any): any {
