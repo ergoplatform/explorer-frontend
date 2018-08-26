@@ -11,32 +11,39 @@ import { AddressId } from '../../../models/generated/addressId';
 
 import { CrossIcon } from '../../common/icons/common.icons';
 
+import './payment-request-modal.scss';
+
 type IPaymentRequestModalProps = RouteComponentProps<any> & {
   isOpen: boolean;
   onClose: () => void;
   address: AddressId;
 };
 
-import './payment-request-modal.scss';
+interface IPaymentRequestState {
+  amount: number;
+  copied: boolean;
+  description: string;
+}
 
-class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps> {
+class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps, IPaymentRequestState> {
+
   link: HTMLDivElement;
   
-  state: any = {
+  state: IPaymentRequestState = {
     amount: 0,
     copied: false,
     description: ''
   };
   
-  constructor (props: any) {
-    super(props);
-    
-    this.setAmount           = this.setAmount.bind(this);
-    this.setDescription      = this.setDescription.bind(this);
-    this.copyLinkToClipboard = this.copyLinkToClipboard.bind(this);
-    this.selectLink          = this.selectLink.bind(this);
+  constructor (props: IPaymentRequestModalProps){	
+    super(props);	
+    	
+    this.setAmount           = this.setAmount.bind(this);	
+    this.setDescription      = this.setDescription.bind(this);	
+    this.copyLinkToClipboard = this.copyLinkToClipboard.bind(this);	
+    this.selectLink          = this.selectLink.bind(this);	
   }
-  
+
   render (): JSX.Element {
     const link = this.getLink();
     
@@ -137,7 +144,7 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps>
   
   private setAmount (event: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({
-      amount: event.target.value
+      amount: parseInt(event.target.value, 10)
     });
   }
   
