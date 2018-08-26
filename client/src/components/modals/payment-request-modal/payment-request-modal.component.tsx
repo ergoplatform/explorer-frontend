@@ -35,13 +35,13 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps,
     description: ''
   };
   
-  constructor (props: IPaymentRequestModalProps){	
-    super(props);	
-    	
-    this.setAmount           = this.setAmount.bind(this);	
-    this.setDescription      = this.setDescription.bind(this);	
-    this.copyLinkToClipboard = this.copyLinkToClipboard.bind(this);	
-    this.selectLink          = this.selectLink.bind(this);	
+  constructor (props: IPaymentRequestModalProps){
+    super(props);
+
+    this.setAmount           = this.setAmount.bind(this);
+    this.setDescription      = this.setDescription.bind(this);
+    this.copyLinkToClipboard = this.copyLinkToClipboard.bind(this);
+    this.selectLink          = this.selectLink.bind(this);
   }
 
   render (): JSX.Element {

@@ -1,7 +1,10 @@
 import * as React from 'react';
 
+import { TransactionInput } from '../../../models/generated/transactionInput';
+import { TransactionOutput } from '../../../models/generated/transactionOutput';
+
 interface ITransactionRawScriptsProps {
-  items: any[];
+  items: Array<TransactionOutput | TransactionInput>;
 }
 
 import './transaction-raw-scripts.scss';
@@ -11,15 +14,12 @@ export class TransactionRawScriptsComponent extends React.PureComponent<ITransac
     return (
       <div className='bi-transaction-raw-scripts'>
         {
-          this.props.items.map((item, index) => {
+          this.props.items.map((item: TransactionInput | TransactionOutput, index: number) => {
             return (
-              <div className='bi-transaction-raw-scripts__item' key={ index }>
+              <div className='bi-transaction-raw-scripts__item' key={ `${index}_${item.address}` }>
                 {
                   Object.keys(item)
-                    .map((key) => {
-                      return `${key}: ${item[key]}`;
-                    })
-                    .join(' ')
+                    .reduce((acc, key) => `${acc}${key}: ${item[key]} `, '')
                 }
               </div>
             );

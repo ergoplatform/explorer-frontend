@@ -18,13 +18,17 @@ import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
   transaction: Transaction;
-  confirmations?: any;
+  confirmations?: number;
   address?: AddressId;
 }
 
-class TransactionsItem extends React.Component {
-  props: IBlockTransactionsItemProps & SettingsState;
-  state: any = {
+interface ITransactionsItemState {
+  isClient: boolean;
+}
+
+class TransactionsItem extends React.Component<IBlockTransactionsItemProps & Partial<SettingsState>, ITransactionsItemState> {
+
+  state: ITransactionsItemState = {
     isClient: false
   };
   
@@ -39,7 +43,7 @@ class TransactionsItem extends React.Component {
     let totalInputAddress  = 0;
     let totalOutputAddress = 0;
     let isOutput           = false;
-    
+
     return (
       <div className='bi-transactions-item'>
         <div className='bi-transactions-item__header g-flex'>
@@ -64,7 +68,7 @@ class TransactionsItem extends React.Component {
                 }
                 
                 return (
-                  <div className='bi-transactions-item__input g-flex' key={ address.address || index }>
+                  <div className='bi-transactions-item__input g-flex' key={`${index}_${address.address}`}>
                     <div className='bi-transactions-item__address'>
                       { address.address ? <Link className='u-word-wrap u-word-wrap--ellipsis'
                                                 to={ `/addresses/${address.address}` }>
@@ -113,7 +117,7 @@ class TransactionsItem extends React.Component {
                 totalOutput += address.value;
                 
                 return (
-                  <div className='bi-transactions-item__output g-flex' key={ address.address || index }>
+                  <div className='bi-transactions-item__output g-flex' key={`${index}_${address.address}`}>
                     <div className='bi-transactions-item__address g-flex__item-fixed'>
                       { address.address ?
                         <Link className='u-word-wrap u-word-wrap--ellipsis'
@@ -146,7 +150,7 @@ class TransactionsItem extends React.Component {
             }
             
             <div className='bi-transactions-item__footer g-flex-column__item-fixed g-flex'>
-              { this.props.confirmations > 0 && (
+              { this.props.confirmations && this.props.confirmations > 0 && (
                 <div className='bi-transactions-item__confirmations g-flex__item-fixed'>
                   { this.props.confirmations } <FormattedPlural value={ this.props.confirmations }
                                                                 one={ <FormattedMessage
