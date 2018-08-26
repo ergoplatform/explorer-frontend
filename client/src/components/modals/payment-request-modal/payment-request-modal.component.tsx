@@ -35,7 +35,7 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps,
     description: ''
   };
   
-  constructor (props: IPaymentRequestModalProps) {	
+  constructor(props: IPaymentRequestModalProps){	
     super(props);	
     	
     this.setAmount           = this.setAmount.bind(this);	
@@ -144,7 +144,7 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps,
   
   private setAmount (event: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({
-      amount: parseInt(event.target.value, 10) // 10 stands for radix
+      amount: parseInt(event.target.value, 10)
     });
   }
   

@@ -66,12 +66,14 @@ interface ISidebarState {
   isClient: boolean;
 }
 
-class Sidebar extends React.Component<SettingsActions & ApiActions & { settings: SettingsState, api: ApiState }, ISidebarState> {
+type ISidebarProps = SettingsActions & ApiActions & { settings: SettingsState, api: ApiState };
+
+class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
   state: ISidebarState = {
     isClient: false
   };
   
-  constructor (props: SettingsActions & ApiActions & { settings: SettingsState, api: ApiState }) {
+  constructor (props: ISidebarProps) {
     super(props);
     
     this.toggleCollapse = this.toggleCollapse.bind(this);

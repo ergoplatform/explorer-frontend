@@ -14,7 +14,6 @@ interface ISearchState {
 }
 
 class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> {
-  
   state: ISearchState = {
     isInputFocused: false
   };
@@ -88,6 +87,7 @@ class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> 
   private onInputChanged (): void {
     const query = this.inputElement.value;
     const params = query ? ({query}) : ({});
+    
     this.props.history.push(`/search?${queryString.stringify(params)}`);
   }
   

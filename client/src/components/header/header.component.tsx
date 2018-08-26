@@ -13,10 +13,9 @@ import './header.scss';
 import { BurgerIcon, LogoVerticalIcon } from '../common/icons/common.icons';
 
 class Header extends React.Component<SettingsActions> {
-
   constructor (props: SettingsActions) {	
     super(props);	
-    	
+
     this.showSidebar = this.showSidebar.bind(this);	
   }
 
@@ -46,7 +45,6 @@ class Header extends React.Component<SettingsActions> {
   private showSidebar (): void { 
     this.props.setSidebarDisplayStatus(true);
   }
-
 }
 
 function mapDispatchToProps (dispatch: any): any {
