@@ -42,7 +42,7 @@ class Header extends React.Component<SettingsActions> {
     );
   }
   
-  private showSidebar (): void {
+  private showSidebar (): void { 
     this.props.setSidebarDisplayStatus(true);
   }
 }
