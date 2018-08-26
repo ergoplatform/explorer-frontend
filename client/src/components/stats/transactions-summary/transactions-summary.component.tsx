@@ -6,7 +6,11 @@ import { CoinValueComponent } from '../../common/coin-value/coin-value.component
 import './transactions-summary.scss';
 
 interface ITransactionsSummaryProps {
-  summary: any;
+  summary: {
+    total: number;
+    totalFee: number;
+    totalOutput: number;
+  };
 }
 
 export class TransactionsSummaryComponent extends React.PureComponent<ITransactionsSummaryProps> {
