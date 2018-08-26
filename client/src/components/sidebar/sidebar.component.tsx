@@ -62,12 +62,16 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   }
 ];
 
-class Sidebar extends React.Component<SettingsActions & ApiActions & { settings: SettingsState, api: ApiState }> {
-  state: any = {
+interface ISidebarState {
+  isClient: boolean;
+}
+
+class Sidebar extends React.Component<SettingsActions & ApiActions & { settings: SettingsState, api: ApiState }, ISidebarState> {
+  state: ISidebarState = {
     isClient: false
   };
   
-  constructor (props: any) {
+  constructor (props: SettingsActions & ApiActions & { settings: SettingsState, api: ApiState }) {
     super(props);
     
     this.toggleCollapse = this.toggleCollapse.bind(this);
@@ -165,7 +169,7 @@ class Sidebar extends React.Component<SettingsActions & ApiActions & { settings:
   }
 }
 
-function mapStateToProps (state: AppState): any {
+function mapStateToProps (state: AppState): { settings: SettingsState, api: ApiState } {
   return { settings: state.settings, api: state.api };
 }
 

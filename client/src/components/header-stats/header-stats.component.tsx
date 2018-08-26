@@ -39,7 +39,7 @@ class HeaderStats extends React.Component<StatsActions & AppActions & StatsState
 }
 
 
-function mapStateToProps (state: AppState): any {
+function mapStateToProps (state: AppState): StatsState {
   return state.stats;
 }
 
