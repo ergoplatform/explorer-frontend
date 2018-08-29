@@ -169,6 +169,8 @@ server.listen(port, () => {
     });
   
   setInterval(() => {
+    console.debug('[PROGRESS] Generating charts preview images...');
+  
     generateImages()
       .then(() => {
         console.debug('[SUCCESS] Charts preview generated!');
