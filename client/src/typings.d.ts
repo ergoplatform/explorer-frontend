@@ -13,6 +13,7 @@ declare module 'highcharts-react-official';
 
 interface Window {
   __PRELOADED_STATE__: any;
+  __HAS_ERROR__: number;
   __APP_CONFIG__: {
     apiUrl: string;
   };

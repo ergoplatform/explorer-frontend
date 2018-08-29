@@ -5,6 +5,10 @@ export class StatsApiService {
   static getStatsInfo (): any {
     return axios.get(`${environment.apiUrl}/info`)
       .then((response: AxiosResponse) => {
+        if (!response) {
+          return Promise.reject('no response');
+        }
+        
         return response.data;
       });
   }

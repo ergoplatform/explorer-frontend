@@ -46,10 +46,11 @@ addLocaleData([...en, ...ru]);
 export const App = () => {
   return (<Provider store={ AppStore }>
     <ConnectedIntlProvider textComponent={ TextComponent }>
-      <BrowserRouter basename={`/${locale}`}>
+      <BrowserRouter basename={ `/${locale}` }>
         <LastLocationProvider>
           <Switch>
-            <Route path='/server-error' exact={ true } component={ ServerErrorComponent }/>
+            { window.__HAS_ERROR__ && <Route path='/' component={ ServerErrorComponent }/> }
+            
             <Route path='/' component={ AppComponent }/>
           </Switch>
         </LastLocationProvider>

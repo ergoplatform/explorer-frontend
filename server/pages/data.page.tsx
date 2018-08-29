@@ -24,5 +24,10 @@ DataPage.get('/', (req: any, res, next) => {
       req.explorer.preloadedState = { ...req.explorer.preloadedState, ...preloadedState };
       
       next();
+    })
+    .catch(() => {
+      req.explorer.hasError = true;
+    
+      next();
     });
 });
