@@ -10,13 +10,13 @@ import sprite from 'svg-sprite-loader/runtime/sprite.build';
 
 import { serverHtml } from './server.html';
 
-import { App, Error } from './app.server';
+import { App } from './app.server';
 
 import '../client/src/config/axios.config';
 
 import { AddressPage } from './pages/address.page';
 import { BlockPage } from './pages/block.page';
-import { ChartImage, generateImages } from './pages/chart-image';
+import { ChartImage, runImageGeneration } from './pages/chart-image';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
 import { SearchPage } from './pages/search.page';
@@ -67,47 +67,12 @@ server.use('/:locale?/search', SearchPage);
 
 server.use((req: any, res, next) => {
   axios.interceptors.response.use(response => response, () => {
-    if (req.explorer.skipError) {
-      return;
+    if (!req.explorer.skipError) {
+      req.explorer.hasError = true;
     }
-    
-    return res.redirect('/server-error');
   });
   
   next();
-});
-
-server.use('/:locale?/server-error', (req: any, res) => {
-  const context: any = {};
-  
-  const body = renderToString(
-    (
-      <Error location={ req.url }
-             context={ context }
-             preloadedState={ req.explorer.preloadedState }/>
-    )
-  );
-  
-  const helmet = Helmet.renderStatic();
-  
-  const htmlToRender = serverHtml({
-    assets: manifest.assets,
-    body,
-    helmet,
-    preloadedState: req.explorer.preloadedState,
-    spriteContent: sprite.stringify()
-  });
-  
-  if (context.url) {
-    res.writeHead(302, {
-      Location: context.url
-    });
-    
-    res.end();
-  } else {
-    res.write(htmlToRender);
-    res.end();
-  }
 });
 
 server.use('*', Preloader);
@@ -128,6 +93,7 @@ server.get('*', (req: any, res) => {
     (
       <App location={ req.url }
            context={ context }
+           hasError={ req.explorer.hasError }
            preloadedState={ req.explorer.preloadedState }/>
     )
   );
@@ -137,6 +103,7 @@ server.get('*', (req: any, res) => {
   const htmlToRender = serverHtml({
     assets: manifest.assets,
     body,
+    hasError: req.explorer.hasError,
     helmet,
     preloadedState: req.explorer.preloadedState,
     spriteContent: sprite.stringify()
@@ -157,22 +124,6 @@ server.get('*', (req: any, res) => {
 server.listen(port, () => {
   console.debug(`App is listening on port ${port}!`);
   
-  generateImages()
-    .then(() => {
-      console.debug('images generated...');
-    })
-    .catch((e) => {
-      console.debug(e);
-    });
-  
-  setInterval(() => {
-    generateImages()
-      .then(() => {
-        console.debug('images generated...');
-      })
-      .catch((e) => {
-        console.debug(e);
-      });
-  }, 1000 * 60 * 10);
+  runImageGeneration();
 });
 

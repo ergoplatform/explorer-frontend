@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import './server-error.scss';
 
@@ -11,7 +10,7 @@ export class ServerErrorComponent extends React.PureComponent {
           Unhandled Error occurred
         </h2>
         
-        <Link to={'/'}>Go back to home</Link>
+        <a href={ '/' }>Go back to home</a>
       </div>
     );
   }

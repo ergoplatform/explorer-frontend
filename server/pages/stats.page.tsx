@@ -26,5 +26,10 @@ StatsPage.get('/', (req: any, res, next) => {
       };
   
       next();
+    })
+    .catch(() => {
+      req.explorer.hasError = true;
+    
+      next();
     });
 });

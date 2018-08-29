@@ -1,4 +1,4 @@
-export const serverHtml = ({ body, assets, helmet, spriteContent, preloadedState }: { body: string, assets: any, helmet: any, spriteContent: any, preloadedState: any }) => `<!DOCTYPE html><html>
+export const serverHtml = ({ body, assets, helmet, spriteContent, preloadedState, hasError }: { body: string, assets: any, helmet: any, spriteContent: any, preloadedState: any, hasError: boolean }) => `<!DOCTYPE html><html>
     <head>
       <meta charSet='utf-8'/>
       <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no'/>
@@ -21,6 +21,7 @@ export const serverHtml = ({ body, assets, helmet, spriteContent, preloadedState
   JSON.stringify(preloadedState)
     .replace(/</g, '\\\u003c')
   }
+          window.__HAS_ERROR__ = ${ hasError ? 1 : 0};
       </script>
     
     <script src='/${assets['main.js']}'></script>

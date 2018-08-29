@@ -30,7 +30,7 @@ Preloader.get('*', (req: any, res, next) => {
       
       const apiPreloadedState = apiReducer(apiInitialState, {
         payload: {
-          data: apiData,
+          data: apiData
         },
         type: GET_API_SUCCESS
       });
@@ -39,7 +39,7 @@ Preloader.get('*', (req: any, res, next) => {
         ...req.explorer.preloadedState,
         api: {
           ...apiPreloadedState,
-          preloaded: true,
+          preloaded: true
         },
         settings: {
           isScriptsDisplayed: true,
@@ -51,6 +51,10 @@ Preloader.get('*', (req: any, res, next) => {
         }
       };
       
+      next();
+    })
+    .catch(() => {
+      req.explorer.hasError = true;
       next();
     });
 });
