@@ -157,20 +157,24 @@ server.get('*', (req: any, res) => {
 server.listen(port, () => {
   console.debug(`App is listening on port ${port}!`);
   
+  console.debug('[PROGRESS] Generating charts preview images...');
+  
   generateImages()
     .then(() => {
-      console.debug('images generated...');
+      console.debug('[SUCCESS] Charts preview generated!');
     })
     .catch((e) => {
+      console.debug('[FAILURE] Charts preview generation failed!');
       console.debug(e);
     });
   
   setInterval(() => {
     generateImages()
       .then(() => {
-        console.debug('images generated...');
+        console.debug('[SUCCESS] Charts preview generated!');
       })
       .catch((e) => {
+        console.debug('[FAILURE] Charts preview generation failed!');
         console.debug(e);
       });
   }, 1000 * 60 * 10);

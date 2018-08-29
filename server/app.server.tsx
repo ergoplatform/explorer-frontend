@@ -31,6 +31,10 @@ export const App = ({ location, context, preloadedState }: any) => {
     locale = pathLanguage;
   }
   
+  if (!preloadedState.settings) {
+    preloadedState.settings = {};
+  }
+  
   preloadedState.settings.locale = locale;
   
   const AppStore = configureStore(preloadedState);
@@ -54,6 +58,10 @@ export const Error = ({ location, context, preloadedState }: any) => {
   
   if (languages.includes(pathLanguage)) {
     locale = pathLanguage;
+  }
+  
+  if (!preloadedState.settings) {
+    preloadedState.settings = {};
   }
   
   preloadedState.settings.locale = locale;
