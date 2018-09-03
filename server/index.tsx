@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as compression from 'compression';
+import * as consoleStamp from 'console-stamp';
 import * as express from 'express';
 import * as fs from 'fs';
 import * as proxy from 'http-proxy-middleware';
@@ -7,6 +8,8 @@ import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
 import sprite from 'svg-sprite-loader/runtime/sprite.build';
+
+consoleStamp(console, 'HH:MM:ss.l');
 
 import { serverHtml } from './server.html';
 
@@ -23,6 +26,7 @@ import { SearchPage } from './pages/search.page';
 import { StatsPage } from './pages/stats.page';
 import { TransactionPage } from './pages/transaction.page';
 import { Preloader } from './preloader';
+
 
 const port = process.env.PORT || 5000;
 
@@ -122,7 +126,7 @@ server.get('*', (req: any, res) => {
 });
 
 server.listen(port, () => {
-  console.debug(`App is listening on port ${port}!`);
+  console.info(`App is listening on port ${port}!`);
   
   runImageGeneration();
 });

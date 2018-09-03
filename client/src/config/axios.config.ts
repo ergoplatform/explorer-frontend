@@ -12,10 +12,13 @@ axios.interceptors.response.use((request: any) => {
   return request;
 },  (error) => {
   if (error.code === 'ECONNABORTED') {
-    console.error(`[ERROR] Request Timeout ${error.config.url}`);
+    console.error(`Request Aborted (timeout): ${error.config.url}`);
     
-    return false;
+    return Promise.reject(error);
   }
+  
+  
+  console.error(`Request Error ${error.config.url}`);
   
   return Promise.reject(error);
 });
