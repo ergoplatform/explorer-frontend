@@ -18,7 +18,7 @@ export class ChartTooltipComponent extends React.PureComponent {
       .format('DD.MM.YYYY');
     
     let value     = null;
-    const payload = this.props.payload[0];
+    const payload = this.props.payload ? this.props.payload[0] : null;
     
     if (payload) {
       const type           = payload.payload.type || 'chart';

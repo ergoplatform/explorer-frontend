@@ -10,6 +10,7 @@ declare module 'react-router-hash-link';
 declare module 'apiSpec';
 declare module '@axetroy/react-download';
 declare module 'highcharts-react-official';
+declare module 'console-stamp';
 
 interface Window {
   __PRELOADED_STATE__: any;

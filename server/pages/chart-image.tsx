@@ -56,19 +56,19 @@ const generateImages = async () => {
 ChartImage.use('/', express.static(cacheRoot));
 
 export const runImageGeneration = () => {
-  console.debug('[PROGRESS] Generating charts preview images...');
+  console.info('[PROGRESS] Generating charts preview images...');
   
   generateImages()
     .then(() => {
-      console.debug('[SUCCESS] Charts preview generated!');
+      console.info('[SUCCESS] Charts preview generated!');
       
       setTimeout(() => {
         runImageGeneration();
       }, 1000 * 60 * 10);
     })
     .catch((e) => {
-      console.debug('[FAILURE] Charts preview generation failed!');
-      console.debug(e);
+      console.error('[FAILURE] Charts preview generation failed!');
+      console.error(e);
       
       runImageGeneration();
     });
