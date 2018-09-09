@@ -9,7 +9,7 @@ import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
 import sprite from 'svg-sprite-loader/runtime/sprite.build';
 
-consoleStamp(console, 'HH:MM:ss.l');
+consoleStamp(console, 'dd/mm/yyyy HH:MM:ss.l');
 
 import { serverHtml } from './server.html';
 
