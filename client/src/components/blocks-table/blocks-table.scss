@@ -39,6 +39,11 @@ $block-table-cell-color: $theme-primary-color;
     &:last-child {
       align-self: flex-end;
     }
+
+    // [ Mode ] Timestamp
+    &--timestamp {
+      width: 25%;
+    }
   }
 
   &__cell-name {

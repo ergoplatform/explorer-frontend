@@ -22,7 +22,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
           </Link>
         </div>
   
-        <div className='bi-blocks-table__cell bi-table__cell'>
+        <div className='bi-blocks-table__cell bi-blocks-table__cell--timestamp bi-table__cell'>
           <Link className={ this.getSortDirectionClassName('timestamp') }
                 to={ `/?${this.getSortLink('timestamp')}` }>
             <FormattedMessage id='common.block.age'/>
