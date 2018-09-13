@@ -9,7 +9,13 @@ export const ChartImage = express.Router();
 const cacheRoot = fs.realpathSync(process.cwd()) + '/tmp/cache/';
 fs.ensureDirSync(cacheRoot);
 
+let browser: any;
+
 const generateImages = async () => {
+  if (browser) {
+    await browser.close();
+  }
+  
   const chartTypes = [
     'total',
     'blockchain-size',
@@ -27,7 +33,7 @@ const generateImages = async () => {
     appUrl = environment.environments[0].url;
   }
   
-  const browser = await puppeteer.launch({
+  browser = await puppeteer.launch({
     args: ['--no-sandbox', '--headless', '--disable-gpu'],
     executablePath: process.env.CHROME_BIN || undefined
   });
@@ -51,6 +57,8 @@ const generateImages = async () => {
   }
   
   await browser.close();
+  
+  browser = null;
 };
 
 ChartImage.use('/', express.static(cacheRoot));
