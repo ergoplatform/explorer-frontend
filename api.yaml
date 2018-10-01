@@ -907,7 +907,7 @@ components:
       example: D2bXMwWN8P9nWJ9qqwZJLauAdcZHX9n6s91QQ9vK6Zu4
 
     AddressId:
-      description: Base16-encoded address id bytes
+      description: Base58-encoded address id bytes
       type: string
       example: D2bXMwWN8P9nWJ9qqwZJLauAdcZHX9n6s91QQ9vK6Zu4
 
