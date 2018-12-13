@@ -66,7 +66,7 @@
       "marketCap": "Market Cap",
       "supply": "Circulating Supply",
       "transactionAverage": "Transactions per Day",
-      "version": "Software Version"
+      "version": "Protocol Version"
     },
     "charts": {
       "view": "View Chart"
