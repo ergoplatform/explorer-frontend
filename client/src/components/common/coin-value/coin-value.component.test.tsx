@@ -7,7 +7,7 @@ import environment from '../../../config/environment';
 
 import { CoinValueComponent } from './coin-value.component';
 
-describe('Component | Address Transactions', () => {
+describe('Component | Coin Value', () => {
   let value: number;
   let wrapper: ShallowWrapper;
   
@@ -25,6 +25,6 @@ describe('Component | Address Transactions', () => {
   
   it('should transform value correctly', () => {
     expect(wrapper.text())
-      .toEqual(`${10000} ${environment.blockchain.coinName.toLocaleUpperCase()}`);
+      .toEqual(`${1000} ${environment.blockchain.coinName.toLocaleUpperCase()}`);
   });
 });
