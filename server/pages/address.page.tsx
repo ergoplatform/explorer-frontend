@@ -36,7 +36,9 @@ const render = (req: any, res: any, next: any) => {
           next();
         });
     })
-    .catch(() => {
+    .catch((e: Error) => {
+      console.warn(e);
+      
       req.explorer.hasError = true;
       
       next();

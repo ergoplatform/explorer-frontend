@@ -640,7 +640,7 @@ components:
         - nBits
         - difficulty
         - extensionHash
-        - equihashSolutions
+        - powSolutions
         - height
         - size
       properties:

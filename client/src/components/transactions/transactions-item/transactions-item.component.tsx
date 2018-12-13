@@ -64,7 +64,7 @@ class TransactionsItem extends React.Component {
                 }
                 
                 return (
-                  <div className='bi-transactions-item__input g-flex' key={ address.address || index }>
+                  <div className='bi-transactions-item__input g-flex' key={ address.id || index }>
                     <div className='bi-transactions-item__address'>
                       { address.address ? <Link className='u-word-wrap u-word-wrap--ellipsis'
                                                 to={ `/addresses/${address.address}` }>
@@ -113,7 +113,7 @@ class TransactionsItem extends React.Component {
                 totalOutput += address.value;
                 
                 return (
-                  <div className='bi-transactions-item__output g-flex' key={ address.address || index }>
+                  <div className='bi-transactions-item__output g-flex' key={ address.id || index }>
                     <div className='bi-transactions-item__address g-flex__item-fixed'>
                       { address.address ?
                         <Link className='u-word-wrap u-word-wrap--ellipsis'

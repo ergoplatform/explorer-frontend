@@ -29,9 +29,9 @@ export interface BlockHeader {
   difficulty: number;
   extensionHash: string;
   /**
-   * Base58-encoded equihash solutions
+   * Base58-encoded PoW solutions
    */
-  equihashSolutions: string;
+  powSolutions: string;
   height: number;
   size: number;
 }

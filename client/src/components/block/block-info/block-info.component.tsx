@@ -159,11 +159,11 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
           
           <div className='bi-block-info__row bi-table__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
-              <FormattedMessage id='common.block.equihashSolutions'/>
+              <FormattedMessage id='common.block.powSolutions'/>
             </div>
             
             <div className='bi-block-info__cell u-word-wrap'>
-              { this.props.block.header.equihashSolutions }
+              { this.props.block.header.powSolutions }
             </div>
           </div>
           

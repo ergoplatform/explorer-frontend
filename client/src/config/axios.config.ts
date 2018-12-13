@@ -17,7 +17,6 @@ axios.interceptors.response.use((request: any) => {
     return Promise.reject(error);
   }
   
-  
   console.error(`Request Error ${error.config.url}`);
   
   return Promise.reject(error);

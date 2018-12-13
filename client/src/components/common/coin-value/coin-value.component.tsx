@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import environment from '../../../config/environment';
 
 interface ICoinValueProps {
@@ -17,10 +18,10 @@ export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
   private getFormattedValue (): string {
     const { value } = this.props;
     
-    const formattedValue = value / 1e8;
+    const formattedValue = value / 1e9;
     
     if (formattedValue < 1 && formattedValue !== 0) {
-      return formattedValue.toFixed(8)
+      return formattedValue.toFixed(9)
         .split('')
         .reduceRight((arr: string[], i: string) => {
           if (i === '0' && arr.length === 0) {

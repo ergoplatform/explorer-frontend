@@ -5,7 +5,7 @@
       "age": "Время",
       "block": "Блок",
       "difficulty": "Сложность",
-      "equihashSolutions": "Решение Equihash",
+      "powSolutions": "Решение PoW",
       "extensionHash": "Хэш Секции Расширения",
       "height": "Высота",
       "id": "ID",

@@ -5,7 +5,7 @@
       "age": "Timestamp",
       "block": "Block",
       "difficulty": "Difficulty",
-      "equihashSolutions": "Equihash Solution",
+      "powSolutions": "PoW Solutions",
       "extensionHash": "Extension Hash",
       "height": "Height",
       "id": "ID",
