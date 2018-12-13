@@ -1,5 +1,5 @@
 # build environment
-FROM node:alpine as builder
+FROM node:9-alpine as builder
 WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 
