@@ -12,12 +12,12 @@ import { GET_API_SUCCESS } from '../client/src/constants/api.types';
 
 export const Preloader = express.Router();
 
+const appPath         = fs.realpathSync(process.cwd());
+const data            = appPath + '/api.yaml';
+const apiParsePromise = SwaggerParser.validate(data);
+
 Preloader.get('*', (req: any, res, next) => {
-  const appPath = fs.realpathSync(process.cwd());
-  
-  const data = appPath + '/api.yaml';
-  
-  const promises = [StatsApiService.getStatsInfo(), SwaggerParser.validate(data)];
+  const promises = [StatsApiService.getStatsInfo(), apiParsePromise];
   
   Promise.all(promises)
     .then(([statsData, apiData]: any) => {
