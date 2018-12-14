@@ -48,14 +48,14 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
               { this.props.block.header.id }
             </div>
           </div>
-  
-  
+          
+          
           { this.props.block.header.height !== 0 &&
           <div className='bi-block-info__row bi-table__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
               <FormattedMessage id='common.block.parent'/>
             </div>
-    
+
             <div className='bi-block-info__cell bi-table__cell u-word-wrap'>
               <Link to={ `/blocks/${this.props.block.header.parentId}` }>
                 { this.props.block.header.parentId }
@@ -63,12 +63,12 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
             </div>
           </div>
           }
-  
+          
           <div className='bi-block-info__row bi-table__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
               <FormattedMessage id='common.block.difficulty'/>
             </div>
-    
+            
             <div className='bi-block-info__cell bi-table__cell u-word-wrap'>
               { this.props.block.header.difficulty }
             </div>
@@ -93,14 +93,14 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
               { this.props.block.header.version }
             </div>
           </div>
-  
-  
+          
+          
           { this.props.block.header.height !== 0 &&
           <div className='bi-block-info__row bi-table__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
               <FormattedMessage id='common.block.interlinks'/>
             </div>
-    
+
             <div className='bi-block-info__cell bi-table__cell'>
               {
                 this.props.block.header.interlinks.map((interlink: string, index: number) => {
@@ -163,7 +163,14 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
             </div>
             
             <div className='bi-block-info__cell u-word-wrap'>
-              { this.props.block.header.powSolutions }
+              { Object.keys(this.props.block.header.powSolutions)
+                .map((key) => {
+                  return (
+                    <div key={ key }>
+                      { key }: { this.props.block.header.powSolutions[key] }
+                    </div>
+                  );
+                }) }
             </div>
           </div>
           
