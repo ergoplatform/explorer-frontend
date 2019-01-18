@@ -165,7 +165,7 @@ class Chart extends React.PureComponent {
           return {
             timestamp: item.timestamp,
             type: 'coin',
-            value: item.value / 1e8
+            value: item.value / 1e9
           };
         });
       }

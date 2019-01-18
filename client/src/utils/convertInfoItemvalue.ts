@@ -10,7 +10,7 @@ export const convertInfoItemValue = (key: string, value: any): any => {
       return formatNumber({
         integerSeparator: ' ',
         suffix: ` ${environment.blockchain.coinName}`
-      })(value / 1e8);
+      })(value / 1e9);
     }
     
     
