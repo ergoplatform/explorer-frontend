@@ -9,24 +9,24 @@ import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
 import sprite from 'svg-sprite-loader/runtime/sprite.build';
 
+axios.defaults.timeout = 10 * 1000;
+
 consoleStamp(console, 'dd/mm/yyyy HH:MM:ss.l');
 
 import { serverHtml } from './server.html';
 
 import { App } from './app.server';
 
-import '../client/src/config/axios.config';
-
 import { AddressPage } from './pages/address.page';
 import { BlockPage } from './pages/block.page';
-import { ChartImage, runImageGeneration } from './pages/chart-image';
+import { ChartImage } from './pages/chart-image';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
 import { SearchPage } from './pages/search.page';
 import { StatsPage } from './pages/stats.page';
 import { TransactionPage } from './pages/transaction.page';
 import { Preloader } from './preloader';
-
+import { runImageGeneration } from './utils/generateImages';
 
 const port = process.env.PORT || 5000;
 
@@ -126,8 +126,9 @@ server.get('*', (req: any, res) => {
 });
 
 server.listen(port, () => {
-  console.info(`App is listening on port ${port}!`);
+  console.info(`App is listening on port ${ port }!`);
   
   runImageGeneration();
 });
+
 
