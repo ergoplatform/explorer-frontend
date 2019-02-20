@@ -1,10 +1,4 @@
-const fs = require('fs');
+import * as fs from 'fs-extra';
 
-const cachePath = process.cwd() + '/tmp/cache/';
-
-
-if (!fs.existsSync(cachePath)) {
-  fs.mkdirSync(cachePath);
-}
-
-export const cacheRoot = cachePath;
+export const cacheRoot = fs.realpathSync(process.cwd()) + '/tmp/cache/';
+fs.ensureDirSync(cacheRoot);
