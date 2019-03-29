@@ -4,13 +4,13 @@ WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 
 RUN apk update && apk upgrade && \
-    echo @3.8 http://nl.alpinelinux.org/alpine/v3.8/community >> /etc/apk/repositories && \
-    echo @3.8 http://nl.alpinelinux.org/alpine/v3.8/main >> /etc/apk/repositories && \
+    echo @3.9 http://nl.alpinelinux.org/alpine/v3.9/community >> /etc/apk/repositories && \
+    echo @3.9 http://nl.alpinelinux.org/alpine/v3.9/main >> /etc/apk/repositories && \
     apk add --no-cache \
-      freetype@3.8 \
-      harfbuzz@3.8 \
-      chromium@3.8 \
-      nss@3.8
+      freetype@3.9 \
+      harfbuzz@3.9 \
+      chromium@3.9 \
+      nss@3.9
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV CHROME_BIN=/usr/bin/chromium-browser
