@@ -16,6 +16,7 @@ $sidebar-btn-toggle-icon-color: #ffffff;
   background-color: $sidebar-bg-color;
   font-family: $sidebar-font;
   transition: width 350ms linear;
+  overflow: auto;
 
   // [ Components ]
   //---------------------------------
