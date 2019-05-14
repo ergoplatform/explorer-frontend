@@ -34,5 +34,5 @@ const logger = createLogger({
 
 
 export const configureStore = (preloadedState: any = {}) => {
-  return createStore<AppState>(reducer, preloadedState, applyMiddleware(thunk, logger));
+  return createStore<AppState, any, any, any>(reducer, preloadedState, applyMiddleware(thunk, logger));
 };

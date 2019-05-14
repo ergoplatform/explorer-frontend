@@ -155,7 +155,7 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps,
   }
   
   private selectLink (): void {
-    window.getSelection()
+    (window.getSelection() as Selection)
       .selectAllChildren(this.link);
   }
   
@@ -163,7 +163,7 @@ class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps,
     this.selectLink();
     
     document.execCommand('copy');
-    window.getSelection()
+    (window.getSelection() as Selection)
       .removeAllRanges();
     
     this.setState({

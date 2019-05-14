@@ -41,7 +41,7 @@ class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> 
   
   render (): JSX.Element {
     const { query } = queryString.parse(this.props.location.search);
-    
+
     const searchClassNames = classNames({
       'bi-search': true,
       'bi-search--focused': this.state.isInputFocused || query,
@@ -62,7 +62,7 @@ class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> 
                  ref={ (input: HTMLInputElement) => {
                    this.inputElement = input;
                  } }
-                 defaultValue={ query }
+                 defaultValue={ query as string }
                  onChange={ this.onInputChangedDebounced }
                  name='query'
                  type='text'

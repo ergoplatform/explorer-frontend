@@ -121,7 +121,7 @@ class Data extends React.PureComponent {
   }
   
   private getPageUrl (page: number): string {
-    const params = queryString.parse(this.props.history.location.search);
+    const params: any = queryString.parse(this.props.history.location.search);
     
     params.offset = page * this.params.limit;
     
@@ -129,7 +129,7 @@ class Data extends React.PureComponent {
   }
   
   private getLimitLink (limit: number): string {
-    const params = queryString.parse(this.props.history.location.search);
+    const params: any = queryString.parse(this.props.history.location.search);
     
     params.limit = limit;
     
@@ -166,7 +166,7 @@ class Data extends React.PureComponent {
   }
   
   private getParams (): any {
-    let { offset, sortBy, sortDirection, startDate, endDate, limit } = queryString.parse(this.props.history.location.search);
+    let { offset, sortBy, sortDirection, startDate, endDate, limit }: any = queryString.parse(this.props.history.location.search);
     
     offset        = parseInt(offset, 10);
     limit         = parseInt(limit, 10) || 30;

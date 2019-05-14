@@ -25,7 +25,7 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     canSearch: true
   };
   
-  private query: string;
+  private query: string | string[];
   
   componentDidMount (): void {
     if (this.props.preloaded) {

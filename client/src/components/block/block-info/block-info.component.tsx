@@ -94,7 +94,7 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
             </div>
           </div>
           
-          
+{/*           
           { this.props.block.header.height !== 0 &&
           <div className='bi-block-info__row bi-table__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
@@ -115,7 +115,7 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
               }
             </div>
           </div>
-          }
+          } */}
           
           <div className='bi-block-info__row bi-table__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
