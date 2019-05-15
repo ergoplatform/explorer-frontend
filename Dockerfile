@@ -15,6 +15,7 @@ RUN apk update && apk upgrade && \
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV CHROME_BIN=/usr/bin/chromium-browser
 
+RUN npm install -g typescript
 RUN yarn
 COPY . ./
 ENV NODE_ENV production
@@ -25,7 +26,7 @@ RUN yarn --production
 
 
 # production environment
-FROM node:9-alpine
+FROM node:10.15.3-alpine
 WORKDIR /usr/src/app
 
 RUN apk update && apk upgrade && \
