@@ -104,7 +104,7 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     
     this.setState({ canSearch: true });
     
-    this.props.search(this.query);
+    this.props.search(this.query as string);
   }
 }
 
