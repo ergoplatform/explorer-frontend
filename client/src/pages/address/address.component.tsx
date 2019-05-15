@@ -133,7 +133,7 @@ class Address extends React.PureComponent {
   }
   
   private getPageUrl (page: number): string {
-    const params = queryString.parse(this.props.history.location.search);
+    const params: any = queryString.parse(this.props.history.location.search);
     
     params.offset = page * this.params.limit;
     
@@ -141,7 +141,7 @@ class Address extends React.PureComponent {
   }
   
   private getParams (): any {
-    let { offset, limit } = queryString.parse(this.props.history.location.search);
+    let { offset, limit }: any = queryString.parse(this.props.history.location.search);
     
     offset = parseInt(offset, 10);
     limit  = parseInt(limit, 10) || 30;

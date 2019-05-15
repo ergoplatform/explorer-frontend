@@ -24,7 +24,7 @@ export class PaymentRequestComponent extends React.PureComponent<IPaymentRequest
   }
   
   render (): JSX.Element {
-    const { address, amount, description } = queryString.parse(this.props.location.search);
+    const { address, amount, description }: any = queryString.parse(this.props.location.search);
     
     return (
       <div className='bi-payment-request'>
@@ -78,15 +78,15 @@ export class PaymentRequestComponent extends React.PureComponent<IPaymentRequest
   }
   
   private selectInput (): void {
-    window.getSelection()
-      .selectAllChildren(this.input);
+    (window.getSelection() as Selection)
+    .selectAllChildren(this.input);
   }
   
   private copyAddressToClipboard (): void {
     this.selectInput();
     
     document.execCommand('copy');
-    window.getSelection()
+    (window.getSelection() as Selection)
       .removeAllRanges();
     
     this.setState({

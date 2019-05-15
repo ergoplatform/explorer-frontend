@@ -212,7 +212,7 @@ class Chart extends React.PureComponent {
   }
   
   private getTimespanUrl (span: TIMESPAN): string {
-    const params = queryString.parse(this.props.history.location.search);
+    const params: any = queryString.parse(this.props.history.location.search);
     
     params.timespan = span;
     
@@ -221,7 +221,7 @@ class Chart extends React.PureComponent {
   
   
   private getChartActionUrl (param: string, value: string | number | null): string {
-    const params = queryString.parse(this.props.history.location.search);
+    const params: any = queryString.parse(this.props.history.location.search);
     
     params[param] = value;
     

@@ -25,7 +25,7 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     canSearch: true
   };
   
-  private query: string;
+  private query: string | string[];
   
   componentDidMount (): void {
     if (this.props.preloaded) {
@@ -104,7 +104,7 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     
     this.setState({ canSearch: true });
     
-    this.props.search(this.query);
+    this.props.search(this.query as string);
   }
 }
 
