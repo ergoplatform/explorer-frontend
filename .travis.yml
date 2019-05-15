@@ -12,6 +12,7 @@ services:
   - docker
 
 install:
+  - npm install -g typescript
   - yarn --production=false
 
 before_script:
