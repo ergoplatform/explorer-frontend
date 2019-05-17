@@ -5,7 +5,7 @@ declare module '*.jpg';
 declare module 'react-router-last-location';
 declare module 'svg-sprite-loader/runtime/sprite.build';
 declare module 'react-head';
-declare module 'react-object-inspector';
+declare module 'react-inspector';
 declare module 'react-router-hash-link';
 declare module 'apiSpec';
 declare module '@axetroy/react-download';
