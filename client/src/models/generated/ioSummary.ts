@@ -11,7 +11,7 @@
  */
 
 
-export interface IOSummary {
+export interface iOSummary {
     /**
      * Total Coins Transferred
      */

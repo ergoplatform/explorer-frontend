@@ -3,12 +3,12 @@ import { FormattedMessage } from 'react-intl';
 
 import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 
-import { IOSummary } from '../../../models/generated/iOSummary';
+import { iOSummary } from '../../../models/generated/iOSummary';
 
 import './transaction-io-summary.scss';
 
 interface ITransactionIoSummaryProps {
-  summary: IOSummary;
+  summary: iOSummary;
   isScriptShown: boolean;
   onScriptToggle: () => void;
 }
