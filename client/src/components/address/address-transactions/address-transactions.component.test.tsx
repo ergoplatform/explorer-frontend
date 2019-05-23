@@ -4,22 +4,22 @@ import { shallowWithIntl } from '../../../utils/test-utils';
 
 import { AddressTransactionsComponent } from './address-transactions.component';
 
-import { FullAddressTransactionSummary } from '../../../models/generated/fullAddress';
+import { FullAddressTransactions } from '../../../models/generated/fullAddressTransactions';
 
 describe('Component | Address Transactions', () => {
-  let summary: FullAddressTransactionSummary;
-  
+  let summary: FullAddressTransactions;
+
   beforeEach(() => {
     summary = {
-      balance: 100,
-      total: 100,
-      totalReceived: 100
+      confirmed: 100,
+      confirmedBalance: 100,
+      totalReceived: 100,
     };
   });
-  
+
   it('should render without crashing', () => {
     const wrapper = shallowWithIntl(<AddressTransactionsComponent summary={ summary }/>);
-    
+
     expect(wrapper.length)
       .toBe(1);
   });

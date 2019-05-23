@@ -11,6 +11,7 @@
  */
 
 /**
- * Base16-encoded 32 byte modifier id
+ * Votes for a soft-fork and parameters
  */
-export type ModifierId = string;
+export interface Votes extends Array<number> { 
+}

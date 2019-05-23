@@ -14,10 +14,10 @@ export class ChartsPreviewComponent extends React.PureComponent<IChartsPreviewPr
       <div className='bi-charts-preview'>
         <Link to={ `/charts/${this.props.chartType}` } className='bi-charts-preview__link'>
           <FormattedMessage id={ `components.chart.title.${this.props.chartType}` }/>
-          
-          <img src={`/charts/images/${this.props.chartType}`} className='bi-charts-preview__image'/>
+
+          <img src={`/charts/images/${this.props.chartType}.jpeg`} className='bi-charts-preview__image'/>
         </Link>
-        
+
         <div className='bi-charts-preview__description'>
           <FormattedMessage id={ `components.chart.subtitle.${this.props.chartType}` }/>
         </div>

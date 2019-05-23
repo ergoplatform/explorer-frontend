@@ -11,6 +11,6 @@
  */
 
 /**
- * Base16-encoded 32 byte modifier id
+ * Base16-encoded ergo tree bytes
  */
-export type ModifierId = string;
+export type ErgoTree = string;
