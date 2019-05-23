@@ -26,31 +26,31 @@ interface IBlockProps {
 
 class Block extends React.Component {
   prevLink: string = '';
-  
+
   props: IBlockProps & RouteComponentProps<{ id: string }> & BlockState & BlockActions & AppActions;
-  
+
   constructor (props: any) {
     super(props);
-    
+
     this.renderComponent = this.renderComponent.bind(this);
   }
-  
+
   componentDidMount (): void {
     if (this.props.preloaded) {
       this.props.clearPreloadedState();
-      
+
       return;
     }
-    
+
     this.props.getBlock({ id: this.props.match.params.id });
   }
-  
+
   componentWillReceiveProps (nextProps: RouteComponentProps<{ id: string }>): void {
     if (nextProps.match.params.id !== this.props.match.params.id) {
       this.props.getBlock({ id: nextProps.match.params.id });
     }
   }
-  
+
   render (): JSX.Element {
     return (
       <div className='bi-block g-flex-column__item-fixed'>
@@ -58,18 +58,18 @@ class Block extends React.Component {
       </div>
     );
   }
-  
+
   private renderBlockPage (): JSX.Element {
     if (!this.props.block) {
       return (
         <Redirect to='/'/>
       );
     }
-    
+
     if (this.props.lastLocation && this.props.lastLocation.pathname === '/') {
       this.prevLink = this.props.lastLocation.search;
     }
-    
+
     return (
       <div className='bi-block__wrapper g-flex-column'>
         <FormattedMessage id='common.pages.block.title' values={ { id: this.props.block.header.id } }>
@@ -81,13 +81,13 @@ class Block extends React.Component {
             )
           }
         </FormattedMessage>
-        
+
         <div className='bi-block__header g-flex-column__item-fixed'>
           <BlockHeaderComponent block={ this.props.block }
                                 prevLink={ this.prevLink }
                                 references={ this.props.references }/>
         </div>
-        
+
         <div className='bi-block__body g-flex-column__item g-scroll-y'>
           <Switch>
             <Route path={ `/blocks/:id` }
@@ -95,14 +95,14 @@ class Block extends React.Component {
                    render={
                      this.renderComponent(<BlockInfoComponent block={ this.props.block }/>)
                    }/>
-            
+
             <Route path={ `/blocks/:id/transactions` }
                    exact={ true }
                    component={
                      this.renderComponent(<TransactionsComponent
                        transactions={ this.props.block.blockTransactions }/>)
                    }/>
-            
+
             <Route path={ `/blocks/:id/adproofs` }
                    exact={ true }
                    component={
@@ -113,7 +113,7 @@ class Block extends React.Component {
       </div>
     );
   }
-  
+
   private renderComponent (element: JSX.Element): () => JSX.Element {
     return () => element;
   }

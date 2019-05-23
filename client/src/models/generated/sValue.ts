@@ -11,6 +11,6 @@
  */
 
 /**
- * Base16-encoded 32 byte modifier id
+ * Base-16 encoded serialized Sigma-state value
  */
-export type ModifierId = string;
+export type SValue = string;

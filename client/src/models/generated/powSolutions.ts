@@ -11,6 +11,14 @@
  */
 
 /**
- * Base16-encoded 32 byte modifier id
+ * An object containing all components of pow solution
  */
-export type ModifierId = string;
+export interface PowSolutions { 
+    /**
+     * Base16-encoded public key
+     */
+    pk: string;
+    w: string;
+    n: string;
+    d: number;
+}

@@ -14,12 +14,12 @@ export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
       </div>
     );
   }
-  
+
   private getFormattedValue (): string {
     const { value } = this.props;
-    
+
     const formattedValue = value / 1e9;
-    
+
     if (formattedValue < 1 && formattedValue !== 0) {
       return formattedValue.toFixed(9)
         .split('')
@@ -27,15 +27,15 @@ export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
           if (i === '0' && arr.length === 0) {
             return arr;
           }
-          
+
           arr.push(i);
-          
+
           return arr;
         }, [])
         .reverse()
         .join('');
     }
-    
+
     return formattedValue.toString();
   }
 }

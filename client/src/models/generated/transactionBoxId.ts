@@ -11,6 +11,6 @@
  */
 
 /**
- * Base16-encoded 32 byte modifier id
+ * Base16-encoded transaction box id bytes. Should be 32 bytes long
  */
-export type ModifierId = string;
+export type TransactionBoxId = string;

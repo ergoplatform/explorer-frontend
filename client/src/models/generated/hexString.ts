@@ -11,6 +11,6 @@
  */
 
 /**
- * Base16-encoded 32 byte modifier id
+ * Base16-encoded bytes
  */
-export type ModifierId = string;
+export type HexString = string;
