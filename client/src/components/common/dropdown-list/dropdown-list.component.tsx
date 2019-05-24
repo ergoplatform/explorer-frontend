@@ -31,8 +31,8 @@ export class DropdownListComponent extends React.PureComponent<IDropdownProps, I
     const { list, button } = this.props;
 
     const dropdownClassNames = classnames({
-      'bi-dropdown': true,
-      'bi-dropdown--open': this.state.isDropdownShown
+      'bi-dropdown-list': true,
+      'bi-dropdown-list--open': this.state.isDropdownShown
     });
 
     return (
@@ -40,25 +40,24 @@ export class DropdownListComponent extends React.PureComponent<IDropdownProps, I
            ref={ (ref: HTMLDivElement) => {
              this.element = ref;
            } }>
-        <button className='bi-dropdown__button g-flex bi-btn bi-btn--flat'
+        <button className='bi-dropdown-list__button g-flex bi-btn bi-btn--flat'
                 onClick={ this.toggleDropdown }>
-          <span className='bi-dropdown__button-label'>{ button }</span>
+          <span className='bi-dropdown-list__button-label'>{ button }</span>
         </button>
 
-        <div className='bi-dropdown__dropdown'>
-          <ul>
-            {
-              list.map((option: any) => {
-                return (
-                  <li className='bi-dropdown__option bi-btn bi-btn--flat'
-                                  key={ option.value }>
-                    { option.label } { option.sublabel }
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </div>
+        <ul className='bi-dropdown-list__dropdown'>
+          {
+            list.map((option: any, ind) => {
+              return (
+                <li className='bi-dropdown-list__option'
+                                key={ `${option.value}_${ind}_${option.label}` }
+                >
+                  <span>{option.value}</span>&nbsp;{ option.label }
+                </li>
+              );
+            })
+          }
+        </ul>
       </div>
     );
   }

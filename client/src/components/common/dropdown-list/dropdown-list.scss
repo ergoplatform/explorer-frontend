@@ -2,13 +2,13 @@
 
 // #DROPDOWN
 //-------------------------------------
-$dropdown-button-color: #828795;
+$dropdown-button-color: #0078ff;
 $dropdown-button-hover-color: #ffffff;
 $dropdown-option-color: $theme-primary-color;
 $dropdown-dropdown-bg: #ffffff;
 $dropdown-option-hover-bg: #f8f8f8;
 
-.bi-dropdown {
+.bi-dropdown-list {
   position: relative;
   font-family: $theme-main-font;
 
@@ -20,10 +20,6 @@ $dropdown-option-hover-bg: #f8f8f8;
     font-size: 14px;
 
     align-items: center;
-
-    &:hover {
-      color: $dropdown-button-hover-color;
-    }
   }
 
   &__button:hover & {
@@ -44,14 +40,23 @@ $dropdown-option-hover-bg: #f8f8f8;
     display: none;
     overflow: hidden;
     position: absolute;
-    bottom: calc(100% + 5px);
+    top: -5px;
+    left: -165px;
+    width: 160px;
+    border: 0.5px solid #dee3f1;
     background-color: $dropdown-dropdown-bg;
     box-shadow: 0 2px 3px 0 rgba(0,0,0,0.06);
     font-family: inherit;
+
+    @media (max-width: $mobile-device-width) {
+      top: 30px;
+      right: 0;
+      left: 0;
+    }
   }
 
   &__option {
-    display: block;
+    display: flex;
     width: 100%;
     padding: $grid-offset-step * 1.5 $grid-offset-step * 4;
     color: $dropdown-option-color;
@@ -59,8 +64,12 @@ $dropdown-option-hover-bg: #f8f8f8;
     font-size: 13px;
     text-align: left;
 
-    &:hover {
-      background-color: $dropdown-option-hover-bg;
+    justify-content: flex-end;
+
+    span {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 
