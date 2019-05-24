@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 info:
-  version: 1.0.0
-  title: Blockchain explorer
+  version: 2.0.0
+  title: Ergo blockchain explorer
 
 tags:
   - name: blocks
@@ -106,6 +106,27 @@ paths:
                         $ref: '#/components/schemas/ModifierId'
                       previousId:
                         $ref: '#/components/schemas/ModifierId'
+
+  '/transactions':
+    post:
+      summary: Send an Ergo transaction
+      operationId: sendTransaction
+      tags:
+        - transactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FullTransaction'
+      responses:
+        '200':
+          description: JSON with ID of the new transaction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionIdResponse'
+
   '/transactions/{id}':
     parameters:
       - name: id
@@ -124,6 +145,117 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/FullTransaction'
+
+  '/transactions/unconfirmed':
+    get:
+      summary: Get unconfirmed transactions
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                description: Unconfirmed transactions
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnconfirmedTransaction'
+
+  '/transactions/boxes/{id}':
+    parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/TransactionBoxId'
+    get:
+      summary: Get box by id
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TransactionOutput'
+
+  '/transactions/boxes/byAddress/{id}':
+    parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/AddressId'
+    get:
+      summary: Get all boxes containing given address
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TransactionOutput'
+
+  '/transactions/boxes/byErgoTree/{ergoTree}':
+    parameters:
+      - name: ergoTree
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/ErgoTree'
+    get:
+      summary: Get all boxes containing given ergoTree
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TransactionOutput'
+
+  '/transactions/boxes/byAddress/unspent/{id}':
+    parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/AddressId'
+    get:
+      summary: Get unspent boxes containing given address
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TransactionOutput'
+
+  '/transactions/boxes/byErgoTree/unspent/{ergoTree}':
+    parameters:
+      - name: ergoTree
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/ErgoTree'
+    get:
+      summary: Get unspent boxes containing given ergoTree
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TransactionOutput'
 
   '/addresses/{id}':
     parameters:
@@ -144,6 +276,7 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/FullAddress'
+
   '/addresses/{id}/transactions':
     parameters:
       - name: id
@@ -214,8 +347,6 @@ paths:
                     items:
                       $ref: '#/components/schemas/AddressId'
 
-
-
   '/info':
     get:
       summary: Get blockchain info
@@ -228,6 +359,7 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/BlockchainInfo'
+
   '/stats':
     get:
       summary: Get blockchain stats
@@ -285,20 +417,20 @@ paths:
         200:
           description: 'Ok'
           content:
-              'application/json':
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      timestamp:
-                        $ref: '#/components/schemas/Timestamp'
-                      value:
-                        type: integer
-                        format: int32
-                        description: Size in bytes
-                        minimum: 0
-                        example: 1030453
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      $ref: '#/components/schemas/Timestamp'
+                    value:
+                      type: integer
+                      format: int32
+                      description: Size in bytes
+                      minimum: 0
+                      example: 1030453
 
   '/charts/transactions-per-block':
     get:
@@ -315,20 +447,21 @@ paths:
         200:
           description: 'Ok'
           content:
-              'application/json':
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      timestamp:
-                        $ref: '#/components/schemas/Timestamp'
-                      value:
-                        type: integer
-                        format: int32
-                        description: Number of transactions
-                        minimum: 0
-                        example: 1030453
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      $ref: '#/components/schemas/Timestamp'
+                    value:
+                      type: integer
+                      format: int32
+                      description: Number of transactions
+                      minimum: 0
+                      example: 1030453
+
   '/charts/hash-rate':
     get:
       summary: Hash Rate per day.
@@ -344,20 +477,20 @@ paths:
         200:
           description: 'Ok'
           content:
-              'application/json':
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      timestamp:
-                        $ref: '#/components/schemas/Timestamp'
-                      value:
-                        type: integer
-                        format: int32
-                        description: Hash Rate
-                        minimum: 0
-                        example: 1030453
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      $ref: '#/components/schemas/Timestamp'
+                    value:
+                      type: integer
+                      format: int32
+                      description: Hash Rate
+                      minimum: 0
+                      example: 1030453
 
   '/charts/difficulty':
     get:
@@ -374,20 +507,21 @@ paths:
         200:
           description: 'Ok'
           content:
-              'application/json':
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      timestamp:
-                        $ref: '#/components/schemas/Timestamp'
-                      value:
-                        type: integer
-                        format: int32
-                        description: Difficulty
-                        minimum: 0
-                        example: 1030453
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      $ref: '#/components/schemas/Timestamp'
+                    value:
+                      type: integer
+                      format: int32
+                      description: Difficulty
+                      minimum: 0
+                      example: 1030453
+
   '/charts/miners-revenue':
     get:
       summary: Total value of coinbase block rewards and transaction fees paid to miners per day.
@@ -403,20 +537,21 @@ paths:
         200:
           description: 'Ok'
           content:
-              'application/json':
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      timestamp:
-                        $ref: '#/components/schemas/Timestamp'
-                      value:
-                        type: integer
-                        format: int32
-                        description: Reward
-                        minimum: 0
-                        example: 1030453
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      $ref: '#/components/schemas/Timestamp'
+                    value:
+                      type: integer
+                      format: int32
+                      description: Reward
+                      minimum: 0
+                      example: 1030453
+
   '/charts/hash-rate-distribution':
     get:
       summary: An estimation of hashrate distribution amongst the largest mining pools
@@ -451,7 +586,6 @@ paths:
           description: Timespan
           schema:
             $ref: '#/components/schemas/Timespan'
-
       responses:
         200:
           description: 'Ok'
@@ -474,11 +608,15 @@ components:
     TransactionInput:
       type: object
       required:
+        - id
         - address
         - value
+        - transactionId
         - outputTransactionId
         - spendingProof
       properties:
+        id:
+          $ref: '#/components/schemas/TransactionBoxId'
         address:
           $ref: '#/components/schemas/AddressId'
         value:
@@ -489,12 +627,14 @@ components:
           example: 1230044
         transactionId:
           $ref: '#/components/schemas/TransactionId'
+        outputTransactionId:
+          $ref: '#/components/schemas/TransactionId'
         spendingProof:
           description: Spending proof for transaction input
           type: object
           required:
-          - proofBytes
-          - extension
+            - proofBytes
+            - extension
           properties:
             proofBytes:
               $ref: '#/components/schemas/SerializedAdProof'
@@ -505,23 +645,46 @@ components:
     TransactionOutput:
       type: object
       required:
-        - address
+        - id
         - value
-        - proposition
+        - creationHeight
+        - ergoTree
+        - address
+        - assets
+        - additionalRegisters
         - spentTransactionId
+        - mainChain
       properties:
-        address:
-          $ref: '#/components/schemas/AddressId'
+        id:
+          $ref: '#/components/schemas/TransactionBoxId'
         value:
           description: Amount of Ergo token
           type: number
           minimum: 0
           example: 14.7
-        proposition:
-          $ref: '#/components/schemas/Proposition'
+        creationHeight:
+          description: Height the output was created at
+          type: integer
+          format: int32
+          example: 9149
+        ergoTree:
+          $ref: '#/components/schemas/ErgoTree'
+        address:
+          $ref: '#/components/schemas/AddressId'
+        assets:
+          description: Assets list in the transaction
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        additionalRegisters:
+          $ref: '#/components/schemas/Registers'
         spentTransactionId:
-          # Spent Transaction Id
           $ref: '#/components/schemas/TransactionId'
+        mainChain:
+          description: Flag indication wheather box belongs to main chain
+          type: boolean
+          example: true
+
     Transaction:
       type: object
       description: Transaction without any lockers and unlockers
@@ -551,6 +714,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransactionOutput'
+
     FullBlock:
       description: Block with header and transactions
       type: object
@@ -631,37 +795,24 @@ components:
       required:
         - id
         - timestamp
-        - parentId
         - version
-        - interlinks
         - adProofsRoot
         - stateRoot
         - transactionsRoot
         - nBits
-        - difficulty
         - extensionHash
         - powSolutions
         - height
-        - size
+        - difficulty
+        - parentId
+        - votes
       properties:
         id:
           $ref: '#/components/schemas/ModifierId'
         timestamp:
-          type: integer
-          format: int32
-          example: 1501505945003
-        parentId:
-          $ref: '#/components/schemas/ModifierId'
+          $ref: '#/components/schemas/Timestamp'
         version:
-           type: integer
-           format: int32
-           example: 2
-        interlinks:
-          # todo better description
-          description: Interlinks
-          type: array
-          items:
-            $ref: '#/components/schemas/Digest32'
+          $ref: '#/components/schemas/Version'
         adProofsRoot:
           $ref: '#/components/schemas/Digest32'
         stateRoot:
@@ -669,34 +820,146 @@ components:
         transactionsRoot:
           $ref: '#/components/schemas/Digest32'
         nBits:
-          # todo actually it is unsigned int?
           type: integer
           format: int64
+          minimum: 0
           example: 19857408
-        difficulty:
-          description: Proof-of-Work difficulty
-          type: integer
-          example: 1829302
         extensionHash:
-          description: Base16-encoded nonce hash
-          type: string
-          example: FjX5cPuwMc2ocDLPWzt6jq29BXjvU6d5w5XURDJ6dmoM
-        equihashSolutions:
-          description: Base16-encoded equihash solutions
-          type: string
-          example: 11M1yYZ6GLUJJXWmBSsSiZ412y8SLWEh68WwynR77ykcoEr1QxnEWYPdTSbi7qLbHrZhGkQsQgyW3PqrZVAXtBXEZvravSZwm5rWZZorGotNXA8ZKXgwnbDAh24ZjZCcwk8SQ2zdPn7vCiL7AvQppeuqaM2NQPjsE92bCtpgqnbkh
+          $ref: '#/components/schemas/Digest32'
+        powSolutions:
+          $ref: '#/components/schemas/PowSolutions'
         height:
-          description: Block height
           type: integer
           format: int32
           minimum: 0
           example: 667
-        size:
-          description: Block size in bytes
+        difficulty:
           type: integer
           format: int32
           minimum: 0
-          example: 9103958
+          example: 62
+        parentId:
+          $ref: '#/components/schemas/ModifierId'
+        votes:
+          $ref: '#/components/schemas/Votes'
+        size:
+          description: Size in bytes
+          type: integer
+          format: int32
+        extensionId:
+          $ref: '#/components/schemas/ModifierId'
+        transactionsId:
+          $ref: '#/components/schemas/ModifierId'
+        adProofsId:
+          $ref: '#/components/schemas/ModifierId'
+
+    PowSolutions:
+      description: An object containing all components of pow solution
+      type: object
+      required:
+        - pk
+        - w
+        - n
+        - d
+      properties:
+        pk:
+          type: string
+          description: Base16-encoded public key
+          example: '0350e25cee8562697d55275c96bb01b34228f9bd68fd9933f2a25ff195526864f5'
+        w:
+          type: string
+          example: '0366ea253123dfdb8d6d9ca2cb9ea98629e8f34015b1e4ba942b1d88badfcc6a12'
+        n:
+          type: string
+          example: '0000000000000000'
+        d:
+          type: integer
+          example: 987654321
+
+    SpendingProof:
+      type: object
+      required:
+        - proofBytes
+        - extension
+      properties:
+        proofBytes:
+          type: string
+          description: Base16-encoded proof bytes
+          example: '2ddaaa576ccff6420b7e0557e3970e6c93fd5004189f11a50f8bb60f7f8d740c3925575e97a183728dde'
+        extension:
+          type: object
+          description: Variables to be put into context
+          additionalProperties:
+            $ref: '#/components/schemas/SValue'
+          example:
+            '1': '0101'
+
+    UnconfirmedTransactionInput:
+      type: object
+      required:
+        - boxId
+        - spendingProof
+      properties:
+        boxId:
+          $ref: '#/components/schemas/TransactionBoxId'
+        spendingProof:
+          $ref: '#/components/schemas/SpendingProof'
+
+    UnconfirmedTransactionOutput:
+      type: object
+      required:
+        - boxId
+        - value
+        - creationHeight
+        - ergoTree
+        - assets
+        - additionalRegisters
+      properties:
+        boxId:
+          $ref: '#/components/schemas/TransactionBoxId'
+        value:
+          description: Amount of Ergo token
+          type: number
+          minimum: 0
+          example: 14.7
+        creationHeight:
+          description: Height the output was created at
+          type: integer
+          format: int32
+          example: 9149
+        ergoTree:
+          $ref: '#/components/schemas/ErgoTree'
+        assets:
+          description: Assets list in the transaction
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        additionalRegisters:
+          $ref: '#/components/schemas/Registers'
+
+    UnconfirmedTransaction:
+      type: object
+      required:
+        - id
+        - inputs
+        - outputs
+      properties:
+        id:
+          $ref: '#/components/schemas/ModifierId'
+        inputs:
+          description: Transaction inputs
+          type: array
+          items:
+            $ref: '#/components/schemas/UnconfirmedTransactionInput'
+        outputs:
+          description: Transaction outputs
+          type: array
+          items:
+            $ref: '#/components/schemas/UnconfirmedTransactionOutput'
+        size:
+          type: integer
+          description: Transaction size in bytes
+          example: 512
 
     FullTransaction:
       type: object
@@ -757,6 +1020,7 @@ components:
               format: int32
               minimum: 0
               example: 667
+
     IOSummary:
       type: object
       required:
@@ -793,21 +1057,36 @@ components:
         transactions:
           type: object
           required:
-            - total
+            - confirmed
           properties:
-            total:
+            confirmed:
               type: integer
               format: int32
-              description: Total number of transactions
+              description: Total number of confirmed transactions
               example: 2341
             totalReceived:
-              type: number
+              type: integer
               description: Total recieved coins
-              example: 10455323.23
-            balance:
-              type: number
-              description: Final balance
-              example: 1123.42
+              example: 10455323
+            confirmedBalance:
+              type: integer
+              description: Confirmed balance
+              example: 1123
+            totalBalance:
+              type: integer
+              description: Total balance including off-chain transactions
+              example: 1123
+            confirmedTokensBalance:
+              type: array
+              description: Confirmed tokens balance
+              items:
+                $ref: '#/components/schemas/Asset'
+            totalTokensBalance:
+              type: array
+              description: Total tokens balance including off-chain transactions
+              items:
+                $ref: '#/components/schemas/Asset'
+
     BlockchainInfo:
       type: object
       required:
@@ -904,12 +1183,27 @@ components:
     TransactionId:
       description: Base16-encoded transaction id bytes
       type: string
-      example: D2bXMwWN8P9nWJ9qqwZJLauAdcZHX9n6s91QQ9vK6Zu4
+      example: 9140826f8fdb2f56816936bd6a7a72a71ac2fc5ad00b051a6c400c5cad611694
+
+    TransactionIdResponse:
+      description: Resulted transaction id
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          $ref: '#/components/schemas/TransactionId'
+
+    TransactionBoxId:
+      description: Base16-encoded transaction box id bytes. Should be 32 bytes long
+      type: string
+      format: base16
+      example: 1ab9da11fc216660e974842cc3b7705e62ebb9e0bf5ff78e53f9cd40abadd117
 
     AddressId:
       description: Base58-encoded address id bytes
       type: string
-      example: D2bXMwWN8P9nWJ9qqwZJLauAdcZHX9n6s91QQ9vK6Zu4
+      example: 3Wvzb7aut5AurDn2BQhpHSudYznDPJztTAvqE2habtsQjXgcrD8p
 
     ModifierId:
       description: Base16-encoded 32 byte modifier id
@@ -924,7 +1218,7 @@ components:
     ADDigest:
       description: Base16-encoded 33 byte digest - digest with extra byte with tree height
       type: string
-      example: FjX5cPuwMc2ocDLPWzt6jq29BXjvU6d5w5XURDJ6dmoM
+      example: 9140826f8fdb2f56816936bd6a7a72a71ac2fc5ad00b051a6c400c5cad61169401
 
     SerializedAdProof:
       description: Base16-encoded ad proofs
@@ -942,7 +1236,57 @@ components:
       type: string
       enum: ['all', '7days', '30days', '60days', '180days', '1year', '2years']
 
-    Proposition:
-      description: Base16-encoded proposition bytes
+    SValue:
+      description: Base-16 encoded serialized Sigma-state value
       type: string
-      example: 7c
+      format: base16
+      example: '0101'
+
+    HexString:
+      description: Base16-encoded bytes
+      type: string
+      format: base16
+      example: '4ab9da11fc216660e974842cc3b7705e62ebb9e0bf5ff78e53f9cd40abadd117'
+
+    Asset:
+      description: Token detail in the transaction
+      type: object
+      required:
+        - tokenId
+        - amount
+      properties:
+        tokenId:
+          $ref: '#/components/schemas/Digest32'
+        amount:
+          description: Amount of the token
+          type: integer
+          format: int64
+          example: 1000
+
+    Registers:
+      description: Ergo box registers
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/SValue'
+      example:
+        R4: '0101'
+
+    ErgoTree:
+      description: Base16-encoded ergo tree bytes
+      type: string
+      format: base16
+      example: '0101'
+
+    Version:
+      description: Ergo blockchain protocol version
+      type: integer
+      format: int8
+      example: 2
+
+    Votes:
+      description: Votes for a soft-fork and parameters
+      type: array
+      items:
+        type: integer
+        format: uint8
+      example: [0, 0, 0]
