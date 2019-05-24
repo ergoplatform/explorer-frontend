@@ -15,6 +15,8 @@ import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 import { DropdownListComponent } from '../../common/dropdown-list/dropdown-list.component';
 import { ArrowThickIcon } from '../../common/icons/common.icons';
 
+import environment from '../../../config/environment';
+
 import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
@@ -33,6 +35,42 @@ class TransactionsItem extends React.Component {
     this.setState({
       isClient: true
     });
+  }
+
+  renderAssets (assets: any[]): JSX.Element | null {
+    // if (assets.length < 1) {
+    //   return null;
+    // }
+
+    const init = [
+      {
+        "amount" : 1063722126,
+        "tokenId" : "a91167397245bce687182e877107b5d43904c89ba4ec5f0f5557eb0d127945b3"
+      },
+      {
+        "amount" : 1063722126,
+        "tokenId" : "fd0e8f2af0fcc567734b75a9665573cd6d336f54a10b4962ba70f220ab167e9a"
+      },
+    ];
+
+    const defaultAssets = init.map(
+      token => ({
+        ...token,
+        label: `${environment.tokensDecode[token.tokenId]}`,
+        value: `${token.amount}`
+      })
+    );
+
+    const buttonText = `+${defaultAssets.length}`;
+
+    return (
+      <div className='bi-transactions-item__value g-flex__item-fixed'>
+        <DropdownListComponent
+            list={ defaultAssets }
+            button={ buttonText }
+        />
+      </div>
+    );
   }
 
   render (): JSX.Element {
@@ -141,13 +179,7 @@ class TransactionsItem extends React.Component {
                       <CoinValueComponent value={ address.value }/>
                     </div>
 
-                    <div className='bi-transactions-item__value g-flex__item-fixed'>
-                      <DropdownListComponent
-                          list={ [{label: "label", value: 'value'}] }
-                          button={ "+ 1" }
-                      />
-                    </div>
-
+                    {this.renderAssets(address.assets)}
                   </div>
                 );
               })
