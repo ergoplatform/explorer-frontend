@@ -1,4 +1,5 @@
 * {
+  box-sizing: border-box;
   letter-spacing: 0.2px;
 }
 
@@ -6,27 +7,17 @@
 /* #NORMALIZE
 -------------------------------------------------- */
 html, body {
-  margin: 0;
   height: 100%;
+  margin: 0;
 }
 
 // ## HTML5 display definitions
 //==================================================
-article,
-aside,
-details,
-footer,
-header,
-main,
-nav,
-section {
+article, aside, details, footer, header, main, nav, section {
   display: block;
 }
 
-audio,
-canvas,
-progress,
-video {
+audio, canvas, progress, video {
   display: inline-block;
   vertical-align: baseline;
 }
@@ -34,43 +25,24 @@ video {
 
 // ## Hide tap highlights on mobile
 //==================================================
-a,
-button,
-input {
-  -webkit-tap-highlight-colo: rgba(0, 0, 0, 0);
+a, button, input {
   -webkit-focus-ring-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-colo: rgba(0, 0, 0, 0);
 }
 
 
 // ## Text-level semantics
 //==================================================
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-img,
-small,
-sub,
-sup,
-b,
-i,
-ul,
-li {
+span, h1, h2, h3, h4, h5, h6, p, a, img, small, sub, sup, b, i, ul, li {
   margin: 0;
   padding: 0;
+  border: 0;
   font: inherit;
   font-size: 100%;
   vertical-align: baseline;
-  border: 0;
 }
 
-sub,
-sup {
+sub, sup {
   position: relative;
   font-size: 75%;
   line-height: 0;
@@ -87,8 +59,7 @@ ul {
   list-style: none;
 }
 
-b,
-strong {
+b, strong {
   font-weight: 700;
 }
 
@@ -123,41 +94,35 @@ input {
   line-height: normal;
 }
 
-button,
-input[type='button'],
-input[type='reset'],
-input[type='submit'] {
+button, input[type='button'], input[type='reset'], input[type='submit'] {
   cursor: pointer;
+
   -webkit-appearance: button;
 }
 
-button[disabled],
-input[disabled] {
+button[disabled], input[disabled] {
   cursor: default;
 }
 
-button::-moz-focus-inner,
-input::-moz-focus-inner {
+button::-moz-focus-inner, input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 
-input[type='checkbox'],
-input[type='radio'] {
+input[type='checkbox'], input[type='radio'] {
   padding: 0;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button, input[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
 input[type='search'] {
   box-sizing: content-box;
+
   -webkit-appearance: textfield;
 
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-decoration {
+  &::-webkit-search-cancel-button, &::-webkit-search-decoration {
     -webkit-appearance: none;
   }
 }
@@ -166,6 +131,7 @@ input[type='submit'] {
   border-radius: 0;
   outline: none;
   box-shadow: none;
+
   appearance: none;
 }
 
@@ -193,16 +159,11 @@ table {
   border-collapse: collapse;
 }
 
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
+tbody, tfoot, thead, tr, th, td {
   margin: 0;
   padding: 0;
+  border: 0;
   font: inherit;
   font-size: 100%;
   vertical-align: baseline;
-  border: 0;
 }

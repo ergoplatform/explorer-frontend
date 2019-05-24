@@ -44,7 +44,7 @@
     "redux-thunk": "^2.2.0",
     "resolve": "1.6.0",
     "svg-sprite-loader": "~4.1.6",
-    "swagger-parser": "^5.0.0",
+    "swagger-parser": "^6.0.5",
     "tmp": "^0.0.33"
   },
   "scripts": {

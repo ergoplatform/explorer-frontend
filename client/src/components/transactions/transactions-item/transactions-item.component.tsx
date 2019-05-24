@@ -12,6 +12,7 @@ import { AppState } from '../../../store/app.store';
 import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 
+import { DropdownListComponent } from '../../common/dropdown-list/dropdown-list.component';
 import { ArrowThickIcon } from '../../common/icons/common.icons';
 
 import './transactions-item.scss';
@@ -27,19 +28,19 @@ class TransactionsItem extends React.Component {
   state: any = {
     isClient: false
   };
-  
+
   componentDidMount (): void {
     this.setState({
       isClient: true
     });
   }
-  
+
   render (): JSX.Element {
     let totalOutput        = 0;
     let totalInputAddress  = 0;
     let totalOutputAddress = 0;
     let isOutput           = false;
-    
+
     return (
       <div className='bi-transactions-item'>
         <div className='bi-transactions-item__header g-flex'>
@@ -47,24 +48,24 @@ class TransactionsItem extends React.Component {
                 to={ `/transactions/${this.props.transaction.id}` }>
             { this.props.transaction.id }
           </Link>
-          
+
           <div className='bi-transactions-item__timestamp g-flex__item-fixed'>
             <TimestampComponent timestamp={ this.props.transaction.timestamp }/>
           </div>
         </div>
-        
+
         <div className='bi-transactions-item__body g-flex'>
           <div className='bi-transactions-item__inputs g-flex__item'>
             {
               this.props.transaction.inputs.map((address, index) => {
                 if (address.address === this.props.address) {
                   totalInputAddress += address.value;
-                  
+
                   isOutput = true;
                 }
-                
+
                 return (
-                  <div className='bi-transactions-item__input g-flex' key={ address.id || index }>
+                  <div className='bi-transactions-item__input g-flex' key={ `${index}__${address.id}` }>
                     <div className='bi-transactions-item__address'>
                       { address.address ? <Link className='u-word-wrap u-word-wrap--ellipsis'
                                                 to={ `/addresses/${address.address}` }>
@@ -73,7 +74,7 @@ class TransactionsItem extends React.Component {
                         : <FormattedMessage id='components.transaction-item.null-address'/>
                       }
                     </div>
-                    
+
                     { this.props.isScriptsDisplayed && address.outputTransactionId && (
                       <div className='bi-transactions-item__address-output g-flex__item-fixed u-word-wrap u-word-wrap--ellipsis'>
                         (<CoinValueComponent value={ address.value }/> - <Link
@@ -89,8 +90,8 @@ class TransactionsItem extends React.Component {
               })
             }
           </div>
-          
-          
+
+
           { this.props.address ?
             (<div className={ [
               'bi-transactions-item__arrow',
@@ -102,18 +103,18 @@ class TransactionsItem extends React.Component {
               <ArrowThickIcon className='bi-transactions-item__arrow-icon'/>
             </div>)
           }
-          
+
           <div className='bi-transactions-item__outputs g-flex__item g-flex-column'>
             {
               this.props.transaction.outputs.map((address, index) => {
                 if (address.address === this.props.address) {
                   totalOutputAddress += address.value;
                 }
-                
+
                 totalOutput += address.value;
-                
+
                 return (
-                  <div className='bi-transactions-item__output g-flex' key={ address.id || index }>
+                  <div className='bi-transactions-item__output g-flex' key={ `${index}__${address.id}` }>
                     <div className='bi-transactions-item__address g-flex__item-fixed'>
                       { address.address ?
                         <Link className='u-word-wrap u-word-wrap--ellipsis'
@@ -125,7 +126,7 @@ class TransactionsItem extends React.Component {
                         </span>
                       }
                     </div>
-                    
+
                     <div className='bi-transactions-item__address-spent g-flex__item u-word-wrap u-word-wrap--ellipsis'
                          style={ { display: this.props.isScriptsDisplayed || !this.state.isClient ? 'block' : 'none' }
                          }>
@@ -135,16 +136,23 @@ class TransactionsItem extends React.Component {
                         </Link> : <FormattedMessage id='components.transaction-item.unspent'/>
                       }
                     </div>
-                    
+
                     <div className='bi-transactions-item__value g-flex__item-fixed'>
                       <CoinValueComponent value={ address.value }/>
                     </div>
-                  
+
+                    <div className='bi-transactions-item__value g-flex__item-fixed'>
+                      <DropdownListComponent
+                          list={ [{label: "label", value: 'value'}] }
+                          button={ "+ 1" }
+                      />
+                    </div>
+
                   </div>
                 );
               })
             }
-            
+
             <div className='bi-transactions-item__footer g-flex-column__item-fixed g-flex'>
               { this.props.confirmations > 0 && (
                 <div className='bi-transactions-item__confirmations g-flex__item-fixed'>
@@ -155,14 +163,14 @@ class TransactionsItem extends React.Component {
                                                                   id='components.transaction-item.confirmation.other'/> }/>
                 </div>
               ) }
-              
+
               { this.props.confirmations === 0 && (
                 <div
                   className='bi-transactions-item__confirmations g-flex__item-fixed item__confirmations--unconfirmed'>
                   <FormattedMessage id='components.transaction-item.unconfirmed'/>
                 </div>
               ) }
-              
+
               <div className={
                 ['bi-transactions-item__total-value g-flex__item-fixed',
                   this.props.address && (isOutput ? 'bi-transactions-item__total-value--output' : 'bi-transactions-item__total-value--input')
