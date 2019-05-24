@@ -15,7 +15,7 @@ export * from './fullAddressTransactions';
 export * from './fullBlock';
 export * from './fullTransaction';
 export * from './hexString';
-export * from './iOSummary';
+export * from './IOSummary';
 export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './inlineResponse20010';
