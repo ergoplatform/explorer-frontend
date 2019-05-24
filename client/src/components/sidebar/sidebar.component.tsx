@@ -72,36 +72,36 @@ class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
   state: ISidebarState = {
     isClient: false
   };
-  
+
   constructor (props: ISidebarProps) {
     super(props);
-    
+
     this.toggleCollapse = this.toggleCollapse.bind(this);
     this.hideSidebar    = this.hideSidebar.bind(this);
   }
-  
+
   componentDidMount (): void {
     if (!this.props.api.data) {
       this.props.getApi();
     }
-    
+
     this.setState({
       isClient: true
     });
   }
-  
+
   toggleCollapse (): void {
     if (this.props.settings.isSidebarDisplayed) {
       return this.hideSidebar();
     }
-    
+
     this.props.setSidebarCollapsedStatus(!this.props.settings.isSidebarCollapsed);
   }
-  
+
   hideSidebar (): void {
     this.props.setSidebarDisplayStatus(false);
   }
-  
+
   render (): JSX.Element | null {
     const sidebarClassNames = classNames({
       'bi-sidebar': true,
@@ -110,12 +110,12 @@ class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
       'g-flex-column': true,
       'g-flex__item-fixed': true
     });
-    
+
     const items = [...SIDEBAR_MENU_ITEMS];
-    
+
     if (this.props.api.data) {
       const apiIndex = items.findIndex((item: ISidebarMenuItem) => item.url === '/api');
-      
+
       items[apiIndex].children = this.props.api.data.tags.map((tag: any): ISidebarMenuItem => {
         return {
           component: NavHashLink,
@@ -129,7 +129,7 @@ class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
         };
       });
     }
-    
+
     return (
       <div className={ sidebarClassNames }>
         <div className='bi-sidebar__header g-flex g-flex-column__item-fixed'>
@@ -139,27 +139,27 @@ class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
                 tabIndex={ this.props.isSidebarCollapsed ? -1 : 0 }>
             <LogoIcon className='bi-sidebar__logo-icon'/>
           </Link>
-          
+
           <button className='bi-sidebar__btn-toggle bi-btn bi-btn--flat g-flex__item-fixed g-flex'
                   onClick={ this.toggleCollapse }>
             <ArrowIcon className='bi-sidebar__btn-toggle-icon'/>
           </button>
         </div>
-        
+
         <div className='bi-sidebar__body g-flex-column__item-fixed'>
           <SidebarMenuComponent onClick={ this.hideSidebar } items={ items }/>
-          
+
           <LogoVerticalIcon className='bi-sidebar__side-logo'/>
         </div>
-        
-        
+
+
         <div className='bi-sidebar__footer g-flex-column__item-fixed g-flex'>
           <div className='bi-sidebar__footer-line g-flex__item-fixed g-flex'>
             <EnvironmentSwitcherComponent/>
-            
+
             <LanguageSwitcherComponent/>
           </div>
-          
+
           <div className='bi-sidebar__footer-line g-flex__item-fixed g-flex g-space-between'>
             <div className='bi-sidebar__made-by g-flex__item-fixed'>
               by <a href='https://researchinstitute.io'>Research Institute</a>
