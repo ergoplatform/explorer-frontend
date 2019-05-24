@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
-
 import { IOSummary } from '../../../models/generated/IOSummary';
 
+import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 import './transaction-io-summary.scss';
 
 interface ITransactionIoSummaryProps {
