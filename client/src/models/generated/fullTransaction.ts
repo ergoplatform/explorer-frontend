@@ -17,7 +17,7 @@ import { TransactionSummary } from './transactionSummary';
 
 export interface FullTransaction {
     summary: TransactionSummary;
-    IOSummary: IOSummary;
+    ioSummary: IOSummary;
     /**
      * Many transaction inputs
      */

@@ -38,6 +38,8 @@ class TransactionsItem extends React.Component {
   }
 
   renderAssets (assets: any[]): JSX.Element | null {
+    // TODO: Update then mainnet launch
+    return null;
     // if (assets.length < 1) {
     //   return null;
     // }
@@ -64,12 +66,10 @@ class TransactionsItem extends React.Component {
     const buttonText = `+${defaultAssets.length}`;
 
     return (
-      <div className='bi-transactions-item__value g-flex__item-fixed'>
-        <DropdownListComponent
-            list={ defaultAssets }
-            button={ buttonText }
-        />
-      </div>
+      <DropdownListComponent
+          list={ defaultAssets }
+          button={ buttonText }
+      />
     );
   }
 
@@ -177,9 +177,10 @@ class TransactionsItem extends React.Component {
 
                     <div className='bi-transactions-item__value g-flex__item-fixed'>
                       <CoinValueComponent value={ address.value }/>
+
+                      {this.renderAssets(address.assets)}
                     </div>
 
-                    {this.renderAssets(address.assets)}
                   </div>
                 );
               })

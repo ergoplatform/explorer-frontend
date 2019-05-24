@@ -10,7 +10,6 @@ $dropdown-option-hover-bg: #f8f8f8;
 
 .bi-dropdown-list {
   position: relative;
-  font-family: $theme-main-font;
 
   // [ Components ]
   //-----------------------------------------
@@ -41,17 +40,18 @@ $dropdown-option-hover-bg: #f8f8f8;
     overflow: hidden;
     position: absolute;
     top: -5px;
-    left: -165px;
-    width: 160px;
+    right: 20px;
+    max-width: 160px;
     border: 0.5px solid #dee3f1;
     background-color: $dropdown-dropdown-bg;
     box-shadow: 0 2px 3px 0 rgba(0,0,0,0.06);
     font-family: inherit;
 
     @media (max-width: $mobile-device-width) {
-      top: 30px;
+      top: 25px;
       right: 0;
-      left: 0;
+      width: 100%;
+      max-width: 100%;
     }
   }
 
@@ -70,6 +70,10 @@ $dropdown-option-hover-bg: #f8f8f8;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    @media (max-width: $mobile-device-width) {
+      justify-content: center;
     }
   }
 
