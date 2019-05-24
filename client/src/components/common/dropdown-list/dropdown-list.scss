@@ -1,0 +1,77 @@
+@import '~styles/base/variables';
+
+// #DROPDOWN
+//-------------------------------------
+$dropdown-button-color: #828795;
+$dropdown-button-hover-color: #ffffff;
+$dropdown-option-color: $theme-primary-color;
+$dropdown-dropdown-bg: #ffffff;
+$dropdown-option-hover-bg: #f8f8f8;
+
+.bi-dropdown {
+  position: relative;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------------
+  &__button {
+    color: $dropdown-button-color;
+    font-family: inherit;
+    font-size: 14px;
+
+    align-items: center;
+
+    &:hover {
+      color: $dropdown-button-hover-color;
+    }
+  }
+
+  &__button:hover & {
+    &__button-icon {
+      fill: $dropdown-button-hover-color;
+    }
+  }
+
+  &__button-icon {
+    width: 10px;
+    height: 10px;
+    margin-left: $grid-offset-step;
+
+    fill: $dropdown-button-color;
+  }
+
+  &__dropdown {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    bottom: calc(100% + 5px);
+    background-color: $dropdown-dropdown-bg;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.06);
+    font-family: inherit;
+  }
+
+  &__option {
+    display: block;
+    width: 100%;
+    padding: $grid-offset-step * 1.5 $grid-offset-step * 4;
+    color: $dropdown-option-color;
+    font-family: inherit;
+    font-size: 13px;
+    text-align: left;
+
+    &:hover {
+      background-color: $dropdown-option-hover-bg;
+    }
+  }
+
+  // [ State ] Open
+  &--open & {
+    &__dropdown {
+      display: block;
+    }
+
+    &__button-icon {
+      transform: rotate(180deg);
+    }
+  }
+}
