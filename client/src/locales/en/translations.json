@@ -87,9 +87,9 @@
       "title": "Summary"
     },
     "address-transactions": {
-      "balance": "Final balance",
+      "confirmedBalance": "Final balance",
       "title": "Transactions",
-      "total": "No. transactions",
+      "confirmed": "No. transactions",
       "totalReceived": "Total received"
     },
     "address": {

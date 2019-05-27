@@ -42,7 +42,7 @@ export class AddressTransactionsComponent extends React.Component<IAddressTransa
 
           <div className='bi-address-transactions__row bi-table__row'>
             <div className='bi-address-transactions__cell bi-address-transactions__cell--header bi-table__cell'>
-              <FormattedMessage id='components.address-transactions.balance'/>
+              <FormattedMessage id='components.address-transactions.confirmedBalance'/>
             </div>
 
             <div className='bi-address-transactions__cell bi-table__cell'>

@@ -6,7 +6,7 @@ $block-transactions-item-bg-color: #ffffff;
 $block-transactions-item-border-color: #eeeeee;
 $block-transactions-item-value-color: #828795;
 $block-transactions-item-total-value-color: $theme-color-blue;
-$block-transactions-item-confirmations-color: #fff;
+$block-transactions-item-confirmations-color: #ffffff;
 $block-transactions-item-confirmations-bg: $theme-primary-color;
 
 .bi-transactions-item {
@@ -39,7 +39,12 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
   }
 
   &__value {
+    display: flex;
     color: $block-transactions-item-value-color;
+
+    div + div {
+      margin-left: 0.5rem;
+    }
   }
 
   &__total-value {
@@ -51,12 +56,13 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
   }
 
   &__confirmations {
+    margin-right: $grid-offset-step * 2;
     padding: ($grid-offset-step * 2) ($grid-offset-step * 3);
-    background-color: $block-transactions-item-confirmations-bg;
     border-radius: 94px;
     color: $block-transactions-item-confirmations-color;
+    background-color: $block-transactions-item-confirmations-bg;
     font-weight: 600;
-    margin-right: $grid-offset-step * 2;
+    line-height: 22px;
     text-transform: capitalize;
   }
 
@@ -84,20 +90,20 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
 
   &__footer {
     margin-top: $grid-offset-step * 4;
+
     justify-content: flex-end;
   }
 
   &__address-output {
     .bi-coin-value {
-      color: $block-transactions-item-value-color;
       display: inline-block;
+      color: $block-transactions-item-value-color;
     }
   }
 
   &__address-spent {
     margin-left: $grid-offset-step;
-
-    color: #1EC116;
+    color: #1ec116;
 
     a {
       color: red;
@@ -105,21 +111,21 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
   }
 
   &__arrow {
-    left: 50%;
-    top: 50%;
     position: absolute;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
+    top: 50%;
+    left: 50%;
     padding: $grid-offset-step * 2;
-    border: 1px solid #eee;
+    border: 1px solid #eeeeee;
     border-radius: 100%;
+    background-color: #ffffff;
     line-height: 0;
+    transform: translate(-50%, -50%);
   }
 
 
   &__total-value--input {
-    border-color: #1EC116;
-    color: #1EC116;
+    border-color: #1ec116;
+    color: #1ec116;
   }
 
   &__total-value--output {
@@ -132,41 +138,60 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
   }
 
   &__arrow--input &__arrow-icon {
-    fill: #1EC116;
+    fill: #1ec116;
   }
 
   &__arrow-icon {
     width: 21px;
     height: 21px;
+
     fill: #828795;
   }
 }
 
 @media screen and (max-width: $mobile-device-width) {
   .bi-transactions-item {
-    &__body,
-    &__output,
-    &__footer {
+    &__body, &__output, &__footer {
       flex-direction: column;
     }
 
-    &__inputs,
-    &__outputs {
+    &__inputs, &__outputs {
       width: auto;
     }
 
+    &__address {
+      @media (max-width: $mobile-device-width) {
+        max-width: 100%;
+
+        div + & {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    &__value {
+      flex-direction: column;
+
+      div + div {
+        margin-left: 0;
+      }
+
+      div {
+        margin-top: 0.5rem;
+      }
+    }
+
     &__inputs {
-      border-bottom: 1px solid $block-transactions-item-border-color;
       border-right: 0;
+      border-bottom: 1px solid $block-transactions-item-border-color;
     }
 
     &__confirmations {
       margin-right: 0;
-      margin-bottom: $grid-offset-step;
+      margin-bottom: 1rem;
     }
 
-    &__confirmations,
-    &__total-value {
+    &__confirmations, &__total-value {
       text-align: center;
     }
 
@@ -174,8 +199,7 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
       display: none;
     }
 
-    &__input,
-    &__output {
+    &__input, &__output {
       margin-bottom: $grid-offset-step * 3;
 
       &:last-child {
