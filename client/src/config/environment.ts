@@ -53,7 +53,13 @@ environment = {
   },
 
   get apiUrl (): string | undefined {
-    return getAppConfig().apiUrl;
+    let apiUrl = getAppConfig().apiUrl;
+  
+    if (apiUrl.indexOf('http') !== 0) {
+      apiUrl = `${document.location.protocol}//${document.location.host}${apiUrl}`;
+    }
+  
+    return apiUrl;
   }
 };
 
