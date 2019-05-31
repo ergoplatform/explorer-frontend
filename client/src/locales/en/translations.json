@@ -18,7 +18,10 @@
       "stateRoot": "State Root",
       "transactions": "Transactions",
       "transactionsRoot": "Transactions Root",
-      "version": "Version"
+      "version": "Version",
+      "headerId": "Header ID",
+      "digest": "Digest",
+      "fields": "Fields"
     },
     "pages": {
       "address": {
@@ -99,7 +102,8 @@
       "adproofs": "AD Proofs",
       "back": "Back to all blocks",
       "information": "Information",
-      "transactions": "Transactions"
+      "transactions": "Transactions",
+      "extension": "Extension"
     },
     "block-summary": {
       "averageMiningTime": "Average mining time",
