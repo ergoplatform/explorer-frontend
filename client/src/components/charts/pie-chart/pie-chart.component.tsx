@@ -21,7 +21,7 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
       .sort((a: any, b: any) => {
         return b.y - a.y;
       });
-    
+
     const options = {
       chart: {
         backgroundColor: null,
@@ -59,7 +59,7 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
             enabled: !this.props.compact,
             formatter (): any {
               const series = this as any;
-              
+
               return `${series.point.name}: ${series.point.percentage.toFixed(2)}%`;
             }
           }
@@ -69,14 +69,12 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
         data,
         innerSize: '70%'
       }],
-      title: {
-        text: false
-      },
+      title: false,
       tooltip: {
         enabled: false
       }
     };
-    
+
     return (
       <div className='bi-pie-chart'>
         <div className='bi-pie-chart__chart'>
@@ -85,7 +83,7 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
             options={ options }
           />
         </div>
-  
+
         { !this.props.compact &&
         <div className='bi-pie-chart__legend bi-pie-chart__table bi-table'>
           <div className='bi-pie-chart__row bi-table__row bi-pie-chart__row--header'>
@@ -96,7 +94,7 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
               { this.props.labels.value }
             </div>
           </div>
-    
+
           {
             this.props.data.map((item: any, index: number) => {
               return (
@@ -116,5 +114,5 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
       </div>
     );
   }
-  
+
 }

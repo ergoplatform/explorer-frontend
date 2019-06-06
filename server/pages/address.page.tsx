@@ -16,7 +16,7 @@ const render = (req: any, res: any, next: any) => {
         },
         type: GET_ADDRESS_SUCCESS
       });
-      
+
       AddressApiService.getAddressTransactions(req.params.id, req.query)
         .then((transactionsData: any) => {
           req.explorer.preloadedState = {
@@ -27,20 +27,20 @@ const render = (req: any, res: any, next: any) => {
               transactions: transactionsData
             }
           };
-          
+
           next();
         })
         .catch(() => {
           req.explorer.hasError = true;
-          
+
           next();
         });
     })
     .catch((e: Error) => {
       console.warn(e);
-      
+
       req.explorer.hasError = true;
-      
+
       next();
     });
 };
