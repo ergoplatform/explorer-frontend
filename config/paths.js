@@ -1,4 +1,4 @@
-'use strict';
+
 
 const path = require('path');
 const fs = require('fs');
@@ -6,9 +6,7 @@ const url = require('url');
 
 // Make sure any symlinks in the project folder are resolved:
 const appDirectory = fs.realpathSync(process.cwd());
-const resolvePath = relativePath => {
-  return path.resolve(appDirectory, relativePath);
-};
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
@@ -36,27 +34,65 @@ function getServedPath(packageJson) {
   return ensureSlash(servedUrl, true);
 }
 
+const moduleFileExtensions = [
+  'web.mjs',
+  'mjs',
+  'web.js',
+  'js',
+  'web.ts',
+  'ts',
+  'web.tsx',
+  'tsx',
+  'json',
+  'web.jsx',
+  'jsx',
+];
+
+// Resolve file paths in the same order as webpack
+const resolveModule = (resolveFn, filePath) => {
+  const extension = moduleFileExtensions.find(extension =>
+    fs.existsSync(resolveFn(`${filePath}.${extension}`))
+  );
+
+  if (extension) {
+    return resolveFn(`${filePath}.${extension}`);
+  }
+
+  return resolveFn(`${filePath}.js`);
+};
+
 module.exports = {
-  appTsConfig: resolvePath('tsconfig.json'),
-  apiSpec: resolvePath('api.yaml'),
-  appTsLint: resolvePath('tslint.json'),
-  dotenv: resolvePath('.env'),
-  nodeModules: resolvePath('node_modules'),
-  yarnLockFile: resolvePath('yarn.lock'),
-  packageJson: resolvePath('package.json'),
+  apiSpec: resolveApp('api.yaml'),
+  appTsLint: resolveApp('tslint.json'),
+  dotenv: resolveApp('.env'),
+  nodeModules: resolveApp('node_modules'),
   client: {
-    build: resolvePath('build/client'),
-    public: resolvePath('client/public'),
-    html: resolvePath('client/public/index.html'),
-    root: resolvePath('client/src/index.tsx'),
-    src: resolvePath('client/src'),
-    styles: resolvePath('client/src/assets/styles'),
-    publicUrl: getPublicUrl(resolvePath('package.json')),
-    servedPath: getServedPath(resolvePath('package.json'))
+    build: resolveApp('build/client'),
+    public: resolveApp('src/client/public'),
+    html: resolveApp('src/client/public/index.html'),
+    root: resolveApp('src/client/src/index.tsx'),
+    src: resolveApp('src/client/src'),
+    styles: resolveApp('src/client/src/assets/styles'),
+    publicUrl: getPublicUrl(resolveApp('package.json')),
+    servedPath: getServedPath(resolveApp('package.json'))
   },
   server: {
-    build: resolvePath('build/server'),
-    root: resolvePath('server/index.tsx'),
-    src: resolvePath('server'),
-  }
+    build: resolveApp('build/server'),
+    root: resolveApp('src/server/index.tsx'),
+    src: resolveApp('src/server'),
+  },
+  appPath: resolveApp('.'),
+  appBuild: resolveApp('build'),
+  appPublic: resolveApp('public'),
+  appHtml: resolveApp('public/index.html'),
+  appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appPackageJson: resolveApp('package.json'),
+  appSrc: resolveApp('src'),
+  appTsConfig: resolveApp('tsconfig.json'),
+  appJsConfig: resolveApp('jsconfig.json'),
+  yarnLockFile: resolveApp('yarn.lock'),
+  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
+  proxySetup: resolveApp('src/setupProxy.js'),
+  publicUrl: getPublicUrl(resolveApp('package.json')),
+  servedPath: getServedPath(resolveApp('package.json')),
 };
