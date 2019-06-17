@@ -96,6 +96,16 @@ export class BlockInfoComponent extends React.Component<IBlockInfoProps> {
 
           <div className='bi-block-info__row bi-table__row'>
             <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
+              <FormattedMessage id='common.block.votes'/>
+            </div>
+
+            <div className='bi-block-info__cell u-word-wrap'>
+              [{this.props.block.header.votes.join(', ')}]
+            </div>
+          </div>
+
+          <div className='bi-block-info__row bi-table__row'>
+            <div className='bi-block-info__cell bi-block-info__cell--header bi-table__cell'>
               <FormattedMessage id='common.block.adProofsRoot'/>
             </div>
 

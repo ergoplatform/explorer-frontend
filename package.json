@@ -2,6 +2,18 @@
   "name": "blockchain-explorer",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "node scripts/client.start.js",
+    "build": "node scripts/client.build.js",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:client": "node scripts/client.start.js",
+    "prod:client": "node scripts/client.build.js",
+    "dev:server": "nodemon --watch ./ --exec \"node build/server/bundle.js\"",
+    "dev:build-server": "NODE_ENV=development webpack --config config/webpack.config.server.dev.js --watch",
+    "prod:server": "node scripts/server.build.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "test:coverage": "node scripts/test.js --env=jsdom --coverage"
+  },
   "dependencies": {
     "@axetroy/react-download": "^1.1.1",
     "@hot-loader/react-dom": "^16.8.6",
@@ -46,18 +58,6 @@
     "svg-sprite-loader": "~4.1.6",
     "swagger-parser": "^6.0.5",
     "tmp": "^0.0.33"
-  },
-  "scripts": {
-    "start": "node scripts/client.start.js",
-    "build": "node scripts/client.build.js",
-    "dev": "npm-run-all --parallel dev:*",
-    "dev:client": "node scripts/client.start.js",
-    "prod:client": "node scripts/client.build.js",
-    "dev:server": "nodemon --watch ./ --exec \"node build/server/bundle.js\"",
-    "dev:build-server": "NODE_ENV=development webpack --config config/webpack.config.server.dev.js --watch",
-    "prod:server": "node scripts/server.build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "test:coverage": "node scripts/test.js --env=jsdom --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",

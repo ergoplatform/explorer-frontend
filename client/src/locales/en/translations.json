@@ -9,7 +9,7 @@
       "extensionHash": "Extension Hash",
       "height": "Height",
       "id": "ID",
-      "interlinks": "Interlinks",
+      "votes": "Votes",
       "minedBy": "Mined by",
       "minerReward": "Reward",
       "nBits": "Bits",
@@ -263,8 +263,8 @@
     },
     "transaction": {
       "scripts": {
-        "input": "Input Scripts",
-        "output": "Output Scripts"
+        "input": "Input",
+        "output": "Output"
       },
       "subtitle": "View information about a ERGO transaction",
       "title": "Transaction"
