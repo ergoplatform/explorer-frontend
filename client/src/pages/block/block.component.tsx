@@ -108,7 +108,7 @@ class Block extends React.Component {
                    exact={ true }
                    component={
                      this.renderComponent(<BlockExtensionComponent
-                       block={ this.props.block }/>)
+                       extension={ this.props.block.extension }/>)
                    }/>
 
             <Route path={ `/blocks/:id/adproofs` }

@@ -15,25 +15,25 @@ export interface BlockchainStatsMiningCost {
     /**
      * Total Miners Revenue
      */
-    totalMinersRevenue: number;
+    totalMinersRevenue?: number;
     /**
      * Miners revenue as percentage of the transaction fees
      */
-    percentEarnedTransactionsFees: number;
+    percentEarnedTransactionsFees?: number;
     /**
      * Miners revenue as percentage of the transaction volume
      */
-    percentTransactionVolume: number;
+    percentTransactionVolume?: number;
     /**
      * Miners revenue divided by the number of transactions
      */
-    costPerTransaction: number;
+    costPerTransaction?: number;
     /**
      * Difficulty
      */
-    difficulty: number;
+    difficulty?: number;
     /**
      * Hash Rate
      */
-    hashRate: number;
+    hashRate?: number;
 }
