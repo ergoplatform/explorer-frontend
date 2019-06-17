@@ -1,8 +1,13 @@
 * {
-  box-sizing: border-box;
   letter-spacing: 0.2px;
 }
 
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 
 /* #NORMALIZE
 -------------------------------------------------- */

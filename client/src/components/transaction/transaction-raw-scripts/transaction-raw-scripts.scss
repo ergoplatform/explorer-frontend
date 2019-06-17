@@ -11,6 +11,7 @@ $transaction-raw-scripts-item-border-color: #eeeeee;
   color: $transaction-raw-scripts-color;
   background-color: $transaction-raw-scripts-bg;
   font-size: 13px;
+  line-height: 25px;
   word-break: break-all;
 
   // [ Components ]
@@ -18,8 +19,12 @@ $transaction-raw-scripts-item-border-color: #eeeeee;
   &__item {
     padding: ($grid-offset-step * 4) ($grid-offset-step * 6);
 
-    &:nth-child(even) {
+    &:nth-child(n+1) {
       border-top: 1px solid $transaction-raw-scripts-item-border-color;
+    }
+
+    li ul {
+      padding-left: $grid-offset-step * 3;
     }
   }
 }
