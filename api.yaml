@@ -722,6 +722,7 @@ components:
         - header
         - blockTransactions
         - adProofs
+        - extension
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
@@ -732,6 +733,8 @@ components:
             $ref: '#/components/schemas/Transaction'
         adProofs:
           $ref: '#/components/schemas/SerializedAdProof'
+        extension:
+          $ref: '#/components/schemas/BlockExtension'
 
     SearchBlock:
       description: Block for search results
@@ -852,6 +855,29 @@ components:
           $ref: '#/components/schemas/ModifierId'
         adProofsId:
           $ref: '#/components/schemas/ModifierId'
+
+    BlockExtension:
+      type: object
+      required:
+        - headerId
+        - digest
+        - fields
+      properties:
+        headerId:
+          $ref: '#/components/schemas/ModifierId'
+        digest:
+          $ref: '#/components/schemas/Digest32'
+        fields:
+          description: List of key-value records
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/KeyValueItem'
+
+    KeyValueItem:
+      type: array
+      items:
+        $ref: '#/components/schemas/HexString'
 
     PowSolutions:
       description: An object containing all components of pow solution

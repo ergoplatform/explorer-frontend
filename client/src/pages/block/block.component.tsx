@@ -14,6 +14,7 @@ import { BlockActions } from '../../actions/block.actions';
 import { BlockState } from '../../reducers/block.reducer';
 
 import { BlockAdproofsComponent } from '../../components/block/block-adproofs/block-adproofs.component';
+import { BlockExtensionComponent } from '../../components/block/block-extension/block-extension.component';
 import { BlockHeaderComponent } from '../../components/block/block-header/block-header.component';
 import { BlockInfoComponent } from '../../components/block/block-info/block-info.component';
 import { TransactionsComponent } from '../../components/transactions/transactions.component';
@@ -101,6 +102,13 @@ class Block extends React.Component {
                    component={
                      this.renderComponent(<TransactionsComponent
                        transactions={ this.props.block.blockTransactions }/>)
+                   }/>
+
+            <Route path={ `/blocks/:id/extension` }
+                   exact={ true }
+                   component={
+                     this.renderComponent(<BlockExtensionComponent
+                       extension={ this.props.block.extension }/>)
                    }/>
 
             <Route path={ `/blocks/:id/adproofs` }

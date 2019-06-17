@@ -15,7 +15,7 @@ const render = (req: any, res: any, next: any) => {
         },
         type: GET_BLOCK_SUCCESS
       });
-      
+
       req.explorer.preloadedState = {
         ...req.explorer.preloadedState,
         block: {
@@ -23,12 +23,12 @@ const render = (req: any, res: any, next: any) => {
           preloaded: true
         }
       };
-      
+
       next();
     })
     .catch(() => {
       req.explorer.hasError = true;
-      
+
       next();
     });
 };
@@ -36,4 +36,5 @@ const render = (req: any, res: any, next: any) => {
 
 BlockPage.get('/:id', render);
 BlockPage.get('/:id/transactions', render);
+BlockPage.get('/:id/extension', render);
 BlockPage.get('/:id/adproofs', render);

@@ -11,17 +11,17 @@
  */
 
 
-export interface BlockchainStatsBlockSummary {
-    /**
-     * Number of mined blocks
-     */
-    total?: number;
-    /**
-     * Time between blocks in ms
-     */
-    averageMiningTime?: number;
-    /**
-     * Total mined coins
-     */
-    totalCoins?: number;
+export interface IOSummary {
+  /**
+   * Total Coins Transferred
+   */
+  totalCoinsTransferred: number;
+  /**
+   * Total fee
+   */
+  totalFee: number;
+  /**
+   * Fee per Byte
+   */
+  feePerByte: number;
 }

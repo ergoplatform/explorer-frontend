@@ -15,17 +15,17 @@ export interface BlockchainStatsTransactionSummary {
     /**
      * Number of transactions
      */
-    total: number;
+    total?: number;
     /**
      * Total Transaction Fees
      */
-    totalFee: number;
+    totalFee?: number;
     /**
      * Total Output Volume
      */
-    totalOutput: number;
+    totalOutput?: number;
     /**
      * Estimated Transaction Volume
      */
-    estimatedTransactionVolume: number;
+    estimatedTransactionVolume?: number;
 }

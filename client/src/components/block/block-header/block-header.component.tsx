@@ -23,18 +23,18 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
           <Link className='bi-block-header__btn-back'
                 to={ `/${this.props.prevLink}` }>
             <ArrowIcon className='bi-block-header__btn-back-icon'/>
-            
+
             <span className='bi-block-header__btn-back-title'>
               <FormattedMessage id='components.block-header.back'/>
             </span>
           </Link>
         </div>
-        
+
         <div className='bi-block-header__line g-flex-column__item g-flex'>
           <div className='bi-block-header__title g-flex__item-fixed'>
             <FormattedMessage id='common.block.block'/> <span>#{ this.props.block.header.height }</span>
           </div>
-          
+
           <div className='bi-block-header__navigation g-flex__item-fixed'>
             {
               (this.props.references.previousId && this.props.block.header.height !== 0) ?
@@ -43,7 +43,7 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
                   <ArrowIcon className='bi-block-header__navigation-btn-icon'/>
                 </Link> : null
             }
-            
+
             {
               this.props.references.nextId ?
                 <Link className='bi-block-header__navigation-btn bi-block-header__navigation-btn--next'
@@ -52,7 +52,7 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
                 </Link> : null
             }
           </div>
-          
+
           <div className='bi-block-header__tabs g-flex__item-fixed g-flex'>
             <NavLink className='bi-block-header__tab g-flex__item-fixed'
                      activeClassName='bi-block-header__tab--active'
@@ -60,14 +60,21 @@ export class BlockHeaderComponent extends React.Component<IBlockHeaderProps> {
                      to={ `/blocks/${this.props.block.header.id}` }>
               <FormattedMessage id='components.block-header.information'/>
             </NavLink>
-            
+
             <NavLink className='bi-block-header__tab g-flex__item-fixed'
                      activeClassName='bi-block-header__tab--active'
                      exact={ true }
                      to={ `/blocks/${this.props.block.header.id}/transactions` }>
               <FormattedMessage id='components.block-header.transactions'/>
             </NavLink>
-            
+
+            <NavLink className='bi-block-header__tab g-flex__item-fixed'
+                     activeClassName='bi-block-header__tab--active'
+                     exact={ true }
+                     to={ `/blocks/${this.props.block.header.id}/extension` }>
+              <FormattedMessage id='components.block-header.extension'/>
+            </NavLink>
+
             <NavLink className='bi-block-header__tab g-flex__item-fixed'
                      activeClassName='bi-block-header__tab--active'
                      exact={ true }

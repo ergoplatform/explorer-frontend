@@ -18,7 +18,10 @@
       "stateRoot": "Хэш Состояния",
       "transactions": "Транзакции",
       "transactionsRoot": "Хэш Секции Транзакции",
-      "version": "Версия"
+      "version": "Версия",
+      "headerId": "ID заголовка",
+      "digest": "Дайджест",
+      "fields": "Поля"
     },
     "pages": {
       "address": {
@@ -99,7 +102,8 @@
       "adproofs": "AD Доказательства",
       "back": "Назад ко всем блокам",
       "information": "Информация",
-      "transactions": "Транзакции"
+      "transactions": "Транзакции",
+      "extension": "Расширение"
     },
     "block-summary": {
       "averageMiningTime": "Среднее время между блоками",
