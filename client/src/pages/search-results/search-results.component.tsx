@@ -24,33 +24,33 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
   state: ISearchResultsState = {
     canSearch: true
   };
-  
+
   private query: string | string[];
-  
+
   componentDidMount (): void {
     if (this.props.preloaded) {
       this.props.clearPreloadedState();
-      
+
       return;
     }
-    
+
     const { query } = queryString.parse(this.props.location.search);
-    
+
     this.query = query || '';
-    
+
     this.doSearch();
   }
-  
+
   componentWillReceiveProps (nextProps: ISearchResultsProps): void {
     const { query } = queryString.parse(nextProps.location.search);
-    
+
     if (query !== this.query) {
       this.query = query || '';
-      
+
       this.doSearch();
     }
   }
-  
+
   render (): JSX.Element {
     return (
       <div className='bi-search-results'>
@@ -61,49 +61,49 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
       </div>
     );
   }
-  
+
   private renderBody (): JSX.Element | null {
     if (!this.props.data) {
       return null;
     }
-    
+
     const exactBlock = this.props.data.blocks.find((item: any) => item.id === this.query);
-    
+
     if (exactBlock) {
       return <Redirect to={ `/blocks/${this.query}` }/>;
     }
-    
+
     const exactAddress = this.props.data.addresses.includes(this.query);
-    
+
     if (exactAddress) {
       return <Redirect to={ `/blocks/${this.query}` }/>;
     }
-    
+
     const exactTransaction = this.props.data.transactions.includes(this.query);
-    
+
     if (exactTransaction) {
       return <Redirect to={ `/transactions/${this.query}` }/>;
     }
-    
+
     return (
       <div className='bi-search-results__body'>
         { this.props.data.blocks.length === 0 && <FormattedMessage id='components.search-results.no-results'/> }
-        
+
         { this.props.data.blocks.length > 0 &&
         <BlocksTableComponent blocks={ this.props.data.blocks } isFetching={ this.props.fetching }/> }
       </div>
     );
   }
-  
+
   private doSearch (): void {
     if (this.query.length < 5) {
       this.setState({ canSearch: false });
-      
+
       return;
     }
-    
+
     this.setState({ canSearch: true });
-    
+
     this.props.search(this.query as string);
   }
 }

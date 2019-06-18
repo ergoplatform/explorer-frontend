@@ -8,6 +8,17 @@ interface ITransactionRawScriptsProps {
 
 import './transaction-raw-scripts.scss';
 
+const isBadValue = (item: any) => {
+  if ((item === null)
+    ||(typeof item === "object" && Object.keys(item).length === 0)
+    ||(typeof item === "string" && item.trim().length === 0)
+  ) {
+    return true;
+  }
+
+  return false;
+};
+
 export class TransactionRawScriptsComponent extends React.PureComponent<ITransactionRawScriptsProps> {
   render (): JSX.Element {
     return (
@@ -19,23 +30,19 @@ export class TransactionRawScriptsComponent extends React.PureComponent<ITransac
                 {
                   Object.keys(item)
                     .map((key, i) => {
-                      if (
-                        (item[key] === null )
-                        ||(typeof item[key] === "object" && Object.keys(item[key]).length === 0)
-                        || (typeof item[key] === "string" && item[key].trim().length === 0)
-                      ) {
+                      if (isBadValue(item[key])) {
                         return null;
                       }
 
-                      if (typeof item[key] === "object") {
-                        if (key === "assets") {
-                          return (
-                            <li key={key}><b>{key}</b>: <ul>{
-                              item[key].map((it: Asset) => <li key={item}><b>{it.tokenId}</b>: {it.amount}</li>)
-                            }</ul></li>
-                          );
-                        }
+                      if (key === "assets") {
+                        return (
+                          <li key={key}><b>{key}</b>: <ul>{
+                            item[key].map((it: Asset) => <li key={item}><b>{it.tokenId}</b>: {it.amount}</li>)
+                          }</ul></li>
+                        );
+                      }
 
+                      if (typeof item[key] === "object") {
                         return (
                           <li key={key}>
                             <b>{key}</b>: <ul>{
@@ -46,7 +53,7 @@ export class TransactionRawScriptsComponent extends React.PureComponent<ITransac
                         );
                       }
 
-                      return (<li key={`${key}${i}`}><b>{key}</b>: {item[key]}}</li>);
+                      return (<li key={`${key}${i}`}><b>{key}</b>: {item[key]}</li>);
                     })
                 }
               </ul>
