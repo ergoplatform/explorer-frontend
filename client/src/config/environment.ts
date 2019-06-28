@@ -10,7 +10,6 @@ export interface IEnvironment {
   environments?: any[];
   defaultLocale?: string;
   isLoggerEnabled: boolean;
-  tokensDecode: object;
 }
 
 let environment: IEnvironment;

@@ -35,9 +35,10 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     url: '/'
   },
   {
+    external: true,
     icon: <WalletIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
     title: 'components.sidebar-menu.items.wallet',
-    url: '/wallet'
+    url: 'https://ergoplatform.org/en/wallets/',
   },
   {
     icon: <ChartIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,

@@ -15,8 +15,6 @@ import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 import { DropdownListComponent } from '../../common/dropdown-list/dropdown-list.component';
 import { ArrowThickIcon } from '../../common/icons/common.icons';
 
-import environment from '../../../config/environment';
-
 import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
@@ -58,7 +56,7 @@ class TransactionsItem extends React.Component {
     const defaultAssets = init.map(
       token => ({
         ...token,
-        label: `${environment.tokensDecode[token.tokenId]}`,
+        label: `${token.tokenId}`,
         value: `${token.amount}`
       })
     );
