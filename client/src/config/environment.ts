@@ -46,7 +46,7 @@ function getAppConfig (): any {
 }
 
 environment = {
-  ...environment,
+  ...getAppConfig(),
   get environments (): any[] {
     return getAppConfig().environments;
   },
