@@ -11,6 +11,10 @@ export const environmentDefault: IEnvironment = {
     {
       name: 'Testnet',
       url: 'http://localhost:3000',
+    },
+    {
+      name: 'Mainnet',
+      url: 'http://localhost:3000',
     }
   ],
   isLoggerEnabled: true,
