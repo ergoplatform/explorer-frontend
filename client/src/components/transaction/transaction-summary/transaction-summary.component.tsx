@@ -50,7 +50,7 @@ export class TransactionSummaryComponent extends React.Component<ITransactionSum
             </div>
 
             <div className='bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell'>
-              <Link to={ `/blocks/${this.props.summary.block.headerId}` }>
+              <Link to={ `/blocks/${this.props.summary.block.id}` }>
                 { this.props.summary.block.height }
               </Link>
             </div>
