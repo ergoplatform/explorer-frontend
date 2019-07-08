@@ -44,7 +44,26 @@ $address-summary-header-border-color: #eeeeee;
 }
 
 @media screen and (max-width: $mobile-device-width) {
-  .bi-transactions-summary__cell--actions {
-    text-align: left;
+  .bi-transactions-summary {
+    &__header {
+      padding: ($grid-offset-step * 3) ($grid-offset-step * 4);
+    }
+
+    &__row {
+      border: none;
+      border-bottom: 1px solid $address-summary-header-border-color;
+    }
+
+    &__cell {
+      padding: ($grid-offset-step * 3) ($grid-offset-step * 4);
+
+      + .bi-transactions-summary__cell {
+        padding-top: 0;
+      }
+
+      &--actions {
+        display: none;
+      }
+    }
   }
 }

@@ -44,7 +44,31 @@ $address-summary-header-border-color: #eeeeee;
 }
 
 @media screen and (max-width: $mobile-device-width) {
-  .bi-mining-cost__cell--actions {
-    text-align: left;
+  .bi-mining-cost {
+    &__header {
+      padding: ($grid-offset-step * 3) ($grid-offset-step * 4);
+    }
+
+    &__row {
+      border: none;
+      border-bottom: 1px solid $address-summary-header-border-color;
+    }
+
+    &__cell {
+      padding: ($grid-offset-step * 3) ($grid-offset-step * 4);
+
+      + .bi-mining-cost__cell {
+        padding-top: 0;
+      }
+
+      &--actions {
+        display: none;
+        text-align: left;
+      }
+
+      &--display {
+        display: block;
+      }
+    }
   }
 }

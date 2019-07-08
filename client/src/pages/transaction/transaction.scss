@@ -39,6 +39,11 @@ $transactions-subtitle-color: #828795;
   }
 }
 
+@media screen and (max-width: $laptop-device-width) {
+  .bi-transaction {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 5);
+  }
+}
 
 @media screen and (max-width: $mobile-device-width) {
   .bi-transaction {

@@ -43,6 +43,17 @@ $data-title-color: $theme-primary-color;
   }
 }
 
+@media screen and (max-width: $laptop-device-width) {
+  .bi-data {
+    padding: ($grid-offset-step * 5) 0;
+
+    &__footer, &__header, &__body {
+      padding: 0 ($grid-offset-step * 5);
+    }
+
+  }
+}
+
 @media screen and (max-width: $mobile-device-width) {
   .bi-data {
     padding: ($grid-offset-step * 5) 0;

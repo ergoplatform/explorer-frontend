@@ -57,6 +57,18 @@ $header-toggle-color: #ffffff;
   }
 }
 
+@media screen and (max-width: $laptop-device-width) {
+  .bi-header {
+    .bi-search {
+      padding-right: $grid-offset-step * 5;
+    }
+
+    .bi-header-stats {
+      padding-left: $grid-offset-step * 5;
+    }
+  }
+}
+
 @media screen and (max-width: $mobile-device-width) {
   .bi-header {
     height: 60px;

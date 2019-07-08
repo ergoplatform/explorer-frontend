@@ -38,9 +38,15 @@
   }
 }
 
+@media screen and (max-width: $laptop-device-width) {
+  .bi-address {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 5);
+  }
+}
+
 @media screen and (max-width: $mobile-device-width) {
   .bi-address {
-    padding: ($grid-offset-step * 2) ($grid-offset-step * 3);
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 3);
 
 
     .bi-address-actions {

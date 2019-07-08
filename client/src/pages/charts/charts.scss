@@ -55,10 +55,25 @@ $charts-charts-bg-color: #ffffff;
   }
 }
 
+@media screen and (max-width: $laptop-device-width) {
+  .bi-charts {
+    padding: ($grid-offset-step * 0);
+
+    &__title {
+      padding: $grid-offset-step * 5 0;
+    }
+
+    &__footer,
+    &__charts-wrapper,
+    &__header{
+      padding: 0 ($grid-offset-step * 5);
+    }
+  }
+}
 
 @media screen and (max-width: $mobile-device-width) {
   .bi-charts {
-    padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
+    padding: 0;
 
     &__title {
       padding: $grid-offset-step * 5 0;
