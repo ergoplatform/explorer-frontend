@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { AddressId } from '../../../models/generated/addressId';
 import { Transaction } from '../../../models/generated/transaction';
+import { TransactionOutput } from '../../../models/generated/transactionOutput';
 
 import { SettingsState } from '../../../reducers/settings.reducer';
 import { AppState } from '../../../store/app.store';
@@ -14,7 +15,6 @@ import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 
 import { DropdownListComponent } from '../../common/dropdown-list/dropdown-list.component';
 import { ArrowThickIcon } from '../../common/icons/common.icons';
-import { TransactionOutput } from '../../../models/generated/transactionOutput';
 import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
