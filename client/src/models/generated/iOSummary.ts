@@ -15,7 +15,7 @@ export interface IOSummary {
     /**
      * Total Coins Transferred
      */
-    totaloinsTransferred: number;
+    totalCoinsTransferred: number;
     /**
      * Total fee
      */
