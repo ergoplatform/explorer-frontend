@@ -12,16 +12,16 @@
 
 
 export interface IOSummary {
-  /**
-   * Total Coins Transferred
-   */
-  totalCoinsTransferred: number;
-  /**
-   * Total fee
-   */
-  totalFee: number;
-  /**
-   * Fee per Byte
-   */
-  feePerByte: number;
+    /**
+     * Total Coins Transferred
+     */
+    totaloinsTransferred: number;
+    /**
+     * Total fee
+     */
+    totalFee: number;
+    /**
+     * Fee per Byte
+     */
+    feePerByte: number;
 }
