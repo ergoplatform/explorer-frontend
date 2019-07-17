@@ -17,5 +17,5 @@ export const environmentDefault: IEnvironment = {
       url: 'http://localhost:3000',
     }
   ],
-  isLoggerEnabled: true,
+  isLoggerEnabled: true
 };

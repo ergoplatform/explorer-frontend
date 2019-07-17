@@ -14,7 +14,7 @@ import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 
 import { DropdownListComponent } from '../../common/dropdown-list/dropdown-list.component';
 import { ArrowThickIcon } from '../../common/icons/common.icons';
-
+import { TransactionOutput } from '../../../models/generated/transactionOutput';
 import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
@@ -35,29 +35,15 @@ class TransactionsItem extends React.Component {
     });
   }
 
-  renderAssets (assets: any[]): JSX.Element | null {
-    // TODO: Update then mainnet launch
-    return null;
-    // if (assets.length < 1) {
-    //   return null;
-    // }
+  renderAssets (assets: TransactionOutput['assets']): JSX.Element | null {
+    if (assets.length === 0) {
+      return null;
+    }
 
-    const init = [
-      {
-        "amount" : 1063722126,
-        "tokenId" : "a91167397245bce687182e877107b5d43904c89ba4ec5f0f5557eb0d127945b3"
-      },
-      {
-        "amount" : 1063722126,
-        "tokenId" : "fd0e8f2af0fcc567734b75a9665573cd6d336f54a10b4962ba70f220ab167e9a"
-      },
-    ];
-
-    const defaultAssets = init.map(
-      token => ({
-        ...token,
-        label: `${token.tokenId}`,
-        value: `${token.amount}`
+    const defaultAssets = assets.map(
+      ({ amount, tokenId }) => ({
+        label: tokenId.substr(0, 4),
+        value: amount
       })
     );
 

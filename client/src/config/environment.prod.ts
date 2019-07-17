@@ -11,5 +11,5 @@ export const environmentProd: IEnvironment = {
       url: 'https://explorer.ergoplatform.com',
     }
   ],
-  isLoggerEnabled: false,
+  isLoggerEnabled: false
 };
