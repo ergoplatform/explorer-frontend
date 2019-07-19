@@ -373,6 +373,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/BlockchainStats'
 
+  '/stats/forks':
+    get:
+      summary: Forks info summary
+      tags:
+        - statistics
+      parameters:
+        - name: fromHeight
+          in: query
+          required: false
+          description: Height to display forks from. Forks from last epoch are displayed by default.
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ForksInfo'
+
   '/charts/total':
     get:
       summary: Get total sum of coins mined per day
@@ -1112,6 +1130,39 @@ components:
               description: Total tokens balance including off-chain transactions
               items:
                 $ref: '#/components/schemas/Asset'
+
+    ForksInfo:
+      type: object
+      description: Forks summary
+      properties:
+        quantity:
+          type: integer
+          example: 109
+          description: Total number of forks
+        forks:
+          type: array
+          items:
+            type: object
+            description: Fork info
+            properties:
+              length:
+                type: integer
+                example: 109
+                description: Total number of forks
+              branchPointHeight:
+                type: integer
+                example: 558
+                nullable: true
+                description: Height chain forked from
+              orphaned:
+                type: boolean
+                description: True if fork is not linked to main chain, False otherwise
+              members:
+                type: array
+                items:
+                  type: array
+                  descition: Pair of block height and block id
+                  example: [559, 'a7f1f3a83944c98359731470b1858275e5b5cefa073869354b0e2c196a5606d9']
 
     BlockchainInfo:
       type: object
