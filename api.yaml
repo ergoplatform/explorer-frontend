@@ -383,6 +383,8 @@ paths:
           in: query
           required: false
           description: Height to display forks from. Forks from last epoch are displayed by default.
+          schema:
+            type: integer
       responses:
         '200':
           description: Ok
@@ -1161,7 +1163,17 @@ components:
                 type: array
                 items:
                   type: array
-                  descition: Pair of block height and block id
+                  items:
+                    maxItems: 2
+                    minItems: 2
+                    allOf:
+                      - type: integer
+                        description: block height
+                        example: 559
+                      - type: string
+                        description: block id
+                        example: 'a7f1f3a83944c98359731470b1858275e5b5cefa073869354b0e2c196a5606d9'
+                  description: Pair of block height and block id
                   example: [559, 'a7f1f3a83944c98359731470b1858275e5b5cefa073869354b0e2c196a5606d9']
 
     BlockchainInfo:
