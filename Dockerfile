@@ -4,13 +4,13 @@ WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 
 RUN apk update && apk upgrade && \
-    echo @3.9 http://nl.alpinelinux.org/alpine/v3.9/community >> /etc/apk/repositories && \
-    echo @3.9 http://nl.alpinelinux.org/alpine/v3.9/main >> /etc/apk/repositories && \
+    echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories && \
+    echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/main >> /etc/apk/repositories && \
     apk add --no-cache \
-      freetype@3.9 \
-      harfbuzz@3.9 \
-      chromium@3.9 \
-      nss@3.9
+      freetype@latest-stable \
+      harfbuzz@latest-stable \
+      chromium@latest-stable \
+      nss@latest-stable
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV CHROME_BIN=/usr/bin/chromium-browser
@@ -30,13 +30,13 @@ FROM node:10.16.0-alpine
 WORKDIR /usr/src/app
 
 RUN apk update && apk upgrade && \
-    echo @3.9 http://nl.alpinelinux.org/alpine/v3.9/community >> /etc/apk/repositories && \
-    echo @3.9 http://nl.alpinelinux.org/alpine/v3.9/main >> /etc/apk/repositories && \
+    echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories && \
+    echo @latest-stable http://nl.alpinelinux.org/alpine/latest-stable/main >> /etc/apk/repositories && \
     apk add --no-cache \
-      freetype@3.9 \
-      harfbuzz@3.9 \
-      chromium@3.9 \
-      nss@3.9
+      freetype@latest-stable \
+      harfbuzz@latest-stable \
+      chromium@latest-stable \
+      nss@latest-stable
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV CHROME_BIN=/usr/bin/chromium-browser

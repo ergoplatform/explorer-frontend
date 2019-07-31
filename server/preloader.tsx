@@ -18,7 +18,7 @@ const apiParsePromise = SwaggerParser.validate(data);
 
 Preloader.get('*', (req: any, res, next) => {
   const promises = [StatsApiService.getStatsInfo(), apiParsePromise];
-  
+
   Promise.all(promises)
     .then(([statsData, apiData]: any) => {
       const preloadedState = statsReducer(initialState, {
@@ -27,14 +27,14 @@ Preloader.get('*', (req: any, res, next) => {
         },
         type: GET_STATS_INFO_SUCCESS
       });
-      
+
       const apiPreloadedState = apiReducer(apiInitialState, {
         payload: {
           data: apiData
         },
         type: GET_API_SUCCESS
       });
-      
+
       req.explorer.preloadedState = {
         ...req.explorer.preloadedState,
         api: {
@@ -50,7 +50,7 @@ Preloader.get('*', (req: any, res, next) => {
           preloaded: true
         }
       };
-      
+
       next();
     })
     .catch(() => {

@@ -47,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
   manifest = {
     assets: require(`../build/client/asset-manifest.json`)
   };
-  
+
   server.use('/static', express.static(appPath + '/build/client/static'));
   server.use('/favicon.png', express.static(appPath + '/build/client/favicon.png'));
   server.use('/app.config.js', express.static(appPath + '/build/client/app.config.js'));
@@ -63,7 +63,7 @@ server.use((req: any, res, next) => {
   req.explorer = {
     preloadedState: {}
   };
-  
+
   next();
 });
 
@@ -75,7 +75,7 @@ server.use((req: any, res, next) => {
       req.explorer.hasError = true;
     }
   });
-  
+
   next();
 });
 
@@ -92,7 +92,7 @@ server.use('/charts/images', ChartImage);
 
 server.get('*', (req: any, res) => {
   const context: any = {};
-  
+
   const body = renderToString(
     (
       <App location={ req.url }
@@ -101,9 +101,9 @@ server.get('*', (req: any, res) => {
            preloadedState={ req.explorer.preloadedState }/>
     )
   );
-  
+
   const helmet = Helmet.renderStatic();
-  
+
   const htmlToRender = serverHtml({
     assets: manifest.assets,
     body,
@@ -112,12 +112,12 @@ server.get('*', (req: any, res) => {
     preloadedState: req.explorer.preloadedState,
     spriteContent: sprite.stringify()
   });
-  
+
   if (context.url) {
     res.writeHead(302, {
       Location: context.url
     });
-    
+
     res.end();
   } else {
     res.write(htmlToRender);
@@ -127,8 +127,6 @@ server.get('*', (req: any, res) => {
 
 server.listen(port, () => {
   console.info(`App is listening on port ${ port }!`);
-  
+
   runImageGeneration();
 });
-
-

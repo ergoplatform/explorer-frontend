@@ -46,7 +46,10 @@ const generateImages = async () => {
     await page.waitFor(2000);
     await page.screenshot({ path: filename, type: 'jpeg' });
 
-    await page.close();
+    await page.close()
+      .then(() => {
+        page.emit('closed');
+      });
   }
 
   await browser.close();
@@ -54,7 +57,7 @@ const generateImages = async () => {
   browser = null;
 };
 
-const IMAGE_GENERATION_TIMEOUT = 1000 * 60;
+const IMAGE_GENERATION_TIMEOUT = 1000 * 300;
 
 export const runImageGeneration = () => {
   console.info('[PROGRESS] Generating charts preview images...');
