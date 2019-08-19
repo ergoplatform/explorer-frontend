@@ -26,45 +26,45 @@ import { TransactionsComponent } from '../../components/transactions/transaction
 class Address extends React.PureComponent {
   props: RouteComponentProps<{ id: string }> & AddressState & AddressActions & AppActions;
   params: any;
-  
+
   constructor (props: any) {
     super(props);
-    
+
     this.params = this.getParams();
-    
+
     this.getPageUrl = this.getPageUrl.bind(this);
   }
-  
+
   componentDidMount (): void {
     if (this.props.preloaded) {
       this.props.clearPreloadedState();
-      
+
       return;
     }
-    
+
     this.props.getAddress(this.props.match.params.id);
     this.props.getAddressTransactions(this.props.match.params.id, this.params);
   }
-  
+
   componentWillReceiveProps (nextProps: any): void {
     const params = this.getParams();
-    
+
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.params = params;
-      
+
       this.props.getAddress(nextProps.match.params.id);
       this.props.getAddressTransactions(nextProps.match.params.id, this.params);
-      
+
       return;
     }
-    
+
     if (JSON.stringify(params) !== JSON.stringify(this.params)) {
       this.params = params;
-      
+
       this.props.getAddressTransactions(this.props.match.params.id, this.params);
     }
   }
-  
+
   render (): JSX.Element {
     return (
       <div className='bi-address g-flex-column__item-fixed'>
@@ -74,20 +74,20 @@ class Address extends React.PureComponent {
                               values={ { coinName: environment.blockchain.coinName.toUpperCase() } }/>
           </div>
         </div>
-        
+
         { this.renderBody() }
       </div>
     );
   }
-  
+
   private renderBody (): JSX.Element | null {
     if (!this.props.address || this.props.fetching) {
       return null;
     }
-    
+
     return (
       <div className='bi-address__body'>
-        
+
         <FormattedMessage id='common.pages.address.title' values={ { id: this.props.address.summary.id } }>
           {
             title => (
@@ -97,20 +97,20 @@ class Address extends React.PureComponent {
             )
           }
         </FormattedMessage>
-        
+
         <div className='bi-address__tables g-flex'>
           <div className='bi-address__table g-flex__item'>
             <AddressSummaryComponent summary={ this.props.address.summary }/>
             <AddressQrcodeActionComponent address={ this.props.address }/>
           </div>
-          
+
           <div className='bi-address__table g-flex__item'>
             <AddressTransactionsComponent summary={ this.props.address.transactions }/>
-            
+
             <AddressRequetsPaymentActionComponent address={ this.props.address }/>
           </div>
         </div>
-        
+
         { this.props.transactions &&
         (
           <div className='bi-address__transactions'>
@@ -118,7 +118,7 @@ class Address extends React.PureComponent {
             <TransactionsComponent transactions={ this.props.transactions.items }
                                    address={ this.props.address.summary.id }/>
             }
-            
+
             <div className='bi-address__transactions-footer g-flex'>
               <PaginateSimpleComponent total={ this.props.transactions.total }
                                        limit={ this.params.limit }
@@ -131,21 +131,21 @@ class Address extends React.PureComponent {
       </div>
     );
   }
-  
+
   private getPageUrl (page: number): string {
     const params: any = queryString.parse(this.props.history.location.search);
-    
+
     params.offset = page * this.params.limit;
-    
+
     return `${this.props.location.pathname}?${queryString.stringify(params)}`;
   }
-  
+
   private getParams (): any {
     let { offset, limit }: any = queryString.parse(this.props.history.location.search);
-    
+
     offset = parseInt(offset, 10);
     limit  = parseInt(limit, 10) || 30;
-    
+
     return {
       limit,
       offset: offset || 0

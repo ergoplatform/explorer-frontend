@@ -26,7 +26,6 @@ import { SearchPage } from './pages/search.page';
 import { StatsPage } from './pages/stats.page';
 import { TransactionPage } from './pages/transaction.page';
 import { Preloader } from './preloader';
-import { runImageGeneration } from './utils/generateImages';
 
 const port = process.env.PORT || 5000;
 
@@ -127,6 +126,4 @@ server.get('*', (req: any, res) => {
 
 server.listen(port, () => {
   console.info(`App is listening on port ${ port }!`);
-
-  runImageGeneration();
 });
