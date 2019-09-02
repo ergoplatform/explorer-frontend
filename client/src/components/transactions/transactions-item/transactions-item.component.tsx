@@ -61,7 +61,7 @@ class TransactionsItem extends React.Component {
     let totalOutput        = 0;
     let totalInputAddress  = 0;
     let totalOutputAddress = 0;
-    let isOutput           = false;
+    let isOutput           = true;
 
     return (
       <div className='bi-transactions-item'>
@@ -82,8 +82,6 @@ class TransactionsItem extends React.Component {
               this.props.transaction.inputs.map((address, index) => {
                 if (address.address === this.props.address) {
                   totalInputAddress += address.value;
-
-                  isOutput = true;
                 }
 
                 return (
@@ -131,6 +129,8 @@ class TransactionsItem extends React.Component {
               this.props.transaction.outputs.map((address, index) => {
                 if (address.address === this.props.address) {
                   totalOutputAddress += address.value;
+
+                  isOutput = false;
                 }
 
                 totalOutput += address.value;
