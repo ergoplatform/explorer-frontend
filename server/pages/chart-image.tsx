@@ -1,6 +1,6 @@
 import * as express from 'express';
-import { cacheRoot } from '../constants/cacheRoot';
+import { chartsRoot } from '../constants/chartsRoot';
 
 export const ChartImage = express.Router();
 
-ChartImage.use('/', express.static(cacheRoot));
+ChartImage.use('/', express.static(chartsRoot));
