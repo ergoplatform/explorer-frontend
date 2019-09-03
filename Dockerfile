@@ -15,7 +15,7 @@ RUN apk update && apk upgrade && \
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV CHROME_BIN=/usr/bin/chromium-browser
 
-RUN npm install -g typescript
+RUN yarn global add typescript@3.4.5
 RUN yarn
 COPY . ./
 ENV NODE_ENV production

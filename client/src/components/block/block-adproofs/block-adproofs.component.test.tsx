@@ -8,14 +8,14 @@ import { FullBlock } from '../../../models/generated/fullBlock';
 
 describe('Components | Block AdProofs', () => {
   let block: FullBlock;
-  
+
   beforeEach(() => {
     block = stubInterface<FullBlock>();
   });
-  
+
   it('should render without crashing', () => {
     const wrapper = shallowWithIntl(<BlockAdproofsComponent block={ block }/>);
-    
+
     expect(wrapper.length)
       .toBe(1);
   });
