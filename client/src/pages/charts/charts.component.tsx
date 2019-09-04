@@ -19,18 +19,18 @@ export class ChartsComponent extends React.PureComponent {
             )
           }
         </FormattedMessage>
-        
+
         <div className='bi-charts__header g-flex-column__item-fixed'>
           <div className='bi-charts__title'>
             <FormattedMessage id='components.charts.title'/>
           </div>
         </div>
-        
+
         { this.renderBody() }
       </div>
     );
   }
-  
+
   private renderBody (): JSX.Element {
     return (
       <div className='bi-charts__body g-flex-column g-flex-column__item'>
@@ -38,7 +38,7 @@ export class ChartsComponent extends React.PureComponent {
           <div className='bi-charts__title'>
             <FormattedMessage id='components.charts.currency-statistics'/>
           </div>
-          
+
           <div className='bi-charts__charts'>
             <ChartsPreviewComponent chartType='total'/>
           </div>
@@ -47,28 +47,28 @@ export class ChartsComponent extends React.PureComponent {
           <div className='bi-charts__title'>
             <FormattedMessage id='components.charts.block-details'/>
           </div>
-          
+
           <div className='bi-charts__charts'>
             <ChartsPreviewComponent chartType='blockchain-size'/>
-            
+
             <ChartsPreviewComponent chartType='block-size'/>
-            
+
             <ChartsPreviewComponent chartType='transactions-per-block'/>
           </div>
         </div>
-        
+
         <div className='bi-charts__charts-wrapper g-flex-column__item'>
           <div className='bi-charts__title'>
             <FormattedMessage id='components.charts.mining-information'/>
           </div>
-          
+
           <div className='bi-charts__charts'>
             <ChartsPreviewComponent chartType='hash-rate'/>
-            
+
             <ChartsPreviewComponent chartType='hash-rate-distribution'/>
-            
+
             <ChartsPreviewComponent chartType='difficulty'/>
-            
+
             <ChartsPreviewComponent chartType='miners-revenue'/>
           </div>
         </div>

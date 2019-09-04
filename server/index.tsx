@@ -19,7 +19,6 @@ import { App } from './app.server';
 
 import { AddressPage } from './pages/address.page';
 import { BlockPage } from './pages/block.page';
-import { ChartImage } from './pages/chart-image';
 import { ChartPage } from './pages/charts.page';
 import { DataPage } from './pages/data.page';
 import { SearchPage } from './pages/search.page';
@@ -57,6 +56,14 @@ if (process.env.NODE_ENV === 'production') {
   server.use(['/*\.(js|json|png)(\.map)?', '/static'], proxy({ target: 'http://localhost:3000' }));
 }
 
+server.use('/charts/images/total.jpeg', express.static(appPath + '/build/client/charts/total.jpeg'));
+server.use('/charts/images/block-size.jpeg', express.static(appPath + '/build/client/charts/block-size.jpeg'));
+server.use('/charts/images/blockchain-size.jpeg', express.static(appPath + '/build/client/charts/blockchain-size.jpeg'));
+server.use('/charts/images/difficulty.jpeg', express.static(appPath + '/build/client/charts/difficulty.jpeg'));
+server.use('/charts/images/hash-rate-distribution.jpeg', express.static(appPath + '/build/client/charts/hash-rate-distribution.jpeg'));
+server.use('/charts/images/hash-rate.jpeg', express.static(appPath + '/build/client/charts/hash-rate.jpeg'));
+server.use('/charts/images/miners-revenue.jpeg', express.static(appPath + '/build/client/charts/miners-revenue.jpeg'));
+server.use('/charts/images/transactions-per-block.jpeg', express.static(appPath + '/build/client/charts/transactions-per-block.jpeg'));
 
 server.use((req: any, res, next) => {
   req.explorer = {
@@ -86,8 +93,6 @@ server.use('/:locale?/charts', ChartPage);
 server.use('/:locale?/blocks', BlockPage);
 server.use('/:locale?/transactions', TransactionPage);
 server.use('/:locale?/addresses', AddressPage);
-server.use('/charts/images', ChartImage);
-
 
 server.get('*', (req: any, res) => {
   const context: any = {};
