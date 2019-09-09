@@ -70,14 +70,18 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        loader: 'css-loader/locals'
+       test: /\.css$/,
+        loader: 'css-loader',
       },
       {
         test: /\.scss$/,
-        loader: 'css-loader/locals'
+        use: [
+          {
+            loader: 'css-loader',
+          },
+          'sass-loader'
+        ]
       },
-
       // "file" loader makes sure those assets get served by WebpackDevServer.
       // When you `import` an asset, you get its (virtual) filename.
       // In production, they would get copied to the `build` folder.
