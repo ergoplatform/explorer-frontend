@@ -24,7 +24,6 @@ module.exports = {
       '.jsx'
     ],
     alias: {
-      'react-dom': '@hot-loader/react-dom',
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -72,22 +71,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'css-loader',
-        options: {
-          onlyLocals: true
-        }
+        loader: 'css-loader/locals'
       },
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader',
-            options: {
-              onlyLocals: true
-            }
-          },
-          'sass-loader'
-        ]
+        loader: 'css-loader/locals'
       },
 
       // "file" loader makes sure those assets get served by WebpackDevServer.
