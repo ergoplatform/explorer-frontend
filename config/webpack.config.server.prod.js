@@ -72,11 +72,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'css-loader/locals'
+        loader: 'css-loader',
+        options: {
+          onlyLocals: true
+        }
       },
       {
         test: /\.scss$/,
-        loader: 'css-loader/locals'
+        use: [
+          'style-loader',
+          { loader: 'css-loader',
+            options: {
+              onlyLocals: true
+            }
+          },
+          'sass-loader'
+        ]
       },
 
       // "file" loader makes sure those assets get served by WebpackDevServer.
