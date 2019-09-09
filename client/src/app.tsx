@@ -50,7 +50,7 @@ export const App = () => {
         <LastLocationProvider>
           <Switch>
             { window.__HAS_ERROR__ && <Route path='/' component={ ServerErrorComponent }/> }
-            
+
             <Route path='/' component={ AppComponent }/>
           </Switch>
         </LastLocationProvider>
