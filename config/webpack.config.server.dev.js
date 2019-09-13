@@ -2,6 +2,7 @@ const nodeExternals = require('webpack-node-externals');
 const paths = require('./paths');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const cssFilename = 'static/css/[name].css';
+const autoprefixer = require('autoprefixer');
 
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
@@ -90,7 +91,6 @@ module.exports = {
                   loader: require.resolve('css-loader'),
                   options: {
                     importLoaders: 1,
-                    minimize: true,
                     sourceMap: shouldUseSourceMap
                   }
                 },
@@ -136,7 +136,6 @@ module.exports = {
                   loader: require.resolve('css-loader'),
                   options: {
                     importLoaders: 1,
-                    minimize: true,
                     sourceMap: shouldUseSourceMap
                   }
                 },

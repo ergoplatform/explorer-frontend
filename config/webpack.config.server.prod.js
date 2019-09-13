@@ -24,7 +24,6 @@ module.exports = {
       '.jsx'
     ],
     alias: {
-      'react-dom': '@hot-loader/react-dom',
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -71,14 +70,18 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        loader: 'css-loader/locals'
+       test: /\.css$/,
+        loader: 'css-loader',
       },
       {
         test: /\.scss$/,
-        loader: 'css-loader/locals'
+        use: [
+          {
+            loader: 'css-loader',
+          },
+          'sass-loader'
+        ]
       },
-
       // "file" loader makes sure those assets get served by WebpackDevServer.
       // When you `import` an asset, you get its (virtual) filename.
       // In production, they would get copied to the `build` folder.
