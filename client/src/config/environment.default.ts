@@ -4,7 +4,7 @@ export const environmentDefault: IEnvironment = {
   alternativeLogo: true,
   apiUrl: 'https://api-testnet.ergoplatform.com',
   blockchain: {
-    coinName: 'Ergo'
+    coinName: 'Erg'
   },
   defaultLocale: 'en',
   environments: [
