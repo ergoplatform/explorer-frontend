@@ -82,7 +82,7 @@ class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
   }
 
   componentDidMount (): void {
-    if (!this.props.api.data) {
+    if (this.props.api && !this.props.api.data) {
       this.props.getApi();
     }
 
@@ -114,7 +114,7 @@ class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
 
     const items = [...SIDEBAR_MENU_ITEMS];
 
-    if (this.props.api.data) {
+    if (this.props.api && this.props.api.data) {
       const apiIndex = items.findIndex((item: ISidebarMenuItem) => item.url === '/api');
 
       items[apiIndex].children = this.props.api.data.tags.map((tag: any): ISidebarMenuItem => {
