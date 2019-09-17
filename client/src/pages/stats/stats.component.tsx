@@ -22,13 +22,13 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
   componentDidMount (): void {
     if (this.props.preloaded) {
       this.props.clearPreloadedState();
-      
+
       return;
     }
-    
+
     this.props.getStats();
   }
-  
+
   render (): JSX.Element {
     return (
       <div className='bi-stats'>
@@ -41,24 +41,24 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
             )
           }
         </FormattedMessage>
-        
+
         <div className='bi-stats__header'>
           <div className='bi-stats__title'>
             <FormattedMessage id='components.stats.title' values={ {
               coinName: environment.blockchain.coinName.toUpperCase()
             } }/>
           </div>
-  
+
           <div className='bi-stats__subtitle'>
             <FormattedMessage id='components.stats.subtitle'/>
           </div>
         </div>
-        
+
         { this.props.stats ? this.renderBody() : null }
       </div>
     );
   }
-  
+
   private renderBody (): JSX.Element {
     return (
       <div className='bi-stats__body'>
@@ -67,13 +67,13 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
             <BlockSummaryComponent summary={ this.props.stats.blockSummary }/>
           </div>
         </div>
-        
+
         <div className='bi-stats__line'>
           <div className='bi-stats__block-summary'>
             <TransactionsSummaryComponent summary={ this.props.stats.transactionsSummary }/>
           </div>
         </div>
-        
+
         <div className='bi-stats__line'>
           <div className='bi-stats__block-summary'>
             <MiningCostComponent summary={ this.props.stats.miningCost }/>
