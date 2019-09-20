@@ -29,7 +29,7 @@ const render = (req: any, res: any, next: any) => {
     })
     .catch((e: Error) => {
       req.explorer.hasError = true;
-      console.error(e);
+      console.error(`Transaction page: ${e}`);
 
       next();
     });

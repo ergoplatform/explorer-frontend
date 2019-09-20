@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
-import environment from '../config/environment';
+import axios, { AxiosResponse } from "axios";
+import environment from "../config/environment";
 
 export class TransactionApiService {
   static get apiUrl (): string {
@@ -7,10 +7,13 @@ export class TransactionApiService {
   }
 
   static getTransaction (id: string): any {
-    return axios.get(`${TransactionApiService.apiUrl}/${id}`)
+    return axios
+      .get(`${TransactionApiService.apiUrl}/${id}`)
       .then((response: AxiosResponse) => {
         if (!response) {
-          console.error(response);
+          return Promise.reject(
+            `Transaction api service. Request: ${TransactionApiService.apiUrl}/${id}. Response: ${response}`
+          );
         }
 
         return response.data;

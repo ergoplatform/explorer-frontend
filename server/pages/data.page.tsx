@@ -28,7 +28,7 @@ DataPage.get('/', (req: any, res, next) => {
     .catch((e: Error) => {
       req.explorer.hasError = true;
 
-      console.error(e);
+      console.error(`Data page: ${e}`);
       next();
     });
 });
