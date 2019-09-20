@@ -15,7 +15,7 @@ StatsPage.get('/', (req: any, res, next) => {
         },
         type: GET_STATS_SUCCESS
       });
-      
+
       req.explorer.preloadedState = {
         ...req.explorer.preloadedState,
         stats: {
@@ -24,12 +24,13 @@ StatsPage.get('/', (req: any, res, next) => {
           preloaded: true
         }
       };
-  
+
       next();
     })
-    .catch(() => {
+    .catch((e: Error) => {
       req.explorer.hasError = true;
-    
+      console.error(e);
+
       next();
     });
 });

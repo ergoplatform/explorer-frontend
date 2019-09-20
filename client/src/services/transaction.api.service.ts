@@ -5,10 +5,14 @@ export class TransactionApiService {
   static get apiUrl (): string {
     return `${environment.apiUrl}/transactions`;
   }
-  
+
   static getTransaction (id: string): any {
     return axios.get(`${TransactionApiService.apiUrl}/${id}`)
       .then((response: AxiosResponse) => {
+        if (!response) {
+          console.error(response);
+        }
+
         return response.data;
       });
   }

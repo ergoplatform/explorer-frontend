@@ -14,14 +14,18 @@ export class BlockApiService {
   static get apiUrl (): string {
     return `${environment.apiUrl}/blocks`;
   }
-  
+
   static getBlock (id: string): any {
     return axios.get(`${BlockApiService.apiUrl}/${id}`)
       .then((response: AxiosResponse) => {
+        if (!response) {
+          console.error(response);
+        }
+
         return response.data;
       });
   }
-  
+
   static getBlocks ({ limit, offset, sortBy, sortDirection, startDate, endDate }: IGetBlocksParams): any {
     return axios.get(`${BlockApiService.apiUrl}`, {
       params: {
@@ -34,6 +38,10 @@ export class BlockApiService {
       }
     })
       .then((response: AxiosResponse) => {
+        if (!response) {
+          console.error(response);
+        }
+
         return response.data;
       });
   }

@@ -53,8 +53,9 @@ Preloader.get('*', (req: any, res, next) => {
 
       next();
     })
-    .catch(() => {
+    .catch((e: Error) => {
       req.explorer.hasError = true;
+      console.error(e);
       next();
     });
 });

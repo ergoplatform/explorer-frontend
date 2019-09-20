@@ -16,7 +16,7 @@ const render = (req: any, res: any, next: any) => {
         },
         type: GET_TRANSACTION_SUCCESS
       });
-      
+
       req.explorer.preloadedState = {
         ...req.explorer.preloadedState,
         transaction: {
@@ -24,12 +24,13 @@ const render = (req: any, res: any, next: any) => {
           preloaded: true
         }
       };
-      
+
       next();
     })
-    .catch(() => {
+    .catch((e: Error) => {
       req.explorer.hasError = true;
-    
+      console.error(e);
+
       next();
     });
 };
