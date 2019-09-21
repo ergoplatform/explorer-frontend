@@ -15,17 +15,19 @@ ChartPage.get('/*', (req: any, res, next) => {
         },
         type: GET_CHART_SUCCESS
       });
-      
+
       req.explorer.preloadedState = {
         ...req.explorer.preloadedState,
         chart: preloadedState,
       };
-  
+
       next();
     })
-    .catch(() => {
+    .catch((e: Error) => {
       req.explorer.hasError = true;
-    
+
+      console.error(`Chart page: ${e}`);
+
       next();
     });
 });

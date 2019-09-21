@@ -6,10 +6,10 @@ export const DataPage = express.Router();
 
 DataPage.get('/', (req: any, res, next) => {
   let { offset, sortBy, sortDirection, startDate, endDate, limit } = req.query;
-  
+
   offset = parseInt(offset, 10) || 0;
   limit = parseInt(limit, 10) || 30;
-  
+
   BlockApiService.getBlocks({ limit, offset, sortBy, sortDirection, startDate, endDate })
     .then((data: any) => {
       const preloadedState = {
@@ -20,14 +20,15 @@ DataPage.get('/', (req: any, res, next) => {
           total: data.total
         }
       };
-      
+
       req.explorer.preloadedState = { ...req.explorer.preloadedState, ...preloadedState };
-      
+
       next();
     })
-    .catch(() => {
+    .catch((e: Error) => {
       req.explorer.hasError = true;
-    
+
+      console.error(`Data page: ${e}`);
       next();
     });
 });

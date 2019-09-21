@@ -17,19 +17,24 @@ class HeaderStats extends React.Component<StatsActions & AppActions & StatsState
     if (this.props.preloaded) {
       return this.props.clearPreloadedState();
     }
-    
+
     this.props.getStatsInfo();
   }
-  
+
   render (): JSX.Element {
-    const statElements = this.props.info.map((item: IInfoItem) => {
-      return <StatsItemComponent title={ item.title } value={ item.value } key={ item.title }/>;
+    const statElements = this.props.info.map(({title, value}: IInfoItem) => {
+      return (
+        <StatsItemComponent
+          title={ title }
+          value={ value }
+          key={ title }
+      />);
     })
       .reduce((previous, current, index) => [...previous,
         <div className='bi-header-stats__divider' key={ index }/>, current] as any, []);
-    
+
     statElements.splice(0, 1);
-    
+
     return (
       <div className='bi-header-stats g-flex'>
         { statElements }
