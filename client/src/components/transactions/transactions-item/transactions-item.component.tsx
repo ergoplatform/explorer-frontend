@@ -57,11 +57,32 @@ class TransactionsItem extends React.Component {
     );
   }
 
+  getAddressInputs = () => this.props.transaction.inputs.reduce(
+    (acc, { address, value }) =>
+      address === this.props.address ? acc + value : acc
+    , 0)
+
+  getAddressOutputs = () => this.props.transaction.outputs.reduce(
+    (acc, { address, value }) =>
+      address === this.props.address ? acc + value : acc
+    , 0)
+
+  getTransactionState = () => {
+    const inputs = this.getAddressInputs();
+    const outputs = this.getAddressOutputs();
+
+    if (outputs !== 0 && (outputs - inputs) > 0) {
+      return 'input';
+    }
+
+    return 'output';
+  }
+
   render (): JSX.Element {
     let totalOutput        = 0;
-    let totalInputAddress  = 0;
-    let totalOutputAddress = 0;
-    let isOutput           = true;
+    const totalInputAddress  = this.getAddressInputs();
+    const totalOutputAddress = this.getAddressOutputs();
+    const isOutput           = this.getTransactionState() === 'output';
 
     return (
       <div className='bi-transactions-item'>
@@ -80,10 +101,6 @@ class TransactionsItem extends React.Component {
           <div className='bi-transactions-item__inputs g-flex__item'>
             {
               this.props.transaction.inputs.map((address, index) => {
-                if (address.address === this.props.address) {
-                  totalInputAddress += address.value;
-                }
-
                 return (
                   <div className='bi-transactions-item__input g-flex' key={ `${index}__${address.id}` }>
                     <div className='bi-transactions-item__address'>
@@ -127,12 +144,6 @@ class TransactionsItem extends React.Component {
           <div className='bi-transactions-item__outputs g-flex__item g-flex-column'>
             {
               this.props.transaction.outputs.map((address, index) => {
-                if (address.address === this.props.address) {
-                  totalOutputAddress += address.value;
-
-                  isOutput = false;
-                }
-
                 totalOutput += address.value;
 
                 return (
