@@ -8,7 +8,7 @@ export class StatsApiService {
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Stats api service. Request: ${environment.apiUrl}/info. Response: ${response}`
+            `SERVICE UNAVAILABLE`
           );
         }
 
@@ -22,7 +22,7 @@ export class StatsApiService {
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Stats api service. Request: ${environment.apiUrl}/stats. Response: ${response}`
+            `Stats api service. Request: ${environment.apiUrl}/stats.`
           );
         }
 

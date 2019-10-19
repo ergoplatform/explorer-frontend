@@ -21,7 +21,7 @@ export class BlockApiService {
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Block api service. Request: ${BlockApiService.apiUrl}/${id}. Response: ${response}`
+            `Block api service. Request: ${BlockApiService.apiUrl}/${id}.`
           );
         }
 
@@ -51,7 +51,7 @@ export class BlockApiService {
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Block api service. Request: ${BlockApiService.apiUrl}. Response: ${response}`
+            `Block api service. Request: ${BlockApiService.apiUrl}.`
           );
         }
 

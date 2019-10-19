@@ -12,12 +12,8 @@ export class SearchApiService {
       })
       .then((response: AxiosResponse) => {
         if (!response) {
-          console.error(
-            `Block api service. Request: ${environment.apiUrl}/search. Response: ${response}`
-          );
-
           return Promise.reject(
-            `Block api service. Request: ${environment.apiUrl}/search. Response: ${response}`
+            `Block api service. Request: ${environment.apiUrl}/search.`
           );
         }
 
