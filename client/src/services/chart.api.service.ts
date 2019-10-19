@@ -20,7 +20,7 @@ export class ChartApiService {
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Block api service. Request: ${environment.apiUrl}/charts/${chartType}. Response: ${response}`
+            `Block api service. Request: ${environment.apiUrl}/charts/${chartType}.`
           );
         }
 

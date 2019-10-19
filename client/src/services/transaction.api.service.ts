@@ -12,7 +12,7 @@ export class TransactionApiService {
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Transaction api service. Request: ${TransactionApiService.apiUrl}/${id}. Response: ${response}`
+            `Transaction api service. Request: ${TransactionApiService.apiUrl}/${id}.`
           );
         }
 

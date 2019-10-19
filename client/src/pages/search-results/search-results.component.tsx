@@ -25,7 +25,7 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     canSearch: true
   };
 
-  private query: string | string[];
+  private query: string;
 
   componentDidMount (): void {
     if (this.props.preloaded) {
@@ -34,18 +34,18 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
       return;
     }
 
-    const { query } = queryString.parse(this.props.location.search);
+    const { query = '' } = queryString.parse(this.props.location.search);
 
-    this.query = query || '';
+    this.query = query as string;
 
     this.doSearch();
   }
 
   componentWillReceiveProps (nextProps: ISearchResultsProps): void {
-    const { query } = queryString.parse(nextProps.location.search);
+    const { query = '' } = queryString.parse(nextProps.location.search);
 
     if (query !== this.query) {
-      this.query = query || '';
+      this.query = query as string;
 
       this.doSearch();
     }
@@ -67,30 +67,51 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
       return null;
     }
 
-    const exactBlock = this.props.data.blocks.find((item: any) => item.id === this.query);
+    const { blocks, addresses, transactions } = this.props.data;
+
+    const exactBlock = blocks.find((item: any) => item.id === this.query);
+    const exactTransaction = transactions.includes(this.query);
+    const exactAddress = addresses.includes(this.query);
+
+    // TODO: After available height search on backend, code can uncomment
+    // if (this.query[0] === '#') {
+    //   const exactHashIndex = blocks.find((item: any) => item.height === this.query.substring(1));
+
+    //   if (exactHashIndex !== -1) {
+    //     return <Redirect to={ `/blocks/${blocks[exactHashIndex]}` }/>;
+    //   }
+    // }
+
+    if (blocks.length === 1) {
+      return <Redirect to={ `/blocks/${blocks[0].id}` }/>;
+    }
+
+    if (addresses.length === 1) {
+      return <Redirect to={ `/addresses/${addresses[0]}` }/>;
+    }
+
+    if (transactions.length === 1) {
+      return <Redirect to={ `/transactions/${transactions[0]}` } />;
+    }
 
     if (exactBlock) {
       return <Redirect to={ `/blocks/${this.query}` }/>;
     }
 
-    const exactAddress = this.props.data.addresses.includes(this.query);
-
     if (exactAddress) {
-      return <Redirect to={ `/blocks/${this.query}` }/>;
+      return <Redirect to={ `/addresses/${this.query}` }/>;
     }
 
-    const exactTransaction = this.props.data.transactions.includes(this.query);
-
     if (exactTransaction) {
-      return <Redirect to={ `/transactions/${this.query}` }/>;
+      return <Redirect to={ `/transactions/${this.query}` } />;
     }
 
     return (
       <div className='bi-search-results__body'>
-        { this.props.data.blocks.length === 0 && <FormattedMessage id='components.search-results.no-results'/> }
+        { blocks.length === 0 && <FormattedMessage id='components.search-results.no-results'/> }
 
-        { this.props.data.blocks.length > 0 &&
-        <BlocksTableComponent blocks={ this.props.data.blocks } isFetching={ this.props.fetching }/> }
+        { blocks.length > 0 &&
+        <BlocksTableComponent blocks={ blocks } isFetching={ this.props.fetching }/> }
       </div>
     );
   }

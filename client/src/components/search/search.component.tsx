@@ -17,28 +17,28 @@ class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> 
   state: ISearchState = {
     isInputFocused: false
   };
-  
+
   inputElement: HTMLInputElement;
-  
+
   onInputChangedDebounced: () => void;
-  
+
   constructor (props: RouteComponentProps<{}>) {
     super(props);
-    
-    this.focusInput     = this.focusInput.bind(this);	
-    this.onInputBlur    = this.onInputBlur.bind(this);	
-    this.onInputChanged = this.onInputChanged.bind(this);	
-    this.onSubmit       = this.onSubmit.bind(this);	
-    
+
+    this.focusInput     = this.focusInput.bind(this);
+    this.onInputBlur    = this.onInputBlur.bind(this);
+    this.onInputChanged = this.onInputChanged.bind(this);
+    this.onSubmit       = this.onSubmit.bind(this);
+
     this.onInputChangedDebounced = debounce(this.onInputChanged, 500);
   }
-  
+
   componentDidUpdate (): void {
     if (this.state.isInputFocused) {
       this.inputElement.focus();
     }
   }
-  
+
   render (): JSX.Element {
     const { query } = queryString.parse(this.props.location.search);
 
@@ -48,7 +48,7 @@ class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> 
       'g-flex': true,
       'g-flex__item-fixed': true
     });
-    
+
     return (
       <div className={ searchClassNames }>
         <button className='bi-btn bi-btn--flat g-flex__item-fixed'
@@ -56,7 +56,7 @@ class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> 
                 tabIndex={ this.state.isInputFocused ? -1 : 0 }>
           <SearchIcon className='bi-search__icon'/>
         </button>
-        
+
         <form action='/search' className='g-flex__item' onSubmit={ this.onSubmit }>
           <input className='bi-search__input'
                  ref={ (input: HTMLInputElement) => {
@@ -66,31 +66,31 @@ class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> 
                  onChange={ this.onInputChangedDebounced }
                  name='query'
                  type='text'
-                 placeholder='Block, Hash, Transaction, Etc…'
+                 placeholder='Block, Address, Transaction'
                  onBlur={ this.onInputBlur }/>
         </form>
       </div>
     );
   }
-  
+
   private onSubmit (event: SyntheticEvent<HTMLFormElement>): void {
     event.preventDefault();
     this.onInputChanged();
   }
-  
+
   private onInputBlur (): void {
     this.setState({
       isInputFocused: false
     });
   }
-  
+
   private onInputChanged (): void {
     const query = this.inputElement.value;
     const params = query ? ({query}) : ({});
-    
+
     this.props.history.push(`/search?${queryString.stringify(params)}`);
   }
-  
+
   private focusInput (): void {
     this.setState({
       isInputFocused: true

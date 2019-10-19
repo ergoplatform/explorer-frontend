@@ -13,7 +13,7 @@ export class AddressApiService {
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Address api service. Request: ${environment.apiUrl}/addresses/${id}. Response: ${response}`
+            `Address api service. Request: ${environment.apiUrl}/addresses/${id}.`
           );
         }
 
@@ -29,7 +29,7 @@ export class AddressApiService {
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Address api service. Request: ${environment.apiUrl}/addresses/${id}/transactions. Response: ${response}`
+            `Address api service. Request: ${environment.apiUrl}/addresses/${id}/transactions.`
           );
         }
 
