@@ -49,5 +49,6 @@ COPY --from=builder /usr/src/app/build ./build
 COPY --from=builder /usr/src/app/api.yaml ./api.yaml
 EXPOSE 5000
 CMD node build/server/bundle.js
+# See https://docs.docker.com/engine/reference/builder/#healthcheck
 HEALTHCHECK --interval=2m --timeout=10s --start-period=1m --retries=3 \
     CMD curl --max-time 5 http://127.0.0.1:5000/ || exit 1
