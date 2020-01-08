@@ -219,6 +219,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionOutput'
 
+  '/transactions/boxes/byErgoTreeTemplate/{ergoTreeTemplate}':
+    parameters:
+      - name: ergoTreeTemplate
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/ErgoTreeTemplate'
+    get:
+      summary: Get all boxes containing an ErgoTree with given template
+      externalDocs:
+        description: Motivation and references
+        url: https://github.com/ergoplatform/explorer-back/issues/229
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TransactionOutput'
+
   '/transactions/boxes/byAddress/unspent/{id}':
     parameters:
       - name: id
@@ -247,6 +269,28 @@ paths:
           $ref: '#/components/schemas/ErgoTree'
     get:
       summary: Get unspent boxes containing given ergoTree
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TransactionOutput'
+
+  '/transactions/boxes/byErgoTreeTemplate/unspent/{ergoTreeTemplate}':
+    parameters:
+      - name: ergoTreeTemplate
+        required: true
+        in: path
+        schema:
+          $ref: '#/components/schemas/ErgoTreeTemplate'
+    get:
+      summary: Get unspent boxes containing an ErgoTree with given template
+      externalDocs:
+        description: Motivation and references
+        url: https://github.com/ergoplatform/explorer-back/issues/229
       tags:
         - transactions
       responses:
@@ -1362,6 +1406,15 @@ components:
 
     ErgoTree:
       description: Base16-encoded ergo tree bytes
+      type: string
+      format: base16
+      example: '0101'
+
+    ErgoTreeTemplate:
+      description: Base16-encoded ergo tree template(tree with segragated constants) bytes
+      externalDocs:
+        description: Motivation and references
+        url: https://github.com/ergoplatform/explorer-back/issues/229
       type: string
       format: base16
       example: '0101'
