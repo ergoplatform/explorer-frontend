@@ -1,6 +1,6 @@
-import * as classnames from 'classnames';
-import * as queryString from 'query-string';
-import * as React from 'react';
+import classnames from 'classnames';
+import queryString from 'query-string';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -25,38 +25,38 @@ import { ArrowIcon } from '../../components/common/icons/common.icons';
 import './chart.scss';
 
 class Chart extends React.PureComponent {
-  props: RouteComponentProps<{
+  props!: RouteComponentProps<{
     chartType: string
   }> & ChartState & ChartActions;
-  
+
   params: any = {};
-  
+
   constructor (props: any) {
     super(props);
-    
+
     this.getTimespanUrl    = this.getTimespanUrl.bind(this);
     this.getChartActionUrl = this.getChartActionUrl.bind(this);
   }
-  
+
   componentDidMount (): void {
     this.params = this.getParams();
-    
+
     this.props.getChart(this.props.match.params.chartType, this.params);
   }
-  
+
   componentWillReceiveProps (props: any): void {
     const params = this.getParams();
-    
+
     if (JSON.stringify(params) !== JSON.stringify(this.params)) {
       this.params = params;
-      
+
       this.props.getChart(this.props.match.params.chartType, this.params);
     }
   }
-  
+
   render (): JSX.Element {
     const { iframe, scale } = queryString.parse(this.props.location.search);
-    
+
     const chartClassNames = classnames({
       'bi-chart': true,
       'bi-chart--iframe': iframe,
@@ -64,7 +64,7 @@ class Chart extends React.PureComponent {
       'g-flex-column': true,
       'g-flex-column__item-fixed': true
     });
-    
+
     return (
       <div className={ chartClassNames }>
         <FormattedMessage id={ `common.pages.chart.title.${this.props.match.params.chartType}` }>
@@ -76,19 +76,19 @@ class Chart extends React.PureComponent {
             )
           }
         </FormattedMessage>
-        
+
         <div className='bi-chart__header g-flex-column__item-fixed'>
           <div className='bi-chart__line'>
             <Link className='bi-chart__btn-back'
                   to='/charts'>
               <ArrowIcon className='bi-chart__btn-back-icon'/>
-              
+
               <span className='bi-chart__btn-back-title'>
                 <FormattedMessage id='components.chart.back'/>
               </span>
             </Link>
           </div>
-          
+
           <div className='bi-chart__title'>
             <FormattedMessage id={ `components.chart.title.${this.props.match.params.chartType}` }/>
           </div>
@@ -96,27 +96,27 @@ class Chart extends React.PureComponent {
             <FormattedMessage id={ `components.chart.subtitle.${this.props.match.params.chartType}` }/>
           </div>
         </div>
-        
+
         { this.renderBody() }
       </div>
     );
   }
-  
+
   private renderBody (): JSX.Element {
     return (
       <div className='bi-chart__body g-flex-column__item'>
         <div className='bi-chart__chart'>
           { this.props.data && this.renderChart() }
         </div>
-        
+
         { this.renderControls() }
       </div>
     );
   }
-  
+
   private renderChart (): JSX.Element {
     const { iframe } = queryString.parse(this.props.location.search);
-    
+
     switch (this.props.match.params.chartType) {
       case 'hash-rate-distribution': {
         return <PieChartComponent data={ this.formatData() }
@@ -130,24 +130,24 @@ class Chart extends React.PureComponent {
                                     }
                                   }/>;
       }
-      
+
       default: {
         return <AreaChartComponent data={ this.formatData() } compact={ !!iframe } isScale={ this.params.scale }/>;
       }
     }
   }
-  
+
   private renderControls (): JSX.Element | null {
     switch (this.props.match.params.chartType) {
       case 'hash-rate-distribution': {
         return null;
       }
-      
+
       default: {
         return <div className='bi-chart__controls g-flex'>
           <TimespanComponent selected={ this.params.timespan }
                              getTimespanUrl={ this.getTimespanUrl }/>
-          
+
           <ChartActionsComponent
             isScale={ this.params.scale }
             data={ this.props.data }
@@ -156,7 +156,7 @@ class Chart extends React.PureComponent {
       }
     }
   }
-  
+
   private formatData (): any {
     switch (this.props.match.params.chartType) {
       case 'miners-revenue':
@@ -169,7 +169,7 @@ class Chart extends React.PureComponent {
           };
         });
       }
-      
+
       case 'blockchain-size':
       case 'block-size': {
         return this.props.data.map((item: any) => {
@@ -180,7 +180,7 @@ class Chart extends React.PureComponent {
           };
         });
       }
-      
+
       case 'hash-rate': {
         return this.props.data.map((item: any) => {
           return {
@@ -190,45 +190,45 @@ class Chart extends React.PureComponent {
           };
         });
       }
-      
+
       default: {
         return this.props.data;
       }
     }
   }
-  
+
   private getParams (): any {
     const params = queryString.parse(this.props.history.location.search);
-    
+
     const validTimespan = Object.keys(TIMESPAN)
       .find((key: string) => {
         return TIMESPAN[key] === params.timespan;
       });
-    
+
     return {
       scale: params.scale === '1',
       timespan: validTimespan ? TIMESPAN[validTimespan] : TIMESPAN.DAYS_30
     };
   }
-  
+
   private getTimespanUrl (span: TIMESPAN): string {
     const params: any = queryString.parse(this.props.history.location.search);
-    
+
     params.timespan = span;
-    
+
     return `${this.props.location.pathname}?${queryString.stringify(params)}`;
   }
-  
-  
+
+
   private getChartActionUrl (param: string, value: string | number | null): string {
     const params: any = queryString.parse(this.props.history.location.search);
-    
+
     params[param] = value;
-    
+
     if (value === null) {
       delete params[param];
     }
-    
+
     return `${this.props.location.pathname}?${queryString.stringify(params)}`;
   }
 }

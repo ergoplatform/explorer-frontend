@@ -1,5 +1,5 @@
-import * as queryString from 'query-string';
-import * as React from 'react';
+import queryString from 'query-string';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -24,7 +24,7 @@ import { PaginateSimpleComponent } from '../../components/common/paginate-simple
 import { TransactionsComponent } from '../../components/transactions/transactions.component';
 
 class Address extends React.PureComponent {
-  props: RouteComponentProps<{ id: string }> & AddressState & AddressActions & AppActions;
+  props!: RouteComponentProps<{ id: string }> & AddressState & AddressActions & AppActions;
   params: any;
 
   constructor (props: any) {

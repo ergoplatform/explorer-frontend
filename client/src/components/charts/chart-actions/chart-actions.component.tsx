@@ -1,5 +1,5 @@
 import Download from '@axetroy/react-download';
-import * as React from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +26,7 @@ export class ChartActionsComponent extends React.Component<IChartActionsProps> {
             <FormattedMessage id='components.chart-actions.linear-scale'/>
           </Link>
         }
-        
+
         { this.props.data &&
         <Download file='data.csv'
                   content={ this.getCSVData() }
@@ -34,7 +34,7 @@ export class ChartActionsComponent extends React.Component<IChartActionsProps> {
           <FormattedMessage id='components.chart-actions.csv'/>
         </Download>
         }
-        
+
         { this.props.data &&
         <Download file='data.json'
                   content={ JSON.stringify(this.props.data) }
@@ -45,16 +45,16 @@ export class ChartActionsComponent extends React.Component<IChartActionsProps> {
       </div>
     );
   }
-  
+
   private getCSVData (): string {
     if (!this.props.data) {
       return '';
     }
-    
+
     const data = this.props.data.map((item: any) => {
       return [item.timestamp, item.value].join(', ');
     });
-    
+
     return ['timestamp, value', ...data].join('\r\n');
   }
 }

@@ -1,5 +1,5 @@
-import * as queryString from 'query-string';
-import * as React from 'react';
+import queryString from 'query-string';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -22,39 +22,39 @@ import { PaginateSimpleComponent } from '../../components/common/paginate-simple
 type IDataProps = AppState & BlockActions & RouteComponentProps<{}> & AppActions;
 
 class Data extends React.PureComponent {
-  props: IDataProps;
+  props!: IDataProps;
   params: any;
-  
+
   constructor (props: any) {
     super(props);
-    
+
     this.onDateChange = this.onDateChange.bind(this);
     this.getPageUrl   = this.getPageUrl.bind(this);
     this.getLimitLink = this.getLimitLink.bind(this);
-    
+
     this.params = this.getParams();
   }
-  
+
   componentDidMount (): void {
     if (this.props.blocks.preloaded) {
       this.props.clearPreloadedState();
-      
+
       return;
     }
-    
+
     this.reloadBlocks(this.params);
   }
-  
+
   componentWillReceiveProps (props: IDataProps): void {
     const params = this.getParams();
-    
+
     if (JSON.stringify(params) !== JSON.stringify(this.params)) {
       this.params = params;
-      
+
       this.reloadBlocks(this.params);
     }
   }
-  
+
   // TODO: add preloader
   render (): JSX.Element {
     return (
@@ -68,30 +68,30 @@ class Data extends React.PureComponent {
             )
           }
         </FormattedMessage>
-        
+
         <div className='bi-data__header g-flex-column__item-fixed g-flex'>
           <div className='bi-data__title g-flex__item'>
             <FormattedMessage id='components.data.title'/>
           </div>
-          
+
           <div className='bi-data__filters g-flex__item-fixed'>
             <CalendarComponent onChange={ this.onDateChange }
                                startDate={ this.params.startDate }
                                endDate={ this.params.endDate }/>
           </div>
         </div>
-        
+
         {this.props.blocks.total === 0 && <div className='bi-data__body g-flex-column__item-fixed'>
           <FormattedMessage id='components.data.wrong-query'/>
         </div>}
-        
+
         { this.props.blocks.total > 0 &&
         <div className='bi-data__body g-flex-column__item-fixed'>
           <BlocksTableComponent blocks={ this.props.blocks.blocks } isFetching={ this.props.blocks.fetching }/>
         </div>
         }
-        
-        
+
+
         { this.props.blocks.total > 0 &&
         <div className='bi-data__footer g-flex-column__item-fixed g-flex'>
           <div className='g-flex__item-fixed'>
@@ -100,7 +100,7 @@ class Data extends React.PureComponent {
                                     label={ <FormattedMessage id='components.data.show'/> }
                                     getLimitLink={ this.getLimitLink }/>
           </div>
-          
+
           <div className='g-flex__item-fixed'>
             <PaginateSimpleComponent total={ this.props.blocks.total }
                                      limit={ this.params.limit }
@@ -112,30 +112,30 @@ class Data extends React.PureComponent {
       </div>
     );
   }
-  
-  private onDateChange (dateStart: number, dateEnd: number): void {
+
+  private onDateChange (dateStart: number | null, dateEnd: number | null): void {
     this.reloadBlocks({
       endDate: dateEnd,
       startDate: dateStart
     });
   }
-  
+
   private getPageUrl (page: number): string {
     const params: any = queryString.parse(this.props.history.location.search);
-    
+
     params.offset = page * this.params.limit;
-    
+
     return `/?${queryString.stringify(params)}`;
   }
-  
+
   private getLimitLink (limit: number): string {
     const params: any = queryString.parse(this.props.history.location.search);
-    
+
     params.limit = limit;
-    
+
     return `/?${queryString.stringify(params)}`;
   }
-  
+
   private reloadBlocks (params: IGetBlocksParams): void {
     params = {
       ...this.params,
@@ -143,38 +143,38 @@ class Data extends React.PureComponent {
       limit: params.limit || 30,
       offset: params.offset || 0
     };
-    
+
     Object.keys(params)
       .forEach((key) => {
         if (params[key] === null) {
           delete params[key];
         }
       });
-    
+
     this.props.getBlocks(params);
-    
-    
+
+
     if (params.offset === 0) {
       delete params.offset;
     }
-    
+
     if (params.limit === 30) {
       delete params.limit;
     }
-    
+
     this.props.history.push(`/?${queryString.stringify(params)}`);
   }
-  
+
   private getParams (): any {
     let { offset, sortBy, sortDirection, startDate, endDate, limit }: any = queryString.parse(this.props.history.location.search);
-    
+
     offset        = parseInt(offset, 10);
     limit         = parseInt(limit, 10) || 30;
     startDate     = parseInt(startDate, 10) || null;
     endDate       = parseInt(endDate, 10) || null;
     sortDirection = ['asc', 'desc'].includes(sortDirection) ? sortDirection : null;
     sortBy        = ['height', 'timestamp', 'miner', 'transactionsCount', 'size', 'difficulty', 'minerReward'].includes(sortBy) ? sortBy : null;
-    
+
     return {
       endDate,
       limit,

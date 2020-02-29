@@ -1,5 +1,5 @@
-import * as dayjs from 'dayjs';
-import * as React from 'react';
+import dayjs from 'dayjs';
+import React from 'react';
 
 import { Timestamp } from '../../../models/generated/timestamp';
 

@@ -1,5 +1,5 @@
 import { Location } from 'history';
-import * as React from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ interface IBlockProps {
 class Block extends React.Component {
   prevLink: string = '';
 
-  props: IBlockProps & RouteComponentProps<{ id: string }> & BlockState & BlockActions & AppActions;
+  props!: IBlockProps & RouteComponentProps<{ id: string }> & BlockState & BlockActions & AppActions;
 
   constructor (props: any) {
     super(props);

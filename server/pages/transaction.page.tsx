@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 
 import { GET_TRANSACTION_SUCCESS } from '../../client/src/constants/transaction.types';
 

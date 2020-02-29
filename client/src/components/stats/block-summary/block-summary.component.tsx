@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { CoinValueComponent } from '../../common/coin-value/coin-value.component';

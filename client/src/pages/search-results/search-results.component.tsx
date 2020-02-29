@@ -1,5 +1,5 @@
-import * as queryString from 'query-string';
-import * as React from 'react';
+import queryString from 'query-string';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Redirect, RouteComponentProps } from 'react-router';
@@ -25,7 +25,7 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     canSearch: true
   };
 
-  private query: string;
+  private query!: string;
 
   componentDidMount (): void {
     if (this.props.preloaded) {

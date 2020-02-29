@@ -1,6 +1,6 @@
-import * as classnames from 'classnames';
-import * as dayjs from 'dayjs';
-import * as React from 'react';
+import classnames from 'classnames';
+import dayjs from 'dayjs';
+import React from 'react';
 import Calendar from 'react-calendar/dist/entry.nostyle';
 
 import { ArrowIcon, CrossIcon, DoubleArrowIcon } from '../icons/common.icons';
@@ -18,7 +18,7 @@ interface ICalendarProps {
 }
 
 export class CalendarComponent extends React.PureComponent<ICalendarProps, ICalendarState> {
-  element: HTMLDivElement;
+  element!: HTMLDivElement;
 
   state: ICalendarState = {
     isCalendarShown: false

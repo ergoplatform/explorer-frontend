@@ -1,10 +1,10 @@
 import axios from 'axios';
-import * as compression from 'compression';
-import * as consoleStamp from 'console-stamp';
-import * as express from 'express';
-import * as fs from 'fs';
-import * as proxy from 'http-proxy-middleware';
-import * as React from 'react';
+import compression from 'compression';
+import consoleStamp from 'console-stamp';
+import express from 'express';
+import fs from 'fs';
+import proxy from 'http-proxy-middleware';
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
 import sprite from 'svg-sprite-loader/runtime/sprite.build';

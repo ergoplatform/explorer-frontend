@@ -1,5 +1,5 @@
-import * as classnames from 'classnames';
-import * as React from 'react';
+import classnames from 'classnames';
+import React from 'react';
 
 import './dropdown-list.scss';
 
@@ -17,7 +17,7 @@ export class DropdownListComponent extends React.PureComponent<IDropdownProps, I
     isDropdownShown: false
   };
 
-  private element: HTMLDivElement;
+  private element!: HTMLDivElement;
 
   constructor (props: IDropdownProps) {
     super(props);

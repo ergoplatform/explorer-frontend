@@ -1,7 +1,7 @@
-import * as QRCode from 'qrcode.react';
-import * as React from 'react';
+import QRCode from 'qrcode.react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import * as ReactModal from 'react-modal';
+import ReactModal from 'react-modal';
 
 import { AddressId } from '../../../models/generated/addressId';
 
@@ -27,15 +27,15 @@ export class AddressQrcodeModalComponent extends React.PureComponent<IAddressQrc
                 onClick={ this.props.onClose }>
           <CrossIcon className='bi-modal__btn-close-icon'/>
         </button>
-        
+
         <div className='bi-address-qrcode-modal__title'>
           <FormattedMessage id='components.address-qr-code-modal.title'/>
-          
+
           <div className='bi-address-qrcode-modal__subtitle'>
             <FormattedMessage id='components.address-qr-code-modal.subtitle'/>
           </div>
         </div>
-        
+
         <QRCode value={ this.props.address }
                 size={ 164 }/>
       </ReactModal>

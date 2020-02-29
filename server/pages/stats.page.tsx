@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import { StatsApiService } from '../../client/src/services/stats.api.service';
 
 import { GET_STATS_SUCCESS } from '../../client/src/constants/stats.types';

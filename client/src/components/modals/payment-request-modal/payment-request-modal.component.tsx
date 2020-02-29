@@ -1,8 +1,8 @@
-import * as QRCode from 'qrcode.react';
-import * as queryString from 'query-string';
-import * as React from 'react';
+import QRCode from 'qrcode.react';
+import queryString from 'query-string';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import * as ReactModal from 'react-modal';
+import ReactModal from 'react-modal';
 import { RouteComponentProps, withRouter } from 'react-router';
 
 import environment from '../../../config/environment';
@@ -27,7 +27,7 @@ interface IPaymentRequestState {
 
 class PaymentRequestModal extends React.PureComponent<IPaymentRequestModalProps, IPaymentRequestState> {
 
-  link: HTMLDivElement;
+  link!: HTMLDivElement;
 
   state: IPaymentRequestState = {
     amount: 0,

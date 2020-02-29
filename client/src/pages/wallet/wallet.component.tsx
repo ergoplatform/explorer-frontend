@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
@@ -17,7 +17,7 @@ export class WalletComponent extends React.Component {
             )
           }
         </FormattedMessage>
-        
+
         <div className='bi-wallet__title'>
           <FormattedMessage id='components.wallet.title'/>
         </div>

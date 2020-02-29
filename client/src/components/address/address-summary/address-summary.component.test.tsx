@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { shallowWithIntl } from '../../../utils/test-utils';
 import { AddressSummaryComponent } from './address-summary.component';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { stubInterface } from 'ts-sinon';
 
 import { shallowWithIntl } from '../../../utils/test-utils';
