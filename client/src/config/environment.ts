@@ -5,6 +5,7 @@ import { environmentProd } from './environment.prod';
 
 export interface IEnvironment {
   apiUrl?: string;
+  api2Url?: string;
   blockchain?: any;
   alternativeLogo?: boolean;
   environments?: any[];
@@ -17,17 +18,18 @@ let environment: IEnvironment;
 if (process.env.NODE_ENV === 'production') {
   environment = {
     ...environmentDefault,
-    ...environmentProd
+    ...environmentProd,
   };
 } else {
   environment = {
-    ...environmentDefault
+    ...environmentDefault,
   };
 }
 
-function getAppConfig (): any {
+function getAppConfig(): any {
   let appConfig = {
-    apiUrl: environment.apiUrl
+    apiUrl: environment.apiUrl,
+    api2Url: environment.api2Url,
   };
 
   if (process.env.IS_BROWSER) {
@@ -47,13 +49,17 @@ function getAppConfig (): any {
 
 environment = {
   ...getAppConfig(),
-  get environments (): any[] {
+  get environments(): any[] {
     return getAppConfig().environments;
   },
 
-  get apiUrl (): string | undefined {
+  get apiUrl(): string | undefined {
     return getAppConfig().apiUrl;
-  }
+  },
+
+  get api2Url(): string | undefined {
+    return getAppConfig().api2Url;
+  },
 };
 
 export default environment;
