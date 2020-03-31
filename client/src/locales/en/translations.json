@@ -65,6 +65,9 @@
       },
       "order-book": {
         "title": "Ergo Explorer | Order Book"
+      },
+      "issuing-tokens": {
+        "title": "Ergo Explorer | Issued Token"
       }
     },
     "stats": {
@@ -221,7 +224,8 @@
         "data": "Data",
         "stats": "Stats",
         "wallet": "Wallet",
-        "order-book": "Order Book"
+        "order-book": "Order Book",
+        "issued-token": "Issued Token"
       }
     },
     "stats": {

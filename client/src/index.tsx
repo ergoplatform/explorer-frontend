@@ -22,8 +22,6 @@ if (document.body.classList.contains('ssr')) {
 
 ReactModal.setAppElement(rootElement);
 
-renderMethod(
-  <App/>, rootElement
-);
+renderMethod(<App />, rootElement);
 
 enableTabMode();

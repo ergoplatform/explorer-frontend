@@ -23,6 +23,7 @@ import logoImage from '../../../assets/images/logo-main.svg';
 import logoVerticalAltImage from '../../../assets/images/logo-vertical-alt.svg';
 import logoVerticalImage from '../../../assets/images/logo-vertical.svg';
 import diagramIcon from '../../../assets/images/icons/diagram.svg';
+import tokenIcon from '../../../assets/images/icons/tokens.svg';
 
 interface IconProps {
   className?: string;
@@ -118,4 +119,8 @@ export const LogoIcon = ({ className }: IconProps) => {
 
 export const DiagramIcon = ({ className }: IconProps) => {
   return makeIcon(diagramIcon.id, className);
+};
+
+export const TokenIcon = ({ className }: IconProps) => {
+  return makeIcon(tokenIcon.id, className);
 };

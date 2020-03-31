@@ -21,6 +21,7 @@ import { StatsComponent } from '../../pages/stats/stats.component';
 import { TransactionComponent } from '../../pages/transaction/transaction.component';
 import { WalletComponent } from '../../pages/wallet/wallet.component';
 import OrderBookComponent from '../../pages/order-book/order-book.component';
+import IssuedTokenComponent from '../../pages/issued-token/issued-token.component';
 
 import './app.scss';
 
@@ -94,6 +95,12 @@ class App extends React.PureComponent {
               />
 
               <Route exact path="/order-book" component={OrderBookComponent} />
+
+              <Route
+                exact
+                path="/issued-token"
+                component={IssuedTokenComponent}
+              />
 
               <Route component={NotFoundComponent} />
             </Switch>
