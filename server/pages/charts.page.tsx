@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 
 import { GET_CHART_SUCCESS } from '../../client/src/constants/chart.types';
 import { chartReducer, initialState} from '../../client/src/reducers/chart.reducer';

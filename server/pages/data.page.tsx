@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 
 import { BlockApiService } from '../../client/src/services/block.api.service';
 

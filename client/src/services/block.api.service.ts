@@ -4,8 +4,8 @@ import environment from "../config/environment";
 export interface IGetBlocksParams {
   limit?: number;
   offset?: number;
-  startDate?: number;
-  endDate?: number;
+  startDate?: number | null;
+  endDate?: number | null;
   sortBy?: string;
   sortDirection?: string;
 }

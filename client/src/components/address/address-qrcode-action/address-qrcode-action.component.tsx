@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { FullAddress } from '../../../models/generated/fullAddress';
@@ -23,14 +23,14 @@ export class AddressQrcodeActionComponent extends React.Component<IAddressAction
   state: IAddressActionsState = {
     [QRCODE_MODAL_STATE_KEY]: false
   };
-  
+
   constructor (props: IAddressActionsProps) {
     super(props);
-    
+
     this.openModal  = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-  
+
   render (): JSX.Element {
     return (
       <div className='bi-address-actions g-flex'>
@@ -38,18 +38,18 @@ export class AddressQrcodeActionComponent extends React.Component<IAddressAction
           <button className='bi-address-actions__btn bi-btn'
                   onClick={ this.openModal(QRCODE_MODAL_STATE_KEY) }>
             <FormattedMessage id='components.address-actions.qrcode'/>
-            
+
             <QRCodeIcon className='bi-address-actions__btn-icon'/>
           </button>
         </div>
-        
+
         <AddressQrcodeModalComponent isOpen={ this.state[QRCODE_MODAL_STATE_KEY] }
                                      onClose={ this.closeModal(QRCODE_MODAL_STATE_KEY) }
                                      address={ this.props.address.summary.id }/>
       </div>
     );
   }
-  
+
   private openModal (stateKey: string): () => void {
     return () => {
       this.setState({
@@ -57,7 +57,7 @@ export class AddressQrcodeActionComponent extends React.Component<IAddressAction
       });
     };
   }
-  
+
   private closeModal (stateKey: string): () => void {
     return () => {
       this.setState({

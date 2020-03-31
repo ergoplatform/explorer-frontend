@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import fs from 'fs';
 
 import { environmentDefault } from './environment.default';
 import { environmentProd } from './environment.prod';

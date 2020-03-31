@@ -1,5 +1,5 @@
 import { Action, Dispatch } from 'redux';
-import * as SwaggerParser from 'swagger-parser';
+import SwaggerParser from 'swagger-parser';
 
 import { GET_API, GET_API_SUCCESS } from '../constants/api.types';
 
@@ -15,7 +15,7 @@ export const ApiActions: any = {
       dispatch({
         type: GET_API
       });
-      
+
       SwaggerParser.validate(apiSpec)
         .then(data => {
           dispatch({

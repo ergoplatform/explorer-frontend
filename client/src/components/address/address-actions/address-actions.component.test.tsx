@@ -1,5 +1,5 @@
 import { ShallowWrapper } from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 
 import { FullAddress } from '../../../models/generated/fullAddress';
 

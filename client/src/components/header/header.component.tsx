@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -13,10 +13,10 @@ import './header.scss';
 import { BurgerIcon, LogoVerticalIcon } from '../common/icons/common.icons';
 
 class Header extends React.Component<SettingsActions> {
-  constructor (props: SettingsActions) {	
-    super(props);	
+  constructor (props: SettingsActions) {
+    super(props);
 
-    this.showSidebar = this.showSidebar.bind(this);	
+    this.showSidebar = this.showSidebar.bind(this);
   }
 
   render (): JSX.Element {
@@ -26,23 +26,23 @@ class Header extends React.Component<SettingsActions> {
                 onClick={ this.showSidebar }>
           <BurgerIcon className='bi-header__toggle-icon'/>
         </button>
-        
+
         <Link className='bi-header__logo'
               to={ '/' }>
-          
+
           <LogoVerticalIcon className='bi-sidebar__logo-icon'/>
         </Link>
-        
+
         <div className='bi-header__stats g-flex__item'>
           <HeaderStatsComponent/>
         </div>
-        
+
         <SearchComponent/>
       </div>
     );
   }
-  
-  private showSidebar (): void { 
+
+  private showSidebar (): void {
     this.props.setSidebarDisplayStatus(true);
   }
 }

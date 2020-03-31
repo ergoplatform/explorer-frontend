@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import './server-error.scss';
 
@@ -9,7 +9,7 @@ export class ServerErrorComponent extends React.PureComponent {
         <h2>
           Unhandled Error occurred
         </h2>
-        
+
         <a href={ '/' }>Go back to home</a>
       </div>
     );

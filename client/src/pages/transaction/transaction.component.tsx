@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -21,7 +21,7 @@ import { TransactionsItemComponent } from '../../components/transactions/transac
 import './transaction.scss';
 
 class Transaction extends React.PureComponent {
-  props: RouteComponentProps<{
+  props!: RouteComponentProps<{
     id: string;
   }> & TransactionState & TransactionActions & SettingsActions & SettingsState;
 

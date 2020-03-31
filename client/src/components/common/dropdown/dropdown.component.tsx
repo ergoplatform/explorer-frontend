@@ -1,5 +1,5 @@
-import * as classnames from 'classnames';
-import * as React from 'react';
+import classnames from 'classnames';
+import React from 'react';
 
 import { ArrowDownIcon } from '../icons/common.icons';
 
@@ -21,7 +21,7 @@ export class DropdownComponent extends React.PureComponent<IDropdownProps, IDrop
     isDropdownShown: false
   };
 
-  private element: HTMLDivElement;
+  private element!: HTMLDivElement;
 
   constructor (props: IDropdownProps) {
     super(props);

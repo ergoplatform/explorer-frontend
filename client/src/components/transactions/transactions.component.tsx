@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { AddressId } from '../../models/generated/addressId';
 import { Transaction } from '../../models/generated/transaction';

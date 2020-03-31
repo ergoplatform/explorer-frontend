@@ -1,7 +1,7 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import debounce from 'lodash/debounce';
-import * as queryString from 'query-string';
-import * as React from 'react';
+import queryString from 'query-string';
+import React from 'react';
 import { SyntheticEvent } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
@@ -18,7 +18,7 @@ class Search extends React.PureComponent<RouteComponentProps<{}>, ISearchState> 
     isInputFocused: false
   };
 
-  inputElement: HTMLInputElement;
+  inputElement!: HTMLInputElement;
 
   onInputChangedDebounced: () => void;
 

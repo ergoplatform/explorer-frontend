@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactModal from 'react-modal';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactModal from 'react-modal';
 
 import './assets/styles/main.scss';
 
@@ -16,7 +16,7 @@ let renderMethod = ReactDOM.render;
 
 if (document.body.classList.contains('ssr')) {
   renderMethod = ReactDOM.hydrate;
-  
+
   document.body.classList.remove('ssr');
 }
 

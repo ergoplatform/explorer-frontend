@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { addLocaleData } from 'react-intl';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 
-import * as en from 'react-intl/locale-data/en';
-import * as ru from 'react-intl/locale-data/ru';
+import en from 'react-intl/locale-data/en';
+import ru from 'react-intl/locale-data/ru';
 
 import { AppComponent } from './containers/app/app.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';

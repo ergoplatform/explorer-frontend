@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import * as ReactPaginate from 'react-paginate';
+import ReactPaginate from 'react-paginate';
 
 interface IPaginateProps {
   total: number;
@@ -14,13 +14,13 @@ import './paginate.scss';
 export class PaginateComponent extends React.PureComponent<IPaginateProps> {
   constructor (props: any) {
     super(props);
-    
+
     this.onPageChange = this.onPageChange.bind(this);
   }
-  
+
   render (): JSX.Element {
     const pageCount = Math.ceil(this.props.total / this.props.limit);
-    
+
     return (
       <ReactPaginate containerClassName='bi-paginate g-flex'
                      pageClassName='bi-paginate__item g-flex g-flex__item-fixed'
@@ -39,7 +39,7 @@ export class PaginateComponent extends React.PureComponent<IPaginateProps> {
                      marginPagesDisplayed={ 1 }/>
     );
   }
-  
+
   private onPageChange ({ selected }: { selected: number }): void {
     this.props.onPageChange(selected);
   }

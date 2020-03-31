@@ -6,7 +6,7 @@
  */
 
 import { mount, shallow, ShallowWrapper } from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 import { IntlProvider, intlShape } from 'react-intl';
 
 import { messages } from '../containers/connected-intl-provider/connected-intl-provider';

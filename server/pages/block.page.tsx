@@ -1,4 +1,4 @@
-import * as express from "express";
+import express from "express";
 
 import { GET_BLOCK_SUCCESS } from "../../client/src/constants/block.types";
 import {

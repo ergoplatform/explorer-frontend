@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FormattedMessage, FormattedPlural } from 'react-intl';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -24,7 +24,7 @@ interface IBlockTransactionsItemProps {
 }
 
 class TransactionsItem extends React.Component {
-  props: IBlockTransactionsItemProps & SettingsState;
+  props!: IBlockTransactionsItemProps & SettingsState;
   state: any = {
     isClient: false
   };

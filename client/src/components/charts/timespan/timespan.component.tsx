@@ -1,5 +1,5 @@
-import * as classNames from 'classnames';
-import * as React from 'react';
+import classNames from 'classnames';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ export class TimespanComponent extends React.Component<ITimespanProps> {
   constructor (props: ITimespanProps) {
     super(props);
   }
-  
+
   render (): JSX.Element {
     return (
       <div className='bi-timespan'>
@@ -29,7 +29,7 @@ export class TimespanComponent extends React.Component<ITimespanProps> {
                 'bi-timespan__span': true,
                 'bi-timespan__span--active': this.props.selected === TIMESPAN[span]
               });
-              
+
               return (
                 <Link className={ btnClassNames }
                       key={ span }

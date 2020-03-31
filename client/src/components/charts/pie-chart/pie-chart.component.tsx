@@ -1,6 +1,6 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import * as React from 'react';
+import React from 'react';
 
 interface IPieChartProps {
   data: any;
