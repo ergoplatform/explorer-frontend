@@ -11,7 +11,8 @@ import environment from '../../config/environment';
 export class TableOrdersComponent extends PureComponent<any> {
   sumQuantities = (orders: any) => {
     return orders.reduce(
-      (total: number, order: any) => total + order.quantity,
+      (total: number, order: any) =>
+        parseFloat((total + order.price * order.quantity).toFixed(8)),
       0
     );
   };
@@ -26,7 +27,9 @@ export class TableOrdersComponent extends PureComponent<any> {
   renderSellOrders = (orders: any, maxCumulative: any) => {
     let cumulative = 0;
     return orders.map((order: any, index: number) => {
-      order.cumulative = cumulative += order.quantity;
+      order.cumulative = cumulative += parseFloat(
+        (order.price * order.quantity).toFixed(8)
+      );
 
       return (
         <tr key={index} className="ask">
@@ -51,7 +54,7 @@ export class TableOrdersComponent extends PureComponent<any> {
   renderBuyOrders = (orders: any, maxCumulative: any) => {
     let cumulative = 0;
     return orders.map((order: any, index: number) => {
-      order.cumulative = cumulative += order.quantity;
+      order.cumulative = cumulative += order.price * order.quantity;
 
       return (
         <tr key={index} className="bid">
@@ -129,9 +132,9 @@ export class TableOrdersComponent extends PureComponent<any> {
           <table className="bi-orders__table orders-table">
             <thead>
               <tr>
-                <th className="orders-table__th">Price</th>
+                <th className="orders-table__th">Price, ERG</th>
                 <th className="orders-table__th">Sell Quantity</th>
-                <th className="orders-table__th">Sell Cumulative</th>
+                <th className="orders-table__th">ERG Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -144,9 +147,9 @@ export class TableOrdersComponent extends PureComponent<any> {
           <table className="bi-orders__table orders-table">
             <thead>
               <tr>
-                <th className="orders-table__th">Price</th>
+                <th className="orders-table__th">Price, ERG</th>
                 <th className="orders-table__th">Buy Quantity</th>
-                <th className="orders-table__th">Buy Cumulative</th>
+                <th className="orders-table__th">ERG Amount</th>
               </tr>
             </thead>
             <tbody>{this.renderBuyOrders(bidOrders, maxCumulative)}</tbody>
