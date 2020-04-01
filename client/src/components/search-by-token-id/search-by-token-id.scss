@@ -7,4 +7,18 @@
     color: #121212;
     font-size: 15px;
   }
+
+  .bi-search__form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-family: $theme-main-font;
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 200px;
+    }
+  }
 }

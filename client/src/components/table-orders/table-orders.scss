@@ -34,13 +34,13 @@
       border-bottom: 1px dashed #dfdfdf;
       padding: 5px 0;
 
-      &.fill-bid {
+      &.fill-ask {
         background-repeat: no-repeat;
         background-color: rgba(204, 86, 86, 0.2);
         background-size: 0%;
       }
 
-      &.fill-ask {
+      &.fill-bid {
         background-repeat: no-repeat;
         background-position: 100% 100%;
         background-color: rgba(145, 204, 86, 0.25);

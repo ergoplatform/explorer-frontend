@@ -37,22 +37,22 @@ class SearchByTokenId extends React.PureComponent<Props> {
 
     return (
       <div className="bi-search-by-token">
-        <form
-          action="/order-book"
-          className="g-flex__item"
-          onSubmit={this.onSubmit}
-        >
-          <input
-            ref={(input: HTMLInputElement) => {
-              this.inputElement = input;
-            }}
-            defaultValue={tokenId as string}
-            onChange={this.onInputChangedDebounced}
-            name="tokenid"
-            type="text"
-            placeholder="Token id"
-            className="bi-search-by-token__input"
-          />
+        <form action="/order-book" onSubmit={this.onSubmit}>
+          <div className="bi-search__form-group">
+            <label htmlFor="tokenid">Token id</label>
+            <input
+              ref={(input: HTMLInputElement) => {
+                this.inputElement = input;
+              }}
+              defaultValue={tokenId as string}
+              onChange={this.onInputChangedDebounced}
+              name="tokenid"
+              id="tokenid"
+              type="text"
+              placeholder="a0f386048df205394d28594de6b38da1877ee989ad9e25074464a71fade6053e"
+              className="bi-search-by-token__input"
+            />
+          </div>
         </form>
         <div className="results"></div>
       </div>
