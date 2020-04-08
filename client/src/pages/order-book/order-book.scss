@@ -19,6 +19,10 @@
 
   .bi-order-book__orders {
     width: 50%;
+
+    @media (max-width: $mobile-device-width) {
+      width: 100%;
+    }
   }
 }
 
