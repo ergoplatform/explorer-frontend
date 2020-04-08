@@ -22,7 +22,7 @@ import { StatsPage } from './pages/stats.page';
 import { TransactionPage } from './pages/transaction.page';
 import { Preloader } from './preloader';
 import { OrderBookPage } from './pages/order-book.page';
-import { IssuedTokenPage } from './pages/issued-token.page';
+import { IssuedTokensPage } from './pages/issued-tokens.page';
 
 axios.defaults.timeout = 10 * 1000;
 
@@ -141,7 +141,7 @@ server.use('/:locale?/blocks', BlockPage);
 server.use('/:locale?/transactions', TransactionPage);
 server.use('/:locale?/addresses', AddressPage);
 server.use('/:locale?/order-book', OrderBookPage);
-server.use('/:locale?/issued-token', IssuedTokenPage);
+server.use('/:locale?/issued-tokens', IssuedTokensPage);
 
 server.get('*', (req: any, res) => {
   const context: any = {};

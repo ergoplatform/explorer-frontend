@@ -95,8 +95,8 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     props: {
       exact: false,
     },
-    title: 'components.sidebar-menu.items.issued-token',
-    url: '/issued-token',
+    title: 'components.sidebar-menu.items.issued-tokens',
+    url: '/issued-tokens',
   },
 ];
 

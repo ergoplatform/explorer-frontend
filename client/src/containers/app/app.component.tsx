@@ -21,7 +21,7 @@ import { StatsComponent } from '../../pages/stats/stats.component';
 import { TransactionComponent } from '../../pages/transaction/transaction.component';
 import { WalletComponent } from '../../pages/wallet/wallet.component';
 import OrderBookComponent from '../../pages/order-book/order-book.component';
-import IssuedTokenComponent from '../../pages/issued-token/issued-token.component';
+import { IssuedTokensComponent } from '../../pages/issued-tokens/issued-tokens.component';
 
 import './app.scss';
 
@@ -98,8 +98,8 @@ class App extends React.PureComponent {
 
               <Route
                 exact
-                path="/issued-token"
-                component={IssuedTokenComponent}
+                path="/issued-tokens"
+                component={IssuedTokensComponent}
               />
 
               <Route component={NotFoundComponent} />

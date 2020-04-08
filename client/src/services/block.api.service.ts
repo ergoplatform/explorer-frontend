@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from "axios";
-import environment from "../config/environment";
+import axios, { AxiosResponse } from 'axios';
+import environment from '../config/environment';
 
 export interface IGetBlocksParams {
   limit?: number;
@@ -11,11 +11,11 @@ export interface IGetBlocksParams {
 }
 
 export class BlockApiService {
-  static get apiUrl (): string {
+  static get apiUrl(): string {
     return `${environment.apiUrl}/blocks`;
   }
 
-  static getBlock (id: string): any {
+  static getBlock(id: string): any {
     return axios
       .get(`${BlockApiService.apiUrl}/${id}`)
       .then((response: AxiosResponse) => {
@@ -29,13 +29,13 @@ export class BlockApiService {
       });
   }
 
-  static getBlocks ({
+  static getBlocks({
     limit,
     offset,
     sortBy,
     sortDirection,
     startDate,
-    endDate
+    endDate,
   }: IGetBlocksParams): any {
     return axios
       .get(`${BlockApiService.apiUrl}`, {
@@ -43,10 +43,10 @@ export class BlockApiService {
           endDate,
           limit,
           offset,
-          sortBy: sortBy || "height",
-          sortDirection: sortDirection || "desc",
-          startDate
-        }
+          sortBy: sortBy || 'height',
+          sortDirection: sortDirection || 'desc',
+          startDate,
+        },
       })
       .then((response: AxiosResponse) => {
         if (!response) {
