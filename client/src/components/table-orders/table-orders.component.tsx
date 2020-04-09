@@ -38,11 +38,11 @@ export class TableOrdersComponent extends PureComponent<any> {
           </td>
           <td>{order.quantity}</td>
           <td
-            className="fill-ask"
-            style={{
-              backgroundSize:
-                this.getPercentage(maxCumulative, cumulative) + '% 100%',
-            }}
+          // className="fill-ask"
+          // style={{
+          //   backgroundSize:
+          //     this.getPercentage(maxCumulative, cumulative) + '% 100%',
+          // }}
           >
             {order.cumulative}
           </td>
@@ -54,7 +54,9 @@ export class TableOrdersComponent extends PureComponent<any> {
   renderBuyOrders = (orders: any, maxCumulative: any) => {
     let cumulative = 0;
     return orders.map((order: any, index: number) => {
-      order.cumulative = cumulative += order.price * order.quantity;
+      order.cumulative = cumulative += parseFloat(
+        (Number(order.price) * Number(order.quantity)).toFixed(8)
+      );
 
       return (
         <tr key={index} className="bid">
@@ -63,11 +65,11 @@ export class TableOrdersComponent extends PureComponent<any> {
           </td>
           <td>{order.quantity}</td>
           <td
-            className="fill-bid"
-            style={{
-              backgroundSize:
-                this.getPercentage(maxCumulative, cumulative) + '% 100%',
-            }}
+          // className="fill-bid"
+          // style={{
+          //   backgroundSize:
+          //     this.getPercentage(maxCumulative, cumulative) + '% 100%',
+          // }}
           >
             {order.cumulative}
           </td>
@@ -83,15 +85,15 @@ export class TableOrdersComponent extends PureComponent<any> {
 
     const preparedAsks = asks.map((ask: any) => ({
       price:
-        (ask.tokenPrice + ask.outputInfo.value) /
-        ask.outputInfo.assets[0].amount /
+        (Number(ask.amount) + Number(ask.outputInfo.value)) /
+        Number(ask.outputInfo.assets[0].amount) /
         1000000,
-      quantity: ask.outputInfo.assets[0].amount,
+      quantity: Number(ask.outputInfo.assets[0].amount),
     }));
 
     const preparedBids = bids.map((bid: any) => ({
-      price: bid.outputInfo.value / bid.tokenAmount / 1000000,
-      quantity: bid.tokenAmount,
+      price: Number(bid.outputInfo.value) / Number(bid.tokenAmount) / 1000000,
+      quantity: Number(bid.tokenAmount),
     }));
 
     const totalAsks = this.sumQuantities(preparedAsks);
