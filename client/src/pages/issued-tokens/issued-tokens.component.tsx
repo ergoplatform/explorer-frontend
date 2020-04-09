@@ -15,13 +15,14 @@ import { IGetBlocksParams } from '../../services/block.api.service';
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 import { IssuedTokensActions } from '../../actions/issuedTokens.actions';
-import { getAllIssuedTokensStructSelector } from '../../selectors/issuedTokens';
+import { getAllIssuedTokensStructSelector, getTotalIssuedTokensStructSelector } from '../../selectors/issuedTokens';
 import { IssuedTokensTableComponent } from '../../components/issued-tokens-table/issued-tokens-table.component';
 
 type IDataProps = AppState &
   IssuedTokensActions &
   RouteComponentProps<{}> & {
     tokens: any;
+    totalTokens: any;
     offset: number;
   };
 
@@ -95,14 +96,16 @@ class IssuedTokens extends React.PureComponent {
               />
             </div>
 
-            <div className="g-flex__item-fixed">
-              <PaginateSimpleComponent
-                total={this.props.tokens.data.length}
-                limit={this.params.limit}
-                getPageUrl={this.getPageUrl}
-                forcePage={Math.floor(this.props.offset / this.params.limit)}
-              />
-            </div>
+            { this.props.totalTokens.data && (
+              <div className="g-flex__item-fixed">
+                <PaginateSimpleComponent
+                  total={this.props.totalTokens.data.length}
+                  limit={this.params.limit}
+                  getPageUrl={this.getPageUrl}
+                  forcePage={Math.floor(this.props.offset / this.params.limit)}
+                />
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -140,6 +143,7 @@ class IssuedTokens extends React.PureComponent {
     });
 
     this.props.getTokens(params);
+    this.props.getTotalTokens();
 
     if (params.offset === 0) {
       delete params.offset;
@@ -169,6 +173,7 @@ class IssuedTokens extends React.PureComponent {
 
 const mapStateToProps = (state: any): any => ({
   tokens: getAllIssuedTokensStructSelector(state),
+  totalTokens: getTotalIssuedTokensStructSelector(state),
   offset: state.tokens.offset,
 });
 
