@@ -2,7 +2,7 @@ import { IEnvironment } from './environment';
 
 export const environmentDefault: IEnvironment = {
   alternativeLogo: true,
-  apiUrl: 'https://api-testnet.ergoplatform.com',
+  apiUrl: 'https://new-explorer.ergoplatform.com',
   blockchain: {
     coinName: 'Erg'
   },
