@@ -15,7 +15,6 @@ import { SearchState } from '../reducers/search.reducer';
 import { SettingsState } from '../reducers/settings.reducer';
 import { StatsState } from '../reducers/stats.reducer';
 import { TransactionState } from '../reducers/transaction.reducer';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { TokensState } from '../reducers/tokens.reducer';
 
 export interface AppState {
@@ -40,6 +39,6 @@ export const configureStore = (preloadedState: any = {}) => {
   return createStore<AppState, any, any, any>(
     reducer,
     preloadedState,
-    composeWithDevTools(applyMiddleware(thunk, logger))
+    applyMiddleware(thunk, logger)
   );
 };
