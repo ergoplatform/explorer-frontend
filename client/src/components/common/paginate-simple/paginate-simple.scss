@@ -17,6 +17,7 @@ $paginate-simple-status-color: $theme-primary-color;
     margin: 0 ($grid-offset-step * 3);
     color: $paginate-simple-status-color;
     font-size: 14px;
+    font-weight: 300;
   }
 
   &__status--mobile {

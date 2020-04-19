@@ -15,6 +15,7 @@ $api-params-table-row-odd-bg: #f8f8f8;
   .bi-table__cell {
     padding: $grid-offset-step * 2;
     font-size: 14px;
+    font-weight: 300;
 
     &:first-child {
       width: 15%;

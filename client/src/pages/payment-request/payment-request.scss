@@ -62,6 +62,7 @@ $payment-request-copy-btn-color: #fff;
   &__input {
     height: 40px;
     font-size: 15px;
+    font-weight: 300;
     border: 0;
     padding-left: $grid-offset-step * 4;
     text-overflow: ellipsis;
