@@ -122,6 +122,14 @@ export class TableOrdersComponent extends PureComponent<any> {
       );
     }
 
+    if (sellOrders.data?.length === 0 && buyOrders.data?.length === 0) {
+      return (
+        <div className="bi-orders">
+          <p>Order book is empty</p>
+        </div>
+      );
+    }
+
     return (
       <div className="bi-orders">
         <div className="bi-orders__content">
