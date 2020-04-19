@@ -78,6 +78,7 @@ $calendar-bt-reset-bg: #e8e8e8;
     color: $theme-primary-color;
     font-size: 15px;
     line-height: 15px;
+    font-weight: 300;
     font-family: $theme-main-font;
   }
 
@@ -94,10 +95,12 @@ $calendar-bt-reset-bg: #e8e8e8;
   .react-calendar__navigation__label {
     font-family: $theme-main-font;
     font-size: 15px;
+    font-weight: 300;
   }
 
   .react-calendar__month-view__weekdays {
     font-size: 15px;
+    font-weight: 500;
   }
 
   .react-calendar__month-view__days__day--neighboringMonth:not(.react-calendar__tile--active) {

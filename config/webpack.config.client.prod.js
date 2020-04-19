@@ -17,9 +17,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const publicPath = paths.client.servedPath;
 // Some apps do not use client-side routing with pushState.
 // For these, "homepage" can be set to "." to enable relative asset paths.
-const shouldUseRelativeAssetPaths = publicPath === './';
+const shouldUseRelativeAssetPaths = publicPath === "./";
 // Source maps are resource heavy and can cause out of memory issue for large source files.
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP === 'true';
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP === "true";
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
@@ -29,12 +29,12 @@ const env = getClientEnvironment(publicUrl, true);
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
-if (env.stringified['process.env'].NODE_ENV !== '"production"') {
-  throw new Error('Production builds must have NODE_ENV=production.');
+if (env.stringified["process.env"].NODE_ENV !== '"production"') {
+  throw new Error("Production builds must have NODE_ENV=production.");
 }
 
 // Note: defined here because it will be used more than once.
-const cssFilename = 'static/css/[name].[contenthash:8].css';
+const cssFilename = "static/css/[name].[contenthash:8].css";
 
 // ExtractTextPlugin expects the build output to be flat.
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
@@ -53,7 +53,7 @@ module.exports = {
   bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
-  devtool: shouldUseSourceMap ? 'source-map' : false,
+  devtool: shouldUseSourceMap ? "source-map" : false,
   // In production, we only want to load the polyfills and the app code.
   entry: [require.resolve('./polyfills'), paths.client.root],
   output: {
@@ -62,12 +62,12 @@ module.exports = {
     // Generated JS file names (with nested folders).
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
-    filename: 'static/js/[name].[chunkhash:8].js',
-    chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+    filename: "static/js/[name].[chunkhash:8].js",
+    chunkFilename: "static/js/[name].[chunkhash:8].chunk.js",
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: info =>
+    devtoolModuleFilenameTemplate: (info) =>
       path
         .relative(paths.client.src, info.absoluteResourcePath)
         .replace(/\\/g, '/'),
@@ -77,7 +77,7 @@ module.exports = {
     // We placed these paths second because we want `node_modules` to "win"
     // if there are any conflicts. This matches Node resolution mechanism.
     // https://github.com/facebookincubator/create-react-app/issues/253
-    modules: ['node_modules', paths.nodeModules].concat(
+    modules: ["node_modules", paths.nodeModules].concat(
       // It is guaranteed to exist because we tweak it in `env.js`
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
     ),
@@ -141,7 +141,7 @@ module.exports = {
           // assets smaller than specified size as data URLs to avoid requests.
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            loader: require.resolve('url-loader'),
+            loader: require.resolve("url-loader"),
             options: {
               limit: 10000,
               name: 'static/media/[name].[hash:8].[ext]',
@@ -150,7 +150,7 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.client.src,
-            loader: require.resolve('babel-loader'),
+            loader: require.resolve("babel-loader"),
             options: {
               compact: true,
             },
@@ -161,7 +161,7 @@ module.exports = {
             include: paths.client.src,
             use: [
               {
-                loader: require.resolve('ts-loader'),
+                loader: require.resolve("ts-loader"),
                 options: {
                   // disable type checker - we will use it in fork plugin
                   transpileOnly: true,
@@ -187,27 +187,27 @@ module.exports = {
               Object.assign(
                 {
                   fallback: {
-                    loader: require.resolve('style-loader'),
+                    loader: require.resolve("style-loader"),
                     options: {
                       hmr: false,
                     },
                   },
                   use: [
                     {
-                      loader: require.resolve('css-loader'),
+                      loader: require.resolve("css-loader"),
                       options: {
                         importLoaders: 1,
                         sourceMap: shouldUseSourceMap,
                       },
                     },
                     {
-                      loader: require.resolve('postcss-loader'),
+                      loader: require.resolve("postcss-loader"),
                       options: {
                         // Necessary for external CSS imports to work
                         // https://github.com/facebookincubator/create-react-app/issues/2677
-                        ident: 'postcss',
+                        ident: "postcss",
                         plugins: () => [
-                          require('postcss-flexbugs-fixes'),
+                          require("postcss-flexbugs-fixes"),
                           autoprefixer({
                             browsers: [
                               '>1%',
@@ -233,14 +233,14 @@ module.exports = {
               Object.assign(
                 {
                   fallback: {
-                    loader: require.resolve('style-loader'),
+                    loader: require.resolve("style-loader"),
                     options: {
                       hmr: false,
                     },
                   },
                   use: [
                     {
-                      loader: require.resolve('css-loader'),
+                      loader: require.resolve("css-loader"),
                       options: {
                         importLoaders: 1,
                         sourceMap: shouldUseSourceMap,
@@ -261,7 +261,7 @@ module.exports = {
                 loader: 'svg-sprite-loader',
               },
               {
-                loader: 'svgo-loader',
+                loader: "svgo-loader",
                 options: {
                   plugins: [
                     { removeTitle: true },
@@ -278,7 +278,7 @@ module.exports = {
           // This loader doesn't use a "test" so it will catch all modules
           // that fall through the other loaders.
           {
-            loader: require.resolve('file-loader'),
+            loader: require.resolve("file-loader"),
             // Exclude `js` files to keep "css" loader working as it injects
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed

@@ -68,6 +68,7 @@ $block-header-nav-icon-color: $theme-primary-color;
     margin: 0 ($grid-offset-step * 4);
     border-bottom: 1px dotted $block-header-tab-border-color;
     font-size: 15px;
+    font-weight: 300;
 
     &:last-child {
       margin-right: 0;
@@ -83,6 +84,7 @@ $block-header-nav-icon-color: $theme-primary-color;
     display: inline-block;
     margin-bottom: $grid-offset-step * 8;
     font-size: 15px;
+    font-weight: 300;
   }
 
   &__btn-back-icon {

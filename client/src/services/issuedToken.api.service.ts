@@ -7,7 +7,7 @@ import {
 
 export class IssuedTokensService {
   static get apiUrl(): string {
-    return `${environment.api2Url}`;
+    return `${environment.apiUrl}`;
   }
 
   static getAllIssuedTokens(dispatch: any, { limit, offset }: any): any {

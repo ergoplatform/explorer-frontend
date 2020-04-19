@@ -8,7 +8,7 @@ import {
 
 export class OrderBookService {
   static get apiUrl(): string {
-    return `${environment.api2Url}`;
+    return `${environment.apiUrl}`;
   }
 
   static searchTokenById(dispatch: any, value: string): any {

@@ -25,6 +25,7 @@ $address-summary-body-bg-color: #ffffff;
     border: 1px solid $address-summary-header-border-color;
     background-color: $address-summary-body-bg-color;
     font-size: 14px;
+    font-weight: 300;
   }
 
   &__row {
@@ -40,6 +41,7 @@ $address-summary-body-bg-color: #ffffff;
 
     &--value, &--value * {
       font-size: 15px;
+      font-weight: 300;
     }
   }
 }

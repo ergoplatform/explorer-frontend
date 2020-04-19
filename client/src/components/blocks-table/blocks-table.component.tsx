@@ -28,18 +28,21 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
 
   private renderTable(): JSX.Element {
     return (
-      <div className="bi-blocks-table__body bi-table">
-        <BlockTableHeaderComponent />
+      <div className='bi-blocks-table__body bi-table'>
+        <BlockTableHeaderComponent/>
 
-        {this.props.blocks.map(block => {
-          return (
-            <div
-              className="bi-blocks-table__row bi-table__row"
-              key={block.height}
-            >
-              <div className="bi-blocks-table__cell bi-table__cell">
-                <div className="bi-blocks-table__cell-name">
-                  <FormattedMessage id="common.block.height" />
+        {
+          this.props.blocks.map((block) => {
+            return (
+              <div className='bi-blocks-table__row bi-table__row' key={ block.id }>
+                <div className='bi-blocks-table__cell bi-table__cell'>
+                  <div className='bi-blocks-table__cell-name'>
+                    <FormattedMessage id='common.block.height'/>
+                  </div>
+
+                  <Link to={ `/blocks/${block.id}` }>
+                    { block.height }
+                  </Link>
                 </div>
 
                 <Link to={`/blocks/${block.id}`}>{block.height}</Link>
