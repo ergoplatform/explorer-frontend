@@ -36,15 +36,27 @@
 
       &.fill-ask {
         background-repeat: no-repeat;
-        background-color: rgba(204, 86, 86, 0.2);
-        background-size: 0%;
+        position: relative;
+
+        span {
+          top: 0;
+          right: 0;
+          height: 100%;
+          position: absolute;
+          background-color: rgba(204, 86, 86, 0.2);
+        }
       }
 
       &.fill-bid {
-        background-repeat: no-repeat;
-        background-position: 100% 100%;
-        background-color: rgba(145, 204, 86, 0.25);
-        background-size: 0%;
+        position: relative;
+
+        span {
+          top: 0;
+          right: 0;
+          height: 100%;
+          position: absolute;
+          background-color: rgba(145, 204, 86, 0.25);
+        }
       }
     }
   }

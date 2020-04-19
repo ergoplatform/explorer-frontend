@@ -16,6 +16,7 @@ import { SettingsState } from '../reducers/settings.reducer';
 import { StatsState } from '../reducers/stats.reducer';
 import { TransactionState } from '../reducers/transaction.reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { TokensState } from '../reducers/tokens.reducer';
 
 export interface AppState {
   address: AddressState;
@@ -28,6 +29,7 @@ export interface AppState {
   transaction: TransactionState;
   search: SearchState;
   struct: Record<string, any>;
+  tokens: TokensState;
 }
 
 const logger = createLogger({

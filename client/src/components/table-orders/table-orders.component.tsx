@@ -6,7 +6,6 @@ import {
 } from '../../selectors/orderBook';
 
 import './table-orders.scss';
-import environment from '../../config/environment';
 
 export class TableOrdersComponent extends PureComponent<any> {
   sumQuantities = (orders: any) => {
@@ -33,18 +32,16 @@ export class TableOrdersComponent extends PureComponent<any> {
 
       return (
         <tr key={index} className="ask">
-          <td>
-            {order.price} {environment.blockchain.coinName.toUpperCase()}
-          </td>
+          <td>{order.price}</td>
           <td>{order.quantity}</td>
-          <td
-          // className="fill-ask"
-          // style={{
-          //   backgroundSize:
-          //     this.getPercentage(maxCumulative, cumulative) + '% 100%',
-          // }}
-          >
+          <td className="fill-ask">
             {order.cumulative}
+            <span
+              style={{
+                width:
+                  this.getPercentage(maxCumulative, order.cumulative) + '%',
+              }}
+            ></span>
           </td>
         </tr>
       );
@@ -60,18 +57,16 @@ export class TableOrdersComponent extends PureComponent<any> {
 
       return (
         <tr key={index} className="bid">
-          <td>
-            {order.price} {environment.blockchain.coinName.toUpperCase()}
-          </td>
+          <td>{order.price}</td>
           <td>{order.quantity}</td>
-          <td
-          // className="fill-bid"
-          // style={{
-          //   backgroundSize:
-          //     this.getPercentage(maxCumulative, cumulative) + '% 100%',
-          // }}
-          >
+          <td className="fill-bid">
             {order.cumulative}
+            <span
+              style={{
+                width:
+                  this.getPercentage(maxCumulative, order.cumulative) + '%',
+              }}
+            ></span>
           </td>
         </tr>
       );
@@ -138,30 +133,18 @@ export class TableOrdersComponent extends PureComponent<any> {
     return (
       <div className="bi-orders">
         <div className="bi-orders__content">
-          <h2>Sell orders</h2>
+          <h2>Order book</h2>
           <table className="bi-orders__table orders-table">
             <thead>
               <tr>
                 <th className="orders-table__th">Price, ERG</th>
-                <th className="orders-table__th">Sell Quantity</th>
+                <th className="orders-table__th">Quantity</th>
                 <th className="orders-table__th">ERG Amount</th>
               </tr>
             </thead>
             <tbody>
               {this.renderSellOrders(askOrders, maxCumulative).reverse()}
             </tbody>
-          </table>
-        </div>
-        <div className="bi-orders__content">
-          <h2>Buy orders</h2>
-          <table className="bi-orders__table orders-table">
-            <thead>
-              <tr>
-                <th className="orders-table__th">Price, ERG</th>
-                <th className="orders-table__th">Buy Quantity</th>
-                <th className="orders-table__th">ERG Amount</th>
-              </tr>
-            </thead>
             <tbody>{this.renderBuyOrders(bidOrders, maxCumulative)}</tbody>
           </table>
         </div>
