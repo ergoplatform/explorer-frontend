@@ -34,7 +34,7 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
         {
           this.props.blocks.map((block) => {
             return (
-              <div className='bi-blocks-table__row bi-table__row' key={ block.height }>
+              <div className='bi-blocks-table__row bi-table__row' key={ block.id }>
                 <div className='bi-blocks-table__cell bi-table__cell'>
                   <div className='bi-blocks-table__cell-name'>
                     <FormattedMessage id='common.block.height'/>
