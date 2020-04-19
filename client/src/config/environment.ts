@@ -17,17 +17,17 @@ let environment: IEnvironment;
 if (process.env.NODE_ENV === 'production') {
   environment = {
     ...environmentDefault,
-    ...environmentProd
+    ...environmentProd,
   };
 } else {
   environment = {
-    ...environmentDefault
+    ...environmentDefault,
   };
 }
 
-function getAppConfig (): any {
+function getAppConfig(): any {
   let appConfig = {
-    apiUrl: environment.apiUrl
+    apiUrl: environment.apiUrl,
   };
 
   if (process.env.IS_BROWSER) {
@@ -47,13 +47,13 @@ function getAppConfig (): any {
 
 environment = {
   ...getAppConfig(),
-  get environments (): any[] {
+  get environments(): any[] {
     return getAppConfig().environments;
   },
 
-  get apiUrl (): string | undefined {
+  get apiUrl(): string | undefined {
     return getAppConfig().apiUrl;
-  }
+  },
 };
 
 export default environment;

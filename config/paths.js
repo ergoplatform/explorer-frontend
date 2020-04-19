@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
@@ -16,11 +14,11 @@ function ensureSlash(path, needsSlash) {
   const hasSlash = path.endsWith('/');
   if (hasSlash && !needsSlash) {
     return path.substr(path, path.length - 1);
-  } else if (!hasSlash && needsSlash) {
-    return `${path}/`;
-  } else {
-    return path;
   }
+  if (!hasSlash && needsSlash) {
+    return `${path}/`;
+  }
+  return path;
 }
 
 const getPublicUrl = packageJson =>
@@ -39,7 +37,7 @@ function getServedPath(packageJson) {
 module.exports = {
   appTsConfig: resolvePath('tsconfig.json'),
   apiSpec: resolvePath('api.yaml'),
-  appTsLint: resolvePath('tslint.json'),
+  appEsLint: resolvePath('.eslintrc.json'),
   dotenv: resolvePath('.env'),
   nodeModules: resolvePath('node_modules'),
   yarnLockFile: resolvePath('yarn.lock'),
@@ -52,11 +50,11 @@ module.exports = {
     src: resolvePath('client/src'),
     styles: resolvePath('client/src/assets/styles'),
     publicUrl: getPublicUrl(resolvePath('package.json')),
-    servedPath: getServedPath(resolvePath('package.json'))
+    servedPath: getServedPath(resolvePath('package.json')),
   },
   server: {
     build: resolvePath('build/server'),
     root: resolvePath('server/index.tsx'),
     src: resolvePath('server'),
-  }
+  },
 };

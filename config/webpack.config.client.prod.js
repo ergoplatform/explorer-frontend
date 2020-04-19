@@ -11,8 +11,6 @@ const paths = require("./paths");
 const getClientEnvironment = require("./env");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.

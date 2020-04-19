@@ -15,6 +15,7 @@ import { SearchState } from '../reducers/search.reducer';
 import { SettingsState } from '../reducers/settings.reducer';
 import { StatsState } from '../reducers/stats.reducer';
 import { TransactionState } from '../reducers/transaction.reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 export interface AppState {
   address: AddressState;
@@ -26,13 +27,17 @@ export interface AppState {
   blocks: BlocksState;
   transaction: TransactionState;
   search: SearchState;
+  struct: Record<string, any>;
 }
 
 const logger = createLogger({
-  predicate: () => environment.isLoggerEnabled
+  predicate: () => environment.isLoggerEnabled,
 });
 
-
 export const configureStore = (preloadedState: any = {}) => {
-  return createStore<AppState, any, any, any>(reducer, preloadedState, applyMiddleware(thunk, logger));
+  return createStore<AppState, any, any, any>(
+    reducer,
+    preloadedState,
+    composeWithDevTools(applyMiddleware(thunk, logger))
+  );
 };

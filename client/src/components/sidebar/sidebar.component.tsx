@@ -16,11 +16,11 @@ import { EnvironmentSwitcherComponent } from '../common/environment-switcher/env
 import { LanguageSwitcherComponent } from '../common/language-switcher/language-switcher.component';
 import { ISidebarMenuItem, SidebarMenuComponent } from '../sidebar-menu/sidebar-menu.component';
 
-import { ArrowIcon, LogoIcon, LogoVerticalIcon } from '../common/icons/common.icons';
+import { ArrowIcon, LogoIcon, LogoVerticalIcon, SignIcon } from '../common/icons/common.icons';
 
 import './sidebar.scss';
 
-import { ApiIcon, ChartIcon, DataIcon, StatsIcon, WalletIcon } from '../common/icons/common.icons';
+import { ApiIcon, ChartIcon, DataIcon, StatsIcon, DiagramIcon } from '../common/icons/common.icons';
 
 const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   {
@@ -33,12 +33,6 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     },
     title: 'components.sidebar-menu.items.data',
     url: '/'
-  },
-  {
-    external: true,
-    icon: <WalletIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
-    title: 'components.sidebar-menu.items.wallet',
-    url: 'https://ergoplatform.org/en/wallets/',
   },
   {
     icon: <ChartIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
@@ -60,7 +54,24 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     },
     title: 'components.sidebar-menu.items.api',
     url: '/api'
-  }
+  },
+  {
+    icon: <DiagramIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
+    props: {
+      exact: false
+    },
+    title: 'components.sidebar-menu.items.order-book',
+    url: '/order-book'
+  },
+];
+
+const EXTERNAL_MENU_ITEMS: ISidebarMenuItem[] = [
+  {
+    external: true,
+    icon: <SignIcon className='bi-sidebar-menu__item-icon g-flex__item-fixed'/>,
+    title: 'components.sidebar-menu.items.wallet',
+    url: 'https://ergoplatform.org/en/wallets/',
+  },
 ];
 
 interface ISidebarState {
@@ -114,6 +125,8 @@ class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
 
     const items = [...SIDEBAR_MENU_ITEMS];
 
+    const externalItems = [...EXTERNAL_MENU_ITEMS];
+
     if (this.props.api && this.props.api.data) {
       const apiIndex = items.findIndex((item: ISidebarMenuItem) => item.url === '/api');
 
@@ -149,6 +162,8 @@ class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
 
         <div className='bi-sidebar__body g-flex-column__item-fixed'>
           <SidebarMenuComponent onClick={ this.hideSidebar } items={ items }/>
+
+          <SidebarMenuComponent onClick={ this.hideSidebar } items={ externalItems }/>
 
           <LogoVerticalIcon className='bi-sidebar__side-logo'/>
         </div>

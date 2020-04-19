@@ -13,105 +13,109 @@ import dataIcon from '../../../assets/images/icons/data.icon.svg';
 import doubleArrowIcon from '../../../assets/images/icons/double-arrow.icon.svg';
 import qrCodeIcon from '../../../assets/images/icons/qrcode.icon.svg';
 import searchIcon from '../../../assets/images/icons/search.icon.svg';
+import signIcon from '../../../assets/images/icons/sign.svg';
 import sortDirectionAscIcon from '../../../assets/images/icons/sort-direction-asc.icon.svg';
 import sortDirectionDescIcon from '../../../assets/images/icons/sort-direction-desc.icon.svg';
 import sortDirectionIcon from '../../../assets/images/icons/sort-direction.icon.svg';
 import statsIcon from '../../../assets/images/icons/stats.icon.svg';
-import walletIcon from '../../../assets/images/icons/wallet.icon.svg';
 import logoAltImage from '../../../assets/images/logo-main-alt.svg';
 import logoImage from '../../../assets/images/logo-main.svg';
 import logoVerticalAltImage from '../../../assets/images/logo-vertical-alt.svg';
 import logoVerticalImage from '../../../assets/images/logo-vertical.svg';
+import diagramIcon from '../../../assets/images/icons/diagram.svg';
 
-interface IIconProps {
+interface IconProps {
   className?: string;
 }
 
 export const makeIcon = (iconId: string, className?: string): JSX.Element => {
   return (
-    <svg className={ className }
-         focusable='false'>
-      <use xlinkHref={ `#${iconId}` }/>
+    <svg className={className} focusable="false">
+      <use xlinkHref={`#${iconId}`} />
     </svg>
   );
 };
 
-export const SearchIcon = ({ className }: IIconProps) => {
+export const SearchIcon = ({ className }: IconProps) => {
   return makeIcon(searchIcon.id, className);
 };
 
-export const ArrowIcon = ({ className }: IIconProps) => {
+export const ArrowIcon = ({ className }: IconProps) => {
   return makeIcon(arrowIcon.id, className);
 };
 
-export const DataIcon = ({ className }: IIconProps) => {
+export const DataIcon = ({ className }: IconProps) => {
   return makeIcon(dataIcon.id, className);
 };
 
-export const ApiIcon = ({ className }: IIconProps) => {
+export const ApiIcon = ({ className }: IconProps) => {
   return makeIcon(apiIcon.id, className);
 };
 
-export const WalletIcon = ({ className }: IIconProps) => {
-  return makeIcon(walletIcon.id, className);
+export const SignIcon = ({ className }: IconProps) => {
+  return makeIcon(signIcon.id, className);
 };
 
-export const ChartIcon = ({ className }: IIconProps) => {
+export const ChartIcon = ({ className }: IconProps) => {
   return makeIcon(chartIcon.id, className);
 };
 
-export const StatsIcon = ({ className }: IIconProps) => {
+export const StatsIcon = ({ className }: IconProps) => {
   return makeIcon(statsIcon.id, className);
 };
 
-export const QRCodeIcon = ({ className }: IIconProps) => {
+export const QRCodeIcon = ({ className }: IconProps) => {
   return makeIcon(qrCodeIcon.id, className);
 };
 
-export const CrossIcon = ({ className }: IIconProps) => {
+export const CrossIcon = ({ className }: IconProps) => {
   return makeIcon(crossIcon.id, className);
 };
 
-export const DoubleArrowIcon = ({ className }: IIconProps) => {
+export const DoubleArrowIcon = ({ className }: IconProps) => {
   return makeIcon(doubleArrowIcon.id, className);
 };
 
-export const SortDirectionIcon = ({ className }: IIconProps) => {
+export const SortDirectionIcon = ({ className }: IconProps) => {
   return makeIcon(sortDirectionIcon.id, className);
 };
 
-export const SortDirectionAscIcon = ({ className }: IIconProps) => {
+export const SortDirectionAscIcon = ({ className }: IconProps) => {
   return makeIcon(sortDirectionAscIcon.id, className);
 };
 
-export const SortDirectionDescIcon = ({ className }: IIconProps) => {
+export const SortDirectionDescIcon = ({ className }: IconProps) => {
   return makeIcon(sortDirectionDescIcon.id, className);
 };
 
-export const BurgerIcon = ({ className }: IIconProps) => {
+export const BurgerIcon = ({ className }: IconProps) => {
   return makeIcon(burgerIcon.id, className);
 };
 
-export const ArrowDownIcon = ({ className }: IIconProps) => {
+export const ArrowDownIcon = ({ className }: IconProps) => {
   return makeIcon(arrowDownIcon.id, className);
 };
 
-export const ArrowThickIcon = ({ className }: IIconProps) => {
+export const ArrowThickIcon = ({ className }: IconProps) => {
   return makeIcon(arrowThickIcon.id, className);
 };
 
-export const LogoVerticalIcon = ({ className }: IIconProps) => {
+export const LogoVerticalIcon = ({ className }: IconProps) => {
   if (environment.alternativeLogo) {
     return makeIcon(logoVerticalAltImage.id, className);
   }
-  
+
   return makeIcon(logoVerticalImage.id, className);
 };
 
-export const LogoIcon = ({ className }: IIconProps) => {
+export const LogoIcon = ({ className }: IconProps) => {
   if (environment.alternativeLogo) {
     return makeIcon(logoAltImage.id, className);
   }
-  
+
   return makeIcon(logoImage.id, className);
+};
+
+export const DiagramIcon = ({ className }: IconProps) => {
+  return makeIcon(diagramIcon.id, className);
 };

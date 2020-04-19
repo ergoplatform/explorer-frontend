@@ -9,7 +9,7 @@ export const environmentProd: IEnvironment = {
     {
       name: 'Mainnet',
       url: 'https://explorer.ergoplatform.com',
-    }
+    },
   ],
-  isLoggerEnabled: false
+  isLoggerEnabled: false,
 };

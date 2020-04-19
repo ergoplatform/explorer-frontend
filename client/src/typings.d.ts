@@ -2,6 +2,8 @@ declare module '*.svg';
 declare module '*.png';
 declare module '*.jpg';
 
+declare module 'redux-struct';
+
 declare module 'react-router-last-location';
 declare module 'svg-sprite-loader/runtime/sprite.build';
 declare module 'react-head';
@@ -19,13 +21,12 @@ interface Window {
   };
 }
 
-
 declare namespace NodeJS {
   interface Global {
     __APP_CONFIG__: {
       apiUrl: string;
     };
-    req: any,
+    req: any;
   }
 }
 

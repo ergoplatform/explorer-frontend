@@ -21,14 +21,14 @@ export class AddressRequetsPaymentActionComponent extends React.Component<IAddre
   state: IAddressActionsState = {
     [PAYMENT_REQUEST_MODAL_STATE_KEY]: false,
   };
-  
+
   constructor (props: IAddressActionsProps) {
     super(props);
-    
+
     this.openModal  = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-  
+
   render (): JSX.Element {
     return (
       <div className='bi-address-actions g-flex'>
@@ -38,14 +38,14 @@ export class AddressRequetsPaymentActionComponent extends React.Component<IAddre
             <FormattedMessage id='components.address-actions.request-payment'/>
           </button>
         </div>
-        
+
         <PaymentRequestModalComponent isOpen={ this.state[PAYMENT_REQUEST_MODAL_STATE_KEY] }
                                       onClose={ this.closeModal(PAYMENT_REQUEST_MODAL_STATE_KEY) }
                                       address={ this.props.address.summary.id }/>
       </div>
     );
   }
-  
+
   private openModal (stateKey: string): () => void {
     return () => {
       this.setState({
@@ -53,7 +53,7 @@ export class AddressRequetsPaymentActionComponent extends React.Component<IAddre
       });
     };
   }
-  
+
   private closeModal (stateKey: string): () => void {
     return () => {
       this.setState({

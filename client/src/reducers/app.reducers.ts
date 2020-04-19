@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as struct } from 'redux-struct';
 
 import { AppState } from '../store/app.store';
 import { addressReducer } from './address.reducer';
@@ -21,4 +22,5 @@ export const reducer = combineReducers<AppState>({
   settings: settingsReducer,
   stats: statsReducer,
   transaction: transactionReducer,
+  struct,
 });

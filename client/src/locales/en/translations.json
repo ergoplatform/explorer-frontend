@@ -62,6 +62,9 @@
       },
       "wallet": {
         "title": "Ergo Explorer | Wallet"
+      },
+      "order-book": {
+        "title": "Ergo Explorer | Order Book"
       }
     },
     "stats": {
@@ -217,7 +220,8 @@
         "charts": "Charts",
         "data": "Data",
         "stats": "Stats",
-        "wallet": "Wallet"
+        "wallet": "Wallet",
+        "order-book": "Order Book"
       }
     },
     "stats": {
@@ -277,6 +281,9 @@
     },
     "wallet": {
       "title": "Wallet is not available yet"
+    },
+    "order-book": {
+      "title": "Order Book"
     }
   }
 }
