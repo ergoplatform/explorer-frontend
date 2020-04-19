@@ -11,7 +11,6 @@ declare module 'react-inspector';
 declare module 'react-router-hash-link';
 declare module 'apiSpec';
 declare module '@axetroy/react-download';
-declare module 'highcharts-react-official';
 declare module 'console-stamp';
 
 interface Window {
@@ -19,7 +18,6 @@ interface Window {
   __HAS_ERROR__: number;
   __APP_CONFIG__: {
     apiUrl: string;
-    api2Url: string;
   };
 }
 
@@ -27,7 +25,6 @@ declare namespace NodeJS {
   interface Global {
     __APP_CONFIG__: {
       apiUrl: string;
-      api2Url: string;
     };
     req: any;
   }

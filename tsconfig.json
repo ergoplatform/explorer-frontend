@@ -13,16 +13,9 @@
     "noUnusedLocals": true,
     "experimentalDecorators": true,
     "paths": {
-      "lodash/*": [
-        "node_modules/@types/lodash-es/*"
-      ]
+      "lodash/*": ["node_modules/@types/lodash-es/*"]
     },
-    "lib": [
-      "es7",
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["es7", "dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

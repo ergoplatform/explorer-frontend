@@ -1,39 +1,39 @@
-const nodeExternals = require('webpack-node-externals');
-const paths = require('./paths');
-const webpack = require('webpack');
+const nodeExternals = require("webpack-node-externals");
+const paths = require("./paths");
+const webpack = require("webpack");
 
 module.exports = {
   entry: paths.server.root,
   output: {
-    filename: 'bundle.js',
-    path: paths.server.build
+    filename: "bundle.js",
+    path: paths.server.build,
   },
 
   // Currently we need to add '.ts' to the resolve.extensions array.
   resolve: {
     extensions: [
-      '.mjs',
-      '.web.ts',
-      '.ts',
-      '.web.tsx',
-      '.tsx',
-      '.web.js',
-      '.js',
-      '.json',
-      '.web.jsx',
-      '.jsx'
+      ".mjs",
+      ".web.ts",
+      ".ts",
+      ".web.tsx",
+      ".tsx",
+      ".web.js",
+      ".js",
+      ".json",
+      ".web.jsx",
+      ".jsx",
     ],
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web',
-      'styles': paths.client.styles,
-      'apiSpec': paths.apiSpec
-    }
+      "react-native": "react-native-web",
+      styles: paths.client.styles,
+      apiSpec: paths.apiSpec,
+    },
   },
 
   // Source maps support ('inline-source-map' also works)
-  devtool: 'source-map',
+  devtool: "source-map",
 
   // Add the loader for .ts files.
   module: {
@@ -42,45 +42,45 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         use: [
           {
-            loader: require.resolve('ts-loader'),
+            loader: require.resolve("ts-loader"),
             options: {
               // disable type checker - we will use it in fork plugin
-              transpileOnly: true
-            }
-          }
-        ]
+              transpileOnly: true,
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
         use: [
           {
-            loader: 'svg-sprite-loader'
+            loader: "svg-sprite-loader",
           },
           {
-            loader: 'svgo-loader',
+            loader: "svgo-loader",
             options: {
               plugins: [
                 { removeTitle: true },
                 { mergePaths: true },
                 { removeDesc: true },
-                { convertPathData: false }
-              ]
-            }
-          }
-        ]
+                { convertPathData: false },
+              ],
+            },
+          },
+        ],
       },
       {
-       test: /\.css$/,
-        loader: 'css-loader',
+        test: /\.css$/,
+        loader: "css-loader",
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: 'css-loader',
+            loader: "css-loader",
           },
-          'sass-loader'
-        ]
+          "sass-loader",
+        ],
       },
       // "file" loader makes sure those assets get served by WebpackDevServer.
       // When you `import` an asset, you get its (virtual) filename.
@@ -94,12 +94,12 @@ module.exports = {
         // by webpacks internal loaders.
         exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
         test: /\.(ttf|woff|woff2|eot|yaml)/,
-        loader: require.resolve('file-loader'),
+        loader: require.resolve("file-loader"),
         options: {
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      }
-    ]
+          name: "static/media/[name].[hash:8].[ext]",
+        },
+      },
+    ],
   },
   plugins: [
     // Minify the code.
@@ -107,19 +107,19 @@ module.exports = {
       compress: {
         warnings: false,
         // Disabled because of an issue with Uglify breaking seemingly valid code:
-        comparisons: false
+        comparisons: false,
       },
       mangle: {
-        safari10: true
+        safari10: true,
       },
       output: {
         comments: false,
         // Turned on because emoji and regex is not minified properly using default
-        ascii_only: true
+        ascii_only: true,
       },
-      sourceMap: false
-    })
+      sourceMap: false,
+    }),
   ],
-  target: 'node',
-  externals: [nodeExternals()]
+  target: "node",
+  externals: [nodeExternals()],
 };
