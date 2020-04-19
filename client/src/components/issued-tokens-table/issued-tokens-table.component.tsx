@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import format from 'format-number';
 
 import { IssuedTokensTableHeaderComponent } from './issued-tokens-table/issued-tokens-table-header.component';
 
@@ -66,7 +67,9 @@ export class IssuedTokensTableComponent extends React.Component<
                 <input
                   className="bi-tokens-table__input"
                   type="text"
-                  value={token.assets[0].amount}
+                  value={format({ integerSeparator: ' ' })(
+                    token.assets[0].amount
+                  )}
                   readOnly
                 />
               </div>
