@@ -67,7 +67,7 @@ module.exports = {
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: (info) =>
+    devtoolModuleFilenameTemplate: info =>
       path
         .relative(paths.client.src, info.absoluteResourcePath)
         .replace(/\\/g, '/'),
@@ -100,7 +100,6 @@ module.exports = {
       '.jsx',
     ],
     alias: {
-      'react-dom': '@hot-loader/react-dom',
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -380,6 +379,7 @@ module.exports = {
       async: false,
       tsconfig: paths.appTsConfig,
       eslint: paths.appEsLint,
+      silent: true,
     }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
