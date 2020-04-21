@@ -15,14 +15,13 @@ import { IGetBlocksParams } from '../../services/block.api.service';
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 import { IssuedTokensActions } from '../../actions/issuedTokens.actions';
-import { getAllIssuedTokensStructSelector, getTotalIssuedTokensStructSelector } from '../../selectors/issuedTokens';
+import { getAllIssuedTokensStructSelector } from '../../selectors/issuedTokens';
 import { IssuedTokensTableComponent } from '../../components/issued-tokens-table/issued-tokens-table.component';
 
 type IDataProps = AppState &
   IssuedTokensActions &
   RouteComponentProps<{}> & {
     tokens: any;
-    totalTokens: any;
     offset: number;
   };
 
@@ -70,44 +69,44 @@ class IssuedTokens extends React.PureComponent {
           </div>
         </div>
 
-        {/* {this.props.data.total === 0 && (
+        {this.props.tokens.data && this.props.tokens.data.total === 0 && (
           <div className="bi-data__body g-flex-column__item-fixed">
             <FormattedMessage id="components.data.wrong-query" />
           </div>
-        )} */}
-
-        {this.props.tokens.data !== null && this.props.tokens.data.length > 0 && (
-          <div className="bi-data__body g-flex-column__item-fixed">
-            <IssuedTokensTableComponent
-              tokens={this.props.tokens.data}
-              isFetching={this.props.tokens.isFetching}
-            />
-          </div>
         )}
 
-        {this.props.tokens.data !== null && this.props.tokens.data.length > 0 && (
-          <div className="bi-data__footer g-flex-column__item-fixed g-flex">
-            <div className="g-flex__item-fixed">
-              <LimitSelectorComponent
-                items={[30, 60, 120]}
-                selected={this.params.limit}
-                label={<FormattedMessage id="components.data.show" />}
-                getLimitLink={this.getLimitLink}
+        {this.props.tokens.data !== null &&
+          this.props.tokens.data.items.length > 0 && (
+            <div className="bi-data__body g-flex-column__item-fixed">
+              <IssuedTokensTableComponent
+                tokens={this.props.tokens.data.items}
+                isFetching={this.props.tokens.isFetching}
               />
             </div>
+          )}
 
-            { this.props.totalTokens.data && (
+        {this.props.tokens.data !== null &&
+          this.props.tokens.data.items.length > 0 && (
+            <div className="bi-data__footer g-flex-column__item-fixed g-flex">
+              <div className="g-flex__item-fixed">
+                <LimitSelectorComponent
+                  items={[30, 60, 120]}
+                  selected={this.params.limit}
+                  label={<FormattedMessage id="components.data.show" />}
+                  getLimitLink={this.getLimitLink}
+                />
+              </div>
+
               <div className="g-flex__item-fixed">
                 <PaginateSimpleComponent
-                  total={this.props.totalTokens.data.length}
+                  total={this.props.tokens.data.total}
                   limit={this.params.limit}
                   getPageUrl={this.getPageUrl}
                   forcePage={Math.floor(this.props.offset / this.params.limit)}
                 />
               </div>
-            )}
-          </div>
-        )}
+            </div>
+          )}
       </div>
     );
   }
@@ -143,7 +142,6 @@ class IssuedTokens extends React.PureComponent {
     });
 
     this.props.getTokens(params);
-    this.props.getTotalTokens();
 
     if (params.offset === 0) {
       delete params.offset;
@@ -173,7 +171,6 @@ class IssuedTokens extends React.PureComponent {
 
 const mapStateToProps = (state: any): any => ({
   tokens: getAllIssuedTokensStructSelector(state),
-  totalTokens: getTotalIssuedTokensStructSelector(state),
   offset: state.tokens.offset,
 });
 

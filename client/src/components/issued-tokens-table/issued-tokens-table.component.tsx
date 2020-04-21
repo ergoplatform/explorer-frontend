@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import format from 'format-number';
+import { base16 } from 'rfc4648';
+// import * as vlq from 'vlq';
 
 import { IssuedTokensTableHeaderComponent } from './issued-tokens-table/issued-tokens-table-header.component';
 
@@ -46,17 +48,14 @@ export class IssuedTokensTableComponent extends React.Component<
                 />
               </div>
 
-              <div className="bi-blocks-table__cell bi-blocks-table__cell--timestamp bi-table__cell  bi-tokens-table__cell">
+              <div className="bi-blocks-table__cell bi-table__cell  bi-tokens-table__cell">
                 <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
                   <FormattedMessage id="common.token.name" />
                 </div>
 
-                <input
-                  className="bi-tokens-table__input"
-                  type="text"
-                  value={token.additionalRegisters.R4}
-                  readOnly
-                />
+                {new TextDecoder('utf-8').decode(
+                  base16.parse(token.additionalRegisters.R4)
+                )}
               </div>
 
               <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
@@ -92,12 +91,9 @@ export class IssuedTokensTableComponent extends React.Component<
                   <FormattedMessage id="common.token.description" />
                 </div>
 
-                <input
-                  className="bi-tokens-table__input"
-                  type="text"
-                  value={token.additionalRegisters.R5}
-                  readOnly
-                />
+                {new TextDecoder('utf-8').decode(
+                  base16.parse(token.additionalRegisters.R5)
+                )}
               </div>
             </div>
           );
