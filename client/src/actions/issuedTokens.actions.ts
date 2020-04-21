@@ -4,7 +4,6 @@ import { GET_TOKENS_SUCCESS } from '../constants/tokens.types';
 
 export interface IssuedTokensActions extends ActionCreatorsMapObject {
   getTokens: (params: any) => any;
-  getTotalTokens: () => any;
 }
 
 export const IssuedTokensActions: IssuedTokensActions = {
@@ -20,12 +19,5 @@ export const IssuedTokensActions: IssuedTokensActions = {
           });
         }
       );
-  },
-
-  getTotalTokens() {
-    return (dispatch: any) =>
-      IssuedTokensService.getTotalIssuedTokens(dispatch, {
-        limit: 10000000,
-      });
   },
 };

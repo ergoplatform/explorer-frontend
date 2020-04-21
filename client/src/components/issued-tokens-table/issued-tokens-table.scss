@@ -108,3 +108,8 @@ $block-table-cell-color: $theme-primary-color;
   background: #f8f8f8;
   font-size: 14px;
 }
+
+.bi-tokens-table__cell {
+  white-space: normal;
+  overflow: initial;
+}

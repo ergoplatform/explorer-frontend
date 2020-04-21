@@ -24,7 +24,7 @@ class IssuedTokensTableHeader extends React.Component<
           <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
         </div>
 
-        <div className="bi-blocks-table__cell bi-blocks-table__cell--timestamp bi-table__cell">
+        <div className="bi-blocks-table__cell bi-table__cell">
           <FormattedMessage id="common.token.name" />
 
           <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
