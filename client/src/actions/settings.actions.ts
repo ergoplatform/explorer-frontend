@@ -4,9 +4,10 @@ import {
   SET_LOCALE,
   SET_SIDEBAR_IS_COLLAPSED,
   SET_SIDEBAR_IS_HIDDEN,
-  SET_SIDEBAR_IS_SHOWN, SET_TRANSACTION_SCRIPTS_HIDDEN, SET_TRANSACTION_SCRIPTS_SHOWN
+  SET_SIDEBAR_IS_SHOWN,
+  SET_TRANSACTION_SCRIPTS_HIDDEN,
+  SET_TRANSACTION_SCRIPTS_SHOWN,
 } from '../constants/settings.types';
-
 
 export interface SettingsActions extends ActionCreatorsMapObject {
   setLocale: (localeId: string) => any;
@@ -16,53 +17,53 @@ export interface SettingsActions extends ActionCreatorsMapObject {
 }
 
 export const SettingsActions: SettingsActions = {
-  setLocale (localeId: string): any {
+  setLocale(localeId: string): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
         payload: {
-          locale: localeId
+          locale: localeId,
         },
-        type: SET_LOCALE
+        type: SET_LOCALE,
       });
     };
   },
-  
-  setSidebarCollapsedStatus (isCollapsed: boolean): any {
+
+  setSidebarCollapsedStatus(isCollapsed: boolean): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
         payload: {
-          isSidebarCollapsed: isCollapsed
+          isSidebarCollapsed: isCollapsed,
         },
-        type: SET_SIDEBAR_IS_COLLAPSED
+        type: SET_SIDEBAR_IS_COLLAPSED,
       });
     };
   },
-  
-  setSidebarDisplayStatus (isShown: boolean): any {
+
+  setSidebarDisplayStatus(isShown: boolean): any {
     return (dispatch: Dispatch<Action>) => {
       if (isShown) {
         dispatch({
-          type: SET_SIDEBAR_IS_SHOWN
+          type: SET_SIDEBAR_IS_SHOWN,
         });
       } else {
         dispatch({
-          type: SET_SIDEBAR_IS_HIDDEN
+          type: SET_SIDEBAR_IS_HIDDEN,
         });
       }
     };
   },
-  
-  setTransactionScripts (isShown: boolean): any {
+
+  setTransactionScripts(isShown: boolean): any {
     return (dispatch: Dispatch<Action>) => {
       if (isShown) {
         dispatch({
-          type: SET_TRANSACTION_SCRIPTS_SHOWN
+          type: SET_TRANSACTION_SCRIPTS_SHOWN,
         });
       } else {
         dispatch({
-          type: SET_TRANSACTION_SCRIPTS_HIDDEN
+          type: SET_TRANSACTION_SCRIPTS_HIDDEN,
         });
       }
     };
-  }
+  },
 };

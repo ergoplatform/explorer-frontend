@@ -24,11 +24,10 @@ type IDataProps = AppState &
   RouteComponentProps<{}> &
   AppActions;
 
-class Data extends React.PureComponent {
-  props!: IDataProps;
+class Data extends React.PureComponent<IDataProps> {
   params: any;
 
-  constructor(props: any) {
+  constructor(props: IDataProps) {
     super(props);
 
     this.onDateChange = this.onDateChange.bind(this);
@@ -63,7 +62,7 @@ class Data extends React.PureComponent {
     return (
       <div className="bi-data g-flex-column g-flex-column__item-fixed">
         <FormattedMessage id="common.pages.data.title">
-          {title => (
+          {(title) => (
             <Helmet>
               <title>{title}</title>
             </Helmet>
@@ -157,7 +156,7 @@ class Data extends React.PureComponent {
       offset: params.offset || 0,
     };
 
-    Object.keys(params).forEach(key => {
+    Object.keys(params).forEach((key) => {
       if (params[key] === null) {
         delete params[key];
       }

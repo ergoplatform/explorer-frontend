@@ -101,7 +101,7 @@ class Address extends React.PureComponent {
           id="common.pages.address.title"
           values={{ id: this.props.address.summary.id }}
         >
-          {title => (
+          {(title) => (
             <Helmet>
               <title>{title}</title>
             </Helmet>

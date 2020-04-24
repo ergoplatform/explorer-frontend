@@ -111,15 +111,15 @@ const EXTERNAL_MENU_ITEMS: ISidebarMenuItem[] = [
   },
 ];
 
-interface ISidebarState {
+interface SidebarState {
   isClient: boolean;
 }
 
 type ISidebarProps = SettingsActions &
   ApiActions & { settings: SettingsState; api: ApiState };
 
-class Sidebar extends React.Component<ISidebarProps, ISidebarState> {
-  state: ISidebarState = {
+class Sidebar extends React.Component<ISidebarProps, SidebarState> {
+  state: SidebarState = {
     isClient: false,
   };
 

@@ -41,11 +41,9 @@ describe('Components | CommonIcons', () => {
     ];
 
     icons.forEach((Icon) => {
+      const wrapper = shallowWithIntl(<Icon />);
 
-      const wrapper = shallowWithIntl(<Icon/>);
-
-      expect(wrapper.length)
-        .toBe(1);
+      expect(wrapper.length).toBe(1);
     });
   });
 
@@ -54,12 +52,8 @@ describe('Components | CommonIcons', () => {
 
     const wrapper = shallowWithIntl(Icon);
 
-    expect(wrapper.find('svg use')
-      .prop('xlinkHref'))
-      .toEqual('#foo');
+    expect(wrapper.find('svg use').prop('xlinkHref')).toEqual('#foo');
 
-    expect(wrapper.find('svg')
-      .hasClass('bar'))
-      .toBeTruthy();
+    expect(wrapper.find('svg').hasClass('bar')).toBeTruthy();
   });
 });

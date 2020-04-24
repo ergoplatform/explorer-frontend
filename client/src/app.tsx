@@ -8,10 +8,10 @@ import en from 'react-intl/locale-data/en';
 import ru from 'react-intl/locale-data/ru';
 
 import { AppComponent } from './containers/app/app.component';
-import { ServerErrorComponent } from './pages/server-error/server-error.component';
 
 import { ConnectedIntlProvider } from './containers/connected-intl-provider/connected-intl-provider';
 import { configureStore } from './store/app.store';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
 
 const TextComponent = (props: any) => {
   return props.children;

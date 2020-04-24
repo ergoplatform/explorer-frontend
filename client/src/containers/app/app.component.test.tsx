@@ -9,11 +9,10 @@ describe('App', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallowWithIntl(<AppComponent/>);
+    wrapper = shallowWithIntl(<AppComponent />);
   });
 
   it('renders without crashing', () => {
-    expect(wrapper.length)
-      .toEqual(1);
+    expect(wrapper.length).toEqual(1);
   });
 });

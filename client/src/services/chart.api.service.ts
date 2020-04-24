@@ -1,21 +1,21 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from 'axios';
 
-import environment from "../config/environment";
+import environment from '../config/environment';
 
-import { IChartParams } from "../actions/chart.actions";
+import { IChartParams } from '../actions/chart.actions';
 
-import { TIMESPAN } from "../constants/timespan.constant";
+import { TIMESPAN } from '../constants/timespan.constant';
 
 export class ChartApiService {
-  static getChart (chartType: string, options: IChartParams = {}): any {
+  static getChart(chartType: string, options: IChartParams = {}): any {
     const timespan =
-      options.timespan === TIMESPAN.ALLTIME ? "all" : options.timespan;
+      options.timespan === TIMESPAN.ALLTIME ? 'all' : options.timespan;
 
     return axios
       .get(`${environment.apiUrl}/charts/${chartType}`, {
         params: {
-          timespan: timespan || TIMESPAN.DAYS_30
-        }
+          timespan: timespan || TIMESPAN.DAYS_30,
+        },
       })
       .then((response: AxiosResponse) => {
         if (!response) {

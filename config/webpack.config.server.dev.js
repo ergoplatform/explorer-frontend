@@ -11,7 +11,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     publicPath: '/',
-    path: paths.server.build
+    path: paths.server.build,
   },
 
   // Currently we need to add '.ts' to the resolve.extensions array.
@@ -26,16 +26,16 @@ module.exports = {
       '.js',
       '.json',
       '.web.jsx',
-      '.jsx'
+      '.jsx',
     ],
     alias: {
       'react-dom': '@hot-loader/react-dom',
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'styles': paths.client.styles,
-      'apiSpec': paths.apiSpec,
-    }
+      styles: paths.client.styles,
+      apiSpec: paths.apiSpec,
+    },
   },
 
   // Source maps support ('inline-source-map' also works)
@@ -51,16 +51,16 @@ module.exports = {
             loader: require.resolve('ts-loader'),
             options: {
               // disable type checker - we will use it in fork plugin
-              transpileOnly: true
-            }
-          }
-        ]
+              transpileOnly: true,
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
         use: [
           {
-            loader: 'svg-sprite-loader'
+            loader: 'svg-sprite-loader',
           },
           {
             loader: 'svgo-loader',
@@ -69,81 +69,77 @@ module.exports = {
                 { removeTitle: true },
                 { mergePaths: true },
                 { removeDesc: true },
-                { convertPathData: false }
-              ]
-            }
-          }
-        ]
+                { convertPathData: false },
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
-          Object.assign(
-            {
-              fallback: {
-                loader: require.resolve('style-loader'),
-                options: {
-                  hmr: false
-                }
+          Object.assign({
+            fallback: {
+              loader: require.resolve('style-loader'),
+              options: {
+                hmr: false,
               },
-              use: [
-                {
-                  loader: require.resolve('css-loader'),
-                  options: {
-                    importLoaders: 1,
-                    sourceMap: shouldUseSourceMap
-                  }
-                },
-                {
-                  loader: require.resolve('postcss-loader'),
-                  options: {
-                    // Necessary for external CSS imports to work
-                    // https://github.com/facebookincubator/create-react-app/issues/2677
-                    ident: 'postcss',
-                    plugins: () => [
-                      require('postcss-flexbugs-fixes'),
-                      autoprefixer({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9' // React doesn't support IE8 anyway
-                        ],
-                        flexbox: 'no-2009'
-                      })
-                    ]
-                  }
-                }
-              ]
             },
-          )
-        )
+            use: [
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  sourceMap: shouldUseSourceMap,
+                },
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  // Necessary for external CSS imports to work
+                  // https://github.com/facebookincubator/create-react-app/issues/2677
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9', // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009',
+                    }),
+                  ],
+                },
+              },
+            ],
+          })
+        ),
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
-          Object.assign(
-            {
-              fallback: {
-                loader: require.resolve('style-loader'),
-                options: {
-                  hmr: false
-                }
+          Object.assign({
+            fallback: {
+              loader: require.resolve('style-loader'),
+              options: {
+                hmr: false,
               },
-              use: [
-                {
-                  loader: require.resolve('css-loader'),
-                  options: {
-                    importLoaders: 1,
-                    sourceMap: shouldUseSourceMap
-                  }
-                },
-                require.resolve('sass-loader')
-              ]
             },
-          )
-        )
+            use: [
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  sourceMap: shouldUseSourceMap,
+                },
+              },
+              require.resolve('sass-loader'),
+            ],
+          })
+        ),
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       {
@@ -155,16 +151,16 @@ module.exports = {
         test: /\.(ttf|woff|woff2|eot|yaml)/,
         loader: require.resolve('file-loader'),
         options: {
-          name: 'static/media/[name].[ext]'
-        }
+          name: 'static/media/[name].[ext]',
+        },
       },
-    ]
+    ],
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: cssFilename
+      filename: cssFilename,
     }),
   ],
   target: 'node',
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
 };

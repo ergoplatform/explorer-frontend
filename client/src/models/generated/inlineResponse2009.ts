@@ -10,14 +10,13 @@
  * Do not edit the class manually.
  */
 
-
 export interface InlineResponse2009 {
-    /**
-     * Miner name or address
-     */
-    name?: string;
-    /**
-     * Number of blocks mined by miner
-     */
-    value?: number;
+  /**
+   * Miner name or address
+   */
+  name?: string;
+  /**
+   * Number of blocks mined by miner
+   */
+  value?: number;
 }

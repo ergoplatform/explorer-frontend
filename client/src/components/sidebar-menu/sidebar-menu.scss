@@ -37,7 +37,6 @@ $sidebar-menu-item-active-color: #ffffff;
     align-items: center;
     justify-content: center;
 
-
     // [ Mode ] Active
     &--active {
       color: $sidebar-menu-item-active-color;
@@ -46,7 +45,7 @@ $sidebar-menu-item-active-color: #ffffff;
         fill: $sidebar-menu-item-active-color;
       }
 
-       + .bi-sidebar-menu__item-children {
+      + .bi-sidebar-menu__item-children {
         display: block;
       }
     }

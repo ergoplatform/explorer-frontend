@@ -25,7 +25,7 @@ class Api extends React.PureComponent<ApiState & ApiActions> {
     return (
       <div className="bi-api">
         <FormattedMessage id="common.pages.api.title">
-          {title => (
+          {(title) => (
             <Helmet>
               <title>{title}</title>
             </Helmet>

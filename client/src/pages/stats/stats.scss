@@ -10,7 +10,8 @@ $stats-subtitle-color: #828795;
 
   // [ Components ]
   //-----------------------------------
-  &__header, &__body {
+  &__header,
+  &__body {
     padding: 0 ($grid-offset-step * 15);
   }
 
@@ -34,18 +35,21 @@ $stats-subtitle-color: #828795;
   .bi-stats {
     padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
 
-    &__footer, &__header, &__body {
+    &__footer,
+    &__header,
+    &__body {
       padding: 0 ($grid-offset-step * 5);
     }
   }
 }
 
-
 @media screen and (max-width: $mobile-device-width) {
   .bi-stats {
     padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
 
-    &__footer, &__header, &__body {
+    &__footer,
+    &__header,
+    &__body {
       padding: 0 ($grid-offset-step * 3);
     }
   }

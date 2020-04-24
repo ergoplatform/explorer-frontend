@@ -12,7 +12,6 @@ $block-table-cell-border-color: $theme-color-blue;
 .bi-pie-chart {
   padding: $grid-offset-step * 5 ($grid-offset-step * 15);
 
-
   &__legend {
     margin-top: $grid-offset-step * 5;
     width: 100%;
@@ -46,7 +45,6 @@ $block-table-cell-border-color: $theme-color-blue;
     color: $block-table-cell-color;
     font-size: 15px;
     font-weight: 300;
-
 
     &:first-child:after {
       position: absolute;

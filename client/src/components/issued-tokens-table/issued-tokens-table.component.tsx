@@ -29,7 +29,7 @@ export class IssuedTokensTableComponent extends React.Component<
       <div className="bi-blocks-table__body bi-table">
         <IssuedTokensTableHeaderComponent />
 
-        {this.props.tokens.map(token => {
+        {this.props.tokens.map((token) => {
           return (
             <div
               className="bi-blocks-table__row bi-table__row"

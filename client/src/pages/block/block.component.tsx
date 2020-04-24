@@ -81,7 +81,7 @@ class Block extends React.Component {
           id="common.pages.block.title"
           values={{ id: this.props.block.header.id }}
         >
-          {title => (
+          {(title) => (
             <Helmet>
               <title>{title}</title>
             </Helmet>

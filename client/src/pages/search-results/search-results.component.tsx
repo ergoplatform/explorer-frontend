@@ -14,20 +14,26 @@ import { BlocksTableComponent } from '../../components/blocks-table/blocks-table
 
 import './search-results.scss';
 
-type ISearchResultsProps = RouteComponentProps<{}> & SearchActions & SearchState & AppActions;
+type ISearchResultsProps = RouteComponentProps<{}> &
+  SearchActions &
+  SearchState &
+  AppActions;
 
 interface ISearchResultsState {
   canSearch: boolean;
 }
 
-class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsState> {
+class SearchResults extends React.Component<
+  ISearchResultsProps,
+  ISearchResultsState
+> {
   state: ISearchResultsState = {
-    canSearch: true
+    canSearch: true,
   };
 
   private query!: string;
 
-  componentDidMount (): void {
+  componentDidMount(): void {
     if (this.props.preloaded) {
       this.props.clearPreloadedState();
 
@@ -41,7 +47,7 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     this.doSearch();
   }
 
-  componentWillReceiveProps (nextProps: ISearchResultsProps): void {
+  componentWillReceiveProps(nextProps: ISearchResultsProps): void {
     const { query = '' } = queryString.parse(nextProps.location.search);
 
     if (query !== this.query) {
@@ -51,18 +57,21 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     }
   }
 
-  render (): JSX.Element {
+  render(): JSX.Element {
     return (
-      <div className='bi-search-results'>
-        { !this.state.canSearch ?
-          <div className='bi-search-results__body'>
-            <FormattedMessage id='components.search-results.wrong-query'/>
-          </div> : this.renderBody() }
+      <div className="bi-search-results">
+        {!this.state.canSearch ? (
+          <div className="bi-search-results__body">
+            <FormattedMessage id="components.search-results.wrong-query" />
+          </div>
+        ) : (
+          this.renderBody()
+        )}
       </div>
     );
   }
 
-  private renderBody (): JSX.Element | null {
+  private renderBody(): JSX.Element | null {
     if (!this.props.data) {
       return null;
     }
@@ -83,40 +92,46 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
     // }
 
     if (blocks.length === 1) {
-      return <Redirect to={ `/blocks/${blocks[0].id}` }/>;
+      return <Redirect to={`/blocks/${blocks[0].id}`} />;
     }
 
     if (addresses.length === 1) {
-      return <Redirect to={ `/addresses/${addresses[0]}` }/>;
+      return <Redirect to={`/addresses/${addresses[0]}`} />;
     }
 
     if (transactions.length === 1) {
-      return <Redirect to={ `/transactions/${transactions[0]}` } />;
+      return <Redirect to={`/transactions/${transactions[0]}`} />;
     }
 
     if (exactBlock) {
-      return <Redirect to={ `/blocks/${this.query}` }/>;
+      return <Redirect to={`/blocks/${this.query}`} />;
     }
 
     if (exactAddress) {
-      return <Redirect to={ `/addresses/${this.query}` }/>;
+      return <Redirect to={`/addresses/${this.query}`} />;
     }
 
     if (exactTransaction) {
-      return <Redirect to={ `/transactions/${this.query}` } />;
+      return <Redirect to={`/transactions/${this.query}`} />;
     }
 
     return (
-      <div className='bi-search-results__body'>
-        { blocks.length === 0 && <FormattedMessage id='components.search-results.no-results'/> }
+      <div className="bi-search-results__body">
+        {blocks.length === 0 && (
+          <FormattedMessage id="components.search-results.no-results" />
+        )}
 
-        { blocks.length > 0 &&
-        <BlocksTableComponent blocks={ blocks } isFetching={ this.props.fetching }/> }
+        {blocks.length > 0 && (
+          <BlocksTableComponent
+            blocks={blocks}
+            isFetching={this.props.fetching}
+          />
+        )}
       </div>
     );
   }
 
-  private doSearch (): void {
+  private doSearch(): void {
     if (this.query.length < 5) {
       this.setState({ canSearch: false });
 
@@ -129,13 +144,15 @@ class SearchResults extends React.Component<ISearchResultsProps, ISearchResultsS
   }
 }
 
-function mapStateToProps (state: AppState): SearchState {
+function mapStateToProps(state: AppState): SearchState {
   return state.search;
 }
 
-function mapDispatchToProps (dispatch: any): any {
+function mapDispatchToProps(dispatch: any): any {
   return bindActionCreators({ ...SearchActions, ...AppActions }, dispatch);
 }
 
-
-export const SearchResultsComponent = connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+export const SearchResultsComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchResults);

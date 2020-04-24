@@ -14,17 +14,16 @@ describe('Component | Coin Value', () => {
   beforeEach(() => {
     value = 1000000000000;
 
-    wrapper = shallowWithIntl(<CoinValueComponent value={ value }/>);
+    wrapper = shallowWithIntl(<CoinValueComponent value={value} />);
   });
 
   it('should render without crashing', () => {
-
-    expect(wrapper.length)
-      .toBe(1);
+    expect(wrapper.length).toBe(1);
   });
 
   it('should transform value correctly', () => {
-    expect(wrapper.text())
-      .toEqual(`${1000} ${environment.blockchain.coinName.toLocaleUpperCase()}`);
+    expect(wrapper.text()).toEqual(
+      `${1000} ${environment.blockchain.coinName.toLocaleUpperCase()}`
+    );
   });
 });

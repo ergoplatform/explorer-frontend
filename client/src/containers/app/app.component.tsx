@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import queryString from 'query-string';
 import React from 'react';
 import Helmet from 'react-helmet';
-import { hot } from 'react-hot-loader';
 import { Route, RouteComponentProps, Switch, withRouter } from 'react-router';
 
 import { HeaderComponent } from '../../components/header/header.component';
@@ -102,7 +101,7 @@ class App extends React.PureComponent {
                 component={IssuedTokensComponent}
               />
 
-              <Route component={NotFoundComponent} />
+              <Route path="*" component={NotFoundComponent} />
             </Switch>
           </div>
         </div>
@@ -111,4 +110,4 @@ class App extends React.PureComponent {
   }
 }
 
-export const AppComponent = hot(module)(withRouter(App));
+export const AppComponent = withRouter(App);

@@ -8,18 +8,30 @@ interface IChartsPreviewProps {
 
 import './charts-preview.scss';
 
-export class ChartsPreviewComponent extends React.PureComponent<IChartsPreviewProps> {
-  render (): JSX.Element {
+export class ChartsPreviewComponent extends React.PureComponent<
+  IChartsPreviewProps
+> {
+  render(): JSX.Element {
     return (
-      <div className='bi-charts-preview'>
-        <Link to={ `/charts/${this.props.chartType}` } className='bi-charts-preview__link'>
-          <FormattedMessage id={ `components.chart.title.${this.props.chartType}` }/>
+      <div className="bi-charts-preview">
+        <Link
+          to={`/charts/${this.props.chartType}`}
+          className="bi-charts-preview__link"
+        >
+          <FormattedMessage
+            id={`components.chart.title.${this.props.chartType}`}
+          />
 
-          <img src={`/charts/images/${this.props.chartType}.jpeg`} className='bi-charts-preview__image'/>
+          <img
+            src={`/charts/images/${this.props.chartType}.jpeg`}
+            className="bi-charts-preview__image"
+          />
         </Link>
 
-        <div className='bi-charts-preview__description'>
-          <FormattedMessage id={ `components.chart.subtitle.${this.props.chartType}` }/>
+        <div className="bi-charts-preview__description">
+          <FormattedMessage
+            id={`components.chart.subtitle.${this.props.chartType}`}
+          />
         </div>
       </div>
     );

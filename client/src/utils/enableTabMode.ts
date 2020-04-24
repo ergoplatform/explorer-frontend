@@ -9,7 +9,7 @@ export const enableTabMode = () => {
     document.addEventListener('mousemove', onMouseMove);
   });
 
-  function onMouseMove (event: MouseEvent): void {
+  function onMouseMove(event: MouseEvent): void {
     document.body.classList.remove(TAB_MODE_CLASSNAME);
 
     document.removeEventListener('mousemove', onMouseMove);

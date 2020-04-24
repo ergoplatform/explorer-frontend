@@ -45,14 +45,16 @@ function getAppConfig(): any {
   return { ...environment, ...appConfig };
 }
 
+const appConfig = getAppConfig();
+
 environment = {
-  ...getAppConfig(),
+  ...appConfig,
   get environments(): any[] {
-    return getAppConfig().environments;
+    return appConfig.environments;
   },
 
   get apiUrl(): string | undefined {
-    return getAppConfig().apiUrl;
+    return appConfig.apiUrl;
   },
 };
 
