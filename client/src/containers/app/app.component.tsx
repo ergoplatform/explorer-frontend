@@ -8,7 +8,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 import { AddressComponent } from '../../pages/address/address.component';
-import { ApiComponent } from '../../pages/api/api.component';
+// import { ApiComponent } from '../../pages/api/api.component';
 import { BlockComponent } from '../../pages/block/block.component';
 import { ChartComponent } from '../../pages/chart/chart.component';
 import { ChartsComponent } from '../../pages/charts/charts.component';
@@ -60,7 +60,7 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
             <Switch>
               <Route exact path="/" component={DataComponent} />
 
-              <Route exact path="/api" component={ApiComponent} />
+              {/* <Route exact path="/api" component={ApiComponent} /> */}
 
               <Route path="/blocks/:id" component={BlockComponent} />
 
