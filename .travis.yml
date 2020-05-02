@@ -12,7 +12,7 @@ services:
   - docker
 
 install:
-  - yarn global add typescript@3.4.5
+  - yarn global add typescript@3.8
   - yarn --production=false
 
 before_script:
@@ -21,18 +21,6 @@ before_script:
 script:
   - yarn build
   - yarn test:coverage
-  - cp ./build/client/index.html ./build/client/200.html
-
-deploy:
-  - provider: surge
-    skip_cleanup: true
-    project: ./build/client
-    domain: ergo-explorer.surge.sh
-
-  - provider: script
-    script: bash scripts/heroku-deploy.sh
-    on:
-      branch: develop
 
 after_success:
   - codecov

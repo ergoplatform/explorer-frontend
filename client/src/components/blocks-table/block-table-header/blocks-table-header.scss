@@ -28,17 +28,20 @@ $block-table-table-sort-active-color: $theme-color-blue;
     color: $theme-primary-color;
   }
 
-  &__sort--asc, &__sort--desc {
+  &__sort--asc,
+  &__sort--desc {
     color: $block-table-table-sort-active-color;
   }
 
-  &__sort--asc &, &__sort--desc & {
+  &__sort--asc &,
+  &__sort--desc & {
     &__sort-icon {
       fill: $block-table-table-sort-active-color;
     }
   }
 
-  &__sort-icon--asc, &__sort-icon--desc {
+  &__sort-icon--asc,
+  &__sort-icon--desc {
     display: none;
   }
 

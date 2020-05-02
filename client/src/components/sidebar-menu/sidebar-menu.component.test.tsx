@@ -2,7 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { shallowWithIntl } from '../../utils/test-utils';
-import { ISidebarMenuProps, SidebarMenuComponent } from './sidebar-menu.component';
+import {
+  ISidebarMenuProps,
+  SidebarMenuComponent,
+} from './sidebar-menu.component';
 
 describe('Components | Sidebar Menu', () => {
   let props: ISidebarMenuProps;
@@ -17,36 +20,31 @@ describe('Components | Sidebar Menu', () => {
         {
           component: 'foo',
           title: 'foo',
-          url: 'foo'
-        }, {
+          url: 'foo',
+        },
+        {
           component: 'bar',
           title: 'bar',
-          url: 'bar'
-        }],
-      onClick: jest.fn()
+          url: 'bar',
+        },
+      ],
+      onClick: jest.fn(),
     };
   });
 
-  const wrapper = () => shallowWithIntl(<SidebarMenuComponent { ...props }/>);
+  const wrapper = () => shallowWithIntl(<SidebarMenuComponent {...props} />);
 
   it('renders without crashing', () => {
-    expect(wrapper().length)
-      .toBe(1);
+    expect(wrapper().length).toBe(1);
   });
 
   it('renders NavLink as component for sidebar menu item by default', () => {
-    expect(wrapper()
-      .find(NavLink).length)
-      .toBe(1);
+    expect(wrapper().find(NavLink).length).toBe(1);
   });
 
   it('can render different components for sidebar menu item', () => {
-    expect(wrapper()
-      .find('foo').length)
-      .toBe(1);
+    expect(wrapper().find('foo').length).toBe(1);
 
-    expect(wrapper()
-      .find('bar').length)
-      .toBe(1);
+    expect(wrapper().find('bar').length).toBe(1);
   });
 });

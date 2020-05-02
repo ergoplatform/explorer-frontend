@@ -19,7 +19,7 @@ $transaction-raw-scripts-item-border-color: #eeeeee;
   &__item {
     padding: ($grid-offset-step * 4) ($grid-offset-step * 6);
 
-    &:nth-child(n+1) {
+    &:nth-child(n + 1) {
       border-top: 1px solid $transaction-raw-scripts-item-border-color;
     }
 

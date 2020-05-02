@@ -11,7 +11,7 @@ export class OrderBookComponent extends PureComponent<any> {
     return (
       <div className="bi-order-book">
         <FormattedMessage id="common.pages.order-book.title">
-          {title => (
+          {(title) => (
             <Helmet>
               <title>{title}</title>
             </Helmet>

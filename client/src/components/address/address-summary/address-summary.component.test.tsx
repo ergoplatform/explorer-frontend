@@ -10,14 +10,15 @@ describe('Component | Address Summary', () => {
 
   beforeEach(() => {
     summary = {
-      id: 'foo'
+      id: 'foo',
     };
   });
 
   it('should render without crashing', () => {
-    const wrapper = shallowWithIntl(<AddressSummaryComponent summary={ summary }/>);
+    const wrapper = shallowWithIntl(
+      <AddressSummaryComponent summary={summary} />
+    );
 
-    expect(wrapper.length)
-      .toBe(1);
+    expect(wrapper.length).toBe(1);
   });
 });

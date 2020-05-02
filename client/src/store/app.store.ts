@@ -1,5 +1,4 @@
 import { applyMiddleware, createStore } from 'redux';
-import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import environment from '../config/environment';
@@ -31,14 +30,21 @@ export interface AppState {
   tokens: TokensState;
 }
 
-const logger = createLogger({
-  predicate: () => environment.isLoggerEnabled,
-});
+let middlewares = [thunk];
+
+if (process.env.NODE_ENV === 'development') {
+  const { createLogger } = require('redux-logger');
+  const logger = createLogger({
+    predicate: () => environment.isLoggerEnabled,
+  });
+
+  middlewares = [...middlewares, logger];
+}
 
 export const configureStore = (preloadedState: any = {}) => {
   return createStore<AppState, any, any, any>(
     reducer,
     preloadedState,
-    applyMiddleware(thunk, logger)
+    applyMiddleware(...middlewares)
   );
 };

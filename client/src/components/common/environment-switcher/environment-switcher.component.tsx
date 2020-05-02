@@ -7,7 +7,7 @@ import { DropdownComponent } from '../dropdown/dropdown.component';
 import './environment-switcher.scss';
 
 export class EnvironmentSwitcherComponent extends React.PureComponent {
-  render (): JSX.Element | null {
+  render(): JSX.Element | null {
     if (!environment.environments) {
       return null;
     }
@@ -23,14 +23,16 @@ export class EnvironmentSwitcherComponent extends React.PureComponent {
 
     const selectedOption = {
       label: defaultEnvironment.name,
-      value: defaultEnvironment.url
+      value: defaultEnvironment.url,
     };
 
     return (
-      <div className='bi-environment-switcher'>
-        <DropdownComponent options={ options }
-                           component='a'
-                           selected={ selectedOption }/>
+      <div className="bi-environment-switcher">
+        <DropdownComponent
+          options={options}
+          component="a"
+          selected={selectedOption}
+        />
       </div>
     );
   }

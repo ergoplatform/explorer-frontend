@@ -10,33 +10,36 @@ export interface SearchState {
 
 export const initialState: SearchState = {
   fetching: false,
-  preloaded: false
+  preloaded: false,
 };
 
-export function searchReducer (state: SearchState = initialState, action: any): SearchState {
+export function searchReducer(
+  state: SearchState = initialState,
+  action: any
+): SearchState {
   switch (action.type) {
     case GET_SEARCH: {
       return {
         ...state,
-        fetching: true
+        fetching: true,
       };
     }
-    
+
     case GET_SEARCH_SUCCESS: {
       return {
         ...state,
         data: action.payload.data,
-        fetching: false
+        fetching: false,
       };
     }
-    
+
     case CLEAR_APP_PRELOADED_STATE: {
       return {
         ...state,
-        preloaded: false
+        preloaded: false,
       };
     }
-    
+
     default:
       return { ...state };
   }

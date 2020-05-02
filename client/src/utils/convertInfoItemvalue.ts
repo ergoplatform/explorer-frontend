@@ -9,40 +9,39 @@ export const convertInfoItemValue = (key: string, value: any): any => {
     case 'supply': {
       return formatNumber({
         integerSeparator: ' ',
-        suffix: ` ${environment.blockchain.coinName}`
+        suffix: ` ${environment.blockchain.coinName}`,
       })(value / 1e9);
     }
-    
-    
+
     case 'chart': {
       return formatNumber({ integerSeparator: ' ' })(value);
     }
-    
+
     case 'coin': {
       return formatNumber({
         integerSeparator: ' ',
-        suffix: ` ${ environment.blockchain.coinName.toUpperCase() }`
+        suffix: ` ${environment.blockchain.coinName.toUpperCase()}`,
       })(value);
     }
-    
+
     case 'bytes': {
-      return formatNumberMetricPrefix(value, {desiredFormat: 'k'}) + 'B';
+      return formatNumberMetricPrefix(value, { desiredFormat: 'k' }) + 'B';
     }
-    
+
     case 'marketCap': {
       return formatNumber({
-        prefix: `$`
+        prefix: `$`,
       })(value);
     }
-    
+
     case 'transactionAverage': {
       return formatNumber({ integerSeparator: ' ' })(value);
     }
-    
+
     case 'hashRate': {
       return formatNumberMetricPrefix(value) + 'H/s';
     }
-    
+
     default: {
       return value;
     }

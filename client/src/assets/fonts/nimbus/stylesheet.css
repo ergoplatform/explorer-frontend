@@ -29,46 +29,45 @@
 */
 
 @font-face {
-    font-family: 'NimbusSansNovus';
-    src: url('NimbusSanNov-SemBol.eot');
-    src: url('NimbusSanNov-SemBol.eot?#iefix') format('embedded-opentype'),
-        url('NimbusSanNov-SemBol.woff2') format('woff2'),
-        url('NimbusSanNov-SemBol.woff') format('woff'),
-        url('NimbusSanNov-SemBol.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
+  font-family: 'NimbusSansNovus';
+  src: url('NimbusSanNov-SemBol.eot');
+  src: url('NimbusSanNov-SemBol.eot?#iefix') format('embedded-opentype'),
+    url('NimbusSanNov-SemBol.woff2') format('woff2'),
+    url('NimbusSanNov-SemBol.woff') format('woff'),
+    url('NimbusSanNov-SemBol.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'NimbusSansNovus';
-    src: url('NimbusSanNov-Med.eot');
-    src: url('NimbusSanNov-Med.eot?#iefix') format('embedded-opentype'),
-        url('NimbusSanNov-Med.woff2') format('woff2'),
-        url('NimbusSanNov-Med.woff') format('woff'),
-        url('NimbusSanNov-Med.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'NimbusSansNovus';
+  src: url('NimbusSanNov-Med.eot');
+  src: url('NimbusSanNov-Med.eot?#iefix') format('embedded-opentype'),
+    url('NimbusSanNov-Med.woff2') format('woff2'),
+    url('NimbusSanNov-Med.woff') format('woff'),
+    url('NimbusSanNov-Med.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'NimbusSansNovus';
-    src: url('NimbusSanNov-Reg.eot');
-    src: url('NimbusSanNov-Reg.eot?#iefix') format('embedded-opentype'),
-        url('NimbusSanNov-Reg.woff2') format('woff2'),
-        url('NimbusSanNov-Reg.woff') format('woff'),
-        url('NimbusSanNov-Reg.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'NimbusSansNovus';
+  src: url('NimbusSanNov-Reg.eot');
+  src: url('NimbusSanNov-Reg.eot?#iefix') format('embedded-opentype'),
+    url('NimbusSanNov-Reg.woff2') format('woff2'),
+    url('NimbusSanNov-Reg.woff') format('woff'),
+    url('NimbusSanNov-Reg.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'NimbusSansNovus';
-    src: url('NimbusSanNov-Bol.eot');
-    src: url('NimbusSanNov-Bol.eot?#iefix') format('embedded-opentype'),
-        url('NimbusSanNov-Bol.woff2') format('woff2'),
-        url('NimbusSanNov-Bol.woff') format('woff'),
-        url('NimbusSanNov-Bol.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'NimbusSansNovus';
+  src: url('NimbusSanNov-Bol.eot');
+  src: url('NimbusSanNov-Bol.eot?#iefix') format('embedded-opentype'),
+    url('NimbusSanNov-Bol.woff2') format('woff2'),
+    url('NimbusSanNov-Bol.woff') format('woff'),
+    url('NimbusSanNov-Bol.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
 }
-

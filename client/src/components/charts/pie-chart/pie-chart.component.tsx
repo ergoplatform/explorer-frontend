@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Cell, Pie, PieChart, ResponsiveContainer, Tooltip,
-} from 'recharts';
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 
 import './pie-chart.scss';
 
@@ -12,11 +10,12 @@ interface IPieChartProps {
 }
 
 export class PieChartComponent extends React.PureComponent<IPieChartProps> {
-  render (): JSX.Element {
-    const data = this.props.data.map((item: any) => ({
-      name: item.name,
-      value: item.value,
-    }))
+  render(): JSX.Element {
+    const data = this.props.data
+      .map((item: any) => ({
+        name: item.name,
+        value: item.value,
+      }))
       .sort((a: any, b: any) => b.y - a.y);
 
     const COLORS = [
@@ -36,7 +35,8 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
       '#39CCCC',
       '#3D9970',
       '#B10DC9',
-      '#01FF70'];
+      '#01FF70',
+    ];
 
     return (
       <div className="bi-pie-chart">
@@ -53,9 +53,12 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
                 isAnimationActive={false}
                 label={true}
               >
-                {
-                data.map((entry: any, index: number) => <Cell key={`cell-${entry.value}`} fill={COLORS[index % COLORS.length]} />)
-              }
+                {data.map((entry: any, index: number) => (
+                  <Cell
+                    key={`cell-${entry.value}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
               </Pie>
               <Tooltip />
             </PieChart>
@@ -65,29 +68,23 @@ export class PieChartComponent extends React.PureComponent<IPieChartProps> {
         <div className="bi-pie-chart__legend bi-pie-chart__table bi-table">
           <div className="bi-pie-chart__row bi-table__row bi-pie-chart__row--header">
             <div className="bi-pie-chart__cell bi-table__cell">
-              { this.props.labels.name }
+              {this.props.labels.name}
             </div>
             <div className="bi-pie-chart__cell bi-table__cell">
-              { this.props.labels.value }
+              {this.props.labels.value}
             </div>
           </div>
 
-          {
-            this.props.data.map((item: any, index: number) => (
-              <div className="bi-pie-chart__row bi-table__row" key={index}>
-                <div className="bi-pie-chart__cell bi-table__cell">
-                  <span>{ this.props.labels.name }</span>
-                  {' '}
-                  { item.name }
-                </div>
-                <div className="bi-pie-chart__cell bi-table__cell">
-                  <span>{ this.props.labels.value }</span>
-                  {' '}
-                  { item.value }
-                </div>
+          {this.props.data.map((item: any, index: number) => (
+            <div className="bi-pie-chart__row bi-table__row" key={index}>
+              <div className="bi-pie-chart__cell bi-table__cell">
+                <span>{this.props.labels.name}</span> {item.name}
               </div>
-            ))
-          }
+              <div className="bi-pie-chart__cell bi-table__cell">
+                <span>{this.props.labels.value}</span> {item.value}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     );

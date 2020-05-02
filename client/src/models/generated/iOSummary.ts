@@ -10,18 +10,17 @@
  * Do not edit the class manually.
  */
 
-
 export interface IOSummary {
-    /**
-     * Total Coins Transferred
-     */
-    totalCoinsTransferred: number;
-    /**
-     * Total fee
-     */
-    totalFee: number;
-    /**
-     * Fee per Byte
-     */
-    feePerByte: number;
+  /**
+   * Total Coins Transferred
+   */
+  totalCoinsTransferred: number;
+  /**
+   * Total fee
+   */
+  totalFee: number;
+  /**
+   * Fee per Byte
+   */
+  feePerByte: number;
 }

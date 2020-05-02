@@ -1,38 +1,39 @@
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
+import enKeys from '../../locales/en/translations.json';
+import ruKeys from '../../locales/ru/translations.json';
 
 import { AppState } from '../../store/app.store';
 
-const flatJSONKeys = (msgs: any, finalMap = {}, finalKey='') => {
-  Object.keys(msgs)
-    .forEach((key: string) => {
-      let translationKey = key;
+const flatJSONKeys = (msgs: any, finalMap = {}, finalKey = '') => {
+  Object.keys(msgs).forEach((key: string) => {
+    let translationKey = key;
 
-      if (finalKey) {
-        translationKey = [finalKey, key].join('.');
-      }
+    if (finalKey) {
+      translationKey = [finalKey, key].join('.');
+    }
 
-      if (typeof msgs[key] !== 'string') {
-        flatJSONKeys(msgs[key], finalMap, translationKey);
-      } else {
-        finalMap[translationKey] = msgs[key];
-      }
-    }, finalMap);
+    if (typeof msgs[key] !== 'string') {
+      flatJSONKeys(msgs[key], finalMap, translationKey);
+    } else {
+      finalMap[translationKey] = msgs[key];
+    }
+  }, finalMap);
 
   return finalMap;
 };
 
 export const messages = {
-  en: flatJSONKeys(require('../../locales/en/translations.json')),
-  ru: flatJSONKeys(require('../../locales/ru/translations.json'))
+  en: flatJSONKeys(enKeys),
+  ru: flatJSONKeys(ruKeys),
 };
 
-function mapStateToProps (state: AppState): any {
-  const locale  = state.settings.locale || 'en';
+function mapStateToProps(state: AppState): any {
+  const locale = state.settings.locale || 'en';
 
   return {
     locale,
-    messages: { ...messages.en, ...messages[locale] }
+    messages: { ...messages.en, ...messages[locale] },
   };
 }
 

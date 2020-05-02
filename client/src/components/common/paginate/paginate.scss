@@ -11,7 +11,6 @@ $paginate-selected-bg-color: #eeeeee;
   &__item {
     margin: 0 $grid-offset-step;
 
-
     &--selected & {
       &-link {
         color: $paginate-selected-color;
@@ -31,7 +30,8 @@ $paginate-selected-bg-color: #eeeeee;
     cursor: pointer;
   }
 
-  &__prev, &__next {
+  &__prev,
+  &__next {
     padding: $grid-offset-step * 2;
     line-height: 15px;
     cursor: pointer;

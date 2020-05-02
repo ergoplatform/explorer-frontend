@@ -48,7 +48,7 @@ $dropdown-option-hover-bg: #f8f8f8;
     z-index: 9999999;
     border: 0.5px solid #dee3f1;
     background-color: $dropdown-dropdown-bg;
-    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.06);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.06);
     font-family: inherit;
 
     @media (max-width: $mobile-device-width) {
