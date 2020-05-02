@@ -8,7 +8,7 @@ import './transaction-io-summary.scss';
 
 interface ITransactionIoSummaryProps {
   summary: IOSummary;
-  isScriptShown: boolean;
+  isScriptShown?: boolean;
   onScriptToggle: () => void;
 }
 

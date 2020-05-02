@@ -24,13 +24,13 @@ import { ArrowIcon } from '../../components/common/icons/common.icons';
 
 import './chart.scss';
 
-class Chart extends React.PureComponent {
-  props!: RouteComponentProps<{
+class Chart extends React.PureComponent<
+  RouteComponentProps<{
     chartType: string;
   }> &
     ChartState &
-    ChartActions;
-
+    ChartActions
+> {
   params: any = {};
 
   constructor(props: any) {
@@ -46,7 +46,7 @@ class Chart extends React.PureComponent {
     this.props.getChart(this.props.match.params.chartType, this.params);
   }
 
-  componentWillReceiveProps(props: any): void {
+  UNSAFE_componentWillReceiveProps(props: any): void {
     const params = this.getParams();
 
     if (JSON.stringify(params) !== JSON.stringify(this.params)) {

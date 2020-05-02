@@ -25,8 +25,7 @@ type IDataProps = AppState &
     offset: number;
   };
 
-class IssuedTokens extends React.PureComponent {
-  props!: IDataProps;
+class IssuedTokens extends React.PureComponent<IDataProps> {
   params: any;
 
   constructor(props: any) {
@@ -42,7 +41,7 @@ class IssuedTokens extends React.PureComponent {
     this.reloadTokens(this.params);
   }
 
-  componentWillReceiveProps(props: IDataProps): void {
+  UNSAFE_componentWillReceiveProps(props: IDataProps): void {
     const params = this.getParams();
 
     if (JSON.stringify(params) !== JSON.stringify(this.params)) {

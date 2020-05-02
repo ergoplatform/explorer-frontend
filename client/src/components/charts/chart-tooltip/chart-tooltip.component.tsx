@@ -4,15 +4,13 @@ import React from 'react';
 import { convertInfoItemValue } from '../../../utils/convertInfoItemvalue';
 
 import './chart-tooltip.scss';
-
-export class ChartTooltipComponent extends React.PureComponent {
-  props!: {
-    type: string;
-    payload: any[];
-    label: string;
-    isScale: boolean;
-  };
-
+interface ChartProps {
+  type: string;
+  payload: any[];
+  label: string;
+  isScale: boolean;
+}
+export class ChartTooltipComponent extends React.PureComponent<ChartProps> {
   render(): JSX.Element {
     const date = dayjs(this.props.label).format('DD.MM.YYYY');
 

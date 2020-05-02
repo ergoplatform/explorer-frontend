@@ -47,7 +47,7 @@ class SearchResults extends React.Component<
     this.doSearch();
   }
 
-  componentWillReceiveProps(nextProps: ISearchResultsProps): void {
+  UNSAFE_componentWillReceiveProps(nextProps: ISearchResultsProps): void {
     const { query = '' } = queryString.parse(nextProps.location.search);
 
     if (query !== this.query) {

@@ -4,7 +4,7 @@ const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
 
 // Make sure any symlinks in the project folder are resolved:
 const appDirectory = fs.realpathSync(process.cwd());
-const resolvePath = relativePath => {
+const resolvePath = (relativePath) => {
   return path.resolve(appDirectory, relativePath);
 };
 
@@ -36,7 +36,7 @@ const moduleFileExtensions = [
 
 // Resolve file paths in the same order as webpack
 const resolveModule = (resolveFn, filePath) => {
-  const extension = moduleFileExtensions.find(extension =>
+  const extension = moduleFileExtensions.find((extension) =>
     fs.existsSync(resolveFn(`${filePath}.${extension}`))
   );
 
@@ -57,7 +57,7 @@ module.exports = {
   yarnLockFile: resolvePath('yarn.lock'),
   packageJson: resolvePath('package.json'),
   client: {
-    build: resolvePath('build/client'),
+    build: resolvePath('build'),
     public: resolvePath('client/public'),
     html: resolvePath('client/public/index.html'),
     root: resolveModule(resolvePath, 'client/src/index'),

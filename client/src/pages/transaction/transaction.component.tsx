@@ -20,15 +20,15 @@ import { TransactionsItemComponent } from '../../components/transactions/transac
 
 import './transaction.scss';
 
-class Transaction extends React.PureComponent {
-  props!: RouteComponentProps<{
+class Transaction extends React.PureComponent<
+  RouteComponentProps<{
     id: string;
   }> &
     TransactionState &
     TransactionActions &
     SettingsActions &
-    SettingsState;
-
+    SettingsState
+> {
   constructor(props: any) {
     super(props);
 
@@ -39,7 +39,7 @@ class Transaction extends React.PureComponent {
     this.props.getTransaction(this.props.match.params.id);
   }
 
-  componentWillReceiveProps(nextProps: any): void {
+  UNSAFE_componentWillReceiveProps(nextProps: any): void {
     if (nextProps.match.params.id !== this.props.match.params.id) {
       this.props.getTransaction(nextProps.match.params.id);
     }

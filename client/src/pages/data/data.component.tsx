@@ -47,7 +47,7 @@ class Data extends React.PureComponent<IDataProps> {
     this.reloadBlocks(this.params);
   }
 
-  componentWillReceiveProps(props: IDataProps): void {
+  UNSAFE_componentWillReceiveProps(props: IDataProps): void {
     const params = this.getParams();
 
     if (JSON.stringify(params) !== JSON.stringify(this.params)) {

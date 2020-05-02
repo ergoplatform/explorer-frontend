@@ -11,9 +11,9 @@ import {
 
 export interface SettingsState {
   locale?: string;
-  isSidebarCollapsed: boolean;
-  isSidebarDisplayed: boolean;
-  isScriptsDisplayed: boolean;
+  isSidebarCollapsed?: boolean;
+  isSidebarDisplayed?: boolean;
+  isScriptsDisplayed?: boolean;
 }
 
 const initialState = {

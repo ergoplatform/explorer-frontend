@@ -21,10 +21,12 @@ interface IBlockTransactionsItemProps {
   transaction: Transaction;
   confirmations?: any;
   address?: AddressId;
+  key?: string;
 }
 
-class TransactionsItem extends React.Component {
-  props!: IBlockTransactionsItemProps & SettingsState;
+class TransactionsItem extends React.Component<
+  IBlockTransactionsItemProps & SettingsState
+> {
   state: any = {
     isClient: false,
   };
