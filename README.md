@@ -24,6 +24,29 @@ To have it in JetBrains WebStorm follow next instructions
     * Parameters: `$FilePath$ -t`
     * Working directory: `$FileDir$`
 
+## Custom config
+
+To pass custom variables put to `/config/` `app.config.js`
+
+Where `app.config.js` is a JavaScript file containing next content:
+
+```js
+var __APP_CONFIG__ = {
+  apiUrl: 'http://custom.apiserver',
+  alternativeLogo: true, // true by default
+  environments: [
+     {
+       name: 'Testnet',
+       url: 'http://custom.explorerUrl',
+     }
+   ],
+};
+
+if (typeof global !== 'undefined') {
+  global.__APP_CONFIG__ = __APP_CONFIG__;
+}
+```
+
 ## Translations
 
 In order to translate project files use [i18n-editor](https://github.com/jcbvm/i18n-editor/releases).
