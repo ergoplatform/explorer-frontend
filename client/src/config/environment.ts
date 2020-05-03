@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 import { environmentDefault } from './environment.default';
 import { environmentProd } from './environment.prod';
 
@@ -26,22 +24,42 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 function getAppConfig(): any {
-  let appConfig = {
+  let appConfig: any = {
     apiUrl: environment.apiUrl,
   };
 
-  if (process.env.IS_BROWSER) {
-    appConfig = window.__APP_CONFIG__;
+  if (process.env.BLOCKCHAIN_ENVIRONMENT === 'mainnet') {
+    appConfig = {
+      apiUrl: 'https://new-explorer.ergoplatform.com',
+      alternativeLogo: false, // true by default
+      environments: [
+        {
+          name: 'Mainnet',
+          url: 'https://explorer.ergoplatform.com',
+        },
+        {
+          name: 'Testnet',
+          url: 'https://testnet.ergoplatform.com',
+        },
+      ],
+    };
   } else {
-    const appPath = fs.realpathSync(process.cwd());
-
-    if (process.env.NODE_ENV === 'production') {
-      eval(fs.readFileSync(appPath + '/build/client/app.config.js', 'utf-8'));
-
-      appConfig = global.__APP_CONFIG__;
-    }
+    appConfig = {
+      apiUrl: 'https://api-testnet.ergoplatform.com',
+      alternativeLogo: true, // true by default
+      environments: [
+        {
+          name: 'Testnet',
+          url: 'https://testnet.ergoplatform.com',
+        },
+        {
+          name: 'Mainnet',
+          url: 'https://explorer.ergoplatform.com',
+        },
+      ],
+    };
   }
-
+  console.log(process.env.BLOCKCHAIN_ENVIRONMENT);
   return { ...environment, ...appConfig };
 }
 

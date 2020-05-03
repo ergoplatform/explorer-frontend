@@ -78,6 +78,7 @@ function getClientEnvironment(publicUrl, isBrowser) {
         // images into the `src` and `import` them in code to get their paths.
         PUBLIC_URL: publicUrl,
         IS_BROWSER: isBrowser,
+        BLOCKCHAIN_ENVIRONMENT: process.env.BLOCKCHAIN_ENVIRONMENT,
       }
     );
   // Stringify all values so we can feed into Webpack DefinePlugin

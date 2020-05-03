@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node scripts/client.start.js",
-    "build": "node scripts/client.build.js",
+    "start": "cross-env BLOCKCHAIN_ENVIRONMENT='mainnet' node scripts/client.start.js",
+    "build": "cross-env BLOCKCHAIN_ENVIRONMENT='testnet' node scripts/client.build.js",
+    "build-mainnet": "cross-env BLOCKCHAIN_ENVIRONMENT='mainnet' node scripts/client.build.js",
     "test": "node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage"
   },
@@ -30,6 +31,7 @@
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "classnames": "^2.2.5",
+    "cross-env": "^7.0.2",
     "css-loader": "3.4.2",
     "dayjs": "^1.6.3",
     "dotenv": "8.2.0",
