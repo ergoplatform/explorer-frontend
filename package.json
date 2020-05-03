@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "cross-env BLOCKCHAIN_ENVIRONMENT='mainnet' node scripts/client.start.js",
-    "build": "cross-env BLOCKCHAIN_ENVIRONMENT='testnet' node scripts/client.build.js",
-    "build-mainnet": "cross-env BLOCKCHAIN_ENVIRONMENT='mainnet' node scripts/client.build.js",
+    "start": "node scripts/client.start.js",
+    "build": "node scripts/client.build.js",
     "test": "node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage"
   },

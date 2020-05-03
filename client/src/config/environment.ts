@@ -28,38 +28,10 @@ function getAppConfig(): any {
     apiUrl: environment.apiUrl,
   };
 
-  if (process.env.BLOCKCHAIN_ENVIRONMENT === 'mainnet') {
-    appConfig = {
-      apiUrl: 'https://new-explorer.ergoplatform.com',
-      alternativeLogo: false, // true by default
-      environments: [
-        {
-          name: 'Mainnet',
-          url: 'https://explorer.ergoplatform.com',
-        },
-        {
-          name: 'Testnet',
-          url: 'https://testnet.ergoplatform.com',
-        },
-      ],
-    };
-  } else {
-    appConfig = {
-      apiUrl: 'https://api-testnet.ergoplatform.com',
-      alternativeLogo: true, // true by default
-      environments: [
-        {
-          name: 'Testnet',
-          url: 'https://testnet.ergoplatform.com',
-        },
-        {
-          name: 'Mainnet',
-          url: 'https://explorer.ergoplatform.com',
-        },
-      ],
-    };
+  if (window.__APP_CONFIG__) {
+    appConfig = window.__APP_CONFIG__;
   }
-  console.log(process.env.BLOCKCHAIN_ENVIRONMENT);
+
   return { ...environment, ...appConfig };
 }
 
