@@ -13,21 +13,20 @@ export interface IChartParams {
 }
 
 export const ChartActions: ChartActions = {
-  getChart (chartType: string, options: IChartParams = {}): any {
+  getChart(chartType: string, options: IChartParams = {}): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
-        type: GET_CHART
+        type: GET_CHART,
       });
-      
-      return ChartApiService.getChart(chartType, options)
-        .then((data: any) => {
-          dispatch({
-            payload: {
-              data
-            },
-            type: GET_CHART_SUCCESS
-          });
+
+      return ChartApiService.getChart(chartType, options).then((data: any) => {
+        dispatch({
+          payload: {
+            data,
+          },
+          type: GET_CHART_SUCCESS,
         });
+      });
     };
-  }
+  },
 };

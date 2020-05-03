@@ -7,26 +7,33 @@ interface IApiResponseProps {
   response: any;
 }
 
-export class ApiResponseComponent extends React.PureComponent<IApiResponseProps> {
-  render (): JSX.Element {
+export class ApiResponseComponent extends React.PureComponent<
+  IApiResponseProps
+> {
+  render(): JSX.Element {
     return (
-      <div className='bi-api-response'>
-        <div className='bi-api-response__header'>
-          Response { this.props.code }
+      <div className="bi-api-response">
+        <div className="bi-api-response__header">
+          Response {this.props.code}
         </div>
-        <div className='bi-api-response__body'>
-          { Object.keys(this.props.response.content)
-            .map((key) => {
-              return <pre key={ key } className='bi-api-response__example g-scroll-y'>{
-                JSON.stringify(this.getExample(this.props.response.content[key].schema), null, 2) }
-                </pre>;
-            }) }
+        <div className="bi-api-response__body">
+          {Object.keys(this.props.response.content).map((key) => {
+            return (
+              <pre key={key} className="bi-api-response__example g-scroll-y">
+                {JSON.stringify(
+                  this.getExample(this.props.response.content[key].schema),
+                  null,
+                  2
+                )}
+              </pre>
+            );
+          })}
         </div>
       </div>
     );
   }
 
-  private getExample (schema: any): any {
+  private getExample(schema: any): any {
     let response: any;
 
     switch (schema.type) {
@@ -37,10 +44,9 @@ export class ApiResponseComponent extends React.PureComponent<IApiResponseProps>
           break;
         }
 
-        Object.keys(schema.properties)
-          .forEach((property: string) => {
-            response[property] = this.getExample(schema.properties[property]);
-          });
+        Object.keys(schema.properties).forEach((property: string) => {
+          response[property] = this.getExample(schema.properties[property]);
+        });
 
         break;
       }

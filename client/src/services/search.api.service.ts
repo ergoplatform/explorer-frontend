@@ -1,14 +1,14 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from 'axios';
 
-import environment from "../config/environment";
+import environment from '../config/environment';
 
 export class SearchApiService {
-  static search (query: string): any {
+  static search(query: string): any {
     return axios
       .get(`${environment.apiUrl}/search`, {
         params: {
-          query
-        }
+          query,
+        },
       })
       .then((response: AxiosResponse) => {
         if (!response) {

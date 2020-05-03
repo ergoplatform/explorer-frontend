@@ -7,21 +7,26 @@ import { TransactionsItemComponent } from './transactions-item/transactions-item
 
 import './transactions.scss';
 
-interface IBlockTransactionProps {
+interface BlockTransactionProps {
   transactions: Transaction[];
   address?: AddressId;
 }
 
-export class TransactionsComponent extends React.PureComponent<IBlockTransactionProps> {
-  render (): JSX.Element {
+export class TransactionsComponent extends React.PureComponent<
+  BlockTransactionProps
+> {
+  render(): JSX.Element {
     return (
-      <div className='bi-transactions'>
-        {
-          this.props.transactions.map((transaction) => {
-            return (<TransactionsItemComponent key={ transaction.id } transaction={ transaction }
-                                               address={ this.props.address }/>);
-          })
-        }
+      <div className="bi-transactions">
+        {this.props.transactions.map((transaction) => {
+          return (
+            <TransactionsItemComponent
+              key={transaction.id}
+              transaction={transaction}
+              address={this.props.address}
+            />
+          );
+        })}
       </div>
     );
   }

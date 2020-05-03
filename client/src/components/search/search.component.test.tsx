@@ -6,9 +6,8 @@ import { SearchComponent } from './search.component';
 
 describe('Components | Search', () => {
   it('renders without crashing', () => {
-    const wrapper = shallowWithIntl(<SearchComponent/>);
+    const wrapper = shallowWithIntl(<SearchComponent />);
 
-    expect(wrapper.length)
-      .toBe(1);
+    expect(wrapper.length).toBe(1);
   });
 });

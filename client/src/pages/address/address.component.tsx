@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
-import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 
 import environment from '../../config/environment';
 
@@ -23,11 +23,12 @@ import { AddressTransactionsComponent } from '../../components/address/address-t
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 import { TransactionsComponent } from '../../components/transactions/transactions.component';
 
-class Address extends React.PureComponent {
-  props!: RouteComponentProps<{ id: string }> &
+class Address extends React.PureComponent<
+  RouteComponentProps<{ id: string }> &
     AddressState &
     AddressActions &
-    AppActions;
+    AppActions
+> {
   params: any;
 
   constructor(props: any) {
@@ -49,7 +50,7 @@ class Address extends React.PureComponent {
     this.props.getAddressTransactions(this.props.match.params.id, this.params);
   }
 
-  componentWillReceiveProps(nextProps: any): void {
+  UNSAFE_componentWillReceiveProps(nextProps: any): void {
     const params = this.getParams();
 
     if (this.props.match.params.id !== nextProps.match.params.id) {
@@ -101,7 +102,7 @@ class Address extends React.PureComponent {
           id="common.pages.address.title"
           values={{ id: this.props.address.summary.id }}
         >
-          {title => (
+          {(title) => (
             <Helmet>
               <title>{title}</title>
             </Helmet>
@@ -175,7 +176,7 @@ function mapStateToProps(state: AppState): AddressState {
   return state.address;
 }
 
-function mapDispatchToProps(dispatch: any): ActionCreatorsMapObject {
+function mapDispatchToProps(dispatch: any): any {
   return bindActionCreators({ ...AddressActions, ...AppActions }, dispatch);
 }
 

@@ -10,18 +10,17 @@
  * Do not edit the class manually.
  */
 
-
 export interface BlockchainStatsBlockSummary {
-    /**
-     * Number of mined blocks
-     */
-    total?: number;
-    /**
-     * Time between blocks in ms
-     */
-    averageMiningTime?: number;
-    /**
-     * Total mined coins
-     */
-    totalCoins?: number;
+  /**
+   * Number of mined blocks
+   */
+  total?: number;
+  /**
+   * Time between blocks in ms
+   */
+  averageMiningTime?: number;
+  /**
+   * Total mined coins
+   */
+  totalCoins?: number;
 }

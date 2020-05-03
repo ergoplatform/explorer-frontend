@@ -25,14 +25,14 @@ interface IBlockProps {
   lastLocation: Location;
 }
 
-class Block extends React.Component {
-  prevLink: string = '';
-
-  props!: IBlockProps &
+class Block extends React.Component<
+  IBlockProps &
     RouteComponentProps<{ id: string }> &
     BlockState &
     BlockActions &
-    AppActions;
+    AppActions
+> {
+  prevLink = '';
 
   constructor(props: any) {
     super(props);
@@ -50,7 +50,7 @@ class Block extends React.Component {
     this.props.getBlock({ id: this.props.match.params.id });
   }
 
-  componentWillReceiveProps(
+  UNSAFE_componentWillReceiveProps(
     nextProps: RouteComponentProps<{ id: string }>
   ): void {
     if (nextProps.match.params.id !== this.props.match.params.id) {
@@ -81,7 +81,7 @@ class Block extends React.Component {
           id="common.pages.block.title"
           values={{ id: this.props.block.header.id }}
         >
-          {title => (
+          {(title) => (
             <Helmet>
               <title>{title}</title>
             </Helmet>

@@ -123,7 +123,6 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
     transform: translate(-50%, -50%);
   }
 
-
   &__total-value--input {
     border-color: #1ec116;
     color: #1ec116;
@@ -152,11 +151,14 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
 
 @media screen and (max-width: $mobile-device-width) {
   .bi-transactions-item {
-    &__body, &__output, &__footer {
+    &__body,
+    &__output,
+    &__footer {
       flex-direction: column;
     }
 
-    &__inputs, &__outputs {
+    &__inputs,
+    &__outputs {
       width: auto;
     }
 
@@ -192,7 +194,8 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
       margin-bottom: 1rem;
     }
 
-    &__confirmations, &__total-value {
+    &__confirmations,
+    &__total-value {
       text-align: center;
     }
 
@@ -200,7 +203,8 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
       display: none;
     }
 
-    &__input, &__output {
+    &__input,
+    &__output {
       margin-bottom: $grid-offset-step * 3;
 
       &:last-child {

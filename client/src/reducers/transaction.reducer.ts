@@ -1,4 +1,7 @@
-import { GET_TRANSACTION, GET_TRANSACTION_SUCCESS } from '../constants/transaction.types';
+import {
+  GET_TRANSACTION,
+  GET_TRANSACTION_SUCCESS,
+} from '../constants/transaction.types';
 
 import { FullTransaction } from '../models/generated/fullTransaction';
 
@@ -8,27 +11,29 @@ export interface TransactionState {
 }
 
 export const initialState: TransactionState = {
-  fetching: false
+  fetching: false,
 };
 
-export function transactionReducer (state: TransactionState = initialState, action: any): TransactionState {
+export function transactionReducer(
+  state: TransactionState = initialState,
+  action: any
+): TransactionState {
   switch (action.type) {
     case GET_TRANSACTION: {
-      
       return {
         ...state,
-        fetching: true
+        fetching: true,
       };
     }
-    
+
     case GET_TRANSACTION_SUCCESS: {
       return {
         ...state,
         fetching: false,
-        transaction: action.payload.data
+        transaction: action.payload.data,
       };
     }
-    
+
     default:
       return { ...state };
   }

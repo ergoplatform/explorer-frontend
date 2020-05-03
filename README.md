@@ -24,43 +24,6 @@ To have it in JetBrains WebStorm follow next instructions
     * Parameters: `$FilePath$ -t`
     * Working directory: `$FileDir$`
 
-## Docker Quick Start
-
-You can run production version of application in Docker container
-
-```
-docker-compose up
-```
-
-To rebuild image run
-
-```
-docker-compose up --build
-```
-
-To pass custom variables run docker-compose with variable `REACT_APP_APP_CONFIG`
-
-```
-REACT_APP_APP_CONFIG=/path/to/custom/app.config.js docker-compose up
-```
-Where `app.config.js` is a JavaScript file containing next content:
-```js
-var __APP_CONFIG__ = {
-  apiUrl: 'http://custom.apiserver',
-  alternativeLogo: true, // true by default
-  environments: [
-     {
-       name: 'Testnet',
-       url: 'http://custom.explorerUrl',
-     }
-   ],
-};
-
-if (typeof global !== 'undefined') {
-  global.__APP_CONFIG__ = __APP_CONFIG__;
-}
-```
-
 ## Translations
 
 In order to translate project files use [i18n-editor](https://github.com/jcbvm/i18n-editor/releases).

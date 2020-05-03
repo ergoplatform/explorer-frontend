@@ -20,44 +20,48 @@ import { TransactionsItemComponent } from '../../components/transactions/transac
 
 import './transaction.scss';
 
-class Transaction extends React.PureComponent {
-  props!: RouteComponentProps<{
+class Transaction extends React.PureComponent<
+  RouteComponentProps<{
     id: string;
-  }> & TransactionState & TransactionActions & SettingsActions & SettingsState;
-
-  constructor (props: any) {
+  }> &
+    TransactionState &
+    TransactionActions &
+    SettingsActions &
+    SettingsState
+> {
+  constructor(props: any) {
     super(props);
 
     this.onScriptToggle = this.onScriptToggle.bind(this);
   }
 
-  componentDidMount (): void {
+  componentDidMount(): void {
     this.props.getTransaction(this.props.match.params.id);
   }
 
-  componentWillReceiveProps (nextProps: any): void {
+  UNSAFE_componentWillReceiveProps(nextProps: any): void {
     if (nextProps.match.params.id !== this.props.match.params.id) {
       this.props.getTransaction(nextProps.match.params.id);
     }
   }
 
-  render (): JSX.Element {
+  render(): JSX.Element {
     return (
-      <div className='bi-transaction'>
-        <div className='bi-transaction__header'>
-          <div className='bi-transaction__title'>
-            <FormattedMessage id='components.transaction.title'/>
+      <div className="bi-transaction">
+        <div className="bi-transaction__header">
+          <div className="bi-transaction__title">
+            <FormattedMessage id="components.transaction.title" />
           </div>
-          <div className='bi-transaction__subtitle'>
-            <FormattedMessage id='components.transaction.subtitle'/>
+          <div className="bi-transaction__subtitle">
+            <FormattedMessage id="components.transaction.subtitle" />
           </div>
         </div>
-        { this.renderBody() }
+        {this.renderBody()}
       </div>
     );
   }
 
-  private renderBody (): JSX.Element | null {
+  private renderBody(): JSX.Element | null {
     if (!this.props.transaction) {
       return null;
     }
@@ -66,70 +70,87 @@ class Transaction extends React.PureComponent {
       id: this.props.transaction.summary.id,
       inputs: this.props.transaction.inputs,
       outputs: this.props.transaction.outputs,
-      timestamp: this.props.transaction.summary.timestamp
+      timestamp: this.props.transaction.summary.timestamp,
     };
 
     return (
-      <div className='bi-transaction__body'>
-        <FormattedMessage id='common.pages.transaction.title' values={ { id: this.props.transaction.summary.id } }>
-          {
-            title => (
-              <Helmet>
-                <title>{ title }</title>
-              </Helmet>
-            )
-          }
+      <div className="bi-transaction__body">
+        <FormattedMessage
+          id="common.pages.transaction.title"
+          values={{ id: this.props.transaction.summary.id }}
+        >
+          {(title) => (
+            <Helmet>
+              <title>{title}</title>
+            </Helmet>
+          )}
         </FormattedMessage>
 
-        <TransactionsItemComponent transaction={ transaction }
-                                   confirmations={ this.props.transaction.summary.confirmationsCount }/>
+        <TransactionsItemComponent
+          transaction={transaction}
+          confirmations={this.props.transaction.summary.confirmationsCount}
+        />
 
-        <div className='bi-transaction__tables g-flex'>
-          <div className='bi-transaction__table g-flex__item'>
-            <TransactionSummaryComponent summary={ this.props.transaction.summary }/>
+        <div className="bi-transaction__tables g-flex">
+          <div className="bi-transaction__table g-flex__item">
+            <TransactionSummaryComponent
+              summary={this.props.transaction.summary}
+            />
           </div>
 
-          <div className='bi-transaction__table g-flex__item'>
-            <TransactionIoSummaryComponent summary={ this.props.transaction.ioSummary }
-                                           isScriptShown={ this.props.isScriptsDisplayed }
-                                           onScriptToggle={ this.onScriptToggle }/>
+          <div className="bi-transaction__table g-flex__item">
+            <TransactionIoSummaryComponent
+              summary={this.props.transaction.ioSummary}
+              isScriptShown={this.props.isScriptsDisplayed}
+              onScriptToggle={this.onScriptToggle}
+            />
           </div>
         </div>
 
-        { this.props.isScriptsDisplayed &&
-        <div className='bi-transaction__scripts'>
-          <div className='bi-transaction__title'>
-            <FormattedMessage id='components.transaction.scripts.input'/>
+        {this.props.isScriptsDisplayed && (
+          <div className="bi-transaction__scripts">
+            <div className="bi-transaction__title">
+              <FormattedMessage id="components.transaction.scripts.input" />
+            </div>
+
+            <TransactionRawScriptsComponent
+              items={this.props.transaction.inputs}
+            />
           </div>
+        )}
 
-          <TransactionRawScriptsComponent items={ this.props.transaction.inputs }/>
-        </div>
-        }
+        {this.props.isScriptsDisplayed && (
+          <div className="bi-transaction__scripts">
+            <div className="bi-transaction__title">
+              <FormattedMessage id="components.transaction.scripts.output" />
+            </div>
 
-        { this.props.isScriptsDisplayed &&
-        <div className='bi-transaction__scripts'>
-          <div className='bi-transaction__title'>
-            <FormattedMessage id='components.transaction.scripts.output'/>
+            <TransactionRawScriptsComponent
+              items={this.props.transaction.outputs}
+            />
           </div>
-
-          <TransactionRawScriptsComponent items={ this.props.transaction.outputs }/>
-        </div>
-        }
+        )}
       </div>
     );
   }
 
-  private onScriptToggle (): void {
+  private onScriptToggle(): void {
     this.props.setTransactionScripts(!this.props.isScriptsDisplayed);
   }
 }
 
-function mapStateToProps (state: AppState): any {
+function mapStateToProps(state: AppState): any {
   return { ...state.transaction, ...state.settings };
 }
 
-function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
-  return bindActionCreators({ ...TransactionActions, ...SettingsActions }, dispatch);
+function mapDispatchToProps(dispatch: any): ActionCreatorsMapObject {
+  return bindActionCreators(
+    { ...TransactionActions, ...SettingsActions },
+    dispatch
+  );
 }
 
-export const TransactionComponent = connect(mapStateToProps, mapDispatchToProps)(Transaction);
+export const TransactionComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Transaction);

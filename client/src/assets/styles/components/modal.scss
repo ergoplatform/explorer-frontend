@@ -3,8 +3,8 @@
 
 // #MODAL
 //----------------------------------
-$modal-overlay-bg-before: rgba(0,0,0,0);
-$modal-overlay-bg: rgba(0,0,0,0.3);
+$modal-overlay-bg-before: rgba(0, 0, 0, 0);
+$modal-overlay-bg: rgba(0, 0, 0, 0.3);
 
 .bi-modal {
   position: fixed;
@@ -14,7 +14,7 @@ $modal-overlay-bg: rgba(0,0,0,0.3);
 
   &__btn-close {
     position: absolute;
-    top: $grid-offset-step  * 4;
+    top: $grid-offset-step * 4;
     right: $grid-offset-step * 4;
 
     @extend .bi-btn--flat;
@@ -49,7 +49,7 @@ $modal-overlay-bg: rgba(0,0,0,0.3);
 
 .bi-modal--scale {
   transition: transform 150ms ease-in-out;
-  transform: translate(-50%, -50%)  scale(0);
+  transform: translate(-50%, -50%) scale(0);
 }
 
 .bi-modal--scale.ReactModal__Content {

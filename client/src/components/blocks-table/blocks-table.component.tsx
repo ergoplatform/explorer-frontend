@@ -31,7 +31,7 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
       <div className="bi-blocks-table__body bi-table">
         <BlockTableHeaderComponent />
 
-        {this.props.blocks.map(block => {
+        {this.props.blocks.map((block) => {
           return (
             <div className="bi-blocks-table__row bi-table__row" key={block.id}>
               <div className="bi-blocks-table__cell bi-table__cell">

@@ -2,14 +2,13 @@ import classNames from 'classnames';
 import queryString from 'query-string';
 import React from 'react';
 import Helmet from 'react-helmet';
-import { hot } from 'react-hot-loader';
 import { Route, RouteComponentProps, Switch, withRouter } from 'react-router';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 import { AddressComponent } from '../../pages/address/address.component';
-import { ApiComponent } from '../../pages/api/api.component';
+// import { ApiComponent } from '../../pages/api/api.component';
 import { BlockComponent } from '../../pages/block/block.component';
 import { ChartComponent } from '../../pages/chart/chart.component';
 import { ChartsComponent } from '../../pages/charts/charts.component';
@@ -25,9 +24,7 @@ import { IssuedTokensComponent } from '../../pages/issued-tokens/issued-tokens.c
 
 import './app.scss';
 
-class App extends React.PureComponent {
-  public props!: RouteComponentProps<any>;
-
+class App extends React.PureComponent<RouteComponentProps<any>> {
   private scrollBody!: HTMLDivElement;
 
   public componentDidUpdate(prevProps: any): void {
@@ -63,7 +60,7 @@ class App extends React.PureComponent {
             <Switch>
               <Route exact path="/" component={DataComponent} />
 
-              <Route exact path="/api" component={ApiComponent} />
+              {/* <Route exact path="/api" component={ApiComponent} /> */}
 
               <Route path="/blocks/:id" component={BlockComponent} />
 
@@ -102,7 +99,7 @@ class App extends React.PureComponent {
                 component={IssuedTokensComponent}
               />
 
-              <Route component={NotFoundComponent} />
+              <Route path="*" component={NotFoundComponent} />
             </Switch>
           </div>
         </div>
@@ -111,4 +108,4 @@ class App extends React.PureComponent {
   }
 }
 
-export const AppComponent = hot(module)(withRouter(App));
+export const AppComponent = withRouter(App);

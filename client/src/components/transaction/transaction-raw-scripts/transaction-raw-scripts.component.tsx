@@ -9,9 +9,10 @@ interface ITransactionRawScriptsProps {
 import './transaction-raw-scripts.scss';
 
 const isBadValue = (item: any) => {
-  if ((item === null)
-    ||(typeof item === "object" && Object.keys(item).length === 0)
-    ||(typeof item === "string" && item.trim().length === 0)
+  if (
+    item === null ||
+    (typeof item === 'object' && Object.keys(item).length === 0) ||
+    (typeof item === 'string' && item.trim().length === 0)
   ) {
     return true;
   }
@@ -19,47 +20,59 @@ const isBadValue = (item: any) => {
   return false;
 };
 
-export class TransactionRawScriptsComponent extends React.PureComponent<ITransactionRawScriptsProps> {
-  render (): JSX.Element {
+export class TransactionRawScriptsComponent extends React.PureComponent<
+  ITransactionRawScriptsProps
+> {
+  render(): JSX.Element {
     return (
-      <div className='bi-transaction-raw-scripts'>
-        {
-          this.props.items.map((item, index) => {
-            return (
-              <ul className='bi-transaction-raw-scripts__item' key={ index }>
-                {
-                  Object.keys(item)
-                    .map((key, i) => {
-                      if (isBadValue(item[key])) {
-                        return null;
-                      }
-
-                      if (key === "assets") {
-                        return (
-                          <li key={key}><b>{key}</b>: <ul>{
-                            item[key].map((it: Asset) => <li key={item}><b>{it.tokenId}</b>: {it.amount}</li>)
-                          }</ul></li>
-                        );
-                      }
-
-                      if (typeof item[key] === "object") {
-                        return (
-                          <li key={key}>
-                            <b>{key}</b>: <ul>{
-                              Object.keys(item[key])
-                                .map(k => (<li key={k}><b>{k}</b>: {item[key][k]}</li>))
-                            }</ul>
-                          </li>
-                        );
-                      }
-
-                      return (<li key={`${key}${i}`}><b>{key}</b>: {item[key]}</li>);
-                    })
+      <div className="bi-transaction-raw-scripts">
+        {this.props.items.map((item, index) => {
+          return (
+            <ul className="bi-transaction-raw-scripts__item" key={index}>
+              {Object.keys(item).map((key, i) => {
+                if (isBadValue(item[key])) {
+                  return null;
                 }
-              </ul>
-            );
-          })
-        }
+
+                if (key === 'assets') {
+                  return (
+                    <li key={key}>
+                      <b>{key}</b>:{' '}
+                      <ul>
+                        {item[key].map((it: Asset) => (
+                          <li key={item}>
+                            <b>{it.tokenId}</b>: {it.amount}
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  );
+                }
+
+                if (typeof item[key] === 'object') {
+                  return (
+                    <li key={key}>
+                      <b>{key}</b>:{' '}
+                      <ul>
+                        {Object.keys(item[key]).map((k) => (
+                          <li key={k}>
+                            <b>{k}</b>: {item[key][k]}
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={`${key}${i}`}>
+                    <b>{key}</b>: {item[key]}
+                  </li>
+                );
+              })}
+            </ul>
+          );
+        })}
       </div>
     );
   }

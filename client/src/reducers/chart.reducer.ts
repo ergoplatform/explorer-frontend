@@ -6,28 +6,30 @@ export interface ChartState {
 }
 
 export const initialState: ChartState = {
-  fetching: false
+  fetching: false,
 };
 
-export function chartReducer (state: ChartState = initialState, action: any): ChartState {
+export function chartReducer(
+  state: ChartState = initialState,
+  action: any
+): ChartState {
   switch (action.type) {
     case GET_CHART: {
-      
       return {
         ...state,
         data: null,
-        fetching: true
+        fetching: true,
       };
     }
-    
+
     case GET_CHART_SUCCESS: {
       return {
         ...state,
         data: action.payload.data,
-        fetching: false
+        fetching: false,
       };
     }
-    
+
     default:
       return { ...state };
   }

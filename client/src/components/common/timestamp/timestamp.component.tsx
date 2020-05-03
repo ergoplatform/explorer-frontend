@@ -10,13 +10,13 @@ interface ITimestampProps {
 import './timestamp.scss';
 
 export class TimestampComponent extends React.PureComponent<ITimestampProps> {
-  render (): JSX.Element {
+  render(): JSX.Element {
     const date = dayjs(this.props.timestamp);
-    
+
     return (
-      <div className='bi-timestamp u-word-wrap u-word-wrap--ellipsis'>
-        <span className='bi-timestamp__time'>{ date.format('HH:mm:ss') }</span>
-        <span className='bi-timestamp__date'>{ date.format('DD.MM.YYYY') }</span>
+      <div className="bi-timestamp u-word-wrap u-word-wrap--ellipsis">
+        <span className="bi-timestamp__time">{date.format('HH:mm:ss')}</span>
+        <span className="bi-timestamp__date">{date.format('DD.MM.YYYY')}</span>
       </div>
     );
   }

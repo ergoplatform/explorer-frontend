@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import format from 'format-number';
+import { base16 } from 'rfc4648';
+// import * as vlq from 'vlq';
 
 import { IssuedTokensTableHeaderComponent } from './issued-tokens-table/issued-tokens-table-header.component';
 
@@ -27,7 +29,7 @@ export class IssuedTokensTableComponent extends React.Component<
       <div className="bi-blocks-table__body bi-table">
         <IssuedTokensTableHeaderComponent />
 
-        {this.props.tokens.map(token => {
+        {this.props.tokens.map((token) => {
           return (
             <div
               className="bi-blocks-table__row bi-table__row"
@@ -46,18 +48,17 @@ export class IssuedTokensTableComponent extends React.Component<
                 />
               </div>
 
-              <div className="bi-blocks-table__cell bi-blocks-table__cell--timestamp bi-table__cell  bi-tokens-table__cell">
-                <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
-                  <FormattedMessage id="common.token.name" />
-                </div>
+              {token.additionalRegisters.R4 && (
+                <div className="bi-blocks-table__cell bi-table__cell  bi-tokens-table__cell">
+                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                    <FormattedMessage id="common.token.name" />
+                  </div>
 
-                <input
-                  className="bi-tokens-table__input"
-                  type="text"
-                  value={token.additionalRegisters.R4}
-                  readOnly
-                />
-              </div>
+                  {new TextDecoder('utf-8').decode(
+                    base16.parse(token.additionalRegisters.R4)
+                  )}
+                </div>
+              )}
 
               <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
                 <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
@@ -74,31 +75,27 @@ export class IssuedTokensTableComponent extends React.Component<
                 />
               </div>
 
-              <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
-                <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
-                  <FormattedMessage id="common.token.decimals" />
+              {/* {token.additionalRegisters.R6 && (
+                <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
+                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                    <FormattedMessage id="common.token.decimals" />
+                  </div>
+
+                  {base16.parse('040e')}
                 </div>
+              )} */}
 
-                <input
-                  className="bi-tokens-table__input"
-                  type="text"
-                  value={token.additionalRegisters.R6}
-                  readOnly
-                />
-              </div>
+              {token.additionalRegisters.R5 && (
+                <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
+                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                    <FormattedMessage id="common.token.description" />
+                  </div>
 
-              <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
-                <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
-                  <FormattedMessage id="common.token.description" />
+                  {new TextDecoder('utf-8').decode(
+                    base16.parse(token.additionalRegisters.R5)
+                  )}
                 </div>
-
-                <input
-                  className="bi-tokens-table__input"
-                  type="text"
-                  value={token.additionalRegisters.R5}
-                  readOnly
-                />
-              </div>
+              )}
             </div>
           );
         })}
