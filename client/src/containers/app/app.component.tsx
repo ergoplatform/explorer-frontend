@@ -1,15 +1,14 @@
-import * as classNames from 'classnames';
-import * as queryString from 'query-string';
-import * as React from 'react';
+import classNames from 'classnames';
+import queryString from 'query-string';
+import React from 'react';
 import Helmet from 'react-helmet';
-import { hot } from 'react-hot-loader';
 import { Route, RouteComponentProps, Switch, withRouter } from 'react-router';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 import { AddressComponent } from '../../pages/address/address.component';
-import { ApiComponent } from '../../pages/api/api.component';
+// import { ApiComponent } from '../../pages/api/api.component';
 import { BlockComponent } from '../../pages/block/block.component';
 import { ChartComponent } from '../../pages/chart/chart.component';
 import { ChartsComponent } from '../../pages/charts/charts.component';
@@ -20,65 +19,87 @@ import { SearchResultsComponent } from '../../pages/search-results/search-result
 import { StatsComponent } from '../../pages/stats/stats.component';
 import { TransactionComponent } from '../../pages/transaction/transaction.component';
 import { WalletComponent } from '../../pages/wallet/wallet.component';
+import OrderBookComponent from '../../pages/order-book/order-book.component';
+import { IssuedTokensComponent } from '../../pages/issued-tokens/issued-tokens.component';
 
 import './app.scss';
 
-class App extends React.PureComponent {
-  props: RouteComponentProps<any>;
-  
-  scrollBody: HTMLDivElement;
-  
-  componentDidUpdate (prevProps: any): void {
+class App extends React.PureComponent<RouteComponentProps<any>> {
+  private scrollBody!: HTMLDivElement;
+
+  public componentDidUpdate(prevProps: any): void {
     if (this.props.location !== prevProps.location) {
       this.scrollBody.scrollTo(0, 0);
     }
   }
-  
-  render (): JSX.Element {
+
+  public render(): JSX.Element {
     const { iframe } = queryString.parse(this.props.location.search);
-    
+
     const appClassNames = classNames({
       'bi-app': true,
       'bi-app--iframe': !!iframe,
-      'g-flex': true
+      'g-flex': true,
     });
-    
+
     return (
-      <div className={ appClassNames }>
+      <div className={appClassNames}>
         <Helmet>
           <title>Ergo Explorer</title>
         </Helmet>
-        
-        <SidebarComponent/>
-        
-        <div className='bi-app__wrapper g-flex__item g-flex-column g-scroll-y'
-             ref={ (ref: HTMLDivElement) => this.scrollBody = ref }>
-          <HeaderComponent/>
-          
-          <div className='bi-app__body g-flex-column__item g-flex-column'>
+
+        <SidebarComponent />
+
+        <div
+          className="bi-app__wrapper g-flex__item g-flex-column g-scroll-y"
+          ref={(ref: HTMLDivElement) => (this.scrollBody = ref)}
+        >
+          <HeaderComponent />
+
+          <div className="bi-app__body g-flex-column__item g-flex-column">
             <Switch>
-              <Route exact={ true } path='/' component={ DataComponent }/>
-              
-              <Route exact={ true } path='/api' component={ ApiComponent }/>
-              
-              <Route path='/blocks/:id' component={ BlockComponent }/>
-              
-              <Route exact={ true } path='/addresses/:id' component={ AddressComponent }/>
-              
-              <Route exact={ true } path='/transactions/:id' component={ TransactionComponent }/>
-              
-              <Route exact={ true } path='/stats' component={ StatsComponent }/>
-              
-              <Route exact={ true } path='/charts' component={ ChartsComponent }/>
-              <Route exact={ true } path='/charts/:chartType' component={ ChartComponent }/>
-              
-              <Route exact={ true } path='/wallet' component={ WalletComponent }/>
-              
-              <Route exact={ true } path='/search' component={ SearchResultsComponent }/>
-              
-              <Route exact={ true } path='/payment-request' component={ PaymentRequestComponent }/>
-              
-              <Route component={ NotFoundComponent }/>
+              <Route exact path="/" component={DataComponent} />
+
+              {/* <Route exact path="/api" component={ApiComponent} /> */}
+
+              <Route path="/blocks/:id" component={BlockComponent} />
+
+              <Route exact path="/addresses/:id" component={AddressComponent} />
+
+              <Route
+                exact
+                path="/transactions/:id"
+                component={TransactionComponent}
+              />
+
+              <Route exact path="/stats" component={StatsComponent} />
+
+              <Route exact path="/charts" component={ChartsComponent} />
+              <Route
+                exact
+                path="/charts/:chartType"
+                component={ChartComponent}
+              />
+
+              <Route exact path="/wallet" component={WalletComponent} />
+
+              <Route exact path="/search" component={SearchResultsComponent} />
+
+              <Route
+                exact
+                path="/payment-request"
+                component={PaymentRequestComponent}
+              />
+
+              <Route exact path="/order-book" component={OrderBookComponent} />
+
+              <Route
+                exact
+                path="/issued-tokens"
+                component={IssuedTokensComponent}
+              />
+
+              <Route path="*" component={NotFoundComponent} />
             </Switch>
           </div>
         </div>
@@ -87,4 +108,4 @@ class App extends React.PureComponent {
   }
 }
 
-export const AppComponent = hot(module)(withRouter(App));
+export const AppComponent = withRouter(App);

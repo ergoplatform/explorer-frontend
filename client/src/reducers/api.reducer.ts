@@ -7,26 +7,29 @@ export interface ApiState {
 
 export const initialState: ApiState = {
   data: null,
-  fetching: false
+  fetching: false,
 };
 
-export function apiReducer (state: ApiState = initialState, action: any): ApiState {
+export function apiReducer(
+  state: ApiState = initialState,
+  action: any
+): ApiState {
   switch (action.type) {
     case GET_API: {
       return {
         ...state,
-        fetching: true
+        fetching: true,
       };
     }
-    
+
     case GET_API_SUCCESS: {
       return {
         ...state,
         data: action.payload.data,
-        fetching: false
+        fetching: false,
       };
     }
-    
+
     default: {
       return state;
     }

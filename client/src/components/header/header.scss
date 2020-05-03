@@ -12,7 +12,7 @@ $header-toggle-color: #ffffff;
   box-sizing: content-box;
   height: 100px;
   background-color: $header-bg-color;
-  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.02);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.02);
 
   align-items: center;
   justify-content: space-between;
@@ -25,7 +25,8 @@ $header-toggle-color: #ffffff;
     padding-left: $grid-offset-step * 15;
   }
 
-  &__toggle, &__logo {
+  &__toggle,
+  &__logo {
     display: none;
   }
 
@@ -33,6 +34,7 @@ $header-toggle-color: #ffffff;
     color: $header-logo-color;
     font-family: $theme-main-font;
     font-size: 14px;
+    font-weight: 300;
     line-height: 0;
     white-space: nowrap;
     text-decoration: none;
@@ -74,7 +76,8 @@ $header-toggle-color: #ffffff;
     height: 60px;
     background-color: $header-mobile-bg-color;
 
-    &__toggle, &__logo {
+    &__toggle,
+    &__logo {
       display: block;
     }
 

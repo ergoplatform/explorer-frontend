@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { stubInterface } from 'ts-sinon';
 
 import { shallowWithIntl } from '../../../utils/test-utils';
@@ -13,15 +13,19 @@ describe('Components | Block Header', () => {
   let references: InlineResponse2001References;
 
   beforeEach(() => {
-    block      = stubInterface<FullBlock>();
+    block = stubInterface<FullBlock>();
     references = stubInterface<InlineResponse2001References>();
   });
 
-
   it('should render without crashing', () => {
-    const wrapper = shallowWithIntl(<BlockHeaderComponent block={ block } prevLink={ '' } references={ references }/>);
+    const wrapper = shallowWithIntl(
+      <BlockHeaderComponent
+        block={block}
+        prevLink={''}
+        references={references}
+      />
+    );
 
-    expect(wrapper.length)
-      .toBe(1);
+    expect(wrapper.length).toBe(1);
   });
 });

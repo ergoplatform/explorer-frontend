@@ -1,5 +1,5 @@
 import { Location } from 'history';
-import * as React from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -25,18 +25,22 @@ interface IBlockProps {
   lastLocation: Location;
 }
 
-class Block extends React.Component {
-  prevLink: string = '';
+class Block extends React.Component<
+  IBlockProps &
+    RouteComponentProps<{ id: string }> &
+    BlockState &
+    BlockActions &
+    AppActions
+> {
+  prevLink = '';
 
-  props: IBlockProps & RouteComponentProps<{ id: string }> & BlockState & BlockActions & AppActions;
-
-  constructor (props: any) {
+  constructor(props: any) {
     super(props);
 
     this.renderComponent = this.renderComponent.bind(this);
   }
 
-  componentDidMount (): void {
+  componentDidMount(): void {
     if (this.props.preloaded) {
       this.props.clearPreloadedState();
 
@@ -46,25 +50,25 @@ class Block extends React.Component {
     this.props.getBlock({ id: this.props.match.params.id });
   }
 
-  componentWillReceiveProps (nextProps: RouteComponentProps<{ id: string }>): void {
+  UNSAFE_componentWillReceiveProps(
+    nextProps: RouteComponentProps<{ id: string }>
+  ): void {
     if (nextProps.match.params.id !== this.props.match.params.id) {
       this.props.getBlock({ id: nextProps.match.params.id });
     }
   }
 
-  render (): JSX.Element {
+  render(): JSX.Element {
     return (
-      <div className='bi-block g-flex-column__item-fixed'>
-        { this.props.fetching ? null : this.renderBlockPage() }
+      <div className="bi-block g-flex-column__item-fixed">
+        {this.props.fetching ? null : this.renderBlockPage()}
       </div>
     );
   }
 
-  private renderBlockPage (): JSX.Element {
+  private renderBlockPage(): JSX.Element {
     if (!this.props.block) {
-      return (
-        <Redirect to='/'/>
-      );
+      return <Redirect to="/" />;
     }
 
     if (this.props.lastLocation && this.props.lastLocation.pathname === '/') {
@@ -72,69 +76,85 @@ class Block extends React.Component {
     }
 
     return (
-      <div className='bi-block__wrapper g-flex-column'>
-        <FormattedMessage id='common.pages.block.title' values={ { id: this.props.block.header.id } }>
-          {
-            title => (
-              <Helmet>
-                <title>{ title }</title>
-              </Helmet>
-            )
-          }
+      <div className="bi-block__wrapper g-flex-column">
+        <FormattedMessage
+          id="common.pages.block.title"
+          values={{ id: this.props.block.header.id }}
+        >
+          {(title) => (
+            <Helmet>
+              <title>{title}</title>
+            </Helmet>
+          )}
         </FormattedMessage>
 
-        <div className='bi-block__header g-flex-column__item-fixed'>
-          <BlockHeaderComponent block={ this.props.block }
-                                prevLink={ this.prevLink }
-                                references={ this.props.references }/>
+        <div className="bi-block__header g-flex-column__item-fixed">
+          <BlockHeaderComponent
+            block={this.props.block}
+            prevLink={this.prevLink}
+            references={this.props.references}
+          />
         </div>
 
-        <div className='bi-block__body g-flex-column__item g-scroll-y'>
+        <div className="bi-block__body g-flex-column__item g-scroll-y">
           <Switch>
-            <Route path={ `/blocks/:id` }
-                   exact={ true }
-                   render={
-                     this.renderComponent(<BlockInfoComponent block={ this.props.block }/>)
-                   }/>
+            <Route
+              path={`/blocks/:id`}
+              exact={true}
+              render={this.renderComponent(
+                <BlockInfoComponent block={this.props.block} />
+              )}
+            />
 
-            <Route path={ `/blocks/:id/transactions` }
-                   exact={ true }
-                   component={
-                     this.renderComponent(<TransactionsComponent
-                       transactions={ this.props.block.blockTransactions }/>)
-                   }/>
+            <Route
+              path={`/blocks/:id/transactions`}
+              exact={true}
+              component={this.renderComponent(
+                <TransactionsComponent
+                  transactions={this.props.block.blockTransactions}
+                />
+              )}
+            />
 
-            <Route path={ `/blocks/:id/extension` }
-                   exact={ true }
-                   component={
-                     this.renderComponent(<BlockExtensionComponent
-                       extension={ this.props.block.extension }/>)
-                   }/>
+            <Route
+              path={`/blocks/:id/extension`}
+              exact={true}
+              component={this.renderComponent(
+                <BlockExtensionComponent
+                  extension={this.props.block.extension}
+                />
+              )}
+            />
 
-            <Route path={ `/blocks/:id/adproofs` }
-                   exact={ true }
-                   component={
-                     this.renderComponent(<BlockAdproofsComponent block={ this.props.block }/>)
-                   }/>
+            <Route
+              path={`/blocks/:id/adproofs`}
+              exact={true}
+              component={this.renderComponent(
+                <BlockAdproofsComponent block={this.props.block} />
+              )}
+            />
           </Switch>
         </div>
       </div>
     );
   }
 
-  private renderComponent (element: JSX.Element): () => JSX.Element {
+  private renderComponent(element: JSX.Element): () => JSX.Element {
     return () => element;
   }
 }
 
-function mapStateToProps (state: AppState): BlockState {
+function mapStateToProps(state: AppState): BlockState {
   return {
-    ...state.block
+    ...state.block,
   };
 }
 
-function mapDispatchToProps (dispatch: any): ActionCreatorsMapObject {
+function mapDispatchToProps(dispatch: any): ActionCreatorsMapObject {
   return bindActionCreators({ ...BlockActions, ...AppActions }, dispatch);
 }
 
-export const BlockComponent = connect(mapStateToProps, mapDispatchToProps)(withLastLocation(Block));
+export const BlockComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withLastLocation(Block));

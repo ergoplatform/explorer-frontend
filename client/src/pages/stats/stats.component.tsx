@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -18,8 +18,10 @@ import { BlockSummaryComponent } from '../../components/stats/block-summary/bloc
 import { MiningCostComponent } from '../../components/stats/mining-cost/mining-cost.component';
 import { TransactionsSummaryComponent } from '../../components/stats/transactions-summary/transactions-summary.component';
 
-class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> {
-  componentDidMount (): void {
+class Stats extends React.PureComponent<
+  StatsActions & AppActions & StatsState
+> {
+  componentDidMount(): void {
     if (this.props.preloaded) {
       this.props.clearPreloadedState();
 
@@ -29,54 +31,57 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
     this.props.getStats();
   }
 
-  render (): JSX.Element {
+  render(): JSX.Element {
     return (
-      <div className='bi-stats'>
-        <FormattedMessage id='common.pages.stats.title'>
-          {
-            title => (
-              <Helmet>
-                <title>{ title }</title>
-              </Helmet>
-            )
-          }
+      <div className="bi-stats">
+        <FormattedMessage id="common.pages.stats.title">
+          {(title) => (
+            <Helmet>
+              <title>{title}</title>
+            </Helmet>
+          )}
         </FormattedMessage>
 
-        <div className='bi-stats__header'>
-          <div className='bi-stats__title'>
-            <FormattedMessage id='components.stats.title' values={ {
-              coinName: environment.blockchain.coinName.toUpperCase()
-            } }/>
+        <div className="bi-stats__header">
+          <div className="bi-stats__title">
+            <FormattedMessage
+              id="components.stats.title"
+              values={{
+                coinName: environment.blockchain.coinName.toUpperCase(),
+              }}
+            />
           </div>
 
-          <div className='bi-stats__subtitle'>
-            <FormattedMessage id='components.stats.subtitle'/>
+          <div className="bi-stats__subtitle">
+            <FormattedMessage id="components.stats.subtitle" />
           </div>
         </div>
 
-        { this.props.stats ? this.renderBody() : null }
+        {this.props.stats ? this.renderBody() : null}
       </div>
     );
   }
 
-  private renderBody (): JSX.Element {
+  private renderBody(): JSX.Element {
     return (
-      <div className='bi-stats__body'>
-        <div className='bi-stats__line'>
-          <div className='bi-stats__block-summary'>
-            <BlockSummaryComponent summary={ this.props.stats.blockSummary }/>
+      <div className="bi-stats__body">
+        <div className="bi-stats__line">
+          <div className="bi-stats__block-summary">
+            <BlockSummaryComponent summary={this.props.stats.blockSummary} />
           </div>
         </div>
 
-        <div className='bi-stats__line'>
-          <div className='bi-stats__block-summary'>
-            <TransactionsSummaryComponent summary={ this.props.stats.transactionsSummary }/>
+        <div className="bi-stats__line">
+          <div className="bi-stats__block-summary">
+            <TransactionsSummaryComponent
+              summary={this.props.stats.transactionsSummary}
+            />
           </div>
         </div>
 
-        <div className='bi-stats__line'>
-          <div className='bi-stats__block-summary'>
-            <MiningCostComponent summary={ this.props.stats.miningCost }/>
+        <div className="bi-stats__line">
+          <div className="bi-stats__block-summary">
+            <MiningCostComponent summary={this.props.stats.miningCost} />
           </div>
         </div>
       </div>
@@ -84,12 +89,15 @@ class Stats extends React.PureComponent<StatsActions & AppActions & StatsState> 
   }
 }
 
-function mapStateToProps (state: AppState): StatsState {
+function mapStateToProps(state: AppState): StatsState {
   return state.stats;
 }
 
-function mapDispatchToProps (dispatch: any): any {
+function mapDispatchToProps(dispatch: any): any {
   return bindActionCreators({ ...StatsActions, ...AppActions }, dispatch);
 }
 
-export const StatsComponent = connect(mapStateToProps, mapDispatchToProps)(Stats);
+export const StatsComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Stats);

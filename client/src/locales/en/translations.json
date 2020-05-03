@@ -23,6 +23,13 @@
       "digest": "Digest",
       "fields": "Fields"
     },
+    "token": {
+      "name": "Name",
+      "id": "Id",
+      "amount": "Amount",
+      "decimals": "Decimals",
+      "description": "Description"
+    },
     "pages": {
       "address": {
         "title": "Ergo Explorer | Address {id}"
@@ -62,6 +69,12 @@
       },
       "wallet": {
         "title": "Ergo Explorer | Wallet"
+      },
+      "order-book": {
+        "title": "Ergo Explorer | Order Book"
+      },
+      "issued-tokens": {
+        "title": "Ergo Explorer | Issued Tokens"
       }
     },
     "stats": {
@@ -217,7 +230,9 @@
         "charts": "Charts",
         "data": "Data",
         "stats": "Stats",
-        "wallet": "Wallet"
+        "wallet": "Wallet",
+        "order-book": "Order Book",
+        "issued-tokens": "Issued Tokens"
       }
     },
     "stats": {
@@ -277,6 +292,12 @@
     },
     "wallet": {
       "title": "Wallet is not available yet"
+    },
+    "order-book": {
+      "title": "Order Book"
+    },
+    "issued-tokens": {
+      "title": "Issued Tokens"
     }
   }
 }

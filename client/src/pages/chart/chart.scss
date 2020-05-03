@@ -45,6 +45,7 @@ $chart-subtitle-color: #828795;
     display: inline-block;
     margin-bottom: $grid-offset-step * 8;
     font-size: 15px;
+    font-weight: 300;
   }
 
   &__btn-back-icon {
@@ -89,11 +90,9 @@ $chart-subtitle-color: #828795;
   }
 }
 
-
 @media screen and (max-width: $mobile-device-width) {
   .bi-chart {
     padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
-
 
     &__chart {
       max-height: 200px;
@@ -118,7 +117,7 @@ $chart-subtitle-color: #828795;
 
     &__footer,
     &__controls,
-    &__header{
+    &__header {
       padding: 0 ($grid-offset-step * 3);
     }
   }

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { stubInterface } from 'ts-sinon';
 
 import { shallowWithIntl } from '../../../utils/test-utils';
@@ -14,9 +14,8 @@ describe('Components | Block AdProofs', () => {
   });
 
   it('should render without crashing', () => {
-    const wrapper = shallowWithIntl(<BlockAdproofsComponent block={ block }/>);
+    const wrapper = shallowWithIntl(<BlockAdproofsComponent block={block} />);
 
-    expect(wrapper.length)
-      .toBe(1);
+    expect(wrapper.length).toBe(1);
   });
 });

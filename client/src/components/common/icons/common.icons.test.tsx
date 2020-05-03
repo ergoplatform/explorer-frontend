@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { shallowWithIntl } from '../../../utils/test-utils';
 
 import {
@@ -18,7 +18,6 @@ import {
   SortDirectionDescIcon,
   SortDirectionIcon,
   StatsIcon,
-  WalletIcon
 } from './common.icons';
 
 describe('Components | CommonIcons', () => {
@@ -28,7 +27,6 @@ describe('Components | CommonIcons', () => {
       ArrowIcon,
       DataIcon,
       ApiIcon,
-      WalletIcon,
       ChartIcon,
       StatsIcon,
       QRCodeIcon,
@@ -41,27 +39,21 @@ describe('Components | CommonIcons', () => {
       ArrowDownIcon,
       ArrowThickIcon,
     ];
-    
+
     icons.forEach((Icon) => {
-      
-      const wrapper = shallowWithIntl(<Icon/>);
-      
-      expect(wrapper.length)
-        .toBe(1);
+      const wrapper = shallowWithIntl(<Icon />);
+
+      expect(wrapper.length).toBe(1);
     });
   });
-  
+
   it('should return correct svg icon', () => {
     const Icon = makeIcon('foo', 'bar');
-    
+
     const wrapper = shallowWithIntl(Icon);
-    
-    expect(wrapper.find('svg use')
-      .prop('xlinkHref'))
-      .toEqual('#foo');
-    
-    expect(wrapper.find('svg')
-      .hasClass('bar'))
-      .toBeTruthy();
+
+    expect(wrapper.find('svg use').prop('xlinkHref')).toEqual('#foo');
+
+    expect(wrapper.find('svg').hasClass('bar')).toBeTruthy();
   });
 });

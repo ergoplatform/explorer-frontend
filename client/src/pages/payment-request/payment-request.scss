@@ -11,7 +11,6 @@ $payment-request-input-bg: #fff;
 $payment-request-copy-btn-bg: $theme-color-blue;
 $payment-request-copy-btn-color: #fff;
 
-
 .bi-payment-request {
   padding: ($grid-offset-step * 10) 0;
   font-family: $theme-main-font;
@@ -62,6 +61,7 @@ $payment-request-copy-btn-color: #fff;
   &__input {
     height: 40px;
     font-size: 15px;
+    font-weight: 300;
     border: 0;
     padding-left: $grid-offset-step * 4;
     text-overflow: ellipsis;

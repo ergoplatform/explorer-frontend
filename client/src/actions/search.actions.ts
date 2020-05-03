@@ -7,21 +7,20 @@ export interface SearchActions extends ActionCreatorsMapObject {
 }
 
 export const SearchActions: SearchActions = {
-  search (query: string): any {
+  search(query: string): any {
     return (dispatch: Dispatch<Action>) => {
       dispatch({
-        type: GET_SEARCH
+        type: GET_SEARCH,
       });
-      
-      return SearchApiService.search(query)
-        .then((data: any) => {
-          dispatch({
-            payload: {
-              data,
-            },
-            type: GET_SEARCH_SUCCESS,
-          });
+
+      return SearchApiService.search(query).then((data: any) => {
+        dispatch({
+          payload: {
+            data,
+          },
+          type: GET_SEARCH_SUCCESS,
         });
+      });
     };
-  }
+  },
 };

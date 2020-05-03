@@ -37,8 +37,6 @@ $sidebar-btn-toggle-icon-color: #ffffff;
     transition: opacity 250ms ease-in-out;
   }
 
-
-
   &__logo-icon {
     width: 120px;
     height: 49px;
@@ -100,7 +98,8 @@ $sidebar-btn-toggle-icon-color: #ffffff;
       justify-content: center;
     }
 
-    &__copyright, &__made-by {
+    &__copyright,
+    &__made-by {
       position: absolute;
       z-index: -1;
       bottom: 0;
@@ -174,7 +173,8 @@ $sidebar-btn-toggle-icon-color: #ffffff;
 
   &__made-by {
     font-size: 14px;
-    color: #6C717C;
+    font-weight: 300;
+    color: #6c717c;
 
     a {
       color: $sidebar-copyright-color;

@@ -2,7 +2,7 @@ import {
   GET_ADDRESS,
   GET_ADDRESS_SUCCESS,
   GET_ADDRESS_TRANSACTIONS,
-  GET_ADDRESS_TRANSACTIONS_SUCCESS
+  GET_ADDRESS_TRANSACTIONS_SUCCESS,
 } from '../constants/address.types';
 
 import { CLEAR_APP_PRELOADED_STATE } from '../actions/app.actions';
@@ -14,8 +14,8 @@ export interface AddressState {
   fetching: boolean;
   address?: FullAddress;
   transactions?: {
-    items: Transaction[],
-    total: number,
+    items: Transaction[];
+    total: number;
   };
   preloaded: boolean;
   transactionFetching: boolean;
@@ -24,49 +24,51 @@ export interface AddressState {
 export const initialState: AddressState = {
   fetching: false,
   preloaded: false,
-  transactionFetching: false
+  transactionFetching: false,
 };
 
-export function addressReducer (state: AddressState = initialState, action: any): AddressState {
+export function addressReducer(
+  state: AddressState = initialState,
+  action: any
+): AddressState {
   switch (action.type) {
     case GET_ADDRESS: {
-      
       return {
         ...state,
-        fetching: true
+        fetching: true,
       };
     }
-    
+
     case GET_ADDRESS_SUCCESS: {
       return {
         ...state,
         address: action.payload.data,
-        fetching: false
+        fetching: false,
       };
     }
-    
+
     case GET_ADDRESS_TRANSACTIONS: {
       return {
         ...state,
-        transactionFetching: true
+        transactionFetching: true,
       };
     }
-    
+
     case GET_ADDRESS_TRANSACTIONS_SUCCESS: {
       return {
         ...state,
         transactionFetching: false,
-        transactions: action.payload.data
+        transactions: action.payload.data,
       };
     }
-    
+
     case CLEAR_APP_PRELOADED_STATE: {
       return {
         ...state,
         preloaded: false,
       };
     }
-    
+
     default:
       return { ...state };
   }

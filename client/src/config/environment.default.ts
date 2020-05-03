@@ -4,7 +4,7 @@ export const environmentDefault: IEnvironment = {
   alternativeLogo: true,
   apiUrl: 'https://api-testnet.ergoplatform.com',
   blockchain: {
-    coinName: 'Erg'
+    coinName: 'Erg',
   },
   defaultLocale: 'en',
   environments: [
@@ -15,7 +15,7 @@ export const environmentDefault: IEnvironment = {
     {
       name: 'Mainnet',
       url: 'http://localhost:3000',
-    }
+    },
   ],
-  isLoggerEnabled: true
+  isLoggerEnabled: true,
 };

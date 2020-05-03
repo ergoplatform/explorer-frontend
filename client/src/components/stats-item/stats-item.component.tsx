@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import './stats-item.scss';
@@ -9,7 +9,7 @@ interface IStatsItemProps {
 }
 
 export class StatsItemComponent extends React.Component<IStatsItemProps> {
-  render (): JSX.Element {
+  render(): JSX.Element {
     const { title, value } = this.props;
 
     return (
@@ -19,7 +19,7 @@ export class StatsItemComponent extends React.Component<IStatsItemProps> {
         </div>
 
         <div className="bi-stats-item__value">
-          { title === "supply" ? value.toUpperCase() : value }
+          {title === 'supply' ? value.toUpperCase() : value}
         </div>
       </div>
     );

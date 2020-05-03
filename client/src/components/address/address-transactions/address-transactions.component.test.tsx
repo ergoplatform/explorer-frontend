@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { shallowWithIntl } from '../../../utils/test-utils';
 
@@ -18,9 +18,10 @@ describe('Component | Address Transactions', () => {
   });
 
   it('should render without crashing', () => {
-    const wrapper = shallowWithIntl(<AddressTransactionsComponent summary={ summary }/>);
+    const wrapper = shallowWithIntl(
+      <AddressTransactionsComponent summary={summary} />
+    );
 
-    expect(wrapper.length)
-      .toBe(1);
+    expect(wrapper.length).toBe(1);
   });
 });

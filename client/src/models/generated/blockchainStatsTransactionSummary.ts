@@ -10,22 +10,21 @@
  * Do not edit the class manually.
  */
 
-
 export interface BlockchainStatsTransactionSummary {
-    /**
-     * Number of transactions
-     */
-    total?: number;
-    /**
-     * Total Transaction Fees
-     */
-    totalFee?: number;
-    /**
-     * Total Output Volume
-     */
-    totalOutput?: number;
-    /**
-     * Estimated Transaction Volume
-     */
-    estimatedTransactionVolume?: number;
+  /**
+   * Number of transactions
+   */
+  total?: number;
+  /**
+   * Total Transaction Fees
+   */
+  totalFee?: number;
+  /**
+   * Total Output Volume
+   */
+  totalOutput?: number;
+  /**
+   * Estimated Transaction Volume
+   */
+  estimatedTransactionVolume?: number;
 }

@@ -12,35 +12,37 @@ export interface BlockState {
 
 export const initialState: BlockState = {
   fetching: true,
-  preloaded: false
+  preloaded: false,
 };
 
-export function blockReducer (state: BlockState = initialState, action: any): BlockState {
+export function blockReducer(
+  state: BlockState = initialState,
+  action: any
+): BlockState {
   switch (action.type) {
     case GET_BLOCK: {
-      
       return {
         ...state,
-        fetching: true
+        fetching: true,
       };
     }
-    
+
     case GET_BLOCK_SUCCESS: {
       return {
         ...state,
         block: action.payload.data.block,
         fetching: false,
-        references: action.payload.data.references
+        references: action.payload.data.references,
       };
     }
-    
+
     case CLEAR_APP_PRELOADED_STATE: {
       return {
         ...state,
-        preloaded: false
+        preloaded: false,
       };
     }
-    
+
     default:
       return { ...state };
   }
