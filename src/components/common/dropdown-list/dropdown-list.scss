@@ -1,0 +1,94 @@
+@import '../../../assets/styles/base/variables';
+
+// #DROPDOWN
+//-------------------------------------
+$dropdown-button-color: #0078ff;
+$dropdown-button-hover-color: #ffffff;
+$dropdown-option-color: $theme-primary-color;
+$dropdown-dropdown-bg: #ffffff;
+$dropdown-option-hover-bg: #f8f8f8;
+
+.bi-dropdown-list {
+  position: relative;
+
+  // [ Components ]
+  //-----------------------------------------
+  &__button {
+    color: $dropdown-button-color;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 300;
+
+    align-items: center;
+  }
+
+  &__button:hover & {
+    &__button-icon {
+      fill: $dropdown-button-hover-color;
+    }
+  }
+
+  &__button-icon {
+    width: 10px;
+    height: 10px;
+    margin-left: $grid-offset-step;
+
+    fill: $dropdown-button-color;
+  }
+
+  &__dropdown {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: -5px;
+    right: 110%;
+    max-width: 160px;
+    max-height: 100px;
+    overflow-y: auto;
+    z-index: 9999999;
+    border: 0.5px solid #dee3f1;
+    background-color: $dropdown-dropdown-bg;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.06);
+    font-family: inherit;
+
+    @media (max-width: $mobile-device-width) {
+      top: 25px;
+      right: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__option {
+    display: flex;
+    width: 100%;
+    padding: $grid-offset-step * 1.5 $grid-offset-step * 4;
+    color: $dropdown-option-color;
+    font-family: inherit;
+    font-size: 13px;
+    text-align: left;
+
+    justify-content: flex-end;
+
+    span {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: $mobile-device-width) {
+      justify-content: center;
+    }
+  }
+
+  // [ State ] Open
+  &--open & {
+    &__dropdown {
+      display: block;
+    }
+
+    &__button-icon {
+      transform: rotate(180deg);
+    }
+  }
+}

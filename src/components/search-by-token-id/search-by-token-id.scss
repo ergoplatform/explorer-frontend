@@ -1,0 +1,24 @@
+@import '../../assets/styles/base/variables';
+
+.bi-search-by-token {
+  .bi-search-by-token__input {
+    padding: 8px 12px;
+    border: 1px solid $theme-color-blue;
+    color: #121212;
+    font-size: 15px;
+  }
+
+  .bi-search__form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-family: $theme-main-font;
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 200px;
+    }
+  }
+}

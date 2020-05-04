@@ -1,0 +1,106 @@
+@import '../../../assets/styles/base/variables';
+
+// #PIE CHART
+//-------------------------------------
+$block-info-bg-color: #ffffff;
+$block-info-row-hover-bg-color: #f8f8f8;
+$block-info-border-color: #eeeeee;
+$block-table-title-color: $theme-primary-color;
+$block-table-cell-color: $theme-primary-color;
+$block-table-cell-border-color: $theme-color-blue;
+
+.bi-pie-chart {
+  padding: $grid-offset-step * 5 ($grid-offset-step * 15);
+
+  &__legend {
+    margin-top: $grid-offset-step * 5;
+    width: 100%;
+    border: 1px solid $block-info-border-color;
+    background-color: $block-info-bg-color;
+  }
+
+  &__row {
+    border-bottom: 1px solid $block-info-border-color;
+
+    &:hover {
+      background-color: $block-info-row-hover-bg-color;
+
+      .bi-pie-chart__cell:first-child:after {
+        visibility: visible;
+      }
+    }
+
+    &--header {
+      font-weight: 600;
+      background-color: #f8f8f8;
+    }
+  }
+
+  &__cell {
+    position: relative;
+    padding: $grid-offset-step * 4;
+    border: 1px solid $block-info-border-color;
+    border-right: 0;
+    border-left: 0;
+    color: $block-table-cell-color;
+    font-size: 15px;
+    font-weight: 300;
+
+    &:first-child:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background-color: $block-table-cell-border-color;
+      content: '';
+      visibility: hidden;
+    }
+
+    span {
+      display: none;
+      font-weight: 600;
+    }
+  }
+
+  &__chart {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+.bi-chart--iframe .bi-pie-chart {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-pie-chart {
+    padding: 0 ($grid-offset-step * 3);
+
+    &__legend {
+      margin-top: 0;
+    }
+
+    &__row--header {
+      display: none;
+    }
+
+    &__row &__cell {
+      border: 0;
+      font-size: 13px;
+      padding: $grid-offset-step $grid-offset-step * 2;
+    }
+
+    &__cell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        display: inline;
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+@import '../../../assets/styles/base/variables';
+
+// #BLOCK SUMMARY
+//-------------------------------------
+$address-summary-header-color: $theme-primary-color;
+$address-summary-header-bg-color: #f8f8f8;
+$address-summary-header-border-color: #eeeeee;
+
+.bi-transactions-summary {
+  // [ Components ]
+  //-----------------------------------
+  &__header {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
+    border: 1px solid $address-summary-header-border-color;
+    border-bottom: 0;
+    color: $address-summary-header-color;
+    background-color: $address-summary-header-bg-color;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    border: 1px solid $address-summary-header-border-color;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &__row {
+    border: 1px solid $address-summary-header-border-color;
+  }
+
+  &__cell {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
+
+    &--header {
+      font-weight: 600;
+    }
+
+    &--actions {
+      text-align: right;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-transactions-summary {
+    &__header {
+      padding: ($grid-offset-step * 3) ($grid-offset-step * 4);
+    }
+
+    &__row {
+      border: none;
+      border-bottom: 1px solid $address-summary-header-border-color;
+    }
+
+    &__cell {
+      padding: ($grid-offset-step * 3) ($grid-offset-step * 4);
+
+      + .bi-transactions-summary__cell {
+        padding-top: 0;
+      }
+
+      &--actions {
+        display: none;
+      }
+    }
+  }
+}

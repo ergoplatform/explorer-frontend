@@ -1,0 +1,17 @@
+@import '../../../assets/styles/base/variables';
+
+// #TIMESTAMP
+//-------------------------------------
+$timestamp-time-color: $theme-primary-color;
+$timestamp-date-color: #828795;
+
+.bi-timestamp {
+  &__time {
+    margin-right: $grid-offset-step;
+    color: $timestamp-time-color;
+  }
+
+  &__date {
+    color: $timestamp-date-color;
+  }
+}

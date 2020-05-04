@@ -1,0 +1,14 @@
+@import '../../assets/styles/base/variables';
+
+
+// #TRANSACTIONS
+//-------------------------------------
+.bi-transactions {
+  .bi-transactions-item {
+    margin-bottom: $grid-offset-step * 4;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../assets/styles/base/variables';
+
+// #STATS ITEM
+//-------------------------------------
+$stats-item-title-color: lighten(#808590, 10%);
+$stats-item-value-color: #121212;
+
+.bi-stats-item {
+  font-family: $theme-main-font;
+
+  &__title {
+    color: $stats-item-title-color;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__value {
+    margin-top: $grid-offset-step;
+    color: $stats-item-value-color;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}

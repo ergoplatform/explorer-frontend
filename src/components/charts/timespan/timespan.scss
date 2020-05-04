@@ -1,0 +1,46 @@
+@import '../../../assets/styles/base/variables';
+
+// #TIMESPAN
+//-----------------------------
+$timespan-bg-color: #ffffff;
+$timespan-border-color: #dbdbdb;
+$timespan-span-color: $theme-primary-color;
+$timespan-span-active-bg: #eeeeee;
+
+.bi-timespan {
+  display: inline-flex;
+  border: 1px solid $timespan-border-color;
+  border-radius: 4px;
+  background-color: $timespan-bg-color;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------
+  &__span {
+    padding: 0 ($grid-offset-step * 3);
+    border-right: 1px solid $timespan-border-color;
+    color: $timespan-span-color;
+    font-size: 12px;
+    line-height: 30px;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    // [ State ] Active
+    &--active {
+      background-color: $timespan-span-active-bg;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-timespan {
+    flex-wrap: wrap;
+
+    &__span {
+      width: 100%;
+      border-right: 0;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import '../../assets/styles/base/variables';
+
+// #STATS
+//-------------------------------------
+$stats-subtitle-color: #828795;
+
+.bi-stats {
+  padding: ($grid-offset-step * 10) 0;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------
+  &__header,
+  &__body {
+    padding: 0 ($grid-offset-step * 15);
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    color: $stats-subtitle-color;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  &__line {
+    margin-top: ($grid-offset-step * 10);
+  }
+}
+
+@media screen and (max-width: $laptop-device-width) {
+  .bi-stats {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
+
+    &__footer,
+    &__header,
+    &__body {
+      padding: 0 ($grid-offset-step * 5);
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-stats {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
+
+    &__footer,
+    &__header,
+    &__body {
+      padding: 0 ($grid-offset-step * 3);
+    }
+  }
+}

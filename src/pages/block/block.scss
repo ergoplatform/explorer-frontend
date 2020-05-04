@@ -1,0 +1,21 @@
+@import '../../assets/styles/base/variables';
+
+// #BLOCK
+//-------------------------------------
+
+.bi-block {
+  padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+  font-family: $theme-main-font;
+}
+
+@media screen and (max-width: $laptop-device-width) {
+  .bi-block {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 5);
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-block {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 3);
+  }
+}

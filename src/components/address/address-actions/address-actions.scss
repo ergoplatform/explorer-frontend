@@ -1,0 +1,42 @@
+@import '../../../assets/styles/base/variables';
+
+// #ADDRESS ACTIONS
+//-------------------------------------
+$address-actions-btn-color: #ffffff;
+$address-actions-btn-icon-color: #ffffff;
+$address-actions-btn-bg-color: $theme-primary-color;
+
+.bi-address-actions {
+  margin-top: $grid-offset-step * 3;
+
+  justify-content: space-between;
+
+  // [ Components ]
+  //-----------------------------------
+  &__btn {
+    display: inline-flex;
+    margin-right: $grid-offset-step * 4;
+    padding: ($grid-offset-step * 2) ($grid-offset-step * 4);
+    border: 0;
+    border-radius: 20px;
+    color: $address-actions-btn-color;
+    background-color: $address-actions-btn-bg-color;
+    font-family: $theme-main-font;
+    font-size: 14px;
+    font-weight: 300;
+
+    align-items: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__btn-icon {
+    width: 15px;
+    height: 15px;
+    margin-left: $grid-offset-step * 2;
+
+    fill: $address-actions-btn-icon-color;
+  }
+}
