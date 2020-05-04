@@ -29,14 +29,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
   },
   "exclude": [
     "node_modules",
     "build",
     "src/models/generated",
     "coverage",
-    "client/src/models/generated",
     "scripts",
     "acceptance-tests",
     "webpack",
