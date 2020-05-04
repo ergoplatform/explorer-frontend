@@ -1,0 +1,67 @@
+$itemSize: 10;
+$itemSpacing: 2;
+$squareSize: 10;
+$mtw-loaderColor: #000;
+$mtw-loaderDelay: 100;
+$mtw-loaderDuration: 2000;
+$animationTiming: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+.mtw-loader {
+  display: flex;
+  overflow: hidden;
+  font-size: 0;
+}
+.mtw-loader--3d {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.mtw-loader-item {
+  display: inline-block;
+  width: $itemSize + px;
+  height: $itemSize + px;
+  margin-left: $itemSpacing + px;
+  background-color: $mtw-loaderColor;
+  color: $mtw-loaderColor;
+
+  animation-duration: $mtw-loaderDuration + ms;
+  animation-timing-function: $animationTiming;
+  animation-iteration-count: infinite;
+
+  //loop through to add an animation delay
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      animation-delay: ($i * $mtw-loaderDelay) + ms;
+    }
+  }
+  .mtw-loader--flipDelay & {
+    animation-name: flipDelay;
+    animation-direction: reverse;
+  }
+
+  @keyframes flipDelay {
+    0% {
+      transform: rotateX(0deg);
+      transform-origin: 0 0 0;
+      opacity: 1;
+    }
+    30% {
+      transform: rotateX(90deg);
+      transform-origin: 0 0 0;
+      opacity: 0;
+    }
+    40% {
+      transform-origin: 0 0 0;
+    }
+    60% {
+      transform: rotateX(90deg);
+      opacity: 0;
+      transform-origin: 0 100% 0;
+    }
+    90% {
+      transform: rotateX(0deg);
+      opacity: 1;
+      transform-origin: 0 100% 0;
+    }
+  }
+}

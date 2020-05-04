@@ -152,7 +152,9 @@ function mapDispatchToProps(dispatch: any): any {
   return bindActionCreators({ ...SearchActions, ...AppActions }, dispatch);
 }
 
-export const SearchResultsComponent = connect(
+const SearchResultsComponent = connect(
   mapStateToProps,
   mapDispatchToProps
 )(SearchResults);
+
+export default SearchResultsComponent;

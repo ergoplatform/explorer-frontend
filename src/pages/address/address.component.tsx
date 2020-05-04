@@ -180,7 +180,4 @@ function mapDispatchToProps(dispatch: any): any {
   return bindActionCreators({ ...AddressActions, ...AppActions }, dispatch);
 }
 
-export const AddressComponent = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Address);
+export default connect(mapStateToProps, mapDispatchToProps)(Address);

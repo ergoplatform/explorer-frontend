@@ -6,7 +6,7 @@ import { ChartsPreviewComponent } from '../../components/charts/charts-preview/c
 
 import './charts.scss';
 
-export class ChartsComponent extends React.PureComponent {
+export default class ChartsComponent extends React.PureComponent {
   render(): JSX.Element {
     return (
       <div className="bi-charts g-flex-column">

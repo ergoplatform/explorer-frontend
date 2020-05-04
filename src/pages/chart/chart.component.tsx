@@ -270,3 +270,5 @@ export const ChartComponent = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Chart);
+
+export default ChartComponent;
