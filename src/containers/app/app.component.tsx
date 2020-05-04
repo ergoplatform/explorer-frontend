@@ -77,7 +77,11 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
           <HeaderComponent />
 
           <div className="bi-app__body g-flex-column__item g-flex-column">
-            <Suspense fallback={<div>Loading page...</div>}>
+            <Suspense
+              fallback={
+                <div className="bi-app__loading-text">Loading page...</div>
+              }
+            >
               <Switch>
                 <Route exact path="/" component={DataComponent} />
 
