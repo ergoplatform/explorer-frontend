@@ -1,0 +1,124 @@
+@import '../../assets/styles/base/variables';
+
+// #CHART
+//-------------------------------------
+$chart-back-btn-color: $theme-color-blue;
+$chart-axis-line-color: #e8e8e8;
+$chart-iframe-bg: #ffffff;
+$chart-subtitle-color: #828795;
+
+.bi-chart {
+  padding: ($grid-offset-step * 10) 0;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------
+  .recharts-cartesian-axis-line {
+    stroke: $chart-axis-line-color;
+  }
+
+  &__header {
+    padding: 0 ($grid-offset-step * 15);
+  }
+
+  &__chart {
+    height: 100vh;
+    max-height: 512px;
+    margin-top: $grid-offset-step * 3;
+    margin-bottom: $grid-offset-step * 5;
+    padding-right: $grid-offset-step * 15;
+    padding-left: ($grid-offset-step * 3);
+  }
+
+  &__controls {
+    padding: 0 ($grid-offset-step * 15);
+
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__btn-back {
+    display: inline-block;
+    margin-bottom: $grid-offset-step * 8;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  &__btn-back-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: $grid-offset-step;
+    transform: rotate(180deg);
+
+    fill: $chart-back-btn-color;
+  }
+
+  &__subtitle {
+    color: $chart-subtitle-color;
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+.bi-chart--iframe {
+  position: fixed;
+  z-index: 10010;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  padding: 0;
+  background-color: $chart-iframe-bg;
+
+  .bi-chart__chart {
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bi-chart__body {
+    padding: 0;
+  }
+
+  .bi-chart__header {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-chart {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
+
+    &__chart {
+      max-height: 200px;
+      padding-right: $grid-offset-step * 3;
+    }
+
+    &__controls {
+      flex-wrap: wrap;
+    }
+
+    &__controls .bi-timespan {
+      margin-bottom: $grid-offset-step * 2;
+    }
+
+    &__btn-back {
+      margin-bottom: $grid-offset-step * 2;
+    }
+
+    &__title {
+      padding: $grid-offset-step * 5 0;
+    }
+
+    &__footer,
+    &__controls,
+    &__header {
+      padding: 0 ($grid-offset-step * 3);
+    }
+  }
+}

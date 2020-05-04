@@ -1,0 +1,121 @@
+@import '../../../assets/styles/base/variables';
+
+// #BLOCK HEADER
+//-------------------------------------
+$block-header-title-color: $theme-primary-color;
+$block-header-nav-btn-bg-color: #e8e8e8;
+$block-header-tab-border-color: #0078ff;
+$block-header-back-btn-color: #0078ff;
+$block-header-tab-active-color: $theme-primary-color;
+$block-header-nav-icon-color: $theme-primary-color;
+
+.bi-block-header {
+  margin-bottom: $grid-offset-step * 5;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-------------------------------
+  &__line {
+    width: 100%;
+
+    align-items: center;
+  }
+
+  &__title {
+    color: $block-header-title-color;
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__navigation {
+    margin: 0 $grid-offset-step * 2;
+  }
+
+  &__tabs {
+    margin-left: auto;
+  }
+
+  &__navigation-btn {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin: 0 ($grid-offset-step / 2);
+    border-radius: 50%;
+    background-color: $block-header-nav-btn-bg-color;
+    line-height: 22px;
+    text-align: center;
+
+    &:hover {
+      background-color: darken($block-header-nav-btn-bg-color, 3);
+    }
+  }
+
+  &__navigation-btn--prev & {
+    &__navigation-btn-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__navigation-btn-icon {
+    width: 10px;
+    height: 10px;
+
+    fill: $block-header-nav-icon-color;
+  }
+
+  &__tab {
+    margin: 0 ($grid-offset-step * 4);
+    border-bottom: 1px dotted $block-header-tab-border-color;
+    font-size: 15px;
+    font-weight: 300;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__tab--active {
+    border-bottom: 0;
+    color: $block-header-tab-active-color;
+  }
+
+  &__btn-back {
+    display: inline-block;
+    margin-bottom: $grid-offset-step * 8;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  &__btn-back-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: $grid-offset-step;
+    transform: rotate(180deg);
+
+    fill: $block-header-back-btn-color;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-block-header {
+    flex-wrap: wrap;
+
+    &__btn-back {
+      margin-bottom: $grid-offset-step * 2;
+    }
+
+    &__tabs {
+      margin-top: $grid-offset-step * 2;
+      margin-left: 0;
+    }
+
+    &__tab {
+      margin-right: $grid-offset-step * 2;
+      margin-left: 0;
+    }
+
+    &__line {
+      flex-wrap: wrap;
+    }
+  }
+}

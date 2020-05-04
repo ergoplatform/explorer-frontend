@@ -1,0 +1,72 @@
+@import '../../assets/styles/base/variables';
+
+.bi-orders {
+  background: white;
+  padding: ($grid-offset-step * 4) ($grid-offset-step * 4);
+  .bi-orders__content {
+    & + .bi-orders__content {
+      margin-top: 20px;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+
+    thead th {
+      font-weight: normal;
+      color: #808080;
+      font-size: 14px;
+      text-align: left;
+      font-family: $theme-main-font;
+
+      &:after {
+        content: '-';
+        display: block;
+        line-height: 13px;
+        color: transparent;
+      }
+    }
+
+    tbody td {
+      font-family: $theme-main-font;
+      border-bottom: 1px dashed #dfdfdf;
+      padding: 5px 0;
+
+      &.fill-ask {
+        background-repeat: no-repeat;
+        position: relative;
+
+        span {
+          top: 0;
+          right: 0;
+          height: 100%;
+          position: absolute;
+          background-color: rgba(204, 86, 86, 0.2);
+        }
+      }
+
+      &.fill-bid {
+        position: relative;
+
+        span {
+          top: 0;
+          right: 0;
+          height: 100%;
+          position: absolute;
+          background-color: rgba(145, 204, 86, 0.25);
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-family: $theme-main-font;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-bottom: 8px;
+  }
+}

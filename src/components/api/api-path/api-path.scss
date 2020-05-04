@@ -1,0 +1,48 @@
+@import '../../../assets/styles/base/variables';
+
+// #API PATH
+//-------------------------------------
+$api-path-pathname-color: $theme-primary-color;
+$api-path-type-color: #fff;
+$api-path-type-bg: $theme-color-blue;
+
+.bi-api-path {
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------
+  &__item {
+    margin-bottom: $grid-offset-step * 5;
+    background-color: #fff;
+    padding: $grid-offset-step * 3 $grid-offset-step * 3;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__raw {
+    white-space: pre-wrap;
+  }
+
+  &__type {
+    font-weight: 600;
+    color: $api-path-type-color;
+    background-color: $api-path-type-bg;
+    padding: $grid-offset-step $grid-offset-step * 2;
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 2px;
+    margin-right: $grid-offset-step * 2;
+  }
+
+  &__pathname {
+    font-weight: 600;
+    color: $api-path-pathname-color;
+    display: inline-block;
+    margin-right: $grid-offset-step * 2;
+  }
+}

@@ -1,0 +1,41 @@
+@import './variables';
+
+.bi-table {
+  display: table;
+  box-sizing: border-box;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  &__header {
+    display: table-header-group;
+    table-layout: fixed;
+  }
+
+  &__body {
+    display: table-row-group;
+  }
+
+  &__row {
+    display: table-row;
+    box-sizing: border-box;
+  }
+
+  &__cell {
+    display: table-cell;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-table {
+    display: block;
+
+    &__row {
+      display: block;
+    }
+
+    &__cell {
+      display: block;
+    }
+  }
+}

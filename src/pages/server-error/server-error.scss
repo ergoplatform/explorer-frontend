@@ -1,0 +1,17 @@
+@import '../../assets/styles/base/variables';
+
+// #SERVER ERROR
+//-------------------------------------
+.bi-server-error {
+  padding-top: $grid-offset-step * 50;
+  text-align: center;
+  font-family: $theme-main-font;
+
+  h2 {
+    font-size: 32px;
+  }
+
+  a {
+    margin: $grid-offset-step;
+  }
+}

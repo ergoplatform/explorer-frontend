@@ -1,0 +1,71 @@
+@import '../../assets/styles/base/variables';
+
+// #Data
+//-------------------------------------
+$data-color: $theme-primary-color;
+$data-title-color: $theme-primary-color;
+
+.bi-data {
+  padding: ($grid-offset-step * 10) 0;
+  color: $data-color;
+  font-family: $theme-main-font;
+
+  justify-content: space-between;
+
+  // [ Components ]
+  //----------------------------------
+  &__header {
+    margin-bottom: ($grid-offset-step * 4);
+    padding: 0 ($grid-offset-step * 15);
+
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__footer {
+    margin-top: ($grid-offset-step * 4);
+    padding: 0 ($grid-offset-step * 15);
+
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: $data-title-color;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  &__body {
+    padding: 0 ($grid-offset-step * 15);
+  }
+}
+
+@media screen and (max-width: $laptop-device-width) {
+  .bi-data {
+    padding: ($grid-offset-step * 5) 0;
+
+    &__footer,
+    &__header,
+    &__body {
+      padding: 0 ($grid-offset-step * 5);
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-data {
+    padding: ($grid-offset-step * 5) 0;
+
+    &__footer,
+    &__header,
+    &__body {
+      padding: 0 ($grid-offset-step * 3);
+    }
+
+    &__footer .bi-limit-selector {
+      display: none;
+    }
+  }
+}

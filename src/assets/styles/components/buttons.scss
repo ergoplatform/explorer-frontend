@@ -1,0 +1,17 @@
+@import '../base/variables';
+
+// #BUTTONS
+//----------------------------------
+.bi-btn {
+  cursor: pointer;
+
+  &--flat {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  &--link {
+    color: $theme-color-blue;
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../../assets/styles/base/variables';
+
+// #BLOCK ADPROOFS
+//-------------------------------------
+$block-adproofs-bg-color: #ffffff;
+$block-adproofs-border-color: #eeeeee;
+
+.bi-block-adproofs {
+  border: 1px solid $block-adproofs-border-color;
+  background-color: $block-adproofs-bg-color;
+  font-size: 14px;
+  font-weight: 300;
+
+  // [ Components ]
+  //---------------------------------------
+  &__header {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
+    border-bottom: 1px solid $block-adproofs-border-color;
+    font-weight: 600;
+  }
+
+  &__body {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 6);
+  }
+}

@@ -1,0 +1,14 @@
+@import '../../assets/styles/base/variables';
+
+.bi-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 42px;
+    margin-top: 1rem;
+    font-family: $theme-main-font;
+    font-weight: bold;
+  }
+}

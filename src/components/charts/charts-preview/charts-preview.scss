@@ -1,0 +1,54 @@
+@import '../../../assets/styles/base/variables';
+
+// #CHARTS PREVIEW
+//-----------------------------
+$chart-preview-title-color: $theme-primary-color;
+$chart-preview-border-color: #ecf1f5;
+$chart-preview-description-color: #828795;
+
+.bi-charts-preview {
+  width: 240px;
+  margin-right: ($grid-offset-step * 5);
+  margin-bottom: ($grid-offset-step * 5);
+  font-family: $theme-main-font;
+  text-align: center;
+
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  // [ Components ]
+  //--------------------------------------
+  &__link {
+    display: flex;
+    padding-top: ($grid-offset-step * 4);
+    border: 1px solid $chart-preview-border-color;
+    color: $chart-preview-title-color;
+    font-size: 16px;
+    font-weight: 600;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__image {
+    width: 100%;
+    height: 150px;
+  }
+
+  &__description {
+    color: $chart-preview-description-color;
+    font-size: 14px;
+    margin-top: $grid-offset-step * 2;
+    padding: 0 $grid-offset-step * 4;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-charts-preview {
+    margin-right: 0;
+
+    &__iframe {
+      height: 150px;
+    }
+  }
+}

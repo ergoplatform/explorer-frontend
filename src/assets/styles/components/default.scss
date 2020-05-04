@@ -1,0 +1,28 @@
+@import '../base/variables';
+$root-bg-color: #f8f8f8;
+
+#root {
+  height: 100%;
+  background-color: $root-bg-color;
+}
+
+body:not(.bi-tab-mode) {
+  a,
+  select,
+  input,
+  textarea,
+  button {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+a {
+  color: $theme-color-blue;
+  text-decoration: none;
+}
+
+abbr {
+  text-decoration: none !important;
+}

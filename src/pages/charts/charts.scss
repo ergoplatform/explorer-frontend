@@ -1,0 +1,92 @@
+@import '../../assets/styles/base/variables';
+
+// #CHARTS
+//-------------------------------------
+$charts-charts-bg-color: #ffffff;
+
+.bi-charts {
+  min-height: 100%;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------
+  .bi-stats-item {
+    min-width: 300px;
+    margin-bottom: $grid-offset-step * 10;
+    font-family: $theme-main-font;
+
+    flex-grow: 1;
+
+    &__title {
+      font-size: 16px;
+    }
+
+    &__value {
+      font-size: 26px;
+    }
+  }
+
+  &__header {
+    padding: 0 ($grid-offset-step * 15);
+  }
+
+  &__title {
+    padding: ($grid-offset-step * 10) 0;
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  &__stats {
+    padding: 0 ($grid-offset-step * 15);
+
+    flex-wrap: wrap;
+  }
+
+  &__charts-wrapper {
+    padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+    padding-top: 0;
+    background-color: $charts-charts-bg-color;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  &__charts {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: $laptop-device-width) {
+  .bi-charts {
+    padding: ($grid-offset-step * 0);
+
+    &__title {
+      padding: $grid-offset-step * 5 0;
+    }
+
+    &__footer,
+    &__charts-wrapper,
+    &__header {
+      padding: 0 ($grid-offset-step * 5);
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-charts {
+    padding: 0;
+
+    &__title {
+      padding: $grid-offset-step * 5 0;
+    }
+
+    &__charts {
+      justify-content: center;
+    }
+
+    &__footer,
+    &__charts-wrapper,
+    &__header {
+      padding: 0 ($grid-offset-step * 3);
+    }
+  }
+}

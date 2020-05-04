@@ -1,0 +1,48 @@
+@import '../../../assets/styles/base/variables';
+
+// #CHART-ACTiONS
+//-----------------------------
+$chart-actions-bg-color: #ffffff;
+$chart-actions-border-color: #dbdbdb;
+$chart-actions-span-color: $theme-primary-color;
+$chart-actions-span-active-bg: #eeeeee;
+
+.bi-chart-actions {
+  display: inline-flex;
+  border: 1px solid $chart-actions-border-color;
+  border-radius: 4px;
+  background-color: $chart-actions-bg-color;
+
+  // [ Components ]
+  //-----------------------------
+  &__action {
+    padding: 0 ($grid-offset-step * 3);
+    border-right: 1px solid $chart-actions-border-color;
+    color: $chart-actions-span-color;
+    font-size: 12px;
+    line-height: 30px;
+    font-family: $theme-main-font;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    // [ State ] Active
+    &--active {
+      background-color: $chart-actions-span-active-bg;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-chart-actions {
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+
+    &__action {
+      flex-grow: 1;
+      text-align: center;
+    }
+  }
+}

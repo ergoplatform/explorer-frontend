@@ -1,0 +1,39 @@
+@import '../../../assets/styles/base/variables';
+
+// #ADDRESS QRCODE MODAL
+//-------------------------------------
+$address-qrcode-modal-bg: #ffffff;
+$address-qrcode-modal-title-color: $theme-main-font;
+$address-qrcode-modal-subtitle-color: #828795;
+
+.bi-address-qrcode-modal {
+  padding: ($grid-offset-step * 12) ($grid-offset-step * 22);
+  border-radius: 4px;
+  outline: none;
+  background-color: $address-qrcode-modal-bg;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------
+  &__title {
+    margin-bottom: $grid-offset-step * 8;
+    color: $address-qrcode-modal-title-color;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+  }
+
+  &__subtitle {
+    margin-top: $grid-offset-step * 2;
+    color: $address-qrcode-modal-subtitle-color;
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-address-qrcode-modal {
+    padding: ($grid-offset-step * 12) ($grid-offset-step * 15);
+  }
+}

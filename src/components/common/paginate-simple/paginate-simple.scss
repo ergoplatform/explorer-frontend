@@ -1,0 +1,77 @@
+@import '../../../assets/styles/base/variables';
+
+// #PAGINATE SIMPLE
+//--------------------------
+$paginate-simple-btn-icon-fill-disabled: #828795;
+$paginate-simple-btn-icon-fill: $theme-color-blue;
+$paginate-simple-btn-border-color: $theme-color-blue;
+$paginate-simple-btn-disabled-bg: #e8e8e8;
+$paginate-simple-status-color: $theme-primary-color;
+
+.bi-paginate-simple {
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------
+  &__status {
+    margin: 0 ($grid-offset-step * 3);
+    color: $paginate-simple-status-color;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &__status--mobile {
+    display: none;
+  }
+
+  &__btn {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    margin: 0 $grid-offset-step;
+    border: 1px solid $paginate-simple-btn-border-color;
+    border-radius: 50%;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+    &[disabled] {
+      border-color: $paginate-simple-btn-disabled-bg;
+      background-color: $paginate-simple-btn-disabled-bg;
+    }
+  }
+
+  &__btn--prev & {
+    &__btn-icon {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__btn[disabled] & {
+    &__btn-icon {
+      fill: $paginate-simple-btn-icon-fill-disabled;
+    }
+  }
+
+  &__btn-icon {
+    width: 12px;
+    height: 12px;
+
+    fill: $paginate-simple-btn-icon-fill;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-paginate-simple {
+    &__status {
+      display: none;
+    }
+
+    &__status--mobile {
+      display: inline;
+    }
+  }
+}

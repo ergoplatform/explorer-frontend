@@ -1,0 +1,39 @@
+@import '../../assets/styles/base/variables';
+
+.bi-order-book {
+  margin: ($grid-offset-step * 10) ($grid-offset-step * 15);
+
+  h1 {
+    font-family: $theme-main-font;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  p {
+    font-family: $theme-main-font;
+  }
+
+  .bi-order-book__search {
+    margin: ($grid-offset-step * 4) 0;
+  }
+
+  .bi-order-book__orders {
+    width: 50%;
+
+    @media (max-width: $mobile-device-width) {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: $laptop-device-width) {
+  .bi-order-book {
+    margin: ($grid-offset-step * 5) ($grid-offset-step * 5);
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-order-book {
+    margin: ($grid-offset-step * 5) ($grid-offset-step * 3);
+  }
+}

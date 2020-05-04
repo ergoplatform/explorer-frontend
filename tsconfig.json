@@ -12,10 +12,12 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
-    "paths": {
-      "lodash/*": ["node_modules/@types/lodash-es/*"]
-    },
-    "lib": ["es7", "dom", "dom.iterable", "esnext"],
+    "lib": [
+      "es7",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -27,17 +29,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
   },
   "exclude": [
     "node_modules",
     "build",
-    "dist",
+    "src/models/generated",
     "coverage",
-    "client/src/models/generated",
     "scripts",
     "acceptance-tests",
     "webpack",
     "jest"
+  ],
+  "include": [
+    "src"
   ]
 }

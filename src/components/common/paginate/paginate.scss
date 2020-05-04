@@ -1,0 +1,47 @@
+@import '../../../assets/styles/base/variables';
+
+// #Pagination
+//-------------------------------------
+$paginate-selected-color: #1d1d1d;
+$paginate-selected-bg-color: #eeeeee;
+
+.bi-paginate {
+  font-family: $theme-main-font;
+
+  &__item {
+    margin: 0 $grid-offset-step;
+
+    &--selected & {
+      &-link {
+        color: $paginate-selected-color;
+        background-color: $paginate-selected-bg-color;
+      }
+    }
+  }
+
+  &__item-link {
+    display: block;
+    min-width: 15px;
+    height: 15px;
+    padding: $grid-offset-step * 2;
+    border-radius: 25px;
+    line-height: 15px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__prev,
+  &__next {
+    padding: $grid-offset-step * 2;
+    line-height: 15px;
+    cursor: pointer;
+  }
+
+  &__break {
+    line-height: 35px;
+  }
+
+  &__prev.disabled {
+    display: none;
+  }
+}
