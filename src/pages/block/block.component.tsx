@@ -154,7 +154,7 @@ function mapDispatchToProps(dispatch: any): ActionCreatorsMapObject {
   return bindActionCreators({ ...BlockActions, ...AppActions }, dispatch);
 }
 
-export const BlockComponent = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withLastLocation(Block));

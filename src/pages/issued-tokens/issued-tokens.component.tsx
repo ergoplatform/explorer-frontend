@@ -177,7 +177,9 @@ const mapDispatchToProps = (dispatch: any): any => {
   return bindActionCreators({ ...IssuedTokensActions }, dispatch);
 };
 
-export const IssuedTokensComponent = connect(
+const IssuedTokensComponent = connect(
   mapStateToProps,
   mapDispatchToProps
 )(IssuedTokens);
+
+export default IssuedTokensComponent;

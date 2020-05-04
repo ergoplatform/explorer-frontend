@@ -150,7 +150,9 @@ function mapDispatchToProps(dispatch: any): ActionCreatorsMapObject {
   );
 }
 
-export const TransactionComponent = connect(
+const TransactionComponent = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Transaction);
+
+export default TransactionComponent;

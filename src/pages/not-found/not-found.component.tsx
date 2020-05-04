@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import './not-found.scss';
 
-export class NotFoundComponent extends React.Component {
+export default class NotFoundComponent extends React.Component {
   render(): JSX.Element {
     return (
       <div className="bi-not-found">

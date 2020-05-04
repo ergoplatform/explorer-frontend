@@ -97,7 +97,6 @@ function mapDispatchToProps(dispatch: any): any {
   return bindActionCreators({ ...StatsActions, ...AppActions }, dispatch);
 }
 
-export const StatsComponent = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Stats);
+const StatsComponent = connect(mapStateToProps, mapDispatchToProps)(Stats);
+
+export default StatsComponent;

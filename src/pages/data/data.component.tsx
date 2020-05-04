@@ -223,4 +223,6 @@ function mapDispatchToProps(dispatch: any): any {
   return bindActionCreators({ ...BlockActions, ...AppActions }, dispatch);
 }
 
-export const DataComponent = connect(mapStateToProps, mapDispatchToProps)(Data);
+const DataComponent = connect(mapStateToProps, mapDispatchToProps)(Data);
+
+export default DataComponent;

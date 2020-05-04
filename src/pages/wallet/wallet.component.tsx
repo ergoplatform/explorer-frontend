@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import './wallet.scss';
 
-export class WalletComponent extends React.Component {
+export default class WalletComponent extends React.Component {
   render(): JSX.Element {
     return (
       <div className="bi-wallet">
