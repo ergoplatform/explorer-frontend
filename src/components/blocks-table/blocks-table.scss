@@ -44,6 +44,12 @@ $block-table-cell-color: $theme-primary-color;
     &--timestamp {
       width: 25%;
     }
+
+    &--difficulty {
+      text-overflow: initial;
+      font-size: 11px;
+      padding: 0;
+    }
   }
 
   &-header {
