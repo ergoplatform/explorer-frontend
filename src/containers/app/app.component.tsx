@@ -28,7 +28,7 @@ const PaymentRequestComponent = lazy(() =>
   import('../../pages/payment-request/payment-request.component')
 );
 const SearchResultsComponent = lazy(() =>
-  import('../../pages/payment-request/payment-request.component')
+  import('../../pages/search-results/search-results.component')
 );
 const StatsComponent = lazy(() => import('../../pages/stats/stats.component'));
 const TransactionComponent = lazy(() =>
