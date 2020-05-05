@@ -48,17 +48,16 @@ export class IssuedTokensTableComponent extends React.Component<
                 />
               </div>
 
-              {token.additionalRegisters.R4 && (
-                <div className="bi-blocks-table__cell bi-table__cell  bi-tokens-table__cell">
-                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
-                    <FormattedMessage id="common.token.name" />
-                  </div>
+              <div className="bi-blocks-table__cell bi-table__cell  bi-tokens-table__cell">
+                <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                  <FormattedMessage id="common.token.name" />
+                </div>
 
-                  {new TextDecoder('utf-8').decode(
+                {token.additionalRegisters.R4 &&
+                  new TextDecoder('utf-8').decode(
                     base16.parse(token.additionalRegisters.R4)
                   )}
-                </div>
-              )}
+              </div>
 
               <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
                 <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
@@ -85,17 +84,16 @@ export class IssuedTokensTableComponent extends React.Component<
                 </div>
               )} */}
 
-              {token.additionalRegisters.R5 && (
-                <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
-                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
-                    <FormattedMessage id="common.token.description" />
-                  </div>
+              <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
+                <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                  <FormattedMessage id="common.token.description" />
+                </div>
 
-                  {new TextDecoder('utf-8').decode(
+                {token.additionalRegisters.R5 &&
+                  new TextDecoder('utf-8').decode(
                     base16.parse(token.additionalRegisters.R5)
                   )}
-                </div>
-              )}
+              </div>
             </div>
           );
         })}

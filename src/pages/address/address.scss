@@ -37,6 +37,12 @@
       justify-content: flex-end;
     }
   }
+
+  &__fetching-text {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+  }
 }
 
 @media screen and (max-width: $laptop-device-width) {

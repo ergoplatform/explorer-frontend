@@ -68,6 +68,10 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
           </div>
         </div>
 
+        {this.props.tokens.isFetching && (
+          <p className="base-text">Fetching Data...</p>
+        )}
+
         {this.props.tokens.data && this.props.tokens.data.total === 0 && (
           <div className="bi-data__body g-flex-column__item-fixed">
             <FormattedMessage id="components.data.wrong-query" />

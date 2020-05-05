@@ -11,6 +11,7 @@ declare module 'react-head';
 declare module 'react-router-hash-link';
 declare module 'apiSpec';
 declare module '@axetroy/react-download';
+declare module 'nprogress';
 
 interface Window {
   __PRELOADED_STATE__: any;

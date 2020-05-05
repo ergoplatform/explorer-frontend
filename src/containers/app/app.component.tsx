@@ -10,6 +10,7 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 // import { ApiComponent } from '../../pages/api/api.component';
 
 import './app.scss';
+import ProgressBar from 'src/components/progress-bar/progress-bar';
 
 // import Loader from '../../components/loading/loading';
 
@@ -79,7 +80,9 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
           <div className="bi-app__body g-flex-column__item g-flex-column">
             <Suspense
               fallback={
-                <div className="bi-app__loading-text">Loading page...</div>
+                <ProgressBar className="bi-app__loading-text">
+                  Loading page...
+                </ProgressBar>
               }
             >
               <Switch>

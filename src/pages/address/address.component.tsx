@@ -92,6 +92,10 @@ class Address extends React.PureComponent<
   }
 
   private renderBody(): JSX.Element | null {
+    if (this.props.fetching) {
+      return <p className="bi-address__fetching-text">Fetching data...</p>;
+    }
+
     if (!this.props.address || this.props.fetching) {
       return null;
     }

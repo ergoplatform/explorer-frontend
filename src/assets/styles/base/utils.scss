@@ -25,3 +25,17 @@
     white-space: normal;
   }
 }
+
+.base-text {
+  font-size: 18px;
+  font-weight: 500;
+  margin: $grid-offset-step * 10 $grid-offset-step * 15;
+
+  @media screen and (max-width: $laptop-device-width) {
+    margin: ($grid-offset-step * 5) ($grid-offset-step * 5);
+  }
+
+  @media screen and (max-width: $mobile-device-width) {
+    margin: ($grid-offset-step * 5) ($grid-offset-step * 3);
+  }
+}
