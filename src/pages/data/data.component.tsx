@@ -93,7 +93,7 @@ class Data extends React.PureComponent<IDataProps> {
           </div>
         )}
 
-        {this.props.blocks.total > 0 && (
+        {this.props.blocks.total > 0 && !this.props.blocks.fetching && (
           <div className="bi-data__body g-flex-column__item-fixed">
             <BlocksTableComponent
               blocks={this.props.blocks.blocks}
