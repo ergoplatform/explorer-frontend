@@ -30,7 +30,7 @@ import {
 import './sidebar.scss';
 
 import {
-  // ApiIcon,
+  ApiIcon,
   ChartIcon,
   DataIcon,
   StatsIcon,
@@ -70,14 +70,14 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     title: 'components.sidebar-menu.items.stats',
     url: '/stats',
   },
-  // {
-  //   icon: <ApiIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />,
-  //   props: {
-  //     exact: false,
-  //   },
-  //   title: 'components.sidebar-menu.items.api',
-  //   url: '/api',
-  // },
+  {
+    icon: <ApiIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />,
+    props: {
+      exact: false,
+    },
+    title: 'components.sidebar-menu.items.api',
+    url: '/api',
+  },
   {
     icon: (
       <DiagramIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
@@ -131,10 +131,6 @@ class Sidebar extends React.Component<ISidebarProps, SidebarState> {
   }
 
   componentDidMount(): void {
-    if (this.props.api && !this.props.api.data) {
-      this.props.getApi();
-    }
-
     this.setState({
       isClient: true,
     });
@@ -167,30 +163,6 @@ class Sidebar extends React.Component<ISidebarProps, SidebarState> {
     const items = [...SIDEBAR_MENU_ITEMS];
 
     const externalItems = [...EXTERNAL_MENU_ITEMS];
-
-    // if (this.props.api && this.props.api.data) {
-    //   const apiIndex = items.findIndex(
-    //     (item: ISidebarMenuItem) => item.url === '/api'
-    //   );
-
-    //   items[apiIndex].children = this.props.api.data.tags.map(
-    //     (tag: any): ISidebarMenuItem => {
-    //       return {
-    //         component: NavHashLink,
-    //         props: {
-    //           isActive: (match: any, location: any): boolean => {
-    //             return (
-    //               location.pathname === '/api' &&
-    //               location.hash === `#${tag.name}`
-    //             );
-    //           },
-    //         },
-    //         title: `components.sidebar-menu.items.api-${tag.name}`,
-    //         url: `/api#${tag.name}`,
-    //       };
-    //     }
-    //   );
-    // }
 
     return (
       <div className={sidebarClassNames}>

@@ -19,10 +19,18 @@ $api-params-table-row-odd-bg: #f8f8f8;
 
     &:first-child {
       width: 15%;
+
+      @media (max-width: $mobile-device-width) {
+        width: 100%;
+      }
     }
 
     &:nth-child(2) {
       width: 25%;
+
+      @media (max-width: $mobile-device-width) {
+        width: 100%;
+      }
     }
   }
 

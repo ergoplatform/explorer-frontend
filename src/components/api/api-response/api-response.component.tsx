@@ -60,7 +60,7 @@ export class ApiResponseComponent extends React.PureComponent<
       }
 
       case 'string': {
-        response = schema.example || '';
+        response = schema.example || schema.type || '';
 
         break;
       }

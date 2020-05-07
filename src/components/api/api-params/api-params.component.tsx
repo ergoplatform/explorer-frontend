@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IApiParamsProps {
-  params: any[];
-}
-
 import { ApiTypeComponent } from '../api-type/api-type.component';
 
 import './api-params.scss';
+
+interface IApiParamsProps {
+  params: any[];
+}
 
 export class ApiParamsComponent extends React.PureComponent<IApiParamsProps> {
   render(): JSX.Element {
@@ -30,13 +30,17 @@ export class ApiParamsComponent extends React.PureComponent<IApiParamsProps> {
                   <span className="bi-api-params__in">{param.in}</span>
                 </div>
 
-                <div className="bi-table__cell">{param.description}</div>
+                <div className="bi-table__cell">
+                  {param.description || 'Parameter description is empty'}
+                </div>
 
                 <div className="bi-table__cell">
                   <ApiTypeComponent schema={param.schema} />
                 </div>
 
-                <div className="bi-table__cell">{param.schema.description}</div>
+                <div className="bi-table__cell">
+                  {param.schema.description || 'Schema description is empty'}
+                </div>
               </div>
             );
           })}

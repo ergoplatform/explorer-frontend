@@ -10,9 +10,9 @@ import { ApiState } from '../../reducers/api.reducer';
 import { AppState } from '../../store/app.store';
 
 import { ApiActions } from '../../actions/api.actions';
-import { ApiTagComponent } from '../../components/api/api-tag/api-tag.component';
 
 import './api.scss';
+import { ApiPathComponent } from '../../components/api/api-path/api-path.component';
 
 class Api extends React.PureComponent<ApiState & ApiActions> {
   componentDidMount(): void {
@@ -45,12 +45,12 @@ class Api extends React.PureComponent<ApiState & ApiActions> {
 
         {this.props.data && (
           <div className="bi-api__body">
-            {this.props.data.tags.map((tag: any) => {
+            {Object.keys(this.props.data.paths).map((path) => {
               return (
-                <ApiTagComponent
-                  key={tag.name}
-                  tagName={tag.name}
-                  openapi={this.props.data}
+                <ApiPathComponent
+                  key={path}
+                  pathName={path}
+                  paths={this.props.data.paths[path]}
                 />
               );
             })}
@@ -70,3 +70,5 @@ function mapDispatchToProps(dispatch: any): any {
 }
 
 export const ApiComponent = connect(mapStateToProps, mapDispatchToProps)(Api);
+
+export default ApiComponent;
