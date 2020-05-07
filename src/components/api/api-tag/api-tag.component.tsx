@@ -66,7 +66,6 @@ export class ApiTagComponent extends React.Component<IApiTagProps> {
                 key={path}
                 pathName={path}
                 paths={this.paths[path].paths}
-                parameters={this.paths[path].parameters}
               />
             );
           })}

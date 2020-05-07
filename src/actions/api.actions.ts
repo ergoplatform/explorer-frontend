@@ -1,9 +1,11 @@
 import { Action, Dispatch } from 'redux';
-// import SwaggerParser from 'swagger-parser';
+import SwaggerParser from '@apidevtools/swagger-parser';
 
-import { GET_API } from '../constants/api.types';
+import { GET_API, GET_API_SUCCESS } from '../constants/api.types';
+import environment from 'src/config/environment';
 
 // import apiSpec from 'apiSpec';
+// import { ApiService } from '../services/api.service';
 
 export interface ApiActions {
   getApi(): void;
@@ -16,14 +18,16 @@ export const ApiActions: any = {
         type: GET_API,
       });
 
-      // SwaggerParser.validate(apiSpec).then((data) => {
-      //   dispatch({
-      //     payload: {
-      //       data,
-      //     },
-      //     type: GET_API_SUCCESS,
-      //   });
-      // });
+      SwaggerParser.validate(`${environment.apiUrl}/docs/openapi`).then(
+        (data) => {
+          dispatch({
+            payload: {
+              data,
+            },
+            type: GET_API_SUCCESS,
+          });
+        }
+      );
     };
   },
 };

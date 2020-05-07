@@ -9,6 +9,14 @@ $api-path-type-bg: $theme-color-blue;
 .bi-api-path {
   font-family: $theme-main-font;
 
+  & + .bi-api-path {
+    margin-top: 48px;
+
+    @media (max-width: $mobile-device-width) {
+      margin-top: 24px;
+    }
+  }
+
   // [ Components ]
   //-----------------------------------
   &__item {
@@ -19,7 +27,35 @@ $api-path-type-bg: $theme-color-blue;
     &:last-child {
       margin-bottom: 0;
     }
+
+    &-header {
+      cursor: pointer;
+      position: relative;
+    }
+
+    &-body {
+      transition: all ease-in 0.3s;
+    }
   }
+
+  &__icon {
+    position: absolute;
+    right: 0;
+    top: 0px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: all ease-in 0.3s;
+    }
+
+    &--open {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
 
   &__raw {
     white-space: pre-wrap;
@@ -44,5 +80,10 @@ $api-path-type-bg: $theme-color-blue;
     color: $api-path-pathname-color;
     display: inline-block;
     margin-right: $grid-offset-step * 2;
+
+    @media (max-width: $mobile-device-width) {
+      width: 100%;
+      margin: 8px 0;
+    }
   }
 }

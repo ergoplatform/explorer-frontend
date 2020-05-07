@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import environment from '../config/environment';
 
@@ -45,6 +46,6 @@ export const configureStore = (preloadedState: any = {}) => {
   return createStore<AppState, any, any, any>(
     reducer,
     preloadedState,
-    applyMiddleware(...middlewares)
+    composeWithDevTools(applyMiddleware(...middlewares))
   );
 };
