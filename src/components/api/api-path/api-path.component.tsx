@@ -37,7 +37,7 @@ export class ApiPathComponent extends React.PureComponent<IApiPathProps> {
                 </span>
                 <div
                   className={`bi-api-path__icon ${
-                    this.state.isOpen ? 'bi-api-path__icon--open' : ''
+                    this.state.isOpen ? '' : 'bi-api-path__icon--open'
                   }`}
                 >
                   <AngleIcon />
