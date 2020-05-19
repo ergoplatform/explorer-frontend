@@ -25,6 +25,7 @@ import { ReactComponent as logoVerticalImage } from '../../../assets/images/logo
 import { ReactComponent as diagramIcon } from '../../../assets/images/icons/diagram.svg';
 import { ReactComponent as tokenIcon } from '../../../assets/images/icons/tokens.svg';
 import { ReactComponent as angleIcon } from '../../../assets/images/icons/directional.svg';
+import { ReactComponent as unconfirmedIcon } from '../../../assets/images/icons/unconfirmed.svg';
 
 interface IconProps {
   className?: string;
@@ -124,4 +125,8 @@ export const TokenIcon = ({ className }: IconProps) => {
 
 export const AngleIcon = ({ className }: IconProps) => {
   return makeIcon(angleIcon, className);
+};
+
+export const UnconfirmedIcon = ({ className }: IconProps) => {
+  return makeIcon(unconfirmedIcon, className);
 };

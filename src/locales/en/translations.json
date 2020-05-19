@@ -75,6 +75,9 @@
       },
       "issued-tokens": {
         "title": "Ergo Explorer | Issued Tokens"
+      },
+      "unconfirmed-transactions": {
+        "title": "Ergo Explorer | Unconfirmed Transactions"
       }
     },
     "stats": {
@@ -232,7 +235,8 @@
         "stats": "Stats",
         "wallet": "Wallet",
         "order-book": "Order Book",
-        "issued-tokens": "Issued Tokens"
+        "issued-tokens": "Issued Tokens",
+        "unconfirmed": "Unconfirmed Transactions"
       }
     },
     "stats": {
@@ -298,6 +302,12 @@
     },
     "issued-tokens": {
       "title": "Issued Tokens"
+    },
+    "unconfirmed-transactions": {
+      "title": "Unconfirmed Transactions",
+      "inputs-quantity": "Inputs Quantity",
+      "outputs-quantity": "Outputs Quantity",
+      "creation-timestamp": "Creation Timestamp"
     }
   }
 }

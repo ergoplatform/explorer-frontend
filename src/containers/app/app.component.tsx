@@ -45,6 +45,11 @@ const IssuedTokensComponent = lazy(() =>
   import('../../pages/issued-tokens/issued-tokens.component')
 );
 const ApiComponent = lazy(() => import('../../pages/api/api.component'));
+const UnconfirmedTransactionsComponent = lazy(() =>
+  import(
+    '../../pages/unconfirmed-transactions/unconfirmed-transactions.component'
+  )
+);
 
 class App extends React.PureComponent<RouteComponentProps<any>> {
   private scrollBody!: HTMLDivElement;
@@ -138,6 +143,12 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                   exact
                   path="/issued-tokens"
                   component={IssuedTokensComponent}
+                />
+
+                <Route
+                  exact
+                  path="/unconfirmed-transactions"
+                  component={UnconfirmedTransactionsComponent}
                 />
 
                 <Route path="*" component={NotFoundComponent} />

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
 
-import './issued-tokens.scss';
+import './unconfirmed-transactions.scss';
 
 import { AppState } from '../../store/app.store';
 
@@ -14,18 +14,18 @@ import { IGetBlocksParams } from '../../services/block.api.service';
 
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
-import { IssuedTokensActions } from '../../actions/issuedTokens.actions';
-import { getAllIssuedTokensStructSelector } from '../../selectors/issuedTokens';
-import { IssuedTokensTableComponent } from '../../components/issued-tokens-table/issued-tokens-table.component';
+import { UnconfirmedTransactionsActions } from '../../actions/unconfirmedTransactions.actions';
+import { getUnconfirmedTransactionsStructSelector } from '../../selectors/unconfirmedTransactions';
+import { UnconfirmedTransactionsTableComponent } from '../../components/unconfirmed-transactions-table/unconfirmed-transactions-table.component';
 
 type IDataProps = AppState &
-  IssuedTokensActions &
+  UnconfirmedTransactionsActions &
   RouteComponentProps<{}> & {
-    tokens: any;
+    unconfirmedTransactions: any;
     offset: number;
   };
 
-class IssuedTokens extends React.PureComponent<IDataProps> {
+class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
   params: any;
 
   constructor(props: any) {
@@ -54,7 +54,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
   render(): JSX.Element {
     return (
       <div className="bi-data g-flex-column g-flex-column__item-fixed">
-        <FormattedMessage id="common.pages.issued-tokens.title">
+        <FormattedMessage id="common.pages.unconfirmed-transactions.title">
           {(title) => (
             <Helmet>
               <title>{title}</title>
@@ -64,33 +64,35 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
 
         <div className="bi-data__header g-flex-column__item-fixed g-flex">
           <div className="bi-data__title g-flex__item">
-            <FormattedMessage id="components.issued-tokens.title" />
+            <FormattedMessage id="components.unconfirmed-transactions.title" />
           </div>
         </div>
 
-        {this.props.tokens.isFetching && (
+        {this.props.unconfirmedTransactions.isFetching && (
           <p className="base-text">Fetching Data...</p>
         )}
 
-        {this.props.tokens.data && this.props.tokens.data.total === 0 && (
-          <div className="bi-data__body g-flex-column__item-fixed">
-            <FormattedMessage id="components.data.wrong-query" />
-          </div>
-        )}
-
-        {!this.props.tokens.isFetching &&
-          this.props.tokens.data !== null &&
-          this.props.tokens.data.items.length > 0 && (
+        {!this.props.unconfirmedTransactions.isFetching &&
+          this.props.unconfirmedTransactions.data &&
+          this.props.unconfirmedTransactions.data.total === 0 && (
             <div className="bi-data__body g-flex-column__item-fixed">
-              <IssuedTokensTableComponent
-                tokens={this.props.tokens.data.items}
-                isFetching={this.props.tokens.isFetching}
+              No unconfirmed transactions
+            </div>
+          )}
+
+        {!this.props.unconfirmedTransactions.isFetching &&
+          this.props.unconfirmedTransactions.data !== null &&
+          this.props.unconfirmedTransactions.data.items.length > 0 && (
+            <div className="bi-data__body g-flex-column__item-fixed">
+              <UnconfirmedTransactionsTableComponent
+                transactions={this.props.unconfirmedTransactions.data.items}
+                isFetching={this.props.unconfirmedTransactions.isFetching}
               />
             </div>
           )}
 
-        {this.props.tokens.data !== null &&
-          this.props.tokens.data.items.length > 0 && (
+        {this.props.unconfirmedTransactions.data !== null &&
+          this.props.unconfirmedTransactions.data.items.length > 0 && (
             <div className="bi-data__footer g-flex-column__item-fixed g-flex">
               <div className="g-flex__item-fixed">
                 <LimitSelectorComponent
@@ -103,7 +105,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
 
               <div className="g-flex__item-fixed">
                 <PaginateSimpleComponent
-                  total={this.props.tokens.data.total}
+                  total={this.props.unconfirmedTransactions.data.total}
                   limit={this.params.limit}
                   getPageUrl={this.getPageUrl}
                   forcePage={Math.floor(this.props.offset / this.params.limit)}
@@ -120,7 +122,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
 
     params.offset = page * this.params.limit;
 
-    return `/issued-tokens?${queryString.stringify(params)}`;
+    return `/unconfirmed-transactions?${queryString.stringify(params)}`;
   }
 
   private getLimitLink(limit: number): string {
@@ -128,7 +130,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
 
     params.limit = limit;
 
-    return `/issued-tokens?${queryString.stringify(params)}`;
+    return `/unconfirmed-transactions?${queryString.stringify(params)}`;
   }
 
   private reloadTokens(params: IGetBlocksParams): void {
@@ -155,36 +157,45 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
       delete params.limit;
     }
 
-    this.props.history.push(`/issued-tokens?${queryString.stringify(params)}`);
+    this.props.history.push(
+      `/unconfirmed-transactions?${queryString.stringify(params)}`
+    );
   }
 
   private getParams(): any {
-    let { offset, limit }: any = queryString.parse(
+    let { offset, limit, sortBy, sortDirection }: any = queryString.parse(
       this.props.history.location.search
     );
 
     offset = parseInt(offset, 10);
     limit = parseInt(limit, 10) || 30;
 
+    sortDirection = ['asc', 'desc'].includes(sortDirection)
+      ? sortDirection
+      : null;
+    sortBy = ['creationTimestamp', 'size'].includes(sortBy) ? sortBy : null;
+
     return {
       limit,
       offset: offset || 0,
+      sortBy,
+      sortDirection,
     };
   }
 }
 
 const mapStateToProps = (state: any): any => ({
-  tokens: getAllIssuedTokensStructSelector(state),
-  offset: state.tokens.offset,
+  unconfirmedTransactions: getUnconfirmedTransactionsStructSelector(state),
+  offset: state.unconfirmedTransactions.offset,
 });
 
 const mapDispatchToProps = (dispatch: any): any => {
-  return bindActionCreators({ ...IssuedTokensActions }, dispatch);
+  return bindActionCreators({ ...UnconfirmedTransactionsActions }, dispatch);
 };
 
-const IssuedTokensComponent = connect(
+const UnconfirmedTransactionsComponent = connect(
   mapStateToProps,
   mapDispatchToProps
-)(IssuedTokens);
+)(UnconfirmedTransactions);
 
-export default IssuedTokensComponent;
+export default UnconfirmedTransactionsComponent;
