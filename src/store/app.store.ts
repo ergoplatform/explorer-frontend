@@ -16,6 +16,7 @@ import { SettingsState } from '../reducers/settings.reducer';
 import { StatsState } from '../reducers/stats.reducer';
 import { TransactionState } from '../reducers/transaction.reducer';
 import { TokensState } from '../reducers/tokens.reducer';
+import { UnconfirmedTransactions } from '../reducers/unconfirmedTransactions.reducer';
 
 export interface AppState {
   address: AddressState;
@@ -29,6 +30,7 @@ export interface AppState {
   search: SearchState;
   struct: Record<string, any>;
   tokens: TokensState;
+  unconfirmedTransactions: UnconfirmedTransactions;
 }
 
 let middlewares = [thunk];

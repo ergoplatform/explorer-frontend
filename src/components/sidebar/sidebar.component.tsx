@@ -25,6 +25,7 @@ import {
   LogoVerticalIcon,
   SignIcon,
   TokenIcon,
+  UnconfirmedIcon,
 } from '../common/icons/common.icons';
 
 import './sidebar.scss';
@@ -62,6 +63,16 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     },
     title: 'components.sidebar-menu.items.charts',
     url: '/charts',
+  },
+  {
+    icon: (
+      <UnconfirmedIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+    ),
+    props: {
+      exact: false,
+    },
+    title: 'components.sidebar-menu.items.unconfirmed',
+    url: '/unconfirmed-transactions',
   },
   {
     icon: (

@@ -12,6 +12,7 @@ import { settingsReducer } from './settings.reducer';
 import { statsReducer } from './stats.reducer';
 import { transactionReducer } from './transaction.reducer';
 import { tokensReducer } from './tokens.reducer';
+import { unconfirmedTransactionsReducer } from './unconfirmedTransactions.reducer';
 
 export const reducer = combineReducers<AppState>({
   address: addressReducer,
@@ -24,5 +25,6 @@ export const reducer = combineReducers<AppState>({
   stats: statsReducer,
   transaction: transactionReducer,
   tokens: tokensReducer,
+  unconfirmedTransactions: unconfirmedTransactionsReducer,
   struct,
 });
