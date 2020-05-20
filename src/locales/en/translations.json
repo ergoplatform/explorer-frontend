@@ -77,7 +77,7 @@
         "title": "Ergo Explorer | Issued Tokens"
       },
       "unconfirmed-transactions": {
-        "title": "Ergo Explorer | Unconfirmed Transactions"
+        "title": "Ergo Explorer | Mempool"
       }
     },
     "stats": {
@@ -236,7 +236,7 @@
         "wallet": "Wallet",
         "order-book": "Order Book",
         "issued-tokens": "Issued Tokens",
-        "unconfirmed": "Unconfirmed Transactions"
+        "unconfirmed": "Mempool"
       }
     },
     "stats": {
@@ -304,7 +304,7 @@
       "title": "Issued Tokens"
     },
     "unconfirmed-transactions": {
-      "title": "Unconfirmed Transactions",
+      "title": "Mempool",
       "inputs-quantity": "Inputs Quantity",
       "outputs-quantity": "Outputs Quantity",
       "creation-timestamp": "Creation Timestamp"

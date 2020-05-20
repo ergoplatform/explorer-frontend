@@ -147,7 +147,7 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
 
                 <Route
                   exact
-                  path="/unconfirmed-transactions"
+                  path="/mempool"
                   component={UnconfirmedTransactionsComponent}
                 />
 

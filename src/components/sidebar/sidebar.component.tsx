@@ -72,7 +72,7 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
       exact: false,
     },
     title: 'components.sidebar-menu.items.unconfirmed',
-    url: '/unconfirmed-transactions',
+    url: '/mempool',
   },
   {
     icon: (

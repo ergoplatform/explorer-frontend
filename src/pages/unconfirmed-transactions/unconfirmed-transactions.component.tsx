@@ -76,7 +76,7 @@ class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
           this.props.unconfirmedTransactions.data &&
           this.props.unconfirmedTransactions.data.total === 0 && (
             <div className="bi-data__body g-flex-column__item-fixed">
-              No unconfirmed transactions
+              No transactions in mempool
             </div>
           )}
 
@@ -122,7 +122,7 @@ class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
 
     params.offset = page * this.params.limit;
 
-    return `/unconfirmed-transactions?${queryString.stringify(params)}`;
+    return `/mempool?${queryString.stringify(params)}`;
   }
 
   private getLimitLink(limit: number): string {
@@ -130,7 +130,7 @@ class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
 
     params.limit = limit;
 
-    return `/unconfirmed-transactions?${queryString.stringify(params)}`;
+    return `/mempool?${queryString.stringify(params)}`;
   }
 
   private reloadTokens(params: IGetBlocksParams): void {
@@ -157,9 +157,7 @@ class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
       delete params.limit;
     }
 
-    this.props.history.push(
-      `/unconfirmed-transactions?${queryString.stringify(params)}`
-    );
+    this.props.history.push(`/mempool?${queryString.stringify(params)}`);
   }
 
   private getParams(): any {
