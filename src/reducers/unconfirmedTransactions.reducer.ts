@@ -1,4 +1,4 @@
-import { GET_TOKENS_SUCCESS } from '../constants/tokens.types';
+import { GET_UNCONFIRMED_TRANSACTIONS_SUCCESS } from '../constants/unconfirmed.types';
 
 export interface UnconfirmedTransactions {
   offset: number;
@@ -13,7 +13,7 @@ export function unconfirmedTransactionsReducer(
   action: any
 ): UnconfirmedTransactions {
   switch (action.type) {
-    case GET_TOKENS_SUCCESS: {
+    case GET_UNCONFIRMED_TRANSACTIONS_SUCCESS: {
       return {
         ...state,
         offset: action.payload.offset,

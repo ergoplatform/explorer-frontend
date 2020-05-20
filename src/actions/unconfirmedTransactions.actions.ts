@@ -1,5 +1,5 @@
 import { ActionCreatorsMapObject } from 'redux';
-import { GET_TOKENS_SUCCESS } from '../constants/tokens.types';
+import { GET_UNCONFIRMED_TRANSACTIONS_SUCCESS } from './../constants/unconfirmed.types';
 import { UnconfirmedTransactionsService } from '../services/unconfirmed.api.service';
 
 export interface UnconfirmedTransactionsActions
@@ -18,7 +18,7 @@ export const UnconfirmedTransactionsActions: UnconfirmedTransactionsActions = {
           payload: {
             offset: params.offset || 0,
           },
-          type: GET_TOKENS_SUCCESS,
+          type: GET_UNCONFIRMED_TRANSACTIONS_SUCCESS,
         });
       });
   },
