@@ -305,8 +305,8 @@
     },
     "unconfirmed-transactions": {
       "title": "Mempool",
-      "inputs-quantity": "Inputs Quantity",
-      "outputs-quantity": "Outputs Quantity",
+      "inputs-quantity": "Inputs",
+      "outputs-quantity": "Outputs",
       "creation-timestamp": "Creation Timestamp"
     }
   }
