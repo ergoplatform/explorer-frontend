@@ -7,6 +7,7 @@ import { formatNumberMetricPrefix } from '../../utils/formatNumberMetricPrefix';
 import './unconfirmed-transactions-table.scss';
 import { UnconfirmedTransactionsTableHeaderComponent } from './unconfirmed-transactions-header/unconfirmed-transactions-table-header.component';
 import { TimestampComponent } from '../common/timestamp/timestamp.component';
+import { Link } from 'react-router-dom';
 
 interface UnconfirmedTransactionsTableProps {
   transactions: any[];
@@ -40,21 +41,19 @@ export class UnconfirmedTransactionsTableComponent extends React.Component<
                   <FormattedMessage id="common.token.id" />
                 </div>
 
-                <input
-                  className="bi-tokens-table__input"
-                  type="text"
-                  value={transaction.id}
-                  readOnly
-                />
+                <Link
+                  to={`/mempool-transaction/${transaction.id}`}
+                  title={transaction.id}
+                >
+                  {transaction.id.slice(0, 10)}
+                </Link>
               </div>
 
               <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
                 <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
                   <FormattedMessage id="components.unconfirmed-transactions.creation-timestamp" />
                 </div>
-                <TimestampComponent
-                  timestamp={transaction.creationTimestamp / 1000000}
-                />
+                <TimestampComponent timestamp={transaction.creationTimestamp} />
               </div>
 
               <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">

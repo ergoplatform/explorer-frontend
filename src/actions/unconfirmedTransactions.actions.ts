@@ -4,11 +4,11 @@ import { UnconfirmedTransactionsService } from '../services/unconfirmed.api.serv
 
 export interface UnconfirmedTransactionsActions
   extends ActionCreatorsMapObject {
-  getTokens: (params: any) => any;
+  getMempool: (params: any) => any;
 }
 
 export const UnconfirmedTransactionsActions: UnconfirmedTransactionsActions = {
-  getTokens(params: any) {
+  getMempool(params: any) {
     return (dispatch: any) =>
       UnconfirmedTransactionsService.getUnconfirmedTokensList(
         dispatch,

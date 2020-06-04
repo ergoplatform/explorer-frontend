@@ -47,17 +47,20 @@ export class TransactionSummaryComponent extends React.Component<
               <TimestampComponent timestamp={this.props.summary.timestamp} />
             </div>
           </div>
-          <div className="bi-transaction-summary__row bi-table__row">
-            <div className="bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell">
-              <FormattedMessage id="components.transaction-summary.blocks" />
-            </div>
 
-            <div className="bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell">
-              <Link to={`/blocks/${this.props.summary.block.id}`}>
-                {this.props.summary.block.height}
-              </Link>
+          {this.props.summary.block && (
+            <div className="bi-transaction-summary__row bi-table__row">
+              <div className="bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell">
+                <FormattedMessage id="components.transaction-summary.blocks" />
+              </div>
+
+              <div className="bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell">
+                <Link to={`/blocks/${this.props.summary.block.id}`}>
+                  {this.props.summary.block.height}
+                </Link>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="bi-transaction-summary__row bi-table__row">
             <div className="bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell">
