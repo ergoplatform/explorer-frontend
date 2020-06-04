@@ -40,6 +40,9 @@
       "block": {
         "title": "Ergo Explorer | Block {id}"
       },
+      "unconfirmed-transaction": {
+        "title": "Ergo Explorer | Unconfirmed Transaction {id}"
+      },
       "chart": {
         "title": {
           "block-size": "Ergo Explorer | Average Block Size",
@@ -308,6 +311,10 @@
       "inputs-quantity": "Inputs",
       "outputs-quantity": "Outputs",
       "creation-timestamp": "Creation Timestamp"
+    },
+    "unconfirmed-transaction": {
+      "title": "Unconfirmed transaction",
+      "subtitle": "View information about a ERGO unconfirmed transaction"
     }
   }
 }

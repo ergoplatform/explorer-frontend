@@ -51,6 +51,12 @@ const UnconfirmedTransactionsComponent = lazy(() =>
   )
 );
 
+const UnconfirmedTransactionComponent = lazy(() =>
+  import(
+    '../../pages/unconfirmed-transaction/unconfirmed-transaction.component'
+  )
+);
+
 class App extends React.PureComponent<RouteComponentProps<any>> {
   private scrollBody!: HTMLDivElement;
 
@@ -149,6 +155,12 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                   exact
                   path="/mempool"
                   component={UnconfirmedTransactionsComponent}
+                />
+
+                <Route
+                  exact
+                  path="/mempool-transaction/:id"
+                  component={UnconfirmedTransactionComponent}
                 />
 
                 <Route path="*" component={NotFoundComponent} />

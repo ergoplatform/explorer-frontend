@@ -1,0 +1,57 @@
+@import '../../assets/styles/base/variables';
+
+// #TRANSACTION
+//-------------------------------------
+$transactions-subtitle-color: #828795;
+
+.bi-transaction {
+  padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
+  font-family: $theme-main-font;
+
+  &__title {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__tables {
+    margin: $grid-offset-step * 10 (-($grid-offset-step * 5)) 0;
+
+    flex-wrap: wrap;
+  }
+
+  &__table {
+    min-width: 300px;
+    margin: ($grid-offset-step * 2) ($grid-offset-step * 5);
+  }
+
+  &__body {
+    margin-top: $grid-offset-step * 10;
+  }
+
+  &__scripts {
+    margin-top: $grid-offset-step * 12;
+  }
+
+  &__subtitle {
+    color: $transactions-subtitle-color;
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: $laptop-device-width) {
+  .bi-transaction {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 5);
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-transaction {
+    padding: ($grid-offset-step * 5) ($grid-offset-step * 0);
+
+    &__header,
+    &__body {
+      padding: 0 ($grid-offset-step * 3);
+    }
+  }
+}

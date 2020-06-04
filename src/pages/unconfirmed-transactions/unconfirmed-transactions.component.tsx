@@ -147,7 +147,7 @@ class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
       }
     });
 
-    this.props.getTokens(params);
+    this.props.getMempool(params);
 
     if (params.offset === 0) {
       delete params.offset;
