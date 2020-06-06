@@ -42,7 +42,7 @@ export class UnconfirmedTransactionsTableComponent extends React.Component<
                 </div>
 
                 <Link
-                  to={`/mempool-transaction/${transaction.id}`}
+                  to={`/transactions/${transaction.id}`}
                   title={transaction.id}
                 >
                   {transaction.id.slice(0, 10)}

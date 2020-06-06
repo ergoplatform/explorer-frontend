@@ -30,6 +30,7 @@ class UnconfirmedTransaction extends React.PureComponent<
     SettingsState & {
       unconfirmedTransaction: any;
       timerId: any;
+      toggleIsConfirmed: any;
     }
 > {
   state = {
@@ -47,9 +48,7 @@ class UnconfirmedTransaction extends React.PureComponent<
       this.props.unconfirmedTransaction.error &&
       this.props.unconfirmedTransaction.error.message !== 'Network Error'
     ) {
-      this.props.history.push({
-        pathname: `/transactions/${this.props.match.params.id}`,
-      });
+      this.props.toggleIsConfirmed(true);
     }
 
     if (prevProps.match.params.id !== this.props.match.params.id) {
@@ -58,15 +57,6 @@ class UnconfirmedTransaction extends React.PureComponent<
   }
 
   componentDidMount(): void {
-    if (
-      this.props.unconfirmedTransaction.error &&
-      this.props.unconfirmedTransaction.error.message !== 'Network Error'
-    ) {
-      this.props.history.push({
-        pathname: `/transactions/${this.props.match.params.id}`,
-      });
-    }
-
     this.props.getUnconfirmedTransaction(this.props.match.params.id);
 
     const timer = setInterval(
@@ -197,7 +187,7 @@ function mapDispatchToProps(dispatch: any): ActionCreatorsMapObject {
   );
 }
 
-const UnconfirmedTransactionComponent = connect(
+const UnconfirmedTransactionComponent: any = connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(UnconfirmedTransaction));

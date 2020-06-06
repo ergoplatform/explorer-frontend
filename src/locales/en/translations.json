@@ -41,7 +41,7 @@
         "title": "Ergo Explorer | Block {id}"
       },
       "unconfirmed-transaction": {
-        "title": "Ergo Explorer | Unconfirmed Transaction {id}"
+        "title": "Ergo Explorer | Transaction {id}"
       },
       "chart": {
         "title": {
@@ -313,8 +313,8 @@
       "creation-timestamp": "Creation Timestamp"
     },
     "unconfirmed-transaction": {
-      "title": "Unconfirmed transaction",
-      "subtitle": "View information about a ERGO unconfirmed transaction"
+      "title": "Transaction",
+      "subtitle": "View information about a ERGO transaction"
     }
   }
 }
