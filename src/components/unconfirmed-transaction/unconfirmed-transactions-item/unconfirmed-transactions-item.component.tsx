@@ -88,7 +88,7 @@ class UnconfirmedTransactionsItem extends React.Component<
         <div className="bi-unconfirmed-transactions-item__header g-flex">
           <Link
             className="bi-unconfirmed-transactions-item__title u-word-wrap g-flex__item-fixed"
-            to={`/unconfirmed-transaction/${this.props.transaction.id}`}
+            to={`/transactions/${this.props.transaction.id}`}
           >
             {this.props.transaction.id}
           </Link>
