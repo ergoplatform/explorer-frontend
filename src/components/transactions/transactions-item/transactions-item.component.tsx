@@ -220,7 +220,7 @@ class TransactionsItem extends React.Component<
                 </div>
               )}
 
-              {this.props.confirmations === 0 && (
+              {!this.props.confirmations && (
                 <div className="bi-transactions-item__confirmations g-flex__item-fixed item__confirmations--unconfirmed">
                   <FormattedMessage id="components.transaction-item.unconfirmed" />
                 </div>

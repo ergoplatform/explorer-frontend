@@ -22,13 +22,9 @@ class IssuedTokensTableHeader extends React.Component<
           <FormattedMessage id="common.token.amount" />
         </div>
 
-        {/* <div className="bi-blocks-table__cell bi-table__cell">
+        <div className="bi-blocks-table__cell bi-table__cell">
           <FormattedMessage id="common.token.decimals" />
-
-          <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
-          <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
-          <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
-        </div> */}
+        </div>
 
         <div className="bi-blocks-table__cell bi-table__cell">
           <FormattedMessage id="common.token.description" />

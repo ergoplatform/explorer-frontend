@@ -54,9 +54,14 @@ export class IssuedTokensTableComponent extends React.Component<
                 </div>
 
                 {token.additionalRegisters.R4 &&
-                  new TextDecoder('utf-8').decode(
-                    base16.parse(token.additionalRegisters.R4)
-                  )}
+                  token.additionalRegisters.R4.slice(0, 2) === '0e' &&
+                  new TextDecoder('utf-8')
+                    .decode(base16.parse(token.additionalRegisters.R4))
+                    .slice(2)}
+
+                {token.additionalRegisters.R4 &&
+                  token.additionalRegisters.R4.slice(0, 2) !== '0e' &&
+                  "Can't decode this field"}
               </div>
 
               <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
@@ -74,15 +79,31 @@ export class IssuedTokensTableComponent extends React.Component<
                 />
               </div>
 
-              {/* {token.additionalRegisters.R6 && (
-                <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
-                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
-                    <FormattedMessage id="common.token.decimals" />
-                  </div>
-
-                  {base16.parse('040e')}
+              <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
+                <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                  <FormattedMessage id="common.token.decimals" />
                 </div>
-              )} */}
+
+                {token.additionalRegisters.R6 &&
+                  token.additionalRegisters.R6.slice(0, 2) === '0e' &&
+                  new TextDecoder('utf-8')
+                    .decode(base16.parse(token.additionalRegisters.R6))
+                    .slice(2)}
+
+                {token.additionalRegisters.R6 &&
+                  token.additionalRegisters.R6.slice(0, 2) !== '0e' && (
+                    <>
+                      {token.additionalRegisters.R6} -{' '}
+                      <span style={{ background: '#ffa707' }}>
+                        non-format{' '}
+                        <a href="https://github.com/ergoplatform/eips/blob/master/eip-0004.md">
+                          EIP-4
+                        </a>{' '}
+                        field
+                      </span>
+                    </>
+                  )}
+              </div>
 
               <div className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell">
                 <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
@@ -90,9 +111,9 @@ export class IssuedTokensTableComponent extends React.Component<
                 </div>
 
                 {token.additionalRegisters.R5 &&
-                  new TextDecoder('utf-8').decode(
-                    base16.parse(token.additionalRegisters.R5)
-                  )}
+                  new TextDecoder('utf-8')
+                    .decode(base16.parse(token.additionalRegisters.R5))
+                    .slice(2)}
               </div>
             </div>
           );

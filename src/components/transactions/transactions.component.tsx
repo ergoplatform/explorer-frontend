@@ -24,6 +24,7 @@ export class TransactionsComponent extends React.PureComponent<
               key={transaction.id}
               transaction={transaction}
               address={this.props.address}
+              confirmations={transaction.confirmationsCount}
             />
           );
         })}

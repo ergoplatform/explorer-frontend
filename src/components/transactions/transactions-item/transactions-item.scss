@@ -148,6 +148,10 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
 
     fill: #828795;
   }
+
+  .item__confirmations--unconfirmed {
+    background: #ffa707;
+  }
 }
 
 @media screen and (max-width: $mobile-device-width) {
