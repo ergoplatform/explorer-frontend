@@ -69,19 +69,24 @@ export class AddressApiService {
       };
     }
 
-    const newLimit = limit - unconfirmed.items.length;
-
-    const confirmed = await this.getConfirmed(id, {
-      offset: 0,
-      limit: newLimit,
-    });
-
     if (unconfirmed.items.length < limit) {
+      const newLimit = limit - unconfirmed.items.length;
+
+      const confirmed = await this.getConfirmed(id, {
+        offset: 0,
+        limit: newLimit,
+      });
+
       return {
         items: [...unconfirmed.items, ...confirmed.items],
         total: unconfirmed.total + confirmed.total,
       };
     }
+
+    const confirmed = await this.getConfirmed(id, {
+      offset: 0,
+      limit: 1,
+    });
 
     return {
       items: [...unconfirmed.items],
