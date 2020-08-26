@@ -212,12 +212,6 @@ class Sidebar extends React.Component<ISidebarProps, SidebarState> {
 
             <LanguageSwitcherComponent />
           </div>
-
-          <div className="bi-sidebar__footer-line g-flex__item-fixed g-flex g-space-between">
-            <div className="bi-sidebar__made-by g-flex__item-fixed">
-              by <a href="https://researchinstitute.io">Research Institute</a>
-            </div>
-          </div>
         </div>
       </div>
     );

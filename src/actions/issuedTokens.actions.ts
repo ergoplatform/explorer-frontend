@@ -9,15 +9,13 @@ export interface IssuedTokensActions extends ActionCreatorsMapObject {
 export const IssuedTokensActions: IssuedTokensActions = {
   getTokens(params: any) {
     return (dispatch: any) =>
-      IssuedTokensService.getAllIssuedTokens(dispatch, params).then(
-        (data: any) => {
-          dispatch({
-            payload: {
-              offset: params.offset || 0,
-            },
-            type: GET_TOKENS_SUCCESS,
-          });
-        }
-      );
+      IssuedTokensService.getAllIssuedTokens(dispatch, params).then((data: any) => {
+        dispatch({
+          payload: {
+            offset: params.offset || 0,
+          },
+          type: GET_TOKENS_SUCCESS,
+        });
+      });
   },
 };

@@ -7,8 +7,6 @@ import { Route, RouteComponentProps, Switch, withRouter } from 'react-router';
 import { HeaderComponent } from '../../components/header/header.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
-// import { ApiComponent } from '../../pages/api/api.component';
-
 import './app.scss';
 import ProgressBar from 'src/components/progress-bar/progress-bar';
 
@@ -49,6 +47,9 @@ const UnconfirmedTransactionsComponent = lazy(() =>
   import(
     '../../pages/unconfirmed-transactions/unconfirmed-transactions.component'
   )
+);
+const OraclePoolStateComponent = lazy(() =>
+  import('../../pages/oracle-pool-state/oracle-pool-state.component')
 );
 
 class App extends React.PureComponent<RouteComponentProps<any>> {
@@ -149,6 +150,12 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                   exact
                   path="/mempool"
                   component={UnconfirmedTransactionsComponent}
+                />
+
+                <Route
+                  exact
+                  path="/oracle-pool-state/:id"
+                  component={OraclePoolStateComponent}
                 />
 
                 <Route path="*" component={NotFoundComponent} />

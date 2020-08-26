@@ -12,6 +12,9 @@ declare module 'react-router-hash-link';
 declare module 'apiSpec';
 declare module '@axetroy/react-download';
 declare module 'nprogress';
+declare module 'react-copy-to-clipboard';
+declare module 'react-alert';
+declare module 'react-alert-template-basic';
 
 interface Window {
   __PRELOADED_STATE__: any;

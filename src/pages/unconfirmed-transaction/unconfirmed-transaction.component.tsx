@@ -6,6 +6,9 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 import { resetStruct } from 'redux-struct';
 
+import { UnconfirmedTransactionActions } from 'src/actions/unconfirmedTransaction.actions';
+import { getUnconfirmedTransactionStructSelector } from 'src/selectors/unconfirmedTransaction';
+import { GET_UNCONFIRMED_TRANSACTION_STRUCT } from 'src/constants/struct.types';
 import { SettingsActions } from '../../actions/settings.actions';
 import { SettingsState } from '../../reducers/settings.reducer';
 import { AppState } from '../../store/app.store';
@@ -15,11 +18,7 @@ import { UnconfirmedTransactionRawScriptsComponent } from '../../components/unco
 import { UnconfirmedTransactionSummaryComponent } from '../../components/unconfirmed-transaction/unconfirmed-transaction-summary/unconfirmed-transaction-summary.component';
 import { UnconfirmedTransactionsItemComponent } from '../../components/unconfirmed-transaction/unconfirmed-transactions-item/unconfirmed-transactions-item.component';
 
-import { UnconfirmedTransactionActions } from 'src/actions/unconfirmedTransaction.actions';
-import { getUnconfirmedTransactionStructSelector } from 'src/selectors/unconfirmedTransaction';
-
 import './unconfirmed-transaction.scss';
-import { GET_UNCONFIRMED_TRANSACTION_STRUCT } from 'src/constants/struct.types';
 
 class UnconfirmedTransaction extends React.PureComponent<
   RouteComponentProps<{

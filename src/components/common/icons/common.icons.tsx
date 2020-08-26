@@ -26,6 +26,18 @@ import { ReactComponent as diagramIcon } from '../../../assets/images/icons/diag
 import { ReactComponent as tokenIcon } from '../../../assets/images/icons/tokens.svg';
 import { ReactComponent as angleIcon } from '../../../assets/images/icons/directional.svg';
 import { ReactComponent as unconfirmedIcon } from '../../../assets/images/icons/unconfirmed.svg';
+import { ReactComponent as arrowLeftIcon } from '../../../assets/images/icons/oraclePoolState/arrowLeftIcon.svg';
+import { ReactComponent as blackCircleSMIcon } from '../../../assets/images/icons/oraclePoolState/blackCircleSM.svg';
+import { ReactComponent as greenCircleIcon } from '../../../assets/images/icons/oraclePoolState/greenCircle.svg';
+import { ReactComponent as redCircleIcon } from '../../../assets/images/icons/oraclePoolState/redCircle.svg';
+import { ReactComponent as orangeCircleIcon } from '../../../assets/images/icons/oraclePoolState/orangeCircle.svg';
+import { ReactComponent as orangeLineGroupIcon } from '../../../assets/images/icons/oraclePoolState/orangeLineGroup.svg';
+import { ReactComponent as redLineGroupIcon } from '../../../assets/images/icons/oraclePoolState/redLineGroup.svg';
+import { ReactComponent as greenLineGroupIcon } from '../../../assets/images/icons/oraclePoolState/greenLineGroup.svg';
+import { ReactComponent as redLineGroupIcon2 } from '../../../assets/images/icons/oraclePoolState/redLineGroup2.svg';
+import { ReactComponent as groupDotsIcon } from '../../../assets/images/icons/oraclePoolState/groupDots.svg';
+import { ReactComponent as copyIcon } from '../../../assets/images/icons/copy.icon.svg';
+import { ReactComponent as removeIcon } from '../../../assets/images/icons/remove.svg';
 
 interface IconProps {
   className?: string;
@@ -129,4 +141,52 @@ export const AngleIcon = ({ className }: IconProps) => {
 
 export const UnconfirmedIcon = ({ className }: IconProps) => {
   return makeIcon(unconfirmedIcon, className);
+};
+
+export const ArrowLeftIcon = ({ className }: IconProps) => {
+  return makeIcon(arrowLeftIcon, className);
+};
+
+export const BlackCircleSMIcon = ({ className }: IconProps) => {
+  return makeIcon(blackCircleSMIcon, className);
+};
+
+export const GreenCircleIcon = ({ className }: IconProps) => {
+  return makeIcon(greenCircleIcon, className);
+};
+
+export const RedCircleIcon = ({ className }: IconProps) => {
+  return makeIcon(redCircleIcon, className);
+};
+
+export const OrangeCircleIcon = ({ className }: IconProps) => {
+  return makeIcon(orangeCircleIcon, className);
+};
+
+export const OrangeLineGroupIcon = ({ className }: IconProps) => {
+  return makeIcon(orangeLineGroupIcon, className);
+};
+
+export const RedLineGroupIcon = ({ className }: IconProps) => {
+  return makeIcon(redLineGroupIcon, className);
+};
+
+export const RedLineGroupIcon2 = ({ className }: IconProps) => {
+  return makeIcon(redLineGroupIcon2, className);
+};
+
+export const GreenLineGroupIcon = ({ className }: IconProps) => {
+  return makeIcon(greenLineGroupIcon, className);
+};
+
+export const GroupDotsIcon = ({ className }: IconProps) => {
+  return makeIcon(groupDotsIcon, className);
+};
+
+export const CopyIcon = ({ className }: IconProps) => {
+  return makeIcon(copyIcon, className);
+};
+
+export const RemoveIcon = ({ className }: IconProps) => {
+  return makeIcon(removeIcon, className);
 };

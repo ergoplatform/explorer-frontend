@@ -12,6 +12,18 @@ import { AppComponent } from './containers/app/app.component';
 import { ConnectedIntlProvider } from './containers/connected-intl-provider/connected-intl-provider';
 import { configureStore } from './store/app.store';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
+
+// optional configuration
+const alertOptions = {
+  // you can also just use 'bottom center'
+  position: positions.TOP_RIGHT,
+  timeout: 2000,
+  offset: '10px',
+  // you can also just use 'scale'
+  transition: transitions.FADE,
+};
 
 const TextComponent = (props: any) => {
   return props.children;
@@ -45,20 +57,22 @@ addLocaleData([...en, ...ru]);
 
 export const App = () => {
   return (
-    <Provider store={AppStore}>
-      <ConnectedIntlProvider textComponent={TextComponent}>
-        <BrowserRouter basename={`/${locale}`}>
-          <LastLocationProvider>
-            <Switch>
-              {window.__HAS_ERROR__ && (
-                <Route path="/" component={ServerErrorComponent} />
-              )}
+    <AlertProvider template={AlertTemplate} {...alertOptions}>
+      <Provider store={AppStore}>
+        <ConnectedIntlProvider textComponent={TextComponent}>
+          <BrowserRouter basename={`/${locale}`}>
+            <LastLocationProvider>
+              <Switch>
+                {window.__HAS_ERROR__ && (
+                  <Route path="/" component={ServerErrorComponent} />
+                )}
 
-              <Route path="/" component={AppComponent} />
-            </Switch>
-          </LastLocationProvider>
-        </BrowserRouter>
-      </ConnectedIntlProvider>
-    </Provider>
+                <Route path="/" component={AppComponent} />
+              </Switch>
+            </LastLocationProvider>
+          </BrowserRouter>
+        </ConnectedIntlProvider>
+      </Provider>
+    </AlertProvider>
   );
 };
