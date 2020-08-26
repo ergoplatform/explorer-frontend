@@ -30,7 +30,9 @@ const OracleTableItem = ({ name, value }: any) => {
             <button
               className="oracle-table-item-header__copy"
               onClick={() => {
-                alert.show('Copied!');
+                alert.show(
+                  <span style={{ textTransform: 'initial' }}>Copied</span>
+                );
               }}
             >
               <CopyIcon />

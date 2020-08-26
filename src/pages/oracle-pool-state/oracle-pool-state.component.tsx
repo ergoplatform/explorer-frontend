@@ -1,38 +1,165 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import './oracle-pool-state.scss';
 import OraclePoolTimelineComponent from './components/oracle-pool-timeline/oracle-pool-timeline.component';
 import OracleTiles from './components/oracle-tiles/oracle-tiles.component';
 import OracleTable from './components/oracle-table/oracle-table.component';
+import { OraclePoolStateActions } from 'src/actions/oraclePoolState.actions';
+import { bindActionCreators } from 'redux';
+import { getOraclePoolDataStructSelector } from 'src/selectors/oraclePoolState';
 
-interface Props {}
+const mapStateToProps = (state: any): any => ({
+  poolData: getOraclePoolDataStructSelector(state),
+});
+
+const mapDispatchToProps = (dispatch: any): any => {
+  return bindActionCreators({ ...OraclePoolStateActions }, dispatch);
+};
+
+type Props = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
 
 const OraclePoolState = (props: Props) => {
+  const { getPoolData, poolData } = props;
+
+  useEffect(() => {
+    getPoolData();
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(getPoolData, 5000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  const data = useMemo(() => poolData.data || null, [poolData.data]);
+
+  const tiles = useMemo(
+    () =>
+      data
+        ? [
+            {
+              name: 'Latest Price',
+              value: Number(data.latest_price).toFixed(2),
+              symbol: '$',
+            },
+            {
+              name: 'Posting Schedule',
+              value: data.posting_schedule_minutes,
+              symbol: 'min',
+            },
+            {
+              name: 'Epoch Ends',
+              value: data.epoch_ends_in_minutes,
+              symbol: 'min',
+            },
+            { name: 'Current Pool Stage', value: data.current_pool_stage },
+            {
+              name: 'Pool Funded Percentage',
+              value: data.pool_funded_percentage,
+            },
+          ]
+        : [],
+    [data]
+  );
+
+  const technicalData = useMemo(
+    () =>
+      data
+        ? [
+            {
+              name: 'Latest Pool Datapoint',
+              value: data.latest_datapoint,
+            },
+            {
+              name: 'Datapoint Address',
+              value: data.datapoint_address,
+            },
+            {
+              name: 'Epoch Prep Address',
+              value: data.epoch_prep_address,
+            },
+            {
+              name: 'Live Epoch Address',
+              value: data.live_epoch_address,
+            },
+            {
+              name: 'Pool Deposits Address',
+              value: data.pool_deposits_address,
+            },
+            {
+              name: 'Oracle Payout Price (in nanoErg)',
+              value: data.oracle_payout_price,
+            },
+            {
+              name: 'Epoch Prep Length',
+              value: data.epoch_prep_length,
+            },
+            {
+              name: 'Outlier Range',
+              value: data.outlier_range,
+            },
+            {
+              name: 'Oracle Pool NFT ID',
+              value: data.epoch_prep_length,
+            },
+            {
+              name: 'Oracle Pool Participant Token Id',
+              value: data.epoch_prep_length,
+            },
+          ]
+        : [],
+    [data]
+  );
+
+  const summaryData = useMemo(
+    () =>
+      data
+        ? [
+            {
+              name: `Latest Price: [${data.title}]`,
+              value: data.latest_price,
+            },
+            {
+              name: 'Posting Schedule (In Blocks)',
+              value: data.posting_schedule_blocks,
+            },
+            {
+              name: 'Posting Schedule (In Minutes)',
+              value: data.posting_schedule_minutes,
+            },
+            {
+              name: 'Pool Funded Precentage',
+              value: data.pool_funded_percentage,
+            },
+            {
+              name: 'Current Pool Stage',
+              value: data.current_pool_stage,
+            },
+          ]
+        : [],
+    [data]
+  );
+
   return (
     <div className="or-content">
       <h1 className="or-content__title h1">ERG/USD Oracle Pool</h1>
 
-      <OraclePoolTimelineComponent />
+      <OraclePoolTimelineComponent poolData={data} />
 
-      <OracleTiles />
+      <OracleTiles data={tiles} />
 
       <div className="or-content__table">
         <div>
-          <OracleTable name="Summary" />
+          <OracleTable name="Summary" data={summaryData} />
         </div>
         <div>
-          <OracleTable name="Technical" />
+          <OracleTable name="Technical" data={technicalData} />
         </div>
       </div>
     </div>
   );
-};
-
-const mapStateToProps = (state: any): any => ({});
-
-const mapDispatchToProps = (dispatch: any): any => {
-  return {};
-  // return bindActionCreators({ ...IssuedTokensActions }, dispatch);
 };
 
 const OraclePoolStateComponent = connect(

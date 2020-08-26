@@ -5,13 +5,13 @@ export const dotStates = {
   NORMAL: 'NORMAL',
 };
 
-export const getTimelineConfig = (poolStatus: any, currentBlock: number) => {
-  if (!poolStatus) {
+export const getTimelineConfig = (poolData: any) => {
+  if (!poolData) {
     return [];
   }
 
   const TIMELINE_DOTS_QUANTITY = 8;
-  const epochSize = poolStatus.epoch_ends - currentBlock;
+  const epochSize = poolData.epoch_end_height - poolData.current_block_height;
   const isEpochLive = epochSize > 0;
 
   if (isEpochLive) {
@@ -22,18 +22,21 @@ export const getTimelineConfig = (poolStatus: any, currentBlock: number) => {
         if (index === 0) {
           return {
             type: dotStates.EPOCH_START,
-            value: currentBlock,
+            value: poolData.current_block_height,
           };
         }
 
         if (index === TIMELINE_DOTS_QUANTITY - 1) {
           return {
             type: dotStates.EPOCH_END,
-            value: poolStatus.epoch_ends,
+            value: poolData.epoch_end_height,
           };
         }
 
-        return { type: dotStates.NORMAL, value: currentBlock + index };
+        return {
+          type: dotStates.NORMAL,
+          value: poolData.current_block_height + index,
+        };
       });
     }
 
@@ -41,20 +44,20 @@ export const getTimelineConfig = (poolStatus: any, currentBlock: number) => {
       if (index === 0) {
         return {
           type: dotStates.EPOCH_START,
-          value: currentBlock,
+          value: poolData.current_block_height,
         };
       }
 
       if (index === epochSize - 1) {
         return {
           type: dotStates.EPOCH_END,
-          value: poolStatus.epoch_ends,
+          value: poolData.epoch_end_height,
         };
       }
 
       return {
         type: dotStates.NORMAL,
-        value: currentBlock + index,
+        value: poolData.current_block_height + index,
       };
     });
   }
@@ -63,13 +66,13 @@ export const getTimelineConfig = (poolStatus: any, currentBlock: number) => {
     if (index === 0) {
       return {
         type: dotStates.EPOCH_ENDING,
-        value: poolStatus.epoch_ends,
+        value: poolData.epoch_end_height,
       };
     }
 
     return {
       type: dotStates.NORMAL,
-      value: poolStatus.epoch_ends + index,
+      value: poolData.epoch_end_height + index,
     };
   });
 };
