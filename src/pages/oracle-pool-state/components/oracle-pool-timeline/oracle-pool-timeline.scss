@@ -64,6 +64,14 @@
     }
   }
 
+  &--end {
+    .path {
+      stroke-dashoffset: 10;
+      stroke-dasharray: 20;
+      animation: dash 25s linear infinite forwards reverse;
+    }
+  }
+
   &--left {
     .path {
       stroke-dashoffset: 10;

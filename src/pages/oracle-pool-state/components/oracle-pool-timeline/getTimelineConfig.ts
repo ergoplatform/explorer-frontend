@@ -11,7 +11,11 @@ export const getTimelineConfig = (poolData: any) => {
   }
 
   const TIMELINE_DOTS_QUANTITY = 8;
-  const epochSize = poolData.epoch_end_height - poolData.current_block_height;
+  const {
+    epoch_end_height: epochEndHeight,
+    current_block_height: currentBlockHeight,
+  } = poolData;
+  const epochSize = epochEndHeight - currentBlockHeight;
   const isEpochLive = epochSize > 0;
 
   if (isEpochLive) {
@@ -22,20 +26,20 @@ export const getTimelineConfig = (poolData: any) => {
         if (index === 0) {
           return {
             type: dotStates.EPOCH_START,
-            value: poolData.current_block_height,
+            value: currentBlockHeight,
           };
         }
 
         if (index === TIMELINE_DOTS_QUANTITY - 1) {
           return {
             type: dotStates.EPOCH_END,
-            value: poolData.epoch_end_height,
+            value: epochEndHeight,
           };
         }
 
         return {
           type: dotStates.NORMAL,
-          value: poolData.current_block_height + index,
+          value: currentBlockHeight + index,
         };
       });
     }
@@ -44,20 +48,20 @@ export const getTimelineConfig = (poolData: any) => {
       if (index === 0) {
         return {
           type: dotStates.EPOCH_START,
-          value: poolData.current_block_height,
+          value: currentBlockHeight,
         };
       }
 
-      if (index === epochSize - 1) {
+      if (index === epochSize) {
         return {
           type: dotStates.EPOCH_END,
-          value: poolData.epoch_end_height,
+          value: epochEndHeight,
         };
       }
 
       return {
         type: dotStates.NORMAL,
-        value: poolData.current_block_height + index,
+        value: currentBlockHeight + index,
       };
     });
   }
@@ -66,13 +70,13 @@ export const getTimelineConfig = (poolData: any) => {
     if (index === 0) {
       return {
         type: dotStates.EPOCH_ENDING,
-        value: poolData.epoch_end_height,
+        value: epochEndHeight,
       };
     }
 
     return {
       type: dotStates.NORMAL,
-      value: poolData.epoch_end_height + index,
+      value: epochEndHeight + index,
     };
   });
 };

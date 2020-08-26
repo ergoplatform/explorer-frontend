@@ -97,7 +97,7 @@ const OraclePoolTimelineComponent = (props: any) => {
                   return (
                     <div
                       key={index}
-                      className="or-timeline__circle-group circle-group"
+                      className="or-timeline__circle-group circle-group circle-group--end"
                     >
                       <div className="circle-group__card circle-group__card--red">
                         Epoch End Height
@@ -116,7 +116,7 @@ const OraclePoolTimelineComponent = (props: any) => {
                 return (
                   <div
                     key={index}
-                    className="or-timeline__circle-group circle-group circle-group--left"
+                    className="or-timeline__circle-group circle-group circle-group--left circle-group--end"
                   >
                     <div className="circle-group__card circle-group__card--red">
                       Epoch End Height
