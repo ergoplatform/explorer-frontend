@@ -19,7 +19,7 @@ import AlertTemplate from 'react-alert-template-basic';
 const alertOptions = {
   // you can also just use 'bottom center'
   position: positions.TOP_RIGHT,
-  timeout: 10000,
+  timeout: 5000,
   offset: '10px',
   // you can also just use 'scale'
   transition: transitions.FADE,

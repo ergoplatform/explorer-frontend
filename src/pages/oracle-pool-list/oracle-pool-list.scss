@@ -1,0 +1,14 @@
+@import '../../assets/styles/base/variables.scss';
+
+.oracle-pool-list {
+	width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px);
+  grid-gap: 32px;
+  padding: 32px;
+
+  @media (max-width: $mobile-device-width) {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}

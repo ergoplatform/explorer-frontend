@@ -30,7 +30,7 @@ export const getTimelineConfig = (poolData: any) => {
           };
         }
 
-        if (index === TIMELINE_DOTS_QUANTITY - 1) {
+        if (index >= TIMELINE_DOTS_QUANTITY - 1) {
           return {
             type: dotStates.EPOCH_END,
             value: epochEndHeight,

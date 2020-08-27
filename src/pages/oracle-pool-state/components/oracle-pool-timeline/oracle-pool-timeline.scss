@@ -196,6 +196,10 @@
   grid-template-rows: 1fr 59px 1fr;
   align-items: center;
 
+  &--ending {
+    grid-template-rows: 1fr;
+  }
+
   @media (min-width: 1400px) {
     display: none;
   }
@@ -205,6 +209,7 @@
 
     path {
       stroke-width: 3;
+      animation-direction: reverse;
     }
   }
 }

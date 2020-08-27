@@ -46,6 +46,10 @@ $header-toggle-color: #ffffff;
     height: 26px;
 
     fill: $header-logo-color;
+
+    path {
+      fill: $header-logo-color;
+    }
   }
 
   &__toggle {

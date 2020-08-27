@@ -16,6 +16,46 @@ import {
 import { getTimelineConfig, dotStates } from './getTimelineConfig';
 import { GroupLineIcon } from '../oracle-tiles/icons/icons';
 
+const renderMobileTimeline = (
+  epochPreparation: any,
+  epochEnd: any,
+  epochStart: any
+) => {
+  if (epochPreparation) {
+    return (
+      <div className="or-timeline-mobile or-timeline-mobile--ending">
+        <div className="or-timeline-card">
+          <OrangeCircleIcon className="or-timeline-card__icon" />
+          <div className="or-timeline-card__title">Currently Ending Epoch</div>
+          <div className="or-timeline-card__value">
+            {epochPreparation?.value || 'loading...'}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="or-timeline-mobile">
+      <div className="or-timeline-card">
+        <GreenCircleIcon className="or-timeline-card__icon" />
+        <div className="or-timeline-card__title">Current Block Height</div>
+        <div className="or-timeline-card__value">
+          {epochStart?.value || 'loading...'}
+        </div>
+      </div>
+      <GroupLineIcon className="or-timeline-mobile-line" />
+      <div className="or-timeline-card">
+        <RedCircleIcon className="or-timeline-card__icon" />
+        <div className="or-timeline-card__title">Epoch end Height</div>
+        <div className="or-timeline-card__value">
+          {epochEnd?.value || 'loading...'}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const OraclePoolTimelineComponent = (props: any) => {
   const { poolData } = props;
 
@@ -31,25 +71,14 @@ const OraclePoolTimelineComponent = (props: any) => {
     [timeline]
   );
 
+  const epochPreparation = useMemo(
+    () => timeline.find((item) => item.type === dotStates.EPOCH_ENDING),
+    [timeline]
+  );
+
   return (
     <>
-      <div className="or-timeline-mobile">
-        <div className="or-timeline-card">
-          <GreenCircleIcon className="or-timeline-card__icon" />
-          <div className="or-timeline-card__title">Current Block Height</div>
-          <div className="or-timeline-card__value">
-            {epochStart?.value || 'loading...'}
-          </div>
-        </div>
-        <GroupLineIcon className="or-timeline-mobile-line" />
-        <div className="or-timeline-card">
-          <RedCircleIcon className="or-timeline-card__icon" />
-          <div className="or-timeline-card__title">Epoch end Height</div>
-          <div className="or-timeline-card__value">
-            {epochEnd?.value || 'loading...'}
-          </div>
-        </div>
-      </div>
+      {renderMobileTimeline(epochPreparation, epochEnd, epochStart)}
       <div className="or-timeline">
         <div className="or-timeline__line">
           <div className="or-timeline__arrow">

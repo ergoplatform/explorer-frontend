@@ -10,13 +10,24 @@ import { getOraclePoolDataStructSelector } from 'src/selectors/oraclePoolState';
 import { withRouter, RouterProps } from 'react-router';
 import { pools } from 'src/services/oraclePoolState.service';
 import LoaderLogo from 'src/components/loader/loader';
+import { ErrorIcon, ArrowIcon } from 'src/components/common/icons/common.icons';
+import { resetStruct } from 'redux-struct';
+import { GET_ORACLE_POOL_DATA_STRUCT } from 'src/constants/struct.types';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state: any): any => ({
   poolData: getOraclePoolDataStructSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: any): any => {
-  return bindActionCreators({ ...OraclePoolStateActions }, dispatch);
+  return bindActionCreators(
+    {
+      ...OraclePoolStateActions,
+      resetPoolDataStruct: () =>
+        dispatch(resetStruct(GET_ORACLE_POOL_DATA_STRUCT)),
+    },
+    dispatch
+  );
 };
 
 type Props = ReturnType<typeof mapStateToProps> &
@@ -31,6 +42,7 @@ const OraclePoolState = (props: Props) => {
       params: { id },
     },
     history,
+    resetPoolDataStruct,
   } = props;
 
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -64,6 +76,8 @@ const OraclePoolState = (props: Props) => {
       clearInterval(intervalId);
     };
   }, [id]);
+
+  useEffect(() => () => resetPoolDataStruct(), []);
 
   const data = useMemo(() => poolData.data || null, [poolData.data]);
 
@@ -134,11 +148,11 @@ const OraclePoolState = (props: Props) => {
             },
             {
               name: 'Oracle Pool NFT ID',
-              value: data.epoch_prep_length,
+              value: data.oracle_pool_nft_id,
             },
             {
               name: 'Oracle Pool Participant Token Id',
-              value: data.epoch_prep_length,
+              value: data.oracle_pool_participant_token_id,
             },
           ]
         : [],
@@ -152,6 +166,10 @@ const OraclePoolState = (props: Props) => {
             {
               name: `Latest Price: [${data.title}]`,
               value: data.latest_price,
+            },
+            {
+              name: `Number Of Oracles`,
+              value: data.number_of_oracles,
             },
             {
               name: 'Posting Schedule (In Blocks)',
@@ -178,9 +196,36 @@ const OraclePoolState = (props: Props) => {
     return <LoaderLogo />;
   }
 
+  if (poolData.error) {
+    return (
+      <div className="or-pool-error">
+        <ErrorIcon />
+        <p className="or-pool-error__message">
+          Server Error. Unable to fetch oracle pool data.
+        </p>
+        <p className="or-pool-error__message">
+          Dont worry, the oracle pool is still functioning properly on the
+          blockchain, but you have hit a server issue.{' '}
+        </p>
+        <p className="or-pool-error__message">
+          If this problem persists, please contact us on{' '}
+          <a href="https://discord.gg/kj7s7nb">Discord</a> or{' '}
+          <a href="https://t.me/ergoplatform">Telegram</a>
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="or-content">
-      <h1 className="or-content__title h1">{data?.title} Oracle Pool</h1>
+      <Link className="or-content__btn-back" to={`/oracle-pool-list`}>
+        <ArrowIcon className="or-content__btn-back-icon" />
+
+        <span className="or-content__btn-back-title">
+          Back to Oracle Pool List
+        </span>
+      </Link>
+      <h1 className="or-content__title">{data?.title} Oracle Pool</h1>
 
       <OraclePoolTimelineComponent poolData={data} />
 

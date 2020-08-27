@@ -52,6 +52,9 @@ const UnconfirmedTransactionsComponent = lazy(() =>
 const OraclePoolStateComponent = lazy(() =>
   import('../../pages/oracle-pool-state/oracle-pool-state.component')
 );
+const OraclePoolListComponent = lazy(() =>
+  import('src/pages/oracle-pool-list/oracle-pool-list')
+);
 
 class App extends React.PureComponent<RouteComponentProps<any>> {
   private scrollBody!: HTMLDivElement;
@@ -157,6 +160,12 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                   exact
                   path="/oracle-pool-state/:id"
                   component={OraclePoolStateComponent}
+                />
+
+                <Route
+                  exact
+                  path="/oracle-pool-list"
+                  component={OraclePoolListComponent}
                 />
 
                 <Route path="*" component={NotFoundComponent} />
