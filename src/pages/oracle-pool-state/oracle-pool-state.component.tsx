@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { connect } from 'react-redux';
 import './oracle-pool-state.scss';
 import OraclePoolTimelineComponent from './components/oracle-pool-timeline/oracle-pool-timeline.component';
@@ -7,6 +7,9 @@ import OracleTable from './components/oracle-table/oracle-table.component';
 import { OraclePoolStateActions } from 'src/actions/oraclePoolState.actions';
 import { bindActionCreators } from 'redux';
 import { getOraclePoolDataStructSelector } from 'src/selectors/oraclePoolState';
+import { withRouter, RouterProps } from 'react-router';
+import { pools } from 'src/services/oraclePoolState.service';
+import LoaderLogo from 'src/components/loader/loader';
 
 const mapStateToProps = (state: any): any => ({
   poolData: getOraclePoolDataStructSelector(state),
@@ -17,21 +20,50 @@ const mapDispatchToProps = (dispatch: any): any => {
 };
 
 type Props = ReturnType<typeof mapStateToProps> &
-  ReturnType<typeof mapDispatchToProps>;
+  ReturnType<typeof mapDispatchToProps> &
+  RouterProps;
 
 const OraclePoolState = (props: Props) => {
-  const { getPoolData, poolData } = props;
+  const {
+    getPoolData,
+    poolData,
+    match: {
+      params: { id },
+    },
+    history,
+  } = props;
+
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   useEffect(() => {
-    getPoolData();
+    if (!pools[id]) {
+      history.push(`/oracle-pool-state/${Object.keys(pools)[0]}`);
+    }
   }, []);
 
   useEffect(() => {
-    const intervalId = setInterval(getPoolData, 5000);
+    if (pools[id]) {
+      getPoolData(id);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (poolData.data) {
+      setIsDataLoaded(true);
+    }
+  }, [poolData.data]);
+
+  useEffect(() => {
+    let intervalId: any = null;
+
+    if (pools[id]) {
+      intervalId = setInterval(() => getPoolData(id), 30000);
+    }
+
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [id]);
 
   const data = useMemo(() => poolData.data || null, [poolData.data]);
 
@@ -142,9 +174,13 @@ const OraclePoolState = (props: Props) => {
     [data]
   );
 
+  if (!isDataLoaded) {
+    return <LoaderLogo />;
+  }
+
   return (
     <div className="or-content">
-      <h1 className="or-content__title h1">ERG/USD Oracle Pool</h1>
+      <h1 className="or-content__title h1">{data?.title} Oracle Pool</h1>
 
       <OraclePoolTimelineComponent poolData={data} />
 
@@ -165,6 +201,6 @@ const OraclePoolState = (props: Props) => {
 const OraclePoolStateComponent = connect(
   mapStateToProps,
   mapDispatchToProps
-)(OraclePoolState);
+)(withRouter(OraclePoolState));
 
 export default OraclePoolStateComponent;

@@ -18,18 +18,4 @@
     height: 100%;
     position: absolute;
   }
-
-  &__loading-text {
-    margin: $grid-offset-step * 10 $grid-offset-step * 15;
-    font-size: 22px;
-    font-weight: 600;
-
-    @media screen and (max-width: $laptop-device-width) {
-      margin: ($grid-offset-step * 5) ($grid-offset-step * 5);
-    }
-
-    @media screen and (max-width: $mobile-device-width) {
-      margin: ($grid-offset-step * 5) ($grid-offset-step * 3);
-    }
-  }
 }

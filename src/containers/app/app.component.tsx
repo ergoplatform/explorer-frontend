@@ -9,6 +9,7 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 import './app.scss';
 import ProgressBar from 'src/components/progress-bar/progress-bar';
+import LoaderLogo from 'src/components/loader/loader';
 
 // import Loader from '../../components/loading/loading';
 
@@ -88,7 +89,7 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
             <Suspense
               fallback={
                 <ProgressBar className="bi-app__loading-text">
-                  Loading page...
+                  <LoaderLogo />
                 </ProgressBar>
               }
             >
