@@ -5,13 +5,17 @@ export const dotStates = {
   NORMAL: 'NORMAL',
 };
 
-export const getTimelineConfig = (poolStatus: any, currentBlock: number) => {
-  if (!poolStatus) {
+export const getTimelineConfig = (poolData: any) => {
+  if (!poolData) {
     return [];
   }
 
   const TIMELINE_DOTS_QUANTITY = 8;
-  const epochSize = poolStatus.epoch_ends - currentBlock;
+  const {
+    epoch_end_height: epochEndHeight,
+    current_block_height: currentBlockHeight,
+  } = poolData;
+  const epochSize = epochEndHeight - currentBlockHeight;
   const isEpochLive = epochSize > 0;
 
   if (isEpochLive) {
@@ -22,18 +26,21 @@ export const getTimelineConfig = (poolStatus: any, currentBlock: number) => {
         if (index === 0) {
           return {
             type: dotStates.EPOCH_START,
-            value: currentBlock,
+            value: currentBlockHeight,
           };
         }
 
         if (index === TIMELINE_DOTS_QUANTITY - 1) {
           return {
             type: dotStates.EPOCH_END,
-            value: poolStatus.epoch_ends,
+            value: epochEndHeight,
           };
         }
 
-        return { type: dotStates.NORMAL, value: currentBlock + index };
+        return {
+          type: dotStates.NORMAL,
+          value: currentBlockHeight + index,
+        };
       });
     }
 
@@ -41,20 +48,20 @@ export const getTimelineConfig = (poolStatus: any, currentBlock: number) => {
       if (index === 0) {
         return {
           type: dotStates.EPOCH_START,
-          value: currentBlock,
+          value: currentBlockHeight,
         };
       }
 
-      if (index === epochSize - 1) {
+      if (index === epochSize) {
         return {
           type: dotStates.EPOCH_END,
-          value: poolStatus.epoch_ends,
+          value: epochEndHeight,
         };
       }
 
       return {
         type: dotStates.NORMAL,
-        value: currentBlock + index,
+        value: currentBlockHeight + index,
       };
     });
   }
@@ -63,13 +70,13 @@ export const getTimelineConfig = (poolStatus: any, currentBlock: number) => {
     if (index === 0) {
       return {
         type: dotStates.EPOCH_ENDING,
-        value: poolStatus.epoch_ends,
+        value: epochEndHeight,
       };
     }
 
     return {
       type: dotStates.NORMAL,
-      value: poolStatus.epoch_ends + index,
+      value: epochEndHeight + index,
     };
   });
 };

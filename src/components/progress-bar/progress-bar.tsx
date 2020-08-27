@@ -16,7 +16,14 @@ export class ProgressBar extends PureComponent<ProgressProps> {
   }
 
   render() {
-    return <div className={this.props.className}>Loading Page...</div>;
+    return (
+      <div
+        className={this.props.className}
+        style={{ width: '100%', height: '100%' }}
+      >
+        {this.props.children}
+      </div>
+    );
   }
 }
 

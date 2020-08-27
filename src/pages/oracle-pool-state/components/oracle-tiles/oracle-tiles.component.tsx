@@ -12,14 +12,6 @@ interface Props {
   data?: any;
 }
 
-const data = [
-  { name: 'Latest Price', value: '0.29', symbol: '$' },
-  { name: 'Posting Schedule', value: '60', symbol: 'min' },
-  { name: 'Epoch Ends', value: '60', symbol: 'min' },
-  { name: 'Current Pool Stage', value: '288699' },
-  { name: 'Pool Funded Percentage', value: '1560' },
-];
-
 const icons = [
   LatestPriceIcon,
   PostingScheduleIcon,
@@ -29,11 +21,11 @@ const icons = [
 ];
 
 const OracleTiles = (props: Props) => {
-  // const { data } = props;
-
+  const { data } = props;
+  console.log(data);
   return (
     <div className="oracle-tiles-list">
-      {data.map((tile, index) => {
+      {data.map((tile: any, index: number) => {
         const Icon = icons[index];
 
         return (

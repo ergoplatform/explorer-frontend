@@ -239,7 +239,8 @@
         "wallet": "Wallet",
         "order-book": "Order Book",
         "issued-tokens": "Issued Tokens",
-        "unconfirmed": "Mempool"
+        "unconfirmed": "Mempool",
+        "oraclePools": "Oracle Pools"
       }
     },
     "stats": {

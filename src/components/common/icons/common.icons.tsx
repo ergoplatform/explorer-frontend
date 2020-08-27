@@ -38,6 +38,7 @@ import { ReactComponent as redLineGroupIcon2 } from '../../../assets/images/icon
 import { ReactComponent as groupDotsIcon } from '../../../assets/images/icons/oraclePoolState/groupDots.svg';
 import { ReactComponent as copyIcon } from '../../../assets/images/icons/copy.icon.svg';
 import { ReactComponent as removeIcon } from '../../../assets/images/icons/remove.svg';
+import { ReactComponent as distributedIcon } from '../../../assets/images/icons/distributed.svg';
 
 interface IconProps {
   className?: string;
@@ -189,4 +190,8 @@ export const CopyIcon = ({ className }: IconProps) => {
 
 export const RemoveIcon = ({ className }: IconProps) => {
   return makeIcon(removeIcon, className);
+};
+
+export const DistributedIcon = ({ className }: IconProps) => {
+  return makeIcon(distributedIcon, className);
 };
