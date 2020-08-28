@@ -2,7 +2,13 @@ import React, { Suspense, lazy } from 'react';
 import classNames from 'classnames';
 import queryString from 'query-string';
 import Helmet from 'react-helmet';
-import { Route, RouteComponentProps, Switch, withRouter } from 'react-router';
+import {
+  Route,
+  RouteComponentProps,
+  Switch,
+  withRouter,
+  Redirect,
+} from 'react-router';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
@@ -161,6 +167,8 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                   path="/oracle-pool-state/:id"
                   component={OraclePoolStateComponent}
                 />
+
+                <Redirect from="/oracle-pool-list" to="/oracle-pools-list" />
 
                 <Route
                   exact
