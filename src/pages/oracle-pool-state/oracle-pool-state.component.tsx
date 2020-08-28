@@ -218,7 +218,7 @@ const OraclePoolState = (props: Props) => {
 
   return (
     <div className="or-content">
-      <Link className="or-content__btn-back" to={`/oracle-pool-list`}>
+      <Link className="or-content__btn-back" to={`/oracle-pools-list`}>
         <ArrowIcon className="or-content__btn-back-icon" />
 
         <span className="or-content__btn-back-title">
