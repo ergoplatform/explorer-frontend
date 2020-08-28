@@ -180,7 +180,7 @@ const OraclePoolState = (props: Props) => {
               value: data.posting_schedule_minutes,
             },
             {
-              name: 'Pool Funded Precentage',
+              name: 'Pool Funded Percentage',
               value: data.pool_funded_percentage,
             },
             {
