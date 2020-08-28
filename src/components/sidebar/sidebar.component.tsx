@@ -26,7 +26,7 @@ import {
   SignIcon,
   TokenIcon,
   UnconfirmedIcon,
-  // DistributedIcon,
+  DistributedIcon,
 } from '../common/icons/common.icons';
 
 import './sidebar.scss';
@@ -65,16 +65,16 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     title: 'components.sidebar-menu.items.unconfirmed',
     url: '/mempool',
   },
-  // {
-  //   icon: (
-  //     <DistributedIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
-  //   ),
-  //   props: {
-  //     exact: false,
-  //   },
-  //   title: 'components.sidebar-menu.items.oraclePools',
-  //   url: '/oracle-pools',
-  // },
+  {
+    icon: (
+      <DistributedIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+    ),
+    props: {
+      exact: false,
+    },
+    title: 'components.sidebar-menu.items.oraclePools',
+    url: '/oracle-pools-list',
+  },
   {
     icon: (
       <ChartIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />

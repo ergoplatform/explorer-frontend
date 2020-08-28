@@ -164,7 +164,7 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
 
                 <Route
                   exact
-                  path="/oracle-pool-list"
+                  path="/oracle-pools-list"
                   component={OraclePoolListComponent}
                 />
 
