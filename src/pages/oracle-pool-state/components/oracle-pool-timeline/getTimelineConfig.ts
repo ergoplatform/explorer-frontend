@@ -19,7 +19,7 @@ export const getTimelineConfig = (poolData: any) => {
   const isEpochLive = epochSize > 0;
 
   if (isEpochLive) {
-    const isEpochEndBig = epochSize > TIMELINE_DOTS_QUANTITY;
+    const isEpochEndBig = epochSize >= TIMELINE_DOTS_QUANTITY;
 
     if (isEpochEndBig) {
       return Array.from(Array(TIMELINE_DOTS_QUANTITY)).map((_, index) => {
@@ -30,7 +30,7 @@ export const getTimelineConfig = (poolData: any) => {
           };
         }
 
-        if (index >= TIMELINE_DOTS_QUANTITY - 1) {
+        if (index === TIMELINE_DOTS_QUANTITY - 1) {
           return {
             type: dotStates.EPOCH_END,
             value: epochEndHeight,
