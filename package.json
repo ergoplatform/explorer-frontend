@@ -13,6 +13,8 @@
     "@apidevtools/swagger-parser": "^9.0.1",
     "@axetroy/react-download": "^1.1.1",
     "@babel/core": "7.9.0",
+    "@sentry/react": "^5.22.3",
+    "@sentry/tracing": "^5.22.3",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.4",
     "@testing-library/user-event": "^10.1.0",

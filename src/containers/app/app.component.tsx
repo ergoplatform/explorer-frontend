@@ -85,9 +85,7 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
         <Helmet>
           <title>Ergo Explorer</title>
         </Helmet>
-
         <SidebarComponent />
-
         <div
           className="bi-app__wrapper g-flex__item g-flex-column g-scroll-y"
           ref={(ref: HTMLDivElement) => (this.scrollBody = ref)}
