@@ -1,6 +1,8 @@
+import { GET_ADDRESSES_BALANCES_STRUCT } from './../constants/struct.types';
 import axios, { AxiosResponse } from 'axios';
 
 import environment from '../config/environment';
+import { fetchStruct } from 'src/utils/fetchStruct';
 
 export class AddressApiService {
   static get apiUrl(): string {
@@ -92,5 +94,14 @@ export class AddressApiService {
       items: [...unconfirmed.items],
       total: unconfirmed.total + confirmed.total,
     };
+  }
+
+  static getAddressesBalances(dispatch: any): any {
+    return fetchStruct(
+      dispatch,
+      GET_ADDRESSES_BALANCES_STRUCT,
+      'get',
+      `${environment.apiUrl}/addresses/balances?limit=100`
+    );
   }
 }

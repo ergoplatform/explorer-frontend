@@ -40,6 +40,7 @@ import { ReactComponent as copyIcon } from '../../../assets/images/icons/copy.ic
 import { ReactComponent as removeIcon } from '../../../assets/images/icons/remove.svg';
 import { ReactComponent as distributedIcon } from '../../../assets/images/icons/distributed.svg';
 import { ReactComponent as errorIcon } from '../../../assets/images/icons/error.svg';
+import { ReactComponent as richIcon } from '../../../assets/images/icons/investor.svg';
 
 interface IconProps {
   className?: string;
@@ -199,4 +200,8 @@ export const DistributedIcon = ({ className }: IconProps) => {
 
 export const ErrorIcon = ({ className }: IconProps) => {
   return makeIcon(errorIcon, className);
+};
+
+export const RichIcon = ({ className }: IconProps) => {
+  return makeIcon(richIcon, className);
 };

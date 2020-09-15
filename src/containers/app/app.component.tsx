@@ -61,6 +61,9 @@ const OraclePoolStateComponent = lazy(() =>
 const OraclePoolListComponent = lazy(() =>
   import('src/pages/oracle-pool-list/oracle-pool-list')
 );
+const RichListComponent = lazy(() =>
+  import('src/pages/rich-list/rich-list.component')
+);
 
 class App extends React.PureComponent<RouteComponentProps<any>> {
   private scrollBody!: HTMLDivElement;
@@ -104,6 +107,8 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                 <Route exact path="/" component={DataComponent} />
 
                 <Route exact path="/api" component={ApiComponent} />
+
+                <Route exact path="/rich-list" component={RichListComponent} />
 
                 <Route path="/blocks/:id" component={BlockComponent} />
 

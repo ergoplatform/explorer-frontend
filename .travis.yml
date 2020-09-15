@@ -15,8 +15,5 @@ install:
   - yarn global add typescript@3.8
   - yarn --production=false
 
-before_script:
-  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
-
 script:
   - yarn build

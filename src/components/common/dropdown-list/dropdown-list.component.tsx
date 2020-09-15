@@ -20,7 +20,7 @@ export class DropdownListComponent extends React.PureComponent<
     isDropdownShown: false,
   };
 
-  private element!: HTMLDivElement;
+  private element: HTMLDivElement;
 
   constructor(props: IDropdownProps) {
     super(props);

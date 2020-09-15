@@ -27,6 +27,7 @@ import {
   TokenIcon,
   UnconfirmedIcon,
   DistributedIcon,
+  RichIcon,
 } from '../common/icons/common.icons';
 
 import './sidebar.scss';
@@ -119,6 +120,16 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     },
     title: 'components.sidebar-menu.items.issued-tokens',
     url: '/issued-tokens',
+  },
+  {
+    icon: (
+      <RichIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+    ),
+    props: {
+      exact: false,
+    },
+    title: 'Rich List',
+    url: '/rich-list',
   },
 ];
 

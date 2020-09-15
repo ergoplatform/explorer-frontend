@@ -11,6 +11,7 @@ import { AddressApiService } from '../services/address.api.service';
 export interface AddressActions extends ActionCreatorsMapObject {
   getAddress: (id: string) => any;
   getAddressTransactions: (id: string, params: any) => any;
+  getAddressesBalances: () => (dispatch: Dispatch<Action>) => any;
 }
 
 export const AddressActions: AddressActions = {
@@ -46,5 +47,9 @@ export const AddressActions: AddressActions = {
         });
       });
     };
+  },
+
+  getAddressesBalances() {
+    return (dispatch: any) => AddressApiService.getAddressesBalances(dispatch);
   },
 };
