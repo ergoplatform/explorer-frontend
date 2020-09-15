@@ -32,7 +32,7 @@ const RichList = (props: any) => {
 
   return (
     <div className="rich-list">
-      <h1 className="rich-list__title">ERG Rich List</h1>
+      <h1 className="rich-list__title">Rich List</h1>
       <div className="rich-list-table">
         <div className="rich-list-table__body bi-table">
           <div className="rich-list-table-header rich-list-table__row bi-table__row">
@@ -76,6 +76,7 @@ const RichList = (props: any) => {
                         )
                       )}
                     </span>
+                    &nbsp;ERG
                   </span>
                 </div>
 
