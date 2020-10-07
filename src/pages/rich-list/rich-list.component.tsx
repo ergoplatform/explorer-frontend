@@ -40,8 +40,9 @@ const RichList = (props: any) => {
           target="_blank"
           rel="noreferrer noopener"
         >
-          ErgoMixer!
+          ErgoMixer
         </a>
+        !
       </h4>
       <div className="rich-list-table">
         <div className="rich-list-table__body bi-table">
