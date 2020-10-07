@@ -20,6 +20,12 @@ $block-table-table-sort-active-color: $theme-color-blue;
     margin-top: 24px;
   }
 
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 24px;
+  }
+
   @media (max-width: $mobile-device-width) {
     padding: 20px;
     padding-bottom: 75px;

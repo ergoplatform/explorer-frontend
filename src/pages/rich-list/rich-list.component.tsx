@@ -33,6 +33,16 @@ const RichList = (props: any) => {
   return (
     <div className="rich-list">
       <h1 className="rich-list__title">Rich List</h1>
+      <h4 className="rich-list__subtitle">
+        Want financial privacy? Use{' '}
+        <a
+          href="https://github.com/ergoMixer/ergoMixBack"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          ErgoMixer!
+        </a>
+      </h4>
       <div className="rich-list-table">
         <div className="rich-list-table__body bi-table">
           <div className="rich-list-table-header rich-list-table__row bi-table__row">
