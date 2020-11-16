@@ -19,6 +19,7 @@ import { TransactionOutput } from './transactionOutput';
 export interface Transaction {
   id: TransactionId;
   timestamp: Timestamp;
+  creationTimestamp?: Timestamp;
   /**
    * Number of confimations in transaction
    */
