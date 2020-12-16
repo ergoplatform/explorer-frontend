@@ -80,6 +80,7 @@ const OraclePoolState = (props: Props) => {
   useEffect(() => () => resetPoolDataStruct(), []);
 
   const data = useMemo(() => poolData.data || null, [poolData.data]);
+  console.log('>> data', data);
 
   const tiles = useMemo(
     () =>
@@ -154,6 +155,14 @@ const OraclePoolState = (props: Props) => {
               name: 'Oracle Pool Participant Token Id',
               value: data.oracle_pool_participant_token_id,
             },
+            {
+              name: 'Deviation range',
+              value: data.deviation_range,
+            },
+            {
+              name: 'Consensus number',
+              value: data.consensus_num,
+            },
           ]
         : [],
     [data]
@@ -215,6 +224,8 @@ const OraclePoolState = (props: Props) => {
       </div>
     );
   }
+
+  console.log('>> technicalData', technicalData);
 
   return (
     <div className="or-content">
