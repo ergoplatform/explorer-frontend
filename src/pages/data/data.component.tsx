@@ -18,6 +18,7 @@ import { BlocksTableComponent } from '../../components/blocks-table/blocks-table
 import { CalendarComponent } from '../../components/common/calendar/calendar.component';
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
+import Loader from '../../components/loader/loader';
 
 type IDataProps = AppState &
   BlockActions &
@@ -57,8 +58,11 @@ class Data extends React.PureComponent<IDataProps> {
     }
   }
 
-  // TODO: add preloader
   render(): JSX.Element {
+    if (this.props.blocks.fetching) {
+      return <Loader />;
+    }
+
     return (
       <div className="bi-data g-flex-column g-flex-column__item-fixed">
         <FormattedMessage id="common.pages.data.title">
@@ -82,10 +86,6 @@ class Data extends React.PureComponent<IDataProps> {
             />
           </div>
         </div>
-
-        {this.props.blocks.fetching && (
-          <p className="base-text">Fetching data...</p>
-        )}
 
         {this.props.blocks.total === 0 && !this.props.blocks.fetching && (
           <div className="bi-data__body g-flex-column__item-fixed">
