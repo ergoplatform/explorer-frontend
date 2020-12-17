@@ -80,7 +80,6 @@ const OraclePoolState = (props: Props) => {
   useEffect(() => () => resetPoolDataStruct(), []);
 
   const data = useMemo(() => poolData.data || null, [poolData.data]);
-  console.log('>> data', data);
 
   const tiles = useMemo(
     () =>
@@ -224,8 +223,6 @@ const OraclePoolState = (props: Props) => {
       </div>
     );
   }
-
-  console.log('>> technicalData', technicalData);
 
   return (
     <div className="or-content">
