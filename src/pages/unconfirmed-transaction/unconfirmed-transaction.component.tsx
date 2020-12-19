@@ -19,6 +19,8 @@ import { UnconfirmedTransactionSummaryComponent } from '../../components/unconfi
 import { UnconfirmedTransactionsItemComponent } from '../../components/unconfirmed-transaction/unconfirmed-transactions-item/unconfirmed-transactions-item.component';
 
 import './unconfirmed-transaction.scss';
+import ProgressBar from '../../components/progress-bar/progress-bar';
+import LoaderLogo from '../../components/loader/loader';
 
 class UnconfirmedTransaction extends React.PureComponent<
   RouteComponentProps<{
@@ -75,6 +77,8 @@ class UnconfirmedTransaction extends React.PureComponent<
   }
 
   render(): JSX.Element {
+    const isFetching = this.props.fetching;
+
     return (
       <div className="bi-transaction">
         <div className="bi-transaction__header">
@@ -85,8 +89,16 @@ class UnconfirmedTransaction extends React.PureComponent<
             <FormattedMessage id="components.unconfirmed-transaction.subtitle" />
           </div>
         </div>
-        {this.renderBody()}
+        {isFetching ? this.renderLoader() : this.renderBody()}
       </div>
+    );
+  }
+
+  renderLoader(): JSX.Element | null {
+    return (
+      <ProgressBar className="bi-app__loading-text">
+        <LoaderLogo />
+      </ProgressBar>
     );
   }
 
@@ -94,7 +106,11 @@ class UnconfirmedTransaction extends React.PureComponent<
     const { data, error }: any = this.props.unconfirmedTransaction;
 
     if (!data || error) {
-      return null;
+      return (
+        <div className="bi-transaction__error">
+          <FormattedMessage id="components.unconfirmed-transaction.error-message" />
+        </div>
+      );
     }
 
     const transaction: any = {

@@ -19,6 +19,8 @@ import { TransactionSummaryComponent } from '../../components/transaction/transa
 import { TransactionsItemComponent } from '../../components/transactions/transactions-item/transactions-item.component';
 
 import './confirmed-transaction.scss';
+import ProgressBar from '../../components/progress-bar/progress-bar';
+import LoaderLogo from '../../components/loader/loader';
 
 class ConfirmedTransaction extends React.PureComponent<
   RouteComponentProps<{
@@ -48,6 +50,8 @@ class ConfirmedTransaction extends React.PureComponent<
   }
 
   render(): JSX.Element {
+    const isFetching = this.props.fetching;
+
     return (
       <div className="bi-transaction">
         <div className="bi-transaction__header">
@@ -58,12 +62,28 @@ class ConfirmedTransaction extends React.PureComponent<
             <FormattedMessage id="components.transaction.subtitle" />
           </div>
         </div>
-        {this.renderBody()}
+        {isFetching ? this.renderLoader() : this.renderBody()}
       </div>
     );
   }
 
+  renderLoader(): JSX.Element | null {
+    return (
+      <ProgressBar className="bi-app__loading-text">
+        <LoaderLogo />
+      </ProgressBar>
+    );
+  }
+
   private renderBody(): JSX.Element | null {
+    if (this.props.isFailedRequest) {
+      return (
+        <div className="bi-transaction__error">
+          <FormattedMessage id="components.transaction.error-message" />
+        </div>
+      );
+    }
+
     if (!this.props.transaction) {
       return null;
     }

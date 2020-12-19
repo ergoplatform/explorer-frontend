@@ -3,6 +3,7 @@ import { Action, ActionCreatorsMapObject, Dispatch } from 'redux';
 import {
   GET_TRANSACTION,
   GET_TRANSACTION_SUCCESS,
+  GET_TRANSACTION_FAIL,
 } from '../constants/transaction.types';
 import { TransactionApiService } from '../services/transaction.api.service';
 
@@ -17,14 +18,20 @@ export const TransactionActions: TransactionActions = {
         type: GET_TRANSACTION,
       });
 
-      TransactionApiService.getTransaction(id).then((data: any) => {
-        dispatch({
-          payload: {
-            data,
-          },
-          type: GET_TRANSACTION_SUCCESS,
+      TransactionApiService.getTransaction(id)
+        .then((data: any) => {
+          dispatch({
+            payload: {
+              data,
+            },
+            type: GET_TRANSACTION_SUCCESS,
+          });
+        })
+        .catch(() => {
+          dispatch({
+            type: GET_TRANSACTION_FAIL,
+          });
         });
-      });
     };
   },
 };
