@@ -58,6 +58,11 @@ $error-border-color:  #f5c6cb;
 @media screen and (max-width: $laptop-device-width) {
   .bi-transaction {
     padding: ($grid-offset-step * 5) ($grid-offset-step * 5);
+
+    &__error {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
   }
 }
 
