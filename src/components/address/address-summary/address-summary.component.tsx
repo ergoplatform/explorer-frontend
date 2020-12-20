@@ -3,6 +3,8 @@ import { FormattedMessage } from 'react-intl';
 
 import { FullAddressSummary } from '../../../models/generated/fullAddressSummary';
 
+import { CopyTextComponent } from '../../../components/common/copy-text/copy-text.component';
+
 import './address-summary.scss';
 
 interface IAddressSummaryProps {
@@ -26,7 +28,7 @@ export class AddressSummaryComponent extends React.Component<
             </div>
 
             <div className="bi-address-summary__cell bi-address-summary__cell--value bi-table__cell u-word-wrap u-word-wrap--ellipsis">
-              {this.props.summary.id}
+              <CopyTextComponent>{this.props.summary.id}</CopyTextComponent>
             </div>
           </div>
         </div>

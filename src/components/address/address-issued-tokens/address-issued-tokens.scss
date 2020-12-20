@@ -1,0 +1,43 @@
+@import '../../../assets/styles/base/variables';
+
+// #ADDRESS TRANSACTIONS
+//-------------------------------------
+$address-issued-tokens-header-color: $theme-primary-color;
+$address-issued-tokens-header-bg-color: #f8f8f8;
+$address-issued-tokens-header-border-color: #eeeeee;
+$address-issued-tokens-body-bg: #ffffff;
+
+.bi-address-issued-tokens {
+  // [ Components ]
+  //-----------------------------------
+  &__header {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
+    border: 1px solid $address-issued-tokens-header-border-color;
+    border-bottom: 0;
+    color: $address-issued-tokens-header-color;
+    background-color: $address-issued-tokens-header-bg-color;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    width: 100%;
+    border: 1px solid $address-issued-tokens-header-border-color;
+    background-color: $address-issued-tokens-body-bg;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &__row {
+    border: 1px solid $address-issued-tokens-header-border-color;
+  }
+
+  &__cell {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
+
+    &--header {
+      font-weight: 600;
+    }
+  }
+}

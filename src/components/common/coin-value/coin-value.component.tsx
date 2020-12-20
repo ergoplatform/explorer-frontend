@@ -4,14 +4,17 @@ import environment from '../../../config/environment';
 
 interface ICoinValueProps {
   value: number;
+  coinName?: string;
 }
 
 export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
-  render(): JSX.Element {
+  render(): JSX.consoleElement {
     return (
       <div className="bi-coin-value">
         {this.getFormattedValue()}{' '}
-        {environment.blockchain.coinName.toUpperCase()}
+        {this.props.coinName
+          ? this.props.coinName
+          : environment.blockchain.coinName.toUpperCase()}
       </div>
     );
   }

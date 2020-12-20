@@ -114,6 +114,9 @@
       "confirmed": "No. transactions",
       "totalReceived": "Total received"
     },
+    "address-issued-tokens": {
+      "title": "Issued Tokens"
+    },
     "address": {
       "title": "{coinName} Address"
     },

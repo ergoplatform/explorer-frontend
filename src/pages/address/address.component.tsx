@@ -22,6 +22,7 @@ import { AddressSummaryComponent } from '../../components/address/address-summar
 import { AddressTransactionsComponent } from '../../components/address/address-transactions/address-transactions.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 import { TransactionsComponent } from '../../components/transactions/transactions.component';
+import { AddressIssuedTokensComponent } from '../../components/address/address-issued-tokens/address-issued-tokens.component';
 
 class Address extends React.PureComponent<
   RouteComponentProps<{ id: string }> &
@@ -40,14 +41,23 @@ class Address extends React.PureComponent<
   }
 
   componentDidMount(): void {
-    if (this.props.preloaded) {
-      this.props.clearPreloadedState();
+    const {
+      preloaded,
+      clearPreloadedState,
+      getAddress,
+      getAddressTransactions,
+      match,
+    } = this.props;
 
+    const currentAddress = match.params.id;
+
+    if (preloaded) {
+      clearPreloadedState();
       return;
     }
 
-    this.props.getAddress(this.props.match.params.id);
-    this.props.getAddressTransactions(this.props.match.params.id, this.params);
+    getAddress(currentAddress);
+    getAddressTransactions(currentAddress, this.params);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps: any): void {
@@ -93,10 +103,12 @@ class Address extends React.PureComponent<
 
   private renderBody(): JSX.Element | null {
     if (this.props.fetching) {
+      // TODO: Add nice loader
       return <p className="bi-address__fetching-text">Fetching data...</p>;
     }
 
     if (!this.props.address || this.props.fetching) {
+      // TODO: Add Alert message
       return null;
     }
 
@@ -113,10 +125,14 @@ class Address extends React.PureComponent<
           )}
         </FormattedMessage>
 
+        <AddressSummaryComponent summary={this.props.address.summary} />
+        <AddressQrcodeActionComponent address={this.props.address} />
+
         <div className="bi-address__tables g-flex">
           <div className="bi-address__table g-flex__item">
-            <AddressSummaryComponent summary={this.props.address.summary} />
-            <AddressQrcodeActionComponent address={this.props.address} />
+            <AddressIssuedTokensComponent
+              issuedTokens={this.props.address.transactions.totalTokensBalance}
+            />
           </div>
 
           <div className="bi-address__table g-flex__item">
