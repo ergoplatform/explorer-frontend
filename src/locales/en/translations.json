@@ -115,7 +115,8 @@
       "totalReceived": "Total received"
     },
     "address-issued-tokens": {
-      "title": "Issued Tokens"
+      "title": "Issued Tokens",
+      "allTokens": "All Tokens"
     },
     "address": {
       "title": "{coinName} Address"

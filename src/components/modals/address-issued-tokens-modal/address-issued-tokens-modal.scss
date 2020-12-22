@@ -1,16 +1,37 @@
 @import '../../../assets/styles/base/variables';
 
-// #ADDRESS ISSUED TOKENS
+// #ADDRESS ISSUED TOKENS MODAL
 //-------------------------------------
+$address-issued-tokens-modal-bg: #ffffff;
+$address-issued-tokens-modal-title-color: $theme-main-font;
 $address-issued-tokens-header-color: $theme-primary-color;
 $address-issued-tokens-header-bg-color: #f8f8f8;
 $address-issued-tokens-header-border-color: #eeeeee;
-$address-issued-tokens-body-bg: #ffffff;
 
-.bi-address-issued-tokens {
+.bi-address-issued-tokens-modal {
+  padding: ($grid-offset-step * 10) ($grid-offset-step * 8);
+  border-radius: 4px;
+  outline: none;
+  background-color: $address-issued-tokens-modal-bg;
+  font-family: $theme-main-font;
+
   // [ Components ]
   //-----------------------------------
-  &__header {
+  &__container {
+    overflow-x: auto;
+    max-height: 500px;
+  }
+
+  &__title {
+    margin-bottom: $grid-offset-step * 8;
+    color: $address-issued-tokens-modal-title-color;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+  }
+
+  &__table-header {
     padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
     border: 1px solid $address-issued-tokens-header-border-color;
     border-bottom: 0;
@@ -21,10 +42,10 @@ $address-issued-tokens-body-bg: #ffffff;
     text-transform: uppercase;
   }
 
-  &__body {
+  &__table-body {
     width: 100%;
     border: 1px solid $address-issued-tokens-header-border-color;
-    background-color: $address-issued-tokens-body-bg;
+    background-color: $address-issued-tokens-modal-bg;
     font-size: 14px;
     font-weight: 300;
   }
@@ -40,28 +61,11 @@ $address-issued-tokens-body-bg: #ffffff;
       font-weight: 600;
     }
   }
+}
 
-  &__btn-container {
-    margin-top: 15px;
-    justify-content: space-between;
-  }
-
-  &__btn {
-    display: inline-flex;
-    margin-right: $grid-offset-step * 4;
-    padding: ($grid-offset-step * 2) ($grid-offset-step * 4);
-    border: 0;
-    border-radius: 20px;
-    color: $address-issued-tokens-body-bg;
-    background-color: $address-issued-tokens-header-color;
-    font-family: $theme-main-font;
-    font-size: 14px;
-    font-weight: 300;
-
-    align-items: center;
-
-    &:last-child {
-      margin-right: 0;
-    }
+@media screen and (max-width: $mobile-device-width) {
+  .bi-address-issued-tokens-modal {
+    padding: ($grid-offset-step * 10) ($grid-offset-step * 6);
+    width: 90%;
   }
 }
