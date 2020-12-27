@@ -154,6 +154,14 @@ const OraclePoolState = (props: Props) => {
               name: 'Oracle Pool Participant Token Id',
               value: data.oracle_pool_participant_token_id,
             },
+            {
+              name: 'Deviation range',
+              value: data.deviation_range,
+            },
+            {
+              name: 'Consensus number',
+              value: data.consensus_num,
+            },
           ]
         : [],
     [data]
