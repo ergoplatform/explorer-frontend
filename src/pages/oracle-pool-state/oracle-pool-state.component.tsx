@@ -143,10 +143,6 @@ const OraclePoolState = (props: Props) => {
               value: data.epoch_prep_length,
             },
             {
-              name: 'Outlier Range',
-              value: data.outlier_range,
-            },
-            {
               name: 'Oracle Pool NFT ID',
               value: data.oracle_pool_nft_id,
             },
