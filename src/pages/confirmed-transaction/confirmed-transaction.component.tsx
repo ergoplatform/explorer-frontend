@@ -31,6 +31,7 @@ class ConfirmedTransaction extends React.PureComponent<
     SettingsActions &
     SettingsState & {
       toggleIsConfirmed: any;
+      setFailed: () => void;
     }
 > {
   constructor(props: any) {
@@ -52,6 +53,10 @@ class ConfirmedTransaction extends React.PureComponent<
   render(): JSX.Element {
     const isFetching = this.props.fetching;
 
+    if (isFetching) {
+      return <div className="bi-transaction">{this.renderLoader()}</div>;
+    }
+
     return (
       <div className="bi-transaction">
         <div className="bi-transaction__header">
@@ -62,7 +67,7 @@ class ConfirmedTransaction extends React.PureComponent<
             <FormattedMessage id="components.transaction.subtitle" />
           </div>
         </div>
-        {isFetching ? this.renderLoader() : this.renderBody()}
+        {this.renderBody()}
       </div>
     );
   }
@@ -75,13 +80,14 @@ class ConfirmedTransaction extends React.PureComponent<
     );
   }
 
-  private renderBody(): JSX.Element | null {
+  private renderBody(): JSX.Element | null | undefined {
+    const { setFailed } = this.props;
+
+    console.log('>> this.props.isFailedRequest', this.props.isFailedRequest);
+
     if (this.props.isFailedRequest) {
-      return (
-        <div className="bi-transaction__error">
-          <FormattedMessage id="components.transaction.error-message" />
-        </div>
-      );
+      setFailed();
+      return;
     }
 
     if (!this.props.transaction) {

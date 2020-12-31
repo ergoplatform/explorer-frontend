@@ -32,6 +32,7 @@ class UnconfirmedTransaction extends React.PureComponent<
       unconfirmedTransaction: any;
       timerId: any;
       toggleIsConfirmed: any;
+      setFailed: () => void;
     }
 > {
   state = {
@@ -77,7 +78,11 @@ class UnconfirmedTransaction extends React.PureComponent<
   }
 
   render(): JSX.Element {
-    const isFetching = this.props.fetching;
+    const { data, error }: any = this.props.unconfirmedTransaction;
+
+    if (!data && !error) {
+      return <div className="bi-transaction">{this.renderLoader()}</div>;
+    }
 
     return (
       <div className="bi-transaction">
@@ -89,7 +94,7 @@ class UnconfirmedTransaction extends React.PureComponent<
             <FormattedMessage id="components.unconfirmed-transaction.subtitle" />
           </div>
         </div>
-        {isFetching ? this.renderLoader() : this.renderBody()}
+        {this.renderBody()}
       </div>
     );
   }
@@ -102,15 +107,19 @@ class UnconfirmedTransaction extends React.PureComponent<
     );
   }
 
-  private renderBody(): JSX.Element | null {
+  private renderBody(): JSX.Element | null | undefined {
     const { data, error }: any = this.props.unconfirmedTransaction;
 
-    if (!data || error) {
-      return (
-        <div className="bi-transaction__error">
-          <FormattedMessage id="components.unconfirmed-transaction.error-message" />
-        </div>
-      );
+    console.log('>> data', data);
+    console.log('>> error', error);
+
+    if (error) {
+      this.props.setFailed();
+      return;
+    }
+
+    if (!data) {
+      return null;
     }
 
     const transaction: any = {

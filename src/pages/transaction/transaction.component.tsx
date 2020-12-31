@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router';
 
 import ConfirmedTransactionComponent from '../confirmed-transaction/confirmed-transaction.component';
 import UnconfirmedTransactionComponent from '../unconfirmed-transaction/unconfirmed-transaction.component';
+import { ErrorMessageComponent } from '../../components/error-message/error-mesage.component';
 
 class Transaction extends React.PureComponent<
   RouteComponentProps<{
@@ -11,25 +12,49 @@ class Transaction extends React.PureComponent<
 > {
   state = {
     isConfirmed: false,
+    isConfirmedTransactionFailed: false,
+    isUnconfirmedTransactionFailed: false,
   };
 
   toggleIsConfirmed = (isConfirmed: boolean) => {
     this.setState({ isConfirmed });
   };
 
+  setUnconfirmedTransactionFailed = () => {
+    this.setState({ isConfirmedTransactionFailed: true });
+  };
+
+  setConfirmedTransactionFailed = () => {
+    this.setState({ isConfirmedTransactionLoaded: true });
+  };
+
   render(): any {
-    if (!this.state.isConfirmed) {
+    const {
+      isConfirmed,
+      isConfirmedTransactionFailed,
+      isUnconfirmedTransactionFailed,
+    } = this.state;
+
+    if (!isConfirmedTransactionFailed && !isUnconfirmedTransactionFailed) {
+      if (!isConfirmed) {
+        return (
+          <UnconfirmedTransactionComponent
+            toggleIsConfirmed={this.toggleIsConfirmed}
+            setFailed={this.setUnconfirmedTransactionFailed}
+          />
+        );
+      }
+
       return (
-        <UnconfirmedTransactionComponent
+        <ConfirmedTransactionComponent
           toggleIsConfirmed={this.toggleIsConfirmed}
+          setFailed={this.setConfirmedTransactionFailed}
         />
       );
     }
 
     return (
-      <ConfirmedTransactionComponent
-        toggleIsConfirmed={this.toggleIsConfirmed}
-      />
+      <ErrorMessageComponent message="components.transaction.error-message" />
     );
   }
 }
