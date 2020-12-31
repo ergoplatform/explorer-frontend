@@ -8,6 +8,7 @@ import { MAX_TOKENS_RENDERED } from '../../../constants/global.constants';
 import './address-issued-tokens.scss';
 import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 import { AddressIssuedTokensModalComponent } from '../../modals/address-issued-tokens-modal/address-issued-tokens-modal.component';
+import { CopyTextComponent } from '../../common/copy-text/copy-text.component';
 
 interface AddressIssuedTokensState {
   isModalOpen: boolean;
@@ -54,11 +55,13 @@ export class AddressIssuedTokensComponent extends React.Component<
                   key={`${Math.random()} - ${i}`}
                   className="bi-address-issued-tokens__row bi-table__row"
                 >
-                  <div className="bi-address-issued-tokens__cell bi-table__cell u-word-wrap u-word-wrap--ellipsis">
-                    <FormattedMessage id={token.tokenId} />
+                  <div className="bi-address-issued-tokens__cell bi-table__cell bi-address-issued-tokens__cell--token-id">
+                    <CopyTextComponent isNotShowIcon>
+                      <FormattedMessage id={token.tokenId} />
+                    </CopyTextComponent>
                   </div>
 
-                  <div className="bi-address-issued-tokens__cell bi-table__cell">
+                  <div className="bi-address-issued-tokens__cell bi-table__cell bi-address-issued-tokens__cell--amount">
                     <CoinValueComponent coinName={' '} value={token.amount} />
                   </div>
                 </div>

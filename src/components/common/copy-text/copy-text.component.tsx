@@ -1,8 +1,10 @@
 import React from 'react';
 import { CopyIcon } from '../icons/common.icons';
 
+// TODO: change the second type to FormattedMessage
 interface ICopyTextProps {
-  children: string;
+  children: string | any;
+  isNotShowIcon?: boolean;
 }
 
 export class CopyTextComponent extends React.Component<ICopyTextProps> {
@@ -16,18 +18,41 @@ export class CopyTextComponent extends React.Component<ICopyTextProps> {
     return (
       <span
         onClick={this.copyToClipboard}
-        style={{ cursor: 'pointer', color: 'rgb(0, 120, 255);' }}
+        style={{
+          cursor: 'pointer',
+          color: 'rgb(0, 120, 255);',
+        }}
       >
-        <a className="bi-copy-text" style={{ marginRight: '10px' }}>
+        {!this.props.isNotShowIcon && <CopyIcon />}
+        <a
+          className="bi-copy-text"
+          style={{ marginLeft: !this.props.isNotShowIcon ? '10px' : 0 }}
+        >
           {this.props.children}
         </a>
-        <CopyIcon />
       </span>
     );
   }
 
+  private getTextContent() {
+    if (typeof this.props.children === 'string') {
+      return this.props.children;
+    }
+
+    if (typeof this.props.children === 'object') {
+      return this.props.children.props.id;
+    }
+
+    return;
+  }
+
   private copyToClipboard() {
-    const textContent = this.props.children;
+    const textContent = this.getTextContent();
+
+    if (!textContent) {
+      return;
+    }
+
     const textarea = document.createElement('textarea');
 
     textarea.value = textContent || '';

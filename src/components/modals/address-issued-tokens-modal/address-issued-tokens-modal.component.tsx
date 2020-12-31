@@ -8,6 +8,7 @@ import { CrossIcon } from '../../common/icons/common.icons';
 import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 
 import './address-issued-tokens-modal.scss';
+import { CopyTextComponent } from '../../common/copy-text/copy-text.component';
 
 interface AddressIssuedTokensModalProps {
   isOpen: boolean;
@@ -42,11 +43,13 @@ export class AddressIssuedTokensModalComponent extends React.PureComponent<
                     key={`${Math.random()} - ${i}`}
                     className="bi-address-issued-tokens-modal__row bi-table__row"
                   >
-                    <div className="bi-address-issued-tokens-modal__cell bi-table__cell u-word-wrap u-word-wrap--ellipsis">
-                      <FormattedMessage id={token.tokenId} />
+                    <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--token-id">
+                      <CopyTextComponent isNotShowIcon>
+                        <FormattedMessage id={token.tokenId} />
+                      </CopyTextComponent>
                     </div>
 
-                    <div className="bi-address-issued-tokens-modal__cell bi-table__cell">
+                    <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--amount">
                       <CoinValueComponent coinName={' '} value={token.amount} />
                     </div>
                   </div>
