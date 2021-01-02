@@ -125,14 +125,10 @@ class Address extends React.PureComponent<
           )}
         </FormattedMessage>
 
-        <AddressSummaryComponent summary={this.props.address.summary} />
-        <AddressQrcodeActionComponent address={this.props.address} />
-
         <div className="bi-address__tables g-flex">
           <div className="bi-address__table g-flex__item">
-            <AddressIssuedTokensComponent
-              issuedTokens={this.props.address.transactions.totalTokensBalance}
-            />
+            <AddressSummaryComponent summary={this.props.address.summary} />
+            <AddressQrcodeActionComponent address={this.props.address} />
           </div>
 
           <div className="bi-address__table g-flex__item">
@@ -144,6 +140,12 @@ class Address extends React.PureComponent<
               address={this.props.address}
             />
           </div>
+        </div>
+
+        <div className="bi-address__tables g-flex">
+          <AddressIssuedTokensComponent
+            issuedTokens={this.props.address.transactions.totalTokensBalance}
+          />
         </div>
 
         {this.props.transactions && (

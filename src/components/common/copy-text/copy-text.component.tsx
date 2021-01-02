@@ -5,6 +5,7 @@ import { CopyIcon } from '../icons/common.icons';
 interface ICopyTextProps {
   children: string | any;
   isNotShowIcon?: boolean;
+  onClick?: () => void;
 }
 
 export class CopyTextComponent extends React.Component<ICopyTextProps> {
@@ -17,10 +18,15 @@ export class CopyTextComponent extends React.Component<ICopyTextProps> {
   render() {
     return (
       <span
-        onClick={this.copyToClipboard}
+        onClick={() => {
+          if (this.props.onClick) {
+            this.props.onClick();
+          }
+          this.copyToClipboard();
+        }}
         style={{
           cursor: 'pointer',
-          color: 'rgb(0, 120, 255);',
+          color: 'rgb(0, 120, 255)',
         }}
       >
         {!this.props.isNotShowIcon && <CopyIcon />}
