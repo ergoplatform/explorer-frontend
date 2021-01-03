@@ -3,6 +3,9 @@
 // #TRANSACTION
 //-------------------------------------
 $transactions-subtitle-color: #828795;
+$error-text-color: #721c24;
+$error-bg-color: #f8d7da;
+$error-border-color:  #f5c6cb;
 
 .bi-transaction {
   padding: ($grid-offset-step * 10) ($grid-offset-step * 15);
@@ -37,11 +40,29 @@ $transactions-subtitle-color: #828795;
     font-size: 15px;
     font-weight: 500;
   }
+
+  &__error {
+    position: relative;
+    padding: .75rem 1.25rem;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid $error-border-color;
+    border-radius: .25rem;
+    color: $error-text-color;
+    background-color: $error-bg-color;
+  }
 }
 
 @media screen and (max-width: $laptop-device-width) {
   .bi-transaction {
     padding: ($grid-offset-step * 5) ($grid-offset-step * 5);
+
+    &__error {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
   }
 }
 

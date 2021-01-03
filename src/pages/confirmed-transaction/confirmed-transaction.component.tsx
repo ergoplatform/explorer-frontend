@@ -19,6 +19,8 @@ import { TransactionSummaryComponent } from '../../components/transaction/transa
 import { TransactionsItemComponent } from '../../components/transactions/transactions-item/transactions-item.component';
 
 import './confirmed-transaction.scss';
+import ProgressBar from '../../components/progress-bar/progress-bar';
+import LoaderLogo from '../../components/loader/loader';
 
 class ConfirmedTransaction extends React.PureComponent<
   RouteComponentProps<{
@@ -29,6 +31,7 @@ class ConfirmedTransaction extends React.PureComponent<
     SettingsActions &
     SettingsState & {
       toggleIsConfirmed: any;
+      setFailed: () => void;
     }
 > {
   constructor(props: any) {
@@ -48,6 +51,12 @@ class ConfirmedTransaction extends React.PureComponent<
   }
 
   render(): JSX.Element {
+    const isFetching = this.props.fetching;
+
+    if (isFetching) {
+      return <div className="bi-transaction">{this.renderLoader()}</div>;
+    }
+
     return (
       <div className="bi-transaction">
         <div className="bi-transaction__header">
@@ -63,7 +72,24 @@ class ConfirmedTransaction extends React.PureComponent<
     );
   }
 
-  private renderBody(): JSX.Element | null {
+  renderLoader(): JSX.Element | null {
+    return (
+      <ProgressBar className="bi-app__loading-text">
+        <LoaderLogo />
+      </ProgressBar>
+    );
+  }
+
+  private renderBody(): JSX.Element | null | undefined {
+    const { setFailed } = this.props;
+
+    console.log('>> this.props.isFailedRequest', this.props.isFailedRequest);
+
+    if (this.props.isFailedRequest) {
+      setFailed();
+      return;
+    }
+
     if (!this.props.transaction) {
       return null;
     }

@@ -290,7 +290,8 @@
         "output": "Output"
       },
       "subtitle": "View information about a ERGO transaction",
-      "title": "Transaction"
+      "title": "Transaction",
+      "error-message": "Transaction with this ID was not found, or it has not entered Mempool yet"
     },
     "transactions-summary": {
       "title": "Transactions Summary",
@@ -315,7 +316,8 @@
     },
     "unconfirmed-transaction": {
       "title": "Transaction",
-      "subtitle": "View information about a ERGO transaction"
+      "subtitle": "View information about a ERGO transaction",
+      "error-message": "Transaction with this ID was not found, or it has not entered Mempool yet"
     }
   }
 }

@@ -13,6 +13,6 @@ export class UnconfirmedTransactionService {
       GET_UNCONFIRMED_TRANSACTION_STRUCT,
       'get',
       `${UnconfirmedTransactionService.apiUrl}/transactions/unconfirmed/${id}`
-    );
+    ).catch(() => ({}));
   }
 }
