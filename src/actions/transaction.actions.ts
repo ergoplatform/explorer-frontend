@@ -4,11 +4,13 @@ import {
   GET_TRANSACTION,
   GET_TRANSACTION_SUCCESS,
   GET_TRANSACTION_FAIL,
+  CLEAR_TRANSACTIONS_STATE,
 } from '../constants/transaction.types';
 import { TransactionApiService } from '../services/transaction.api.service';
 
 export interface TransactionActions extends ActionCreatorsMapObject {
   getTransaction: (id: string) => any;
+  clearTransactionsState: () => any;
 }
 
 export const TransactionActions: TransactionActions = {
@@ -32,6 +34,11 @@ export const TransactionActions: TransactionActions = {
             type: GET_TRANSACTION_FAIL,
           });
         });
+    };
+  },
+  clearTransactionsState() {
+    return {
+      type: CLEAR_TRANSACTIONS_STATE,
     };
   },
 };
