@@ -97,7 +97,7 @@ export class MiningCostComponent extends React.PureComponent<
             </div>
 
             <div className="bi-mining-cost__cell bi-mining-cost__cell--value bi-table__cell u-word-wrap">
-              {convertInfoItemValue('hashRate', this.props.summary.hashRate)}
+              {convertInfoItemValue('hashRateSec', this.props.summary.hashRate)}
             </div>
 
             <div className="bi-mining-cost__cell bi-mining-cost__cell--display  bi-mining-cost__cell--actions bi-table__cell">

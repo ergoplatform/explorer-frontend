@@ -39,6 +39,10 @@ export const convertInfoItemValue = (key: string, value: any): any => {
     }
 
     case 'hashRate': {
+      return formatNumberMetricPrefix(value) + 'H/d';
+    }
+
+    case 'hashRateSec': {
       return formatNumberMetricPrefix(value) + 'H/s';
     }
 
