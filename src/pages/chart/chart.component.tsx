@@ -211,7 +211,7 @@ class Chart extends React.PureComponent<
           .map((item: any) => {
             return {
               timestamp: item.timestamp,
-              type: 'hashRate',
+              type: 'hashRateDay',
               value: item.value,
             };
           });
