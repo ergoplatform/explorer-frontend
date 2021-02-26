@@ -94,7 +94,12 @@ class TransactionsItem extends React.Component<
           </Link>
 
           <div className="bi-transactions-item__timestamp g-flex__item-fixed">
-            <TimestampComponent timestamp={this.props.transaction.timestamp} />
+            <TimestampComponent
+              timestamp={
+                this.props.transaction.creationTimestamp ||
+                this.props.transaction.timestamp
+              }
+            />
           </div>
         </div>
 

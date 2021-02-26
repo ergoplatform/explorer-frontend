@@ -43,9 +43,9 @@ const TransactionComponent = lazy(() =>
 const WalletComponent = lazy(() =>
   import('../../pages/wallet/wallet.component')
 );
-const OrderBookComponent = lazy(() =>
-  import('../../pages/order-book/order-book.component')
-);
+// const OrderBookComponent = lazy(() =>
+//   import('../../pages/order-book/order-book.component')
+// );
 const IssuedTokensComponent = lazy(() =>
   import('../../pages/issued-tokens/issued-tokens.component')
 );
@@ -147,11 +147,11 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                   component={PaymentRequestComponent}
                 />
 
-                <Route
+                {/* <Route
                   exact
                   path="/order-book"
                   component={OrderBookComponent}
-                />
+                /> */}
 
                 <Route
                   exact
