@@ -10,6 +10,8 @@ export const GET_ALL_ISSUED_TOKENS_STRUCT = '/assets/issuingBoxes';
 
 export const GET_TOTAL_ISSUED_TOKENS_STRUCT = '/assets/issuingBoxes/total';
 
+export const GET_ISSUED_TOKENS_BY_ID_STRUCT = 'assets/id:/issuingBoxes';
+
 export const GET_OPENAPI_YAML_STRUCT = '/docs/openapi';
 
 export const GET_UNCONFIRMED_TRANSACTIONS_STRUCT = '/transactions/unconfirmed';

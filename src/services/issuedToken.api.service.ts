@@ -3,6 +3,7 @@ import { fetchStruct } from '../utils/fetchStruct';
 import {
   GET_ALL_ISSUED_TOKENS_STRUCT,
   GET_TOTAL_ISSUED_TOKENS_STRUCT,
+  GET_ISSUED_TOKENS_BY_ID_STRUCT,
 } from '../constants/struct.types';
 
 export class IssuedTokensService {
@@ -15,7 +16,7 @@ export class IssuedTokensService {
       dispatch,
       GET_ALL_ISSUED_TOKENS_STRUCT,
       'get',
-      `${IssuedTokensService.apiUrl}/assets/issuingBoxes`,
+      `https://api.ergoplatform.com/api/v1/assets`,
       {
         params: {
           limit,
@@ -30,12 +31,21 @@ export class IssuedTokensService {
       dispatch,
       GET_TOTAL_ISSUED_TOKENS_STRUCT,
       'get',
-      `${IssuedTokensService.apiUrl}/assets/issuingBoxes`,
+      `https://api.ergoplatform.com/api/v1/assets`,
       {
         params: {
           limit,
         },
       }
+    );
+  }
+
+  static getIssuedTokensById(dispatch: any, tokenId: string): any {
+    return fetchStruct(
+      dispatch,
+      GET_ISSUED_TOKENS_BY_ID_STRUCT,
+      'get',
+      `${IssuedTokensService.apiUrl}/assets/${tokenId}/issuingBox`
     );
   }
 }

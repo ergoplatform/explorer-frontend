@@ -1,0 +1,80 @@
+@import '../../../assets/styles/base/variables';
+
+// #ADDRESS ISSUED TOKENS MODAL
+//-------------------------------------
+$address-issued-tokens-modal-bg: #ffffff;
+$address-issued-tokens-modal-title-color: $theme-main-font;
+$address-issued-tokens-header-color: $theme-primary-color;
+$address-issued-tokens-header-bg-color: #f8f8f8;
+$address-issued-tokens-header-border-color: #eeeeee;
+
+.bi-address-issued-tokens-modal {
+  padding: ($grid-offset-step * 10) ($grid-offset-step * 8);
+  border-radius: 4px;
+  outline: none;
+  background-color: $address-issued-tokens-modal-bg;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------
+  &__container {
+    overflow-x: auto;
+    max-height: 500px;
+  }
+
+  &__title {
+    margin-bottom: $grid-offset-step * 8;
+    color: $address-issued-tokens-modal-title-color;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+  }
+
+  &__table-header {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
+    border: 1px solid $address-issued-tokens-header-border-color;
+    border-bottom: 0;
+    color: $address-issued-tokens-header-color;
+    background-color: $address-issued-tokens-header-bg-color;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__table-body {
+    width: 100%;
+    border: 1px solid $address-issued-tokens-header-border-color;
+    background-color: $address-issued-tokens-modal-bg;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &__row {
+    border: 1px solid $address-issued-tokens-header-border-color;
+  }
+
+  &__cell {
+    padding: ($grid-offset-step * 3) ($grid-offset-step * 5);
+    word-break: break-all;
+
+    &--header {
+      font-weight: 600;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-address-issued-tokens-modal {
+    padding: ($grid-offset-step * 10) ($grid-offset-step * 6);
+    width: 90%;
+
+    &__cell--amount {
+      font-size: 16px;
+    }
+
+    &__container {
+      max-height: 400px;
+    }
+  }
+}

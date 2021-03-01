@@ -47,6 +47,10 @@ $modal-overlay-bg: rgba(0, 0, 0, 0.3);
   }
 }
 
+.ReactModal__Overlay--after-open {
+  z-index: 9;
+}
+
 .bi-modal--scale {
   transition: transform 150ms ease-in-out;
   transform: translate(-50%, -50%) scale(0);

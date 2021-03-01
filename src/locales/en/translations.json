@@ -112,7 +112,13 @@
       "confirmedBalance": "Final balance",
       "title": "Transactions",
       "confirmed": "No. transactions",
-      "totalReceived": "Total received"
+      "totalReceived": "Total received",
+      "tokens": "Tokens",
+      "show": "Show"
+    },
+    "address-issued-tokens": {
+      "title": "Issued Tokens",
+      "allTokens": "All Tokens"
     },
     "address": {
       "title": "{coinName} Address"
