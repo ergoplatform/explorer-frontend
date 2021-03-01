@@ -19,4 +19,6 @@ export interface Asset {
    * Amount of the token
    */
   amount: number;
+  name: string;
+  decimals: number;
 }
