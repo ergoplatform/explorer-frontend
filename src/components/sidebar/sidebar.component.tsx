@@ -37,7 +37,7 @@ import {
   ChartIcon,
   DataIcon,
   StatsIcon,
-  DiagramIcon,
+  // DiagramIcon,
 } from '../common/icons/common.icons';
 
 const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
@@ -101,16 +101,16 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     title: 'components.sidebar-menu.items.api',
     url: '/api',
   },
-  {
-    icon: (
-      <DiagramIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
-    ),
-    props: {
-      exact: false,
-    },
-    title: 'components.sidebar-menu.items.order-book',
-    url: '/order-book',
-  },
+  // {
+  //   icon: (
+  //     <DiagramIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+  //   ),
+  //   props: {
+  //     exact: false,
+  //   },
+  //   title: 'components.sidebar-menu.items.order-book',
+  //   url: '/order-book',
+  // },
   {
     icon: (
       <TokenIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
