@@ -22,7 +22,6 @@ import { AddressSummaryComponent } from '../../components/address/address-summar
 import { AddressTransactionsComponent } from '../../components/address/address-transactions/address-transactions.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 import { TransactionsComponent } from '../../components/transactions/transactions.component';
-import { AddressIssuedTokensComponent } from '../../components/address/address-issued-tokens/address-issued-tokens.component';
 
 class Address extends React.PureComponent<
   RouteComponentProps<{ id: string }> &
@@ -140,12 +139,6 @@ class Address extends React.PureComponent<
               address={this.props.address}
             />
           </div>
-        </div>
-
-        <div className="bi-address__tables g-flex">
-          <AddressIssuedTokensComponent
-            issuedTokens={this.props.address.transactions.totalTokensBalance}
-          />
         </div>
 
         {this.props.transactions && (

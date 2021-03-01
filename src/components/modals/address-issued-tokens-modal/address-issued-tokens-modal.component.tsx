@@ -1,14 +1,13 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import ReactModal from 'react-modal';
+import format from 'format-number';
 
 import { Asset } from '../../../models/generated/asset';
 
 import { CrossIcon } from '../../common/icons/common.icons';
-import { CoinValueComponent } from '../../common/coin-value/coin-value.component';
 
 import './address-issued-tokens-modal.scss';
-import { CopyTextComponent } from '../../common/copy-text/copy-text.component';
 
 interface AddressIssuedTokensModalProps {
   isOpen: boolean;
@@ -44,13 +43,15 @@ export class AddressIssuedTokensModalComponent extends React.PureComponent<
                     className="bi-address-issued-tokens-modal__row bi-table__row"
                   >
                     <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--token-id">
-                      <CopyTextComponent isNotShowIcon>
-                        <FormattedMessage id={token.tokenId} />
-                      </CopyTextComponent>
+                      <FormattedMessage id={token.name} />
                     </div>
 
                     <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--amount">
-                      <CoinValueComponent coinName={' '} value={token.amount} />
+                      {format({ integerSeparator: ' ' })(
+                        token.decimals > 0
+                          ? token.amount * 10 * token.decimals
+                          : token.amount
+                      )}
                     </div>
                   </div>
                 );

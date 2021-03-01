@@ -16,7 +16,7 @@ export class IssuedTokensService {
       dispatch,
       GET_ALL_ISSUED_TOKENS_STRUCT,
       'get',
-      `${IssuedTokensService.apiUrl}/assets/issuingBoxes`,
+      `https://api.ergoplatform.com/api/v1/assets`,
       {
         params: {
           limit,
@@ -31,7 +31,7 @@ export class IssuedTokensService {
       dispatch,
       GET_TOTAL_ISSUED_TOKENS_STRUCT,
       'get',
-      `${IssuedTokensService.apiUrl}/assets/issuingBoxes`,
+      `https://api.ergoplatform.com/api/v1/assets`,
       {
         params: {
           limit,

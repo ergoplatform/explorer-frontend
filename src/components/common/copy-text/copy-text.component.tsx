@@ -6,6 +6,7 @@ interface ICopyTextProps {
   children: string | any;
   isNotShowIcon?: boolean;
   onClick?: () => void;
+  className?: string;
 }
 
 export class CopyTextComponent extends React.Component<ICopyTextProps> {
@@ -27,9 +28,21 @@ export class CopyTextComponent extends React.Component<ICopyTextProps> {
         style={{
           cursor: 'pointer',
           color: 'rgb(0, 120, 255)',
+          display: 'inline-flex',
+          alignItems: 'center',
         }}
+        className={this.props.className}
       >
-        {!this.props.isNotShowIcon && <CopyIcon />}
+        {!this.props.isNotShowIcon && (
+          <div
+            style={{
+              height: '16px',
+            }}
+          >
+            <CopyIcon />
+          </div>
+        )}
+
         <a
           className="bi-copy-text"
           style={{ marginLeft: !this.props.isNotShowIcon ? '10px' : 0 }}

@@ -26,13 +26,14 @@ export const AddressSummaryComponent = (props: IAddressSummaryProps) => {
             <FormattedMessage id="components.address-summary.hash" />
           </div>
 
-          <div className="bi-address-summary__cell bi-address-summary__cell--value bi-table__cell u-word-wrap u-word-wrap--ellipsis">
+          <div className="bi-address-summary__cell bi-address-summary__cell--value bi-table__cell">
             <CopyTextComponent
               onClick={() =>
                 alert.show(
                   <span style={{ textTransform: 'initial' }}>Copied</span>
                 )
               }
+              className="u-word-wrap u-word-wrap--ellipsis"
             >
               {props.summary.id}
             </CopyTextComponent>
