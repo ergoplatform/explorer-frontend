@@ -74,7 +74,7 @@ export const AddressTransactionsComponent = ({
         </div>
       </div>
 
-      {summary.totalTokensBalance?.length && (
+      {summary.totalTokensBalance?.length !== 0 && (
         <div className="bi-address-issued-tokens__btn-container g-flex">
           <div className="bi-address-issued-tokens__item g-flex__item-fixed"></div>
 
