@@ -92,7 +92,6 @@ class UnconfirmedTransactionsItem extends React.Component<
           >
             {this.props.transaction.id}
           </Link>
-
           <div className="bi-unconfirmed-transactions-item__timestamp g-flex__item-fixed">
             <TimestampComponent
               timestamp={

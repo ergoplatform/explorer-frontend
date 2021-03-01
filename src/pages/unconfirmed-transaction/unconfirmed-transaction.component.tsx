@@ -19,6 +19,8 @@ import { UnconfirmedTransactionSummaryComponent } from '../../components/unconfi
 import { UnconfirmedTransactionsItemComponent } from '../../components/unconfirmed-transaction/unconfirmed-transactions-item/unconfirmed-transactions-item.component';
 
 import './unconfirmed-transaction.scss';
+import ProgressBar from '../../components/progress-bar/progress-bar';
+import LoaderLogo from '../../components/loader/loader';
 
 class UnconfirmedTransaction extends React.PureComponent<
   RouteComponentProps<{
@@ -30,6 +32,7 @@ class UnconfirmedTransaction extends React.PureComponent<
       unconfirmedTransaction: any;
       timerId: any;
       toggleIsConfirmed: any;
+      setFailed: () => void;
     }
 > {
   state = {
@@ -75,6 +78,12 @@ class UnconfirmedTransaction extends React.PureComponent<
   }
 
   render(): JSX.Element {
+    const { data, error }: any = this.props.unconfirmedTransaction;
+
+    if (!data && !error) {
+      return <div className="bi-transaction">{this.renderLoader()}</div>;
+    }
+
     return (
       <div className="bi-transaction">
         <div className="bi-transaction__header">
@@ -90,10 +99,26 @@ class UnconfirmedTransaction extends React.PureComponent<
     );
   }
 
-  private renderBody(): JSX.Element | null {
+  renderLoader(): JSX.Element | null {
+    return (
+      <ProgressBar className="bi-app__loading-text">
+        <LoaderLogo />
+      </ProgressBar>
+    );
+  }
+
+  private renderBody(): JSX.Element | null | undefined {
     const { data, error }: any = this.props.unconfirmedTransaction;
 
-    if (!data || error) {
+    console.log('>> data', data);
+    console.log('>> error', error);
+
+    if (error) {
+      this.props.setFailed();
+      return;
+    }
+
+    if (!data) {
       return null;
     }
 
