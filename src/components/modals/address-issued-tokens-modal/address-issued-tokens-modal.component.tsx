@@ -43,7 +43,7 @@ export class AddressIssuedTokensModalComponent extends React.PureComponent<
                     className="bi-address-issued-tokens-modal__row bi-table__row"
                   >
                     <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--token-id">
-                      <FormattedMessage id={token.name} />
+                      <FormattedMessage id={token.name || token.tokenId} />
                     </div>
 
                     <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--amount">
