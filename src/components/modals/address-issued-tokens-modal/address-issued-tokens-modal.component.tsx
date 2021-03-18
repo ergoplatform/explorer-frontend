@@ -13,12 +13,14 @@ interface AddressIssuedTokensModalProps {
   isOpen: boolean;
   issuedTokens: Array<Asset> | undefined;
   onClose: () => void;
+  title?: string;
 }
 
 export class AddressIssuedTokensModalComponent extends React.PureComponent<
   AddressIssuedTokensModalProps
 > {
   render(): JSX.Element {
+    const { title } = this.props;
     return (
       <ReactModal
         className="bi-address-issued-tokens-modal bi-modal bi-modal--scale"
@@ -31,7 +33,7 @@ export class AddressIssuedTokensModalComponent extends React.PureComponent<
         </button>
 
         <div className="bi-address-issued-tokens-modal__table-header">
-          <FormattedMessage id="components.address-issued-tokens.title" />
+          {title || 'Address tokens'}
         </div>
         <div className="bi-address-issued-tokens-modal__container">
           <div className="bi-address-issued-tokens-modal__table-body bi-table">

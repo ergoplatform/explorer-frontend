@@ -49,7 +49,7 @@ class TransactionsItem extends React.Component<
 
     const buttonText = `+${defaultAssets.length}`;
 
-    return <DropdownListComponent list={defaultAssets} button={buttonText} />;
+    return <DropdownListComponent list={assets} button={buttonText} />;
   }
 
   getAddressInputs = () =>
