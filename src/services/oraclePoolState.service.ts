@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GET_ORACLE_POOL_DATA_STRUCT } from '../constants/struct.types';
 
 export const pools = {
-  ergusd: 'https://erg-usd-ergo-oracle.emurgo.io/frontendData',
+  ergusd: 'https://erg-oracle-ergusd.spirepools.com/frontendData',
   adausd: 'https://ada-usd-ergo-oracle.emurgo.io/frontendData',
 };
 export class OraclePoolStateService {
