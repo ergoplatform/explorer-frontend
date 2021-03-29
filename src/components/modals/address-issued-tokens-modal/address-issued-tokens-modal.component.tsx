@@ -21,6 +21,7 @@ export class AddressIssuedTokensModalComponent extends React.PureComponent<
 > {
   render(): JSX.Element {
     const { title } = this.props;
+    console.log(this.props);
     return (
       <ReactModal
         className="bi-address-issued-tokens-modal bi-modal bi-modal--scale"
