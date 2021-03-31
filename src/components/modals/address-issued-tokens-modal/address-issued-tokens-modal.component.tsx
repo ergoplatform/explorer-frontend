@@ -21,7 +21,6 @@ export class AddressIssuedTokensModalComponent extends React.PureComponent<
 > {
   render(): JSX.Element {
     const { title } = this.props;
-    console.log(this.props);
     return (
       <ReactModal
         className="bi-address-issued-tokens-modal bi-modal bi-modal--scale"
@@ -52,7 +51,7 @@ export class AddressIssuedTokensModalComponent extends React.PureComponent<
                     <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--amount">
                       {format({ integerSeparator: ' ' })(
                         token.decimals > 0
-                          ? token.amount * 10 * token.decimals
+                          ? token.amount / Math.pow(10, token.decimals)
                           : token.amount
                       )}
                     </div>
