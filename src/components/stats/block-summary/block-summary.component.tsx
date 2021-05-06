@@ -38,7 +38,8 @@ export class BlockSummaryComponent extends React.PureComponent<
             </div>
 
             <div className="bi-block-summary__cell bi-block-summary__cell--value bi-table__cell u-word-wrap">
-              {(this.props.summary.averageMiningTime / 1000 / 60).toFixed(2)}{' '}
+              {(this.props.summary.averageMiningTime / 1000 / 60).toFixed(2)}
+              ({(this.props.summary.averageMiningTime / 1000).toFixed(0)})
               <FormattedMessage id="components.block-summary.minutes" />
             </div>
 
