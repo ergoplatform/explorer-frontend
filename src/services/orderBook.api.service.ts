@@ -16,7 +16,7 @@ export class OrderBookService {
       dispatch,
       SEARCH_TOKEN_BY_ID_STRUCT,
       'get',
-      `${OrderBookService.apiUrl}/assets/${value}/issuingBox`
+      `${OrderBookService.apiUrl}/tokens/${value}/issuingBox`
     );
   }
 
