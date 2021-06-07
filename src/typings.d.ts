@@ -15,6 +15,7 @@ declare module 'nprogress';
 declare module 'react-copy-to-clipboard';
 declare module 'react-alert';
 declare module 'react-alert-template-basic';
+declare module 'react-truncate';
 
 interface Window {
   __PRELOADED_STATE__: any;
