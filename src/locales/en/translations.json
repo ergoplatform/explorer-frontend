@@ -28,7 +28,9 @@
       "id": "Id",
       "amount": "Amount",
       "decimals": "Decimals",
-      "description": "Description"
+      "description": "Description",
+      "showMore": "Show more",
+      "showLess": "Show less"
     },
     "pages": {
       "address": {

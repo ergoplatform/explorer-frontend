@@ -23,6 +23,15 @@
       "digest": "Дайджест",
       "fields": "Поля"
     },
+    "token": {
+      "name": "Название",
+      "id": "Id",
+      "amount": "Количество",
+      "decimals": "Знаков после запятой",
+      "description": "Описание",
+      "showMore": "Показать еще",
+      "showLess": "Свернуть"
+    },
     "pages": {
       "address": {
         "title": "Ergo Explorer | Адрес {id}"
@@ -211,6 +220,7 @@
         "charts": "Графики",
         "data": "Данные",
         "stats": "Статистика",
+        "issued-tokens": "Выпущенные токены",
         "wallet": "Кошелек"
       }
     },
@@ -262,6 +272,9 @@
       },
       "subtitle": "Инормация по ERGO транзакции",
       "title": "Транзакция"
+    },
+    "issued-tokens": {
+      "title": "Выпущенные токены"
     },
     "transactions-summary": {
       "title": "Сводка по Транзакции",

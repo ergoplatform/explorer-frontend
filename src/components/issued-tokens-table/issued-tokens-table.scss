@@ -45,7 +45,12 @@ $block-table-cell-color: $theme-primary-color;
     &--timestamp {
       width: 25%;
     }
+  }
 
+  &-header {
+    .bi-blocks-table__cell {
+      font-weight: 600;
+    }
   }
 
   &__cell-name {
@@ -114,4 +119,10 @@ $block-table-cell-color: $theme-primary-color;
 .bi-tokens-table__cell {
   white-space: normal;
   overflow: initial;
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-blocks-table-header {
+    display: none;
+  }
 }
