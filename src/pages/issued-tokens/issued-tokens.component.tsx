@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
 
-import './issued-tokens.scss';
-
 import { AppState } from '../../store/app.store';
 
 import { IGetBlocksParams } from '../../services/block.api.service';
@@ -17,6 +15,8 @@ import { PaginateSimpleComponent } from '../../components/common/paginate-simple
 import { IssuedTokensActions } from '../../actions/issuedTokens.actions';
 import { getAllIssuedTokensStructSelector } from '../../selectors/issuedTokens';
 import { IssuedTokensTableComponent } from '../../components/issued-tokens-table/issued-tokens-table.component';
+
+import './issued-tokens.scss';
 
 type IDataProps = AppState &
   IssuedTokensActions &
