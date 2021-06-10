@@ -9,10 +9,14 @@ export class ApiService {
 
   static getOpenApiFile(dispatch: any): any {
     return fetchStruct(
-      dispatch,
       GET_OPENAPI_YAML_STRUCT,
-      'get',
-      `${ApiService.apiUrl}/docs/openapi`
+      {
+        method: 'get',
+        url: `${ApiService.apiUrl}/docs/openapi`,
+      },
+      {
+        dispatch,
+      }
     );
   }
 }

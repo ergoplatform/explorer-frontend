@@ -2,7 +2,9 @@ import { IEnvironment } from './environment';
 
 export const environmentDefault: IEnvironment = {
   alternativeLogo: true,
+  // TODO: apiUrl is deprecated. Use apiBaseUrl instead.
   apiUrl: 'https://api.ergoplatform.com/api/v0',
+  apiBaseUrl: 'https://api.ergoplatform.com/api',
   blockchain: {
     coinName: 'Erg',
   },

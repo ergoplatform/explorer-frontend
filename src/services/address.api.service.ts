@@ -98,10 +98,14 @@ export class AddressApiService {
 
   static getAddressesBalances(dispatch: any): any {
     return fetchStruct(
-      dispatch,
       GET_ADDRESSES_BALANCES_STRUCT,
-      'get',
-      `${environment.apiUrl}/addresses/balances?limit=100`
+      {
+        method: 'get',
+        url: `${environment.apiUrl}/addresses/balances?limit=100`,
+      },
+      {
+        dispatch,
+      }
     );
   }
 }

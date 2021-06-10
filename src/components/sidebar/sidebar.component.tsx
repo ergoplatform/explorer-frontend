@@ -7,9 +7,9 @@ import { bindActionCreators } from 'redux';
 
 import { AppState } from '../../store/app.store';
 
-import { ApiActions } from '../../actions/api.actions';
+import { ApiDocsActions } from '../../actions/api.actions';
 import { SettingsActions } from '../../actions/settings.actions';
-import { ApiState } from '../../reducers/api.reducer';
+import { ApiDocsState } from '../../reducers/api.reducer';
 import { SettingsState } from '../../reducers/settings.reducer';
 
 import { EnvironmentSwitcherComponent } from '../common/environment-switcher/environment-switcher.component';
@@ -149,7 +149,7 @@ interface SidebarState {
 }
 
 type ISidebarProps = SettingsActions &
-  ApiActions & { settings: SettingsState; api: ApiState };
+  ApiDocsActions & { settings: SettingsState; api: ApiDocsState };
 
 class Sidebar extends React.Component<ISidebarProps, SidebarState> {
   state: SidebarState = {
@@ -242,13 +242,13 @@ class Sidebar extends React.Component<ISidebarProps, SidebarState> {
 
 function mapStateToProps(
   state: AppState
-): { settings: SettingsState; api: ApiState } {
-  return { settings: state.settings, api: state.api };
+): { settings: SettingsState; api: ApiDocsState } {
+  return { settings: state.settings, api: state.apiDocs };
 }
 
 function mapDispatchToProps(dispatch: any): any {
   return bindActionCreators(
-    { ...SettingsActions, ...ApiActions } as any,
+    { ...SettingsActions, ...ApiDocsActions } as any,
     dispatch
   );
 }

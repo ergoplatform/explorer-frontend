@@ -3,7 +3,7 @@ import { reducer as struct } from 'redux-struct';
 
 import { AppState } from '../store/app.store';
 import { addressReducer } from './address.reducer';
-import { apiReducer } from './api.reducer';
+import { apiDocsReducer } from './api.reducer';
 import { blockReducer } from './block.reducer';
 import { blocksReducer } from './blocks.reducer';
 import { chartReducer } from './chart.reducer';
@@ -16,7 +16,7 @@ import { unconfirmedTransactionsReducer } from './unconfirmedTransactions.reduce
 
 export const reducer = combineReducers<AppState>({
   address: addressReducer,
-  api: apiReducer,
+  apiDocs: apiDocsReducer,
   block: blockReducer,
   blocks: blocksReducer,
   chart: chartReducer,

@@ -3,6 +3,7 @@ import { environmentProd } from './environment.prod';
 
 export interface IEnvironment {
   apiUrl?: string;
+  apiBaseUrl?: string;
   blockchain?: any;
   alternativeLogo?: boolean;
   environments?: any[];

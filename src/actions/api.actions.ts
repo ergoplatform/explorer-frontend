@@ -1,31 +1,25 @@
 import { Action, Dispatch } from 'redux';
+import { stopStructFetch, startStructFetch } from 'redux-struct';
 import SwaggerParser from '@apidevtools/swagger-parser';
 
-import { GET_API, GET_API_SUCCESS } from '../constants/api.types';
+import { GET_OPENAPI_YAML_STRUCT } from '../constants/struct.types';
 import environment from 'src/config/environment';
 
 // import apiSpec from 'apiSpec';
 // import { ApiService } from '../services/api.service';
 
-export interface ApiActions {
-  getApi(): void;
+export interface ApiDocsActions {
+  getApiDocs(): void;
 }
 
-export const ApiActions: any = {
-  getApi(): any {
+export const ApiDocsActions: any = {
+  getApiDocs(): any {
     return (dispatch: Dispatch<Action>) => {
-      dispatch({
-        type: GET_API,
-      });
+      dispatch(startStructFetch(GET_OPENAPI_YAML_STRUCT));
 
-      SwaggerParser.validate(`${environment.apiUrl}/docs/openapi`).then(
+      SwaggerParser.validate(`${environment.apiBaseUrl}/v1/docs/openapi`).then(
         (data) => {
-          dispatch({
-            payload: {
-              data,
-            },
-            type: GET_API_SUCCESS,
-          });
+          dispatch(stopStructFetch(GET_OPENAPI_YAML_STRUCT, data));
         }
       );
     };

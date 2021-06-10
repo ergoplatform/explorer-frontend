@@ -13,39 +13,47 @@ export class IssuedTokensService {
 
   static getAllIssuedTokens(dispatch: any, { limit, offset }: any): any {
     return fetchStruct(
-      dispatch,
       GET_ALL_ISSUED_TOKENS_STRUCT,
-      'get',
-      `https://api.ergoplatform.com/api/v1/tokens`,
       {
+        method: 'get',
+        url: `https://api.ergoplatform.com/api/v1/tokens`,
         params: {
           limit,
           offset,
         },
+      },
+      {
+        dispatch,
       }
     );
   }
 
   static getTotalIssuedTokens(dispatch: any, { limit }: any): any {
     return fetchStruct(
-      dispatch,
       GET_TOTAL_ISSUED_TOKENS_STRUCT,
-      'get',
-      `https://api.ergoplatform.com/api/v1/tokens`,
       {
+        method: 'get',
+        url: `https://api.ergoplatform.com/api/v1/tokens`,
         params: {
           limit,
         },
+      },
+      {
+        dispatch,
       }
     );
   }
 
   static getIssuedTokensById(dispatch: any, tokenId: string): any {
     return fetchStruct(
-      dispatch,
       GET_ISSUED_TOKENS_BY_ID_STRUCT,
-      'get',
-      `${IssuedTokensService.apiUrl}/tokens/${tokenId}/issuingBox`
+      {
+        method: 'get',
+        url: `${IssuedTokensService.apiUrl}/tokens/${tokenId}/issuingBox`,
+      },
+      {
+        dispatch,
+      }
     );
   }
 }

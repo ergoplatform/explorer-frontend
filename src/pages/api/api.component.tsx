@@ -6,18 +6,20 @@ import { bindActionCreators } from 'redux';
 
 import environment from '../../config/environment';
 
-import { ApiState } from '../../reducers/api.reducer';
+import { ApiDocsState } from '../../reducers/api.reducer';
 import { AppState } from '../../store/app.store';
-
-import { ApiActions } from '../../actions/api.actions';
+import { apiDocStructSelector } from '../../selectors/apiDoc';
+import { ApiDocsActions } from '../../actions/api.actions';
 
 import './api.scss';
 import { ApiPathComponent } from '../../components/api/api-path/api-path.component';
 
-class Api extends React.PureComponent<ApiState & ApiActions> {
+const apiOrigin = new URL(environment.apiUrl as string).origin;
+
+class Api extends React.PureComponent<ApiDocsState & ApiDocsActions> {
   componentDidMount(): void {
     if (!this.props.data) {
-      this.props.getApi();
+      this.props.getApiDocs();
     }
   }
 
@@ -39,7 +41,7 @@ class Api extends React.PureComponent<ApiState & ApiActions> {
               {this.props.data && this.props.data.info.version}
             </div>
 
-            {environment.apiUrl}
+            {apiOrigin}
           </div>
         )}
 
@@ -61,14 +63,17 @@ class Api extends React.PureComponent<ApiState & ApiActions> {
   }
 }
 
-function mapStateToProps(state: AppState): ApiState {
-  return state.api;
+function mapStateToProps(state: AppState): ApiDocsState {
+  return apiDocStructSelector(state);
 }
 
 function mapDispatchToProps(dispatch: any): any {
-  return bindActionCreators(ApiActions, dispatch);
+  return bindActionCreators(ApiDocsActions, dispatch);
 }
 
-export const ApiComponent = connect(mapStateToProps, mapDispatchToProps)(Api);
+export const ApiDocsComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Api);
 
-export default ApiComponent;
+export default ApiDocsComponent;

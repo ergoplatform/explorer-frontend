@@ -9,10 +9,14 @@ export class UnconfirmedTransactionService {
 
   static getUnconfirmedTransaction(dispatch: any, id: string): any {
     return fetchStruct(
-      dispatch,
       GET_UNCONFIRMED_TRANSACTION_STRUCT,
-      'get',
-      `${UnconfirmedTransactionService.apiUrl}/transactions/unconfirmed/${id}`
+      {
+        method: 'get',
+        url: `${UnconfirmedTransactionService.apiUrl}/transactions/unconfirmed/${id}`,
+      },
+      {
+        dispatch,
+      }
     ).catch(() => ({}));
   }
 }

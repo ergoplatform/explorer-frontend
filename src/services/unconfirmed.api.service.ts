@@ -12,17 +12,19 @@ export class UnconfirmedTransactionsService {
     { limit, offset, sortBy, sortDirection }: any
   ): any {
     return fetchStruct(
-      dispatch,
       GET_UNCONFIRMED_TRANSACTIONS_STRUCT,
-      'get',
-      `${UnconfirmedTransactionsService.apiUrl}/transactions/unconfirmed`,
       {
+        method: 'get',
+        url: `${UnconfirmedTransactionsService.apiUrl}/transactions/unconfirmed`,
         params: {
           limit,
           offset,
           sortBy: sortBy || 'size',
           sortDirection: sortDirection || 'desc',
         },
+      },
+      {
+        dispatch,
       }
     );
   }
