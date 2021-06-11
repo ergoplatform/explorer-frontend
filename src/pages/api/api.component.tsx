@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import environment from '../../config/environment';
 
-import { ApiDocsState } from '../../reducers/api.reducer';
+import { ApiDocsState } from '../../store/types';
 import { AppState } from '../../store/app.store';
 import { apiDocStructSelector } from '../../selectors/apiDoc';
 import { ApiDocsActions } from '../../actions/api.actions';
@@ -52,7 +52,7 @@ class Api extends React.PureComponent<ApiDocsState & ApiDocsActions> {
                 <ApiPathComponent
                   key={path}
                   pathName={path}
-                  paths={this.props.data.paths[path]}
+                  paths={this.props.data!.paths[path]}
                 />
               );
             })}

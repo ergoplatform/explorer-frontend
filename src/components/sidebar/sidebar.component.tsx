@@ -7,9 +7,7 @@ import { bindActionCreators } from 'redux';
 
 import { AppState } from '../../store/app.store';
 
-import { ApiDocsActions } from '../../actions/api.actions';
 import { SettingsActions } from '../../actions/settings.actions';
-import { ApiDocsState } from '../../reducers/api.reducer';
 import { SettingsState } from '../../reducers/settings.reducer';
 
 import { EnvironmentSwitcherComponent } from '../common/environment-switcher/environment-switcher.component';
@@ -148,8 +146,7 @@ interface SidebarState {
   isClient: boolean;
 }
 
-type ISidebarProps = SettingsActions &
-  ApiDocsActions & { settings: SettingsState; api: ApiDocsState };
+type ISidebarProps = SettingsActions & { settings: SettingsState };
 
 class Sidebar extends React.Component<ISidebarProps, SidebarState> {
   state: SidebarState = {
@@ -240,17 +237,12 @@ class Sidebar extends React.Component<ISidebarProps, SidebarState> {
   }
 }
 
-function mapStateToProps(
-  state: AppState
-): { settings: SettingsState; api: ApiDocsState } {
-  return { settings: state.settings, api: state.apiDocs };
+function mapStateToProps(state: AppState): { settings: SettingsState } {
+  return { settings: state.settings };
 }
 
 function mapDispatchToProps(dispatch: any): any {
-  return bindActionCreators(
-    { ...SettingsActions, ...ApiDocsActions } as any,
-    dispatch
-  );
+  return bindActionCreators({ ...SettingsActions } as any, dispatch);
 }
 
 export const SidebarComponent = connect(
