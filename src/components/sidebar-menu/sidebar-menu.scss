@@ -16,6 +16,8 @@ $sidebar-menu-item-active-color: #ffffff;
   }
 
   &__item-title {
+    display: flex;
+    align-items: center;
     line-height: 1;
     transition: opacity 300ms ease-in-out;
   }
@@ -23,6 +25,17 @@ $sidebar-menu-item-active-color: #ffffff;
   &__item-icon {
     width: 18px;
     height: 18px;
+    margin-right: ($grid-offset-step * 2);
+    transition: transform 150ms linear;
+
+    fill: $sidebar-menu-item-color;
+  }
+
+  &__icon-external {
+    display: none;
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
     margin-right: ($grid-offset-step * 2);
     transition: transform 150ms linear;
 
@@ -47,6 +60,12 @@ $sidebar-menu-item-active-color: #ffffff;
 
       + .bi-sidebar-menu__item-children {
         display: block;
+      }
+    }
+
+    &:hover {
+      .bi-sidebar-menu__icon-external {
+        display: inline-block;
       }
     }
   }

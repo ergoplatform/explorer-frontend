@@ -189,6 +189,12 @@ $sidebar-btn-toggle-icon-color: #ffffff;
   .bi-environment-switcher {
     margin-right: $grid-offset-step * 2;
   }
+
+  &__divider {
+    height: 1px;
+    margin: 10px 35px;
+    background-color: #6c717c;
+  }
 }
 
 @media screen and (max-width: $mobile-device-width) {
