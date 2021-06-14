@@ -49,7 +49,6 @@ const WalletComponent = lazy(() =>
 const IssuedTokensComponent = lazy(() =>
   import('../../pages/issued-tokens/issued-tokens.component')
 );
-const ApiComponent = lazy(() => import('../../pages/api/api.component'));
 const UnconfirmedTransactionsComponent = lazy(() =>
   import(
     '../../pages/unconfirmed-transactions/unconfirmed-transactions.component'
@@ -105,8 +104,6 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
             >
               <Switch>
                 <Route exact path="/" component={DataComponent} />
-
-                <Route exact path="/api" component={ApiComponent} />
 
                 <Route exact path="/rich-list" component={RichListComponent} />
 

@@ -10,7 +10,6 @@
     "test:coverage": "node scripts/test.js --env=jsdom --coverage"
   },
   "dependencies": {
-    "@apidevtools/swagger-parser": "^9.0.1",
     "@axetroy/react-download": "^1.1.1",
     "@babel/core": "7.9.0",
     "@sentry/react": "^5.22.3",
