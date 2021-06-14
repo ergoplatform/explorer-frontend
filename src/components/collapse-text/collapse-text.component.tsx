@@ -19,7 +19,6 @@ export const CollapseText = ({ children, lines }: IProps) => {
         onClick={(e: any) => {
           e.preventDefault();
           setIsExpanded(!isExpanded);
-          console.log('here');
         }}
       >
         <FormattedMessage
