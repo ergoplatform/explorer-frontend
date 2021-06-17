@@ -7,9 +7,7 @@ import { bindActionCreators } from 'redux';
 
 import { AppState } from '../../store/app.store';
 
-import { ApiActions } from '../../actions/api.actions';
 import { SettingsActions } from '../../actions/settings.actions';
-import { ApiState } from '../../reducers/api.reducer';
 import { SettingsState } from '../../reducers/settings.reducer';
 
 import { EnvironmentSwitcherComponent } from '../common/environment-switcher/environment-switcher.component';
@@ -23,7 +21,7 @@ import {
   ArrowIcon,
   LogoIcon,
   LogoVerticalIcon,
-  SignIcon,
+  WalletIcon,
   TokenIcon,
   UnconfirmedIcon,
   DistributedIcon,
@@ -93,14 +91,6 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     title: 'components.sidebar-menu.items.stats',
     url: '/stats',
   },
-  {
-    icon: <ApiIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />,
-    props: {
-      exact: false,
-    },
-    title: 'components.sidebar-menu.items.api',
-    url: '/api',
-  },
   // {
   //   icon: (
   //     <DiagramIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
@@ -136,8 +126,14 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
 const EXTERNAL_MENU_ITEMS: ISidebarMenuItem[] = [
   {
     external: true,
+    icon: <ApiIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />,
+    title: 'components.sidebar-menu.items.api',
+    url: 'https://api.ergoplatform.com/api/v1/docs/',
+  },
+  {
+    external: true,
     icon: (
-      <SignIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+      <WalletIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
     ),
     title: 'components.sidebar-menu.items.wallet',
     url: 'https://ergoplatform.org/en/wallets/',
@@ -148,8 +144,7 @@ interface SidebarState {
   isClient: boolean;
 }
 
-type ISidebarProps = SettingsActions &
-  ApiActions & { settings: SettingsState; api: ApiState };
+type ISidebarProps = SettingsActions & { settings: SettingsState };
 
 class Sidebar extends React.Component<ISidebarProps, SidebarState> {
   state: SidebarState = {
@@ -193,10 +188,6 @@ class Sidebar extends React.Component<ISidebarProps, SidebarState> {
       'g-flex__item-fixed': true,
     });
 
-    const items = [...SIDEBAR_MENU_ITEMS];
-
-    const externalItems = [...EXTERNAL_MENU_ITEMS];
-
     return (
       <div className={sidebarClassNames}>
         <div className="bi-sidebar__header g-flex g-flex-column__item-fixed">
@@ -218,11 +209,16 @@ class Sidebar extends React.Component<ISidebarProps, SidebarState> {
         </div>
 
         <div className="bi-sidebar__body g-flex-column__item-fixed">
-          <SidebarMenuComponent onClick={this.hideSidebar} items={items} />
+          <SidebarMenuComponent
+            onClick={this.hideSidebar}
+            items={SIDEBAR_MENU_ITEMS}
+          />
+
+          <div className="bi-sidebar__divider" />
 
           <SidebarMenuComponent
             onClick={this.hideSidebar}
-            items={externalItems}
+            items={EXTERNAL_MENU_ITEMS}
           />
 
           <LogoVerticalIcon className="bi-sidebar__side-logo" />
@@ -240,17 +236,12 @@ class Sidebar extends React.Component<ISidebarProps, SidebarState> {
   }
 }
 
-function mapStateToProps(
-  state: AppState
-): { settings: SettingsState; api: ApiState } {
-  return { settings: state.settings, api: state.api };
+function mapStateToProps(state: AppState): { settings: SettingsState } {
+  return { settings: state.settings };
 }
 
 function mapDispatchToProps(dispatch: any): any {
-  return bindActionCreators(
-    { ...SettingsActions, ...ApiActions } as any,
-    dispatch
-  );
+  return bindActionCreators({ ...SettingsActions } as any, dispatch);
 }
 
 export const SidebarComponent = connect(

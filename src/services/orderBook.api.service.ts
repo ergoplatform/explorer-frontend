@@ -13,28 +13,40 @@ export class OrderBookService {
 
   static searchTokenById(dispatch: any, value: string): any {
     return fetchStruct(
-      dispatch,
       SEARCH_TOKEN_BY_ID_STRUCT,
-      'get',
-      `${OrderBookService.apiUrl}/tokens/${value}/issuingBox`
+      {
+        method: 'get',
+        url: `${OrderBookService.apiUrl}/tokens/${value}/issuingBox`,
+      },
+      {
+        dispatch,
+      }
     );
   }
 
   static unspentSellOrdersByTokenId(dispatch: any, tokenId: string): any {
     return fetchStruct(
-      dispatch,
       UNSPENT_SELL_ORDERS_BY_TOKEN_ID_STRUCT,
-      'get',
-      `${OrderBookService.apiUrl}/dex/tokens/${tokenId}/unspentSellOrders`
+      {
+        method: 'get',
+        url: `${OrderBookService.apiUrl}/dex/tokens/${tokenId}/unspentSellOrders`,
+      },
+      {
+        dispatch,
+      }
     );
   }
 
   static unspentBuyOrdersByTokenId(dispatch: any, tokenId: string): any {
     return fetchStruct(
-      dispatch,
       UNSPENT_BUY_ORDERS_BY_TOKEN_ID_STRUCT,
-      'get',
-      `${OrderBookService.apiUrl}/dex/tokens/${tokenId}/unspentBuyOrders`
+      {
+        method: 'get',
+        url: `${OrderBookService.apiUrl}/dex/tokens/${tokenId}/unspentBuyOrders`,
+      },
+      {
+        dispatch,
+      }
     );
   }
 }

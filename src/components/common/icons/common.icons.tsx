@@ -41,6 +41,7 @@ import { ReactComponent as removeIcon } from '../../../assets/images/icons/remov
 import { ReactComponent as distributedIcon } from '../../../assets/images/icons/distributed.svg';
 import { ReactComponent as errorIcon } from '../../../assets/images/icons/error.svg';
 import { ReactComponent as richIcon } from '../../../assets/images/icons/investor.svg';
+import { ReactComponent as walletIcon } from '../../../assets/images/icons/wallet.icon.svg';
 
 interface IconProps {
   className?: string;
@@ -204,4 +205,8 @@ export const ErrorIcon = ({ className }: IconProps) => {
 
 export const RichIcon = ({ className }: IconProps) => {
   return makeIcon(richIcon, className);
+};
+
+export const WalletIcon = ({ className }: IconProps) => {
+  return makeIcon(walletIcon, className);
 };
