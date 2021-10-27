@@ -27,9 +27,7 @@ const images = {
   'transactions-per-block': transactionsPerBlock,
 };
 
-export class ChartsPreviewComponent extends React.PureComponent<
-  IChartsPreviewProps
-> {
+export class ChartsPreviewComponent extends React.PureComponent<IChartsPreviewProps> {
   render(): JSX.Element {
     return (
       <div className="bi-charts-preview">

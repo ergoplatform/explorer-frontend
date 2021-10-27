@@ -15,9 +15,7 @@ interface AddressQrcodeModalProps {
   onClose: () => void;
 }
 
-export class AddressQrcodeModalComponent extends React.PureComponent<
-  AddressQrcodeModalProps
-> {
+export class AddressQrcodeModalComponent extends React.PureComponent<AddressQrcodeModalProps> {
   render(): JSX.Element {
     return (
       <ReactModal

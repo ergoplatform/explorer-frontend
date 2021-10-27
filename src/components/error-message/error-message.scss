@@ -2,7 +2,7 @@
 
 $error-text-color: #721c24;
 $error-bg-color: #f8d7da;
-$error-border-color:  #f5c6cb;
+$error-border-color: #f5c6cb;
 
 .error-message {
   padding: ($grid-offset-step * 6) ($grid-offset-step * 10);
@@ -10,13 +10,13 @@ $error-border-color:  #f5c6cb;
 
   &__content {
     position: relative;
-    padding: .75rem 1.25rem;
+    padding: 0.75rem 1.25rem;
     font-size: 15px;
     font-weight: 500;
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 1px solid $error-border-color;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     color: $error-text-color;
     background-color: $error-bg-color;
   }

@@ -8,9 +8,7 @@ interface IBlockAdproofsProps {
   block: FullBlock;
 }
 
-export class BlockAdproofsComponent extends React.PureComponent<
-  IBlockAdproofsProps
-> {
+export class BlockAdproofsComponent extends React.PureComponent<IBlockAdproofsProps> {
   render(): JSX.Element {
     return (
       <div className="bi-block-adproofs g-flex-column">

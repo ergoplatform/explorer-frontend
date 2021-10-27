@@ -9,9 +9,7 @@ interface ITransactionSummaryProps {
   summary: any;
 }
 
-export class UnconfirmedTransactionSummaryComponent extends React.Component<
-  ITransactionSummaryProps
-> {
+export class UnconfirmedTransactionSummaryComponent extends React.Component<ITransactionSummaryProps> {
   render(): JSX.Element {
     return (
       <div className="bi-unconfirmed-transaction-summary">

@@ -180,14 +180,8 @@ class Data extends React.PureComponent<IDataProps> {
   }
 
   private getParams(): any {
-    let {
-      offset,
-      sortBy,
-      sortDirection,
-      startDate,
-      endDate,
-      limit,
-    }: any = queryString.parse(this.props.history.location.search);
+    let { offset, sortBy, sortDirection, startDate, endDate, limit }: any =
+      queryString.parse(this.props.history.location.search);
 
     offset = parseInt(offset, 10);
     limit = parseInt(limit, 10) || 30;

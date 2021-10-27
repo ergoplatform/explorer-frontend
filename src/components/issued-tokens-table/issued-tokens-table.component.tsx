@@ -10,9 +10,7 @@ interface IssuedTokensTableProps {
   isFetching: boolean;
 }
 
-export class IssuedTokensTableComponent extends React.Component<
-  IssuedTokensTableProps
-> {
+export class IssuedTokensTableComponent extends React.Component<IssuedTokensTableProps> {
   render(): JSX.Element {
     return (
       <div className="bi-blocks-table">

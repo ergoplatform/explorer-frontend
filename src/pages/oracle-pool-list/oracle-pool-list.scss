@@ -1,7 +1,7 @@
 @import '../../assets/styles/base/variables.scss';
 
 .oracle-pool-list {
-	width: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, 280px);
   grid-gap: 32px;

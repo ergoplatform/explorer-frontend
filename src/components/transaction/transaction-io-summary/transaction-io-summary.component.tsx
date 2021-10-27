@@ -12,9 +12,7 @@ interface ITransactionIoSummaryProps {
   onScriptToggle: () => void;
 }
 
-export class TransactionIoSummaryComponent extends React.Component<
-  ITransactionIoSummaryProps
-> {
+export class TransactionIoSummaryComponent extends React.Component<ITransactionIoSummaryProps> {
   render(): JSX.Element {
     return (
       <div className="bi-transaction-io-summary">

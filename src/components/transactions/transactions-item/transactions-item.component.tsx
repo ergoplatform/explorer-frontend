@@ -266,6 +266,5 @@ function mapStateToProps(
   };
 }
 
-export const TransactionsItemComponent = connect(mapStateToProps)(
-  TransactionsItem
-);
+export const TransactionsItemComponent =
+  connect(mapStateToProps)(TransactionsItem);

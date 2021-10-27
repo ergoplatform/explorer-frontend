@@ -12,9 +12,7 @@ interface BlockTransactionProps {
   address?: AddressId;
 }
 
-export class TransactionsComponent extends React.PureComponent<
-  BlockTransactionProps
-> {
+export class TransactionsComponent extends React.PureComponent<BlockTransactionProps> {
   render(): JSX.Element {
     return (
       <div className="bi-transactions">

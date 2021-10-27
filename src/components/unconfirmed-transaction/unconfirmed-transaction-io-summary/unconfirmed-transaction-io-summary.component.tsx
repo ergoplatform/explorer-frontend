@@ -10,9 +10,7 @@ interface ITransactionIoSummaryProps {
   onScriptToggle: () => void;
 }
 
-export class UnconfirmedTransactionIoSummaryComponent extends React.Component<
-  ITransactionIoSummaryProps
-> {
+export class UnconfirmedTransactionIoSummaryComponent extends React.Component<ITransactionIoSummaryProps> {
   render(): JSX.Element {
     return (
       <div className="bi-unconfirmed-transaction-io-summary">

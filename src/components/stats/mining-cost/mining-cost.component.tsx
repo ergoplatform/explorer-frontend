@@ -12,9 +12,7 @@ interface IBlockSummaryProps {
   summary: any;
 }
 
-export class MiningCostComponent extends React.PureComponent<
-  IBlockSummaryProps
-> {
+export class MiningCostComponent extends React.PureComponent<IBlockSummaryProps> {
   render(): JSX.Element {
     return (
       <div className="bi-mining-cost">

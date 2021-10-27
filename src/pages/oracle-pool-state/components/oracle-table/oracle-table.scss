@@ -1,11 +1,11 @@
 @import '../../../../assets/styles/base/variables';
 
 .oracle-table {
-  border: 1px solid #D9D9DA;
+  border: 1px solid #d9d9da;
 
   &__header {
     padding: 16px 20px;
-    background: #F8F8F8;
+    background: #f8f8f8;
     height: 60px;
     border-bottom: 1px solid #d9d9da;
   }
@@ -97,7 +97,7 @@
   &__link {
     font-size: 14px;
     line-height: 14px;
-    color: #0078FF;
+    color: #0078ff;
     cursor: pointer;
   }
 }

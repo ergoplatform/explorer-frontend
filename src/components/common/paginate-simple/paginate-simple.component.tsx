@@ -13,9 +13,7 @@ interface IPaginateSimpleProps {
   getPageUrl: (page: number) => string;
 }
 
-export class PaginateSimpleComponent extends React.Component<
-  IPaginateSimpleProps
-> {
+export class PaginateSimpleComponent extends React.Component<IPaginateSimpleProps> {
   constructor(props: IPaginateSimpleProps) {
     super(props);
   }

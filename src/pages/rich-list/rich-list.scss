@@ -8,7 +8,6 @@ $block-table-cell-color: $theme-primary-color;
 $block-table-table-header-bg-color: #f8f8f8;
 $block-table-table-sort-active-color: $theme-color-blue;
 
-
 .rich-list {
   z-index: 3;
   position: relative;
@@ -55,7 +54,6 @@ $block-table-table-sort-active-color: $theme-color-blue;
           color: white;
         }
       }
-
     }
 
     &__cell {
@@ -71,7 +69,6 @@ $block-table-table-sort-active-color: $theme-color-blue;
       padding-left: 32px;
       color: black;
 
-
       &:last-child {
         align-self: flex-end;
       }
@@ -80,7 +77,6 @@ $block-table-table-sort-active-color: $theme-color-blue;
       &--timestamp {
         width: 25%;
       }
-
     }
 
     &__cell-name {
@@ -165,7 +161,6 @@ $block-table-table-sort-active-color: $theme-color-blue;
       display: none;
     }
   }
-
 
   @media screen and (max-width: $mobile-device-width) {
     .rich-list-table {

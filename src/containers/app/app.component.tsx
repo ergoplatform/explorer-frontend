@@ -19,49 +19,50 @@ import LoaderLogo from 'src/components/loader/loader';
 
 // import Loader from '../../components/loading/loading';
 
-const AddressComponent = lazy(() =>
-  import('../../pages/address/address.component')
+const AddressComponent = lazy(
+  () => import('../../pages/address/address.component')
 );
 
 const BlockComponent = lazy(() => import('../../pages/block/block.component'));
 const ChartComponent = lazy(() => import('../../pages/chart/chart.component'));
-const ChartsComponent = lazy(() =>
-  import('../../pages/charts/charts.component')
+const ChartsComponent = lazy(
+  () => import('../../pages/charts/charts.component')
 );
 const DataComponent = lazy(() => import('../../pages/data/data.component'));
 const NotFoundComponent = lazy(() => import('../../pages/data/data.component'));
-const PaymentRequestComponent = lazy(() =>
-  import('../../pages/payment-request/payment-request.component')
+const PaymentRequestComponent = lazy(
+  () => import('../../pages/payment-request/payment-request.component')
 );
-const SearchResultsComponent = lazy(() =>
-  import('../../pages/search-results/search-results.component')
+const SearchResultsComponent = lazy(
+  () => import('../../pages/search-results/search-results.component')
 );
 const StatsComponent = lazy(() => import('../../pages/stats/stats.component'));
-const TransactionComponent = lazy(() =>
-  import('../../pages/transaction/transaction.component')
+const TransactionComponent = lazy(
+  () => import('../../pages/transaction/transaction.component')
 );
-const WalletComponent = lazy(() =>
-  import('../../pages/wallet/wallet.component')
+const WalletComponent = lazy(
+  () => import('../../pages/wallet/wallet.component')
 );
 // const OrderBookComponent = lazy(() =>
 //   import('../../pages/order-book/order-book.component')
 // );
-const IssuedTokensComponent = lazy(() =>
-  import('../../pages/issued-tokens/issued-tokens.component')
+const IssuedTokensComponent = lazy(
+  () => import('../../pages/issued-tokens/issued-tokens.component')
 );
-const UnconfirmedTransactionsComponent = lazy(() =>
-  import(
-    '../../pages/unconfirmed-transactions/unconfirmed-transactions.component'
-  )
+const UnconfirmedTransactionsComponent = lazy(
+  () =>
+    import(
+      '../../pages/unconfirmed-transactions/unconfirmed-transactions.component'
+    )
 );
-const OraclePoolStateComponent = lazy(() =>
-  import('../../pages/oracle-pool-state/oracle-pool-state.component')
+const OraclePoolStateComponent = lazy(
+  () => import('../../pages/oracle-pool-state/oracle-pool-state.component')
 );
-const OraclePoolListComponent = lazy(() =>
-  import('src/pages/oracle-pool-list/oracle-pool-list')
+const OraclePoolListComponent = lazy(
+  () => import('src/pages/oracle-pool-list/oracle-pool-list')
 );
-const RichListComponent = lazy(() =>
-  import('src/pages/rich-list/rich-list.component')
+const RichListComponent = lazy(
+  () => import('src/pages/rich-list/rich-list.component')
 );
 
 class App extends React.PureComponent<RouteComponentProps<any>> {

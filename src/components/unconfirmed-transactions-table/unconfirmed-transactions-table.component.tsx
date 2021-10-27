@@ -14,9 +14,7 @@ interface UnconfirmedTransactionsTableProps {
   isFetching: boolean;
 }
 
-export class UnconfirmedTransactionsTableComponent extends React.Component<
-  UnconfirmedTransactionsTableProps
-> {
+export class UnconfirmedTransactionsTableComponent extends React.Component<UnconfirmedTransactionsTableProps> {
   render(): JSX.Element {
     return (
       <div className="bi-blocks-table">

@@ -11,9 +11,7 @@ interface ILimitSelectorProps {
   getLimitLink: (limit: number) => string;
 }
 
-export class LimitSelectorComponent extends React.PureComponent<
-  ILimitSelectorProps
-> {
+export class LimitSelectorComponent extends React.PureComponent<ILimitSelectorProps> {
   render(): JSX.Element {
     return (
       <div className="bi-limit-selector">

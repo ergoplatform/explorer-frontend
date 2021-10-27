@@ -9,9 +9,7 @@ interface ITransactionsSummaryProps {
   summary: any;
 }
 
-export class TransactionsSummaryComponent extends React.PureComponent<
-  ITransactionsSummaryProps
-> {
+export class TransactionsSummaryComponent extends React.PureComponent<ITransactionsSummaryProps> {
   render(): JSX.Element {
     return (
       <div className="bi-transactions-summary">

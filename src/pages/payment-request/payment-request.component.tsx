@@ -10,9 +10,7 @@ import './payment-request.scss';
 
 type IPaymentRequestProps = RouteComponentProps<any>;
 
-export default class PaymentRequestComponent extends React.PureComponent<
-  IPaymentRequestProps
-> {
+export default class PaymentRequestComponent extends React.PureComponent<IPaymentRequestProps> {
   input!: HTMLDivElement;
 
   state: any = {

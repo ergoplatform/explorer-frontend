@@ -20,9 +20,7 @@ const isBadValue = (item: any) => {
   return false;
 };
 
-export class TransactionRawScriptsComponent extends React.PureComponent<
-  ITransactionRawScriptsProps
-> {
+export class TransactionRawScriptsComponent extends React.PureComponent<ITransactionRawScriptsProps> {
   render(): JSX.Element {
     return (
       <div className="bi-transaction-raw-scripts">

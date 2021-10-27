@@ -14,9 +14,7 @@ interface ITransactionSummaryProps {
   summary: TransactionSummary;
 }
 
-export class TransactionSummaryComponent extends React.Component<
-  ITransactionSummaryProps
-> {
+export class TransactionSummaryComponent extends React.Component<ITransactionSummaryProps> {
   render(): JSX.Element {
     return (
       <div className="bi-transaction-summary">

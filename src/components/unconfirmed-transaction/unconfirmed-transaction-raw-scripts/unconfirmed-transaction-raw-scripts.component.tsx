@@ -45,9 +45,7 @@ const getObjectRaw = (item: any, key: any) => {
   );
 };
 
-export class UnconfirmedTransactionRawScriptsComponent extends React.PureComponent<
-  ITransactionRawScriptsProps
-> {
+export class UnconfirmedTransactionRawScriptsComponent extends React.PureComponent<ITransactionRawScriptsProps> {
   render(): JSX.Element {
     return (
       <div className="bi-unconfirmed-transaction-raw-scripts">

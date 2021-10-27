@@ -16,9 +16,7 @@ interface AddressIssuedTokensModalProps {
   title?: string;
 }
 
-export class AddressIssuedTokensModalComponent extends React.PureComponent<
-  AddressIssuedTokensModalProps
-> {
+export class AddressIssuedTokensModalComponent extends React.PureComponent<AddressIssuedTokensModalProps> {
   render(): JSX.Element {
     const { title } = this.props;
     return (

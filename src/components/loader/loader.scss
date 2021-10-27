@@ -15,12 +15,14 @@
     stroke-dasharray: 20;
     fill: black;
     animation: dash2 2s linear infinite normal;
-    transform-origin:  center center;
+    transform-origin: center center;
     display: inline-block;
     transform-box: fill-box;
 
     @keyframes dash2 {
-      100% { transform: rotate(180deg); }
+      100% {
+        transform: rotate(180deg);
+      }
     }
   }
 }
