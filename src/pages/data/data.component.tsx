@@ -194,10 +194,10 @@ class Data extends React.PureComponent<IDataProps> {
       'height',
       'timestamp',
       'miner',
-      'transactionsCount',
+      'transactionscount',
       'size',
       'difficulty',
-      'minerReward',
+      'minerreward',
     ].includes(sortBy)
       ? sortBy
       : null;
