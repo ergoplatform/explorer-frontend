@@ -43,8 +43,8 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
 
         <div className="bi-blocks-table__cell bi-table__cell">
           <Link
-            className={this.getSortDirectionClassName('transactionsCount')}
-            to={`/?${this.getSortLink('transactionsCount')}`}
+            className={this.getSortDirectionClassName('transactionscount')}
+            to={`/?${this.getSortLink('transactionscount')}`}
           >
             <FormattedMessage id="common.block.transactions" />
 
@@ -55,22 +55,13 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
         </div>
 
         <div className="bi-blocks-table__cell bi-table__cell">
-          <Link
-            className={this.getSortDirectionClassName('miner')}
-            to={`/?${this.getSortLink('miner')}`}
-          >
-            <FormattedMessage id="common.block.minedBy" />
-
-            <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
-            <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
-            <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
-          </Link>
+          <FormattedMessage id="common.block.minedBy" />
         </div>
 
         <div className="bi-blocks-table__cell bi-table__cell">
           <Link
-            className={this.getSortDirectionClassName('minerReward')}
-            to={`/?${this.getSortLink('minerReward')}`}
+            className={this.getSortDirectionClassName('minerreward')}
+            to={`/?${this.getSortLink('minerreward')}`}
           >
             <FormattedMessage id="common.block.minerReward" />
 
@@ -131,13 +122,12 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
     const { sortBy, sortDirection } = params;
 
     let newSortDirection: string | null = 'asc';
-
     if (sortBy === sortedColumn && sortDirection === 'desc') {
       return queryString.stringify({
         ...params,
-        offset: null,
-        sortBy: null,
-        sortDirection: null,
+        offset: undefined,
+        sortBy: undefined,
+        sortDirection: undefined,
       });
     }
 
@@ -147,7 +137,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
 
     return queryString.stringify({
       ...params,
-      offset: null,
+      offset: undefined,
       sortBy: sortedColumn,
       sortDirection: newSortDirection,
     });
