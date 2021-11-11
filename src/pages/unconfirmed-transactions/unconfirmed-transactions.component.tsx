@@ -171,7 +171,7 @@ class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
     sortDirection = ['asc', 'desc'].includes(sortDirection)
       ? sortDirection
       : null;
-    sortBy = ['creationTimestamp', 'size'].includes(sortBy) ? sortBy : null;
+    sortBy = ['creationtimestamp', 'size'].includes(sortBy) ? sortBy : null;
 
     return {
       limit,
