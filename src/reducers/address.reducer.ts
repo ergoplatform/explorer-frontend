@@ -7,12 +7,12 @@ import {
 
 import { CLEAR_APP_PRELOADED_STATE } from '../actions/app.actions';
 
-import { FullAddress } from '../models/generated/fullAddress';
 import { Transaction } from '../models/generated/transaction';
+import { FullAddressTransactions } from 'src/models/generated/fullAddressTransactions';
 
 export interface AddressState {
   fetching: boolean;
-  address?: FullAddress;
+  address?: FullAddressTransactions;
   transactions?: {
     items: Transaction[];
     total: number;

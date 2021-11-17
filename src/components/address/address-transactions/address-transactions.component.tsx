@@ -10,10 +10,12 @@ import { AddressIssuedTokensModalComponent } from 'src/components/modals/address
 
 interface AddressTransactionsProps {
   summary: FullAddressTransactions;
+  total: number;
 }
 
 export const AddressTransactionsComponent = ({
   summary,
+  total,
 }: AddressTransactionsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -30,17 +32,7 @@ export const AddressTransactionsComponent = ({
           </div>
 
           <div className="bi-address-transactions__cell bi-table__cell">
-            {summary.confirmed}
-          </div>
-        </div>
-
-        <div className="bi-address-transactions__row bi-table__row">
-          <div className="bi-address-transactions__cell bi-address-transactions__cell--header bi-table__cell">
-            <FormattedMessage id="components.address-transactions.totalReceived" />
-          </div>
-
-          <div className="bi-address-transactions__cell bi-table__cell">
-            <CoinValueComponent value={summary.totalReceived} />
+            {total}
           </div>
         </div>
 
@@ -50,7 +42,7 @@ export const AddressTransactionsComponent = ({
           </div>
 
           <div className="bi-address-transactions__cell bi-table__cell">
-            <CoinValueComponent value={summary.confirmedBalance} />
+            <CoinValueComponent value={summary.confirmed.nanoErgs} />
           </div>
         </div>
 
@@ -60,7 +52,7 @@ export const AddressTransactionsComponent = ({
           </div>
 
           <div className="bi-address-transactions__cell bi-table__cell">
-            {!summary.totalTokensBalance?.length ? (
+            {!summary.confirmed.tokens?.length ? (
               'None'
             ) : (
               <button
@@ -74,14 +66,14 @@ export const AddressTransactionsComponent = ({
         </div>
       </div>
 
-      {summary.totalTokensBalance?.length !== 0 && (
+      {summary.confirmed.tokens?.length !== 0 && (
         <div className="bi-address-issued-tokens__btn-container g-flex">
           <div className="bi-address-issued-tokens__item g-flex__item-fixed"></div>
 
           <AddressIssuedTokensModalComponent
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
-            issuedTokens={summary.totalTokensBalance}
+            issuedTokens={summary.confirmed.tokens}
           />
         </div>
       )}

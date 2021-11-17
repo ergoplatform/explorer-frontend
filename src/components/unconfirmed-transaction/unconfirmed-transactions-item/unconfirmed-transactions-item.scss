@@ -82,11 +82,13 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
   &__output {
     flex-flow: wrap;
     justify-content: space-between;
+    line-height: 20px;
   }
 
   &__input {
     flex-wrap: wrap;
     justify-content: space-between;
+    line-height: 20px;
   }
 
   &__footer {

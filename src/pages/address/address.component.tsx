@@ -101,12 +101,14 @@ class Address extends React.PureComponent<
   }
 
   private renderBody(): JSX.Element | null {
+    const { match, address, transactions } = this.props;
+
     if (this.props.fetching) {
       // TODO: Add nice loader
       return <p className="bi-address__fetching-text">Fetching data...</p>;
     }
 
-    if (!this.props.address || this.props.fetching) {
+    if (!address || this.props.fetching) {
       // TODO: Add Alert message
       return null;
     }
@@ -115,7 +117,7 @@ class Address extends React.PureComponent<
       <div className="bi-address__body">
         <FormattedMessage
           id="common.pages.address.title"
-          values={{ id: this.props.address.summary.id }}
+          values={{ id: match.params.id }}
         >
           {(title) => (
             <Helmet>
@@ -126,33 +128,32 @@ class Address extends React.PureComponent<
 
         <div className="bi-address__tables g-flex">
           <div className="bi-address__table g-flex__item">
-            <AddressSummaryComponent summary={this.props.address.summary} />
-            <AddressQrcodeActionComponent address={this.props.address} />
+            <AddressSummaryComponent addressId={match.params.id} />
+            <AddressQrcodeActionComponent addressId={match.params.id} />
           </div>
 
           <div className="bi-address__table g-flex__item">
             <AddressTransactionsComponent
-              summary={this.props.address.transactions}
+              summary={address}
+              total={transactions?.total || 0}
             />
 
-            <AddressRequetsPaymentActionComponent
-              address={this.props.address}
-            />
+            <AddressRequetsPaymentActionComponent addressId={match.params.id} />
           </div>
         </div>
 
-        {this.props.transactions && (
+        {transactions && (
           <div className="bi-address__transactions">
             {!this.props.transactionFetching && (
               <TransactionsComponent
-                transactions={this.props.transactions.items}
-                address={this.props.address.summary.id}
+                transactions={transactions.items}
+                address={match.params.id}
               />
             )}
 
             <div className="bi-address__transactions-footer g-flex">
               <PaginateSimpleComponent
-                total={this.props.transactions.total}
+                total={transactions.total}
                 limit={this.params.limit}
                 getPageUrl={this.getPageUrl}
                 forcePage={Math.floor(this.params.offset / this.params.limit)}

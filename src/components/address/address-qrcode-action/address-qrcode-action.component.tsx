@@ -1,8 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { FullAddress } from '../../../models/generated/fullAddress';
-
 import { QRCodeIcon } from '../../common/icons/common.icons';
 
 import { AddressQrcodeModalComponent } from '../../modals/address-qrcode-modal/address-qrcode-modal.component';
@@ -14,7 +12,7 @@ interface AddressActionsState {
 }
 
 interface AddressActionsProps {
-  address: FullAddress;
+  addressId: string;
 }
 
 export const QRCODE_MODAL_STATE_KEY = 'isQrCodeModalOpened';
@@ -51,7 +49,7 @@ export class AddressQrcodeActionComponent extends React.Component<
         <AddressQrcodeModalComponent
           isOpen={this.state[QRCODE_MODAL_STATE_KEY]}
           onClose={this.closeModal(QRCODE_MODAL_STATE_KEY)}
-          address={this.props.address.summary.id}
+          address={this.props.addressId}
         />
       </div>
     );

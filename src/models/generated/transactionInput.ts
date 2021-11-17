@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */ import { AddressId } from './addressId';
+import { Asset } from './asset';
 import { TransactionBoxId } from './transactionBoxId';
 import { TransactionId } from './transactionId';
 import { TransactionInputSpendingProof } from './transactionInputSpendingProof';
@@ -23,4 +24,5 @@ export interface TransactionInput {
   transactionId: TransactionId;
   outputTransactionId: TransactionId;
   spendingProof: TransactionInputSpendingProof;
+  assets: Asset[];
 }

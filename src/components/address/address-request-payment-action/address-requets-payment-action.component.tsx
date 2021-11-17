@@ -1,8 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { FullAddress } from '../../../models/generated/fullAddress';
-
 import { PaymentRequestModalComponent } from '../../modals/payment-request-modal/payment-request-modal.component';
 
 import '../address-actions/address-actions.scss';
@@ -12,7 +10,7 @@ interface AddressActionsState {
 }
 
 interface AddressActionsProps {
-  address: FullAddress;
+  addressId: string;
 }
 
 export const PAYMENT_REQUEST_MODAL_STATE_KEY = 'isPaymentRequestModalOpened';
@@ -47,7 +45,7 @@ export class AddressRequetsPaymentActionComponent extends React.Component<
         <PaymentRequestModalComponent
           isOpen={this.state[PAYMENT_REQUEST_MODAL_STATE_KEY]}
           onClose={this.closeModal(PAYMENT_REQUEST_MODAL_STATE_KEY)}
-          address={this.props.address.summary.id}
+          address={this.props.addressId}
         />
       </div>
     );

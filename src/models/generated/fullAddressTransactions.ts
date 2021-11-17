@@ -11,28 +11,6 @@
  */ import { Asset } from './asset';
 
 export interface FullAddressTransactions {
-  /**
-   * Total number of confirmed transactions
-   */
-  confirmed: number;
-  /**
-   * Total recieved coins
-   */
-  totalReceived: number;
-  /**
-   * Confirmed balance
-   */
-  confirmedBalance: number;
-  /**
-   * Total balance including off-chain transactions
-   */
-  totalBalance?: number;
-  /**
-   * Confirmed tokens balance
-   */
-  confirmedTokensBalance?: Array<Asset>;
-  /**
-   * Total tokens balance including off-chain transactions
-   */
-  totalTokensBalance?: Array<Asset>;
+  confirmed: { nanoErgs: number; tokens: Array<Asset> };
+  unconfirmed: { nanoErgs: number; tokens: Array<Asset> };
 }

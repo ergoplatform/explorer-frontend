@@ -37,7 +37,7 @@ class TransactionsItem extends React.Component<
     });
   }
 
-  renderAssets(assets: TransactionOutput['assets']): JSX.Element | null {
+  renderAssets(assets: TransactionOutput['assets'] = []): JSX.Element | null {
     if (assets.length === 0) {
       return null;
     }
@@ -49,7 +49,12 @@ class TransactionsItem extends React.Component<
 
     const buttonText = `+${defaultAssets.length}`;
 
-    return <DropdownListComponent list={assets} button={buttonText} />;
+    return (
+      <>
+        &nbsp;
+        <DropdownListComponent list={assets} button={buttonText} />
+      </>
+    );
   }
 
   getAddressInputs = () =>
@@ -126,8 +131,12 @@ class TransactionsItem extends React.Component<
 
                   {this.props.isScriptsDisplayed &&
                     address.outputTransactionId && (
-                      <div className="bi-transactions-item__address-output g-flex__item-fixed u-word-wrap u-word-wrap--ellipsis">
-                        (<CoinValueComponent value={address.value} /> -{' '}
+                      <div className="bi-transactions-item__address-output g-flex g-flex__item-fixed">
+                        (<CoinValueComponent value={address.value} />
+                        {address.assets
+                          ? this.renderAssets(address.assets)
+                          : ''}
+                        &nbsp;-&nbsp;
                         <Link
                           to={`/transactions/${address.outputTransactionId}`}
                         >

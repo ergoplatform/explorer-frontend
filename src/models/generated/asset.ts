@@ -21,4 +21,5 @@ export interface Asset {
   amount: number;
   name: string;
   decimals: number;
+  type?: string;
 }

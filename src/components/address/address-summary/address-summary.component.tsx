@@ -1,15 +1,13 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { FullAddressSummary } from '../../../models/generated/fullAddressSummary';
-
 import { CopyTextComponent } from '../../../components/common/copy-text/copy-text.component';
 import { useAlert } from 'react-alert';
 
 import './address-summary.scss';
 
 interface IAddressSummaryProps {
-  summary: FullAddressSummary;
+  addressId: string;
 }
 
 export const AddressSummaryComponent = (props: IAddressSummaryProps) => {
@@ -35,7 +33,7 @@ export const AddressSummaryComponent = (props: IAddressSummaryProps) => {
               }
               className="u-word-wrap u-word-wrap--ellipsis"
             >
-              {props.summary.id}
+              {props.addressId}
             </CopyTextComponent>
           </div>
         </div>

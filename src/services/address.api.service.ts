@@ -11,11 +11,11 @@ export class AddressApiService {
 
   static getAddress(id: string): any {
     return axios
-      .get(`${environment.apiUrl}/addresses/${id}`)
+      .get(`${environment.apiUrlV1}/addresses/${id}/balance/total`)
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Address api service. Request: ${environment.apiUrl}/addresses/${id}.`
+            `Address api service. Request: ${environment.apiUrlV1}/addresses/${id}/balance/total.`
           );
         }
 
@@ -25,13 +25,13 @@ export class AddressApiService {
 
   static getConfirmed(id: string, params: any) {
     return axios
-      .get(`${environment.apiUrl}/addresses/${id}/transactions`, {
+      .get(`${environment.apiUrlV1}/addresses/${id}/transactions`, {
         params,
       })
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Address api service. Request: ${environment.apiUrl}/addresses/${id}/transactions.`
+            `Address api service. Request: ${environment.apiUrlV1}/addresses/${id}/transactions.`
           );
         }
 

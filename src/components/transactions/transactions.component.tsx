@@ -22,7 +22,9 @@ export class TransactionsComponent extends React.PureComponent<BlockTransactionP
               key={transaction.id}
               transaction={transaction}
               address={this.props.address}
-              confirmations={transaction.confirmationsCount}
+              confirmations={
+                transaction.numConfirmations || transaction.confirmationsCount
+              }
             />
           );
         })}

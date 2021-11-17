@@ -4,6 +4,7 @@ import { environmentProd } from './environment.prod';
 export interface IEnvironment {
   apiUrl?: string;
   apiBaseUrl?: string;
+  apiUrlV1?: string;
   blockchain?: any;
   alternativeLogo?: boolean;
   environments?: any[];
@@ -46,6 +47,9 @@ environment = {
 
   get apiUrl(): string | undefined {
     return appConfig.apiUrl;
+  },
+  get apiUrlV1(): string | undefined {
+    return `${appConfig.apiBaseUrl ?? 'https://api.ergoplatform.com/api'}/v1`;
   },
 };
 

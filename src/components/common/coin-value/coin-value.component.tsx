@@ -10,7 +10,7 @@ interface ICoinValueProps {
 export class CoinValueComponent extends React.PureComponent<ICoinValueProps> {
   render(): JSX.Element {
     return (
-      <div className="bi-coin-value">
+      <div className="bi-coin-value  u-word-wrap u-word-wrap--ellipsis">
         {this.getFormattedValue()}{' '}
         {this.props.coinName
           ? this.props.coinName

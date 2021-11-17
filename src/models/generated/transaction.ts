@@ -21,10 +21,6 @@ export interface Transaction {
   timestamp: Timestamp;
   creationTimestamp?: Timestamp;
   /**
-   * Number of confimations in transaction
-   */
-  confirmationsCount?: number;
-  /**
    * Many transaction inputs
    */
   inputs: Array<TransactionInput>;
@@ -32,4 +28,10 @@ export interface Transaction {
    * Many transaction outputs
    */
   outputs: Array<TransactionOutput>;
+  blockId?: string;
+  globalIndex?: number;
+  inclusionHeight?: number;
+  numConfirmations?: number;
+  confirmationsCount?: number;
+  size?: number;
 }

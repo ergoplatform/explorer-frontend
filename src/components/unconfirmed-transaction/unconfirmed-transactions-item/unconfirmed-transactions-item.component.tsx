@@ -125,8 +125,12 @@ class UnconfirmedTransactionsItem extends React.Component<
 
                   {this.props.isScriptsDisplayed &&
                     address.outputTransactionId && (
-                      <div className="bi-unconfirmed-transactions-item__address-output g-flex__item-fixed u-word-wrap u-word-wrap--ellipsis">
-                        (<CoinValueComponent value={address.value} /> -{' '}
+                      <div className="bi-unconfirmed-transactions-item__address-output g-flex g-flex__item-fixed">
+                        (<CoinValueComponent value={address.value} />
+                        {address.assets
+                          ? this.renderAssets(address.assets)
+                          : ''}
+                        &nbsp;-&nbsp;
                         <Link
                           to={`/transactions/${address.outputTransactionId}`}
                         >
