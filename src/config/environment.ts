@@ -49,7 +49,7 @@ environment = {
     return appConfig.apiUrl;
   },
   get apiUrlV1(): string | undefined {
-    return `${appConfig.apiBaseUrl ?? 'https://api.ergoplatform.com/api'}/v1`;
+    return `${appConfig.apiBaseUrl ?? 'https://api.ergoplatform.com'}/api/v1`;
   },
 };
 
