@@ -41,13 +41,13 @@ export class AddressApiService {
 
   static getUnconfirmed(id: string, params: any) {
     return axios
-      .get(`${environment.apiUrl}/transactions/unconfirmed/byAddress/${id}`, {
+      .get(`${environment.apiUrlV1}/mempool/transactions/byAddress/${id}`, {
         params,
       })
       .then((response: AxiosResponse) => {
         if (!response) {
           return Promise.reject(
-            `Address api service. Request: ${environment.apiUrl}/addresses/${id}/transactions.`
+            `Address api service. Request: ${environment.apiUrlV1}/mempool/transactions/byAddress/${id}`
           );
         }
 
