@@ -56,7 +56,6 @@ const AppStore = configureStore(preloadedState);
 addLocaleData([...en, ...ru]);
 
 export const App = () => {
-  console.log('loaded');
   return (
     <AlertProvider template={AlertTemplate} {...alertOptions}>
       <Provider store={AppStore}>
