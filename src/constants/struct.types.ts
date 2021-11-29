@@ -17,6 +17,8 @@ export const GET_UNCONFIRMED_TRANSACTIONS_STRUCT = '/transactions/unconfirmed';
 export const GET_UNCONFIRMED_TRANSACTION_STRUCT =
   '/transactions/unconfirmed/:id';
 
+export const GET_TOKEN_STRUCT = '/tokens/:id';
+
 export const GET_ORACLE_POOL_DATA_STRUCT = 'oracle/frontendData';
 
 export const GET_ADDRESSES_BALANCES_STRUCT = 'addresses/balances';

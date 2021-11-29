@@ -16,6 +16,7 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import './app.scss';
 import ProgressBar from 'src/components/progress-bar/progress-bar';
 import LoaderLogo from 'src/components/loader/loader';
+import TokenComponent from 'src/pages/token/token.component';
 
 // import Loader from '../../components/loading/loading';
 
@@ -144,6 +145,8 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                   path="/payment-request"
                   component={PaymentRequestComponent}
                 />
+
+                <Route exact path="/token/:id" component={TokenComponent} />
 
                 {/* <Route
                   exact

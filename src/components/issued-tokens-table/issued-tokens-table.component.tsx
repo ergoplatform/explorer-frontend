@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import format from 'format-number';
+import { Link } from 'react-router-dom';
 import { CollapseText } from 'src/components/collapse-text/collapse-text.component';
 
 import './issued-tokens-table.scss';
@@ -49,7 +50,11 @@ export class IssuedTokensTableComponent extends React.Component<IssuedTokensTabl
         <tbody>
           {this.props.tokens.map((token) => {
             return (
-              <tr className="bi-blocks-table__row bi-table__row" key={token.id}>
+              <Link
+                to={`/token/${token.id}`}
+                className="bi-blocks-table__row bi-table__row"
+                key={token.id}
+              >
                 <td
                   className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell"
                   colSpan={1}
@@ -118,7 +123,7 @@ export class IssuedTokensTableComponent extends React.Component<IssuedTokensTabl
                     <CollapseText lines={2}>{token.description}</CollapseText>
                   </div>
                 </td>
-              </tr>
+              </Link>
             );
           })}
         </tbody>

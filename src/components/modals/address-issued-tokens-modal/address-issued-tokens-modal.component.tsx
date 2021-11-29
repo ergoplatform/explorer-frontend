@@ -2,6 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import ReactModal from 'react-modal';
 import format from 'format-number';
+import { Link } from 'react-router-dom';
 
 import { Asset } from '../../../models/generated/asset';
 
@@ -42,9 +43,12 @@ export class AddressIssuedTokensModalComponent extends React.PureComponent<Addre
                     key={`${Math.random()} - ${i}`}
                     className="bi-address-issued-tokens-modal__row bi-table__row"
                   >
-                    <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--token-id">
+                    <Link
+                      to={`/token/${token.tokenId}`}
+                      className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--token-id"
+                    >
                       <FormattedMessage id={token.name || token.tokenId} />
-                    </div>
+                    </Link>
 
                     <div className="bi-address-issued-tokens-modal__cell bi-table__cell bi-address-issued-tokens-modal__cell--amount">
                       {format({ integerSeparator: ' ' })(

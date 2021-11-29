@@ -42,6 +42,7 @@ import { ReactComponent as distributedIcon } from '../../../assets/images/icons/
 import { ReactComponent as errorIcon } from '../../../assets/images/icons/error.svg';
 import { ReactComponent as richIcon } from '../../../assets/images/icons/investor.svg';
 import { ReactComponent as walletIcon } from '../../../assets/images/icons/wallet.icon.svg';
+import { ReactComponent as newCopyIcon } from '../../../assets/images/icons/copy.svg';
 
 interface IconProps {
   className?: string;
@@ -189,6 +190,10 @@ export const GroupDotsIcon = ({ className }: IconProps) => {
 
 export const CopyIcon = ({ className }: IconProps) => {
   return makeIcon(copyIcon, className);
+};
+
+export const NewCopyIcon = ({ className }: IconProps) => {
+  return makeIcon(newCopyIcon, className);
 };
 
 export const RemoveIcon = ({ className }: IconProps) => {

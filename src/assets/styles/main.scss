@@ -23,3 +23,26 @@
 .text-gray {
   color: #bbbbbb;
 }
+
+.copy-label {
+  font-family: sans-serif;
+  padding: 4px 6px;
+  width: 60px;
+  height: 24px;
+  background: #F3F3F3;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  border-color: transparent;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+  }
+}

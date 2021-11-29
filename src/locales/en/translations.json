@@ -30,7 +30,12 @@
       "decimals": "Decimals",
       "description": "Description",
       "showMore": "Show more",
-      "showLess": "Show less"
+      "showLess": "Show less",
+      "token": "Token",
+      "back": "Back",
+      "tokenOverview": "Token Overview",
+      "emissionAmount": "Emission Amount",
+      "type": "Type"
     },
     "pages": {
       "address": {
@@ -41,6 +46,9 @@
       },
       "block": {
         "title": "Ergo Explorer | Block {id}"
+      },
+      "token": {
+        "title": "Ergo Explorer | Token {id}"
       },
       "unconfirmed-transaction": {
         "title": "Ergo Explorer | Transaction {id}"
