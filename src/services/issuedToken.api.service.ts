@@ -28,6 +28,27 @@ export class IssuedTokensService {
     );
   }
 
+  static getSearchIssuedTokensByQuery(
+    dispatch: any,
+    { searchQuery, limit, offset }: any
+  ): any {
+    return fetchStruct(
+      GET_ALL_ISSUED_TOKENS_STRUCT,
+      {
+        method: 'get',
+        url: `https://api.ergoplatform.com/api/v1/tokens/search`,
+        params: {
+          limit,
+          offset,
+          query: searchQuery,
+        },
+      },
+      {
+        dispatch,
+      }
+    );
+  }
+
   static getTotalIssuedTokens(dispatch: any, { limit }: any): any {
     return fetchStruct(
       GET_TOTAL_ISSUED_TOKENS_STRUCT,

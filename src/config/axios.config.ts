@@ -14,12 +14,12 @@ axios.interceptors.response.use(
   },
   (error) => {
     if (error.code === 'ECONNABORTED') {
-      console.error(`Request Aborted (timeout): ${error.config.url}`);
+      console.error(`Request Aborted (timeout): ${error.config?.url}`);
 
       return Promise.reject(error);
     }
 
-    console.error(`Request Error ${error.config.url}`);
+    console.error(`Request Error ${error.config?.url}`);
 
     return Promise.reject(error);
   }

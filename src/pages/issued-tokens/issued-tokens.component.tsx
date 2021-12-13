@@ -25,7 +25,7 @@ type IDataProps = AppState &
     offset: number;
   };
 
-class IssuedTokens extends React.PureComponent<IDataProps> {
+class IssuedTokens extends React.PureComponent<IDataProps, any> {
   params: any;
 
   constructor(props: any) {
@@ -33,13 +33,32 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
 
     this.getPageUrl = this.getPageUrl.bind(this);
     this.getLimitLink = this.getLimitLink.bind(this);
+    const { searchQuery } = queryString.parse(
+      this.props.history.location.search
+    );
 
     this.params = this.getParams();
+    this.state = {
+      searchInput: searchQuery || '',
+    };
   }
 
   componentDidMount(): void {
     this.reloadTokens(this.params);
   }
+
+  onChangeInput = (e: any) => {
+    this.setState({ searchInput: e.target.value });
+
+    const params: any = queryString.parse(this.props.history.location.search);
+
+    this.props.history.push(
+      `/issued-tokens?${queryString.stringify({
+        searchQuery: e.target.value,
+        limit: params.limit,
+      })}`
+    );
+  };
 
   UNSAFE_componentWillReceiveProps(props: IDataProps): void {
     const params = this.getParams();
@@ -53,7 +72,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
 
   render(): JSX.Element {
     return (
-      <div className="bi-data g-flex-column g-flex-column__item-fixed">
+      <div className="bi-issued-tokens g-flex-column g-flex-column__item-fixed">
         <FormattedMessage id="common.pages.issued-tokens.title">
           {(title) => (
             <Helmet>
@@ -62,9 +81,19 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
           )}
         </FormattedMessage>
 
-        <div className="bi-data__header g-flex-column__item-fixed g-flex">
-          <div className="bi-data__title g-flex__item">
+        <div className="bi-issued-tokens__header g-flex-column__item-fixed g-flex">
+          <div className="bi-issued-tokens__title g-flex__item">
             <FormattedMessage id="components.issued-tokens.title" />
+          </div>
+
+          <div>
+            <input
+              className="bi-issued-tokens__input"
+              type="string"
+              onChange={this.onChangeInput}
+              value={this.state.searchInput}
+              placeholder="Search by ID or Symbol"
+            />
           </div>
         </div>
 
@@ -73,7 +102,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
         )}
 
         {this.props.tokens.data && this.props.tokens.data.total === 0 && (
-          <div className="bi-data__body g-flex-column__item-fixed">
+          <div className="bi-issued-tokens__body g-flex-column__item-fixed">
             <FormattedMessage id="components.data.wrong-query" />
           </div>
         )}
@@ -81,7 +110,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
         {!this.props.tokens.isFetching &&
           this.props.tokens.data !== null &&
           this.props.tokens.data.items.length > 0 && (
-            <div className="bi-data__body g-flex-column__item-fixed">
+            <div className="bi-issued-tokens__body g-flex-column__item-fixed">
               <IssuedTokensTableComponent
                 tokens={this.props.tokens.data.items}
                 isFetching={this.props.tokens.isFetching}
@@ -91,7 +120,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
 
         {this.props.tokens.data !== null &&
           this.props.tokens.data.items.length > 0 && (
-            <div className="bi-data__footer g-flex-column__item-fixed g-flex">
+            <div className="bi-issued-tokens__footer g-flex-column__item-fixed g-flex">
               <div className="g-flex__item-fixed">
                 <LimitSelectorComponent
                   items={[30, 60, 120]}
@@ -137,6 +166,7 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
       ...params,
       limit: params.limit || 30,
       offset: params.offset || 0,
+      searchQuery: params.searchQuery,
     };
 
     Object.keys(params).forEach((key) => {
@@ -163,12 +193,17 @@ class IssuedTokens extends React.PureComponent<IDataProps> {
       this.props.history.location.search
     );
 
+    const { searchQuery } = queryString.parse(
+      this.props.history.location.search
+    );
+
     offset = parseInt(offset, 10);
     limit = parseInt(limit, 10) || 30;
 
     return {
       limit,
       offset: offset || 0,
+      searchQuery,
     };
   }
 }

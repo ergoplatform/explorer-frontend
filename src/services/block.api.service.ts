@@ -8,6 +8,7 @@ export interface IGetBlocksParams {
   endDate?: number | null;
   sortBy?: string;
   sortDirection?: string;
+  searchQuery?: string;
 }
 
 export class BlockApiService {

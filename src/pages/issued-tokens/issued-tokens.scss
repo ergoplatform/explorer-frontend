@@ -5,7 +5,7 @@
 $data-color: $theme-primary-color;
 $data-title-color: $theme-primary-color;
 
-.bi-data {
+.bi-issued-tokens {
   padding: ($grid-offset-step * 10) 0;
   color: $data-color;
   font-family: $theme-main-font;
@@ -40,10 +40,18 @@ $data-title-color: $theme-primary-color;
   &__body {
     padding: 0 ($grid-offset-step * 15);
   }
+
+  &__input {
+    padding: 8px 10px 8px 10px;
+    min-width: 300px;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 }
 
 @media screen and (max-width: $laptop-device-width) {
-  .bi-data {
+  .bi-issued-tokens {
     padding: ($grid-offset-step * 5) 0;
 
     &__footer,
@@ -55,7 +63,7 @@ $data-title-color: $theme-primary-color;
 }
 
 @media screen and (max-width: $mobile-device-width) {
-  .bi-data {
+  .bi-issued-tokens {
     padding: ($grid-offset-step * 5) 0;
 
     &__footer,

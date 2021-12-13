@@ -66,6 +66,26 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   },
   {
     icon: (
+      <TokenIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+    ),
+    props: {
+      exact: false,
+    },
+    title: 'components.sidebar-menu.items.issued-tokens',
+    url: '/issued-tokens',
+  },
+  {
+    icon: (
+      <RichIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+    ),
+    props: {
+      exact: false,
+    },
+    title: 'Rich List',
+    url: '/rich-list',
+  },
+  {
+    icon: (
       <DistributedIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
     ),
     props: {
@@ -90,36 +110,6 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
     ),
     title: 'components.sidebar-menu.items.stats',
     url: '/stats',
-  },
-  // {
-  //   icon: (
-  //     <DiagramIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
-  //   ),
-  //   props: {
-  //     exact: false,
-  //   },
-  //   title: 'components.sidebar-menu.items.order-book',
-  //   url: '/order-book',
-  // },
-  {
-    icon: (
-      <TokenIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
-    ),
-    props: {
-      exact: false,
-    },
-    title: 'components.sidebar-menu.items.issued-tokens',
-    url: '/issued-tokens',
-  },
-  {
-    icon: (
-      <RichIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
-    ),
-    props: {
-      exact: false,
-    },
-    title: 'Rich List',
-    url: '/rich-list',
   },
 ];
 
