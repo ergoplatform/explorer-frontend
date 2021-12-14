@@ -149,7 +149,7 @@ class IssuedTokens extends React.PureComponent<IDataProps, any> {
               type="string"
               onChange={this.onChangeInput}
               value={this.state.searchInput}
-              placeholder="Search by ID or Symbol"
+              placeholder="Search by ID or Number"
             />
           </div>
         </div>
