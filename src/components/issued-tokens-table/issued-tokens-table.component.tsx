@@ -14,7 +14,7 @@ interface IssuedTokensTableProps {
 export class IssuedTokensTableComponent extends React.Component<IssuedTokensTableProps> {
   render(): JSX.Element {
     return (
-      <div className="bi-blocks-table">
+      <div className="bi-issued-tokens-table">
         {!this.props.tokens ? null : this.renderTable()}
       </div>
     );
@@ -22,26 +22,41 @@ export class IssuedTokensTableComponent extends React.Component<IssuedTokensTabl
 
   private renderTable(): JSX.Element {
     return (
-      <table className="bi-blocks-table__body bi-table">
-        <thead className="bi-blocks-table-header">
-          <tr className="bi-blocks-table-header bi-blocks-table__row bi-table__row">
-            <th className="bi-blocks-table__cell bi-table__cell" colSpan={1}>
+      <table className="bi-issued-tokens-table__body bi-table">
+        <thead className="bi-issued-tokens-table-header">
+          <tr className="bi-issued-tokens-table-header bi-issued-tokens-table__row bi-table__row">
+            <th
+              className="bi-issued-tokens-table__cell bi-table__cell"
+              colSpan={1}
+            >
               <FormattedMessage id="common.token.id" />
             </th>
 
-            <th className="bi-blocks-table__cell bi-table__cell" colSpan={2}>
+            <th
+              className="bi-issued-tokens-table__cell bi-table__cell"
+              colSpan={2}
+            >
               <FormattedMessage id="common.token.name" />
             </th>
 
-            <th className="bi-blocks-table__cell bi-table__cell" colSpan={1}>
+            <th
+              className="bi-issued-tokens-table__cell bi-table__cell"
+              colSpan={1}
+            >
               <FormattedMessage id="common.token.amount" />
             </th>
 
-            <th className="bi-blocks-table__cell bi-table__cell" colSpan={1}>
+            <th
+              className="bi-issued-tokens-table__cell bi-table__cell"
+              colSpan={1}
+            >
               <FormattedMessage id="common.token.decimals" />
             </th>
 
-            <th className="bi-blocks-table__cell bi-table__cell" colSpan={3}>
+            <th
+              className="bi-issued-tokens-table__cell bi-table__cell"
+              colSpan={3}
+            >
               <FormattedMessage id="common.token.description" />
             </th>
           </tr>
@@ -52,14 +67,14 @@ export class IssuedTokensTableComponent extends React.Component<IssuedTokensTabl
             return (
               <Link
                 to={`/token/${token.id}`}
-                className="bi-blocks-table__row bi-table__row"
+                className="bi-issued-tokens-table__row bi-table__row"
                 key={token.id}
               >
                 <td
-                  className="bi-blocks-table__cell bi-table__cell bi-tokens-table__cell"
+                  className="bi-issued-tokens-table__cell bi-table__cell bi-tokens-table__cell"
                   colSpan={1}
                 >
-                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                  <div className="bi-issued-tokens-table__cell-name bi-tokens-table__cell-name">
                     <FormattedMessage id="common.token.id" />
                   </div>
 
@@ -72,10 +87,10 @@ export class IssuedTokensTableComponent extends React.Component<IssuedTokensTabl
                 </td>
 
                 <td
-                  className="bi-blocks-table__cell bi-table__cell  bi-tokens-table__cell"
+                  className="bi-issued-tokens-table__cell bi-table__cell  bi-tokens-table__cell"
                   colSpan={2}
                 >
-                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                  <div className="bi-issued-tokens-table__cell-name bi-tokens-table__cell-name">
                     <FormattedMessage id="common.token.name" />
                   </div>
 
@@ -83,10 +98,10 @@ export class IssuedTokensTableComponent extends React.Component<IssuedTokensTabl
                 </td>
 
                 <td
-                  className="bi-blocks-table__cell bi-table__cell  bi-tokens-table__cell"
+                  className="bi-issued-tokens-table__cell bi-table__cell  bi-tokens-table__cell"
                   colSpan={1}
                 >
-                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                  <div className="bi-issued-tokens-table__cell-name bi-tokens-table__cell-name">
                     <FormattedMessage id="common.token.amount" />
                   </div>
 
@@ -101,10 +116,10 @@ export class IssuedTokensTableComponent extends React.Component<IssuedTokensTabl
                 </td>
 
                 <td
-                  className="bi-blocks-table__cell bi-table__cell  bi-tokens-table__cell"
+                  className="bi-issued-tokens-table__cell bi-table__cell  bi-tokens-table__cell"
                   colSpan={1}
                 >
-                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                  <div className="bi-issued-tokens-table__cell-name bi-tokens-table__cell-name">
                     <FormattedMessage id="common.token.decimals" />
                   </div>
 
@@ -112,10 +127,10 @@ export class IssuedTokensTableComponent extends React.Component<IssuedTokensTabl
                 </td>
 
                 <td
-                  className="bi-blocks-table__cell bi-table__cell  bi-tokens-table__cell"
+                  className="bi-issued-tokens-table__cell bi-table__cell  bi-tokens-table__cell"
                   colSpan={3}
                 >
-                  <div className="bi-blocks-table__cell-name bi-tokens-table__cell-name">
+                  <div className="bi-issued-tokens-table__cell-name bi-tokens-table__cell-name">
                     <FormattedMessage id="common.token.description" />
                   </div>
 

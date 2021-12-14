@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
+import { debounce } from 'lodash';
 
 import { AppState } from '../../store/app.store';
 
@@ -47,17 +48,21 @@ class IssuedTokens extends React.PureComponent<IDataProps, any> {
     this.reloadTokens(this.params);
   }
 
-  onChangeInput = (e: any) => {
-    this.setState({ searchInput: e.target.value });
-
+  updateTable = debounce((value) => {
     const params: any = queryString.parse(this.props.history.location.search);
 
     this.props.history.push(
       `/issued-tokens?${queryString.stringify({
-        searchQuery: e.target.value,
+        searchQuery: value,
         limit: params.limit,
       })}`
     );
+  }, 300);
+
+  onChangeInput = (e: any) => {
+    this.setState({ searchInput: e.target.value });
+
+    this.updateTable(e.target.value);
   };
 
   UNSAFE_componentWillReceiveProps(props: IDataProps): void {
@@ -69,6 +74,58 @@ class IssuedTokens extends React.PureComponent<IDataProps, any> {
       this.reloadTokens(this.params);
     }
   }
+
+  renderTable = () => {
+    if (this.props.tokens.isFetching) {
+      return <p className="base-text">Fetching Data...</p>;
+    }
+
+    if (this.props.tokens.data && this.props.tokens.data.total === 0) {
+      return (
+        <div className="bi-issued-tokens__body g-flex-column__item-fixed">
+          <FormattedMessage id="components.data.wrong-query" />
+        </div>
+      );
+    }
+
+    if (
+      !this.props.tokens.isFetching &&
+      this.props.tokens.data !== null &&
+      this.props.tokens.data.items.length > 0
+    ) {
+      return (
+        <>
+          <div className="bi-issued-tokens__body g-flex-column__item-fixed">
+            <IssuedTokensTableComponent
+              tokens={this.props.tokens.data.items}
+              isFetching={this.props.tokens.isFetching}
+            />
+          </div>
+          <div className="bi-issued-tokens__footer g-flex-column__item-fixed g-flex">
+            <div className="g-flex__item-fixed">
+              <LimitSelectorComponent
+                items={[30, 60, 120]}
+                selected={this.params.limit}
+                label={<FormattedMessage id="components.data.show" />}
+                getLimitLink={this.getLimitLink}
+              />
+            </div>
+
+            <div className="g-flex__item-fixed">
+              <PaginateSimpleComponent
+                total={this.props.tokens.data.total}
+                limit={this.params.limit}
+                getPageUrl={this.getPageUrl}
+                forcePage={Math.floor(this.props.offset / this.params.limit)}
+              />
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    return;
+  };
 
   render(): JSX.Element {
     return (
@@ -82,7 +139,7 @@ class IssuedTokens extends React.PureComponent<IDataProps, any> {
         </FormattedMessage>
 
         <div className="bi-issued-tokens__header g-flex-column__item-fixed g-flex">
-          <div className="bi-issued-tokens__title g-flex__item">
+          <div className="bi-issued-tokens__title">
             <FormattedMessage id="components.issued-tokens.title" />
           </div>
 
@@ -96,50 +153,7 @@ class IssuedTokens extends React.PureComponent<IDataProps, any> {
             />
           </div>
         </div>
-
-        {this.props.tokens.isFetching && (
-          <p className="base-text">Fetching Data...</p>
-        )}
-
-        {this.props.tokens.data && this.props.tokens.data.total === 0 && (
-          <div className="bi-issued-tokens__body g-flex-column__item-fixed">
-            <FormattedMessage id="components.data.wrong-query" />
-          </div>
-        )}
-
-        {!this.props.tokens.isFetching &&
-          this.props.tokens.data !== null &&
-          this.props.tokens.data.items.length > 0 && (
-            <div className="bi-issued-tokens__body g-flex-column__item-fixed">
-              <IssuedTokensTableComponent
-                tokens={this.props.tokens.data.items}
-                isFetching={this.props.tokens.isFetching}
-              />
-            </div>
-          )}
-
-        {this.props.tokens.data !== null &&
-          this.props.tokens.data.items.length > 0 && (
-            <div className="bi-issued-tokens__footer g-flex-column__item-fixed g-flex">
-              <div className="g-flex__item-fixed">
-                <LimitSelectorComponent
-                  items={[30, 60, 120]}
-                  selected={this.params.limit}
-                  label={<FormattedMessage id="components.data.show" />}
-                  getLimitLink={this.getLimitLink}
-                />
-              </div>
-
-              <div className="g-flex__item-fixed">
-                <PaginateSimpleComponent
-                  total={this.props.tokens.data.total}
-                  limit={this.params.limit}
-                  getPageUrl={this.getPageUrl}
-                  forcePage={Math.floor(this.props.offset / this.params.limit)}
-                />
-              </div>
-            </div>
-          )}
+        {this.renderTable()}
       </div>
     );
   }

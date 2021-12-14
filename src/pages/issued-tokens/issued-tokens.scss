@@ -66,6 +66,16 @@ $data-title-color: $theme-primary-color;
   .bi-issued-tokens {
     padding: ($grid-offset-step * 5) 0;
 
+    &__header {
+      flex-direction: column;
+      text-align: left;
+      align-items: flex-start;
+
+      div + div {
+        margin-top: 20px;
+      }
+    }
+
     &__footer,
     &__header,
     &__body {
