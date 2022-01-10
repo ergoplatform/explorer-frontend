@@ -73,7 +73,7 @@ class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
         )}
 
         {!this.props.unconfirmedTransactions.isFetching &&
-          this.props.unconfirmedTransactions.data?.length === 0 && (
+          this.props.unconfirmedTransactions.data?.items?.length === 0 && (
             <div className="bi-data__body g-flex-column__item-fixed">
               No transactions in mempool
             </div>
