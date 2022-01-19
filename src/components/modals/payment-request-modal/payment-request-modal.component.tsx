@@ -4,6 +4,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import ReactModal from 'react-modal';
 import { RouteComponentProps, withRouter } from 'react-router';
+import { parseFloat } from 'src/utils/parseFloat';
 
 import environment from '../../../config/environment';
 
@@ -155,7 +156,7 @@ class PaymentRequestModal extends React.PureComponent<
 
   private setAmount(event: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({
-      amount: parseInt(event.target.value, 10),
+      amount: parseFloat(event.target.value, 9),
     });
   }
 
