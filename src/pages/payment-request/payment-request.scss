@@ -33,6 +33,7 @@ $payment-request-copy-btn-color: #fff;
     color: $payment-request-subtitle-color;
     font-size: 15px;
     font-weight: 500;
+    margin-top: 10px;
   }
 
   &__info {
@@ -44,6 +45,10 @@ $payment-request-copy-btn-color: #fff;
     display: block;
     margin-bottom: $grid-offset-step * 4;
     text-align: center;
+  }
+
+  &__description {
+    margin-top: 5px;
   }
 
   &__amount {
@@ -79,5 +84,10 @@ $payment-request-copy-btn-color: #fff;
     font-size: 16px;
     font-weight: 600;
     transform: translateX($grid-offset-step * 4);
+  }
+
+  &__mobile-app-link {
+    margin-top: 15px;
+    display: block;
   }
 }
