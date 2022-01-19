@@ -1,0 +1,29 @@
+<svg width="36" height="4" viewBox="0 0 36 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="2" cy="2" r="2" fill="url(#paint_dot1_linear)"/>
+<circle cx="10" cy="2" r="2" fill="url(#paint_dot2_linear)"/>
+<circle cx="18" cy="2" r="2" fill="url(#paint_dot3_linear)"/>
+<circle cx="26" cy="2" r="2" fill="url(#paint_dot4_linear)"/>
+<circle cx="34" cy="2" r="2" fill="url(#paint_dot5_linear)"/>
+<defs>
+<linearGradient id="paint_dot1_linear" x1="0" y1="2" x2="4" y2="2" gradientUnits="userSpaceOnUse">
+<stop stop-color="#757F9A"/>
+<stop offset="1" stop-color="#D7DDE8"/>
+</linearGradient>
+<linearGradient id="paint_dot2_linear" x1="8" y1="2" x2="12" y2="2" gradientUnits="userSpaceOnUse">
+<stop stop-color="#757F9A"/>
+<stop offset="1" stop-color="#D7DDE8"/>
+</linearGradient>
+<linearGradient id="paint_dot3_linear" x1="16" y1="2" x2="20" y2="2" gradientUnits="userSpaceOnUse">
+<stop stop-color="#757F9A"/>
+<stop offset="1" stop-color="#D7DDE8"/>
+</linearGradient>
+<linearGradient id="paint_dot4_linear" x1="24" y1="2" x2="28" y2="2" gradientUnits="userSpaceOnUse">
+<stop stop-color="#757F9A"/>
+<stop offset="1" stop-color="#D7DDE8"/>
+</linearGradient>
+<linearGradient id="paint_dot5_linear" x1="32" y1="2" x2="36" y2="2" gradientUnits="userSpaceOnUse">
+<stop stop-color="#757F9A"/>
+<stop offset="1" stop-color="#D7DDE8"/>
+</linearGradient>
+</defs>
+</svg>
