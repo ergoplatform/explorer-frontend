@@ -28,7 +28,7 @@ export default class PaymentRequestComponent extends React.PureComponent<IPaymen
       return { error: true, message: 'Invalid address' };
     }
 
-    if (Number(amount) <= 0) {
+    if (Number(amount) < 0) {
       return { error: true, message: 'Invalid amount' };
     }
 
@@ -40,7 +40,9 @@ export default class PaymentRequestComponent extends React.PureComponent<IPaymen
       this.props.location.search
     );
 
-    const mobileAppLink = `ergo:${address}?${queryString.stringify({
+    const mobileAppLink = `ergo:${address}${
+      !amount && !description ? '' : '?'
+    }${queryString.stringify({
       amount,
       description: description || undefined,
     })}`;
