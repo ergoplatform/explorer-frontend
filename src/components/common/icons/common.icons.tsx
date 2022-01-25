@@ -43,6 +43,8 @@ import { ReactComponent as errorIcon } from '../../../assets/images/icons/error.
 import { ReactComponent as richIcon } from '../../../assets/images/icons/investor.svg';
 import { ReactComponent as walletIcon } from '../../../assets/images/icons/wallet.icon.svg';
 import { ReactComponent as newCopyIcon } from '../../../assets/images/icons/copy.svg';
+import { ReactComponent as ergoWatchIcon } from '../../../assets/images/icons/graph.svg';
+import { ReactComponent as monitorIcon } from '../../../assets/images/icons/monitor.svg';
 
 interface IconProps {
   className?: string;
@@ -214,4 +216,12 @@ export const RichIcon = ({ className }: IconProps) => {
 
 export const WalletIcon = ({ className }: IconProps) => {
   return makeIcon(walletIcon, className);
+};
+
+export const ErgoWatchIcon = ({ className }: IconProps) => {
+  return makeIcon(ergoWatchIcon, className);
+};
+
+export const MonitorIcon = ({ className }: IconProps) => {
+  return makeIcon(monitorIcon, className);
 };

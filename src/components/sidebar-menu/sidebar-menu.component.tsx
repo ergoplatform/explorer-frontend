@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { NavLink, NavLinkProps } from 'react-router-dom';
-import { SignIcon } from '../common/icons/common.icons';
 import './sidebar-menu.scss';
 
 export interface ISidebarMenuItem {
@@ -53,7 +52,6 @@ export class SidebarMenuComponent extends React.Component<ISidebarMenuProps> {
                 <span>
                   <FormattedMessage id={item.title} />
                 </span>
-                <SignIcon className="bi-sidebar-menu__icon-external" />
               </span>
             </a>
 

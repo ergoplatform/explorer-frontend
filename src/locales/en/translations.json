@@ -256,7 +256,9 @@
         "order-book": "Order Book",
         "issued-tokens": "Issued Tokens",
         "unconfirmed": "Mempool",
-        "oraclePools": "Oracle Pools"
+        "oraclePools": "Oracle Pools",
+        "watch": "Ergo Watch",
+        "diff": "Difficulty & Epoch monitor"
       }
     },
     "stats": {
