@@ -55,6 +55,8 @@ import { ReactComponent as richListIcon } from '../../../assets/images/icons/ric
 import { ReactComponent as walletsIcon } from '../../../assets/images/icons/wallets.icon.svg';
 import { ReactComponent as watchIcon } from '../../../assets/images/icons/watch.icon.svg';
 import { ReactComponent as closeIcon } from '../../../assets/images/icons/close.icon.svg';
+import { ReactComponent as ergoWatchIcon } from '../../../assets/images/icons/graph.svg';
+import { ReactComponent as monitorIcon } from '../../../assets/images/icons/monitor.svg';
 
 interface IconProps {
   className?: string;
@@ -250,6 +252,9 @@ export const LatestBlocksIcon = ({ className }: IconProps) => {
 
 export const MempoolIcon = ({ className }: IconProps) => {
   return makeIcon(mempoolIcon, className);
+=======
+export const ErgoWatchIcon = ({ className }: IconProps) => {
+  return makeIcon(ergoWatchIcon, className);
 };
 
 export const MonitorIcon = ({ className }: IconProps) => {

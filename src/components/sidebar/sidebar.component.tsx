@@ -26,6 +26,8 @@ import {
   UnconfirmedIcon,
   DistributedIcon,
   RichIcon,
+  ErgoWatchIcon,
+  MonitorIcon,
 } from '../common/icons/common.icons';
 
 import './sidebar.scss';
@@ -119,6 +121,22 @@ const EXTERNAL_MENU_ITEMS: ISidebarMenuItem[] = [
     icon: <ApiIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />,
     title: 'components.sidebar-menu.items.api',
     url: 'https://api.ergoplatform.com/api/v1/docs/',
+  },
+  {
+    external: true,
+    icon: (
+      <ErgoWatchIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+    ),
+    title: 'components.sidebar-menu.items.watch',
+    url: 'https://ergo.watch/',
+  },
+  {
+    external: true,
+    icon: (
+      <MonitorIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />
+    ),
+    title: 'components.sidebar-menu.items.diff',
+    url: 'http://cds.oette.info/ergo_diff.htm',
   },
   {
     external: true,
