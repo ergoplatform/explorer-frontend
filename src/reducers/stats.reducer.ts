@@ -44,6 +44,10 @@ export function statsReducer(
           value: convertInfoItemValue(key, action.payload.data[key]),
         };
       });
+      info.push({
+        title: 'max-supply',
+        value: '97 739 924 ERG',
+      });
 
       return {
         ...state,

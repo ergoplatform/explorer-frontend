@@ -10,8 +10,7 @@ import {
   Redirect,
 } from 'react-router';
 
-import { HeaderComponent } from '../../components/header/header.component';
-import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import { HeaderV2Component } from '../../components/header-v2/header-v2.component';
 
 import './app.scss';
 import ProgressBar from 'src/components/progress-bar/progress-bar';
@@ -89,12 +88,11 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
         <Helmet>
           <title>Ergo Explorer</title>
         </Helmet>
-        <SidebarComponent />
         <div
           className="bi-app__wrapper g-flex__item g-flex-column g-scroll-y"
           ref={(ref: HTMLDivElement) => (this.scrollBody = ref)}
         >
-          <HeaderComponent />
+          <HeaderV2Component />
 
           <div className="bi-app__body g-flex-column__item g-flex-column">
             <Suspense

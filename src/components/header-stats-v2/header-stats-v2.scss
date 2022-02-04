@@ -1,0 +1,20 @@
+@import '../../assets/styles/base/variables';
+
+// #HEADER STATS V2
+//-------------------------------------
+
+.bi-header-stats-v2 {
+  width: 100%;
+  max-width: 930px;
+  margin: 0 auto;
+
+  justify-content: center;
+
+  @media screen and (max-width: $mobile-device-width) {
+    flex-wrap: wrap;
+    margin: auto;
+    max-width: 100%;
+
+    justify-content: flex-start;
+  }
+}

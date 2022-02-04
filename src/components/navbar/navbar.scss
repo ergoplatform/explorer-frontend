@@ -1,0 +1,108 @@
+@import '../../assets/styles/base/variables';
+
+// #Navbar
+//-------------------------------------
+$navbar-logo-color: #ffffff;
+$navbar-btn-toggle-border-color: #ffffff;
+$navbar-btn-toggle-icon-color: #ffffff;
+$sidebar-side-logo-color: #828795;
+$sidebar-copyright-color: #828795;
+$navbar-font: $theme-main-font;
+
+.bi-navbar {
+  position: relative;
+  font-family: $navbar-font;
+  padding: ($grid-offset-step * 4) ($grid-offset-step * 4) ($grid-offset-step * 12) ($grid-offset-step * 4);
+  transition: width 350ms linear;
+  z-index: 3;
+
+  // [ Components ]
+  //---------------------------------
+  &__body {
+    align-items: center;
+  }
+
+  &__logo {
+
+  }
+
+  &__logo {
+    color: $navbar-logo-color;
+    font-family: $theme-main-font;
+    font-size: 14px;
+    white-space: nowrap;
+    line-height: 0;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  &__logo-icon {
+    width: 140px;
+    height: 56px;
+
+    fill: $navbar-logo-color;
+
+    path {
+      fill: $navbar-logo-color;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    z-index: 1;
+    padding: $grid-offset-step * 2;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__toggle-icon {
+    fill: $navbar-btn-toggle-icon-color;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .navbar-open {
+    .bi-navbar {
+      &:before {
+        background-color: rgba(0, 0, 0, .5);
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;
+      }
+    }
+  }
+
+  .bi-navbar {
+    padding: ($grid-offset-step * 2) ($grid-offset-step * 4) ($grid-offset-step * 8) ($grid-offset-step * 2);
+
+    &__toggle {
+      display: block;
+    }
+
+    &__toggle-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__logo-icon {
+      width: 106px;
+      height: 44px;
+    }
+
+    &__switchers {
+      .bi-environment-switcher {
+        display: none;
+      }
+    }
+  }
+}
+
+.bi-app--iframe {
+  .bi-navbar {
+    display: none;
+  }
+}
