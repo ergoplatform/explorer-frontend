@@ -7,6 +7,7 @@ $header-bg-color: #121212;
 .bi-header-v2 {
   position: relative;
   box-sizing: content-box;
+  margin-bottom: $grid-offset-step * 6;
   background-color: $header-bg-color;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.02);
   z-index: 3;
@@ -41,11 +42,5 @@ $header-bg-color: #121212;
     .bi-search {
       padding-right: $grid-offset-step * 2;
     }
-  }
-}
-
-.bi-app--iframe {
-  .bi-header-v2 {
-    display: none;
   }
 }

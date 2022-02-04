@@ -3,6 +3,7 @@
 // #Navbar menu
 //-------------------------------------
 $navbar-menu-mobile-background: #ffffff;
+$navbar-menu-mobile-color: #000000;
 $nav-dropdown-item: #333333;
 $nav-dropdown-item-hover: #f1f1f1;
 $nav-dropdown-color: #ffffff;
@@ -41,7 +42,7 @@ $nav-dropdown-border: rgba(0, 0, 0, .1);
       position: fixed;
       left: 0;
       top: 0;
-      height: 100vh;
+      bottom: 0;
       width: 340px;
       transition: left 250ms ease-in-out;
       overflow-y: scroll;
@@ -65,7 +66,7 @@ $nav-dropdown-border: rgba(0, 0, 0, .1);
 
       .bi-navbar-menu__wrapper {
         padding-top: $grid-offset-step * 14;
-        padding-bottom: $grid-offset-step * 10;
+        padding-bottom: $grid-offset-step * 6;
         flex-direction: column;
       }
 
@@ -98,6 +99,12 @@ $nav-dropdown-border: rgba(0, 0, 0, .1);
       }
 
       .bi-nav-dropdown {
+        &:hover {
+          .bi-nav-dropdown__link {
+            color: $navbar-menu-color;
+          }
+        }
+
         &__list {
           border-radius: 0;
           box-shadow: none;
@@ -142,6 +149,7 @@ $nav-dropdown-border: rgba(0, 0, 0, .1);
         }
 
         &__item {
+          color: $navbar-menu-mobile-color;
           font-size: 15px;
           line-height: 18px;
           font-weight: 500;
@@ -157,9 +165,37 @@ $nav-dropdown-border: rgba(0, 0, 0, .1);
           }
 
           a {
+            color: $navbar-menu-mobile-color;
             margin: 0 ($grid-offset-step * 6);
             padding: ($grid-offset-step * 2) ($grid-offset-step * 2);
           }
+        }
+      }
+
+
+      .bi-dropdown.bi-dropdown--open {
+        .bi-dropdown__button {
+            color: $navbar-menu-mobile-color;
+
+            .bi-dropdown__button-icon {
+              fill: $navbar-menu-color;
+            }
+        }
+      }
+
+      .bi-dropdown__button {
+        color: $navbar-menu-mobile-color;
+
+        .bi-dropdown__button-icon {
+          opacity: 1;
+
+          path {
+          fill: $navbar-menu-color;
+          }
+        }
+
+        &:hover {
+          color: $navbar-menu-mobile-color;
         }
       }
     }
@@ -202,9 +238,22 @@ $nav-dropdown-border: rgba(0, 0, 0, .1);
     font-weight: 700;
 
     align-items: end;
+
+    .bi-nav-dropdown__icon {
+      opacity: .6;
+    }
   }
 
-  &:hover, &:focus-within {
+  &:hover {
+    .bi-nav-dropdown__link {
+      color: $navbar-menu-active-color;
+
+      .bi-nav-dropdown__icon {
+        fill: $navbar-menu-active-color;
+        opacity: 1;
+      }
+    }
+
     .bi-nav-dropdown__list {
       display: block;
       visibility: visible;
