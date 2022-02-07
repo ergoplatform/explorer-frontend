@@ -46,6 +46,10 @@ export const convertInfoItemValue = (key: string, value: any): any => {
       return formatNumberMetricPrefix(value) + 'H/d';
     }
 
+    case 'max-supply': {
+      return '97 739 924 ERG';
+    }
+
     default: {
       return value;
     }
