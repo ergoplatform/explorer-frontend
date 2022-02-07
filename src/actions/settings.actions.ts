@@ -42,6 +42,7 @@ export const SettingsActions: SettingsActions = {
   setSidebarDisplayStatus(isShown: boolean): any {
     return (dispatch: Dispatch<Action>) => {
       if (isShown) {
+        document.body.classList.add('navbar-open');
         dispatch({
           type: SET_SIDEBAR_IS_SHOWN,
         });
@@ -49,6 +50,7 @@ export const SettingsActions: SettingsActions = {
         dispatch({
           type: SET_SIDEBAR_IS_HIDDEN,
         });
+        document.body.classList.remove('navbar-open');
       }
     };
   },

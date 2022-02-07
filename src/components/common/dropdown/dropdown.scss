@@ -2,11 +2,11 @@
 
 // #DROPDOWN
 //-------------------------------------
-$dropdown-button-color: #828795;
+$dropdown-button-color: #999999;
 $dropdown-button-hover-color: #ffffff;
-$dropdown-option-color: $theme-primary-color;
+$dropdown-option-color: #333333;
 $dropdown-dropdown-bg: #ffffff;
-$dropdown-option-hover-bg: #f8f8f8;
+$dropdown-option-hover-bg: #f1f1f1;
 
 .bi-dropdown {
   position: relative;
@@ -18,8 +18,10 @@ $dropdown-option-hover-bg: #f8f8f8;
     color: $dropdown-button-color;
     font-family: inherit;
 
+    padding: $grid-offset-step * 2;
     font-size: 14px;
-    font-weight: 300;
+    line-height: 16px;
+    font-weight: 700;
 
     align-items: center;
 
@@ -30,26 +32,28 @@ $dropdown-option-hover-bg: #f8f8f8;
 
   &__button:hover & {
     &__button-icon {
-      fill: $dropdown-button-hover-color;
+      opacity: 1;
     }
   }
 
   &__button-icon {
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     margin-left: $grid-offset-step;
 
-    fill: $dropdown-button-color;
+    opacity: .6;
   }
 
   &__dropdown {
     font-family: inherit;
+    border-radius: 10px;
 
     display: none;
     position: absolute;
-    bottom: calc(100% + 5px);
+    top: 100%;
     background-color: $dropdown-dropdown-bg;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(0, 0, 0, 0.25);
+    padding: ($grid-offset-step * 2) 0;
     overflow: hidden;
   }
 
@@ -57,10 +61,11 @@ $dropdown-option-hover-bg: #f8f8f8;
     font-family: inherit;
 
     display: block;
-    width: 100%;
-    padding: $grid-offset-step * 1.5 $grid-offset-step * 4;
+    padding: $grid-offset-step * 3 $grid-offset-step * 4;
     color: $dropdown-option-color;
     font-size: 13px;
+    line-height: 15px;
+    font-weight: bold;
     text-align: left;
 
     &:hover {
@@ -74,8 +79,12 @@ $dropdown-option-hover-bg: #f8f8f8;
       display: block;
     }
 
+    &__button {
+      color: $dropdown-button-hover-color;
+    }
+
     &__button-icon {
-      transform: rotate(180deg);
+      opacity: 1;
     }
   }
 }

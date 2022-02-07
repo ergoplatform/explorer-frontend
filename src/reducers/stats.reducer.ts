@@ -38,7 +38,13 @@ export function statsReducer(
     }
 
     case GET_STATS_INFO_SUCCESS: {
-      const info = Object.keys(action.payload.data).map((key: string) => {
+      const info = [
+        'hashRate',
+        'supply',
+        'max-supply',
+        'transactionAverage',
+        'version',
+      ].map((key: string) => {
         return {
           title: key,
           value: convertInfoItemValue(key, action.payload.data[key]),

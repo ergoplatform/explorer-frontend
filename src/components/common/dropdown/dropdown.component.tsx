@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React from 'react';
 
-import { ArrowDownIcon } from '../icons/common.icons';
+import { ChevronDownIcon } from '../icons/common.icons';
 
 import './dropdown.scss';
 
@@ -59,7 +59,7 @@ export class DropdownComponent extends React.PureComponent<
           <span className="bi-dropdown__button-label">{selected.label}</span>
 
           {this.props.options.length > 1 && (
-            <ArrowDownIcon className="bi-dropdown__button-icon" />
+            <ChevronDownIcon className="bi-dropdown__button-icon" />
           )}
         </button>
 
