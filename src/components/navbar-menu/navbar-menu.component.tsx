@@ -119,28 +119,44 @@ class NavbarMenu extends React.Component<INavbarMenuProps> {
             </a>
             <ul className="bi-nav-dropdown__list">
               <li className="bi-nav-dropdown__item">
-                <a href="https://ergoplatform.org/en/wallets/">
+                <a
+                  href="https://ergoplatform.org/en/wallets/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <WalletsIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--item" />
                   <FormattedMessage id={'common.navigation.wallets'} />
                   <ExternalLinkIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--external" />
                 </a>
               </li>
               <li className="bi-nav-dropdown__item">
-                <a href="https://api.ergoplatform.com/api/v1/docs/">
+                <a
+                  href="https://api.ergoplatform.com/api/v1/docs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <ApiIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--item" />
                   <FormattedMessage id={'common.navigation.api'} />
                   <ExternalLinkIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--external" />
                 </a>
               </li>
               <li className="bi-nav-dropdown__item">
-                <a href="http://cds.oette.info/ergo_diff.htm">
+                <a
+                  href="http://cds.oette.info/ergo_diff.htm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <MonitorIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--item" />
                   <FormattedMessage id={'common.navigation.monitor'} />
                   <ExternalLinkIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--external" />
                 </a>
               </li>
               <li className="bi-nav-dropdown__item">
-                <a href="https://ergo.watch/">
+                <a
+                  href="https://ergo.watch/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <WatchIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--item" />
                   <FormattedMessage id={'common.navigation.ergo-watch'} />
                   <ExternalLinkIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--external" />
