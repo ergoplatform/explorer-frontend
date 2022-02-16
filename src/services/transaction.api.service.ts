@@ -3,7 +3,7 @@ import environment from '../config/environment';
 
 export class TransactionApiService {
   static get apiUrl(): string {
-    return `${environment.apiUrl}/transactions`;
+    return `${environment.apiUrlV1}/transactions`;
   }
 
   static getTransaction(id: string): any {
