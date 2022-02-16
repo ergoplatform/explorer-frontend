@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom';
 
 import { formatNumberMetricPrefix } from '../../../utils/formatNumberMetricPrefix';
 
-import { TransactionSummary } from '../../../models/generated/transactionSummary';
-
 import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 
 import './transaction-summary.scss';
 
 interface ITransactionSummaryProps {
-  summary: TransactionSummary;
+  summary: any;
 }
 
 export class TransactionSummaryComponent extends React.Component<ITransactionSummaryProps> {
@@ -46,15 +44,15 @@ export class TransactionSummaryComponent extends React.Component<ITransactionSum
             </div>
           </div>
 
-          {this.props.summary.block && (
+          {this.props.summary.blockId && (
             <div className="bi-transaction-summary__row bi-table__row">
               <div className="bi-transaction-summary__cell bi-transaction-summary__cell--header bi-table__cell">
                 <FormattedMessage id="components.transaction-summary.blocks" />
               </div>
 
               <div className="bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell">
-                <Link to={`/blocks/${this.props.summary.block.id}`}>
-                  {this.props.summary.block.height}
+                <Link to={`/blocks/${this.props.summary.blockId}`}>
+                  {this.props.summary.inclusionHeight}
                 </Link>
               </div>
             </div>
@@ -66,7 +64,7 @@ export class TransactionSummaryComponent extends React.Component<ITransactionSum
             </div>
 
             <div className="bi-transaction-summary__cell bi-transaction-summary__cell--value bi-table__cell">
-              {this.props.summary.confirmationsCount}
+              {this.props.summary.numConfirmations}
             </div>
           </div>
         </div>

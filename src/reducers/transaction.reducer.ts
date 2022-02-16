@@ -5,12 +5,10 @@ import {
   CLEAR_TRANSACTIONS_STATE,
 } from '../constants/transaction.types';
 
-import { FullTransaction } from '../models/generated/fullTransaction';
-
 export interface TransactionState {
   fetching: boolean;
   isFailedRequest: boolean;
-  transaction?: FullTransaction;
+  transaction?: any;
 }
 
 export const initialState: TransactionState = {

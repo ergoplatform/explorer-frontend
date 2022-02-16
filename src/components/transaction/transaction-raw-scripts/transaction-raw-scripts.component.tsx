@@ -52,11 +52,29 @@ export class TransactionRawScriptsComponent extends React.PureComponent<ITransac
                     <li key={key}>
                       <b>{key}</b>:{' '}
                       <ul>
-                        {Object.keys(item[key]).map((k) => (
-                          <li key={k}>
-                            <b>{k}</b>: {item[key][k]}
-                          </li>
-                        ))}
+                        {Object.keys(item[key]).map((k) => {
+                          if (typeof item[key][k] === 'object') {
+                            return (
+                              <li key={k}>
+                                <b>{k}</b>:{' '}
+                                <ul>
+                                  {Object.keys(item[key][k]).map((k2) => {
+                                    return (
+                                      <li key={k2}>
+                                        <b>{k2}</b>: {item[key][k][k2]}
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              </li>
+                            );
+                          }
+                          return (
+                            <li key={k}>
+                              <b>{k}</b>: {item[key][k]}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </li>
                   );
@@ -64,7 +82,10 @@ export class TransactionRawScriptsComponent extends React.PureComponent<ITransac
 
                 return (
                   <li key={`${key}${i}`}>
-                    <b>{key}</b>: {item[key]}
+                    <b>{key}</b>:{' '}
+                    {typeof item[key] === 'boolean'
+                      ? JSON.stringify(item[key])
+                      : item[key]}
                   </li>
                 );
               })}

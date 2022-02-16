@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 
-import { Transaction as TransactionModel } from '../../models/generated/transaction';
+// import { Transaction as TransactionModel } from '../../models/generated/transaction';
 
 import { SettingsActions } from '../../actions/settings.actions';
 import { TransactionActions } from '../../actions/transaction.actions';
-import { SettingsState } from '../../reducers/settings.reducer';
-import { TransactionState } from '../../reducers/transaction.reducer';
+// import { SettingsState } from '../../reducers/settings.reducer';
+// import { TransactionState } from '../../reducers/transaction.reducer';
 import { AppState } from '../../store/app.store';
 
 import { TransactionIoSummaryComponent } from '../../components/transaction/transaction-io-summary/transaction-io-summary.component';
@@ -21,91 +21,79 @@ import { TransactionsItemComponent } from '../../components/transactions/transac
 import './confirmed-transaction.scss';
 import ProgressBar from '../../components/progress-bar/progress-bar';
 import LoaderLogo from '../../components/loader/loader';
+import { miningFeeAddress } from 'src/constants/config';
 
-class ConfirmedTransaction extends React.PureComponent<
-  RouteComponentProps<{
-    id: string;
-  }> &
-    TransactionState &
-    TransactionActions &
-    SettingsActions &
-    SettingsState & {
-      toggleIsConfirmed: any;
-      setFailed: () => void;
+const renderLoader = () => {
+  return (
+    <ProgressBar className="bi-app__loading-text">
+      <LoaderLogo />
+    </ProgressBar>
+  );
+};
+
+const ConfirmedTransaction = (props: any) => {
+  const {
+    getTransaction,
+    match,
+    fetching,
+    transaction,
+    setTransactionScripts,
+    isScriptsDisplayed,
+    setFailed,
+    isFailedRequest,
+  } = props;
+
+  useEffect(() => {
+    getTransaction(match.params.id);
+  }, [match.params.id]);
+
+  const onScriptToggle = useCallback(() => {
+    setTransactionScripts(!isScriptsDisplayed);
+  }, [setTransactionScripts, isScriptsDisplayed]);
+
+  const totalCoinsTransferred = useMemo(() => {
+    if (!transaction) {
+      return 0;
     }
-> {
-  constructor(props: any) {
-    super(props);
-
-    this.onScriptToggle = this.onScriptToggle.bind(this);
-  }
-
-  componentDidMount(): void {
-    this.props.getTransaction(this.props.match.params.id);
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps: any): void {
-    if (nextProps.match.params.id !== this.props.match.params.id) {
-      this.props.getTransaction(nextProps.match.params.id);
-    }
-  }
-
-  render(): JSX.Element {
-    const isFetching = this.props.fetching;
-
-    if (isFetching) {
-      return <div className="bi-transaction">{this.renderLoader()}</div>;
-    }
-
-    return (
-      <div className="bi-transaction">
-        <div className="bi-transaction__header">
-          <div className="bi-transaction__title">
-            <FormattedMessage id="components.transaction.title" />
-          </div>
-          <div className="bi-transaction__subtitle">
-            <FormattedMessage id="components.transaction.subtitle" />
-          </div>
-        </div>
-        {this.renderBody()}
-      </div>
+    return transaction.inputs.reduce(
+      (acc: number, { value }: { value: number }) => acc + value,
+      0
     );
-  }
+  }, [transaction]);
 
-  renderLoader(): JSX.Element | null {
-    return (
-      <ProgressBar className="bi-app__loading-text">
-        <LoaderLogo />
-      </ProgressBar>
-    );
-  }
+  const fee = useMemo(() => {
+    if (!transaction) {
+      return 0;
+    }
 
-  private renderBody(): JSX.Element | null | undefined {
-    const { setFailed } = this.props;
+    return transaction.outputs
+      .filter(({ address }: any) => address === miningFeeAddress)
+      .reduce((acc: number, { value }: { value: number }) => acc + value, 0);
+  }, [transaction]);
 
-    console.log('>> this.props.isFailedRequest', this.props.isFailedRequest);
+  const feePerByte = useMemo(() => {
+    if (!transaction || !fee) {
+      return 0;
+    }
 
-    if (this.props.isFailedRequest) {
+    return (fee / transaction.size).toFixed(9);
+  }, [fee, transaction]);
+
+  const renderBody = useMemo(() => {
+    if (isFailedRequest) {
       setFailed();
-      return;
-    }
-
-    if (!this.props.transaction) {
       return null;
     }
 
-    const transaction: TransactionModel = {
-      id: this.props.transaction.summary.id,
-      inputs: this.props.transaction.inputs,
-      outputs: this.props.transaction.outputs,
-      timestamp: this.props.transaction.summary.timestamp,
-    };
+    if (!transaction) {
+      return null;
+    }
 
     return (
       <div className="bi-transaction__body">
         <FormattedMessage
           id="common.pages.transaction.title"
-          values={{ id: this.props.transaction.summary.id }}
+          values={{ id: transaction.id }}
         >
           {(title) => (
             <Helmet>
@@ -116,56 +104,85 @@ class ConfirmedTransaction extends React.PureComponent<
 
         <TransactionsItemComponent
           transaction={transaction}
-          confirmations={this.props.transaction.summary.confirmationsCount}
+          confirmations={transaction.numConfirmations}
         />
 
         <div className="bi-transaction__tables g-flex">
           <div className="bi-transaction__table g-flex__item">
             <TransactionSummaryComponent
-              summary={this.props.transaction.summary}
+              summary={{
+                size: transaction.size,
+                timestamp: transaction.timestamp,
+                blockId: transaction.id,
+                inclusionHeight: transaction.inclusionHeight,
+                numConfirmations: transaction.numConfirmations,
+              }}
             />
           </div>
 
           <div className="bi-transaction__table g-flex__item">
             <TransactionIoSummaryComponent
-              summary={this.props.transaction.ioSummary}
-              isScriptShown={this.props.isScriptsDisplayed}
-              onScriptToggle={this.onScriptToggle}
+              summary={{
+                totalFee: fee,
+                feePerByte: feePerByte as number,
+                totalCoinsTransferred,
+              }}
+              isScriptShown={isScriptsDisplayed}
+              onScriptToggle={onScriptToggle}
             />
           </div>
         </div>
 
-        {this.props.isScriptsDisplayed && (
+        {isScriptsDisplayed && (
           <div className="bi-transaction__scripts">
             <div className="bi-transaction__title">
               <FormattedMessage id="components.transaction.scripts.input" />
             </div>
 
-            <TransactionRawScriptsComponent
-              items={this.props.transaction.inputs}
-            />
+            <TransactionRawScriptsComponent items={transaction.inputs} />
           </div>
         )}
 
-        {this.props.isScriptsDisplayed && (
+        {isScriptsDisplayed && (
           <div className="bi-transaction__scripts">
             <div className="bi-transaction__title">
               <FormattedMessage id="components.transaction.scripts.output" />
             </div>
 
-            <TransactionRawScriptsComponent
-              items={this.props.transaction.outputs}
-            />
+            <TransactionRawScriptsComponent items={transaction.outputs} />
           </div>
         )}
       </div>
     );
+  }, [
+    transaction,
+    isScriptsDisplayed,
+    isFailedRequest,
+    setFailed,
+    onScriptToggle,
+    feePerByte,
+    fee,
+    totalCoinsTransferred,
+  ]);
+
+  if (fetching) {
+    return <div className="bi-transaction">{renderLoader()}</div>;
   }
 
-  private onScriptToggle(): void {
-    this.props.setTransactionScripts(!this.props.isScriptsDisplayed);
-  }
-}
+  return (
+    <div className="bi-transaction">
+      <div className="bi-transaction__header">
+        <div className="bi-transaction__title">
+          <FormattedMessage id="components.transaction.title" />
+        </div>
+        <div className="bi-transaction__subtitle">
+          <FormattedMessage id="components.transaction.subtitle" />
+        </div>
+      </div>
+      {renderBody}
+    </div>
+  );
+};
 
 function mapStateToProps(state: AppState): any {
   return { ...state.transaction, ...state.settings };
