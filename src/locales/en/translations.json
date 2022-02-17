@@ -338,6 +338,10 @@
     "wallet": {
       "title": "Wallet is not available yet"
     },
+    "widget": {
+      "view-all-charts": "View all Charts",
+      "view-all": "View all"
+    },
     "order-book": {
       "title": "Order Book"
     },

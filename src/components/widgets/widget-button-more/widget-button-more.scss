@@ -1,0 +1,26 @@
+@import '../../../assets/styles/base/variables';
+
+// #WIDGET-BUTTON_MORE
+//-------------------------------------
+
+$widget-button-color: #000000;
+$widget-border-color: rgba(0, 0, 0, .15);
+$widget-bg-hover: #f8f8f8;
+
+.bi-widget-button-more {
+  color: $widget-button-color;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  border: 1px solid $widget-border-color;
+  border-radius: 8px;
+  padding: $grid-offset-step * 2;
+  transition: background 300ms;
+
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: $widget-bg-hover;
+  }
+}

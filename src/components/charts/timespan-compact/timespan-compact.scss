@@ -1,0 +1,52 @@
+@import '../../../assets/styles/base/variables';
+
+// #TIMESPAN
+//-----------------------------
+$timespan-bg-color: #ffffff;
+$timespan-span-color: #999999;
+$timespan-span-active-color: #ffffff;
+$timespan-span-active-bg: #000000;
+
+.bi-timespan-compact {
+  display: flex;
+  border-radius: 4px;
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------
+  &__span {
+    border-radius: 24px;
+    padding: 2px 14px 3px;
+    color: $timespan-span-color;
+    font-size: 9px;
+    line-height: 11px;
+    white-space: nowrap;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    // [ State ] Active
+    &--active {
+      background-color: $timespan-span-active-bg;
+      color: $timespan-span-active-color;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-timespan-compact {
+    &__span {
+      width: 100%;
+      border-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width-sm) {
+  .bi-timespan-compact {
+    &__span {
+      white-space: pre-wrap;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import 'src/assets/styles/base/variables';
+
+// #WIDGET-CHARTS
+//-------------------------------------
+
+.bi-widget-charts {
+  &__header {
+  margin-bottom: $grid-offset-step * 3;
+  }
+
+  &__button {
+    margin-top: $grid-offset-step * 4;
+  }
+}
