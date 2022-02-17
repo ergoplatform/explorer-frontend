@@ -59,15 +59,10 @@ import { ReactComponent as ergoWatchIcon } from '../../../assets/images/icons/gr
 
 interface IconProps {
   className?: string;
-  style?: any;
 }
 
-export const makeIcon = (
-  Icon: any,
-  className?: string,
-  style?: any
-): JSX.Element => {
-  return <Icon className={className} style={style} focusable="false" />;
+export const makeIcon = (Icon: any, className?: string): JSX.Element => {
+  return <Icon className={className} focusable="false" />;
 };
 
 export const SearchIcon = ({ className }: IconProps) => {
@@ -234,8 +229,8 @@ export const WalletIcon = ({ className }: IconProps) => {
   return makeIcon(walletIcon, className);
 };
 
-export const ChevronDownIcon = ({ className, style }: IconProps) => {
-  return makeIcon(chevronDownIcon, className, style);
+export const ChevronDownIcon = ({ className }: IconProps) => {
+  return makeIcon(chevronDownIcon, className);
 };
 
 export const ExternalLinkIcon = ({ className }: IconProps) => {
