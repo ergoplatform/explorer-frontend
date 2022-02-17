@@ -113,6 +113,30 @@ $block-transactions-item-confirmations-bg: $theme-primary-color;
     }
   }
 
+  &__link {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    cursor: pointer;
+    align-items: center;
+    position: relative;
+
+    svg {
+      position: absolute;
+      top: 3px;
+      margin-left: 2px;
+    }
+
+    & path {
+      fill: #0078ff;
+    }
+  }
+
+  &__rotated-icon {
+    transform: rotateX(180deg);
+    top: 4px !important;
+  }
+
   &__arrow {
     position: absolute;
     top: 50%;

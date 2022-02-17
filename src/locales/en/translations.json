@@ -311,7 +311,9 @@
       "null-address": "Unable to decode address",
       "spent": "Spent",
       "unconfirmed": "Unconfirmed",
-      "unspent": "Unspent"
+      "unspent": "Unspent",
+      "show-less": "Show less",
+      "show-more": "Show more"
     },
     "transaction-summary": {
       "blocks": "Included in Blocks",

@@ -14,7 +14,10 @@ import { CoinValueComponent } from '../../common/coin-value/coin-value.component
 import { TimestampComponent } from '../../common/timestamp/timestamp.component';
 
 import { DropdownListComponent } from '../../common/dropdown-list/dropdown-list.component';
-import { ArrowThickIcon } from '../../common/icons/common.icons';
+import {
+  ArrowThickIcon,
+  ChevronDownIcon,
+} from '../../common/icons/common.icons';
 import './transactions-item.scss';
 
 interface IBlockTransactionsItemProps {
@@ -34,6 +37,8 @@ class TransactionsItem extends React.Component<
   componentDidMount(): void {
     this.setState({
       isClient: true,
+      isShowMoreInputs: false,
+      isShowMoreOutputs: false,
     });
   }
 
@@ -83,10 +88,18 @@ class TransactionsItem extends React.Component<
   };
 
   render(): JSX.Element {
+    const { transaction } = this.props;
+    const { isShowMoreInputs, isShowMoreOutputs } = this.state;
     let totalOutput = 0;
     const totalInputAddress = this.getAddressInputs();
     const totalOutputAddress = this.getAddressOutputs();
     const isOutput = this.getTransactionState() === 'output';
+    const transactionInputs = isShowMoreInputs
+      ? transaction.inputs
+      : transaction.inputs.slice(0, 5);
+    const transactionOutputs = isShowMoreOutputs
+      ? transaction.outputs
+      : transaction.outputs.slice(0, 5);
 
     return (
       <div className="bi-transactions-item">
@@ -110,42 +123,68 @@ class TransactionsItem extends React.Component<
 
         <div className="bi-transactions-item__body g-flex">
           <div className="bi-transactions-item__inputs g-flex__item">
-            {this.props.transaction.inputs.map((address, index) => {
+            {transactionInputs.map((address, index) => {
               return (
-                <div
-                  className="bi-transactions-item__input g-flex"
-                  key={`${index}__${address.id}`}
-                >
-                  <div className="bi-transactions-item__address">
-                    {address.address ? (
-                      <Link
-                        className="u-word-wrap u-word-wrap--ellipsis"
-                        to={`/addresses/${address.address}`}
-                      >
-                        {address.address}
-                      </Link>
-                    ) : (
-                      <FormattedMessage id="components.transaction-item.null-address" />
-                    )}
-                  </div>
-
-                  {this.props.isScriptsDisplayed &&
-                    address.outputTransactionId && (
-                      <div className="bi-transactions-item__address-output g-flex g-flex__item-fixed">
-                        (<CoinValueComponent value={address.value} />
-                        {address.assets
-                          ? this.renderAssets(address.assets)
-                          : ''}
-                        &nbsp;-&nbsp;
+                <>
+                  <div
+                    className="bi-transactions-item__input g-flex"
+                    key={`${index}__${address.id}`}
+                  >
+                    <div className="bi-transactions-item__address">
+                      {address.address ? (
                         <Link
-                          to={`/transactions/${address.outputTransactionId}`}
+                          className="u-word-wrap u-word-wrap--ellipsis"
+                          to={`/addresses/${address.address}`}
                         >
-                          <FormattedMessage id="components.transaction-item.address-output" />
+                          {address.address}
                         </Link>
-                        )
-                      </div>
-                    )}
-                </div>
+                      ) : (
+                        <FormattedMessage id="components.transaction-item.null-address" />
+                      )}
+                    </div>
+
+                    {this.props.isScriptsDisplayed &&
+                      address.outputTransactionId && (
+                        <div className="bi-transactions-item__address-output g-flex g-flex__item-fixed">
+                          (<CoinValueComponent value={address.value} />
+                          {address.assets
+                            ? this.renderAssets(address.assets)
+                            : ''}
+                          &nbsp;-&nbsp;
+                          <Link
+                            to={`/transactions/${address.outputTransactionId}`}
+                          >
+                            <FormattedMessage id="components.transaction-item.address-output" />
+                          </Link>
+                          )
+                        </div>
+                      )}
+                  </div>
+                  {index === 4 && (
+                    <div
+                      className="bi-transactions-item__link"
+                      onClick={() =>
+                        this.setState({
+                          isShowMoreInputs: !isShowMoreInputs,
+                        })
+                      }
+                    >
+                      <a>
+                        {isShowMoreInputs ? (
+                          <>
+                            <FormattedMessage id="components.transaction-item.show-less" />
+                            <ChevronDownIcon className="bi-transactions-item__rotated-icon" />
+                          </>
+                        ) : (
+                          <>
+                            <FormattedMessage id="components.transaction-item.show-more" />
+                            <ChevronDownIcon />
+                          </>
+                        )}
+                      </a>
+                    </div>
+                  )}
+                </>
               );
             })}
           </div>
@@ -168,53 +207,81 @@ class TransactionsItem extends React.Component<
           )}
 
           <div className="bi-transactions-item__outputs g-flex__item g-flex-column">
-            {this.props.transaction.outputs.map((address, index) => {
+            {transactionOutputs.map((address, index) => {
               totalOutput += address.value;
 
               return (
-                <div
-                  className="bi-transactions-item__output g-flex"
-                  key={`${index}__${address.id}`}
-                >
-                  <div className="bi-transactions-item__address g-flex__item-fixed">
-                    {address.address ? (
-                      <Link
-                        className="u-word-wrap u-word-wrap--ellipsis"
-                        to={`/addresses/${address.address}`}
-                      >
-                        {address.address}
-                      </Link>
-                    ) : (
-                      <span className="u-word-wrap u-word-wrap--ellipsis">
-                        <FormattedMessage id="components.transaction-item.null-address" />
-                      </span>
-                    )}
-                  </div>
-
+                <>
                   <div
-                    className="bi-transactions-item__address-spent g-flex__item u-word-wrap u-word-wrap--ellipsis"
-                    style={{
-                      display:
-                        this.props.isScriptsDisplayed || !this.state.isClient
-                          ? 'block'
-                          : 'none',
-                    }}
+                    className="bi-transactions-item__output g-flex"
+                    key={`${index}__${address.id}`}
                   >
-                    {address.spentTransactionId ? (
-                      <Link to={`/transactions/${address.spentTransactionId}`}>
-                        <FormattedMessage id="components.transaction-item.spent" />
-                      </Link>
-                    ) : (
-                      <FormattedMessage id="components.transaction-item.unspent" />
-                    )}
-                  </div>
+                    <div className="bi-transactions-item__address g-flex__item-fixed">
+                      {address.address ? (
+                        <Link
+                          className="u-word-wrap u-word-wrap--ellipsis"
+                          to={`/addresses/${address.address}`}
+                        >
+                          {address.address}
+                        </Link>
+                      ) : (
+                        <span className="u-word-wrap u-word-wrap--ellipsis">
+                          <FormattedMessage id="components.transaction-item.null-address" />
+                        </span>
+                      )}
+                    </div>
 
-                  <div className="bi-transactions-item__value g-flex__item-fixed">
-                    <CoinValueComponent value={address.value} />
+                    <div
+                      className="bi-transactions-item__address-spent g-flex__item u-word-wrap u-word-wrap--ellipsis"
+                      style={{
+                        display:
+                          this.props.isScriptsDisplayed || !this.state.isClient
+                            ? 'block'
+                            : 'none',
+                      }}
+                    >
+                      {address.spentTransactionId ? (
+                        <Link
+                          to={`/transactions/${address.spentTransactionId}`}
+                        >
+                          <FormattedMessage id="components.transaction-item.spent" />
+                        </Link>
+                      ) : (
+                        <FormattedMessage id="components.transaction-item.unspent" />
+                      )}
+                    </div>
 
-                    {this.renderAssets(address.assets)}
+                    <div className="bi-transactions-item__value g-flex__item-fixed">
+                      <CoinValueComponent value={address.value} />
+
+                      {this.renderAssets(address.assets)}
+                    </div>
                   </div>
-                </div>
+                  {index === 4 && (
+                    <div
+                      className="bi-transactions-item__link"
+                      onClick={() =>
+                        this.setState({
+                          isShowMoreOutputs: !isShowMoreOutputs,
+                        })
+                      }
+                    >
+                      <a>
+                        {isShowMoreOutputs ? (
+                          <>
+                            <FormattedMessage id="components.transaction-item.show-less" />
+                            <ChevronDownIcon className="bi-transactions-item__rotated-icon" />
+                          </>
+                        ) : (
+                          <>
+                            <FormattedMessage id="components.transaction-item.show-more" />
+                            <ChevronDownIcon />
+                          </>
+                        )}
+                      </a>
+                    </div>
+                  )}
+                </>
               );
             })}
 
