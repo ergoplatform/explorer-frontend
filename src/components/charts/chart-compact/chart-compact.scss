@@ -1,0 +1,83 @@
+@import 'src/assets/styles/base/variables';
+
+// #CHART-COMPACT
+//-------------------------------------
+$chart-back-btn-color: $theme-color-blue;
+$chart-axis-line-color: #e8e8e8;
+$chart-bg: #F8F8F8;
+$chart-subtitle-color: #666666;
+
+.bi-chart-compact {
+  font-family: $theme-main-font;
+
+  // [ Components ]
+  //-----------------------------------
+  .recharts-cartesian-axis-line {
+    stroke: $chart-axis-line-color;
+  }
+
+  &__top {
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .bi-chart-compact__wrapper {
+    border-radius: 12px;
+    padding: $grid-offset-step * 4;
+    background-color: $chart-bg;
+  }
+
+  &__chart {
+    height: 100vh;
+    max-height: 512px;
+    margin-top: $grid-offset-step * 3;
+  }
+
+  &__controls {
+    justify-content: space-between;
+  }
+
+  &__header {
+    margin-bottom: $grid-offset-step * 3;
+  }
+
+  &__amount {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 700;
+
+    align-items: center;
+  }
+
+  &__subtitle {
+    color: $chart-subtitle-color;
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    max-width: 210px;
+    margin-bottom: $grid-offset-step;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-chart-compact {
+    &__chart {
+      max-height: 200px;
+    }
+
+    &__controls {
+      align-self: center;
+      margin-top: $grid-offset-step * 2;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width-sm) {
+  .bi-chart-compact {
+    &__top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}

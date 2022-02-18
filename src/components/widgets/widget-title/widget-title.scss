@@ -1,0 +1,18 @@
+@import '../../../assets/styles/base/variables';
+
+// #WIDGET-TITLE
+//-------------------------------------
+
+$widget-title-color: #000000;
+
+.bi-widget-title {
+  align-items: center;
+
+  &__text {
+    color: $widget-title-color;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 700;
+    margin-left: $grid-offset-step * 2;
+  }
+}
