@@ -19,7 +19,6 @@ import { CalendarComponent } from '../../components/common/calendar/calendar.com
 import { LimitSelectorComponent } from '../../components/common/limit-selector/limit-selector.component';
 import { PaginateSimpleComponent } from '../../components/common/paginate-simple/paginate-simple.component';
 import Loader from '../../components/loader/loader';
-import { WidgetCharts } from '../../components/widgets/widget-charts/widget-charts.components';
 
 type IDataProps = AppState &
   BlockActions &
@@ -66,7 +65,6 @@ class Data extends React.PureComponent<IDataProps> {
 
     return (
       <div className="bi-data g-flex-column g-flex-column__item-fixed">
-        <WidgetCharts />
         <FormattedMessage id="common.pages.data.title">
           {(title) => (
             <Helmet>
