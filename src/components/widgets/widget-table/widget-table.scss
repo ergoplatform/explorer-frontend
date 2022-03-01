@@ -28,6 +28,7 @@ $block-table-cell-color: $theme-primary-color;
     display: table-row;
     box-sizing: border-box;
     width: 100%;
+    height: 52px;
   }
 
   &__cell {
@@ -93,6 +94,10 @@ $block-table-cell-color: $theme-primary-color;
 }
 
 @media screen and (max-width: $mobile-device-width) {
+  .bi-widget-table {
+    width: initial;
+  }
+
   .widget-table {
     overflow: auto;
     &__body {

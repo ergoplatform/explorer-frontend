@@ -6,6 +6,7 @@ import { AppActions } from 'src/actions/app.actions';
 import { BlockActions } from 'src/actions/block.actions';
 import { WidgetBlocksComponent } from 'src/components/widgets/widget-blocks/widget-blocks.component';
 import { WidgetCharts } from 'src/components/widgets/widget-charts/widget-charts.components';
+import { WidgetIssuedTokensComponent } from 'src/components/widgets/widget-issued-tokens/widget-issued-tokens.component';
 import { WidgetMempoolComponent } from 'src/components/widgets/widget-mempool/widget-mempool.component';
 import { AppState } from 'src/store/app.store';
 
@@ -23,6 +24,9 @@ const MainComponent = () => {
         </div>
         <div className="bi-main__col">
           <WidgetCharts />
+        </div>
+        <div className="bi-main__col">
+          <WidgetIssuedTokensComponent />
         </div>
       </div>
     </div>

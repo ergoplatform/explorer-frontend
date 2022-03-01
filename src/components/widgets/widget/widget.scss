@@ -9,5 +9,14 @@ $widget-bg: #ffffff;
   background-color: $widget-bg;
   border-radius: 12px;
   padding: $grid-offset-step * 6;
+  padding-bottom: $grid-offset-step * 11;
   box-sizing: border-box;
+  min-height: 620px;
+  position: relative;
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-widget {
+    min-height: 400px;
+  }
 }

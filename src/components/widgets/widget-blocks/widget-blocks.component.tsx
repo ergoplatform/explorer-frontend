@@ -13,6 +13,7 @@ import { WidgetTable } from '../widget-table/widget-table.component';
 import './widget-charts.scss';
 import { TimestampComponent } from 'src/components/common/timestamp/timestamp.component';
 import { CoinValueComponent } from 'src/components/common/coin-value/coin-value.component';
+import { WidgetBody } from '../widget-body/widget-body.components';
 
 export const WidgetBlocks = ({ getBlocks, blocks }: any): JSX.Element => {
   useEffect(() => {
@@ -66,7 +67,7 @@ export const WidgetBlocks = ({ getBlocks, blocks }: any): JSX.Element => {
         {/*TODO Add dropdown*/}
       </div>
 
-      <div>
+      <WidgetBody>
         <WidgetTable
           headerTiles={[
             'common.block.height',
@@ -78,7 +79,7 @@ export const WidgetBlocks = ({ getBlocks, blocks }: any): JSX.Element => {
           data={tableData}
           // isFetching={props.blocks.fetching}
         />
-      </div>
+      </WidgetBody>
 
       <div className="bi-widget-charts__button">
         <WidgetButtonMore

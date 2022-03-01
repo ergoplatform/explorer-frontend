@@ -16,11 +16,23 @@ $widget-bg-hover: #f8f8f8;
   border-radius: 8px;
   padding: $grid-offset-step * 2;
   transition: background 300ms;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  max-width: 610px;
+  width: calc(100% - 30px);
+  bottom: 20px;
 
   align-items: center;
   justify-content: center;
 
   &:hover {
     background-color: $widget-bg-hover;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-widget-button-more {
+    width: calc(100% - 60px);
   }
 }

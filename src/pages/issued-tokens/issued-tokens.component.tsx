@@ -70,7 +70,6 @@ class IssuedTokens extends React.PureComponent<IDataProps, any> {
 
     if (JSON.stringify(params) !== JSON.stringify(this.params)) {
       this.params = params;
-
       this.reloadTokens(this.params);
     }
   }

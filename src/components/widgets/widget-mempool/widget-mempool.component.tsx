@@ -3,99 +3,105 @@ import { Widget } from '../widget/widget.components';
 import React, { useEffect, useMemo } from 'react';
 import { WidgetButtonMore } from '../widget-button-more/widget-button-more.component';
 import { WidgetTitle } from '../widget-title/widget-title.component';
-import { LatestBlocksIcon } from '../../common/icons/common.icons';
+import { MempoolIcon } from '../../common/icons/common.icons';
 import { bindActionCreators } from 'redux';
-import { BlockActions } from 'src/actions/block.actions';
 import { connect } from 'react-redux';
-import { AppState } from 'src/store/app.store';
 import { WidgetTable } from '../widget-table/widget-table.component';
 
-import './widget-charts.scss';
+import './widget-mempool.scss';
 import { TimestampComponent } from 'src/components/common/timestamp/timestamp.component';
-import { CoinValueComponent } from 'src/components/common/coin-value/coin-value.component';
+import { UnconfirmedTransactionsActions } from 'src/actions/unconfirmedTransactions.actions';
+import { getUnconfirmedTransactionsStructSelector } from 'src/selectors/unconfirmedTransactions';
+import { formatNumberMetricPrefix } from 'src/utils/formatNumberMetricPrefix';
+import { WidgetBody } from '../widget-body/widget-body.components';
 
-export const WidgetMempool = ({ getBlocks, blocks }: any): JSX.Element => {
+export const WidgetMempool = ({
+  getMempool,
+  unconfirmedTransactions,
+}: any): JSX.Element => {
   useEffect(() => {
-    getBlocks({ limit: 8 });
+    getMempool({ limit: 8 });
   }, []);
+
   const tableData = useMemo(() => {
-    return blocks?.blocks.reduce(
-      (
-        acc: any,
-        {
-          height,
-          timestamp,
-          miner: { address, name },
-          minerReward,
-          id,
-          transactionsCount,
-        }: any
-      ) => {
+    return unconfirmedTransactions.data?.items?.reduce(
+      (acc: any, { creationTimestamp, inputs, id, outputs, size }: any) => {
         return [
           ...acc,
           {
-            height: { value: height, link: true, linkValue: `/blocks/${id}` },
-            timestamp: {
-              value: <TimestampComponent vertical timestamp={timestamp} />,
-            },
-            minerAddress: {
-              value: name,
+            id: {
+              value: id.slice(0, 10),
               link: true,
-              linkValue: `/addresses/${address}`,
+              linkValue: `/transactions/${id}`,
             },
-            transactionsCount: {
-              value: transactionsCount,
+            creationTimestamp: {
+              value: (
+                <TimestampComponent vertical timestamp={creationTimestamp} />
+              ),
             },
-            minerReward: {
-              value: <CoinValueComponent value={minerReward} />,
+            inputs: {
+              value: inputs.length,
+            },
+            outputs: {
+              value: outputs.length,
+            },
+            size: {
+              value: (
+                <span className="u-word-wrap u-word-wrap--ellipsis">
+                  {formatNumberMetricPrefix(size, {
+                    desiredFormat: 'k',
+                  })}
+                  B
+                </span>
+              ),
             },
           },
         ];
       },
       []
     );
-  }, [blocks]);
+  }, [unconfirmedTransactions]);
 
   return (
     <Widget className="bi-widget-charts">
       <div className="g-flex  bi-widget-charts__header">
         <WidgetTitle
-          title={'common.navigation.latest-blocks'}
-          icon={<LatestBlocksIcon />}
+          title={'common.navigation.mempool'}
+          icon={<MempoolIcon />}
         />
-        {/*TODO Add dropdown*/}
       </div>
 
-      <div>
+      <WidgetBody>
         <WidgetTable
           headerTiles={[
-            'common.block.height',
-            'common.block.age',
-            'common.block.minedBy',
-            'common.block.transactions',
-            'common.block.minerReward',
+            'common.token.id',
+            'components.unconfirmed-transactions.creation-timestamp',
+            'components.unconfirmed-transactions.inputs-quantity',
+            'components.unconfirmed-transactions.outputs-quantity',
+            'common.block.size',
           ]}
           data={tableData}
         />
-      </div>
+      </WidgetBody>
 
       <div className="bi-widget-charts__button">
         <WidgetButtonMore
-          title={'components.widget.view-all-blocks'}
-          to={'/latest-blocks'}
+          title={'components.widget.view-all'}
+          to={'/mempool'}
         />
       </div>
     </Widget>
   );
 };
 
-function mapStateToProps(state: AppState): AppState {
-  return state;
-}
+const mapStateToProps = (state: any): any => ({
+  unconfirmedTransactions: getUnconfirmedTransactionsStructSelector(state),
+  offset: state.unconfirmedTransactions.offset,
+});
 
-function mapDispatchToProps(dispatch: any): any {
-  return bindActionCreators({ ...BlockActions }, dispatch);
-}
+const mapDispatchToProps = (dispatch: any): any => {
+  return bindActionCreators({ ...UnconfirmedTransactionsActions }, dispatch);
+};
 
 export const WidgetMempoolComponent = connect(
   mapStateToProps,
