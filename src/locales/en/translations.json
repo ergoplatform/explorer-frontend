@@ -342,6 +342,7 @@
     },
     "widget": {
       "view-all-charts": "View all Charts",
+      "view-all-blocks": "View all Blocks",
       "view-all": "View all"
     },
     "order-book": {

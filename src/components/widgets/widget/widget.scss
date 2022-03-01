@@ -9,4 +9,5 @@ $widget-bg: #ffffff;
   background-color: $widget-bg;
   border-radius: 12px;
   padding: $grid-offset-step * 6;
+  box-sizing: border-box;
 }

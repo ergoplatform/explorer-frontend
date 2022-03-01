@@ -17,6 +17,7 @@ import { PieChartComponent } from '../pie-chart/pie-chart.component';
 import { TimespanCompactComponent } from '../timespan-compact/timespan-compact.component';
 
 import './chart-compact.scss';
+import { InfoItem, StatsState } from 'src/reducers/stats.reducer';
 
 interface IChartCompactProps {
   chartType: string;
@@ -24,10 +25,11 @@ interface IChartCompactProps {
 
 interface IChartParams {
   timespan: TIMESPAN;
+  circulationSupply?: InfoItem;
 }
 
 class ChartCompact extends React.PureComponent<
-  ChartState & ChartActions & IChartCompactProps
+  ChartState & ChartActions & StatsState & IChartCompactProps
 > {
   state: IChartParams = {
     timespan: TIMESPAN.DAYS_30,
@@ -70,7 +72,11 @@ class ChartCompact extends React.PureComponent<
                   id={`components.chart.subtitle.${this.props.chartType}`}
                 />
               </div>
-              <div className="bi-chart-compact__amount">48,777,119 ERG</div>
+              <div className="bi-chart-compact__amount">
+                {String(
+                  this.props.info.find(({ title }) => title === 'supply')?.value
+                ).toUpperCase()}
+              </div>
             </div>
 
             {this.renderControls()}
@@ -185,7 +191,7 @@ class ChartCompact extends React.PureComponent<
 
   private setTimespan(timespan: TIMESPAN) {
     this.setState({ ...this.state, timespan });
-    this.props.getChart(this.props.chartType, this.state);
+    this.props.getChart(this.props.chartType, { timespan });
   }
 }
 
@@ -193,7 +199,7 @@ function mapStateToProps(
   state: AppState,
   props: IChartCompactProps
 ): ChartState {
-  return { ...state.chart, ...props };
+  return { ...state.chart, ...state.stats, ...props };
 }
 
 function mapDispatchToProps(dispatch: any): any {

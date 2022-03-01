@@ -1,0 +1,134 @@
+@import '../../../assets/styles/base/variables';
+
+// #BLOCKS TABLE
+//-------------------------------------
+$block-table-table-bg-color: #ffffff;
+$block-table-table-row-hover-bg-color: #f8f8f8;
+$block-table-table-border-color: #eeeeee;
+$block-table-cell-color: $theme-primary-color;
+
+
+.bi-widget-table {
+  display: table;
+  box-sizing: border-box;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  &__header {
+    display: table-header-group;
+    table-layout: fixed;
+  }
+
+  &__body {
+    display: table-row-group;
+  }
+
+  &__row {
+    display: table-row;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  &__cell {
+    display: table-cell;
+  }
+}
+
+
+.widget-table {
+  // [ Components ]
+  //----------------------------------
+  &__body {
+    width: 100%;
+    border: 1px solid $block-table-table-border-color;
+  }
+
+  &__row {
+    border-bottom: 0;
+    background-color: $block-table-table-bg-color;
+  }
+
+  .widget-table__row:nth-child(2n+1) {
+    background-color: $block-table-table-row-hover-bg-color;
+  }
+
+  &__cell {
+    padding: $grid-offset-step * 2 $grid-offset-step * 4;
+    border: 0;
+    color: $block-table-cell-color;
+    font-size: 13px;
+    font-weight: 300;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+
+    &:last-child {
+      align-self: flex-end;
+    }
+
+    // [ Mode ] Timestamp
+    &--timestamp {
+      width: 25%;
+    }
+
+    &--difficulty {
+      text-overflow: initial;
+      font-size: 11px;
+      padding: 0;
+    }
+  }
+
+  &-header {
+    .widget-table__cell {
+      font-weight: 500;
+    }
+  }
+
+  &__cell-name {
+    display: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .widget-table {
+    overflow: auto;
+    &__body {
+      border: 0;
+      overflow: auto;
+    }
+
+    &__row {
+      margin-bottom: $grid-offset-step * 2;
+      overflow: auto;
+    }
+    //   &:hover {
+    //     background-color: $block-table-table-bg-color;
+    //   }
+    // }
+
+    // &__cell {
+    //   display: flex;
+    //   padding: ($grid-offset-step * 2) ($grid-offset-step * 2);
+    //   border-right: 1px solid $block-table-table-border-color;
+    //   border-bottom: 0;
+    //   border-left: 1px solid $block-table-table-border-color;
+
+    //   justify-content: space-between;
+
+    //   .u-word-wrap {
+    //     max-width: 50%;
+    //   }
+
+    //   &--timestamp {
+    //     width: 100%;
+    //   }
+    // }
+
+    // &__cell-name {
+    //   display: block;
+    // }
+  }
+}

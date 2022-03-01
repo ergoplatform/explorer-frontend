@@ -14,4 +14,11 @@ $timestamp-date-color: #828795;
   &__date {
     color: $timestamp-date-color;
   }
+
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 }
