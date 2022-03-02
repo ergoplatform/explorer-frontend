@@ -33,6 +33,7 @@ Where `app.config.js` is a JavaScript file containing next content:
 ```js
 var __APP_CONFIG__ = {
   apiUrl: 'http://custom.apiserver',
+  apiBaseUrl: 'http://custom.apiserver', // for v1 api version
   alternativeLogo: true, // true by default
   environments: [
      {
