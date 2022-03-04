@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { AppState } from 'src/store/app.store';
 import { WidgetTable } from '../widget-table/widget-table.component';
 
-import './widget-charts.scss';
+import './widget-blocks.scss';
 import { TimestampComponent } from 'src/components/common/timestamp/timestamp.component';
 import { CoinValueComponent } from 'src/components/common/coin-value/coin-value.component';
 import { WidgetBody } from '../widget-body/widget-body.components';
@@ -58,8 +58,8 @@ export const WidgetBlocks = ({ getBlocks, blocks }: any): JSX.Element => {
   }, [blocks]);
 
   return (
-    <Widget className="bi-widget-charts">
-      <div className="g-flex  bi-widget-charts__header">
+    <Widget className="bi-widget-blocks">
+      <div className="g-flex  bi-widget-blocks__header">
         <WidgetTitle
           title={'common.navigation.latest-blocks'}
           icon={<LatestBlocksIcon />}
@@ -77,11 +77,11 @@ export const WidgetBlocks = ({ getBlocks, blocks }: any): JSX.Element => {
             'common.block.minerReward',
           ]}
           data={tableData}
-          // isFetching={props.blocks.fetching}
+          isFetching={!tableData}
         />
       </WidgetBody>
 
-      <div className="bi-widget-charts__button">
+      <div className="bi-widget-blocks__button">
         <WidgetButtonMore
           title={'components.widget.view-all-blocks'}
           to={'/latest-blocks'}

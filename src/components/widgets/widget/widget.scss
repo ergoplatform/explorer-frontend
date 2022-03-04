@@ -13,6 +13,7 @@ $widget-bg: #ffffff;
   box-sizing: border-box;
   min-height: 620px;
   position: relative;
+  height: 100%;
 }
 
 @media screen and (max-width: $mobile-device-width) {

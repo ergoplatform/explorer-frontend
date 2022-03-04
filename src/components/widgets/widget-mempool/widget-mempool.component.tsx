@@ -81,6 +81,7 @@ export const WidgetMempool = ({
             'common.block.size',
           ]}
           data={tableData}
+          isFetching={!tableData}
         />
       </WidgetBody>
 

@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
+import { isEmpty } from 'lodash';
 
 import './unconfirmed-transactions.scss';
 
@@ -154,6 +155,10 @@ class UnconfirmedTransactions extends React.PureComponent<IDataProps> {
 
     if (params.limit === 30) {
       delete params.limit;
+    }
+
+    if (isEmpty(queryString.stringify(params))) {
+      return;
     }
 
     this.props.history.push(`/mempool?${queryString.stringify(params)}`);

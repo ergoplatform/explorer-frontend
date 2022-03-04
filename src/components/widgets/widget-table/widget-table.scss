@@ -36,6 +36,13 @@ $block-table-cell-color: $theme-primary-color;
   }
 }
 
+.widget-table-loader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .widget-table {
   // [ Components ]

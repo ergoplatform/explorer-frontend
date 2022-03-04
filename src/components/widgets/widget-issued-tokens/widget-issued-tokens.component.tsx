@@ -64,6 +64,7 @@ export const WidgetIssuedTokens = ({ getTokens, tokens }: any): JSX.Element => {
             'common.token.decimals',
           ]}
           data={tableData}
+          isFetching={!tableData}
         />
       </WidgetBody>
       <div className="bi-widget-charts__button">

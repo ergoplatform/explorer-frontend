@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 import debounce from 'lodash.debounce';
 import queryString from 'query-string';
 import React from 'react';
@@ -65,6 +66,10 @@ class Search extends React.PureComponent<RouteComponentProps<{}>> {
   private onInputChanged(): void {
     const query = this.inputElement.value;
     const params = query ? { query } : {};
+    if (isEmpty(query)) {
+      this.props.history.push('/');
+      return;
+    }
 
     this.props.history.push(`/search?${queryString.stringify(params)}`);
   }

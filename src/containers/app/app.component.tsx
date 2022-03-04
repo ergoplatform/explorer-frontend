@@ -104,8 +104,6 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
               }
             >
               <Switch>
-                <Route exact path="/" component={DataComponent} />
-
                 <Route exact path="/rich-list" component={RichListComponent} />
 
                 <Route path="/blocks/:id" component={BlockComponent} />
@@ -179,7 +177,9 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                   component={OraclePoolListComponent}
                 />
 
-                <Route exact path="/main-page" component={MainComponent} />
+                <Route exact path="/" component={MainComponent} />
+
+                <Route exact path="/latest-blocks" component={DataComponent} />
 
                 <Route path="*" component={NotFoundComponent} />
               </Switch>
