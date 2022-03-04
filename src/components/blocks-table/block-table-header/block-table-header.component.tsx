@@ -11,7 +11,7 @@ import {
 
 import './blocks-table-header.scss';
 
-class BlockTableHeader extends React.Component<RouteComponentProps<any> & any> {
+class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
   render(): JSX.Element {
     return (
       <div className="bi-blocks-table-header bi-blocks-table__row bi-table__row">

@@ -15,7 +15,6 @@ import './blocks-table.scss';
 interface IBlockTableProps {
   blocks: SearchBlock[];
   isFetching: boolean;
-  type?: 'widget';
 }
 
 export class BlocksTableComponent extends React.Component<IBlockTableProps> {
@@ -30,7 +29,7 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
   private renderTable(): JSX.Element {
     return (
       <div className="bi-blocks-table__body bi-table">
-        <BlockTableHeaderComponent type={this.props.type} />
+        <BlockTableHeaderComponent />
 
         {this.props.blocks.map((block) => {
           return (
@@ -80,30 +79,26 @@ export class BlocksTableComponent extends React.Component<IBlockTableProps> {
                 <CoinValueComponent value={block.minerReward} />
               </div>
 
-              {this.props.type !== 'widget' && (
-                <div className="bi-blocks-table__cell bi-table__cell bi-blocks-table__cell--difficulty">
-                  <div className="bi-blocks-table__cell-name">
-                    <FormattedMessage id="common.block.difficulty" />
-                  </div>
-
-                  {block.difficulty}
+              <div className="bi-blocks-table__cell bi-table__cell bi-blocks-table__cell--difficulty">
+                <div className="bi-blocks-table__cell-name">
+                  <FormattedMessage id="common.block.difficulty" />
                 </div>
-              )}
 
-              {this.props.type !== 'widget' && (
-                <div className="bi-blocks-table__cell bi-table__cell">
-                  <div className="bi-blocks-table__cell-name">
-                    <FormattedMessage id="common.block.size" />
-                  </div>
+                {block.difficulty}
+              </div>
 
-                  <span className="u-word-wrap u-word-wrap--ellipsis">
-                    {formatNumberMetricPrefix(block.size, {
-                      desiredFormat: 'k',
-                    })}
-                    B
-                  </span>
+              <div className="bi-blocks-table__cell bi-table__cell">
+                <div className="bi-blocks-table__cell-name">
+                  <FormattedMessage id="common.block.size" />
                 </div>
-              )}
+
+                <span className="u-word-wrap u-word-wrap--ellipsis">
+                  {formatNumberMetricPrefix(block.size, {
+                    desiredFormat: 'k',
+                  })}
+                  B
+                </span>
+              </div>
             </div>
           );
         })}
