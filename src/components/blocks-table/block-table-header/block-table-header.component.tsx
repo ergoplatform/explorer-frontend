@@ -16,116 +16,86 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any> & any> {
     return (
       <div className="bi-blocks-table-header bi-blocks-table__row bi-table__row">
         <div className="bi-blocks-table__cell bi-table__cell">
-          {this.props.type !== 'widget' ? (
-            <Link
-              className={this.getSortDirectionClassName('height')}
-              to={`/?${this.getSortLink('height')}`}
-            >
-              <FormattedMessage id="common.block.height" />
+          <Link
+            className={this.getSortDirectionClassName('height')}
+            to={`/?${this.getSortLink('height')}`}
+          >
+            <FormattedMessage id="common.block.height" />
 
-              <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
-              <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
-              <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
-            </Link>
-          ) : (
-            <span className={this.getSortDirectionClassName('height')}>
-              <FormattedMessage id="common.block.height" />
-            </span>
-          )}
+            <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
+            <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
+            <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
+          </Link>
         </div>
 
         <div className="bi-blocks-table__cell bi-blocks-table__cell--timestamp bi-table__cell">
-          {this.props.type !== 'widget' ? (
-            <Link
-              className={this.getSortDirectionClassName('timestamp')}
-              to={`/?${this.getSortLink('timestamp')}`}
-            >
-              <FormattedMessage id="common.block.age" />
+          <Link
+            className={this.getSortDirectionClassName('timestamp')}
+            to={`/?${this.getSortLink('timestamp')}`}
+          >
+            <FormattedMessage id="common.block.age" />
 
-              <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
-              <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
-              <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
-            </Link>
-          ) : (
-            <span className={this.getSortDirectionClassName('timestamp')}>
-              <FormattedMessage id="common.block.age" />
-            </span>
-          )}
+            <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
+            <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
+            <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
+          </Link>
         </div>
 
         <div className="bi-blocks-table__cell bi-table__cell">
-          {this.props.type !== 'widget' ? (
-            <Link
-              className={this.getSortDirectionClassName('transactionscount')}
-              to={`/?${this.getSortLink('transactionscount')}`}
-            >
-              <FormattedMessage id="common.block.transactions" />
+          <Link
+            className={this.getSortDirectionClassName('transactionscount')}
+            to={`/?${this.getSortLink('transactionscount')}`}
+          >
+            <FormattedMessage id="common.block.transactions" />
 
-              <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
-              <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
-              <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
-            </Link>
-          ) : (
-            <span
-              className={this.getSortDirectionClassName('transactionscount')}
-            >
-              <FormattedMessage id="common.block.transactions" />
-            </span>
-          )}
+            <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
+            <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
+            <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
+          </Link>
         </div>
 
         <div className="bi-blocks-table__cell bi-table__cell">
           <FormattedMessage id="common.block.minedBy" />
         </div>
 
-        {this.props.type !== 'widget' ? (
-          <div className="bi-blocks-table__cell bi-table__cell">
-            <Link
-              className={this.getSortDirectionClassName('minerreward')}
-              to={`/?${this.getSortLink('minerreward')}`}
-            >
-              <FormattedMessage id="common.block.minerReward" />
-
-              <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
-              <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
-              <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
-            </Link>
-          </div>
-        ) : (
-          <span className="bi-blocks-table__cell bi-table__cell">
+        <div className="bi-blocks-table__cell bi-table__cell">
+          <Link
+            className={this.getSortDirectionClassName('minerreward')}
+            to={`/?${this.getSortLink('minerreward')}`}
+          >
             <FormattedMessage id="common.block.minerReward" />
-          </span>
-        )}
 
-        {this.props.type !== 'widget' && (
-          <div className="bi-blocks-table__cell bi-table__cell">
-            <Link
-              className={this.getSortDirectionClassName('difficulty')}
-              to={`/?${this.getSortLink('difficulty')}`}
-            >
-              <FormattedMessage id="common.block.difficulty" />
+            <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
+            <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
+            <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
+          </Link>
+        </div>
 
-              <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
-              <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
-              <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
-            </Link>
-          </div>
-        )}
+        <div className="bi-blocks-table__cell bi-table__cell">
+          <Link
+            className={this.getSortDirectionClassName('difficulty')}
+            to={`/?${this.getSortLink('difficulty')}`}
+          >
+            <FormattedMessage id="common.block.difficulty" />
 
-        {this.props.type !== 'widget' && (
-          <div className="bi-blocks-table__cell bi-table__cell">
-            <Link
-              className={this.getSortDirectionClassName('size')}
-              to={`/?${this.getSortLink('size')}`}
-            >
-              <FormattedMessage id="common.block.size" />
+            <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
+            <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
+            <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
+          </Link>
+        </div>
 
-              <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
-              <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
-              <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
-            </Link>
-          </div>
-        )}
+        <div className="bi-blocks-table__cell bi-table__cell">
+          <Link
+            className={this.getSortDirectionClassName('size')}
+            to={`/?${this.getSortLink('size')}`}
+          >
+            <FormattedMessage id="common.block.size" />
+
+            <SortDirectionIcon className="bi-blocks-table-header__sort-icon" />
+            <SortDirectionAscIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--asc" />
+            <SortDirectionDescIcon className="bi-blocks-table-header__sort-icon bi-blocks-table-header__sort-icon--desc" />
+          </Link>
+        </div>
       </div>
     );
   }
