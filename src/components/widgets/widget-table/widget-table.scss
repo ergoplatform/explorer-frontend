@@ -116,31 +116,5 @@ $block-table-cell-color: $theme-primary-color;
       margin-bottom: $grid-offset-step * 2;
       overflow: auto;
     }
-    //   &:hover {
-    //     background-color: $block-table-table-bg-color;
-    //   }
-    // }
-
-    // &__cell {
-    //   display: flex;
-    //   padding: ($grid-offset-step * 2) ($grid-offset-step * 2);
-    //   border-right: 1px solid $block-table-table-border-color;
-    //   border-bottom: 0;
-    //   border-left: 1px solid $block-table-table-border-color;
-
-    //   justify-content: space-between;
-
-    //   .u-word-wrap {
-    //     max-width: 50%;
-    //   }
-
-    //   &--timestamp {
-    //     width: 100%;
-    //   }
-    // }
-
-    // &__cell-name {
-    //   display: block;
-    // }
   }
 }
