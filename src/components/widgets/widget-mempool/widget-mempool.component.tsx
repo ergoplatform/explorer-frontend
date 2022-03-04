@@ -1,5 +1,4 @@
 import { Widget } from '../widget/widget.components';
-// import ChartCompactComponent from '../../charts/chart-compact/chart-compact.component';
 import React, { useEffect, useMemo } from 'react';
 import { WidgetButtonMore } from '../widget-button-more/widget-button-more.component';
 import { WidgetTitle } from '../widget-title/widget-title.component';
