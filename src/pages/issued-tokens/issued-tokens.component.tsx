@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
-import { debounce } from 'lodash';
+import { debounce, isEmpty } from 'lodash';
 
 import { AppState } from '../../store/app.store';
 
@@ -70,7 +70,6 @@ class IssuedTokens extends React.PureComponent<IDataProps, any> {
 
     if (JSON.stringify(params) !== JSON.stringify(this.params)) {
       this.params = params;
-
       this.reloadTokens(this.params);
     }
   }
@@ -197,6 +196,10 @@ class IssuedTokens extends React.PureComponent<IDataProps, any> {
 
     if (params.limit === 30) {
       delete params.limit;
+    }
+
+    if (isEmpty(queryString.stringify(params))) {
+      return;
     }
 
     this.props.history.push(`/issued-tokens?${queryString.stringify(params)}`);

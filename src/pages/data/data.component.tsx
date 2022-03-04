@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators } from 'redux';
+import { isEmpty } from 'lodash';
 
 import './data.scss';
 
@@ -141,7 +142,7 @@ class Data extends React.PureComponent<IDataProps> {
 
     params.offset = page * this.params.limit;
 
-    return `/?${queryString.stringify(params)}`;
+    return `/latest-blocks?${queryString.stringify(params)}`;
   }
 
   private getLimitLink(limit: number): string {
@@ -149,7 +150,7 @@ class Data extends React.PureComponent<IDataProps> {
 
     params.limit = limit;
 
-    return `/?${queryString.stringify(params)}`;
+    return `/latest-blocks?${queryString.stringify(params)}`;
   }
 
   private reloadBlocks(params: IGetBlocksParams): void {
@@ -176,7 +177,11 @@ class Data extends React.PureComponent<IDataProps> {
       delete params.limit;
     }
 
-    this.props.history.push(`/?${queryString.stringify(params)}`);
+    if (isEmpty(queryString.stringify(params))) {
+      return;
+    }
+
+    this.props.history.push(`/latest-blocks?${queryString.stringify(params)}`);
   }
 
   private getParams(): any {

@@ -342,6 +342,7 @@
     },
     "widget": {
       "view-all-charts": "View all Charts",
+      "view-all-blocks": "View all Blocks",
       "view-all": "View all"
     },
     "order-book": {
@@ -354,7 +355,7 @@
       "title": "Mempool",
       "inputs-quantity": "Inputs",
       "outputs-quantity": "Outputs",
-      "creation-timestamp": "Creation Timestamp"
+      "creation-timestamp": "Timestamp"
     },
     "unconfirmed-transaction": {
       "title": "Transaction",

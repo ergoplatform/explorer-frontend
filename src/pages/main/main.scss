@@ -1,0 +1,40 @@
+@import '../../assets/styles/base/variables';
+
+.bi-main {
+  padding: ($grid-offset-step * 10) ($grid-offset-step * 10);
+  font-family: $theme-main-font;
+  box-sizing: border-box;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: space-between;
+    grid-gap: 20px;
+  }
+
+}
+
+
+@media screen and (max-width: $laptop-device-width) {
+  .bi-main {
+    padding: ($grid-offset-step * 5) 20px;
+
+    &__container {
+      grid-template-columns: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-device-width) {
+  .bi-main {
+    padding: ($grid-offset-step * 5) 20px;
+
+    &__container {
+      grid-template-columns: 100%;
+    }
+
+    &__col {
+      max-width: 100%;
+    }
+  }
+}

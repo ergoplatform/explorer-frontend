@@ -25,11 +25,13 @@ $chart-subtitle-color: #666666;
     border-radius: 12px;
     padding: $grid-offset-step * 4;
     background-color: $chart-bg;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   &__chart {
     height: 100vh;
-    max-height: 512px;
+    max-height: 348px;
     margin-top: $grid-offset-step * 3;
   }
 
