@@ -1,5 +1,5 @@
 import { Widget } from '../widget/widget.components';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { WidgetButtonMore } from '../widget-button-more/widget-button-more.component';
 import { WidgetTitle } from '../widget-title/widget-title.component';
 import { MempoolIcon } from '../../common/icons/common.icons';
@@ -13,14 +13,16 @@ import { UnconfirmedTransactionsActions } from 'src/actions/unconfirmedTransacti
 import { getUnconfirmedTransactionsStructSelector } from 'src/selectors/unconfirmedTransactions';
 import { formatNumberMetricPrefix } from 'src/utils/formatNumberMetricPrefix';
 import { WidgetBody } from '../widget-body/widget-body.components';
+import useInterval from "../../../hooks/useInterval";
+import {WIDGET_REFRESH_INTERVAL} from "../../../constants/global.constants";
 
 export const WidgetMempool = ({
   getMempool,
   unconfirmedTransactions,
 }: any): JSX.Element => {
-  useEffect(() => {
+  useInterval(() => {
     getMempool({ limit: 8 });
-  }, []);
+  }, WIDGET_REFRESH_INTERVAL);
 
   const tableData = useMemo(() => {
     return unconfirmedTransactions.data?.items?.reduce(

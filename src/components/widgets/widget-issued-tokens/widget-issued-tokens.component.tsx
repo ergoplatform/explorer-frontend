@@ -1,5 +1,5 @@
 import { Widget } from '../widget/widget.components';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { WidgetButtonMore } from '../widget-button-more/widget-button-more.component';
 import { WidgetTitle } from '../widget-title/widget-title.component';
 import { IssuedTokensIcon } from '../../common/icons/common.icons';
@@ -12,11 +12,13 @@ import './widget-issued-tokens.scss';
 import { getAllIssuedTokensStructSelector } from 'src/selectors/issuedTokens';
 import { IssuedTokensActions } from 'src/actions/issuedTokens.actions';
 import { WidgetBody } from '../widget-body/widget-body.components';
+import useInterval from "../../../hooks/useInterval";
+import {WIDGET_REFRESH_INTERVAL} from "../../../constants/global.constants";
 
 export const WidgetIssuedTokens = ({ getTokens, tokens }: any): JSX.Element => {
-  useEffect(() => {
+  useInterval(() => {
     getTokens({ limit: 8 });
-  }, []);
+  }, WIDGET_REFRESH_INTERVAL);
 
   const tableData = useMemo(() => {
     return tokens.data?.items?.reduce(
