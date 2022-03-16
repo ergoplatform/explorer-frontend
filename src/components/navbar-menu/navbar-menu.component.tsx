@@ -30,13 +30,34 @@ import {
 type INavbarMenuProps = SettingsActions & { settings: SettingsState };
 
 class NavbarMenu extends React.Component<INavbarMenuProps> {
+  private wrapperRef: any;
   constructor(props: INavbarMenuProps) {
     super(props);
+    this.wrapperRef = React.createRef();
+
+    this.handleClickOutside = this.handleClickOutside.bind(this);
     this.hideSidebar = this.hideSidebar.bind(this);
   }
   hideSidebar(): void {
     this.props.setSidebarDisplayStatus(false);
   }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  handleClickOutside(event: MouseEvent) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+      if (this.props.settings.isSidebarDisplayed) {
+        this.hideSidebar()
+      }
+    }
+  }
+
   render(): JSX.Element {
     const navClassNames = classNames({
       'bi-navbar-menu': true,
@@ -44,8 +65,8 @@ class NavbarMenu extends React.Component<INavbarMenuProps> {
     });
 
     return (
-      <nav className={navClassNames}>
-        <ul className="bi-navbar-menu__wrapper g-flex">
+      <nav className={navClassNames} ref={this.wrapperRef}>
+        <ul className="bi-navbar-menu__wrapper g-flex" onClick={this.hideSidebar}>
           <li className="bi-nav-dropdown">
             <a className="bi-nav-dropdown__link g-flex" href="#">
               <FormattedMessage id={'common.navigation.resources'} />

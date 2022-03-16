@@ -65,8 +65,8 @@ $nav-dropdown-border: rgba(0, 0, 0, .1);
       }
 
       .bi-navbar-menu__wrapper {
-        padding-top: $grid-offset-step * 14;
-        padding-bottom: $grid-offset-step * 6;
+        margin-top: $grid-offset-step * 14;
+        marging-bottom: $grid-offset-step * 6;
         flex-direction: column;
       }
 
