@@ -18,6 +18,7 @@ import { TimespanCompactComponent } from '../timespan-compact/timespan-compact.c
 
 import './chart-compact.scss';
 import { InfoItem, StatsState } from 'src/reducers/stats.reducer';
+import {WIDGET_REFRESH_INTERVAL} from "../../../constants/global.constants";
 
 interface IChartCompactProps {
   chartType: string;
@@ -34,6 +35,7 @@ class ChartCompact extends React.PureComponent<
   state: IChartParams = {
     timespan: TIMESPAN.DAYS_30,
   };
+  private interval: any;
 
   constructor(props: any) {
     super(props);
@@ -42,6 +44,15 @@ class ChartCompact extends React.PureComponent<
   }
 
   componentDidMount(): void {
+    this.updateChart()
+    this.interval = setInterval(this.updateChart.bind(this), WIDGET_REFRESH_INTERVAL);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  updateChart(){
     this.props.getChart(this.props.chartType, this.state);
   }
 

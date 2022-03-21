@@ -1,5 +1,5 @@
 import { Widget } from '../widget/widget.components';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { WidgetButtonMore } from '../widget-button-more/widget-button-more.component';
 import { WidgetTitle } from '../widget-title/widget-title.component';
 import { LatestBlocksIcon } from '../../common/icons/common.icons';
@@ -13,11 +13,14 @@ import './widget-blocks.scss';
 import { TimestampComponent } from 'src/components/common/timestamp/timestamp.component';
 import { CoinValueComponent } from 'src/components/common/coin-value/coin-value.component';
 import { WidgetBody } from '../widget-body/widget-body.components';
+import {WIDGET_REFRESH_INTERVAL} from "../../../constants/global.constants";
+import useInterval from "../../../hooks/useInterval";
 
 export const WidgetBlocks = ({ getBlocks, blocks }: any): JSX.Element => {
-  useEffect(() => {
+  useInterval(() => {
     getBlocks({ limit: 8 });
-  }, []);
+  }, WIDGET_REFRESH_INTERVAL);
+
   const tableData = useMemo(() => {
     return blocks?.blocks.reduce(
       (
