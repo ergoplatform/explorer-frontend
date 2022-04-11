@@ -54,7 +54,7 @@ const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
       },
     },
     title: 'components.sidebar-menu.items.data',
-    url: '/',
+    url: '/latest-blocks',
   },
   {
     icon: (
