@@ -47,6 +47,15 @@ export class TransactionRawScriptsComponent extends React.PureComponent<ITransac
                   );
                 }
 
+                if (key === 'ergoTreeScript' || key === 'ergoTreeConstants') {
+                  const humanRepresentation = item[key]
+                  return (
+                    <li key={key}>
+                      <b>{key}</b>:<pre>{humanRepresentation}</pre>
+                    </li>
+                  )
+                }
+
                 if (typeof item[key] === 'object') {
                   return (
                     <li key={key}>
