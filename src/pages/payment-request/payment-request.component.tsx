@@ -107,6 +107,7 @@ export default class PaymentRequestComponent extends React.PureComponent<IPaymen
                 )}
               </button>
             </div>
+
             <a
               className="bi-payment-request__mobile-app-link"
               href={mobileAppLink}

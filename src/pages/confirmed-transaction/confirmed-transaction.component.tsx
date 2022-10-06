@@ -113,7 +113,7 @@ const ConfirmedTransaction = (props: any) => {
               summary={{
                 size: transaction.size,
                 timestamp: transaction.timestamp,
-                blockId: transaction.id,
+                blockId: transaction.blockId,
                 inclusionHeight: transaction.inclusionHeight,
                 numConfirmations: transaction.numConfirmations,
               }}
