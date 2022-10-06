@@ -13,14 +13,13 @@ import './widget-blocks.scss';
 import { TimestampComponent } from 'src/components/common/timestamp/timestamp.component';
 import { CoinValueComponent } from 'src/components/common/coin-value/coin-value.component';
 import { WidgetBody } from '../widget-body/widget-body.components';
-import {WIDGET_REFRESH_INTERVAL} from "../../../constants/global.constants";
-import useInterval from "../../../hooks/useInterval";
+import { WIDGET_REFRESH_INTERVAL } from '../../../constants/global.constants';
+import useInterval from '../../../hooks/useInterval';
 
 export const WidgetBlocks = ({ getBlocks, blocks }: any): JSX.Element => {
   useInterval(() => {
     getBlocks({ limit: 8 });
   }, WIDGET_REFRESH_INTERVAL);
-
   const tableData = useMemo(() => {
     return blocks?.blocks.reduce(
       (
@@ -79,7 +78,7 @@ export const WidgetBlocks = ({ getBlocks, blocks }: any): JSX.Element => {
             'common.block.minerReward',
           ]}
           data={tableData}
-          isFetching={!tableData}
+          isFetching={blocks.fetching}
         />
       </WidgetBody>
 
