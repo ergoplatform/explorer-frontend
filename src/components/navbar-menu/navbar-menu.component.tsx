@@ -26,6 +26,7 @@ import {
   ExternalLinkIcon,
   CloseIcon,
 } from '../common/icons/common.icons';
+import environment from 'src/config/environment';
 
 type INavbarMenuProps = SettingsActions & { settings: SettingsState };
 
@@ -155,7 +156,7 @@ class NavbarMenu extends React.Component<INavbarMenuProps> {
               </li>
               <li className="bi-nav-dropdown__item">
                 <a
-                  href="https://api.ergoplatform.com/api/v1/docs/"
+                  href={`${environment.apiUrlV1}/docs/`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
