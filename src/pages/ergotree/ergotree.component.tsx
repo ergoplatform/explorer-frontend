@@ -5,7 +5,7 @@ import environment from 'src/config/environment';
 import './ergotree.scss';
 
 export default class ErgotreeComponent extends React.Component<{}, {hashedScript: string, constants: string, humanScript: string}> {
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
     this.state = {
       hashedScript: 'Please paste your favorite hashed ergo script.',
@@ -34,6 +34,11 @@ export default class ErgotreeComponent extends React.Component<{}, {hashedScript
         }
         this.setState({hashedScript: this.state.hashedScript, constants: response.data.constants, humanScript: response.data.script});
         return Promise.resolve("");
+      })
+      .catch((error) => {
+        if (error.response.status === 400) {
+          this.setState({hashedScript: this.state.hashedScript, constants: this.state.constants, humanScript: error.response.data.reason});
+        }
       });
   }
 
@@ -42,7 +47,7 @@ export default class ErgotreeComponent extends React.Component<{}, {hashedScript
       <div style={{padding: "15px"}}>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <textarea className="bi-textarea" value={this.state.hashedScript} onChange={this.handleChange} />
+            <textarea className="bi-textarea" placeholder={this.state.hashedScript} onChange={this.handleChange} />
           </div>
           <div>
             <input type="submit" value="Convert to human readable script" />
