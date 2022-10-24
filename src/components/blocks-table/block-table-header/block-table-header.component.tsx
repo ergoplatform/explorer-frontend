@@ -18,7 +18,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
         <div className="bi-blocks-table__cell bi-table__cell">
           <Link
             className={this.getSortDirectionClassName('height')}
-            to={`/?${this.getSortLink('height')}`}
+            to={`/latest-blocks?${this.getSortLink('height')}`}
           >
             <FormattedMessage id="common.block.height" />
 
@@ -31,7 +31,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
         <div className="bi-blocks-table__cell bi-blocks-table__cell--timestamp bi-table__cell">
           <Link
             className={this.getSortDirectionClassName('timestamp')}
-            to={`/?${this.getSortLink('timestamp')}`}
+            to={`/latest-blocks?${this.getSortLink('timestamp')}`}
           >
             <FormattedMessage id="common.block.age" />
 
@@ -44,7 +44,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
         <div className="bi-blocks-table__cell bi-table__cell">
           <Link
             className={this.getSortDirectionClassName('transactionscount')}
-            to={`/?${this.getSortLink('transactionscount')}`}
+            to={`/latest-blocks?${this.getSortLink('transactionscount')}`}
           >
             <FormattedMessage id="common.block.transactions" />
 
@@ -61,7 +61,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
         <div className="bi-blocks-table__cell bi-table__cell">
           <Link
             className={this.getSortDirectionClassName('minerreward')}
-            to={`/?${this.getSortLink('minerreward')}`}
+            to={`/latest-blocks?${this.getSortLink('minerreward')}`}
           >
             <FormattedMessage id="common.block.minerReward" />
 
@@ -74,7 +74,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
         <div className="bi-blocks-table__cell bi-table__cell">
           <Link
             className={this.getSortDirectionClassName('difficulty')}
-            to={`/?${this.getSortLink('difficulty')}`}
+            to={`/latest-blocks?${this.getSortLink('difficulty')}`}
           >
             <FormattedMessage id="common.block.difficulty" />
 
@@ -87,7 +87,7 @@ class BlockTableHeader extends React.Component<RouteComponentProps<any>> {
         <div className="bi-blocks-table__cell bi-table__cell">
           <Link
             className={this.getSortDirectionClassName('size')}
-            to={`/?${this.getSortLink('size')}`}
+            to={`/latest-blocks?${this.getSortLink('size')}`}
           >
             <FormattedMessage id="common.block.size" />
 

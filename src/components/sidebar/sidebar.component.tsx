@@ -39,6 +39,7 @@ import {
   StatsIcon,
   // DiagramIcon,
 } from '../common/icons/common.icons';
+import environment from 'src/config/environment';
 
 const SIDEBAR_MENU_ITEMS: ISidebarMenuItem[] = [
   {
@@ -120,7 +121,7 @@ const EXTERNAL_MENU_ITEMS: ISidebarMenuItem[] = [
     external: true,
     icon: <ApiIcon className="bi-sidebar-menu__item-icon g-flex__item-fixed" />,
     title: 'components.sidebar-menu.items.api',
-    url: 'https://api.ergoplatform.com/api/v1/docs/',
+    url: `${environment.apiUrlV1}/docs/`,
   },
   {
     external: true,

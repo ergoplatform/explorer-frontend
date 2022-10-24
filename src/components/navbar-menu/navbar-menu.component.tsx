@@ -26,6 +26,7 @@ import {
   ExternalLinkIcon,
   CloseIcon,
 } from '../common/icons/common.icons';
+import environment from 'src/config/environment';
 
 type INavbarMenuProps = SettingsActions & { settings: SettingsState };
 
@@ -43,17 +44,17 @@ class NavbarMenu extends React.Component<INavbarMenuProps> {
   }
 
   componentDidMount() {
-    document.addEventListener("mousedown", this.handleClickOutside);
+    document.addEventListener('mousedown', this.handleClickOutside);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
+    document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
   handleClickOutside(event: MouseEvent) {
     if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
       if (this.props.settings.isSidebarDisplayed) {
-        this.hideSidebar()
+        this.hideSidebar();
       }
     }
   }
@@ -66,7 +67,10 @@ class NavbarMenu extends React.Component<INavbarMenuProps> {
 
     return (
       <nav className={navClassNames} ref={this.wrapperRef}>
-        <ul className="bi-navbar-menu__wrapper g-flex" onClick={this.hideSidebar}>
+        <ul
+          className="bi-navbar-menu__wrapper g-flex"
+          onClick={this.hideSidebar}
+        >
           <li className="bi-nav-dropdown">
             <a className="bi-nav-dropdown__link g-flex" href="#">
               <FormattedMessage id={'common.navigation.resources'} />
@@ -74,7 +78,7 @@ class NavbarMenu extends React.Component<INavbarMenuProps> {
             </a>
             <ul className="bi-nav-dropdown__list">
               <li className="bi-nav-dropdown__item">
-                <Link to="/">
+                <Link to="/latest-blocks">
                   <LatestBlocksIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--item" />
                   <FormattedMessage id={'common.navigation.latest-blocks'} />
                 </Link>
@@ -152,7 +156,7 @@ class NavbarMenu extends React.Component<INavbarMenuProps> {
               </li>
               <li className="bi-nav-dropdown__item">
                 <a
-                  href="https://api.ergoplatform.com/api/v1/docs/"
+                  href={`${environment.apiUrlV1}/docs/`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

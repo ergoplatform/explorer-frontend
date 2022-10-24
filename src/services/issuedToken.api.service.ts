@@ -16,7 +16,7 @@ export class IssuedTokensService {
       GET_ALL_ISSUED_TOKENS_STRUCT,
       {
         method: 'get',
-        url: `https://api.ergoplatform.com/api/v1/tokens`,
+        url: `${environment.apiUrlV1}/tokens`,
         params: {
           limit,
           offset,
@@ -36,7 +36,7 @@ export class IssuedTokensService {
       GET_ALL_ISSUED_TOKENS_STRUCT,
       {
         method: 'get',
-        url: `https://api.ergoplatform.com/api/v1/tokens/search`,
+        url: `${environment.apiUrlV1}/tokens/search`,
         params: {
           limit,
           offset,
@@ -54,7 +54,7 @@ export class IssuedTokensService {
       GET_TOTAL_ISSUED_TOKENS_STRUCT,
       {
         method: 'get',
-        url: `https://api.ergoplatform.com/api/v1/tokens`,
+        url: `${environment.apiUrlV1}/api/v1/tokens`,
         params: {
           limit,
         },
