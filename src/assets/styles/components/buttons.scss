@@ -2,6 +2,11 @@
 
 // #BUTTONS
 //----------------------------------
+
+$widget-button-color: #000000;
+$widget-border-color: rgba(0, 0, 0, .15);
+$widget-bg-hover: #f8f8f8;
+
 .bi-btn {
   cursor: pointer;
 
@@ -13,5 +18,31 @@
 
   &--link {
     color: $theme-color-blue;
+  }
+}
+
+
+.btn-black {
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  border: 1px solid $widget-border-color;
+  border-radius: 8px;
+  padding: $grid-offset-step * 2;
+  transition: all 300ms;
+  box-sizing: border-box;
+  background: black;
+
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background:rgba(0, 0, 0, 0.80);
+  }
+
+
+  &:active {
+    background:rgba(0, 0, 0, 0.60);
   }
 }

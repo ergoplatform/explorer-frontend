@@ -53,6 +53,9 @@
       "unconfirmed-transaction": {
         "title": "Ergo Explorer | Transaction {id}"
       },
+      "print-ergo-tree": {
+        "title": "Ergo Explorer | Pretty print ergo tree"
+      },
       "chart": {
         "title": {
           "block-size": "Ergo Explorer | Average Block Size",
@@ -150,6 +153,9 @@
     },
     "address": {
       "title": "{coinName} Address"
+    },
+    "print-ergo-tree": {
+      "title": "Pretty print ergo tree"
     },
     "block-header": {
       "adproofs": "AD Proofs",

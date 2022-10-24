@@ -18,7 +18,6 @@ import {
   ChartsIcon,
   StatsIcon,
   IssuedTokensIcon,
-  RichListIcon,
   WalletsIcon,
   ApiIcon,
   MonitorIcon,
@@ -127,12 +126,6 @@ class NavbarMenu extends React.Component<INavbarMenuProps> {
                 <Link to="/issued-tokens">
                   <IssuedTokensIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--item" />
                   <FormattedMessage id={'common.navigation.issued-tokens'} />
-                </Link>
-              </li>
-              <li className="bi-nav-dropdown__item">
-                <Link to="/rich-list">
-                  <RichListIcon className="bi-nav-dropdown__icon bi-nav-dropdown__icon--item" />
-                  <FormattedMessage id={'common.navigation.rich-list'} />
                 </Link>
               </li>
             </ul>
