@@ -101,7 +101,7 @@ export class AddressApiService {
       GET_ADDRESSES_BALANCES_STRUCT,
       {
         method: 'get',
-        url: `https://ergo.watch/api/v0/lists/addresses/by/balance?limit=100`,
+        url: `https://api.ergo.watch/lists/addresses/by/balance?limit=100`,
       },
       {
         dispatch,
