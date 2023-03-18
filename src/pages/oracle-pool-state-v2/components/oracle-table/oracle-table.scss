@@ -1,0 +1,103 @@
+@import '../../../../assets/styles/base/variables';
+
+.oracle-table {
+  border: 1px solid #d9d9da;
+
+  &__header {
+    padding: 16px 20px;
+    background: #f8f8f8;
+    height: 60px;
+    border-bottom: 1px solid #d9d9da;
+  }
+
+  &__title {
+    font-size: 22px;
+    line-height: 26px;
+    color: black;
+  }
+
+  &__item {
+    padding: 20px;
+    background: white;
+  }
+
+  &__body {
+    & > div {
+      & + div {
+        border-top: 1px solid #d9d9da;
+      }
+    }
+  }
+}
+
+.oracle-table-item-body {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: black;
+  margin-top: 20px;
+  word-break: break-all;
+
+  &--mobile {
+    display: none;
+    max-width: 255px;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    word-break: normal;
+
+    @media (max-width: $mobile-device-width) {
+      display: block;
+    }
+  }
+}
+
+.oracle-table-item-header {
+  display: flex;
+  justify-content: space-between;
+
+  &__right-side {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  &__opacity-paragraph {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    margin-right: 24px;
+    position: relative;
+    width: 118px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @media (max-width: $mobile-device-width) {
+      display: none;
+    }
+  }
+
+  &__copy {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 12px;
+  }
+
+  &__link {
+    font-size: 14px;
+    line-height: 14px;
+    color: #0078ff;
+    cursor: pointer;
+  }
+}

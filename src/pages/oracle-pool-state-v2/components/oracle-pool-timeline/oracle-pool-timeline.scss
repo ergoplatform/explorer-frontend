@@ -1,0 +1,252 @@
+.or-timeline {
+  border: 1px solid #d9d9da;
+  box-sizing: border-box;
+  padding: 120px 32px;
+  background-color: #fff;
+  margin-top: 30px;
+  position: relative;
+  min-height: 256px;
+  display: flex;
+  align-items: flex-end;
+
+  @media (max-width: 1399px) {
+    display: none;
+  }
+
+  &__dots {
+    position: absolute;
+    right: 18px;
+    padding: 0 12px;
+    top: -12px;
+    background-color: white;
+  }
+
+  &__line {
+    background: linear-gradient(90deg, #232526 0%, #797d80 100%);
+    height: 2px;
+    width: 100%;
+    position: relative;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: -11px;
+    left: 65px;
+
+    &--right {
+      right: 70px;
+      left: initial;
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.circle-group {
+  position: relative;
+  top: -10px;
+  left: 0;
+
+  &--small {
+    top: -7px;
+
+    .circle-group__line-text {
+      top: 4px;
+      left: -60px;
+      width: 120px;
+      text-align: center;
+      color: #797d80;
+    }
+  }
+
+  &--end {
+    .path {
+      stroke-dashoffset: 10;
+      stroke-dasharray: 20;
+      animation: dash 25s linear infinite forwards reverse;
+    }
+  }
+
+  &--left {
+    .path {
+      stroke-dashoffset: 10;
+      stroke-dasharray: 20;
+      animation: dash 25s linear infinite forwards reverse;
+    }
+
+    @keyframes dash {
+      from {
+        stroke-dashoffset: 822;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .circle-group__line {
+      left: -60px;
+    }
+
+    .circle-group__card {
+      right: 0 !important;
+    }
+  }
+
+  &__card {
+    position: absolute;
+    width: 120px;
+    height: 70px;
+    top: -90px;
+    padding: 30px 18px 8px 8px;
+    font-size: 14px;
+    line-height: 16px;
+    background: #ffffff;
+    border: 0.5px solid #d9d9da;
+    box-sizing: border-box;
+    border-radius: 3px;
+
+    &--green {
+      &::after {
+        content: '';
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        border-radius: 25px;
+        border: 1px solid tranparent;
+        top: 8px;
+        right: 8px;
+        background: linear-gradient(90deg, #02aab0 0%, #00cdac 100%);
+      }
+    }
+
+    &--red {
+      &::after {
+        content: '';
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        border-radius: 25px;
+        border: 1px solid tranparent;
+        top: 8px;
+        right: 8px;
+        background: linear-gradient(90deg, #e52d27 0%, #b31217 100%);
+      }
+    }
+
+    &--orange {
+      &::after {
+        content: '';
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        border-radius: 25px;
+        border: 1px solid tranparent;
+        top: 8px;
+        right: 8px;
+        background: linear-gradient(90deg, #ff512f 0%, #f09819 100%);
+      }
+    }
+  }
+
+  &__line {
+    position: absolute;
+    top: 22px;
+    left: 10px;
+
+    &-text {
+      position: absolute;
+      left: 12px;
+      top: 45px;
+      font-family: sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+      text-transform: uppercase;
+
+      color: #000000;
+    }
+  }
+}
+
+.path {
+  stroke-dashoffset: 10;
+  stroke-dasharray: 20;
+  animation: dash 25s linear infinite forwards normal;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 822;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.or-timeline-mobile {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 59px 1fr;
+  align-items: center;
+
+  &--ending {
+    grid-template-rows: 1fr;
+  }
+
+  @media (min-width: 1400px) {
+    display: none;
+  }
+
+  .or-timeline-mobile-line {
+    width: 100%;
+
+    path {
+      stroke-width: 3;
+      animation-direction: reverse;
+    }
+  }
+}
+
+.or-timeline-card {
+  background-color: white;
+  border: 0.5px solid #d9d9da;
+  box-sizing: border-box;
+  border-radius: 3px;
+  width: 100%;
+  height: 100px;
+  padding: 32px 12px 12px 12px;
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5b5b5b;
+    margin-bottom: 6px;
+  }
+
+  &__value {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+    color: #131313;
+  }
+}
