@@ -1,13 +1,13 @@
 import { fetchStruct } from '../utils/fetchStruct';
 import {
-  GET_ORACLE_ORACLE_INFO_V2_STRUCT,
-  GET_ORACLE_ORACLE_STATUS_V2_STRUCT,
+  GET_ORACLE_INFO_V2_STRUCT,
+  GET_ORACLE_STATUS_V2_STRUCT,
   GET_ORACLE_POOL_INFO_V2_STRUCT,
   GET_ORACLE_POOL_STATUS_V2_STRUCT,
 } from '../constants/struct.types';
 
 export const pools = {
-  dexyerg: 'https://testnet-oracle-ergxau.sigmaspace.io/',
+  dexyerg: 'https://testnet-oracle-ergxau.sigmaspace.io',
 };
 
 export class OraclePoolStateV2Service {
@@ -16,11 +16,10 @@ export class OraclePoolStateV2Service {
       GET_ORACLE_POOL_INFO_V2_STRUCT,
       {
         method: 'get',
-        url: pools[poolType],
+        url: `${pools[poolType]}/poolInfo`,
       },
       {
         dispatch,
-        transformResponse: JSON.parse,
       }
     );
   }
@@ -30,39 +29,36 @@ export class OraclePoolStateV2Service {
       GET_ORACLE_POOL_STATUS_V2_STRUCT,
       {
         method: 'get',
-        url: pools[poolType],
+        url: `${pools[poolType]}/poolStatus`,
       },
       {
         dispatch,
-        transformResponse: JSON.parse,
       }
     );
   }
 
   static getOracleInfo(dispatch: any, poolType: any): any {
     return fetchStruct(
-      GET_ORACLE_ORACLE_INFO_V2_STRUCT,
+      GET_ORACLE_INFO_V2_STRUCT,
       {
         method: 'get',
-        url: pools[poolType],
+        url: `${pools[poolType]}/oracleInfo`,
       },
       {
         dispatch,
-        transformResponse: JSON.parse,
       }
     );
   }
 
   static getOracleStatus(dispatch: any, poolType: any): any {
     return fetchStruct(
-      GET_ORACLE_ORACLE_STATUS_V2_STRUCT,
+      GET_ORACLE_STATUS_V2_STRUCT,
       {
         method: 'get',
-        url: pools[poolType],
+        url: `${pools[poolType]}/oracleStatus`,
       },
       {
         dispatch,
-        transformResponse: JSON.parse,
       }
     );
   }
