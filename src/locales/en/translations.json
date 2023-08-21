@@ -216,7 +216,8 @@
     },
     "language-switcher": {
       "en": "English",
-      "ru": "Русский"
+      "ru": "Русский",
+      "id": "Indonesian"
     },
     "mining-cost": {
       "costPerTransaction": "Cost per Transaction",
