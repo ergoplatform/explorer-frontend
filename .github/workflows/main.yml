@@ -1,36 +1,55 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the workflow will run
+name: Deploy app
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches:
+      - 'master'
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-defaults:
-  run:
-    shell: bash
-    working-directory: .
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
-  deploy:
-    # The type of runner that the job will run on
+  build:
+    name: Build Artifacts for Test
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v2
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.DEPLOY_KEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      - name: Build Artifacts
+        uses: actions/checkout@v3
 
-      - name: Deploy the app
-        run: bash ./tools/deploy.sh
+      - name: Init Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Up Caches
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Generate deployable artifacts
+        run: |
+          yarn
+          CI=false yarn build
+      - name: Store Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.sha }}
+          path: build
+          retention-days: 1
+  deploy:
+    needs: build
+    name: Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Extract Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ github.sha }}
+          path: ~/build
+      - name: Deploy to host
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: /home/runner/build
+          remote: /data/explorer/front/build
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          privateKey: ${{ secrets.DEPLOY_KEY }}
