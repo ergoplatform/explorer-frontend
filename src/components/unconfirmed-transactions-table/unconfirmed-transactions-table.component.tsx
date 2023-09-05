@@ -1,8 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { formatNumberMetricPrefix } from '../../utils/formatNumberMetricPrefix';
-// import { base16 } from 'rfc4648';
-// import * as vlq from 'vlq';
 
 import './unconfirmed-transactions-table.scss';
 import { UnconfirmedTransactionsTableHeaderComponent } from './unconfirmed-transactions-header/unconfirmed-transactions-table-header.component';
