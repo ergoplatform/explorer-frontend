@@ -6,6 +6,7 @@ import { LastLocationProvider } from 'react-router-last-location';
 
 import en from 'react-intl/locale-data/en';
 import ru from 'react-intl/locale-data/ru';
+import id from 'react-intl/locale-data/id';
 
 import { AppComponent } from './containers/app/app.component';
 
@@ -35,7 +36,7 @@ delete window.__PRELOADED_STATE__;
 
 const settings = JSON.parse(localStorage.getItem('settings') as string) || {};
 
-const languages = ['en', 'ru'];
+const languages = ['en', 'ru', 'id'];
 let locale = languages[0];
 
 const pathLanguage = window.location.pathname.split('/')[1];
@@ -53,7 +54,7 @@ preloadedState.settings = {
 
 const AppStore = configureStore(preloadedState);
 
-addLocaleData([...en, ...ru]);
+addLocaleData([...en, ...ru, ...id]);
 
 export const App = () => {
   return (

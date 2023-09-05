@@ -17,7 +17,6 @@ export class TokenService {
       {
         dispatch,
       }
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
     ).catch(() => {});
   }
 }

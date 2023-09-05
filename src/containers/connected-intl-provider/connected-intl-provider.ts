@@ -2,6 +2,7 @@ import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import enKeys from '../../locales/en/translations.json';
 import ruKeys from '../../locales/ru/translations.json';
+import idKeys from '../../locales/id/translations.json';
 
 import { AppState } from '../../store/app.store';
 
@@ -26,6 +27,7 @@ const flatJSONKeys = (msgs: any, finalMap = {}, finalKey = '') => {
 export const messages = {
   en: flatJSONKeys(enKeys),
   ru: flatJSONKeys(ruKeys),
+  id: flatJSONKeys(idKeys),
 };
 
 function mapStateToProps(state: AppState): any {
