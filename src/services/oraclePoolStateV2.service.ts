@@ -7,7 +7,7 @@ import {
 } from '../constants/struct.types';
 
 export const pools = {
-  dexyerg: 'https://testnet-oracle-ergxau.sigmaspace.io',
+  dexyerg: 'https://erg-xau-oracle-api.ergohost.io/',
 };
 
 export class OraclePoolStateV2Service {
