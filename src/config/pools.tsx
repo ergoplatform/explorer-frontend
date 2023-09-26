@@ -55,8 +55,8 @@ export const pools = [
     ),
   },
   {
-    key: 'dexyerg',
-    name: 'DexyGold / ERG',
+    key: 'xauerg',
+    name: 'XAU / ERG',
     icon: (
       <svg
         width="82"

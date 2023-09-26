@@ -10,7 +10,7 @@ const OraclePoolStatePageComponent = withRouter((props: any) => {
     },
   } = props;
 
-  if (id === 'dexyerg') {
+  if (id === 'xauerg') {
     return <OraclePoolStateComponentV2 {...props} />;
   }
   return <OraclePoolStateComponent {...props} />;
