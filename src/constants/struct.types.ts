@@ -21,4 +21,12 @@ export const GET_TOKEN_STRUCT = '/tokens/:id';
 
 export const GET_ORACLE_POOL_DATA_STRUCT = 'oracle/frontendData';
 
+export const GET_ORACLE_POOL_INFO_V2_STRUCT = 'oracle/v2/poolInfo';
+
+export const GET_ORACLE_POOL_STATUS_V2_STRUCT = 'oracle/v2/poolStatus';
+
+export const GET_ORACLE_INFO_V2_STRUCT = 'oracle/v2/oracleInfo';
+
+export const GET_ORACLE_STATUS_V2_STRUCT = 'oracle/v2/oracleStatus';
+
 export const GET_ADDRESSES_BALANCES_STRUCT = 'addresses/balances';

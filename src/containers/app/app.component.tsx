@@ -55,8 +55,8 @@ const UnconfirmedTransactionsComponent = lazy(
       '../../pages/unconfirmed-transactions/unconfirmed-transactions.component'
     )
 );
-const OraclePoolStateComponent = lazy(
-  () => import('../../pages/oracle-pool-state/oracle-pool-state.component')
+const OraclePoolStatePageComponent = lazy(
+  () => import('../../pages/oracle-pool-state/oracle-pool-state-page.component')
 );
 const OraclePoolListComponent = lazy(
   () => import('src/pages/oracle-pool-list/oracle-pool-list')
@@ -166,7 +166,7 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                 <Route
                   exact
                   path="/oracle-pool-state/:id"
-                  component={OraclePoolStateComponent}
+                  component={OraclePoolStatePageComponent}
                 />
 
                 <Redirect from="/oracle-pool-list" to="/oracle-pools-list" />
