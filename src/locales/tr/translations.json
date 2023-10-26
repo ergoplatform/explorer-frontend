@@ -1,0 +1,368 @@
+{
+    "common": {
+        "block": {
+            "adProofsRoot": "AD Kanıtlarının Kökü",
+            "age": "Zaman Damgası",
+            "block": "Blok",
+            "difficulty": "Zorluk",
+            "powSolutions": "PoW Çözümleri",
+            "extensionHash": "Uzantı Hash",
+            "height": "Yükseklik",
+            "id": "ID",
+            "votes": "Oylar",
+            "minedBy": "Madencilik Tarafından",
+            "minerReward": "Ödül",
+            "nBits": "Bitler",
+            "parent": "Önceki Blok",
+            "size": "Boyut",
+            "stateRoot": "Durum Kökü",
+            "transactions": "İşlemler",
+            "transactionsRoot": "İşlemler Kökü",
+            "version": "Versiyon",
+            "headerId": "Başlık ID",
+            "digest": "Özet",
+            "fields": "Alanlar"
+        },
+        "token": {
+            "name": "İsim",
+            "id": "Id",
+            "amount": "Miktar",
+            "decimals": "Ondalıklar",
+            "description": "Açıklama",
+            "showMore": "Daha fazla göster",
+            "showLess": "Daha az göster",
+            "token": "Token",
+            "back": "Geri",
+            "tokenOverview": "Token Genel Bakış",
+            "emissionAmount": "Emisyon Miktarı",
+            "type": "Tip"
+        },
+        "pages": {
+            "address": {
+            "title": "Ergo Explorer | Adres {id}"
+            },
+            "api": {
+            "title": "Ergo Explorer | API"
+            },
+            "block": {
+            "title": "Ergo Explorer | Blok {id}"
+            },
+            "token": {
+            "title": "Ergo Explorer | Token {id}"
+            },
+            "unconfirmed-transaction": {
+            "title": "Ergo Explorer | İşlem {id}"
+            },
+            "chart": {
+            "title": {
+                "block-size": "Ergo Explorer | Ortalama Blok Boyutu",
+                "blockchain-size": "Ergo Explorer | Blockchain Boyutu",
+                "difficulty": "Ergo Explorer | Zorluk",
+                "hash-rate": "Ergo Explorer | Hash Oranı",
+                "hash-rate-distribution": "Ergo Explorer | Hash Oranı Dağılımı",
+                "miners-revenue": "Ergo Explorer | Madencilerin Geliri",
+                "total": "Ergo Explorer | Dolaşımdaki Coinler",
+                "transactions-per-block": "Ergo Explorer | Blok Başına İşlemler"
+            }
+            },
+            "charts": {
+            "title": "Ergo Explorer | Grafikler"
+            },
+            "data": {
+            "title": "Ergo Explorer | Veri"
+            },
+            "not-found": {
+            "title": "Ergo Explorer | Bulunamadı"
+            },
+            "stats": {
+            "title": "Ergo Explorer | İstatistikler"
+            },
+            "transaction": {
+            "title": "Ergo Explorer | İşlem {id}"
+            },
+            "wallet": {
+            "title": "Ergo Explorer | Cüzdan"
+            },
+            "order-book": {
+            "title": "Ergo Explorer | Emir Defteri"
+            },
+            "issued-tokens": {
+            "title": "Ergo Explorer | Verilen Tokenler"
+            },
+            "unconfirmed-transactions": {
+            "title": "Ergo Explorer | Mempool"
+            }
+        },
+        "stats": {
+            "hashRate": "Hash Oranı",
+            "marketCap": "Piyasa Değeri",
+            "supply": "Dolaşımdaki Arz",
+            "transactionAverage": "Günlük İşlem Sayısı",
+            "version": "Protokol",
+            "max-supply": "Maksimum Arz"
+        },
+        "charts": {
+            "view": "Grafiği Görüntüle"
+        },
+        "navigation": {
+            "resources": "Kaynaklar",
+            "latest-blocks": "Son Bloklar",
+            "mempool": "Bekleme Alanı",
+            "oracle-pools": "Oracle Havuzları",
+            "statistics": "İstatistikler",
+            "charts": "Grafikler",
+            "stats": "İstatistikler",
+            "tokens": "Tokenler",
+            "issued-tokens": "Verilen Tokenler",
+            "rich-list": "Zengin Listesi",
+            "more": "Daha Fazla",
+            "wallets": "Cüzdanlar",
+            "api": "API",
+            "monitor": "Zorluk & Dönem Monitörü",
+            "ergo-watch": "Ergo İzle"
+        }
+    },
+    "components": {
+        "address-actions": {
+            "donation-button": "Bağış Butonu",
+            "qrcode": "QR Kodu",
+            "request-payment": "Ödeme Talep Et"
+        },
+        "address-qr-code-modal": {
+            "subtitle": "Adres için Tara",
+            "title": "QR Kodu"
+        },
+        "address-summary": {
+            "hash": "Adres",
+            "title": "Özet"
+        },
+        "address-transactions": {
+            "confirmedBalance": "Final Bakiye",
+            "title": "İşlemler",
+            "confirmed": "İşlem Sayısı",
+            "totalReceived": "Toplam Alınan",
+            "tokens": "Tokenler",
+            "show": "Göster"
+        },
+        "address-issued-tokens": {
+            "title": "Verilen Tokenler",
+            "allTokens": "Tüm Tokenler"
+        },
+        "address": {
+            "title": "{coinName} Adresi"
+        },  
+        "block-header": {
+            "adproofs": "AD Kanıtları",
+            "back": "Tüm bloklara geri dön",
+            "information": "Bilgi",
+            "transactions": "İşlemler",
+            "extension": "Uzantı"
+        },
+        "block-summary": {
+            "averageMiningTime": "Ortalama madencilik süresi",
+            "minutes": "dk",
+            "title": "Blok Özeti",
+            "total": "Madencilik Yapılan Bloklar",
+            "totalCoins": "Madencilikle Üretilen Coinler"
+        },
+        "chart-actions": {
+            "csv": "CSV",
+            "json": "JSON",
+            "linear-scale": "Doğrusal Ölçek",
+            "logarithmic-scale": "Logaritmik Ölçek"
+        },
+        "chart": {
+            "back": "Grafiklere geri dön",
+            "hash-rate-distribution": {
+                "labels": {
+                        "name": "Madenci",
+                        "value": "Bloklar"
+                }
+            },
+            "subtitle": {
+                "block-size": "Ortalama blok boyutu",
+                "blockchain-size": "Tüm blokların toplam boyutu",
+                "difficulty": "Yeni bir blok bulmanın ne kadar zor olduğuna dair göreceli bir ölçüt",
+                "hash-rate": "Ağın saniyede gerçekleştirdiği tahmini hash sayısı",
+                "hash-rate-distribution": "En büyük madenciler arasında hash oranı dağılımının bir tahmini",
+                "miners-revenue": "Madencilere ödenen coinbase blok ödülleri ve işlem ücretlerinin toplam değeri",
+                "total": "Zaten madencilik yapılmış olan toplam coin sayısı",
+                "transactions-per-block": "Blok başına ortalama işlem sayısı"
+            },
+            "title": {
+                "block-size": "Ortalama blok boyutu",
+                "blockchain-size": "Blockchain Boyutu",
+                "difficulty": "Zorluk",
+                "hash-rate": "Hash Oranı",
+                "hash-rate-distribution": "Hash Oranı Dağılımı",
+                "miners-revenue": "Madencilerin Geliri",
+                "total": "Dolaşımdaki Coinler",
+                "transactions-per-block": "Blok Başına İşlemler"
+            }
+        },
+        "charts": {
+            "block-details": "Blok Detayları",
+            "currency-statistics": "Para İstatistikleri",
+            "mining-information": "Madencilik Bilgisi",
+            "title": "Grafikler"
+        },
+        "data": {
+            "show": "Göster",
+            "title": "Son bloklar",
+            "wrong-query": "Hiç blok bulunamadı. Farklı tarihleri deneyin"
+        },
+        "home": {
+            "title": "Blockchain explorer"
+        },  
+        "language-switcher": {
+        "en": "English",
+        "ru": "Русский",
+        "id": "Indonesian",
+        "tr": "Türkçe"
+        },
+        "mining-cost": {
+            "costPerTransaction": "İşlem Başına Maliyet",
+            "difficulty": "Zorluk",
+            "hashRate": "Hash Oranı",
+            "percentEarnedTransactionsFees": "İşlem Ücretlerinden Kazanılan %",
+            "percentTransactionVolume": "İşlem Hacminin %'si",
+            "title": "Madencilik Maliyeti",
+            "totalMinersRevenue": "Toplam Madenci Geliri"
+        },
+        "not-found": {
+            "title": "Bulunamadı"
+        },
+        "paginate-simple": {
+            "page": "Sayfa {current}",
+            "page-of": "Sayfa {current} / {total}"
+        },
+        "paginate": {
+            "next": "Sonraki",
+            "prev": "Önceki"
+        },
+        "payment-request-modal": {
+            "amount": "Miktar",
+            "copied": "Kopyalandı",
+            "copy": "Kopyala",
+            "description": "Açıklama",
+            "link": "Ödeme Talebi Bağlantısı",
+            "subtitle": "Ödeme talebi için bir adresi özelleştirmek için bu formu kullanın",
+            "title": "Ödeme Talebi Oluştur"
+        },
+        "payment-request": {
+            "copied": "Kopyalandı",
+            "copy": "Kopyala",
+            "for": "İçin",
+            "subtitle": "{coinName} aşağıdaki adrese gönderebilirsiniz",
+            "title": "Ödeme Talebi"
+        },
+        "search-results": {
+            "no-results": "Tanınmayan arama modeli. Lütfen adres, blok hash'i veya işlem hash'i girerek aramayı deneyin",
+            "wrong-query": "Tanınmayan arama modeli. Arama sorgusu en az 5 karakter uzunluğunda olmalıdır"
+        },  
+        "sidebar-menu": {
+            "items": {
+                "api": "API",
+                "api-addresses": "Adresler",
+                "api-blocks": "Bloklar",
+                "api-charts": "Grafikler",
+                "api-statistics": "İstatistikler",
+                "api-transactions": "İşlemler",
+                "api-utilities": "Araçlar",
+                "charts": "Grafikler",
+                "data": "Veri",
+                "stats": "İstatistikler",
+                "wallet": "Cüzdanlar",
+                "order-book": "Emir Defteri",
+                "issued-tokens": "Verilen Tokenler",
+                "unconfirmed": "Onaylanmamış",
+                "oraclePools": "Oracle Havuzları",
+                "watch": "Ergo İzle",
+                "diff": "Zorluk & Dönem monitörü"
+            }
+        },  
+        "stats": {
+            "subtitle": "Önceki 24 saatlik dönem için istatistik özeti",
+            "title": "{coinName} İstatistikleri"
+        },
+        "timespan": {
+            "span": {
+                "180days": "180 Gün",
+                "1year": "1 Yıl",
+                "2years": "2 Yıl",
+                "30days": "30 Gün",
+                "60days": "60 Gün",
+                "alltime": "Tüm Zamanlar"
+            }
+        },
+        "transaction-io-summary": {
+            "feePerByte": "Byte Başına Ücret",
+            "hideScripts": "Scriptleri & coinbase'i gizle",
+            "scripts": "Scriptler",
+            "showScripts": "Scriptleri & coinbase'i göster",
+            "title": "Girişler ve Çıkışlar",
+            "totalCoinsTransferred": "Transfer Edilen Toplam Coin",
+            "totalFee": "Toplam Ücretler"
+        },  
+        "transaction-item": {
+            "address-output": "Çıktı",
+            "confirmation": {
+                "one": "onay",
+                "other": "onaylar"
+            },
+            "null-address": "Adresi çözümleyemiyor",
+            "spent": "Harcanan",
+            "unconfirmed": "Doğrulanmamış",
+            "unspent": "Harcanmamış",
+            "show-less": "Daha az göster",
+            "show-more": "Daha fazla göster"
+        },
+        "transaction-summary": {
+            "blocks": "Bloklar içerisinde",
+            "confirmationsCount": "Onaylar",
+            "size": "Boyut",
+            "timestamp": "Alınma Zamanı",
+            "title": "Özet"
+        },
+        "transaction": {
+            "scripts": {
+                "input": "Giriş",
+                "output": "Çıktı"
+            },
+            "subtitle": "Bir ERGO işlemi hakkında bilgi görüntüle",
+            "title": "İşlem",
+            "error-message": "Bu ID'ye sahip işlem bulunamadı veya henüz Mempool'a girmemiş"
+        },
+        "transactions-summary": {
+            "title": "İşlemler Özeti",
+            "total": "İşlem Sayısı",
+            "totalFee": "Toplam İşlem Ücretleri",
+            "totalOutput": "Toplam Çıktı Hacmi"
+        },
+        "wallet": {
+            "title": "Cüzdan henüz mevcut değil"
+        },
+        "widget": {
+            "view-all-charts": "Tüm Grafikleri Görüntüle",
+            "view-all-blocks": "Tüm Blokları Görüntüle",
+            "view-all": "Hepsini görüntüle"
+        },
+        "order-book": {
+            "title": "Emir Defteri"
+        },
+        "issued-tokens": {
+            "title": "Verilen Tokenlar"
+        },
+        "unconfirmed-transactions": {
+            "title": "Mempool",
+            "inputs-quantity": "Girişler",
+            "outputs-quantity": "Çıktılar",
+            "creation-timestamp": "Zaman Damgası"
+        },
+        "unconfirmed-transaction": {
+            "title": "İşlem",
+            "subtitle": "Bir ERGO işlemi hakkında bilgi görüntüle",
+            "error-message": "Bu ID'ye sahip işlem bulunamadı veya henüz Mempool'a girmemiş"
+        }
+    }
+}
