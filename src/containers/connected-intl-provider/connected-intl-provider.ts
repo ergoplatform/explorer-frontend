@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import enKeys from '../../locales/en/translations.json';
 import ruKeys from '../../locales/ru/translations.json';
 import idKeys from '../../locales/id/translations.json';
+import trKeys from '../../locales/tr/translations.json';
 
 import { AppState } from '../../store/app.store';
 
@@ -28,6 +29,7 @@ export const messages = {
   en: flatJSONKeys(enKeys),
   ru: flatJSONKeys(ruKeys),
   id: flatJSONKeys(idKeys),
+  tr: flatJSONKeys(trKeys),
 };
 
 function mapStateToProps(state: AppState): any {
