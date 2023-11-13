@@ -43,6 +43,9 @@ const TransactionComponent = lazy(
 const WalletComponent = lazy(
   () => import('../../pages/wallet/wallet.component')
 );
+const ErgotreeComponent = lazy(
+  () => import('../../pages/ergotree/ergotree.component')
+)
 // const OrderBookComponent = lazy(() =>
 //   import('../../pages/order-book/order-book.component')
 // );
@@ -144,6 +147,8 @@ class App extends React.PureComponent<RouteComponentProps<any>> {
                 />
 
                 <Route exact path="/token/:id" component={TokenComponent} />
+
+                <Route exact path="/ergotree" component={ErgotreeComponent} />
 
                 {/* <Route
                   exact
